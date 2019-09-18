@@ -28,12 +28,12 @@ const GameView = ({ match }) => {
 
     React.useEffect(() => {
         (async () => {
-            console.log('call');
             let game = await Api.request(match.params[0], match.params.date);
             if (!isMounted.current) return;
             setGame(game);
         })();
-    }, [isMounted, match.params]);
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [isMounted, match.params[0], match.params.date]);
 
     const handleTab = (_, newValue) => {
         setTab(newValue);

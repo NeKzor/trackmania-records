@@ -4,7 +4,7 @@ import moment from 'moment';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import { makeStyles } from '@material-ui/core/styles';
 import { ThemeProvider } from '@material-ui/styles';
-import { red, blue, orange } from '@material-ui/core/colors';
+import { red, orange } from '@material-ui/core/colors';
 import { createMuiTheme } from '@material-ui/core/styles';
 import AppBar from './components/AppBar';
 import AboutView from './views/AboutView';

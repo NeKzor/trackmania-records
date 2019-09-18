@@ -38,16 +38,16 @@ const replaysRoute = (id, amount = 5) => `/replays/${id}/${amount}`;
             let wr = undefined;
 
             for (let record of records) {
-                let time = parseInt(record['ReplayTime'], 10);
+                let time = record['ReplayTime'];
                 if (wr === undefined || wr === time) {
                     wrs.push({
                         user: {
-                            id: parseInt(record['UserID'], 10),
+                            id: record['UserID'],
                             name: record['Username'],
                         },
                         time: (wr = time),
                         date: record['UploadedAt'],
-                        replay: parseInt(record['ReplayID'], 10),
+                        replay: record['ReplayID'],
                     });
                     continue;
                 }
