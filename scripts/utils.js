@@ -2,7 +2,7 @@ const fs = require('fs');
 
 const delay = (ms) => new Promise((res) => setTimeout(res, ms));
 
-const formatTime = (time) => {
+/* const formatTime = (time) => {
     let csec = time % 100;
     let tsec = Math.floor(time / 100);
     let sec = tsec % 60;
@@ -15,26 +15,7 @@ const formatTime2 = (time) => {
     let sec = tsec % 60;
     let min = Math.floor(tsec / 60);
     return `${min}:${sec < 10 ? `0${sec}` : `${sec}`}.${msec < 100 ? msec < 10 ? `00${msec}` : `0${msec}` : `${msec}`}`;
-};
-
-const getTime = (str) => {
-    let data = str.split(':');
-    let min = parseInt(data[0], 10);
-    data = data[1].split('.');
-    let sec = parseInt(data[0], 10);
-    let csec = parseInt(data[1], 10);
-
-    return min * 60 * 100 + sec * 100 + csec;
-};
-const getTime2 = (str) => {
-    let data = str.split(':');
-    let min = parseInt(data[0], 10);
-    data = data[1].split('.');
-    let sec = parseInt(data[0], 10);
-    let msec = parseInt(data[1], 10);
-
-    return min * 60 * 1000 + sec * 1000 + msec;
-};
+}; */
 
 const tryExportJson = (file, obj, overwrite = false) => {
     try {
@@ -55,10 +36,6 @@ const tryMakeDir = (dir) => {
 
 module.exports = {
     delay,
-    formatTime,
-    formatTime2,
-    getTime,
-    getTime2,
     tryExportJson,
     tryMakeDir
 };
