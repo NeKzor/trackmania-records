@@ -1,20 +1,24 @@
 import React from 'react';
-import { Pie } from 'react-chartjs-2';
 import { withRouter } from 'react-router';
 import moment from 'moment';
+import Box from '@material-ui/core/Box';
 import Grid from '@material-ui/core/Grid';
+import Fab from '@material-ui/core/Fab';
 import LinearProgress from '@material-ui/core/LinearProgress';
 import Paper from '@material-ui/core/Paper';
 import Tab from '@material-ui/core/Tab';
 import Tabs from '@material-ui/core/Tabs';
 import Typography from '@material-ui/core/Typography';
-import Box from '@material-ui/core/Box';
+import Zoom from '@material-ui/core/Zoom';
+import KeyboardArrowUpIcon from '@material-ui/icons/KeyboardArrowUp';
 import RankingsTable from '../components/RankingsTable';
 import RecordsTable from '../components/RecordsTable';
 import SimpleTitle from '../components/SimpleTitle';
+import RecordsChart from '../components/RecordsChart';
 import Api from '../Api';
 import { useIsMounted } from '../Hooks';
 import ViewContent from './ViewContent';
+import { makeStyles } from '@material-ui/core';
 
 const TabPanel = ({ children, value, index, ...other }) => {
     return (
@@ -24,34 +28,16 @@ const TabPanel = ({ children, value, index, ...other }) => {
     );
 };
 
-const RecordsPlot = ({ data }) => {
-    let backgroundColor = data.map(
-        (row) =>
-            '#' +
-            Math.random()
-                .toString(16)
-                .slice(2, 8)
-                .toUpperCase(),
-    );
-    return (
-        <div>
-            <Pie
-                width={250}
-                height={250}
-                options={{ maintainAspectRatio: false }}
-                data={{
-                    labels: data.map((row) => row.user.name),
-                    datasets: [
-                        {
-                            data: data.map((row) => row.wrs),
-                            backgroundColor,
-                        },
-                    ],
-                }}
-            />
-        </div>
-    );
-};
+const useStyles = makeStyles((theme) => ({
+    fab: {
+        margin: 0,
+        top: 'auto',
+        right: 30,
+        bottom: 75,
+        left: 'auto',
+        position: 'fixed',
+    },
+}));
 
 const GameView = ({ match }) => {
     const isMounted = useIsMounted();
@@ -60,9 +46,39 @@ const GameView = ({ match }) => {
     const [tab, setTab] = React.useState(0);
 
     React.useEffect(() => {
+        setGame(undefined);
+    }, [match.params[0]]);
+
+    React.useEffect(() => {
         (async () => {
             let game = await Api.request(match.params[0], match.params.date);
             if (!isMounted.current) return;
+            await new Promise((res) => setTimeout(res, 1000));
+            if (game[0] && game[0].tracks[0].wrs) {
+                for (let campaign of game) {
+                    let rows = [];
+                    for (let track of campaign.tracks) {
+                        for (let wr of track.wrs) {
+                            let duration = moment().diff(moment(wr.date), 'd');
+                            let user = campaign.leaderboard.find((entry) => entry.user.id === wr.user.id);
+                            user.duration = user.duration === undefined ? duration : user.duration + duration;
+                            rows.push({
+                                track: {
+                                    id: track.id,
+                                    name: track.name,
+                                    isFirst: wr === track.wrs[0],
+                                    records: track.wrs.length,
+                                },
+                                duration,
+                                ...wr,
+                            });
+                        }
+                    }
+
+                    campaign.tracks = rows;
+                }
+            }
+
             setGame(game);
         })();
         // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -72,14 +88,18 @@ const GameView = ({ match }) => {
         setTab(newValue);
     };
 
-    const calcDuration = (id, tracks) => {
-        return tracks
-            .map((track) => track.wrs)
-            .reduce((acc, val) => acc.concat(val), [])
-            .filter((wr) => wr.user.id === id)
-            .map((wr) => moment().diff(moment(wr.date), 'd'))
-            .reduce((a, b) => a + b, 0);
+    const jumpToTop = () => {
+        const smoothScroll = () => {
+            const y = document.documentElement.scrollTop;
+            if (y > 0) {
+                window.requestAnimationFrame(smoothScroll);
+                window.scrollTo(0, y - y / 5);
+            }
+        };
+        smoothScroll();
     };
+
+    const classes = useStyles();
 
     return (
         <ViewContent>
@@ -111,17 +131,27 @@ const GameView = ({ match }) => {
                                         <RecordsTable data={campaign.tracks} game={match.params[0]} total={campaign.stats.totalTime} />
                                     </Grid>
                                     <Grid item xs={12} style={{ paddingTop: '70px' }}>
-                                        <Grid container direction="row" justify="center">
+                                        <Grid container direction="row" justify="center" alignContent="center">
                                             <Grid item xs={6}>
-                                                <RankingsTable
-                                                    data={campaign.leaderboard.map((row) => ({
-                                                        ...row,
-                                                        duration: calcDuration(row.user.id, campaign.tracks),
-                                                    }))}
-                                                />
+                                                <RankingsTable data={campaign.leaderboard} game={match.params[0]} />
                                             </Grid>
                                             <Grid item xs={6}>
-                                                <RecordsPlot data={campaign.leaderboard} />
+                                                <Grid container direction="column" justify="center">
+                                                    <Grid item xs={6}>
+                                                        <RecordsChart
+                                                            title="WRs"
+                                                            labels={campaign.leaderboard.map((row) => row.user.name)}
+                                                            series={campaign.leaderboard.map((row) => row.wrs)}
+                                                        />
+                                                    </Grid>
+                                                    <Grid item xs={6} style={{ paddingTop: '70px' }}>
+                                                        <RecordsChart
+                                                            title="Duration"
+                                                            labels={campaign.leaderboard.map((row) => row.user.name)}
+                                                            series={campaign.leaderboard.map((row) => row.duration)}
+                                                        />
+                                                    </Grid>
+                                                </Grid>
                                             </Grid>
                                         </Grid>
                                     </Grid>
@@ -131,6 +161,11 @@ const GameView = ({ match }) => {
                     </>
                 )}
             </Paper>
+            <Zoom in={game !== undefined} timeout={1000}>
+                <Fab title="Jump to top" color="primary" className={classes.fab} onClick={jumpToTop}>
+                    <KeyboardArrowUpIcon />
+                </Fab>
+            </Zoom>
         </ViewContent>
     );
 };

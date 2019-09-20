@@ -7,7 +7,7 @@ const output = process.argv[2] || 'api';
 const day = moment().format('YYYY-MM-DD');
 
 const config = { headers: { 'User-Agent': 'tmx-records-v1' } };
-const maxFetch = 1;
+const maxFetch = undefined;
 
 const baseApi = 'https://api.mania-exchange.com/tm';
 

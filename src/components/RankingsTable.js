@@ -13,7 +13,7 @@ import tmx from '../utils/tmx';
 
 const rows = [
     { id: 'user.name', sortable: true, label: 'Player', align: 'left' },
-    { id: 'records', sortable: true, label: 'World Records', align: 'left' },
+    { id: 'wrs', sortable: true, label: 'World Records', align: 'left' },
     { id: 'duration', sortable: true, label: 'Total Duration', align: 'left' },
 ];
 
@@ -49,8 +49,8 @@ const useStyles = makeStyles((_) => ({
 }));
 
 const defaultState = {
-    order: 'asc',
-    orderBy: 'records',
+    order: 'desc',
+    orderBy: 'wrs',
     page: 0,
     rowsPerPage: 50,
 };
@@ -86,7 +86,7 @@ const RecordsTable = ({ data, game }) => {
                                         {row.user.name}
                                     </Link>
                                 </MinTableCell>
-                                <MinTableCell align="center">{row.wrs}</MinTableCell>
+                                <MinTableCell align="left">{row.wrs}</MinTableCell>
                                 <MinTableCell align="left">{row.duration} days</MinTableCell>
                             </TableRow>
                         ))}

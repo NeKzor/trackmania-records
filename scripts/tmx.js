@@ -6,10 +6,10 @@ const output = process.argv[2] || 'api';
 
 const day = moment().format('YYYY-MM-DD');
 
-const tmx = ['tmnforever', 'united', 'nations', 'sunrise', 'original'];
+const tmx = ['tmnforever'/* , 'united', 'nations', 'sunrise', 'original' */];
 
 const config = { headers: { 'User-Agent': 'tmx-records-v1' } };
-const maxFetch = 6;
+const maxFetch = undefined;
 
 const scrap = async (gameName) => {
     const campaigns = require('./games/' + gameName);
@@ -81,7 +81,6 @@ const scrap = async (gameName) => {
             },
             leaderboard,
         });
-        break;
     }
 
     tryMakeDir(output);
@@ -96,5 +95,4 @@ console.log(day);
 for (let game of tmx) {
     console.log(game);
     scrap(game);
-    break;
 }

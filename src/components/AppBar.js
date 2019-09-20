@@ -101,7 +101,7 @@ const AppBar = ({ location }) => {
         <div className={classes.root}>
             <MaterialAppBar className={classes.appBar} position="fixed">
                 <Toolbar>
-                    <Hidden smDown>
+
                         <Breadcrumbs color="inherit" separator={<NavigateNextIcon fontSize="small" />}>
                             <Typography variant="h6" color="inherit">
                                 <Link component={RouterLink} to="/" color="inherit" underline="none">
@@ -109,7 +109,7 @@ const AppBar = ({ location }) => {
                                 </Link>
                             </Typography>
                         </Breadcrumbs>
-                    </Hidden>
+
                 </Toolbar>
             </MaterialAppBar>
             <Hidden lgUp implementation="css">

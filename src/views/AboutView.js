@@ -15,7 +15,7 @@ const useStyles = makeStyles((theme) => ({
 
 const AboutView = () => {
     const description = [
-        'This web app mirrors TrackMania Exchange records.',
+        'This web app mirrors TrackMania Exchange nadeo records.',
         'Additionally it ranks players based on how many world records they hold and how long their records have been lasting.',
     ].map((text, idx) => (
         <ListItem key={idx}>
