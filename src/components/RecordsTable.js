@@ -1,7 +1,7 @@
 import React from 'react';
 import Moment from 'react-moment';
 import moment from 'moment';
-import IconButton from '@material-ui/core/IconButton';
+/* import IconButton from '@material-ui/core/IconButton'; */
 import Link from '@material-ui/core/Link';
 import { makeStyles } from '@material-ui/core/styles';
 import Table from '@material-ui/core/Table';
@@ -11,12 +11,13 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import TableSortLabel from '@material-ui/core/TableSortLabel';
 import Tooltip from '@material-ui/core/Tooltip';
-import SaveAltIcon from '@material-ui/icons/SaveAlt';
+/* import SaveAltIcon from '@material-ui/icons/SaveAlt';
 import PlayArrowIcon from '@material-ui/icons/PlayArrow';
-import WarningIcon from '@material-ui/icons/Warning';
+import WarningIcon from '@material-ui/icons/Warning'; */
 import { stableSort } from '../utils/stableSort';
 import tmx from '../utils/tmx';
 import { formatTime, getDateDifferenceColor } from '../utils/tools';
+import { withTheme } from '@material-ui/styles';
 
 const rows = [
     { id: 'track.name', sortable: true, label: 'Track', align: 'left' },
@@ -24,7 +25,7 @@ const rows = [
     { id: 'user.name', sortable: true, label: 'Player', align: 'left' },
     { id: 'date', sortable: true, label: 'Date', align: 'left' },
     { id: 'duration', sortable: true, label: 'Duration', align: 'left' },
-    { id: 'replay', sortable: false, label: 'Replay/Video', align: 'left' },
+    /* { id: 'replay', sortable: false, label: 'Replay/Video', align: 'left' }, */
 ];
 
 const RecordsTableHead = ({ order, orderBy, onRequestSort }) => {
@@ -69,7 +70,9 @@ const noWrap = { whiteSpace: 'nowrap' };
 const minifiedStyle = { padding: '7px 0px 7px 16px' };
 const MinTableCell = (props) => <TableCell style={minifiedStyle} {...props} />;
 
-const RecordsTable = ({ data, game, total }) => {
+const RecordsTable = ({ data, game, total, isLatest, theme }) => {
+    const isDarkTheme = theme.palette.type === 'dark';
+
     const [{ order, orderBy, rowsPerPage, page }, setState] = React.useState(defaultState);
 
     const handleRequestSort = (_, property) => {
@@ -91,7 +94,7 @@ const RecordsTable = ({ data, game, total }) => {
                     {stableSort(data, order, orderBy)
                         .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
                         .map((wr) => (
-                            <TableRow tabIndex={-1} key={wr.track.id + wr.user.id}>
+                            <TableRow tabIndex={-1} key={`${wr.track.id}-${wr.user.id}`}>
                                 {(wr.track.isFirst || orderBy !== 'track.name') && (
                                     <MinTableCell rowSpan={orderBy !== 'track.name' ? 1 : wr.track.records} align="left">
                                         <Link color="inherit" href={tmx(game).trackUrl(wr.track.id)} rel="noreferrer" target="_blank">
@@ -124,10 +127,10 @@ const RecordsTable = ({ data, game, total }) => {
                                 </MinTableCell>
                                 <MinTableCell align="left">
                                     <Tooltip title="in days" placement="bottom-end" enterDelay={300}>
-                                        <Moment style={noWrap} diff={wr.date} unit="days"></Moment>
+                                        {isLatest ? <Moment style={noWrap} diff={wr.date} unit="days"></Moment> : wr.duration}
                                     </Tooltip>
                                 </MinTableCell>
-                                <MinTableCell align="left">
+                                {/* <MinTableCell align="left">
                                     <Tooltip title="Download Replay" placement="bottom-end" enterDelay={300}>
                                         <IconButton size="small" href={tmx(game).replayUrl(wr.replay)} target="_blank">
                                             <SaveAltIcon fontSize="inherit" />
@@ -162,7 +165,7 @@ const RecordsTable = ({ data, game, total }) => {
                                             </span>
                                         </Tooltip>
                                     )}
-                                </MinTableCell>
+                                </MinTableCell> */}
                             </TableRow>
                         ))}
                 </TableBody>
@@ -182,4 +185,4 @@ const RecordsTable = ({ data, game, total }) => {
     );
 };
 
-export default RecordsTable;
+export default withTheme(RecordsTable);

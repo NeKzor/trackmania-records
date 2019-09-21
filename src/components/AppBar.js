@@ -22,6 +22,7 @@ const useStyles = makeStyles((theme) => ({
     },
     list: {
         width: theme.spacing(25),
+        height: '100%'
     },
     menuButton: {
         marginLeft: -12,
@@ -50,6 +51,7 @@ const pageLinks = [
     { title: 'United', link: '/united', inDrawer: true },
     { title: 'Sunrise', link: '/sunrise', inDrawer: true },
     { title: 'Original', link: '/original', inDrawer: true },
+    { title: 'Replay Inspection', link: '/replay', inDrawer: false },
     { title: 'About', link: '/about', inDrawer: false },
 ];
 
@@ -73,7 +75,7 @@ const AppBar = ({ location }) => {
                 </ListItem>
             </List>
             <Divider />
-            <List>
+            <List style={{height: '100%'}}>
                 {pageLinks
                     .filter((x) => x.inDrawer)
                     .map((item, index) => (

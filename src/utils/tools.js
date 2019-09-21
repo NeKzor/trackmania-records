@@ -23,14 +23,11 @@ export function formatTime(time, game) {
 }
 
 // credits: https://github.com/iVerb1/Portal2Boards/blob/master/public/js/date.js#L21
+const hourScale = scaleLinear()
+    .domain([0, 24, 14 * 24, 2 * 30 * 24])
+    .range(['#2eb82e', '#258e25', '#cca300', '#e67300']);
+
 export function getDateDifferenceColor(date) {
     let passedHours = moment().diff(moment(date), 'hours');
-    let hourScale = scaleLinear()
-        .domain([0, 24, 14 * 24, 2 * 30 * 24])
-        .range(['#2eb82e', '#258e25', '#cca300', '#e67300']);
-    let color = 'white';
-    if (passedHours <= 24 * 30 * 2) {
-        color = hourScale(passedHours);
-    }
-    return color;
+    return passedHours <= 2 * 30 * 24 ? hourScale(passedHours) : undefined;
 }

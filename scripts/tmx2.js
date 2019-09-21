@@ -15,7 +15,7 @@ const tracksRoute = (id) => `/tracks/${id}`;
 const replaysRoute = (id, amount = 5) => `/replays/${id}/${amount}`;
 
 (async () => {
-    console.log(day);
+    console.log(day, 'tm2');
 
     const campaigns = require('./games/tm2');
 
@@ -47,6 +47,7 @@ const replaysRoute = (id, amount = 5) => `/replays/${id}/${amount}`;
                         },
                         time: (wr = time),
                         date: record['UploadedAt'],
+                        duration: moment().diff(moment(record['UploadedAt']), 'd'),
                         replay: record['ReplayID'],
                     });
                     continue;
@@ -67,6 +68,7 @@ const replaysRoute = (id, amount = 5) => `/replays/${id}/${amount}`;
 
         let totalTime = tracks.map((t) => t.wrs[0].time).reduce((a, b) => a + b, 0);
         let users = tracks.map((t) => t.wrs.map((r) => r.user)).reduce((acc, val) => acc.concat(val), []);
+        let wrs = tracks.map((t) => t.wrs).reduce((acc, val) => acc.concat(val), []);
 
         let frequency = users.reduce((count, user) => {
             count[user.id] = (count[user.id] || 0) + 1;
@@ -75,7 +77,14 @@ const replaysRoute = (id, amount = 5) => `/replays/${id}/${amount}`;
 
         let leaderboard = Object.keys(frequency)
             .sort((a, b) => frequency[b] - frequency[a])
-            .map((key) => ({ user: users.find((u) => u.id.toString() === key), wrs: frequency[key] }));
+            .map((key) => ({
+                user: users.find((u) => u.id.toString() === key),
+                wrs: frequency[key],
+                duration: wrs
+                    .filter((r) => r.user.id.toString() === key)
+                    .map((r) => r.duration)
+                    .reduce((a, b) => a + b, 0),
+            }));
 
         game.push({
             name: campaign.name,

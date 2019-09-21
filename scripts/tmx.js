@@ -2,16 +2,23 @@ const moment = require('moment');
 const fetch = require('node-fetch');
 const { delay, tryExportJson, tryMakeDir } = require('./utils');
 
-const output = process.argv[2] || 'api';
+const gameName = process.argv[2] || 'tmnforever';
+const output = process.argv[3] || 'api';
 
 const day = moment().format('YYYY-MM-DD');
 
-const tmx = ['tmnforever'/* , 'united', 'nations', 'sunrise', 'original' */];
+const tmx = ['tmnforever' , 'united', 'nations', 'sunrise', 'original'];
+
+if (!tmx.find(x => x === gameName)) {
+    throw new Error('Invalid game name.');
+}
 
 const config = { headers: { 'User-Agent': 'tmx-records-v1' } };
 const maxFetch = undefined;
 
-const scrap = async (gameName) => {
+(async () => {
+    console.log(day, gameName);
+
     const campaigns = require('./games/' + gameName);
 
     const apiRoute = (action, id) => `https://${gameName}.tm-exchange.com/apiget.aspx?action=${action}&id=${id}`;
@@ -43,6 +50,7 @@ const scrap = async (gameName) => {
                         },
                         time: (wr = time),
                         date: record[4],
+                        duration: moment().diff(moment(record[4]), 'd'),
                         replay: parseInt(record[0], 10),
                     });
                     continue;
@@ -63,6 +71,7 @@ const scrap = async (gameName) => {
 
         let totalTime = tracks.map((t) => t.wrs[0].time).reduce((a, b) => a + b, 0);
         let users = tracks.map((t) => t.wrs.map((r) => r.user)).reduce((acc, val) => acc.concat(val), []);
+        let wrs = tracks.map((t) => t.wrs).reduce((acc, val) => acc.concat(val), []);
 
         let frequency = users.reduce((count, user) => {
             count[user.id] = (count[user.id] || 0) + 1;
@@ -71,7 +80,14 @@ const scrap = async (gameName) => {
 
         let leaderboard = Object.keys(frequency)
             .sort((a, b) => frequency[b] - frequency[a])
-            .map((key) => ({ user: users.find((u) => u.id.toString() === key), wrs: frequency[key] }));
+            .map((key) => ({
+                user: users.find((u) => u.id.toString() === key),
+                wrs: frequency[key],
+                duration: wrs
+                    .filter((r) => r.user.id.toString() === key)
+                    .map((r) => r.duration)
+                    .reduce((a, b) => a + b, 0),
+            }));
 
         game.push({
             name: campaign.name,
@@ -88,11 +104,4 @@ const scrap = async (gameName) => {
 
     tryExportJson(`${output}/${gameName}/${day}.json`, game);
     tryExportJson(`${output}/${gameName}/latest.json`, game, true);
-};
-
-console.log(day);
-
-for (let game of tmx) {
-    console.log(game);
-    scrap(game);
-}
+})();

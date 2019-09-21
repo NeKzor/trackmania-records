@@ -9,6 +9,7 @@ import { createMuiTheme } from '@material-ui/core/styles';
 import AppBar from './components/AppBar';
 import AboutView from './views/AboutView';
 import GameView from './views/GameView';
+import ReplayView from './views/ReplayView';
 import NotFoundView from './views/NotFoundView';
 
 const useStyles = makeStyles((theme) => ({
@@ -53,6 +54,7 @@ const App = () => {
                         <Redirect exact from="/tmnf" to="/tmnforever" />
                         <Route exact path="/(nations|original|sunrise|tm2|tmnforever|united)/:date?" component={GameView} />
                         <Route exact path="/about" component={AboutView} />
+                        <Route exact path="/replay" component={ReplayView} />
                         <Route component={NotFoundView} />
                     </Switch>
                 </div>

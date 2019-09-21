@@ -43,6 +43,19 @@ const AboutView = () => {
                     {description}
                     <ListItem></ListItem>
                     <ListItem>
+                        <Typography variant="subtitle1">
+                            Credits:{' '}
+                            <Link rel="noopener" href="http://www.tm-exchange.com">
+                                tm-exchange.com
+                            </Link>
+                            ,&nbsp;
+                            <Link rel="noopener" href="https://tm.mania-exchange.com">
+                                tm.mania-exchange.com
+                            </Link>
+                        </Typography>
+                    </ListItem>
+                    <ListItem></ListItem>
+                    <ListItem>
                         <Typography variant="subtitle1">Project is open source at {openSourceLink}.</Typography>
                     </ListItem>
                 </List>

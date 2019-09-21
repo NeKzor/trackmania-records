@@ -22,9 +22,11 @@ import { makeStyles } from '@material-ui/core';
 
 const TabPanel = ({ children, value, index, ...other }) => {
     return (
-        <Typography component="div" role="tabpanel" hidden={value !== index} id={`scrollable-auto-tabpanel-${index}`} {...other}>
-            <Box p={3}>{children}</Box>
-        </Typography>
+        value === index && (
+            <Typography component="div" role="tabpanel" id={`scrollable-auto-tabpanel-${index}`} {...other}>
+                <Box p={3}>{children}</Box>
+            </Typography>
+        )
     );
 };
 
@@ -33,7 +35,7 @@ const useStyles = makeStyles((theme) => ({
         margin: 0,
         top: 'auto',
         right: 30,
-        bottom: 75,
+        bottom: 30,
         left: 'auto',
         position: 'fixed',
     },
@@ -45,15 +47,17 @@ const GameView = ({ match }) => {
     const [game, setGame] = React.useState(undefined);
     const [tab, setTab] = React.useState(0);
 
+    const page = match.params[0];
+
     React.useEffect(() => {
         setGame(undefined);
-    }, [match.params[0]]);
+    }, [page]);
 
     React.useEffect(() => {
         (async () => {
             let game = await Api.request(match.params[0], match.params.date);
-            if (!isMounted.current) return;
             await new Promise((res) => setTimeout(res, 1000));
+            if (!isMounted.current) return;
             if (game[0] && game[0].tracks[0].wrs) {
                 for (let campaign of game) {
                     let rows = [];
@@ -128,7 +132,12 @@ const GameView = ({ match }) => {
                             <TabPanel value={tab} index={idx} key={campaign.name}>
                                 <Grid container direction="column" justify="center">
                                     <Grid item xs={12}>
-                                        <RecordsTable data={campaign.tracks} game={match.params[0]} total={campaign.stats.totalTime} />
+                                        <RecordsTable
+                                            data={campaign.tracks}
+                                            game={match.params[0]}
+                                            total={campaign.stats.totalTime}
+                                            isLatest={match.params.date === undefined}
+                                        />
                                     </Grid>
                                     <Grid item xs={12} style={{ paddingTop: '70px' }}>
                                         <Grid container direction="row" justify="center" alignContent="center">
