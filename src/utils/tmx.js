@@ -1,3 +1,5 @@
+const protocol = (game) => ['nations', 'sunrise', 'original'].includes(game) ? 'http' : 'https'; 
+
 export default (game) =>
     game === 'tm2'
         ? {
@@ -7,8 +9,8 @@ export default (game) =>
               userUrl: (id) => `https://tm.mania-exchange.com/user/profile/${id}`,
           }
         : (() => ({
-              trackUrl: (id) => `https://${game}.tm-exchange.com/main.aspx?action=trackshow&id=${id}`,
-              imageUrl: (id) => `https://${game}.tm-exchange.com/getclean.aspx?action=trackscreenscreens&id=${id}`,
-              replayUrl: (id) => `https://${game}.tm-exchange.com/get.aspx?action=recordgbx&id=${id}`,
-              userUrl: (id) => `https://${game}.tm-exchange.com/main.aspx?action=usershow&id=${id}`,
+              trackUrl: (id) => `${protocol(game)}://${game}.tm-exchange.com/main.aspx?action=trackshow&id=${id}`,
+              imageUrl: (id) => `${protocol(game)}://${game}.tm-exchange.com/getclean.aspx?action=trackscreenscreens&id=${id}`,
+              replayUrl: (id) => `${protocol(game)}://${game}.tm-exchange.com/get.aspx?action=recordgbx&id=${id}`,
+              userUrl: (id) => `${protocol(game)}://${game}.tm-exchange.com/main.aspx?action=usershow&id=${id}`,
           }))();

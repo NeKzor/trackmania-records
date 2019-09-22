@@ -4,207 +4,258 @@
         "tracks": [
             {
                 "id": 1839,
-                "name": "RaceA1"
+                "name": "RaceA1",
+                "type": "Race"
             },
             {
                 "id": 1840,
-                "name": "RaceA2"
+                "name": "RaceA2",
+                "type": "Race"
             },
             {
                 "id": 1841,
-                "name": "RaceA3"
+                "name": "RaceA3",
+                "type": "Race"
             },
             {
                 "id": 1842,
-                "name": "RaceA4"
+                "name": "RaceA4",
+                "type": "Race"
             },
             {
                 "id": 1843,
-                "name": "RaceA5"
+                "name": "RaceA5",
+                "type": "Race"
             },
             {
                 "id": 1844,
-                "name": "RaceA6"
+                "name": "RaceA6",
+                "type": "Race"
             },
             {
                 "id": 1845,
-                "name": "RaceA7"
+                "name": "RaceA7",
+                "type": "Race"
             },
             {
                 "id": 1847,
-                "name": "RaceA8"
+                "name": "RaceA8",
+                "type": "Race"
             },
             {
                 "id": 1848,
-                "name": "RaceB1"
+                "name": "RaceB1",
+                "type": "Race"
             },
             {
                 "id": 1850,
-                "name": "RaceB2"
+                "name": "RaceB2",
+                "type": "Race"
             },
             {
                 "id": 1849,
-                "name": "RaceB3"
+                "name": "RaceB3",
+                "type": "Race"
             },
             {
                 "id": 1852,
-                "name": "RaceB4"
+                "name": "RaceB4",
+                "type": "Race"
             },
             {
                 "id": 1857,
-                "name": "RaceB5"
+                "name": "RaceB5",
+                "type": "Race"
             },
             {
                 "id": 1856,
-                "name": "RaceB6"
+                "name": "RaceB6",
+                "type": "Race"
             },
             {
                 "id": 1858,
-                "name": "RaceB7"
+                "name": "RaceB7",
+                "type": "Race"
             },
             {
                 "id": 1859,
-                "name": "RaceB8"
+                "name": "RaceB8",
+                "type": "Race"
             },
             {
                 "id": 1864,
-                "name": "RaceC1"
+                "name": "RaceC1",
+                "type": "Race"
             },
             {
                 "id": 1865,
-                "name": "RaceC2"
+                "name": "RaceC2",
+                "type": "Race"
             },
             {
                 "id": 1866,
-                "name": "RaceC3"
+                "name": "RaceC3",
+                "type": "Race"
             },
             {
                 "id": 1867,
-                "name": "RaceC4"
+                "name": "RaceC4",
+                "type": "Race"
             },
             {
                 "id": 1868,
-                "name": "RaceC5"
+                "name": "RaceC5",
+                "type": "Race"
             },
             {
                 "id": 1869,
-                "name": "RaceC6"
+                "name": "RaceC6",
+                "type": "Race"
             },
             {
                 "id": 1870,
-                "name": "RaceC7"
+                "name": "RaceC7",
+                "type": "Race"
             },
             {
                 "id": 1871,
-                "name": "RaceC8"
+                "name": "RaceC8",
+                "type": "Race"
             },
             {
                 "id": 1872,
-                "name": "RaceD1"
+                "name": "RaceD1",
+                "type": "Race"
             },
             {
                 "id": 1873,
-                "name": "RaceD2"
+                "name": "RaceD2",
+                "type": "Race"
             },
             {
                 "id": 1874,
-                "name": "RaceD3"
+                "name": "RaceD3",
+                "type": "Race"
             },
             {
                 "id": 1876,
-                "name": "RaceD4"
+                "name": "RaceD4",
+                "type": "Race"
             },
             {
                 "id": 1877,
-                "name": "RaceD5"
+                "name": "RaceD5",
+                "type": "Race"
             },
             {
                 "id": 1878,
-                "name": "RaceD6"
+                "name": "RaceD6",
+                "type": "Race"
             },
             {
                 "id": 1879,
-                "name": "RaceD7"
+                "name": "RaceD7",
+                "type": "Race"
             },
             {
                 "id": 1880,
-                "name": "RaceD8"
+                "name": "RaceD8",
+                "type": "Race"
             },
             {
                 "id": 1891,
-                "name": "RaceE1"
+                "name": "RaceE1",
+                "type": "Race"
             },
             {
                 "id": 1892,
-                "name": "RaceE2"
+                "name": "RaceE2",
+                "type": "Race"
             },
             {
                 "id": 1893,
-                "name": "RaceE3"
+                "name": "RaceE3",
+                "type": "Race"
             },
             {
                 "id": 1894,
-                "name": "RaceE4"
+                "name": "RaceE4",
+                "type": "Race"
             },
             {
                 "id": 1895,
-                "name": "RaceE5"
+                "name": "RaceE5",
+                "type": "Race"
             },
             {
                 "id": 1896,
-                "name": "RaceE6"
+                "name": "RaceE6",
+                "type": "Race"
             },
             {
                 "id": 1897,
-                "name": "RaceE7"
+                "name": "RaceE7",
+                "type": "Race"
             },
             {
                 "id": 1898,
-                "name": "RaceE8"
+                "name": "RaceE8",
+                "type": "Race"
             },
             {
                 "id": 1882,
-                "name": "RaceF1"
+                "name": "RaceF1",
+                "type": "Race"
             },
             {
                 "id": 1883,
-                "name": "RaceF2"
+                "name": "RaceF2",
+                "type": "Race"
             },
             {
                 "id": 1885,
-                "name": "RaceF3"
+                "name": "RaceF3",
+                "type": "Race"
             },
             {
                 "id": 1886,
-                "name": "RaceF4"
+                "name": "RaceF4",
+                "type": "Race"
             },
             {
                 "id": 1887,
-                "name": "RaceF5"
+                "name": "RaceF5",
+                "type": "Race"
             },
             {
                 "id": 1888,
-                "name": "RaceF6"
+                "name": "RaceF6",
+                "type": "Race"
             },
             {
                 "id": 1889,
-                "name": "RaceF7"
+                "name": "RaceF7",
+                "type": "Race"
             },
             {
                 "id": 1890,
-                "name": "RaceF8"
+                "name": "RaceF8",
+                "type": "Race"
             },
             {
                 "id": 1922,
-                "name": "RaceG1"
+                "name": "RaceG1",
+                "type": "Race"
             },
             {
                 "id": 1923,
-                "name": "RaceG2"
+                "name": "RaceG2",
+                "type": "Race"
             },
             {
                 "id": 1924,
-                "name": "RaceG3"
+                "name": "RaceG3",
+                "type": "Race"
             }
         ]
     },
@@ -213,207 +264,258 @@
         "tracks": [
             {
                 "id": 128045,
-                "name": "Puzzle A1"
+                "name": "Puzzle A1",
+                "type": "Puzzle"
             },
             {
                 "id": 128048,
-                "name": "Puzzle A2"
+                "name": "Puzzle A2",
+                "type": "Puzzle"
             },
             {
                 "id": 128051,
-                "name": "Puzzle A3"
+                "name": "Puzzle A3",
+                "type": "Puzzle"
             },
             {
                 "id": 128054,
-                "name": "Puzzle A4"
+                "name": "Puzzle A4",
+                "type": "Puzzle"
             },
             {
                 "id": 128057,
-                "name": "Puzzle A5"
+                "name": "Puzzle A5",
+                "type": "Puzzle"
             },
             {
                 "id": 128060,
-                "name": "Puzzle A6"
+                "name": "Puzzle A6",
+                "type": "Puzzle"
             },
             {
                 "id": 128063,
-                "name": "Puzzle A7"
+                "name": "Puzzle A7",
+                "type": "Puzzle"
             },
             {
                 "id": 128066,
-                "name": "Puzzle A8"
+                "name": "Puzzle A8",
+                "type": "Puzzle"
             },
             {
                 "id": 128074,
-                "name": "Puzzle B1"
+                "name": "Puzzle B1",
+                "type": "Puzzle"
             },
             {
                 "id": 128077,
-                "name": "Puzzle B2"
+                "name": "Puzzle B2",
+                "type": "Puzzle"
             },
             {
                 "id": 128080,
-                "name": "Puzzle B3"
+                "name": "Puzzle B3",
+                "type": "Puzzle"
             },
             {
                 "id": 128083,
-                "name": "Puzzle B4"
+                "name": "Puzzle B4",
+                "type": "Race"
             },
             {
                 "id": 128086,
-                "name": "Puzzle B5"
+                "name": "Puzzle B5",
+                "type": "Puzzle"
             },
             {
                 "id": 128089,
-                "name": "Puzzle B6"
+                "name": "Puzzle B6",
+                "type": "Puzzle"
             },
             {
                 "id": 128092,
-                "name": "Puzzle B7"
+                "name": "Puzzle B7",
+                "type": "Puzzle"
             },
             {
                 "id": 128095,
-                "name": "Puzzle B8"
+                "name": "Puzzle B8",
+                "type": "Race"
             },
             {
                 "id": 128455,
-                "name": "Puzzle C1"
+                "name": "Puzzle C1",
+                "type": "Puzzle"
             },
             {
                 "id": 128459,
-                "name": "Puzzle C2"
+                "name": "Puzzle C2",
+                "type": "Puzzle"
             },
             {
                 "id": 128462,
-                "name": "Puzzle C3"
+                "name": "Puzzle C3",
+                "type": "Puzzle"
             },
             {
                 "id": 128468,
-                "name": "Puzzle C4"
+                "name": "Puzzle C4",
+                "type": "Puzzle"
             },
             {
                 "id": 128472,
-                "name": "Puzzle C5"
+                "name": "Puzzle C5",
+                "type": "Puzzle"
             },
             {
                 "id": 128475,
-                "name": "Puzzle C6"
+                "name": "Puzzle C6",
+                "type": "Puzzle"
             },
             {
                 "id": 128478,
-                "name": "Puzzle C7"
+                "name": "Puzzle C7",
+                "type": "Puzzle"
             },
             {
                 "id": 128481,
-                "name": "Puzzle C8"
+                "name": "Puzzle C8",
+                "type": "Puzzle"
             },
             {
                 "id": 180225,
-                "name": "Puzzle D1"
+                "name": "Puzzle D1",
+                "type": "Puzzle"
             },
             {
                 "id": 180228,
-                "name": "Puzzle D2"
+                "name": "Puzzle D2",
+                "type": "Puzzle"
             },
             {
                 "id": 180231,
-                "name": "Puzzle D3"
+                "name": "Puzzle D3",
+                "type": "Puzzle"
             },
             {
                 "id": 180234,
-                "name": "Puzzle D4"
+                "name": "Puzzle D4",
+                "type": "Race"
             },
             {
                 "id": 180237,
-                "name": "Puzzle D5"
+                "name": "Puzzle D5",
+                "type": "Puzzle"
             },
             {
                 "id": 180240,
-                "name": "Puzzle D6"
+                "name": "Puzzle D6",
+                "type": "Puzzle"
             },
             {
                 "id": 180243,
-                "name": "Puzzle D7"
+                "name": "Puzzle D7",
+                "type": "Puzzle"
             },
             {
                 "id": 180246,
-                "name": "Puzzle D8"
+                "name": "Puzzle D8",
+                "type": "Puzzle"
             },
             {
                 "id": 180249,
-                "name": "Puzzle E1"
+                "name": "Puzzle E1",
+                "type": "Puzzle"
             },
             {
                 "id": 180252,
-                "name": "Puzzle E2"
+                "name": "Puzzle E2",
+                "type": "Puzzle"
             },
             {
                 "id": 180255,
-                "name": "Puzzle E3"
+                "name": "Puzzle E3",
+                "type": "Puzzle"
             },
             {
                 "id": 180258,
-                "name": "Puzzle E4"
+                "name": "Puzzle E4",
+                "type": "Race"
             },
             {
                 "id": 180262,
-                "name": "Puzzle E5"
+                "name": "Puzzle E5",
+                "type": "Puzzle"
             },
             {
                 "id": 180265,
-                "name": "Puzzle E6"
+                "name": "Puzzle E6",
+                "type": "Puzzle"
             },
             {
                 "id": 180268,
-                "name": "Puzzle E7"
+                "name": "Puzzle E7",
+                "type": "Puzzle"
             },
             {
                 "id": 180271,
-                "name": "Puzzle E8"
+                "name": "Puzzle E8",
+                "type": "Puzzle"
             },
             {
                 "id": 180274,
-                "name": "Puzzle F1"
+                "name": "Puzzle F1",
+                "type": "Puzzle"
             },
             {
                 "id": 180277,
-                "name": "Puzzle F2"
+                "name": "Puzzle F2",
+                "type": "Puzzle"
             },
             {
                 "id": 180280,
-                "name": "Puzzle F3"
+                "name": "Puzzle F3",
+                "type": "Puzzle"
             },
             {
                 "id": 180283,
-                "name": "Puzzle F4"
+                "name": "Puzzle F4",
+                "type": "Race"
             },
             {
                 "id": 180286,
-                "name": "Puzzle F5"
+                "name": "Puzzle F5",
+                "type": "Puzzle"
             },
             {
                 "id": 180289,
-                "name": "Puzzle F6"
+                "name": "Puzzle F6",
+                "type": "Puzzle"
             },
             {
                 "id": 180292,
-                "name": "Puzzle F7"
+                "name": "Puzzle F7",
+                "type": "Puzzle"
             },
             {
                 "id": 180295,
-                "name": "Puzzle F8"
+                "name": "Puzzle F8",
+                "type": "Puzzle"
             },
             {
                 "id": 180297,
-                "name": "Puzzle G1"
+                "name": "Puzzle G1",
+                "type": "Puzzle"
             },
             {
                 "id": 180299,
-                "name": "Puzzle G2"
+                "name": "Puzzle G2",
+                "type": "Race"
             },
             {
                 "id": 180301,
-                "name": "Puzzle G3"
+                "name": "Puzzle G3",
+                "type": "Puzzle"
             }
         ]
     },
@@ -422,63 +524,78 @@
         "tracks": [
             {
                 "id": 157908,
-                "name": "Platform A1"
+                "name": "Platform A1",
+                "type": "Platform"
             },
             {
                 "id": 157911,
-                "name": "Platform A2"
+                "name": "Platform A2",
+                "type": "Platform"
             },
             {
                 "id": 157914,
-                "name": "Platform A3"
+                "name": "Platform A3",
+                "type": "Platform"
             },
             {
                 "id": 157917,
-                "name": "Platform B1"
+                "name": "Platform B1",
+                "type": "Platform"
             },
             {
                 "id": 157920,
-                "name": "Platform B2"
+                "name": "Platform B2",
+                "type": "Platform"
             },
             {
                 "id": 157923,
-                "name": "Platform B3"
+                "name": "Platform B3",
+                "type": "Platform"
             },
             {
                 "id": 157967,
-                "name": "Platform C1"
+                "name": "Platform C1",
+                "type": "Platform"
             },
             {
                 "id": 157970,
-                "name": "Platform C2"
+                "name": "Platform C2",
+                "type": "Platform"
             },
             {
                 "id": 157973,
-                "name": "Platform C3"
+                "name": "Platform C3",
+                "type": "Platform"
             },
             {
                 "id": 157976,
-                "name": "Platform D1"
+                "name": "Platform D1",
+                "type": "Platform"
             },
             {
                 "id": 157979,
-                "name": "Platform D2"
+                "name": "Platform D2",
+                "type": "Platform"
             },
             {
                 "id": 157982,
-                "name": "Platform D3"
+                "name": "Platform D3",
+                "type": "Platform"
             },
             {
                 "id": 157985,
-                "name": "Platform E1"
+                "name": "Platform E1",
+                "type": "Platform"
             },
             {
                 "id": 157988,
-                "name": "Platform E2"
+                "name": "Platform E2",
+                "type": "Platform"
             },
             {
                 "id": 157991,
-                "name": "Platform E3"
+                "name": "Platform E3",
+                "type": "Platform"
             }
         ]
     },
@@ -487,51 +604,63 @@
         "tracks": [
             {
                 "id": 180307,
-                "name": "Stunts A1"
+                "name": "Stunts A1",
+                "type": "Stunts"
             },
             {
                 "id": 180310,
-                "name": "Stunts A2"
+                "name": "Stunts A2",
+                "type": "Stunts"
             },
             {
                 "id": 180313,
-                "name": "Stunts A3"
+                "name": "Stunts A3",
+                "type": "Stunts"
             },
             {
                 "id": 180318,
-                "name": "Stunts B1"
+                "name": "Stunts B1",
+                "type": "Stunts"
             },
             {
                 "id": 180321,
-                "name": "Stunts B2"
+                "name": "Stunts B2",
+                "type": "Stunts"
             },
             {
                 "id": 180325,
-                "name": "Stunts B3"
+                "name": "Stunts B3",
+                "type": "Stunts"
             },
             {
                 "id": 180329,
-                "name": "Stunts C1"
+                "name": "Stunts C1",
+                "type": "Stunts"
             },
             {
                 "id": 180333,
-                "name": "Stunts C2"
+                "name": "Stunts C2",
+                "type": "Stunts"
             },
             {
                 "id": 180336,
-                "name": "Stunts C3"
+                "name": "Stunts C3",
+                "type": "Stunts"
             },
             {
                 "id": 180340,
-                "name": "Stunts D1"
+                "name": "Stunts D1",
+                "type": "Stunts"
             },
             {
                 "id": 180343,
-                "name": "Stunts D2"
+                "name": "Stunts D2",
+                "type": "Stunts"
             },
             {
                 "id": 180347,
-                "name": "Stunts D3"
+                "name": "Stunts D3",
+                "type": "Stunts"
             }
         ]
     },
@@ -540,75 +669,93 @@
         "tracks": [
             {
                 "id": 1983,
-                "name": "Survival01"
+                "name": "Survival01",
+                "type": "Race"
             },
             {
                 "id": 1984,
-                "name": "Survival02"
+                "name": "Survival02",
+                "type": "Race"
             },
             {
                 "id": 1987,
-                "name": "Survival03"
+                "name": "Survival03",
+                "type": "Race"
             },
             {
                 "id": 1989,
-                "name": "Survival04"
+                "name": "Survival04",
+                "type": "Race"
             },
             {
                 "id": 1991,
-                "name": "Survival05"
+                "name": "Survival05",
+                "type": "Race"
             },
             {
                 "id": 1996,
-                "name": "Survival06"
+                "name": "Survival06",
+                "type": "Race"
             },
             {
                 "id": 1997,
-                "name": "Survival07"
+                "name": "Survival07",
+                "type": "Race"
             },
             {
                 "id": 1998,
-                "name": "Survival08"
+                "name": "Survival08",
+                "type": "Race"
             },
             {
                 "id": 1999,
-                "name": "Survival09"
+                "name": "Survival09",
+                "type": "Race"
             },
             {
                 "id": 2001,
-                "name": "Survival10"
+                "name": "Survival10",
+                "type": "Race"
             },
             {
                 "id": 2002,
-                "name": "Survival11"
+                "name": "Survival11",
+                "type": "Race"
             },
             {
                 "id": 2003,
-                "name": "Survival12"
+                "name": "Survival12",
+                "type": "Race"
             },
             {
                 "id": 2004,
-                "name": "Survival13"
+                "name": "Survival13",
+                "type": "Race"
             },
             {
                 "id": 2005,
-                "name": "Survival14"
+                "name": "Survival14",
+                "type": "Race"
             },
             {
                 "id": 2006,
-                "name": "Survival15"
+                "name": "Survival15",
+                "type": "Race"
             },
             {
                 "id": 2007,
-                "name": "Survival16"
+                "name": "Survival16",
+                "type": "Race"
             },
             {
                 "id": 2008,
-                "name": "Survival17"
+                "name": "Survival17",
+                "type": "Race"
             },
             {
                 "id": 2009,
-                "name": "Survival18"
+                "name": "Survival18",
+                "type": "Race"
             }
         ]
     },
@@ -617,51 +764,63 @@
         "tracks": [
             {
                 "id": 231950,
-                "name": "TMODemoPlatform1"
+                "name": "TMODemoPlatform1",
+                "type": "Platform"
             },
             {
                 "id": 231956,
-                "name": "TMODemoPlatform2"
+                "name": "TMODemoPlatform2",
+                "type": "Platform"
             },
             {
                 "id": 231962,
-                "name": "TMODemoPlatform3"
+                "name": "TMODemoPlatform3",
+                "type": "Platform"
             },
             {
                 "id": 231966,
-                "name": "TMODemoPuzzle1"
+                "name": "TMODemoPuzzle1",
+                "type": "Puzzle"
             },
             {
                 "id": 231968,
-                "name": "TMODemoPuzzle2"
+                "name": "TMODemoPuzzle2",
+                "type": "Puzzle"
             },
             {
                 "id": 231974,
-                "name": "TMODemoPuzzle3"
+                "name": "TMODemoPuzzle3",
+                "type": "Puzzle"
             },
             {
                 "id": 231976,
-                "name": "TMODemoRace1"
+                "name": "TMODemoRace1",
+                "type": "Race"
             },
             {
                 "id": 231978,
-                "name": "TMODemoRace2"
+                "name": "TMODemoRace2",
+                "type": "Race"
             },
             {
                 "id": 231982,
-                "name": "TMODemoRace3"
+                "name": "TMODemoRace3",
+                "type": "Race"
             },
             {
                 "id": 231984,
-                "name": "TMODemoStunts1"
+                "name": "TMODemoStunts1",
+                "type": "Stunts"
             },
             {
                 "id": 231986,
-                "name": "TMODemoStunts2"
+                "name": "TMODemoStunts2",
+                "type": "Stunts"
             },
             {
                 "id": 231988,
-                "name": "TMODemoStunts3"
+                "name": "TMODemoStunts3",
+                "type": "Stunts"
             }
         ]
     },
@@ -670,43 +829,53 @@
         "tracks": [
             {
                 "id": 9904,
-                "name": "Demo 1 Track 01"
+                "name": "Demo 1 Track 01",
+                "type": "Race"
             },
             {
                 "id": 9906,
-                "name": "Demo 1 Track 02"
+                "name": "Demo 1 Track 02",
+                "type": "Race"
             },
             {
                 "id": 9908,
-                "name": "Demo 1 Track 03"
+                "name": "Demo 1 Track 03",
+                "type": "Race"
             },
             {
                 "id": 9909,
-                "name": "Demo 1 Track 04"
+                "name": "Demo 1 Track 04",
+                "type": "Race"
             },
             {
                 "id": 9910,
-                "name": "Demo 1 Track 05"
+                "name": "Demo 1 Track 05",
+                "type": "Race"
             },
             {
                 "id": 9911,
-                "name": "Demo 1 Track 06"
+                "name": "Demo 1 Track 06",
+                "type": "Race"
             },
             {
                 "id": 9912,
-                "name": "Demo 1 Track 07"
+                "name": "Demo 1 Track 07",
+                "type": "Race"
             },
             {
                 "id": 9913,
-                "name": "Demo 1 Track 08"
+                "name": "Demo 1 Track 08",
+                "type": "Race"
             },
             {
                 "id": 9915,
-                "name": "Demo 1 Track 09"
+                "name": "Demo 1 Track 09",
+                "type": "Race"
             },
             {
                 "id": 9916,
-                "name": "Demo 1 Track 10"
+                "name": "Demo 1 Track 10",
+                "type": "Race"
             }
         ]
     },
@@ -715,11 +884,13 @@
         "tracks": [
             {
                 "id": 103892,
-                "name": "Beta Track 5"
+                "name": "Beta Track 5",
+                "type": "Race"
             },
             {
                 "id": 103896,
-                "name": "Beta Track 9"
+                "name": "Beta Track 9",
+                "type": "Race"
             }
         ]
     }

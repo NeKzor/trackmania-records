@@ -1,17 +1,20 @@
 import { scaleLinear } from 'd3-scale';
 import moment from 'moment';
 
-export function formatTime(time, game) {
+export function formatScore(score, game, type = undefined) {
+    if (type === 'Stunts') {
+        return score + ' pts.';
+    }
     if (game !== 'tm2') {
-        time /= 10;
-        let csec = time % 100;
-        let tsec = Math.floor(time / 100);
+        score /= 10;
+        let csec = score % 100;
+        let tsec = Math.floor(score / 100);
         let sec = tsec % 60;
         let min = Math.floor(tsec / 60);
         return (min > 0 ? min + ':' : '') + (sec < 10 && min > 0 ? '0' + sec : sec) + '.' + (csec < 10 ? '0' + csec : csec);
     }
-    let msec = time % 1000;
-    let tsec = Math.floor(time / 1000);
+    let msec = score % 1000;
+    let tsec = Math.floor(score / 1000);
     let sec = tsec % 60;
     let min = Math.floor(tsec / 60);
     return (

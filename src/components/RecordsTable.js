@@ -16,12 +16,11 @@ import PlayArrowIcon from '@material-ui/icons/PlayArrow';
 import WarningIcon from '@material-ui/icons/Warning'; */
 import { stableSort } from '../utils/stableSort';
 import tmx from '../utils/tmx';
-import { formatTime, getDateDifferenceColor } from '../utils/tools';
-import { withTheme } from '@material-ui/styles';
+import { formatScore, getDateDifferenceColor } from '../utils/tools';
 
 const rows = [
     { id: 'track.name', sortable: true, label: 'Track', align: 'left' },
-    { id: 'time', sortable: true, label: 'Time', align: 'left' },
+    { id: 'time', sortable: true, label: 'Record', align: 'left' },
     { id: 'user.name', sortable: true, label: 'Player', align: 'left' },
     { id: 'date', sortable: true, label: 'Date', align: 'left' },
     { id: 'duration', sortable: true, label: 'Duration', align: 'left' },
@@ -70,9 +69,7 @@ const noWrap = { whiteSpace: 'nowrap' };
 const minifiedStyle = { padding: '7px 0px 7px 16px' };
 const MinTableCell = (props) => <TableCell style={minifiedStyle} {...props} />;
 
-const RecordsTable = ({ data, game, total, isLatest, theme }) => {
-    const isDarkTheme = theme.palette.type === 'dark';
-
+const RecordsTable = ({ data, game, stats, useLiveDuration }) => {
     const [{ order, orderBy, rowsPerPage, page }, setState] = React.useState(defaultState);
 
     const handleRequestSort = (_, property) => {
@@ -102,9 +99,7 @@ const RecordsTable = ({ data, game, total, isLatest, theme }) => {
                                         </Link>
                                     </MinTableCell>
                                 )}
-                                <MinTableCell align="left" dir="rtl">
-                                    {formatTime(wr.time, game)}
-                                </MinTableCell>
+                                <MinTableCell align="left">{formatScore(wr.score, game, wr.track.type)}</MinTableCell>
                                 <MinTableCell align="left">
                                     <Link color="inherit" href={tmx(game).userUrl(wr.user.id)} rel="noreferrer" target="_blank">
                                         {wr.user.name}
@@ -127,7 +122,7 @@ const RecordsTable = ({ data, game, total, isLatest, theme }) => {
                                 </MinTableCell>
                                 <MinTableCell align="left">
                                     <Tooltip title="in days" placement="bottom-end" enterDelay={300}>
-                                        {isLatest ? <Moment style={noWrap} diff={wr.date} unit="days"></Moment> : wr.duration}
+                                        {useLiveDuration ? <Moment style={noWrap} diff={wr.date} unit="days"></Moment> : wr.duration}
                                     </Tooltip>
                                 </MinTableCell>
                                 {/* <MinTableCell align="left">
@@ -143,7 +138,7 @@ const RecordsTable = ({ data, game, total, isLatest, theme }) => {
                                                 game,
                                                 wr.track.name,
                                                 'in',
-                                                formatTime(wr.time, game),
+                                                formatScore(wr.score, game, wr.track.type),
                                                 'by',
                                                 wr.user.name,
                                             ].join('+')}`}
@@ -171,18 +166,27 @@ const RecordsTable = ({ data, game, total, isLatest, theme }) => {
                 </TableBody>
                 <TableBody>
                     <TableRow>
-                        <MinTableCell align="right">Total</MinTableCell>
+                        <MinTableCell align="right">Total Time</MinTableCell>
                         <MinTableCell>
-                            <Tooltip title={moment.duration(total, 'ms').humanize()} placement="bottom-end" enterDelay={300}>
-                                <span>{formatTime(total, game)}</span>
+                            <Tooltip title={moment.duration(stats.totalTime, 'ms').humanize()} placement="bottom-end" enterDelay={300}>
+                                <span>{formatScore(stats.totalTime, game)}</span>
                             </Tooltip>
                         </MinTableCell>
-                        <MinTableCell colSpan={2}></MinTableCell>
+                        <MinTableCell colSpan={3}></MinTableCell>
                     </TableRow>
+                    {stats.totalPoints > 0 && (
+                        <TableRow>
+                            <MinTableCell align="right">Total Points</MinTableCell>
+                            <MinTableCell>
+                                <span>{formatScore(stats.totalPoints, game, 'Stunts')}</span>
+                            </MinTableCell>
+                            <MinTableCell colSpan={3}></MinTableCell>
+                        </TableRow>
+                    )}
                 </TableBody>
             </Table>
         </div>
     );
 };
 
-export default withTheme(RecordsTable);
+export default RecordsTable;

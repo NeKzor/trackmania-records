@@ -30,7 +30,7 @@ const TabPanel = ({ children, value, index, ...other }) => {
     );
 };
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles((_) => ({
     fab: {
         margin: 0,
         top: 'auto',
@@ -45,9 +45,12 @@ const GameView = ({ match }) => {
     const isMounted = useIsMounted();
 
     const [game, setGame] = React.useState(undefined);
+    const [gameName, setGameName] = React.useState('tm2');
     const [tab, setTab] = React.useState(0);
 
     const page = match.params[0];
+    const date = match.params.date;
+    const useLiveDuration = date === undefined;
 
     React.useEffect(() => {
         setGame(undefined);
@@ -55,38 +58,58 @@ const GameView = ({ match }) => {
 
     React.useEffect(() => {
         (async () => {
-            let game = await Api.request(match.params[0], match.params.date);
+            let game = await Api.request(page, date);
             await new Promise((res) => setTimeout(res, 1000));
-            if (!isMounted.current) return;
+
             if (game[0] && game[0].tracks[0].wrs) {
                 for (let campaign of game) {
+                    if (campaign.stats.totalPoints === undefined) {
+                        campaign.stats.totalTime = campaign.tracks
+                            .filter((t) => t.type !== 'Stunts')
+                            .map((t) => t.wrs[0].score)
+                            .reduce((a, b) => a + b, 0);
+                        campaign.stats.totalPoints = campaign.tracks
+                            .filter((t) => t.type === 'Stunts')
+                            .map((t) => t.wrs[0].score)
+                            .reduce((a, b) => a + b, 0);
+                    }
+
                     let rows = [];
                     for (let track of campaign.tracks) {
                         for (let wr of track.wrs) {
-                            let duration = moment().diff(moment(wr.date), 'd');
-                            let user = campaign.leaderboard.find((entry) => entry.user.id === wr.user.id);
-                            user.duration = user.duration === undefined ? duration : user.duration + duration;
+                            let duration = useLiveDuration ? moment().diff(moment(wr.date), 'd') : wr.duration;
                             rows.push({
                                 track: {
                                     id: track.id,
                                     name: track.name,
+                                    type: track.type,
                                     isFirst: wr === track.wrs[0],
                                     records: track.wrs.length,
                                 },
-                                duration,
                                 ...wr,
+                                duration,
                             });
                         }
                     }
 
                     campaign.tracks = rows;
+
+                    if (useLiveDuration) {
+                        campaign.leaderboard.forEach((entry) => {
+                            entry.duration = campaign.tracks
+                                .filter((r) => r.user.id === entry.user.id)
+                                .map((r) => r.duration)
+                                .reduce((a, b) => a + b, 0);
+                        });
+                    }
                 }
             }
 
+            if (!isMounted.current) return;
+            setGameName(page);
             setGame(game);
         })();
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [isMounted, match.params[0], match.params.date]);
+    }, [isMounted, page, date, useLiveDuration]);
 
     const handleTab = (_, newValue) => {
         setTab(newValue);
@@ -134,15 +157,15 @@ const GameView = ({ match }) => {
                                     <Grid item xs={12}>
                                         <RecordsTable
                                             data={campaign.tracks}
-                                            game={match.params[0]}
-                                            total={campaign.stats.totalTime}
-                                            isLatest={match.params.date === undefined}
+                                            game={gameName}
+                                            stats={campaign.stats}
+                                            useLiveDuration={useLiveDuration}
                                         />
                                     </Grid>
                                     <Grid item xs={12} style={{ paddingTop: '70px' }}>
                                         <Grid container direction="row" justify="center" alignContent="center">
                                             <Grid item xs={6}>
-                                                <RankingsTable data={campaign.leaderboard} game={match.params[0]} />
+                                                <RankingsTable data={campaign.leaderboard} game={page} />
                                             </Grid>
                                             <Grid item xs={6}>
                                                 <Grid container direction="column" justify="center">
@@ -170,7 +193,7 @@ const GameView = ({ match }) => {
                     </>
                 )}
             </Paper>
-            <Zoom in={game !== undefined} timeout={1000}>
+            <Zoom in={game !== undefined && game.length !== 0} timeout={1000}>
                 <Fab title="Jump to top" color="primary" className={classes.fab} onClick={jumpToTop}>
                     <KeyboardArrowUpIcon />
                 </Fab>

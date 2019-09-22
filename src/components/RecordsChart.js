@@ -1,7 +1,10 @@
 import React from 'react';
 import Chart from 'react-apexcharts';
+import { withTheme } from '@material-ui/styles';
 
-const RecordsChart = ({ labels, series, title }) => {
+const RecordsChart = ({ labels, series, title, theme }) => {
+    const isDarkTheme = theme.palette.type === 'dark';
+
     return (
         <Chart
             options={{
@@ -23,13 +26,13 @@ const RecordsChart = ({ labels, series, title }) => {
                                 },
                                 value: {
                                     show: true,
-                                    color: 'white'
+                                    color: isDarkTheme ? 'white' : 'black',
                                 },
                                 total: {
                                     show: true,
                                     label: title,
-                                    color: 'white'
-                                }
+                                    color: isDarkTheme ? 'white' : 'black',
+                                },
                             },
                         },
                     },
@@ -43,4 +46,4 @@ const RecordsChart = ({ labels, series, title }) => {
     );
 };
 
-export default RecordsChart;
+export default withTheme(RecordsChart);

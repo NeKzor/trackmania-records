@@ -4,367 +4,458 @@
         "tracks": [
             {
                 "id": 741220,
-                "name": "A-0"
+                "name": "A-0",
+                "type": "Race"
             },
             {
                 "id": 1318,
-                "name": "A-1"
+                "name": "A-1",
+                "type": "Race"
             },
             {
                 "id": 1322,
-                "name": "A-2"
+                "name": "A-2",
+                "type": "Race"
             },
             {
                 "id": 1325,
-                "name": "A-3"
+                "name": "A-3",
+                "type": "Race"
             },
             {
                 "id": 1328,
-                "name": "A-4"
+                "name": "A-4",
+                "type": "Race"
             },
             {
                 "id": 1331,
-                "name": "A-5"
+                "name": "A-5",
+                "type": "Race"
             },
             {
                 "id": 1334,
-                "name": "A-6"
+                "name": "A-6",
+                "type": "Race"
             },
             {
                 "id": 1337,
-                "name": "A-7"
+                "name": "A-7",
+                "type": "Race"
             },
             {
                 "id": 1340,
-                "name": "A-8"
+                "name": "A-8",
+                "type": "Race"
             },
             {
                 "id": 1343,
-                "name": "A-9"
+                "name": "A-9",
+                "type": "Race"
             },
             {
                 "id": 1346,
-                "name": "B-0"
+                "name": "B-0",
+                "type": "Race"
             },
             {
                 "id": 1349,
-                "name": "B-1"
+                "name": "B-1",
+                "type": "Race"
             },
             {
                 "id": 1353,
-                "name": "B-2"
+                "name": "B-2",
+                "type": "Race"
             },
             {
                 "id": 1359,
-                "name": "B-3"
+                "name": "B-3",
+                "type": "Race"
             },
             {
                 "id": 1362,
-                "name": "B-4"
+                "name": "B-4",
+                "type": "Race"
             },
             {
                 "id": 1368,
-                "name": "B-5"
+                "name": "B-5",
+                "type": "Race"
             },
             {
                 "id": 1371,
-                "name": "B-6"
+                "name": "B-6",
+                "type": "Race"
             },
             {
                 "id": 1374,
-                "name": "B-7"
+                "name": "B-7",
+                "type": "Race"
             },
             {
                 "id": 1377,
-                "name": "B-8"
+                "name": "B-8",
+                "type": "Race"
             },
             {
                 "id": 1380,
-                "name": "B-9"
+                "name": "B-9",
+                "type": "Race"
             },
             {
                 "id": 1388,
-                "name": "C-0"
+                "name": "C-0",
+                "type": "Race"
             },
             {
                 "id": 1391,
-                "name": "C-1"
+                "name": "C-1",
+                "type": "Race"
             },
             {
                 "id": 1394,
-                "name": "C-2"
+                "name": "C-2",
+                "type": "Race"
             },
             {
                 "id": 1397,
-                "name": "C-3"
+                "name": "C-3",
+                "type": "Race"
             },
             {
                 "id": 1408,
-                "name": "C-4"
+                "name": "C-4",
+                "type": "Race"
             },
             {
                 "id": 1412,
-                "name": "C-5"
+                "name": "C-5",
+                "type": "Race"
             },
             {
                 "id": 1415,
-                "name": "C-6"
+                "name": "C-6",
+                "type": "Race"
             },
             {
                 "id": 1420,
-                "name": "C-7"
+                "name": "C-7",
+                "type": "Race"
             },
             {
                 "id": 1422,
-                "name": "C-8"
+                "name": "C-8",
+                "type": "Race"
             },
             {
                 "id": 1428,
-                "name": "C-9"
+                "name": "C-9",
+                "type": "Race"
             },
             {
                 "id": 1501,
-                "name": "D-0"
+                "name": "D-0",
+                "type": "Race"
             },
             {
                 "id": 1504,
-                "name": "D-1"
+                "name": "D-1",
+                "type": "Race"
             },
             {
                 "id": 1508,
-                "name": "D-2"
+                "name": "D-2",
+                "type": "Race"
             },
             {
                 "id": 1513,
-                "name": "D-3"
+                "name": "D-3",
+                "type": "Race"
             },
             {
                 "id": 1517,
-                "name": "D-4"
+                "name": "D-4",
+                "type": "Race"
             },
             {
                 "id": 1522,
-                "name": "D-5"
+                "name": "D-5",
+                "type": "Race"
             },
             {
                 "id": 1525,
-                "name": "D-6"
+                "name": "D-6",
+                "type": "Race"
             },
             {
                 "id": 1528,
-                "name": "D-7"
+                "name": "D-7",
+                "type": "Race"
             },
             {
                 "id": 1532,
-                "name": "D-8"
+                "name": "D-8",
+                "type": "Race"
             },
             {
                 "id": 1536,
-                "name": "D-9"
+                "name": "D-9",
+                "type": "Race"
             },
             {
                 "id": 1747,
-                "name": "E-0"
+                "name": "E-0",
+                "type": "Race"
             },
             {
                 "id": 1751,
-                "name": "E-1"
+                "name": "E-1",
+                "type": "Race"
             },
             {
                 "id": 1758,
-                "name": "E-2"
+                "name": "E-2",
+                "type": "Race"
             },
             {
                 "id": 1761,
-                "name": "E-3"
+                "name": "E-3",
+                "type": "Race"
             },
             {
                 "id": 1767,
-                "name": "E-4"
+                "name": "E-4",
+                "type": "Race"
             },
             {
                 "id": 1773,
-                "name": "E-5"
+                "name": "E-5",
+                "type": "Race"
             },
             {
                 "id": 1782,
-                "name": "E-6"
+                "name": "E-6",
+                "type": "Race"
             },
             {
                 "id": 2464,
-                "name": "E-7"
+                "name": "E-7",
+                "type": "Race"
             },
             {
                 "id": 2468,
-                "name": "E-8"
+                "name": "E-8",
+                "type": "Race"
             },
             {
                 "id": 2471,
-                "name": "E-9"
+                "name": "E-9",
+                "type": "Race"
             },
             {
                 "id": 2474,
-                "name": "F-0"
+                "name": "F-0",
+                "type": "Race"
             },
             {
                 "id": 2478,
-                "name": "F-1"
+                "name": "F-1",
+                "type": "Race"
             },
             {
                 "id": 2484,
-                "name": "F-2"
+                "name": "F-2",
+                "type": "Race"
             },
             {
                 "id": 2487,
-                "name": "F-3"
+                "name": "F-3",
+                "type": "Race"
             },
             {
                 "id": 2490,
-                "name": "F-4"
+                "name": "F-4",
+                "type": "Race"
             },
             {
                 "id": 2493,
-                "name": "F-5"
+                "name": "F-5",
+                "type": "Race"
             },
             {
                 "id": 2496,
-                "name": "F-6"
+                "name": "F-6",
+                "type": "Race"
             },
             {
                 "id": 2499,
-                "name": "F-7"
+                "name": "F-7",
+                "type": "Race"
             },
             {
                 "id": 2504,
-                "name": "F-8"
+                "name": "F-8",
+                "type": "Race"
             },
             {
                 "id": 2507,
-                "name": "F-9"
+                "name": "F-9",
+                "type": "Race"
             },
             {
                 "id": 2511,
-                "name": "G-0"
+                "name": "G-0",
+                "type": "Race"
             },
             {
                 "id": 2514,
-                "name": "G-1"
+                "name": "G-1",
+                "type": "Race"
             },
             {
                 "id": 2517,
-                "name": "G-2"
+                "name": "G-2",
+                "type": "Race"
             },
             {
                 "id": 2521,
-                "name": "G-3"
+                "name": "G-3",
+                "type": "Race"
             },
             {
                 "id": 2526,
-                "name": "G-4"
+                "name": "G-4",
+                "type": "Race"
             },
             {
                 "id": 2530,
-                "name": "G-5"
+                "name": "G-5",
+                "type": "Race"
             },
             {
                 "id": 2536,
-                "name": "G-6"
+                "name": "G-6",
+                "type": "Race"
             },
             {
                 "id": 2540,
-                "name": "G-7"
+                "name": "G-7",
+                "type": "Race"
             },
             {
                 "id": 2544,
-                "name": "G-8"
+                "name": "G-8",
+                "type": "Race"
             },
             {
                 "id": 2548,
-                "name": "G-9"
+                "name": "G-9",
+                "type": "Race"
             },
             {
                 "id": 2554,
-                "name": "H-0"
+                "name": "H-0",
+                "type": "Race"
             },
             {
                 "id": 2557,
-                "name": "H-1"
+                "name": "H-1",
+                "type": "Race"
             },
             {
                 "id": 2560,
-                "name": "H-2"
+                "name": "H-2",
+                "type": "Race"
             },
             {
                 "id": 2564,
-                "name": "H-3"
+                "name": "H-3",
+                "type": "Race"
             },
             {
                 "id": 2567,
-                "name": "H-4"
+                "name": "H-4",
+                "type": "Race"
             },
             {
                 "id": 2571,
-                "name": "H-5"
+                "name": "H-5",
+                "type": "Race"
             },
             {
                 "id": 2574,
-                "name": "H-6"
+                "name": "H-6",
+                "type": "Race"
             },
             {
                 "id": 2578,
-                "name": "H-7"
+                "name": "H-7",
+                "type": "Race"
             },
             {
                 "id": 2581,
-                "name": "H-8"
+                "name": "H-8",
+                "type": "Race"
             },
             {
                 "id": 2584,
-                "name": "H-9"
+                "name": "H-9",
+                "type": "Race"
             },
             {
                 "id": 2589,
-                "name": "I-0"
+                "name": "I-0",
+                "type": "Race"
             },
             {
                 "id": 2593,
-                "name": "I-1"
+                "name": "I-1",
+                "type": "Race"
             },
             {
                 "id": 2596,
-                "name": "I-2"
+                "name": "I-2",
+                "type": "Race"
             },
             {
                 "id": 2600,
-                "name": "I-3"
+                "name": "I-3",
+                "type": "Race"
             },
             {
                 "id": 2603,
-                "name": "I-4"
+                "name": "I-4",
+                "type": "Race"
             },
             {
                 "id": 2606,
-                "name": "I-5"
+                "name": "I-5",
+                "type": "Race"
             },
             {
                 "id": 2609,
-                "name": "I-6"
+                "name": "I-6",
+                "type": "Race"
             },
             {
                 "id": 2612,
-                "name": "I-7"
+                "name": "I-7",
+                "type": "Race"
             },
             {
                 "id": 2615,
-                "name": "I-8"
+                "name": "I-8",
+                "type": "Race"
             },
             {
                 "id": 2618,
-                "name": "I-9"
+                "name": "I-9",
+                "type": "Race"
             },
             {
                 "id": 90869,
-                "name": "I-9a"
+                "name": "I-9a",
+                "type": "Race"
             }
         ]
     },
@@ -373,83 +464,103 @@
         "tracks": [
             {
                 "id": 680973,
-                "name": "Bonus A-0"
+                "name": "Bonus A-0",
+                "type": "Race"
             },
             {
                 "id": 680976,
-                "name": "Bonus A-1"
+                "name": "Bonus A-1",
+                "type": "Race"
             },
             {
                 "id": 680980,
-                "name": "Bonus A-2"
+                "name": "Bonus A-2",
+                "type": "Race"
             },
             {
                 "id": 680984,
-                "name": "Bonus A-3"
+                "name": "Bonus A-3",
+                "type": "Race"
             },
             {
                 "id": 680988,
-                "name": "Bonus A-4"
+                "name": "Bonus A-4",
+                "type": "Race"
             },
             {
                 "id": 680991,
-                "name": "Bonus A-5"
+                "name": "Bonus A-5",
+                "type": "Race"
             },
             {
                 "id": 680994,
-                "name": "Bonus A-6"
+                "name": "Bonus A-6",
+                "type": "Race"
             },
             {
                 "id": 680997,
-                "name": "Bonus A-7"
+                "name": "Bonus A-7",
+                "type": "Race"
             },
             {
                 "id": 681004,
-                "name": "Bonus A-8"
+                "name": "Bonus A-8",
+                "type": "Race"
             },
             {
                 "id": 681007,
-                "name": "Bonus A-9"
+                "name": "Bonus A-9",
+                "type": "Race"
             },
             {
                 "id": 681010,
-                "name": "Bonus B-0"
+                "name": "Bonus B-0",
+                "type": "Race"
             },
             {
                 "id": 681013,
-                "name": "Bonus B-1"
+                "name": "Bonus B-1",
+                "type": "Race"
             },
             {
                 "id": 681016,
-                "name": "Bonus B-2"
+                "name": "Bonus B-2",
+                "type": "Race"
             },
             {
                 "id": 681019,
-                "name": "Bonus B-3"
+                "name": "Bonus B-3",
+                "type": "Race"
             },
             {
                 "id": 681022,
-                "name": "Bonus B-4"
+                "name": "Bonus B-4",
+                "type": "Race"
             },
             {
                 "id": 681027,
-                "name": "Bonus B-5"
+                "name": "Bonus B-5",
+                "type": "Race"
             },
             {
                 "id": 681030,
-                "name": "Bonus B-6"
+                "name": "Bonus B-6",
+                "type": "Race"
             },
             {
                 "id": 681034,
-                "name": "Bonus B-7"
+                "name": "Bonus B-7",
+                "type": "Race"
             },
             {
                 "id": 681038,
-                "name": "Bonus B-8"
+                "name": "Bonus B-8",
+                "type": "Race"
             },
             {
                 "id": 681041,
-                "name": "Bonus B-9"
+                "name": "Bonus B-9",
+                "type": "Race"
             }
         ]
     },
@@ -458,43 +569,53 @@
         "tracks": [
             {
                 "id": 2622,
-                "name": "Pro A-0"
+                "name": "Pro A-0",
+                "type": "Race"
             },
             {
                 "id": 2625,
-                "name": "Pro A-1"
+                "name": "Pro A-1",
+                "type": "Race"
             },
             {
                 "id": 2628,
-                "name": "Pro A-2"
+                "name": "Pro A-2",
+                "type": "Race"
             },
             {
                 "id": 2632,
-                "name": "Pro A-3"
+                "name": "Pro A-3",
+                "type": "Race"
             },
             {
                 "id": 2636,
-                "name": "Pro A-4"
+                "name": "Pro A-4",
+                "type": "Race"
             },
             {
                 "id": 2639,
-                "name": "Pro A-5"
+                "name": "Pro A-5",
+                "type": "Race"
             },
             {
                 "id": 2661,
-                "name": "Pro A-6"
+                "name": "Pro A-6",
+                "type": "Race"
             },
             {
                 "id": 2652,
-                "name": "Pro A-7"
+                "name": "Pro A-7",
+                "type": "Race"
             },
             {
                 "id": 2655,
-                "name": "Pro A-8"
+                "name": "Pro A-8",
+                "type": "Race"
             },
             {
                 "id": 2658,
-                "name": "Pro A-9"
+                "name": "Pro A-9",
+                "type": "Race"
             }
         ]
     }

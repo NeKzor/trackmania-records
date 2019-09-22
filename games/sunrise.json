@@ -4,667 +4,833 @@
         "tracks": [
             {
                 "id": 108216,
-                "name": "4Roads"
+                "name": "4Roads",
+                "type": "Puzzle"
             },
             {
                 "id": 381815,
-                "name": "Aerial Lights"
+                "name": "Aerial Lights",
+                "type": "Race"
             },
             {
                 "id": 108273,
-                "name": "Aim for the Top"
+                "name": "Aim for the Top",
+                "type": "Puzzle"
             },
             {
                 "id": 35939,
-                "name": "AirControl"
+                "name": "AirControl",
+                "type": "Platform"
             },
             {
                 "id": 183545,
-                "name": "Anaconda"
+                "name": "Anaconda",
+                "type": "Race"
             },
             {
                 "id": 36128,
-                "name": "Antigrav"
+                "name": "Antigrav",
+                "type": "Race"
             },
             {
                 "id": 347630,
-                "name": "Aquaplanning"
+                "name": "Aquaplanning",
+                "type": "Stunts"
             },
             {
                 "id": 36073,
-                "name": "AquaScheme"
+                "name": "AquaScheme",
+                "type": "Race"
             },
             {
                 "id": 347676,
-                "name": "Backyard"
+                "name": "Backyard",
+                "type": "Stunts"
             },
             {
                 "id": 108044,
-                "name": "Bay Starter"
+                "name": "Bay Starter",
+                "type": "Puzzle"
             },
             {
                 "id": 183549,
-                "name": "BeachTime"
+                "name": "BeachTime",
+                "type": "Race"
             },
             {
                 "id": 36134,
-                "name": "BeautifulDay"
+                "name": "BeautifulDay",
+                "type": "Race"
             },
             {
                 "id": 108332,
-                "name": "Big Bowl"
+                "name": "Big Bowl",
+                "type": "Puzzle"
             },
             {
                 "id": 183556,
-                "name": "BipBopSound"
+                "name": "BipBopSound",
+                "type": "Race"
             },
             {
                 "id": 347627,
-                "name": "BoatRide"
+                "name": "BoatRide",
+                "type": "Stunts"
             },
             {
                 "id": 381822,
-                "name": "Bouncy Alley"
+                "name": "Bouncy Alley",
+                "type": "Race"
             },
             {
                 "id": 36191,
-                "name": "BuildingRider"
+                "name": "BuildingRider",
+                "type": "Race"
             },
             {
                 "id": 108047,
-                "name": "Buildings Ahead"
+                "name": "Buildings Ahead",
+                "type": "Puzzle"
             },
             {
                 "id": 35890,
-                "name": "CarPark"
+                "name": "CarPark",
+                "type": "Race"
             },
             {
                 "id": 183270,
-                "name": "CentralPark"
+                "name": "CentralPark",
+                "type": "Race"
             },
             {
                 "id": 381825,
-                "name": "Chaos Area"
+                "name": "Chaos Area",
+                "type": "Race"
             },
             {
                 "id": 347616,
-                "name": "ChaosTheory"
+                "name": "ChaosTheory",
+                "type": "Stunts"
             },
             {
                 "id": 35944,
-                "name": "CityAirport"
+                "name": "CityAirport",
+                "type": "Platform"
             },
             {
                 "id": 183560,
-                "name": "CleanLanding"
+                "name": "CleanLanding",
+                "type": "Race"
             },
             {
                 "id": 183564,
-                "name": "ClimbTheHill"
+                "name": "ClimbTheHill",
+                "type": "Race"
             },
             {
                 "id": 183461,
-                "name": "CoteD'Azur"
+                "name": "CoteD'Azur",
+                "type": "Race"
             },
             {
                 "id": 183275,
-                "name": "Crazy8"
+                "name": "Crazy8",
+                "type": "Race"
             },
             {
                 "id": 183465,
-                "name": "CrazyBridge"
+                "name": "CrazyBridge",
+                "type": "Race"
             },
             {
                 "id": 35923,
-                "name": "CrossOver"
+                "name": "CrossOver",
+                "type": "Race"
             },
             {
                 "id": 381828,
-                "name": "Dangerous Descent"
+                "name": "Dangerous Descent",
+                "type": "Race"
             },
             {
                 "id": 183280,
-                "name": "DarkRuin"
+                "name": "DarkRuin",
+                "type": "Race"
             },
             {
                 "id": 108117,
-                "name": "Deadend Checkpoints"
+                "name": "Deadend Checkpoints",
+                "type": "Puzzle"
             },
             {
                 "id": 348302,
-                "name": "DemoPlatform1"
+                "name": "DemoPlatform1",
+                "type": "Platform"
             },
             {
                 "id": 348306,
-                "name": "DemoPlatform2"
+                "name": "DemoPlatform2",
+                "type": "Platform"
             },
             {
                 "id": 348312,
-                "name": "DemoPuzzle1"
+                "name": "DemoPuzzle1",
+                "type": "Puzzle"
             },
             {
                 "id": 348315,
-                "name": "DemoPuzzle2"
+                "name": "DemoPuzzle2",
+                "type": "Puzzle"
             },
             {
                 "id": 348318,
-                "name": "DemoRace1"
+                "name": "DemoRace1",
+                "type": "Race"
             },
             {
                 "id": 348321,
-                "name": "DemoRace2"
+                "name": "DemoRace2",
+                "type": "Race"
             },
             {
                 "id": 348327,
-                "name": "DemoStunts1"
+                "name": "DemoStunts1",
+                "type": "Stunts"
             },
             {
                 "id": 348330,
-                "name": "DemoStunts2"
+                "name": "DemoStunts2",
+                "type": "Stunts"
             },
             {
                 "id": 36194,
-                "name": "Deviation"
+                "name": "Deviation",
+                "type": "Race"
             },
             {
                 "id": 36436,
-                "name": "DockOfTheBay"
+                "name": "DockOfTheBay",
+                "type": "Platform"
             },
             {
                 "id": 108050,
-                "name": "Double Jump"
+                "name": "Double Jump",
+                "type": "Puzzle"
             },
             {
                 "id": 46756,
-                "name": "DoubleLoop"
+                "name": "DoubleLoop",
+                "type": "Platform"
             },
             {
                 "id": 35926,
-                "name": "DownTown"
+                "name": "DownTown",
+                "type": "Race"
             },
             {
                 "id": 108339,
-                "name": "Drunken Tunnel"
+                "name": "Drunken Tunnel",
+                "type": "Puzzle"
             },
             {
                 "id": 183397,
-                "name": "EmperorRoof"
+                "name": "EmperorRoof",
+                "type": "Race"
             },
             {
                 "id": 183486,
-                "name": "EnterTheWorm"
+                "name": "EnterTheWorm",
+                "type": "Race"
             },
             {
                 "id": 108455,
-                "name": "Final Speed"
+                "name": "Final Speed",
+                "type": "Puzzle"
             },
             {
                 "id": 381831,
-                "name": "Five Rows"
+                "name": "Five Rows",
+                "type": "Race"
             },
             {
                 "id": 347647,
-                "name": "FlipFlop"
+                "name": "FlipFlop",
+                "type": "Stunts"
             },
             {
                 "id": 35929,
-                "name": "FollowTheLeader"
+                "name": "FollowTheLeader",
+                "type": "Race"
             },
             {
                 "id": 381834,
-                "name": "Forest Jumps"
+                "name": "Forest Jumps",
+                "type": "Race"
             },
             {
                 "id": 46691,
-                "name": "FullTurtle"
+                "name": "FullTurtle",
+                "type": "Platform"
             },
             {
                 "id": 183491,
-                "name": "GateOfTheSun"
+                "name": "GateOfTheSun",
+                "type": "Race"
             },
             {
                 "id": 347679,
-                "name": "GiantPinball"
+                "name": "GiantPinball",
+                "type": "Stunts"
             },
             {
                 "id": 46774,
-                "name": "Goal!"
+                "name": "Goal!",
+                "type": "Platform"
             },
             {
                 "id": 183575,
-                "name": "GoingHome"
+                "name": "GoingHome",
+                "type": "Race"
             },
             {
                 "id": 35895,
-                "name": "GoodMorning"
+                "name": "GoodMorning",
+                "type": "Race"
             },
             {
                 "id": 35906,
-                "name": "GrandPrix"
+                "name": "GrandPrix",
+                "type": "Race"
             },
             {
                 "id": 36076,
-                "name": "GrandPrix2"
+                "name": "GrandPrix2",
+                "type": "Race"
             },
             {
                 "id": 36096,
-                "name": "GrandPrix30"
+                "name": "GrandPrix30",
+                "type": "Race"
             },
             {
                 "id": 35947,
-                "name": "Gravity"
+                "name": "Gravity",
+                "type": "Platform"
             },
             {
                 "id": 36100,
-                "name": "HappyBay"
+                "name": "HappyBay",
+                "type": "Race"
             },
             {
                 "id": 108279,
-                "name": "Harbour Ramps"
+                "name": "Harbour Ramps",
+                "type": "Puzzle"
             },
             {
                 "id": 347666,
-                "name": "HeadOrTails"
+                "name": "HeadOrTails",
+                "type": "Stunts"
             },
             {
                 "id": 381837,
-                "name": "High Tide"
+                "name": "High Tide",
+                "type": "Race"
             },
             {
                 "id": 108219,
-                "name": "Highs And Lows"
+                "name": "Highs And Lows",
+                "type": "Puzzle"
             },
             {
                 "id": 36198,
-                "name": "HighStreet"
+                "name": "HighStreet",
+                "type": "Race"
             },
             {
                 "id": 46760,
-                "name": "HitTheRamp"
+                "name": "HitTheRamp",
+                "type": "Platform"
             },
             {
                 "id": 36079,
-                "name": "HomeRun"
+                "name": "HomeRun",
+                "type": "Race"
             },
             {
                 "id": 108054,
-                "name": "Ideal 265"
+                "name": "Ideal 265",
+                "type": "Puzzle"
             },
             {
                 "id": 35911,
-                "name": "JumpOnBrakes"
+                "name": "JumpOnBrakes",
+                "type": "Race"
             },
             {
                 "id": 183413,
-                "name": "Kangourou"
+                "name": "Kangourou",
+                "type": "Race"
             },
             {
                 "id": 46763,
-                "name": "LandingArea"
+                "name": "LandingArea",
+                "type": "Platform"
             },
             {
                 "id": 183502,
-                "name": "LateAfter8"
+                "name": "LateAfter8",
+                "type": "Race"
             },
             {
                 "id": 36439,
-                "name": "LittleWalk"
+                "name": "LittleWalk",
+                "type": "Platform"
             },
             {
                 "id": 183580,
-                "name": "LoopN'Roof"
+                "name": "LoopN'Roof",
+                "type": "Race"
             },
             {
                 "id": 36084,
-                "name": "Magnitude"
+                "name": "Magnitude",
+                "type": "Race"
             },
             {
                 "id": 347662,
-                "name": "Medallion"
+                "name": "Medallion",
+                "type": "Stunts"
             },
             {
                 "id": 108282,
-                "name": "Meteor Crash"
+                "name": "Meteor Crash",
+                "type": "Puzzle"
             },
             {
                 "id": 36142,
-                "name": "Midnight"
+                "name": "Midnight",
+                "type": "Race"
             },
             {
                 "id": 108286,
-                "name": "MiniG3"
+                "name": "MiniG3",
+                "type": "Puzzle"
             },
             {
                 "id": 46724,
-                "name": "MissingBridge"
+                "name": "MissingBridge",
+                "type": "Platform"
             },
             {
                 "id": 108449,
-                "name": "Mixed Line"
+                "name": "Mixed Line",
+                "type": "Puzzle"
             },
             {
                 "id": 36460,
-                "name": "NiceShot"
+                "name": "NiceShot",
+                "type": "Platform"
             },
             {
                 "id": 35898,
-                "name": "NightFlight"
+                "name": "NightFlight",
+                "type": "Race"
             },
             {
                 "id": 36088,
-                "name": "NightRider"
+                "name": "NightRider",
+                "type": "Race"
             },
             {
                 "id": 183285,
-                "name": "NightRound"
+                "name": "NightRound",
+                "type": "Race"
             },
             {
                 "id": 35950,
-                "name": "OldSchool"
+                "name": "OldSchool",
+                "type": "Platform"
             },
             {
                 "id": 35933,
-                "name": "OnTheRoofAgain"
+                "name": "OnTheRoofAgain",
+                "type": "Race"
             },
             {
                 "id": 36104,
-                "name": "Orbital"
+                "name": "Orbital",
+                "type": "Race"
             },
             {
                 "id": 183417,
-                "name": "OutOfTheDock"
+                "name": "OutOfTheDock",
+                "type": "Race"
             },
             {
                 "id": 35953,
-                "name": "OverTheTop"
+                "name": "OverTheTop",
+                "type": "Platform"
             },
             {
                 "id": 35901,
-                "name": "ParadiseIsland"
+                "name": "ParadiseIsland",
+                "type": "Race"
             },
             {
                 "id": 108342,
-                "name": "Pillar of Summer"
+                "name": "Pillar of Summer",
+                "type": "Puzzle"
             },
             {
                 "id": 108426,
-                "name": "Plotholes"
+                "name": "Plotholes",
+                "type": "Puzzle"
             },
             {
                 "id": 108452,
-                "name": "Pyramid of Doom"
+                "name": "Pyramid of Doom",
+                "type": "Puzzle"
             },
             {
                 "id": 35914,
-                "name": "QuietRide"
+                "name": "QuietRide",
+                "type": "Race"
             },
             {
                 "id": 108433,
-                "name": "Rabbit Holes"
+                "name": "Rabbit Holes",
+                "type": "Puzzle"
             },
             {
                 "id": 183512,
-                "name": "RabbitHill"
+                "name": "RabbitHill",
+                "type": "Race"
             },
             {
                 "id": 36145,
-                "name": "RampRage"
+                "name": "RampRage",
+                "type": "Race"
             },
             {
                 "id": 347613,
-                "name": "Rock'n'Roll"
+                "name": "Rock'n'Roll",
+                "type": "Stunts"
             },
             {
                 "id": 347644,
-                "name": "RocketJump"
+                "name": "RocketJump",
+                "type": "Stunts"
             },
             {
                 "id": 183420,
-                "name": "RomanRuin"
+                "name": "RomanRuin",
+                "type": "Race"
             },
             {
                 "id": 183424,
-                "name": "RuinByNight"
+                "name": "RuinByNight",
+                "type": "Race"
             },
             {
                 "id": 183426,
-                "name": "RuinOfTheSun"
+                "name": "RuinOfTheSun",
+                "type": "Race"
             },
             {
                 "id": 347682,
-                "name": "Satellite"
+                "name": "Satellite",
+                "type": "Stunts"
             },
             {
                 "id": 381840,
-                "name": "Secret Caves"
+                "name": "Secret Caves",
+                "type": "Race"
             },
             {
                 "id": 183290,
-                "name": "SeeYouSoon"
+                "name": "SeeYouSoon",
+                "type": "Race"
             },
             {
                 "id": 183296,
-                "name": "ShoppingCentre"
+                "name": "ShoppingCentre",
+                "type": "Race"
             },
             {
                 "id": 183306,
-                "name": "SilicanArena"
+                "name": "SilicanArena",
+                "type": "Race"
             },
             {
                 "id": 108437,
-                "name": "SimpleLine"
+                "name": "SimpleLine",
+                "type": "Puzzle"
             },
             {
                 "id": 35903,
-                "name": "SkidOrDie"
+                "name": "SkidOrDie",
+                "type": "Race"
             },
             {
                 "id": 381843,
-                "name": "Small Ring"
+                "name": "Small Ring",
+                "type": "Race"
             },
             {
                 "id": 108120,
-                "name": "Smooth Slopes"
+                "name": "Smooth Slopes",
+                "type": "Puzzle"
             },
             {
                 "id": 35917,
-                "name": "Snake"
+                "name": "Snake",
+                "type": "Race"
             },
             {
                 "id": 36168,
-                "name": "SpeedWave"
+                "name": "SpeedWave",
+                "type": "Race"
             },
             {
                 "id": 347657,
-                "name": "SpinHell"
+                "name": "SpinHell",
+                "type": "Stunts"
             },
             {
                 "id": 46729,
-                "name": "Spiral"
+                "name": "Spiral",
+                "type": "Platform"
             },
             {
                 "id": 46735,
-                "name": "StepByStep"
+                "name": "StepByStep",
+                "type": "Platform"
             },
             {
                 "id": 46738,
-                "name": "Stop!"
+                "name": "Stop!",
+                "type": "Platform"
             },
             {
                 "id": 381847,
-                "name": "Straight Ahead"
+                "name": "Straight Ahead",
+                "type": "Race"
             },
             {
                 "id": 108441,
-                "name": "Strange Motif"
+                "name": "Strange Motif",
+                "type": "Puzzle"
             },
             {
                 "id": 347633,
-                "name": "StuntPark"
+                "name": "StuntPark",
+                "type": "Stunts"
             },
             {
                 "id": 36201,
-                "name": "Suburbs"
+                "name": "Suburbs",
+                "type": "Race"
             },
             {
                 "id": 46777,
-                "name": "TamTam"
+                "name": "TamTam",
+                "type": "Platform"
             },
             {
                 "id": 108222,
-                "name": "Tangram"
+                "name": "Tangram",
+                "type": "Puzzle"
             },
             {
                 "id": 108225,
-                "name": "Tangram2"
+                "name": "Tangram2",
+                "type": "Puzzle"
             },
             {
                 "id": 108345,
-                "name": "The Left Speed"
+                "name": "The Left Speed",
+                "type": "Puzzle"
             },
             {
                 "id": 108130,
-                "name": "The Right Speed"
+                "name": "The Right Speed",
+                "type": "Puzzle"
             },
             {
                 "id": 36467,
-                "name": "TheCage"
+                "name": "TheCage",
+                "type": "Platform"
             },
             {
                 "id": 46766,
-                "name": "ThinkForward"
+                "name": "ThinkForward",
+                "type": "Platform"
             },
             {
                 "id": 108057,
-                "name": "Tight Budget"
+                "name": "Tight Budget",
+                "type": "Puzzle"
             },
             {
                 "id": 108134,
-                "name": "Tilted Curves"
+                "name": "Tilted Curves",
+                "type": "Puzzle"
             },
             {
                 "id": 183515,
-                "name": "Toscany"
+                "name": "Toscany",
+                "type": "Race"
             },
             {
                 "id": 183584,
-                "name": "TownToTown"
+                "name": "TownToTown",
+                "type": "Race"
             },
             {
                 "id": 381850,
-                "name": "Training Circuit"
+                "name": "Training Circuit",
+                "type": "Race"
             },
             {
                 "id": 37902,
-                "name": "TrialTime"
+                "name": "TrialTime",
+                "type": "Platform"
             },
             {
                 "id": 35936,
-                "name": "TrickyTrack"
+                "name": "TrickyTrack",
+                "type": "Race"
             },
             {
                 "id": 108141,
-                "name": "Trident"
+                "name": "Trident",
+                "type": "Puzzle"
             },
             {
                 "id": 36205,
-                "name": "TunnelEffect"
+                "name": "TunnelEffect",
+                "type": "Race"
             },
             {
                 "id": 108289,
-                "name": "Tunneling"
+                "name": "Tunneling",
+                "type": "Puzzle"
             },
             {
                 "id": 183309,
-                "name": "TwoMountains"
+                "name": "TwoMountains",
+                "type": "Race"
             },
             {
                 "id": 108228,
-                "name": "Undulate Line"
+                "name": "Undulate Line",
+                "type": "Puzzle"
             },
             {
                 "id": 381853,
-                "name": "Up and Down"
+                "name": "Up and Down",
+                "type": "Race"
             },
             {
                 "id": 36495,
-                "name": "UrbanStyle"
+                "name": "UrbanStyle",
+                "type": "Platform"
             },
             {
                 "id": 46780,
-                "name": "Vertigo"
+                "name": "Vertigo",
+                "type": "Platform"
             },
             {
                 "id": 35920,
-                "name": "Village"
+                "name": "Village",
+                "type": "Race"
             },
             {
                 "id": 183429,
-                "name": "VulcanBird"
+                "name": "VulcanBird",
+                "type": "Race"
             },
             {
                 "id": 183530,
-                "name": "VulcanHarbor"
+                "name": "VulcanHarbor",
+                "type": "Race"
             },
             {
                 "id": 183312,
-                "name": "VulcanRing"
+                "name": "VulcanRing",
+                "type": "Race"
             },
             {
                 "id": 347610,
-                "name": "WarmUp"
+                "name": "WarmUp",
+                "type": "Stunts"
             },
             {
                 "id": 347639,
-                "name": "WatchTheStep"
+                "name": "WatchTheStep",
+                "type": "Stunts"
             },
             {
                 "id": 108444,
-                "name": "Water Pillar"
+                "name": "Water Pillar",
+                "type": "Puzzle"
             },
             {
                 "id": 183522,
-                "name": "Westside"
+                "name": "Westside",
+                "type": "Race"
             },
             {
                 "id": 108349,
-                "name": "Work Around"
+                "name": "Work Around",
+                "type": "Puzzle"
             },
             {
                 "id": 306285,
-                "name": "XRace01"
+                "name": "XRace01",
+                "type": "Race"
             },
             {
                 "id": 306288,
-                "name": "XRace02"
+                "name": "XRace02",
+                "type": "Race"
             },
             {
                 "id": 306291,
-                "name": "XRace03"
+                "name": "XRace03",
+                "type": "Race"
             },
             {
                 "id": 306294,
-                "name": "XRace04"
+                "name": "XRace04",
+                "type": "Race"
             },
             {
                 "id": 306297,
-                "name": "XRace05"
+                "name": "XRace05",
+                "type": "Race"
             },
             {
                 "id": 306300,
-                "name": "XRace06"
+                "name": "XRace06",
+                "type": "Race"
             },
             {
                 "id": 306303,
-                "name": "XRace07"
+                "name": "XRace07",
+                "type": "Race"
             },
             {
                 "id": 306306,
-                "name": "XRace08"
+                "name": "XRace08",
+                "type": "Race"
             },
             {
                 "id": 306309,
-                "name": "XRace09"
+                "name": "XRace09",
+                "type": "Race"
             }
         ]
     }

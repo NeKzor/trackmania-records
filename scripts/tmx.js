@@ -27,7 +27,7 @@ const maxFetch = undefined;
         console.log('  ' + campaign.name);
 
         let count = 0;
-        for (let { id, name } of campaign.tracks) {
+        for (let { id, name, type } of campaign.tracks) {
             let res = await fetch(apiRoute('apitrackrecords', id), config);
             let records = (await res.text()).split('\n').map((row) => row.split('\t'));
 
@@ -37,14 +37,14 @@ const maxFetch = undefined;
             let wr = undefined;
 
             for (let record of records) {
-                let time = parseInt(record[3], 10);
-                if (wr === undefined || wr === time) {
+                let score = parseInt(record[3], 10);
+                if (wr === undefined || wr === score) {
                     wrs.push({
                         user: {
                             id: parseInt(record[1], 10),
                             name: record[2],
                         },
-                        time: (wr = time),
+                        score: (wr = score),
                         date: record[4],
                         duration: moment().diff(moment(record[4]), 'd'),
                         replay: parseInt(record[0], 10),
@@ -56,7 +56,8 @@ const maxFetch = undefined;
 
             tracks.push({
                 id,
-                name: name,
+                name,
+                type,
                 wrs,
             });
 
@@ -65,7 +66,15 @@ const maxFetch = undefined;
             //await delay(1000);
         }
 
-        let totalTime = tracks.map((t) => t.wrs[0].time).reduce((a, b) => a + b, 0);
+        let totalTime = tracks
+            .filter((t) => t.type !== 'Stunts')
+            .map((t) => t.wrs[0].score)
+            .reduce((a, b) => a + b, 0);
+        let totalPoints = tracks
+            .filter((t) => t.type === 'Stunts')
+            .map((t) => t.wrs[0].score)
+            .reduce((a, b) => a + b, 0);
+
         let users = tracks.map((t) => t.wrs.map((r) => r.user)).reduce((acc, val) => acc.concat(val), []);
         let wrs = tracks.map((t) => t.wrs).reduce((acc, val) => acc.concat(val), []);
 
@@ -90,6 +99,7 @@ const maxFetch = undefined;
             tracks,
             stats: {
                 totalTime,
+                totalPoints,
             },
             leaderboard,
         });

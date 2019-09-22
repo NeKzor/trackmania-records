@@ -4,263 +4,328 @@
         "tracks": [
             {
                 "id": 2233,
-                "name": "A01 Race"
+                "name": "A01 Race",
+                "type": "Race"
             },
             {
                 "id": 2236,
-                "name": "A02 Race"
+                "name": "A02 Race",
+                "type": "Race"
             },
             {
                 "id": 2239,
-                "name": "A03 Race"
+                "name": "A03 Race",
+                "type": "Race"
             },
             {
                 "id": 2242,
-                "name": "A04 Acrobatic"
+                "name": "A04 Acrobatic",
+                "type": "Race"
             },
             {
                 "id": 2245,
-                "name": "A05 Race"
+                "name": "A05 Race",
+                "type": "Race"
             },
             {
                 "id": 2248,
-                "name": "A06 Obstacle"
+                "name": "A06 Obstacle",
+                "type": "Race"
             },
             {
                 "id": 2251,
-                "name": "A07 Race"
+                "name": "A07 Race",
+                "type": "Race"
             },
             {
                 "id": 2254,
-                "name": "A08 Endurance"
+                "name": "A08 Endurance",
+                "type": "Race"
             },
             {
                 "id": 2257,
-                "name": "A09 Race"
+                "name": "A09 Race",
+                "type": "Race"
             },
             {
                 "id": 2260,
-                "name": "A10 Acrobatic"
+                "name": "A10 Acrobatic",
+                "type": "Race"
             },
             {
                 "id": 2263,
-                "name": "A11 Race"
+                "name": "A11 Race",
+                "type": "Race"
             },
             {
                 "id": 2266,
-                "name": "A12 Speed"
+                "name": "A12 Speed",
+                "type": "Race"
             },
             {
                 "id": 2269,
-                "name": "A13 Race"
+                "name": "A13 Race",
+                "type": "Race"
             },
             {
                 "id": 2272,
-                "name": "A14 Race"
+                "name": "A14 Race",
+                "type": "Race"
             },
             {
                 "id": 2275,
-                "name": "A15 Speed"
+                "name": "A15 Speed",
+                "type": "Race"
             },
             {
                 "id": 2282,
-                "name": "B01 Race"
+                "name": "B01 Race",
+                "type": "Race"
             },
             {
                 "id": 2285,
-                "name": "B02 Race"
+                "name": "B02 Race",
+                "type": "Race"
             },
             {
                 "id": 2288,
-                "name": "B03 Race"
+                "name": "B03 Race",
+                "type": "Race"
             },
             {
                 "id": 2291,
-                "name": "B04 Acrobatic"
+                "name": "B04 Acrobatic",
+                "type": "Race"
             },
             {
                 "id": 2294,
-                "name": "B05 Race"
+                "name": "B05 Race",
+                "type": "Race"
             },
             {
                 "id": 2297,
-                "name": "B06 Obstacle"
+                "name": "B06 Obstacle",
+                "type": "Race"
             },
             {
                 "id": 2300,
-                "name": "B07 Race"
+                "name": "B07 Race",
+                "type": "Race"
             },
             {
                 "id": 2303,
-                "name": "B08 Endurance"
+                "name": "B08 Endurance",
+                "type": "Race"
             },
             {
                 "id": 2306,
-                "name": "B09 Acrobatic"
+                "name": "B09 Acrobatic",
+                "type": "Race"
             },
             {
                 "id": 2309,
-                "name": "B10 Speed"
+                "name": "B10 Speed",
+                "type": "Race"
             },
             {
                 "id": 2312,
-                "name": "B11 Race"
+                "name": "B11 Race",
+                "type": "Race"
             },
             {
                 "id": 2315,
-                "name": "B12 Race"
+                "name": "B12 Race",
+                "type": "Race"
             },
             {
                 "id": 2318,
-                "name": "B13 Obstacle"
+                "name": "B13 Obstacle",
+                "type": "Race"
             },
             {
                 "id": 2321,
-                "name": "B14 Speed"
+                "name": "B14 Speed",
+                "type": "Race"
             },
             {
                 "id": 2324,
-                "name": "B15 Race"
+                "name": "B15 Race",
+                "type": "Race"
             },
             {
                 "id": 2328,
-                "name": "C01 Race"
+                "name": "C01 Race",
+                "type": "Race"
             },
             {
                 "id": 2331,
-                "name": "C02 Race"
+                "name": "C02 Race",
+                "type": "Race"
             },
             {
                 "id": 2334,
-                "name": "C03 Acrobatic"
+                "name": "C03 Acrobatic",
+                "type": "Race"
             },
             {
                 "id": 2337,
-                "name": "C04 Race"
+                "name": "C04 Race",
+                "type": "Race"
             },
             {
                 "id": 2340,
-                "name": "C05 Endurance"
+                "name": "C05 Endurance",
+                "type": "Race"
             },
             {
                 "id": 2343,
-                "name": "C06 Speed"
+                "name": "C06 Speed",
+                "type": "Race"
             },
             {
                 "id": 2346,
-                "name": "C07 Race"
+                "name": "C07 Race",
+                "type": "Race"
             },
             {
                 "id": 2349,
-                "name": "C08 Obstacle"
+                "name": "C08 Obstacle",
+                "type": "Race"
             },
             {
                 "id": 2352,
-                "name": "C09 Race"
+                "name": "C09 Race",
+                "type": "Race"
             },
             {
                 "id": 2355,
-                "name": "C10 Acrobatic"
+                "name": "C10 Acrobatic",
+                "type": "Race"
             },
             {
                 "id": 2358,
-                "name": "C11 Race"
+                "name": "C11 Race",
+                "type": "Race"
             },
             {
                 "id": 2361,
-                "name": "C12 Obstacle"
+                "name": "C12 Obstacle",
+                "type": "Race"
             },
             {
                 "id": 2364,
-                "name": "C13 Race"
+                "name": "C13 Race",
+                "type": "Race"
             },
             {
                 "id": 2367,
-                "name": "C14 Endurance"
+                "name": "C14 Endurance",
+                "type": "Race"
             },
             {
                 "id": 2370,
-                "name": "C15 Speed"
+                "name": "C15 Speed",
+                "type": "Race"
             },
             {
                 "id": 2375,
-                "name": "D01 Endurance"
+                "name": "D01 Endurance",
+                "type": "Race"
             },
             {
                 "id": 2378,
-                "name": "D02 Race"
+                "name": "D02 Race",
+                "type": "Race"
             },
             {
                 "id": 2381,
-                "name": "D03 Acrobatic"
+                "name": "D03 Acrobatic",
+                "type": "Race"
             },
             {
                 "id": 2423,
-                "name": "D04 Race"
+                "name": "D04 Race",
+                "type": "Race"
             },
             {
                 "id": 2425,
-                "name": "D05 Race"
+                "name": "D05 Race",
+                "type": "Race"
             },
             {
                 "id": 2427,
-                "name": "D06 Obstacle"
+                "name": "D06 Obstacle",
+                "type": "Race"
             },
             {
                 "id": 2429,
-                "name": "D07 Race"
+                "name": "D07 Race",
+                "type": "Race"
             },
             {
                 "id": 2431,
-                "name": "D08 Speed"
+                "name": "D08 Speed",
+                "type": "Race"
             },
             {
                 "id": 2433,
-                "name": "D09 Obstacle"
+                "name": "D09 Obstacle",
+                "type": "Race"
             },
             {
                 "id": 2435,
-                "name": "D10 Race"
+                "name": "D10 Race",
+                "type": "Race"
             },
             {
                 "id": 2437,
-                "name": "D11 Acrobatic"
+                "name": "D11 Acrobatic",
+                "type": "Race"
             },
             {
                 "id": 2439,
-                "name": "D12 Speed"
+                "name": "D12 Speed",
+                "type": "Race"
             },
             {
                 "id": 2441,
-                "name": "D13 Race"
+                "name": "D13 Race",
+                "type": "Race"
             },
             {
                 "id": 2443,
-                "name": "D14 Endurance"
+                "name": "D14 Endurance",
+                "type": "Race"
             },
             {
                 "id": 2445,
-                "name": "D15 Endurance"
+                "name": "D15 Endurance",
+                "type": "Race"
             },
             {
                 "id": 2447,
-                "name": "E01 Obstacle"
+                "name": "E01 Obstacle",
+                "type": "Race"
             },
             {
                 "id": 2449,
-                "name": "E02 Endurance"
+                "name": "E02 Endurance",
+                "type": "Race"
             },
             {
                 "id": 2451,
-                "name": "E03 Endurance"
+                "name": "E03 Endurance",
+                "type": "Race"
             },
             {
                 "id": 2454,
-                "name": "E04 Obstacle"
+                "name": "E04 Obstacle",
+                "type": "Race"
             },
             {
                 "id": 2455,
-                "name": "E05 Endurance"
+                "name": "E05 Endurance",
+                "type": "Race"
             }
         ]
     }

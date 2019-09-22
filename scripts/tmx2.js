@@ -9,25 +9,28 @@ const day = moment().format('YYYY-MM-DD');
 const config = { headers: { 'User-Agent': 'tmx-records-v1' } };
 const maxFetch = undefined;
 
-const baseApi = 'https://tm.mania-exchange.com';
+const baseApi = 'https://api.mania-exchange.com/tm';
+const baseApiOld = 'https://tm.mania-exchange.com';
 
 if (process.argv[2] === '--fetch-game') {
     let game = [];
     let page = 1;
 
     const fetchPage = async () => {
-        let res = await fetch(baseApi + '/tracksearch2/search?api=on&mode=1&authorid=21&limit=100&priord=1&page=' + page, config);
+        let res = await fetch(baseApiOld + '/tracksearch2/search?api=on&mode=1&authorid=21&limit=100&priord=1&page=' + page, config);
         let search = await res.json();
 
         for (let track of search.results) {
-            let campaign = game.find((c) => c.name === track['TitlePack']);
+            let campaignName = track['Name'].endsWith('Beta') ? 'Beta' : track['Name'].split(' ')[0];
+            let campaign = game.find((c) => c.name === campaignName);
             if (!campaign) {
                 game.push({
-                    name: track['TitlePack'],
+                    name: campaignName,
                     tracks: [
                         {
                             id: track['TrackID'],
                             name: track['Name'],
+                            type: track['MapType'],
                         },
                     ],
                 });
@@ -35,6 +38,7 @@ if (process.argv[2] === '--fetch-game') {
                 campaign.tracks.push({
                     id: track['TrackID'],
                     name: track['Name'],
+                    type: track['MapType'],
                 });
             }
         }
@@ -62,7 +66,7 @@ if (process.argv[2] === '--fetch-game') {
         let tracks = [];
         let count = 0;
 
-        for (let { id, name } of campaign.tracks) {
+        for (let { id, name, type } of campaign.tracks) {
             let res = await fetch(baseApi + `/replays/${id}/5`, config);
             let records = await res.json();
 
@@ -72,14 +76,14 @@ if (process.argv[2] === '--fetch-game') {
             let wr = undefined;
 
             for (let record of records) {
-                let time = record['ReplayTime'];
-                if (wr === undefined || wr === time) {
+                let score = record['ReplayTime'];
+                if (wr === undefined || wr === score) {
                     wrs.push({
                         user: {
                             id: record['UserID'],
                             name: record['Username'],
                         },
-                        time: (wr = time),
+                        score: (wr = score),
                         date: record['UploadedAt'],
                         duration: moment().diff(moment(record['UploadedAt']), 'd'),
                         replay: record['ReplayID'],
@@ -92,6 +96,7 @@ if (process.argv[2] === '--fetch-game') {
             tracks.push({
                 id,
                 name,
+                type,
                 wrs,
             });
 
@@ -100,7 +105,15 @@ if (process.argv[2] === '--fetch-game') {
             //wait delay(1000);
         }
 
-        let totalTime = tracks.map((t) => t.wrs[0].time).reduce((a, b) => a + b, 0);
+        let totalTime = tracks
+            .filter((t) => t.type !== 'Stunts')
+            .map((t) => t.wrs[0].score)
+            .reduce((a, b) => a + b, 0);
+        let totalPoints = tracks
+            .filter((t) => t.type === 'Stunts')
+            .map((t) => t.wrs[0].score)
+            .reduce((a, b) => a + b, 0);
+
         let users = tracks.map((t) => t.wrs.map((r) => r.user)).reduce((acc, val) => acc.concat(val), []);
         let wrs = tracks.map((t) => t.wrs).reduce((acc, val) => acc.concat(val), []);
 
@@ -125,6 +138,7 @@ if (process.argv[2] === '--fetch-game') {
             tracks,
             stats: {
                 totalTime,
+                totalPoints,
             },
             leaderboard,
         });
