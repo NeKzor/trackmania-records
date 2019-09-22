@@ -49,6 +49,7 @@ const pageLinks = [
     { title: 'TrackMania 2', link: '/tm2', inDrawer: true, default: true },
     { title: 'Nations Forever', link: '/tmnforever', inDrawer: true },
     { title: 'United', link: '/united', inDrawer: true },
+    { title: 'Nations ESWC', link: '/nations', inDrawer: true },
     { title: 'Sunrise', link: '/sunrise', inDrawer: true },
     { title: 'Original', link: '/original', inDrawer: true },
     { title: 'Replay Inspection', link: '/replay', inDrawer: false },

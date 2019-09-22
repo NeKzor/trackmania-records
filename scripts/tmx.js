@@ -1,17 +1,19 @@
 const moment = require('moment');
 const fetch = require('node-fetch');
-const { delay, tryExportJson, tryMakeDir } = require('./utils');
+const { delay, importJson, tryExportJson, tryMakeDir } = require('./utils');
 
 const gameName = process.argv[2] || 'tmnforever';
 const output = process.argv[3] || 'api';
 
-const day = moment().format('YYYY-MM-DD');
+const tmx = ['tmnforever', 'united', 'nations', 'sunrise', 'original'];
 
-const tmx = ['tmnforever' , 'united', 'nations', 'sunrise', 'original'];
-
-if (!tmx.find(x => x === gameName)) {
+if (!tmx.find((x) => x === gameName)) {
     throw new Error('Invalid game name.');
 }
+
+const day = moment().format('YYYY-MM-DD');
+
+const apiRoute = (action, id) => `http://${gameName}.tm-exchange.com/apiget.aspx?action=${action}&id=${id}`;
 
 const config = { headers: { 'User-Agent': 'tmx-records-v1' } };
 const maxFetch = undefined;
@@ -19,23 +21,17 @@ const maxFetch = undefined;
 (async () => {
     console.log(day, gameName);
 
-    const campaigns = require('./games/' + gameName);
-
-    const apiRoute = (action, id) => `https://${gameName}.tm-exchange.com/apiget.aspx?action=${action}&id=${id}`;
-
     let game = [];
-    for (let campaign of campaigns) {
+    for (let campaign of importJson('./games/' + gameName + '.json')) {
         let tracks = [];
         console.log('  ' + campaign.name);
 
         let count = 0;
-        for (let id of campaign.tracks) {
-            let recordsRes = await fetch(apiRoute('apitrackrecords', id), config);
-            let trackInfoRes = await fetch(apiRoute('apitrackinfo', id), config);
-            console.log(`    ${id} (${++count}/${campaign.tracks.length})`);
+        for (let { id, name } of campaign.tracks) {
+            let res = await fetch(apiRoute('apitrackrecords', id), config);
+            let records = (await res.text()).split('\n').map((row) => row.split('\t'));
 
-            let trackInfo = (await trackInfoRes.text()).split('\t');
-            let records = (await recordsRes.text()).split('\n').map((row) => row.split('\t'));
+            console.log(`    ${id} (${++count}/${campaign.tracks.length})`);
 
             let wrs = [];
             let wr = undefined;
@@ -60,13 +56,13 @@ const maxFetch = undefined;
 
             tracks.push({
                 id,
-                name: trackInfo[1],
+                name: name,
                 wrs,
             });
 
             if (maxFetch !== undefined && count === maxFetch) break;
 
-            await delay(1000);
+            //await delay(1000);
         }
 
         let totalTime = tracks.map((t) => t.wrs[0].time).reduce((a, b) => a + b, 0);

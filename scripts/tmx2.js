@@ -1,6 +1,6 @@
 const moment = require('moment');
 const fetch = require('node-fetch');
-const { delay, tryExportJson, tryMakeDir } = require('./utils');
+const { delay, importJson, tryExportJson, tryMakeDir } = require('./utils');
 
 const output = process.argv[2] || 'api';
 
@@ -9,30 +9,64 @@ const day = moment().format('YYYY-MM-DD');
 const config = { headers: { 'User-Agent': 'tmx-records-v1' } };
 const maxFetch = undefined;
 
-const baseApi = 'https://api.mania-exchange.com/tm';
+const baseApi = 'https://tm.mania-exchange.com';
 
-const tracksRoute = (id) => `/tracks/${id}`;
-const replaysRoute = (id, amount = 5) => `/replays/${id}/${amount}`;
+if (process.argv[2] === '--fetch-game') {
+    let game = [];
+    let page = 1;
+
+    const fetchPage = async () => {
+        let res = await fetch(baseApi + '/tracksearch2/search?api=on&mode=1&authorid=21&limit=100&priord=1&page=' + page, config);
+        let search = await res.json();
+
+        for (let track of search.results) {
+            let campaign = game.find((c) => c.name === track['TitlePack']);
+            if (!campaign) {
+                game.push({
+                    name: track['TitlePack'],
+                    tracks: [
+                        {
+                            id: track['TrackID'],
+                            name: track['Name'],
+                        },
+                    ],
+                });
+            } else {
+                campaign.tracks.push({
+                    id: track['TrackID'],
+                    name: track['Name'],
+                });
+            }
+        }
+
+        while (search.totalItemCount - 100 * page > 0) {
+            ++page;
+            await fetchPage();
+        }
+    };
+
+    fetchPage().then(() => {
+        tryMakeDir('./games');
+        tryExportJson('./games/tm2.json', game, true, true);
+    });
+    return;
+}
 
 (async () => {
     console.log(day, 'tm2');
 
-    const campaigns = require('./games/tm2');
-
     let game = [];
-    for (let campaign of campaigns) {
+    for (let campaign of importJson('./games/tm2.json')) {
         console.log(campaign.name);
 
         let tracks = [];
         let count = 0;
 
-        for (let id of campaign.tracks) {
-            let tracksRes = await fetch(baseApi + tracksRoute(id), config);
-            let replaysRes = await fetch(baseApi + replaysRoute(id), config);
-            console.log(`  ${id} (${++count}/${campaign.tracks.length})`);
+        for (let { id, name } of campaign.tracks) {
+            let res = await fetch(baseApi + `/replays/${id}/5`, config);
+            let records = await res.json();
 
-            let track = (await tracksRes.json())[0];
-            let records = await replaysRes.json();
+            console.log(`  ${id} (${++count}/${campaign.tracks.length})`);
 
             let wrs = [];
             let wr = undefined;
@@ -57,13 +91,13 @@ const replaysRoute = (id, amount = 5) => `/replays/${id}/${amount}`;
 
             tracks.push({
                 id,
-                name: track['Name'],
+                name,
                 wrs,
             });
 
             if (maxFetch !== undefined && count === maxFetch) break;
 
-            await delay(1000);
+            //wait delay(1000);
         }
 
         let totalTime = tracks.map((t) => t.wrs[0].time).reduce((a, b) => a + b, 0);
@@ -88,7 +122,7 @@ const replaysRoute = (id, amount = 5) => `/replays/${id}/${amount}`;
 
         game.push({
             name: campaign.name,
-            tracks: tracks.sort((a, b) => b.name > a.name),
+            tracks,
             stats: {
                 totalTime,
             },
