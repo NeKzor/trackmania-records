@@ -17,7 +17,7 @@ const NotFoundView = () => {
             reader.onload = function({ target: { result } }) {
                 const { Buffer, Replay } = window;
 
-                let replay = Replay.default().read(Buffer.from(result), { parseGhost: true });
+                let replay = window.replay = Replay.default().read(Buffer.from(result), { parseGhost: true });
                 if (!isMounted) return;
 
                 const removeData = (obj) => {

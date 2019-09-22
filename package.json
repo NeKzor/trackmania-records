@@ -9,7 +9,7 @@
     "deploy": "gh-pages -d build -m Update -u \"NeKzBot <44978126+NeKzBot@users.noreply.github.com>\"",
     "api": "gh-pages -b api -d api -m Update -u \"NeKzBot <44978126+NeKzBot@users.noreply.github.com>\"",
     "start": "react-scripts start",
-    "build": "react-scripts build",
+    "build": "react-scripts build && cp build/index.html build/404.html",
     "test": "react-scripts test --env=jsdom"
   },
   "dependencies": {
@@ -40,5 +40,6 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  }
+  },
+  "homepage": "https://nekzor.github.io/tmx-records"
 }
