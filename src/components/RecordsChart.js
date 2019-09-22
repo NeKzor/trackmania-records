@@ -11,11 +11,17 @@ const RecordsChart = ({ labels, series, title, theme }) => {
                 labels,
                 legend: {
                     show: false,
-                    position: 'left',
-                    labels: {
-                        useSeriesColors: true,
-                    },
                 },
+                responsive: [
+                    {
+                        breakpoint: 380,
+                        options: {
+                            chart: {
+                                height: '300px'
+                            },
+                        },
+                    },
+                ],
                 plotOptions: {
                     pie: {
                         donut: {
@@ -40,7 +46,6 @@ const RecordsChart = ({ labels, series, title, theme }) => {
             }}
             series={series}
             type="donut"
-            width="400"
             height="400"
         />
     );

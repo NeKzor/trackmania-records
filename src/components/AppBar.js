@@ -1,10 +1,10 @@
 import React from 'react';
 import { Link as RouterLink, withRouter } from 'react-router-dom';
 import MaterialAppBar from '@material-ui/core/AppBar';
-import Breadcrumbs from '@material-ui/core/Breadcrumbs';
 import Divider from '@material-ui/core/Divider';
 import Drawer from '@material-ui/core/Drawer';
 import Hidden from '@material-ui/core/Hidden';
+import IconButton from '@material-ui/core/IconButton';
 import Link from '@material-ui/core/Link';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
@@ -13,7 +13,7 @@ import SwipeableDrawer from '@material-ui/core/SwipeableDrawer';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
-import NavigateNextIcon from '@material-ui/icons/NavigateNext';
+import MenuIcon from '@material-ui/icons/Menu';
 import { useTitle } from '../Hooks';
 
 const useStyles = makeStyles((theme) => ({
@@ -22,7 +22,7 @@ const useStyles = makeStyles((theme) => ({
     },
     list: {
         width: theme.spacing(25),
-        height: '100%'
+        height: '100%',
     },
     menuButton: {
         marginLeft: -12,
@@ -59,7 +59,13 @@ const pageLinks = [
 const AppBar = ({ location }) => {
     const [open, setOpen] = React.useState(false);
 
-    const page = React.useMemo(() => pageLinks.find((x) => x.link === location.pathname) || pageLinks[0], [location]);
+    const page = React.useMemo(
+        () =>
+            pageLinks.find((x) => x.link === location.pathname || (x.link !== null && location.pathname.startsWith(x.link + '/'))) ||
+            pageLinks[0],
+        [location],
+    );
+
     useTitle(page.title);
 
     const showDrawer = (state) => () => {
@@ -76,7 +82,7 @@ const AppBar = ({ location }) => {
                 </ListItem>
             </List>
             <Divider />
-            <List style={{height: '100%'}}>
+            <List style={{ height: '100%' }}>
                 {pageLinks
                     .filter((x) => x.inDrawer)
                     .map((item, index) => (
@@ -90,7 +96,7 @@ const AppBar = ({ location }) => {
                             <ListItemText primary={item.title} />
                         </ListItem>
                     ))}
-                    <Divider />
+                <Divider />
                 <List>
                     <ListItem button key={0} component={RouterLink} to={'/about'}>
                         <ListItemText primary={'About'} />
@@ -104,15 +110,16 @@ const AppBar = ({ location }) => {
         <div className={classes.root}>
             <MaterialAppBar className={classes.appBar} position="fixed">
                 <Toolbar>
-
-                        <Breadcrumbs color="inherit" separator={<NavigateNextIcon fontSize="small" />}>
-                            <Typography variant="h6" color="inherit">
-                                <Link component={RouterLink} to="/" color="inherit" underline="none">
-                                    TMX Records
-                                </Link>
-                            </Typography>
-                        </Breadcrumbs>
-
+                    <Hidden lgUp>
+                        <IconButton className={classes.menuButton} onClick={showDrawer(true)} color="inherit">
+                            <MenuIcon />
+                        </IconButton>
+                    </Hidden>
+                    <Typography variant="h6" color="inherit">
+                        <Link component={RouterLink} to="/" color="inherit" underline="none">
+                            TMX Records
+                        </Link>
+                    </Typography>
                 </Toolbar>
             </MaterialAppBar>
             <Hidden lgUp implementation="css">

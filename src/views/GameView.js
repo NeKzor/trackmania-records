@@ -39,6 +39,9 @@ const useStyles = makeStyles((_) => ({
         left: 'auto',
         position: 'fixed',
     },
+    padTop: {
+        paddingTop: '70px',
+    },
 }));
 
 const GameView = ({ match }) => {
@@ -50,7 +53,7 @@ const GameView = ({ match }) => {
 
     const page = match.params[0];
     const date = match.params.date;
-    const useLiveDuration = date === undefined;
+    const useLiveDuration = date === undefined || date === 'latest';
 
     React.useEffect(() => {
         setGame(undefined);
@@ -95,8 +98,8 @@ const GameView = ({ match }) => {
                     campaign.tracks = rows;
 
                     if (useLiveDuration) {
-                        campaign.leaderboard.forEach((entry) => {
-                            entry.duration = campaign.tracks
+                        campaign.leaderboard.forEach((entry, idx) => {
+                            campaign.leaderboard[idx].duration = campaign.tracks
                                 .filter((r) => r.user.id === entry.user.id)
                                 .map((r) => r.duration)
                                 .reduce((a, b) => a + b, 0);
@@ -162,21 +165,21 @@ const GameView = ({ match }) => {
                                             useLiveDuration={useLiveDuration}
                                         />
                                     </Grid>
-                                    <Grid item xs={12} style={{ paddingTop: '70px' }}>
+                                    <Grid item xs={12} className={classes.padTop}>
                                         <Grid container direction="row" justify="center" alignContent="center">
-                                            <Grid item xs={6}>
+                                            <Grid item xs={12} md={6}>
                                                 <RankingsTable data={campaign.leaderboard} game={page} />
                                             </Grid>
-                                            <Grid item xs={6}>
+                                            <Grid item xs={12} md={6} className={classes.padTop}>
                                                 <Grid container direction="column" justify="center">
-                                                    <Grid item xs={6}>
+                                                    <Grid item xs={12}>
                                                         <RecordsChart
                                                             title="WRs"
                                                             labels={campaign.leaderboard.map((row) => row.user.name)}
                                                             series={campaign.leaderboard.map((row) => row.wrs)}
                                                         />
                                                     </Grid>
-                                                    <Grid item xs={6} style={{ paddingTop: '70px' }}>
+                                                    <Grid item xs={12} className={classes.padTop}>
                                                         <RecordsChart
                                                             title="Duration"
                                                             labels={campaign.leaderboard.map((row) => row.user.name)}

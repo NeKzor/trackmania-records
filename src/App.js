@@ -18,6 +18,12 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
+const lightOrDarkMode = () => {
+    if (window.localStorage.getItem('light-theme') === 'true') return 'light';
+    if (window.localStorage.getItem('dark-theme') === 'true') return 'dark';
+    return moment().get('h') > 5 && moment().get('h') < 19 ? 'light' : 'dark';
+};
+
 const theme = createMuiTheme({
     palette: {
         primary: {
@@ -33,7 +39,7 @@ const theme = createMuiTheme({
         error: {
             main: red.A400,
         },
-        type: moment().get('h') > 5 && moment().get('h') < 19 ? 'light' : 'dark',
+        type: lightOrDarkMode(),
     },
 });
 
@@ -43,7 +49,7 @@ const App = () => {
     return (
         <ThemeProvider theme={theme}>
             <CssBaseline />
-            <BrowserRouter basename="/">
+            <BrowserRouter basename={process.env.NODE_ENV === 'production' ? '/tmx-records' : '/'}>
                 <AppBar />
                 <div className={classes.views}>
                     <Switch>

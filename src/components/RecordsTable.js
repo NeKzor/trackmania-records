@@ -20,7 +20,7 @@ import { formatScore, getDateDifferenceColor } from '../utils/tools';
 
 const rows = [
     { id: 'track.name', sortable: true, label: 'Track', align: 'left' },
-    { id: 'time', sortable: true, label: 'Record', align: 'left' },
+    { id: 'score', sortable: true, label: 'Record', align: 'left' },
     { id: 'user.name', sortable: true, label: 'Player', align: 'left' },
     { id: 'date', sortable: true, label: 'Date', align: 'left' },
     { id: 'duration', sortable: true, label: 'Duration', align: 'left' },
@@ -93,7 +93,7 @@ const RecordsTable = ({ data, game, stats, useLiveDuration }) => {
                         .map((wr) => (
                             <TableRow tabIndex={-1} key={`${wr.track.id}-${wr.user.id}`}>
                                 {(wr.track.isFirst || orderBy !== 'track.name') && (
-                                    <MinTableCell rowSpan={orderBy !== 'track.name' ? 1 : wr.track.records} align="left">
+                                    <MinTableCell style={noWrap} rowSpan={orderBy !== 'track.name' ? 1 : wr.track.records} align="left">
                                         <Link color="inherit" href={tmx(game).trackUrl(wr.track.id)} rel="noreferrer" target="_blank">
                                             {wr.track.name}
                                         </Link>
@@ -101,20 +101,18 @@ const RecordsTable = ({ data, game, stats, useLiveDuration }) => {
                                 )}
                                 <MinTableCell align="left">{formatScore(wr.score, game, wr.track.type)}</MinTableCell>
                                 <MinTableCell align="left">
-                                    <Link color="inherit" href={tmx(game).userUrl(wr.user.id)} rel="noreferrer" target="_blank">
+                                    <Link
+                                        style={noWrap}
+                                        color="inherit"
+                                        href={tmx(game).userUrl(wr.user.id)}
+                                        rel="noreferrer"
+                                        target="_blank"
+                                    >
                                         {wr.user.name}
                                     </Link>
                                 </MinTableCell>
                                 <MinTableCell align="left">
-                                    <Tooltip
-                                        title={
-                                            <Moment style={noWrap} fromNow>
-                                                {wr.date}
-                                            </Moment>
-                                        }
-                                        placement="bottom-end"
-                                        enterDelay={300}
-                                    >
+                                    <Tooltip title={<Moment fromNow>{wr.date}</Moment>} placement="bottom-end" enterDelay={300}>
                                         <Moment style={{ color: getDateDifferenceColor(wr.date), ...noWrap }} format="YYYY-MM-DD">
                                             {wr.date}
                                         </Moment>
@@ -122,7 +120,11 @@ const RecordsTable = ({ data, game, stats, useLiveDuration }) => {
                                 </MinTableCell>
                                 <MinTableCell align="left">
                                     <Tooltip title="in days" placement="bottom-end" enterDelay={300}>
-                                        {useLiveDuration ? <Moment style={noWrap} diff={wr.date} unit="days"></Moment> : wr.duration}
+                                        {useLiveDuration ? (
+                                            <Moment style={noWrap} diff={wr.date} unit="days"></Moment>
+                                        ) : (
+                                            <span>{wr.duration}</span>
+                                        )}
                                     </Tooltip>
                                 </MinTableCell>
                                 {/* <MinTableCell align="left">
@@ -165,15 +167,17 @@ const RecordsTable = ({ data, game, stats, useLiveDuration }) => {
                         ))}
                 </TableBody>
                 <TableBody>
-                    <TableRow>
-                        <MinTableCell align="right">Total Time</MinTableCell>
-                        <MinTableCell>
-                            <Tooltip title={moment.duration(stats.totalTime, 'ms').humanize()} placement="bottom-end" enterDelay={300}>
-                                <span>{formatScore(stats.totalTime, game)}</span>
-                            </Tooltip>
-                        </MinTableCell>
-                        <MinTableCell colSpan={3}></MinTableCell>
-                    </TableRow>
+                    {stats.totalTime > 0 && (
+                        <TableRow>
+                            <MinTableCell align="right">Total Time</MinTableCell>
+                            <MinTableCell>
+                                <Tooltip title={moment.duration(stats.totalTime, 'ms').humanize()} placement="bottom-end" enterDelay={300}>
+                                    <span>{formatScore(stats.totalTime, game)}</span>
+                                </Tooltip>
+                            </MinTableCell>
+                            <MinTableCell colSpan={3}></MinTableCell>
+                        </TableRow>
+                    )}
                     {stats.totalPoints > 0 && (
                         <TableRow>
                             <MinTableCell align="right">Total Points</MinTableCell>
