@@ -20,16 +20,6 @@ import { useIsMounted } from '../Hooks';
 import ViewContent from './ViewContent';
 import { makeStyles } from '@material-ui/core';
 
-const TabPanel = ({ children, value, index, ...other }) => {
-    return (
-        value === index && (
-            <Typography component="div" role="tabpanel" id={`scrollable-auto-tabpanel-${index}`} {...other}>
-                <Box p={3}>{children}</Box>
-            </Typography>
-        )
-    );
-};
-
 const useStyles = makeStyles((_) => ({
     fab: {
         margin: 0,
@@ -62,7 +52,6 @@ const GameView = ({ match }) => {
     React.useEffect(() => {
         (async () => {
             let game = await Api.request(page, date);
-            await new Promise((res) => setTimeout(res, 1000));
 
             if (game[0] && game[0].tracks[0].wrs) {
                 for (let campaign of game) {
@@ -154,36 +143,36 @@ const GameView = ({ match }) => {
                                 ))}
                             </Tabs>
                         )}
-                        {game.map((campaign, idx) => (
-                            <TabPanel value={tab} index={idx} key={campaign.name}>
+                        <Typography component="div" role="tabpanel">
+                            <Box p={3}>
                                 <Grid container direction="column" justify="center">
                                     <Grid item xs={12}>
                                         <RecordsTable
-                                            data={campaign.tracks}
+                                            data={game[tab].tracks}
                                             game={gameName}
-                                            stats={campaign.stats}
+                                            stats={game[tab].stats}
                                             useLiveDuration={useLiveDuration}
                                         />
                                     </Grid>
                                     <Grid item xs={12} className={classes.padTop}>
                                         <Grid container direction="row" justify="center" alignContent="center">
                                             <Grid item xs={12} md={6}>
-                                                <RankingsTable data={campaign.leaderboard} game={page} />
+                                                <RankingsTable data={game[tab].leaderboard} game={page} />
                                             </Grid>
                                             <Grid item xs={12} md={6} className={classes.padTop}>
                                                 <Grid container direction="column" justify="center">
                                                     <Grid item xs={12}>
                                                         <RecordsChart
                                                             title="WRs"
-                                                            labels={campaign.leaderboard.map((row) => row.user.name)}
-                                                            series={campaign.leaderboard.map((row) => row.wrs)}
+                                                            labels={game[tab].leaderboard.map((row) => row.user.name)}
+                                                            series={game[tab].leaderboard.map((row) => row.wrs)}
                                                         />
                                                     </Grid>
                                                     <Grid item xs={12} className={classes.padTop}>
                                                         <RecordsChart
                                                             title="Duration"
-                                                            labels={campaign.leaderboard.map((row) => row.user.name)}
-                                                            series={campaign.leaderboard.map((row) => row.duration)}
+                                                            labels={game[tab].leaderboard.map((row) => row.user.name)}
+                                                            series={game[tab].leaderboard.map((row) => row.duration)}
                                                         />
                                                     </Grid>
                                                 </Grid>
@@ -191,8 +180,8 @@ const GameView = ({ match }) => {
                                         </Grid>
                                     </Grid>
                                 </Grid>
-                            </TabPanel>
-                        ))}
+                            </Box>
+                        </Typography>
                     </>
                 )}
             </Paper>
