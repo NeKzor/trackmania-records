@@ -22,7 +22,6 @@ const useStyles = makeStyles((theme) => ({
     },
     list: {
         width: theme.spacing(25),
-        height: '100%',
     },
     menuButton: {
         marginLeft: -12,
@@ -82,7 +81,7 @@ const AppBar = ({ location }) => {
                 </ListItem>
             </List>
             <Divider />
-            <List style={{ height: '100%' }}>
+            <List>
                 {pageLinks
                     .filter((x) => x.inDrawer)
                     .map((item, index) => (

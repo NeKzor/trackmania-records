@@ -1,45 +1,48 @@
 {
-  "name": "tmx-records",
-  "version": "1.0.0",
-  "author": "NeKz",
-  "scripts": {
-    "tmx": "node scripts/tmx.js",
-    "tmx2": "node scripts/tmx2.js",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d build -m Update -u \"NeKzBot <44978126+NeKzBot@users.noreply.github.com>\"",
-    "api": "gh-pages -b api -d api -m Update -u \"NeKzBot <44978126+NeKzBot@users.noreply.github.com>\"",
-    "start": "react-scripts start",
-    "build": "react-scripts build && cp build/index.html build/404.html",
-    "test": "react-scripts test --env=jsdom"
-  },
-  "dependencies": {
-    "@material-ui/core": "^4.4.2",
-    "@material-ui/icons": "^4.4.1",
-    "apexcharts": "^3.8.6",
-    "d3-scale": "^3.1.0",
-    "gh-pages": "^2.1.1",
-    "moment": "^2.24.0",
-    "node-fetch": "^2.6.0",
-    "react": "^16.9.0",
-    "react-apexcharts": "^1.3.3",
-    "react-dom": "^16.9.0",
-    "react-json-view": "^1.19.1",
-    "react-moment": "^0.9.2",
-    "react-router": "^3.2.4",
-    "react-router-dom": "^5.0.1",
-    "react-scripts": "^3.1.2"
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
-  },
-  "homepage": "https://nekzor.github.io/tmx-records"
+    "name": "tmx-records",
+    "version": "1.0.0",
+    "author": "NeKz",
+    "scripts": {
+        "predeploy": "npm run build",
+        "deploy": "gh-pages -d build -m Update -u \"NeKzBot <44978126+NeKzBot@users.noreply.github.com>\"",
+        "start": "react-scripts start",
+        "build": "react-scripts build && cp build/index.html build/404.html",
+        "test": "react-scripts test --env=jsdom",
+        "update": "node scripts/update.js",
+        "api": "gh-pages -b api -d api -m Update -u \"NeKzBot <44978126+NeKzBot@users.noreply.github.com>\"",
+        "clone-api": "git clone --single-branch --branch api https://github.com/NeKzor/tmx-records api",
+        "copy-api": "cp -R api src/"
+    },
+    "dependencies": {
+        "@material-ui/core": "^4.4.2",
+        "@material-ui/icons": "^4.4.1",
+        "apexcharts": "^3.8.6",
+        "d3-scale": "^3.1.0",
+        "react": "^16.9.0",
+        "react-apexcharts": "^1.3.3",
+        "react-dom": "^16.9.0",
+        "react-json-view": "^1.19.1",
+        "react-moment": "^0.9.2",
+        "react-router": "^3.2.4",
+        "react-router-dom": "^5.0.1",
+        "react-scripts": "^3.1.2"
+    },
+    "devDependencies": {
+        "gh-pages": "^2.1.1",
+        "moment": "^2.24.0",
+        "node-fetch": "^2.6.0"
+    },
+    "browserslist": {
+        "production": [
+            ">0.2%",
+            "not dead",
+            "not op_mini all"
+        ],
+        "development": [
+            "last 1 chrome version",
+            "last 1 firefox version",
+            "last 1 safari version"
+        ]
+    },
+    "homepage": "https://nekzor.github.io/tmx-records"
 }

@@ -2,23 +2,19 @@ const moment = require('moment');
 const fetch = require('node-fetch');
 const { delay, importJson, tryExportJson, tryMakeDir } = require('./utils');
 
-const gameName = process.argv[2] || 'tmnforever';
-const output = process.argv[3] || 'api';
-
 const tmx = ['tmnforever', 'united', 'nations', 'sunrise', 'original'];
 
-if (!tmx.find((x) => x === gameName)) {
-    throw new Error('Invalid game name.');
-}
-
-const day = moment().format('YYYY-MM-DD');
-
-const apiRoute = (action, id) => `http://${gameName}.tm-exchange.com/apiget.aspx?action=${action}&id=${id}`;
-
 const config = { headers: { 'User-Agent': 'tmx-records-v1' } };
-const maxFetch = undefined;
 
-(async () => {
+module.exports = async (gameName, output, maxFetch = undefined) => {
+    if (!tmx.find((x) => x === gameName)) {
+        throw new Error('Invalid game name.');
+    }
+
+    const day = moment().format('YYYY-MM-DD');
+
+    const apiRoute = (action, id) => `http://${gameName}.tm-exchange.com/apiget.aspx?action=${action}&id=${id}`;
+
     console.log(day, gameName);
 
     let game = [];
@@ -110,4 +106,4 @@ const maxFetch = undefined;
 
     tryExportJson(`${output}/${gameName}/${day}.json`, game);
     tryExportJson(`${output}/${gameName}/latest.json`, game, true);
-})();
+};

@@ -46,6 +46,7 @@ const GameView = ({ match }) => {
     const useLiveDuration = date === undefined || date === 'latest';
 
     React.useEffect(() => {
+        setTab(0);
         setGame(undefined);
     }, [page]);
 

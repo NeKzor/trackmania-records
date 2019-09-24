@@ -2,61 +2,13 @@ const moment = require('moment');
 const fetch = require('node-fetch');
 const { delay, importJson, tryExportJson, tryMakeDir } = require('./utils');
 
-const output = process.argv[2] || 'api';
-
-const day = moment().format('YYYY-MM-DD');
-
 const config = { headers: { 'User-Agent': 'tmx-records-v1' } };
-const maxFetch = undefined;
 
 const baseApi = 'https://api.mania-exchange.com/tm';
-const baseApiOld = 'https://tm.mania-exchange.com';
 
-if (process.argv[2] === '--fetch-game') {
-    let game = [];
-    let page = 1;
+module.exports = async (output, maxFetch = undefined) => {
+    const day = moment().format('YYYY-MM-DD');
 
-    const fetchPage = async () => {
-        let res = await fetch(baseApiOld + '/tracksearch2/search?api=on&mode=1&authorid=21&limit=100&priord=1&page=' + page, config);
-        let search = await res.json();
-
-        for (let track of search.results) {
-            let campaignName = track['Name'].endsWith('Beta') ? 'Beta' : track['Name'].split(' ')[0];
-            let campaign = game.find((c) => c.name === campaignName);
-            if (!campaign) {
-                game.push({
-                    name: campaignName,
-                    tracks: [
-                        {
-                            id: track['TrackID'],
-                            name: track['Name'],
-                            type: track['MapType'],
-                        },
-                    ],
-                });
-            } else {
-                campaign.tracks.push({
-                    id: track['TrackID'],
-                    name: track['Name'],
-                    type: track['MapType'],
-                });
-            }
-        }
-
-        while (search.totalItemCount - 100 * page > 0) {
-            ++page;
-            await fetchPage();
-        }
-    };
-
-    fetchPage().then(() => {
-        tryMakeDir('./games');
-        tryExportJson('./games/tm2.json', game, true, true);
-    });
-    return;
-}
-
-(async () => {
     console.log(day, 'tm2');
 
     let game = [];
@@ -149,4 +101,4 @@ if (process.argv[2] === '--fetch-game') {
 
     tryExportJson(`${output}/tm2/${day}.json`, game);
     tryExportJson(`${output}/tm2/latest.json`, game, true);
-})();
+};
