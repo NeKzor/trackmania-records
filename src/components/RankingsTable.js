@@ -8,18 +8,18 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import TableSortLabel from '@material-ui/core/TableSortLabel';
 import Tooltip from '@material-ui/core/Tooltip';
-import { stableSort } from '../utils/stableSort';
+import { stableSortSort } from '../utils/stableSort';
 import tmx from '../utils/tmx';
 
 const rows = [
-    { id: 'user.name', sortable: true, label: 'Player', align: 'left' },
-    { id: 'wrs', sortable: true, label: 'World Records', align: 'left' },
-    { id: 'duration', sortable: true, label: 'Total Duration', align: 'left' },
+    { id: 'user.name', sortable: false, label: 'Player', align: 'left' },
+    { id: 'wrs', id2: 'duration', sortable: true, label: 'World Records', align: 'left' },
+    { id: 'duration', id2: 'wrs', sortable: true, label: 'Total Duration', align: 'left' },
 ];
 
 const RankingsTableHead = ({ order, orderBy, onRequestSort }) => {
-    const createSortHandler = (property) => (event) => {
-        onRequestSort(event, property);
+    const createSortHandler = (prop1, prop2) => (event) => {
+        onRequestSort(event, prop1, prop2);
     };
 
     return (
@@ -29,7 +29,7 @@ const RankingsTableHead = ({ order, orderBy, onRequestSort }) => {
                     <TableCell key={row.id} align={row.align} padding="default" sortDirection={orderBy === row.id ? order : false}>
                         {row.sortable === true && (
                             <Tooltip title={'Sort by ' + row.label} placement="bottom-start" enterDelay={300}>
-                                <TableSortLabel active={orderBy === row.id} direction={order} onClick={createSortHandler(row.id)}>
+                                <TableSortLabel active={orderBy === row.id} direction={order} onClick={createSortHandler(row.id, row.id2)}>
                                     {row.label}
                                 </TableSortLabel>
                             </Tooltip>
@@ -51,6 +51,7 @@ const useStyles = makeStyles((_) => ({
 const defaultState = {
     order: 'desc',
     orderBy: 'wrs',
+    thenBy: 'duration',
     page: 0,
     rowsPerPage: 50,
 };
@@ -60,14 +61,16 @@ const minifiedStyle = { padding: '7px 0px 7px 16px' };
 const MinTableCell = (props) => <TableCell style={minifiedStyle} {...props} />;
 
 const RecordsTable = ({ data, game }) => {
-    const [{ order, orderBy, rowsPerPage, page }, setState] = React.useState(defaultState);
+    const [{ order, orderBy, thenBy, rowsPerPage, page }, setState] = React.useState(defaultState);
 
-    const handleRequestSort = (_, property) => {
-        const newOrderBy = property;
+    const handleRequestSort = (_, prop1, prop2) => {
+        const newOrderBy = prop1;
+        const newThenBy = prop2;
         setState((s) => ({
             ...s,
             order: s.orderBy === newOrderBy && s.order === 'desc' ? 'asc' : 'desc',
             orderBy: newOrderBy,
+            thenBy: newThenBy,
         }));
     };
 
@@ -78,7 +81,7 @@ const RecordsTable = ({ data, game }) => {
             <Table size="small">
                 <RankingsTableHead order={order} orderBy={orderBy} onRequestSort={handleRequestSort} />
                 <TableBody>
-                    {stableSort(data, order, orderBy)
+                    {stableSortSort(data, order, orderBy, thenBy)
                         .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
                         .map((row) => (
                             <TableRow tabIndex={-1} key={row.user.id}>
@@ -88,7 +91,7 @@ const RecordsTable = ({ data, game }) => {
                                     </Link>
                                 </MinTableCell>
                                 <MinTableCell align="left">{row.wrs}</MinTableCell>
-                                <MinTableCell align="left">{row.duration} days</MinTableCell>
+                                <MinTableCell align="left">{row.duration} day{row.duration === 1 ? '' : 's'}</MinTableCell>
                             </TableRow>
                         ))}
                 </TableBody>
