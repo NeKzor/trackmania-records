@@ -18,7 +18,7 @@ module.exports = async (gameName, output, maxFetch = undefined) => {
     console.log(day, gameName);
 
     let game = [];
-    for (let campaign of importJson('./games/' + gameName + '.json')) {
+    for (let campaign of importJson(__dirname + '/../games/' + gameName + '.json')) {
         let tracks = [];
         console.log('  ' + campaign.name);
 

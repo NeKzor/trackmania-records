@@ -2,7 +2,7 @@ const tmx = require('./tmx');
 const tmx2 = require('./tmx2');
 
 const game = process.argv[2];
-const output = process.argv[3] || 'api';
+const output = process.argv[3] || (__dirname + '/../api');
 const maxFetch = process.argv[4];
 
 (async () => {
