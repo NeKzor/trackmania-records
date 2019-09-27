@@ -990,596 +990,6 @@
         ]
     },
     {
-        "name": "Platform",
-        "tracks": [
-            {
-                "id": 45675,
-                "name": "Platform A01 - Welcome To Platform",
-                "type": "Platform"
-            },
-            {
-                "id": 45676,
-                "name": "Platform A02 - Kangaroo",
-                "type": "Platform"
-            },
-            {
-                "id": 45677,
-                "name": "Platform A03 - Getting Better",
-                "type": "Platform"
-            },
-            {
-                "id": 45678,
-                "name": "Platform A04 - Aim To Please",
-                "type": "Platform"
-            },
-            {
-                "id": 45680,
-                "name": "Platform A05 - Watch Your Step",
-                "type": "Platform"
-            },
-            {
-                "id": 45681,
-                "name": "Platform B01 - Car Control",
-                "type": "Platform"
-            },
-            {
-                "id": 45683,
-                "name": "Platform B02 - Natural Disaster",
-                "type": "Platform"
-            },
-            {
-                "id": 45684,
-                "name": "Platform B03 - Escalation",
-                "type": "Platform"
-            },
-            {
-                "id": 45685,
-                "name": "Platform B04 - Over Charge",
-                "type": "Platform"
-            },
-            {
-                "id": 45686,
-                "name": "Platform B05 - Wall Hugger",
-                "type": "Platform"
-            },
-            {
-                "id": 45687,
-                "name": "Platform C01 - Clap Trap",
-                "type": "Platform"
-            },
-            {
-                "id": 45688,
-                "name": "Platform C02 - Nasty Caves",
-                "type": "Platform"
-            },
-            {
-                "id": 45689,
-                "name": "Platform C03 - Motor Mash",
-                "type": "Platform"
-            },
-            {
-                "id": 45691,
-                "name": "Platform C04 - Accuracy",
-                "type": "Platform"
-            },
-            {
-                "id": 45692,
-                "name": "Platform C05 - The Judge",
-                "type": "Platform"
-            },
-            {
-                "id": 45693,
-                "name": "Platform D01 - Narrow Minded",
-                "type": "Platform"
-            },
-            {
-                "id": 45694,
-                "name": "Platform D02 - Trial Time",
-                "type": "Platform"
-            },
-            {
-                "id": 45695,
-                "name": "Platform D03 - Twister",
-                "type": "Platform"
-            },
-            {
-                "id": 45697,
-                "name": "Platform D04 - Idealistic",
-                "type": "Platform"
-            },
-            {
-                "id": 45700,
-                "name": "Platform D05 - Leap Of Faith",
-                "type": "Platform"
-            },
-            {
-                "id": 45701,
-                "name": "Platform E01 - Freaked Out",
-                "type": "Platform"
-            },
-            {
-                "id": 45702,
-                "name": "Platform E02 - Shattered",
-                "type": "Platform"
-            },
-            {
-                "id": 45703,
-                "name": "Platform E03 - Ultimate Nightmare",
-                "type": "Platform"
-            }
-        ]
-    },
-    {
-        "name": "TMNF",
-        "tracks": [
-            {
-                "id": 99121,
-                "name": "TMNF A01-Race",
-                "type": "Race"
-            },
-            {
-                "id": 99123,
-                "name": "TMNF A02-Race",
-                "type": "Race"
-            },
-            {
-                "id": 99126,
-                "name": "TMNF A03-Race",
-                "type": "Race"
-            },
-            {
-                "id": 99127,
-                "name": "TMNF A04-Acrobatic",
-                "type": "Race"
-            },
-            {
-                "id": 99129,
-                "name": "TMNF A05-Race",
-                "type": "Race"
-            },
-            {
-                "id": 99130,
-                "name": "TMNF A06-Obstacle",
-                "type": "Race"
-            },
-            {
-                "id": 99131,
-                "name": "TMNF A07-Race",
-                "type": "Race"
-            },
-            {
-                "id": 99133,
-                "name": "TMNF A08-Endurance",
-                "type": "Race"
-            },
-            {
-                "id": 99134,
-                "name": "TMNF A09-Race",
-                "type": "Race"
-            },
-            {
-                "id": 99136,
-                "name": "TMNF A10-Acrobatic",
-                "type": "Race"
-            },
-            {
-                "id": 99138,
-                "name": "TMNF A11-Race",
-                "type": "Race"
-            },
-            {
-                "id": 99140,
-                "name": "TMNF A12-Speed",
-                "type": "Race"
-            },
-            {
-                "id": 99142,
-                "name": "TMNF A13-Race",
-                "type": "Race"
-            },
-            {
-                "id": 99143,
-                "name": "TMNF A14-Race",
-                "type": "Race"
-            },
-            {
-                "id": 99144,
-                "name": "TMNF A15-Speed",
-                "type": "Race"
-            },
-            {
-                "id": 99145,
-                "name": "TMNF B01-Race",
-                "type": "Race"
-            },
-            {
-                "id": 99146,
-                "name": "TMNF B02-Race",
-                "type": "Race"
-            },
-            {
-                "id": 99147,
-                "name": "TMNF B03-Race",
-                "type": "Race"
-            },
-            {
-                "id": 99148,
-                "name": "TMNF B04-Acrobatic",
-                "type": "Race"
-            },
-            {
-                "id": 99150,
-                "name": "TMNF B05-Race",
-                "type": "Race"
-            },
-            {
-                "id": 99154,
-                "name": "TMNF B06-Obstacle",
-                "type": "Race"
-            },
-            {
-                "id": 99155,
-                "name": "TMNF B07-Race",
-                "type": "Race"
-            },
-            {
-                "id": 99156,
-                "name": "TMNF B08-Endurance",
-                "type": "Race"
-            },
-            {
-                "id": 99157,
-                "name": "TMNF B09-Acrobatic",
-                "type": "Race"
-            },
-            {
-                "id": 99158,
-                "name": "TMNF B10-Speed",
-                "type": "Race"
-            },
-            {
-                "id": 99159,
-                "name": "TMNF B11-Race",
-                "type": "Race"
-            },
-            {
-                "id": 99161,
-                "name": "TMNF B12-Race",
-                "type": "Race"
-            },
-            {
-                "id": 99162,
-                "name": "TMNF B13-Obstacle",
-                "type": "Race"
-            },
-            {
-                "id": 99164,
-                "name": "TMNF B14-Speed",
-                "type": "Race"
-            },
-            {
-                "id": 99165,
-                "name": "TMNF B15-Race",
-                "type": "Race"
-            },
-            {
-                "id": 99166,
-                "name": "TMNF C01-Race",
-                "type": "Race"
-            },
-            {
-                "id": 99167,
-                "name": "TMNF C02-Race",
-                "type": "Race"
-            },
-            {
-                "id": 99168,
-                "name": "TMNF C03-Acrobatic",
-                "type": "Race"
-            },
-            {
-                "id": 99170,
-                "name": "TMNF C04-Race",
-                "type": "Race"
-            },
-            {
-                "id": 99173,
-                "name": "TMNF C05-Endurance",
-                "type": "Race"
-            },
-            {
-                "id": 99174,
-                "name": "TMNF C06-Speed",
-                "type": "Race"
-            },
-            {
-                "id": 99175,
-                "name": "TMNF C07-Race",
-                "type": "Race"
-            },
-            {
-                "id": 99176,
-                "name": "TMNF C08-Obstacle",
-                "type": "Race"
-            },
-            {
-                "id": 99177,
-                "name": "TMNF C09-Race",
-                "type": "Race"
-            },
-            {
-                "id": 99178,
-                "name": "TMNF C10-Acrobatic",
-                "type": "Race"
-            },
-            {
-                "id": 99179,
-                "name": "TMNF C11-Race",
-                "type": "Race"
-            },
-            {
-                "id": 99182,
-                "name": "TMNF C12-Obstacle",
-                "type": "Race"
-            },
-            {
-                "id": 99183,
-                "name": "TMNF C13-Race",
-                "type": "Race"
-            },
-            {
-                "id": 99185,
-                "name": "TMNF C14-Endurance",
-                "type": "Race"
-            },
-            {
-                "id": 99186,
-                "name": "TMNF C15-Speed",
-                "type": "Race"
-            },
-            {
-                "id": 99187,
-                "name": "TMNF D01-Endurance",
-                "type": "Race"
-            },
-            {
-                "id": 99188,
-                "name": "TMNF D02-Race",
-                "type": "Race"
-            },
-            {
-                "id": 99190,
-                "name": "TMNF D03-Acrobatic",
-                "type": "Race"
-            },
-            {
-                "id": 99191,
-                "name": "TMNF D04-Race",
-                "type": "Race"
-            },
-            {
-                "id": 99192,
-                "name": "TMNF D05-Race",
-                "type": "Race"
-            },
-            {
-                "id": 99197,
-                "name": "TMNF D06-Obstacle",
-                "type": "Race"
-            },
-            {
-                "id": 99198,
-                "name": "TMNF D07-Race",
-                "type": "Race"
-            },
-            {
-                "id": 99199,
-                "name": "TMNF D08-Speed",
-                "type": "Race"
-            },
-            {
-                "id": 99200,
-                "name": "TMNF D09-Obstacle",
-                "type": "Race"
-            },
-            {
-                "id": 99201,
-                "name": "TMNF D10-Race",
-                "type": "Race"
-            },
-            {
-                "id": 99202,
-                "name": "TMNF D11-Acrobatic",
-                "type": "Race"
-            },
-            {
-                "id": 99203,
-                "name": "TMNF D12-Speed",
-                "type": "Race"
-            },
-            {
-                "id": 99204,
-                "name": "TMNF D13-Race",
-                "type": "Race"
-            },
-            {
-                "id": 99205,
-                "name": "TMNF D14-Endurance",
-                "type": "Race"
-            },
-            {
-                "id": 99206,
-                "name": "TMNF D15-Endurance",
-                "type": "Race"
-            },
-            {
-                "id": 99207,
-                "name": "TMNF E01-Obstacle",
-                "type": "Race"
-            },
-            {
-                "id": 99208,
-                "name": "TMNF E02-Endurance",
-                "type": "Race"
-            },
-            {
-                "id": 99209,
-                "name": "TMNF E03-Endurance",
-                "type": "Race"
-            },
-            {
-                "id": 99210,
-                "name": "TMNF E04-Obstacle",
-                "type": "Race"
-            },
-            {
-                "id": 99211,
-                "name": "TMNF E05-Endurance",
-                "type": "Race"
-            }
-        ]
-    },
-    {
-        "name": "TMU",
-        "tracks": [
-            {
-                "id": 99212,
-                "name": "TMU StadiumA1",
-                "type": "Race"
-            },
-            {
-                "id": 99213,
-                "name": "TMU StadiumA2",
-                "type": "Race"
-            },
-            {
-                "id": 99215,
-                "name": "TMU StadiumA3",
-                "type": "Race"
-            },
-            {
-                "id": 99216,
-                "name": "TMU StadiumA4",
-                "type": "Race"
-            },
-            {
-                "id": 99217,
-                "name": "TMU StadiumA5",
-                "type": "Race"
-            },
-            {
-                "id": 99218,
-                "name": "TMU StadiumB1",
-                "type": "Race"
-            },
-            {
-                "id": 99219,
-                "name": "TMU StadiumB2",
-                "type": "Race"
-            },
-            {
-                "id": 99220,
-                "name": "TMU StadiumB3",
-                "type": "Race"
-            },
-            {
-                "id": 99221,
-                "name": "TMU StadiumB4",
-                "type": "Race"
-            },
-            {
-                "id": 99222,
-                "name": "TMU StadiumB5",
-                "type": "Race"
-            },
-            {
-                "id": 99223,
-                "name": "TMU StadiumC1",
-                "type": "Race"
-            },
-            {
-                "id": 99224,
-                "name": "TMU StadiumC2",
-                "type": "Race"
-            },
-            {
-                "id": 99225,
-                "name": "TMU StadiumC3",
-                "type": "Race"
-            },
-            {
-                "id": 99226,
-                "name": "TMU StadiumC4",
-                "type": "Race"
-            },
-            {
-                "id": 99227,
-                "name": "TMU StadiumC5",
-                "type": "Race"
-            },
-            {
-                "id": 99228,
-                "name": "TMU StadiumD1",
-                "type": "Race"
-            },
-            {
-                "id": 99229,
-                "name": "TMU StadiumD2",
-                "type": "Race"
-            },
-            {
-                "id": 99230,
-                "name": "TMU StadiumD3",
-                "type": "Race"
-            },
-            {
-                "id": 99231,
-                "name": "TMU StadiumD4",
-                "type": "Race"
-            },
-            {
-                "id": 99232,
-                "name": "TMU StadiumD5",
-                "type": "Race"
-            },
-            {
-                "id": 99234,
-                "name": "TMU StadiumE",
-                "type": "Race"
-            }
-        ]
-    },
-    {
-        "name": "TMUF",
-        "tracks": [
-            {
-                "id": 99235,
-                "name": "TMUF StadiumA1",
-                "type": "Race"
-            },
-            {
-                "id": 99236,
-                "name": "TMUF StadiumA2",
-                "type": "Race"
-            },
-            {
-                "id": 99237,
-                "name": "TMUF StadiumA3",
-                "type": "Race"
-            },
-            {
-                "id": 99238,
-                "name": "TMUF StadiumA4",
-                "type": "Race"
-            },
-            {
-                "id": 99239,
-                "name": "TMUF StadiumA5",
-                "type": "Race"
-            }
-        ]
-    },
-    {
         "name": "Lagoon",
         "tracks": [
             {
@@ -1910,22 +1320,122 @@
         ]
     },
     {
-        "name": "Beta",
+        "name": "Platform",
         "tracks": [
             {
-                "id": 136657,
-                "name": "GoodMorningBeta",
-                "type": "Race"
+                "id": 45675,
+                "name": "Platform A01 - Welcome To Platform",
+                "type": "Platform"
             },
             {
-                "id": 136658,
-                "name": "BarrageWestBeta",
-                "type": "Race"
+                "id": 45676,
+                "name": "Platform A02 - Kangaroo",
+                "type": "Platform"
             },
             {
-                "id": 136659,
-                "name": "LittleEastBeta",
-                "type": "Race"
+                "id": 45677,
+                "name": "Platform A03 - Getting Better",
+                "type": "Platform"
+            },
+            {
+                "id": 45678,
+                "name": "Platform A04 - Aim To Please",
+                "type": "Platform"
+            },
+            {
+                "id": 45680,
+                "name": "Platform A05 - Watch Your Step",
+                "type": "Platform"
+            },
+            {
+                "id": 45681,
+                "name": "Platform B01 - Car Control",
+                "type": "Platform"
+            },
+            {
+                "id": 45683,
+                "name": "Platform B02 - Natural Disaster",
+                "type": "Platform"
+            },
+            {
+                "id": 45684,
+                "name": "Platform B03 - Escalation",
+                "type": "Platform"
+            },
+            {
+                "id": 45685,
+                "name": "Platform B04 - Over Charge",
+                "type": "Platform"
+            },
+            {
+                "id": 45686,
+                "name": "Platform B05 - Wall Hugger",
+                "type": "Platform"
+            },
+            {
+                "id": 45687,
+                "name": "Platform C01 - Clap Trap",
+                "type": "Platform"
+            },
+            {
+                "id": 45688,
+                "name": "Platform C02 - Nasty Caves",
+                "type": "Platform"
+            },
+            {
+                "id": 45689,
+                "name": "Platform C03 - Motor Mash",
+                "type": "Platform"
+            },
+            {
+                "id": 45691,
+                "name": "Platform C04 - Accuracy",
+                "type": "Platform"
+            },
+            {
+                "id": 45692,
+                "name": "Platform C05 - The Judge",
+                "type": "Platform"
+            },
+            {
+                "id": 45693,
+                "name": "Platform D01 - Narrow Minded",
+                "type": "Platform"
+            },
+            {
+                "id": 45694,
+                "name": "Platform D02 - Trial Time",
+                "type": "Platform"
+            },
+            {
+                "id": 45695,
+                "name": "Platform D03 - Twister",
+                "type": "Platform"
+            },
+            {
+                "id": 45697,
+                "name": "Platform D04 - Idealistic",
+                "type": "Platform"
+            },
+            {
+                "id": 45700,
+                "name": "Platform D05 - Leap Of Faith",
+                "type": "Platform"
+            },
+            {
+                "id": 45701,
+                "name": "Platform E01 - Freaked Out",
+                "type": "Platform"
+            },
+            {
+                "id": 45702,
+                "name": "Platform E02 - Shattered",
+                "type": "Platform"
+            },
+            {
+                "id": 45703,
+                "name": "Platform E03 - Ultimate Nightmare",
+                "type": "Platform"
             }
         ]
     }
