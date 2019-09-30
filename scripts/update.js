@@ -1,6 +1,7 @@
 const ghPages = require('gh-pages');
 const tmx = require('./tmx');
 const tmx2 = require('./tmx2');
+const { log } = require('./utils');
 
 const game = process.argv[2];
 const output = process.argv[3] || __dirname + '/../api';
@@ -22,8 +23,16 @@ const maxFetch = process.argv[4];
 
         ghPages.publish(
             output,
-            { branch: 'api', message: 'Update', user: { name: 'NeKzBot', email: '44978126+NeKzBot@users.noreply.github.com' } },
-            (err) => console.error(err),
+            {
+                repo: 'https://github.com/NeKzor/tmx-records.git',
+                branch: 'api',
+                message: 'Update',
+                user: {
+                    name: 'NeKzBot',
+                    email: '44978126+NeKzBot@users.noreply.github.com'
+                },
+            },
+            (err) => log(err || 'Published.'),
         );
     }
 })();
