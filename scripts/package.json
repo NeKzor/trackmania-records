@@ -1,0 +1,7 @@
+{
+  "dependencies": {
+    "gh-pages": "^2.1.1",
+    "moment": "^2.24.0",
+    "node-fetch": "^2.6.0"
+  }
+}

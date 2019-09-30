@@ -1,8 +1,9 @@
+const ghPages = require('gh-pages');
 const tmx = require('./tmx');
 const tmx2 = require('./tmx2');
 
 const game = process.argv[2];
-const output = process.argv[3] || (__dirname + '/../api');
+const output = process.argv[3] || __dirname + '/../api';
 const maxFetch = process.argv[4];
 
 (async () => {
@@ -14,12 +15,15 @@ const maxFetch = process.argv[4];
         }
     } else {
         for (let game of ['tmnforever', 'united', 'nations', 'sunrise', 'original']) {
-            try {
-                await tmx(game, output, maxFetch);
-            } catch (err) {
-                console.error(err);
-            }
+            await tmx(game, output, maxFetch);
         }
+
         await tmx2(output, maxFetch);
+
+        ghPages.publish(
+            output,
+            { branch: 'api', message: 'Update', user: { name: 'NeKzBot', email: '44978126+NeKzBot@users.noreply.github.com' } },
+            (err) => console.error(err),
+        );
     }
 })();

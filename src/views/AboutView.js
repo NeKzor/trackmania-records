@@ -134,9 +134,13 @@ const AboutView = () => {
                                                 </Tooltip>
                                             </MinTableCell>
                                             <MinTableCell align="left">
-                                                <Link color="inherit" rel="noopener" href={commit.author.html_url}>
-                                                    {commit.author.login}
-                                                </Link>
+                                                {commit.author ? (
+                                                    <Link color="inherit" rel="noopener" href={commit.author.html_url}>
+                                                        {commit.author.login}
+                                                    </Link>
+                                                ) : (
+                                                    'n/a'
+                                                )}
                                             </MinTableCell>
                                             <MinTableCell align="left" style={noWrap}>
                                                 <Tooltip title={commit.message}>
