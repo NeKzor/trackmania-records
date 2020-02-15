@@ -31,9 +31,9 @@ cron.schedule('0 18 * * *', async () => {
             message: 'Update',
             user: {
                 name: 'NeKzBot',
-                email: '44978126+NeKzBot@users.noreply.github.com'
+                email: '44978126+NeKzBot@users.noreply.github.com',
             },
         },
-        (err) => err ? log.error(err) : log.success('Published')
+        (err) => (err ? log.error(err) : log.success('Published')),
     );
 });

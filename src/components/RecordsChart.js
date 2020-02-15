@@ -17,7 +17,7 @@ const RecordsChart = ({ labels, series, title, theme }) => {
                         breakpoint: 380,
                         options: {
                             chart: {
-                                height: '300px'
+                                height: '300px',
                             },
                         },
                     },

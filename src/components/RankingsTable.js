@@ -86,12 +86,20 @@ const RecordsTable = ({ data, game }) => {
                         .map((row) => (
                             <TableRow tabIndex={-1} key={row.user.id}>
                                 <MinTableCell align="left">
-                                    <Link style={noWrap} color="inherit" href={tmx(game).userUrl(row.user.id)} rel="noreferrer" target="_blank">
+                                    <Link
+                                        style={noWrap}
+                                        color="inherit"
+                                        href={tmx(game).userUrl(row.user.id)}
+                                        rel="noreferrer"
+                                        target="_blank"
+                                    >
                                         {row.user.name}
                                     </Link>
                                 </MinTableCell>
                                 <MinTableCell align="left">{row.wrs}</MinTableCell>
-                                <MinTableCell align="left">{row.duration} day{row.duration === 1 ? '' : 's'}</MinTableCell>
+                                <MinTableCell align="left">
+                                    {row.duration} day{row.duration === 1 ? '' : 's'}
+                                </MinTableCell>
                             </TableRow>
                         ))}
                 </TableBody>

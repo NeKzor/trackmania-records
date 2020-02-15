@@ -11,7 +11,6 @@ module.exports = async (output, maxFetch = undefined) => {
 
     let game = [];
     for (let campaign of importJson(__dirname + '/../games/tm2.json')) {
-
         let tracks = [];
         let count = 0;
 

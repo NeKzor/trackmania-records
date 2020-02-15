@@ -1,4 +1,4 @@
-const protocol = (game) => ['nations', 'sunrise', 'original'].includes(game) ? 'http' : 'https'; 
+const protocol = (game) => (['nations', 'sunrise', 'original'].includes(game) ? 'http' : 'https');
 
 export default (game) =>
     game === 'tm2'
