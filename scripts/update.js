@@ -26,7 +26,8 @@ cron.schedule('0 18 * * *', async () => {
     ghPages.publish(
         output,
         {
-            repo: 'https://github.com/NeKzBot/tmx-records.git',
+            repo: `https://${process.env.GITHUB_TOKEN}@github.com/NeKzBot/tmx-records.git`,
+            silent: true,
             branch: 'api',
             message: 'Update',
             user: {
