@@ -1,6 +1,6 @@
 const moment = require('moment');
 const fetch = require('node-fetch');
-const { delay, importJson, log, tryExportJson, tryMakeDir } = require('./utils');
+const { delay, importJson, tryExportJson, tryMakeDir } = require('./utils');
 
 const config = { headers: { 'User-Agent': 'tmx-records-v1' } };
 
@@ -9,11 +9,8 @@ const baseApi = 'https://api.mania-exchange.com/tm';
 module.exports = async (output, maxFetch = undefined) => {
     const day = moment().format('YYYY-MM-DD');
 
-    log(day + ' tm2');
-
     let game = [];
     for (let campaign of importJson(__dirname + '/../games/tm2.json')) {
-        log(campaign.name);
 
         let tracks = [];
         let count = 0;
@@ -21,8 +18,6 @@ module.exports = async (output, maxFetch = undefined) => {
         for (let { id, name, type } of campaign.tracks) {
             let res = await fetch(baseApi + `/replays/${id}/5`, config);
             let records = await res.json();
-
-            log(`  ${id} (${++count}/${campaign.tracks.length})`);
 
             let wrs = [];
             let wr = undefined;

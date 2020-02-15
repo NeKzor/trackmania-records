@@ -15,19 +15,14 @@ module.exports = async (gameName, output, maxFetch = undefined) => {
 
     const apiRoute = (action, id) => `http://${gameName}.tm-exchange.com/apiget.aspx?action=${action}&id=${id}`;
 
-    log(day + ' ' + gameName);
-
     let game = [];
     for (let campaign of importJson(__dirname + '/../games/' + gameName + '.json')) {
         let tracks = [];
-        log('  ' + campaign.name);
 
         let count = 0;
         for (let { id, name, type } of campaign.tracks) {
             let res = await fetch(apiRoute('apitrackrecords', id), config);
             let records = (await res.text()).split('\n').map((row) => row.split('\t'));
-
-            log(`    ${id} (${++count}/${campaign.tracks.length})`);
 
             let wrs = [];
             let wr = undefined;

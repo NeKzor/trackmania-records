@@ -1,7 +1,9 @@
 {
   "dependencies": {
+    "chalk": "^3.0.0",
     "gh-pages": "^2.1.1",
     "moment": "^2.24.0",
+    "node-cron": "^2.0.3",
     "node-fetch": "^2.6.0"
   }
 }
