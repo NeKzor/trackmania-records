@@ -24,7 +24,11 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-const branches = ['master', 'api', 'gh-pages'];
+const branches = [
+    'https://api.github.com/repos/NeKzor/tmx-records/commits/master',
+    'https://api.github.com/repos/NeKzBot/tmx-records/commits/api',
+    'https://api.github.com/repos/NeKzor/tmx-records/commits/gh-pages',
+];
 
 const noWrap = { whiteSpace: 'nowrap' };
 const MinTableCell = (props) => <TableCell size="small" {...props} />;
@@ -52,7 +56,7 @@ const AboutView = () => {
             }
         };
 
-        Promise.all(branches.map((branch) => fetch('https://api.github.com/repos/NeKzor/tmx-records/commits/' + branch)))
+        Promise.all(branches.map((branch) => fetch(branch)))
             .then((results) => {
                 Promise.all(results.map((res) => res.json()))
                     .then((branches) => {
