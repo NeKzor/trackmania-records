@@ -25,9 +25,9 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const branches = [
-    'https://api.github.com/repos/NeKzor/tmx-records/commits/master',
-    'https://api.github.com/repos/NeKzBot/tmx-records/commits/api',
-    'https://api.github.com/repos/NeKzor/tmx-records/commits/gh-pages',
+    { repo: 'NeKzor/tmx-records', branch: 'master' },
+    { repo: 'NeKzBot/tmx-records', branch: 'api' },
+    { repo: 'NeKzor/tmx-records', branch: 'gh-pages' },
 ];
 
 const noWrap = { whiteSpace: 'nowrap' };
@@ -56,7 +56,7 @@ const AboutView = () => {
             }
         };
 
-        Promise.all(branches.map((branch) => fetch(branch)))
+        Promise.all(branches.map(({ repo, branch }) => fetch(`https://api.github.com/repos/${repo}/commits/${branch}`)))
             .then((results) => {
                 Promise.all(results.map((res) => res.json()))
                     .then((branches) => {
@@ -120,14 +120,14 @@ const AboutView = () => {
                             </TableHead>
                             <TableBody>
                                 {gitHub.map((commit, idx) => {
-                                    const branch = branches[idx];
+                                    const { repo, branch } = branches[idx];
                                     return (
                                         <TableRow tabIndex={-1} key={idx} style={noWrap}>
                                             <MinTableCell align="left">
                                                 <Link
                                                     color="inherit"
                                                     rel="noopener"
-                                                    href={'https://github.com/NeKzor/tmx-records/tree/' + branch}
+                                                    href={`https://github.com/${repo}/tree/${branch}`}
                                                 >
                                                     {branch}
                                                 </Link>
