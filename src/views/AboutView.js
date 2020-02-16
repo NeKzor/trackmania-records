@@ -124,11 +124,7 @@ const AboutView = () => {
                                     return (
                                         <TableRow tabIndex={-1} key={idx} style={noWrap}>
                                             <MinTableCell align="left">
-                                                <Link
-                                                    color="inherit"
-                                                    rel="noopener"
-                                                    href={`https://github.com/${repo}/tree/${branch}`}
-                                                >
+                                                <Link color="inherit" rel="noopener" href={`https://github.com/${repo}/tree/${branch}`}>
                                                     {branch}
                                                 </Link>
                                             </MinTableCell>
