@@ -4,17 +4,12 @@ on: [push]
 
 jobs:
   gh-pages:
-    name: Deploy App to GitHub Pages
+    name: GitHub Pages
     runs-on: ubuntu-16.04
-    if: "contains(github.event.head_commit.message, '[deploy]')"
     steps:
     - name: Checkout
       uses: actions/checkout@v2
-    - name: Install Dependencies
-      run: npm install
-    - name: Build
-      run: npm run build
     - name: Deploy
-      run: node scripts/deploy.js
+      run: ./deploy
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

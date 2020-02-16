@@ -1,0 +1,21 @@
+#!/bin/bash
+
+repository="https://${GITHUB_ACTOR}:${GITHUB_TOKEN}@github.com/NeKzor/test.git"
+branch="gh-pages"
+folder="build"
+
+git config --global user.name "NeKzor"
+git config --global user.email "NeKzor@users.noreply.github.com"
+
+git clone --single-branch --branch "${branch}" "${repository}" "${folder}"
+
+npm install
+npm run build
+
+pushd "${folder}"
+
+git add --all
+git commit -m "Update"
+git push "${repository}" "${branch}"
+
+popd
