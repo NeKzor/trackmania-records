@@ -1,7 +1,7 @@
 import React from 'react';
 import Moment from 'react-moment';
 import moment from 'moment';
-/* import IconButton from '@material-ui/core/IconButton'; */
+import IconButton from '@material-ui/core/IconButton';
 import Link from '@material-ui/core/Link';
 import { makeStyles } from '@material-ui/core/styles';
 import Table from '@material-ui/core/Table';
@@ -11,9 +11,7 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import TableSortLabel from '@material-ui/core/TableSortLabel';
 import Tooltip from '@material-ui/core/Tooltip';
-/* import SaveAltIcon from '@material-ui/icons/SaveAlt';
-import PlayArrowIcon from '@material-ui/icons/PlayArrow';
-import WarningIcon from '@material-ui/icons/Warning'; */
+import WarningIcon from '@material-ui/icons/Warning';
 import { stableSort } from '../utils/stableSort';
 import tmx from '../utils/tmx';
 import { formatScore, getDateDifferenceColor } from '../utils/tools';
@@ -24,7 +22,6 @@ const rows = [
     { id: 'user.name', sortable: true, label: 'Player', align: 'left' },
     { id: 'date', sortable: true, label: 'Date', align: 'left' },
     { id: 'duration', sortable: true, label: 'Duration', align: 'left' },
-    /* { id: 'replay', sortable: false, label: 'Replay/Video', align: 'left' }, */
 ];
 
 const RecordsTableHead = ({ order, orderBy, onRequestSort }) => {
@@ -81,6 +78,8 @@ const RecordsTable = ({ data, game, stats, useLiveDuration }) => {
         }));
     };
 
+    const tmxGame = tmx(game);
+
     const classes = useStyles();
 
     return (
@@ -90,81 +89,74 @@ const RecordsTable = ({ data, game, stats, useLiveDuration }) => {
                 <TableBody>
                     {stableSort(data, order, orderBy)
                         .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-                        .map((wr) => (
-                            <TableRow tabIndex={-1} key={`${wr.track.id}-${wr.user.id}`}>
-                                {(wr.track.isFirst || orderBy !== 'track.name') && (
-                                    <MinTableCell style={noWrap} rowSpan={orderBy !== 'track.name' ? 1 : wr.track.records} align="left">
-                                        <Link color="inherit" href={tmx(game).trackUrl(wr.track.id)} rel="noreferrer" target="_blank">
-                                            {wr.track.name}
-                                        </Link>
-                                    </MinTableCell>
-                                )}
-                                <MinTableCell align="left">{formatScore(wr.score, game, wr.track.type)}</MinTableCell>
-                                <MinTableCell align="left">
-                                    <Link
-                                        style={noWrap}
-                                        color="inherit"
-                                        href={tmx(game).userUrl(wr.user.id)}
-                                        rel="noreferrer"
-                                        target="_blank"
-                                    >
-                                        {wr.user.name}
-                                    </Link>
-                                </MinTableCell>
-                                <MinTableCell align="left">
-                                    <Tooltip title={<Moment fromNow>{wr.date}</Moment>} placement="bottom-end" enterDelay={300}>
-                                        <Moment style={{ color: getDateDifferenceColor(wr.date), ...noWrap }} format="YYYY-MM-DD">
-                                            {wr.date}
-                                        </Moment>
-                                    </Tooltip>
-                                </MinTableCell>
-                                <MinTableCell align="left">
-                                    <Tooltip title="in days" placement="bottom-end" enterDelay={300}>
-                                        {useLiveDuration ? (
-                                            <Moment style={noWrap} diff={wr.date} unit="days"></Moment>
-                                        ) : (
-                                            <span>{wr.duration}</span>
+                        .map((wr) => {
+                            const score = formatScore(wr.score, game, wr.track.type);
+
+                            return (
+                                <TableRow tabIndex={-1} key={`${wr.track.name}-${wr.user.id}`}>
+                                    {(wr.track.isFirst || orderBy !== 'track.name') && (
+                                        <MinTableCell style={noWrap} rowSpan={orderBy !== 'track.name' ? 1 : wr.track.records} align="left">
+                                            <Link color="inherit" href={tmxGame.trackUrl(wr.track.id)} rel="noreferrer" target="_blank">
+                                                {wr.track.name}
+                                            </Link>
+                                        </MinTableCell>
+                                    )}
+                                    <MinTableCell align="left">
+                                        <Tooltip title="Download Replay" placement="bottom-end" enterDelay={300}>
+                                            <Link
+                                                style={noWrap}
+                                                color="inherit"
+                                                href={tmxGame.replayUrl(wr.replay)}
+                                                rel="noreferrer"
+                                                target="_blank"
+                                            >
+                                                {score}
+                                            </Link>
+                                        </Tooltip>
+                                        {game === 'tm2' && moment(wr.date).isBefore('2017-05-09') && (
+                                            <Tooltip
+                                                title="This run was done on an older game version."
+                                                placement="bottom-end"
+                                                enterDelay={300}
+                                            >
+                                                <span>
+                                                    <IconButton size="small" disabled>
+                                                        <WarningIcon fontSize="inherit" />
+                                                    </IconButton>
+                                                </span>
+                                            </Tooltip>
                                         )}
-                                    </Tooltip>
-                                </MinTableCell>
-                                {/* <MinTableCell align="left">
-                                    <Tooltip title="Download Replay" placement="bottom-end" enterDelay={300}>
-                                        <IconButton size="small" href={tmx(game).replayUrl(wr.replay)} target="_blank">
-                                            <SaveAltIcon fontSize="inherit" />
-                                        </IconButton>
-                                    </Tooltip>
-                                    <Tooltip title="Search Record on YouTube" placement="bottom-end" enterDelay={300}>
-                                        <IconButton
-                                            size="small"
-                                            href={`https://www.youtube.com/results?search_query=${[
-                                                game,
-                                                wr.track.name,
-                                                'in',
-                                                formatScore(wr.score, game, wr.track.type),
-                                                'by',
-                                                wr.user.name,
-                                            ].join('+')}`}
+                                    </MinTableCell>
+                                    <MinTableCell align="left">
+                                        <Link
+                                            style={noWrap}
+                                            color="inherit"
+                                            href={tmxGame.userUrl(wr.user.id)}
+                                            rel="noreferrer"
                                             target="_blank"
                                         >
-                                            <PlayArrowIcon fontSize="inherit" />
-                                        </IconButton>
-                                    </Tooltip>
-                                    {game === 'tm2' && moment(wr.date).isBefore('2017-05-09') && (
-                                        <Tooltip
-                                            title="This run was done on an older game version."
-                                            placement="bottom-end"
-                                            enterDelay={300}
-                                        >
-                                            <span>
-                                                <IconButton size="small" disabled>
-                                                    <WarningIcon fontSize="inherit" />
-                                                </IconButton>
-                                            </span>
+                                            {wr.user.name}
+                                        </Link>
+                                    </MinTableCell>
+                                    <MinTableCell align="left">
+                                        <Tooltip title={<Moment fromNow>{wr.date}</Moment>} placement="bottom-end" enterDelay={300}>
+                                            <Moment style={{ color: getDateDifferenceColor(wr.date), ...noWrap }} format="YYYY-MM-DD">
+                                                {wr.date}
+                                            </Moment>
                                         </Tooltip>
-                                    )}
-                                </MinTableCell> */}
-                            </TableRow>
-                        ))}
+                                    </MinTableCell>
+                                    <MinTableCell align="left">
+                                        <Tooltip title="in days" placement="bottom-end" enterDelay={300}>
+                                            {useLiveDuration ? (
+                                                <Moment style={noWrap} diff={wr.date} unit="days"></Moment>
+                                            ) : (
+                                                <span>{wr.duration}</span>
+                                            )}
+                                        </Tooltip>
+                                    </MinTableCell>
+                                </TableRow>
+                            );
+                        })}
                 </TableBody>
                 <TableBody>
                     {stats.totalTime > 0 && (

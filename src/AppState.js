@@ -11,7 +11,7 @@ class DarkMode {
     }
 }
 
-const inititalState = {
+const initialState = {
     darkMode: new DarkMode(),
 };
 
@@ -27,7 +27,7 @@ export const AppReducer = [
                 throw new Error('Unknown action type.');
         }
     },
-    inititalState,
+    initialState,
 ];
 
-export default React.createContext(inititalState);
+export default React.createContext(initialState);

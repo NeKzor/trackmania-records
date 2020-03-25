@@ -13,6 +13,7 @@ import Zoom from '@material-ui/core/Zoom';
 import KeyboardArrowUpIcon from '@material-ui/icons/KeyboardArrowUp';
 import RankingsTable from '../components/RankingsTable';
 import RecordsTable from '../components/RecordsTable';
+import RecordsTableSrcom from '../components/RecordsTableSrcom';
 import SimpleTitle from '../components/SimpleTitle';
 import RecordsChart from '../components/RecordsChart';
 import Api from '../Api';
@@ -119,6 +120,8 @@ const GameView = ({ match }) => {
         smoothScroll();
     };
 
+    const Table = gameName === 'tmwii' ? RecordsTableSrcom : RecordsTable;
+
     const classes = useStyles();
 
     return (
@@ -148,11 +151,12 @@ const GameView = ({ match }) => {
                             <Box p={3}>
                                 <Grid container direction="column" justify="center">
                                     <Grid item xs={12}>
-                                        <RecordsTable
+                                        <Table
                                             data={game[tab].tracks}
                                             game={gameName}
                                             stats={game[tab].stats}
                                             useLiveDuration={useLiveDuration}
+                                            category={game[tab].name}
                                         />
                                     </Grid>
                                     <Grid item xs={12} className={classes.padTop}>

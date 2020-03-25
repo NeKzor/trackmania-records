@@ -8,6 +8,13 @@ export default (game) =>
               replayUrl: (id) => `https://tm.mania-exchange.com/replays/download/${id}`,
               userUrl: (id) => `https://tm.mania-exchange.com/user/profile/${id}`,
           }
+        : game === 'tmwii'
+        ? {
+              trackUrl: (id) => `https://speedrun.com/tmwii/${id}`,
+              imageUrl: (id) => undefined,
+              replayUrl: (id) => undefined,
+              userUrl: (id) => `https://www.speedrun.com/user/${id}`,
+          }
         : (() => ({
               trackUrl: (id) => `${protocol(game)}://${game}.tm-exchange.com/main.aspx?action=trackshow&id=${id}`,
               imageUrl: (id) => `${protocol(game)}://${game}.tm-exchange.com/getclean.aspx?action=trackscreenscreens&id=${id}`,

@@ -46,6 +46,7 @@ const pageLinks = [
     { title: '404 - Page Not Found', link: null, inDrawer: false },
     { title: 'tmx-records', link: '/', inDrawer: false },
     { title: 'TrackMania 2', link: '/tm2', inDrawer: true, default: true },
+    { title: 'TrackMania Wii', link: '/tmwii', inDrawer: true, default: true },
     { title: 'Nations Forever', link: '/tmnforever', inDrawer: true },
     { title: 'United', link: '/united', inDrawer: true },
     { title: 'Nations ESWC', link: '/nations', inDrawer: true },
@@ -97,7 +98,10 @@ const AppBar = ({ location }) => {
                     ))}
                 <Divider />
                 <List>
-                    <ListItem button key={0} component={RouterLink} to={'/about'}>
+                    <ListItem button key={0} component={RouterLink} to={'/replay'}>
+                        <ListItemText primary={'Replay Inspection'} />
+                    </ListItem>
+                    <ListItem button key={1} component={RouterLink} to={'/about'}>
                         <ListItemText primary={'About'} />
                     </ListItem>
                 </List>

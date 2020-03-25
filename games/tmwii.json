@@ -1,0 +1,134 @@
+{
+    "categories": [
+        {
+            "name": "Stadium",
+            "id": "xd1g547d"
+        },
+        {
+            "name": "Island",
+            "id": "zd3wqo8k"
+        },
+        {
+            "name": "Desert",
+            "id": "9kvon6o2"
+        },
+        {
+            "name": "Snow",
+            "id": "rklln3rk"
+        },
+        {
+            "name": "Rally",
+            "id": "ndx9n55d"
+        },
+        {
+            "name": "Coast",
+            "id": "w20gnx8k"
+        }
+    ],
+    "levels": [
+        {
+            "name": "A1",
+            "id": "ywejeryd"
+        },
+        {
+            "name": "A2",
+            "id": "69zqgyl9"
+        },
+        {
+            "name": "A3",
+            "id": "r9gjge59"
+        },
+        {
+            "name": "A4",
+            "id": "o9xze80w"
+        },
+        {
+            "name": "A5",
+            "id": "495r130d"
+        },
+        {
+            "name": "B1",
+            "id": "rdq3kpkw"
+        },
+        {
+            "name": "B2",
+            "id": "5d7emngw"
+        },
+        {
+            "name": "B3",
+            "id": "kwj8qxn9"
+        },
+        {
+            "name": "B4",
+            "id": "owoepood"
+        },
+        {
+            "name": "B5",
+            "id": "xd13qke9"
+        },
+        {
+            "name": "C1",
+            "id": "ewpz6mk9"
+        },
+        {
+            "name": "C2",
+            "id": "y9mroq5w"
+        },
+        {
+            "name": "C3",
+            "id": "5wkn7z2w"
+        },
+        {
+            "name": "C4",
+            "id": "59287go9"
+        },
+        {
+            "name": "C5",
+            "id": "29vlre3w"
+        },
+        {
+            "name": "D1",
+            "id": "xd4yo72d"
+        },
+        {
+            "name": "D2",
+            "id": "xd025rx9"
+        },
+        {
+            "name": "D3",
+            "id": "rw6l6prw"
+        },
+        {
+            "name": "D4",
+            "id": "n93nj5nw"
+        },
+        {
+            "name": "D5",
+            "id": "z98zkvg9"
+        },
+        {
+            "name": "E1",
+            "id": "rdnl1jqw"
+        },
+        {
+            "name": "F1",
+            "id": "ldy5z7kw"
+        },
+        {
+            "name": "F2",
+            "id": "n93nj5zw"
+        },
+        {
+            "name": "F3",
+            "id": "z98zkvp9"
+        },
+        {
+            "name": "F4",
+            "id": "rdnl1j7w"
+        },
+        {
+            "name": "F5",
+            "id": "ldy5z7rw"
+        }
+    ]
+}

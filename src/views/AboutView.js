@@ -60,7 +60,6 @@ const AboutView = () => {
             .then((results) => {
                 Promise.all(results.map((res) => res.json()))
                     .then((branches) => {
-                        console.log('fetched');
                         if (isMounted.current) {
                             setGitHub(
                                 branches.map((branch) => ({
@@ -86,7 +85,7 @@ const AboutView = () => {
                     TrackMania Exchange Records & Statistics
                 </Typography>
                 <br />
-                <Typography variant="body1">This web app mirrors TrackMania Exchange Nadeo records.</Typography>
+                <Typography variant="body1">This web app mirrors Nadeo world reords from TrackMania Exchange and speedrun.com.</Typography>
                 <Typography variant="body1">
                     Additionally it ranks players based on how many world records they hold and how long their records have been lasting.
                 </Typography>
@@ -147,7 +146,7 @@ const AboutView = () => {
                                                     <Link
                                                         color="inherit"
                                                         rel="noopener"
-                                                        href={'https://github.com/NeKzor/tmx-records/commit/' + commit.sha}
+                                                        href={`https://github.com/${repo}/commit/${commit.sha}`}
                                                     >
                                                         {commit.sha}
                                                     </Link>
@@ -182,6 +181,10 @@ const AboutView = () => {
                 <br />
                 <Link rel="noopener" href="https://tm.mania-exchange.com">
                     tm.mania-exchange.com
+                </Link>
+                <br />
+                <Link rel="noopener" href="https://www.speedrun.com/tmwii">
+                    speedrun.com/tmwii
                 </Link>
             </Paper>
         </ViewContent>

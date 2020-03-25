@@ -2,12 +2,20 @@ const ghPages = require('gh-pages');
 const cron = require('node-cron');
 const tmx = require('./tmx');
 const tmx2 = require('./tmx2');
+const tmwii = require('./tmwii');
 const { log } = require('./utils');
 
 const output = process.argv[3] || __dirname + '/../api';
 
 cron.schedule('0 18 * * *', async () => {
-    for (let game of ['tmnforever', 'united', 'nations', 'sunrise', 'original']) {
+    const now = new Date();
+    const tm1 = ['tmnforever', 'united', 'nations'];
+
+    if (now.getDate() === 1) {
+        tm1.push('sunrise', 'original');
+    }
+
+    for (const game of tm1) {
         try {
             log.info(`scraping ${game}...`);
             await tmx(game, output);
@@ -19,6 +27,13 @@ cron.schedule('0 18 * * *', async () => {
     try {
         log.info('scraping tm2');
         await tmx2(output);
+    } catch (err) {
+        log.error(err);
+    }
+
+    try {
+        log.info('scraping tmwii');
+        await tmwii(output);
     } catch (err) {
         log.error(err);
     }
