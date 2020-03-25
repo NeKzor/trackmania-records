@@ -34,10 +34,19 @@ const RecordsTableSrcomHead = ({ order, orderBy, onRequestSort }) => {
         <TableHead>
             <TableRow>
                 {rows.map((row) => (
-                    <TableCell key={row.id} align={row.align} padding="default" sortDirection={orderBy === row.id ? order : false}>
+                    <TableCell
+                        key={row.id}
+                        align={row.align}
+                        padding="default"
+                        sortDirection={orderBy === row.id ? order : false}
+                    >
                         {row.sortable === true && (
                             <Tooltip title={'Sort by ' + row.label} placement="bottom-start" enterDelay={300}>
-                                <TableSortLabel active={orderBy === row.id} direction={order} onClick={createSortHandler(row.id)}>
+                                <TableSortLabel
+                                    active={orderBy === row.id}
+                                    direction={order}
+                                    onClick={createSortHandler(row.id)}
+                                >
                                     {row.label}
                                 </TableSortLabel>
                             </Tooltip>
@@ -91,8 +100,17 @@ const RecordsTableSrcom = ({ data, game, stats, useLiveDuration, category }) => 
                         .map((wr) => (
                             <TableRow tabIndex={-1} key={`${wr.track.name}-${wr.user.id}`}>
                                 {(wr.track.isFirst || orderBy !== 'track.name') && (
-                                    <MinTableCell style={noWrap} rowSpan={orderBy !== 'track.name' ? 1 : wr.track.records} align="left">
-                                        <Link color="inherit" href={srcom.trackUrl(wr.track.name, category)} rel="noreferrer" target="_blank">
+                                    <MinTableCell
+                                        style={noWrap}
+                                        rowSpan={orderBy !== 'track.name' ? 1 : wr.track.records}
+                                        align="left"
+                                    >
+                                        <Link
+                                            color="inherit"
+                                            href={srcom.trackUrl(wr.track.name, category)}
+                                            rel="noreferrer"
+                                            target="_blank"
+                                        >
                                             {wr.track.name}
                                         </Link>
                                     </MinTableCell>
@@ -120,8 +138,15 @@ const RecordsTableSrcom = ({ data, game, stats, useLiveDuration, category }) => 
                                     </Link>
                                 </MinTableCell>
                                 <MinTableCell align="left">
-                                    <Tooltip title={<Moment fromNow>{wr.date}</Moment>} placement="bottom-end" enterDelay={300}>
-                                        <Moment style={{ color: getDateDifferenceColor(wr.date), ...noWrap }} format="YYYY-MM-DD">
+                                    <Tooltip
+                                        title={<Moment fromNow>{wr.date}</Moment>}
+                                        placement="bottom-end"
+                                        enterDelay={300}
+                                    >
+                                        <Moment
+                                            style={{ color: getDateDifferenceColor(wr.date), ...noWrap }}
+                                            format="YYYY-MM-DD"
+                                        >
                                             {wr.date}
                                         </Moment>
                                     </Tooltip>
@@ -137,11 +162,7 @@ const RecordsTableSrcom = ({ data, game, stats, useLiveDuration, category }) => 
                                 </MinTableCell>
                                 <MinTableCell align="left">
                                     <Tooltip title="Watch Run" placement="bottom-end" enterDelay={300}>
-                                        <IconButton
-                                            size="small"
-                                            href={wr.media}
-                                            target="_blank"
-                                        >
+                                        <IconButton size="small" href={wr.media} target="_blank">
                                             <PlayArrowIcon fontSize="inherit" />
                                         </IconButton>
                                     </Tooltip>
@@ -154,7 +175,11 @@ const RecordsTableSrcom = ({ data, game, stats, useLiveDuration, category }) => 
                         <TableRow>
                             <MinTableCell align="right">Total Time</MinTableCell>
                             <MinTableCell>
-                                <Tooltip title={moment.duration(stats.totalTime, 'ms').humanize()} placement="bottom-end" enterDelay={300}>
+                                <Tooltip
+                                    title={moment.duration(stats.totalTime, 'ms').humanize()}
+                                    placement="bottom-end"
+                                    enterDelay={300}
+                                >
                                     <span>{formatScore(stats.totalTime, game)}</span>
                                 </Tooltip>
                             </MinTableCell>

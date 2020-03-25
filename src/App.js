@@ -59,7 +59,11 @@ const App = () => {
                             <Redirect exact from="/tmn" to="/nations" />
                             <Redirect exact from="/tms" to="/sunrise" />
                             <Redirect exact from="/tmnf" to="/tmnforever" />
-                            <Route exact path="/(nations|original|sunrise|tm2|tmnforever|tmwii|united)/:date?" component={GameView} />
+                            <Route
+                                exact
+                                path="/(nations|original|sunrise|tm2|tmnforever|tmwii|united)/:date?"
+                                component={GameView}
+                            />
                             <Route exact path="/about" component={AboutView} />
                             <Route exact path="/replay" component={ReplayView} />
                             <Route component={NotFoundView} />

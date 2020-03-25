@@ -61,8 +61,9 @@ const AppBar = ({ location }) => {
 
     const page = React.useMemo(
         () =>
-            pageLinks.find((x) => x.link === location.pathname || (x.link !== null && location.pathname.startsWith(x.link + '/'))) ||
-            pageLinks[0],
+            pageLinks.find(
+                (x) => x.link === location.pathname || (x.link !== null && location.pathname.startsWith(x.link + '/')),
+            ) || pageLinks[0],
         [location],
     );
 

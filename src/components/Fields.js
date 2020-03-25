@@ -23,6 +23,13 @@ export const NumberField = (props) => <TextField type="number" InputLabelProps={
 
 export const DateField = (props) => (
     <MuiPickersUtilsProvider utils={MomentUtils}>
-        <DatePicker placeholder="yyyy-mm-dd" format="YYYY-MM-DD" InputLabelProps={shrink} helperText={null} variant="inline" {...props} />
+        <DatePicker
+            placeholder="yyyy-mm-dd"
+            format="YYYY-MM-DD"
+            InputLabelProps={shrink}
+            helperText={null}
+            variant="inline"
+            {...props}
+        />
     </MuiPickersUtilsProvider>
 );

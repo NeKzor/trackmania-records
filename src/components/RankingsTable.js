@@ -26,10 +26,19 @@ const RankingsTableHead = ({ order, orderBy, onRequestSort }) => {
         <TableHead>
             <TableRow>
                 {rows.map((row) => (
-                    <TableCell key={row.id} align={row.align} padding="default" sortDirection={orderBy === row.id ? order : false}>
+                    <TableCell
+                        key={row.id}
+                        align={row.align}
+                        padding="default"
+                        sortDirection={orderBy === row.id ? order : false}
+                    >
                         {row.sortable === true && (
                             <Tooltip title={'Sort by ' + row.label} placement="bottom-start" enterDelay={300}>
-                                <TableSortLabel active={orderBy === row.id} direction={order} onClick={createSortHandler(row.id, row.id2)}>
+                                <TableSortLabel
+                                    active={orderBy === row.id}
+                                    direction={order}
+                                    onClick={createSortHandler(row.id, row.id2)}
+                                >
                                     {row.label}
                                 </TableSortLabel>
                             </Tooltip>

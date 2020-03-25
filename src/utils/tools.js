@@ -14,7 +14,9 @@ export function formatScore(score, game, type = undefined) {
         let sec = tsec % 60;
         let min = Math.floor(tsec / 60);
 
-        return (min > 0 ? min + ':' : '') + (sec < 10 && min > 0 ? '0' + sec : sec) + '.' + (csec < 10 ? '0' + csec : csec);
+        return (
+            (min > 0 ? min + ':' : '') + (sec < 10 && min > 0 ? '0' + sec : sec) + '.' + (csec < 10 ? '0' + csec : csec)
+        );
     }
 
     let msec = score % 1000;

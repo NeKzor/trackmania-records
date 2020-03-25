@@ -85,9 +85,12 @@ const AboutView = () => {
                     TrackMania Exchange Records & Statistics
                 </Typography>
                 <br />
-                <Typography variant="body1">This web app mirrors Nadeo world reords from TrackMania Exchange and speedrun.com.</Typography>
                 <Typography variant="body1">
-                    Additionally it ranks players based on how many world records they hold and how long their records have been lasting.
+                    This web app mirrors Nadeo world records from TrackMania Exchange and speedrun.com.
+                </Typography>
+                <Typography variant="body1">
+                    Additionally it ranks players based on how many world records they hold and how long their records
+                    have been lasting.
                 </Typography>
 
                 <Padding />
@@ -123,7 +126,11 @@ const AboutView = () => {
                                     return (
                                         <TableRow tabIndex={-1} key={idx} style={noWrap}>
                                             <MinTableCell align="left">
-                                                <Link color="inherit" rel="noopener" href={`https://github.com/${repo}/tree/${branch}`}>
+                                                <Link
+                                                    color="inherit"
+                                                    rel="noopener"
+                                                    href={`https://github.com/${repo}/tree/${branch}`}
+                                                >
                                                     {branch}
                                                 </Link>
                                             </MinTableCell>
