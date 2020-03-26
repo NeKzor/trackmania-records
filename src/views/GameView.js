@@ -3,33 +3,23 @@ import { withRouter } from 'react-router';
 import moment from 'moment';
 import Box from '@material-ui/core/Box';
 import Grid from '@material-ui/core/Grid';
-import Fab from '@material-ui/core/Fab';
 import LinearProgress from '@material-ui/core/LinearProgress';
 import Paper from '@material-ui/core/Paper';
 import Tab from '@material-ui/core/Tab';
 import Tabs from '@material-ui/core/Tabs';
 import Typography from '@material-ui/core/Typography';
-import Zoom from '@material-ui/core/Zoom';
-import KeyboardArrowUpIcon from '@material-ui/icons/KeyboardArrowUp';
 import RankingsTable from '../components/RankingsTable';
 import RecordsTable from '../components/RecordsTable';
 import RecordsTableSrcom from '../components/RecordsTableSrcom';
 import SimpleTitle from '../components/SimpleTitle';
 import RecordsChart from '../components/RecordsChart';
+import { makeStyles } from '@material-ui/core';
+import FloatingActionButton from '../components/FloatingActionButton';
 import Api from '../Api';
 import { useIsMounted } from '../Hooks';
 import ViewContent from './ViewContent';
-import { makeStyles } from '@material-ui/core';
 
 const useStyles = makeStyles((_) => ({
-    fab: {
-        margin: 0,
-        top: 'auto',
-        right: 30,
-        bottom: 30,
-        left: 'auto',
-        position: 'fixed',
-    },
     padTop: {
         paddingTop: '70px',
     },
@@ -109,17 +99,6 @@ const GameView = ({ match }) => {
         setTab(newValue);
     };
 
-    const jumpToTop = () => {
-        const smoothScroll = () => {
-            const y = document.documentElement.scrollTop;
-            if (y > 0) {
-                window.requestAnimationFrame(smoothScroll);
-                window.scrollTo(0, y - y / 5);
-            }
-        };
-        smoothScroll();
-    };
-
     const Table = gameName === 'tmwii' ? RecordsTableSrcom : RecordsTable;
 
     const classes = useStyles();
@@ -190,11 +169,7 @@ const GameView = ({ match }) => {
                     </>
                 )}
             </Paper>
-            <Zoom in={game !== undefined && game.length !== 0} timeout={1000}>
-                <Fab title="Jump to top" color="primary" className={classes.fab} onClick={jumpToTop}>
-                    <KeyboardArrowUpIcon />
-                </Fab>
-            </Zoom>
+            <FloatingActionButton />
         </ViewContent>
     );
 };
