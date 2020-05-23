@@ -25,7 +25,7 @@ const defaultReplay = {
     chunkOffset: 348,
 };
 
-const NotFoundView = () => {
+const ReplayView = () => {
     const isMounted = useIsMounted();
     const theme = useTheme();
 
@@ -162,4 +162,4 @@ const NotFoundView = () => {
     );
 };
 
-export default NotFoundView;
+export default ReplayView;
