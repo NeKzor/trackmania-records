@@ -82,11 +82,12 @@ const AboutView = () => {
         <ViewContent>
             <Paper className={classes.aboutBox}>
                 <Typography component="h2" variant="h5">
-                    TrackMania Exchange Records & Statistics
+                    TrackMania Campaign Records & Statistics
                 </Typography>
                 <br />
                 <Typography variant="body1">
-                    This web app mirrors Nadeo world records from TrackMania Exchange and speedrun.com.
+                    This web app mirrors campaign world records of many TrackMania games. Data is mainly provided by
+                    TrackMania Exchange but also by speedrun.com.
                 </Typography>
                 <Typography variant="body1">
                     Additionally it ranks players based on how many world records they hold and how long their records
