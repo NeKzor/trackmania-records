@@ -42,7 +42,13 @@ const main = async (output, maxFetch = undefined) => {
         const tracks = [];
         let count = 0;
 
+        const puzzleOrPlatform = category.name === 'Puzzle' || category.name === 'Platform';
+
         for (const level of levels) {
+            if (puzzleOrPlatform && level.name.startsWith('F')) {
+                break;
+            }
+
             const res = await fetch(`${baseApi}/leaderboards/${tmwii}/level/${level.id}/${category.id}`, config);
             const leaderboard = (await res.json()).data;
 

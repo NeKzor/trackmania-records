@@ -23,6 +23,14 @@
         {
             "name": "Coast",
             "id": "w20gnx8k"
+        },
+        {
+            "name": "Puzzle",
+            "id": "ndx936vd"
+        },
+        {
+            "name": "Platform",
+            "id": "w20gq7ok"
         }
     ],
     "levels": [
