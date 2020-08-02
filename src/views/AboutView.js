@@ -25,9 +25,9 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const branches = [
-    { repo: 'NeKzor/tmx-records', branch: 'master' },
+    { repo: 'NeKzor/trackmania-records', branch: 'master' },
     { repo: 'NeKzBot/tmx-records', branch: 'api' },
-    { repo: 'NeKzor/tmx-records', branch: 'gh-pages' },
+    { repo: 'NeKzor/trackmania-records', branch: 'gh-pages' },
 ];
 
 const noWrap = { whiteSpace: 'nowrap' };
@@ -82,12 +82,12 @@ const AboutView = () => {
         <ViewContent>
             <Paper className={classes.aboutBox}>
                 <Typography component="h2" variant="h5">
-                    TrackMania Campaign Records & Statistics
+                    Trackmania Campaign Records & Statistics
                 </Typography>
                 <br />
                 <Typography variant="body1">
-                    This web app mirrors campaign world records of many TrackMania games. Data is mainly provided by
-                    TrackMania Exchange but also by speedrun.com.
+                    This web app mirrors campaign world records of many Trackmania games. Data is mainly provided by
+                    Trackmania Exchange but also by speedrun.com.
                 </Typography>
                 <Typography variant="body1">
                     Additionally it ranks players based on how many world records they hold and how long their records
@@ -193,6 +193,10 @@ const AboutView = () => {
                 <br />
                 <Link rel="noopener" href="https://www.speedrun.com/tmwii">
                     speedrun.com/tmwii
+                </Link>
+                <br />
+                <Link rel="noopener" href="https://github.com/jonese1234/Trackmania-Leaderboard">
+                    jonese1234/Trackmania-Leaderboard
                 </Link>
             </Paper>
         </ViewContent>

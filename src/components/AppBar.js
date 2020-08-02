@@ -44,14 +44,15 @@ const useStyles = makeStyles((theme) => ({
 
 const pageLinks = [
     { title: '404 - Page Not Found', link: null, inDrawer: false },
-    { title: 'tmx-records', link: '/', inDrawer: false },
-    { title: 'TrackMania 2', link: '/tm2', inDrawer: true, default: true },
-    { title: 'TrackMania Wii', link: '/tmwii', inDrawer: true, default: true },
+    { title: 'trackmania-records', link: '/', inDrawer: false },
+    { title: 'Trackmania', link: '/trackmania', inDrawer: true, default: true },
+    { title: 'Trackmania 2', link: '/tm2', inDrawer: true, default: true },
+    { title: 'Trackmania Wii', link: '/tmwii', inDrawer: true, default: true },
     { title: 'Nations Forever', link: '/tmnforever', inDrawer: true },
     { title: 'United', link: '/united', inDrawer: true },
     { title: 'Nations ESWC', link: '/nations', inDrawer: true },
-    { title: 'Sunrise', link: '/sunrise', inDrawer: true },
-    { title: 'Original', link: '/original', inDrawer: true },
+    /* { title: 'Sunrise', link: '/sunrise', inDrawer: true },
+    { title: 'Original', link: '/original', inDrawer: true }, */
     { title: 'Replay Inspection', link: '/replay', inDrawer: false },
     { title: 'About', link: '/about', inDrawer: false },
 ];
@@ -79,7 +80,7 @@ const AppBar = ({ location }) => {
         <div className={classes.list}>
             <List>
                 <ListItem button key={0} component={RouterLink} to={'/'}>
-                    <ListItemText primary="TMX Records" />
+                    <ListItemText primary="Trackmania Records" />
                 </ListItem>
             </List>
             <Divider />
@@ -121,7 +122,7 @@ const AppBar = ({ location }) => {
                     </Hidden>
                     <Typography variant="h6" color="inherit">
                         <Link component={RouterLink} to="/" color="inherit" underline="none">
-                            TMX Records
+                            Trackmania Records
                         </Link>
                     </Typography>
                 </Toolbar>

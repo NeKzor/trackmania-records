@@ -4,7 +4,7 @@ const { delay, importJson, log, tryExportJson, tryMakeDir } = require('./utils')
 
 const tmx = ['tmnforever', 'united', 'nations', 'sunrise', 'original'];
 
-const config = { headers: { 'User-Agent': 'tmx-records-v1' } };
+const config = { headers: { 'User-Agent': 'trackmania-records-v1' } };
 
 module.exports = async (gameName, output, maxFetch = undefined) => {
     if (!tmx.find((x) => x === gameName)) {

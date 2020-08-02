@@ -1,10 +1,10 @@
+const cmpOptions = { numeric: true };
+
 export const stableSort = (array, order, orderBy) => {
     let desc = (a, b) => {
-        let aa = getPropFast(a, orderBy);
-        let bb = getPropFast(b, orderBy);
-        if (bb < aa) return -1;
-        if (bb > aa) return 1;
-        return 0;
+        let aa = getPropFast(a, orderBy).toString();
+        let bb = getPropFast(b, orderBy).toString();
+        return bb.localeCompare(aa, undefined, cmpOptions);
     };
 
     let cmp = order === 'desc' ? (a, b) => desc(a, b) : (a, b) => -desc(a, b);
@@ -22,15 +22,13 @@ export const stableSort = (array, order, orderBy) => {
 };
 export const stableSortSort = (array, order, orderBy, thenBy) => {
     let desc = (a, b) => {
-        let aa = getPropFast(a, orderBy);
-        let bb = getPropFast(b, orderBy);
-        if (bb < aa) return -1;
-        if (bb > aa) return 1;
-        aa = getPropFast(a, thenBy);
-        bb = getPropFast(b, thenBy);
-        if (bb < aa) return -1;
-        if (bb > aa) return 1;
-        return 0;
+        let aa = getPropFast(a, orderBy).toString();
+        let bb = getPropFast(b, orderBy).toString();
+        let cmp = bb.localeCompare(aa, undefined, cmpOptions);
+        if (cmp !== 0) return cmp;
+        aa = getPropFast(a, thenBy).toString();
+        bb = getPropFast(b, thenBy).toString();
+        return bb.localeCompare(aa, undefined, cmpOptions);
     };
 
     let cmp = order === 'desc' ? (a, b) => desc(a, b) : (a, b) => -desc(a, b);

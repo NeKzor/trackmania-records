@@ -1,5 +1,5 @@
 {
-    "name": "tmx-records",
+    "name": "trackmania-records",
     "version": "1.0.0",
     "author": "NeKz",
     "scripts": {
@@ -9,7 +9,7 @@
         "build": "react-scripts build && cp build/index.html build/404.html",
         "test": "react-scripts test --env=jsdom",
         "clone-api": "git clone --single-branch --branch api https://github.com/NeKzBot/tmx-records api",
-        "clone-build": "git clone --single-branch --branch gh-pages https://github.com/NeKzor/tmx-records build",
+        "clone-build": "git clone --single-branch --branch gh-pages https://github.com/NeKzor/trackmania-records build",
         "dev": "hs ./api --cors",
         "prettier": "prettier --config ./prettier.config.js --write './src/**/*.js' './scripts/**/*.js'"
     },
@@ -42,5 +42,5 @@
             "last 1 safari version"
         ]
     },
-    "homepage": "https://nekzor.github.io/tmx-records"
+    "homepage": "https://nekz.me/trackmania-records"
 }

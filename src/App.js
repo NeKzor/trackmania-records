@@ -11,6 +11,7 @@ import GameView from './views/GameView';
 import ReplayView from './views/ReplayView';
 import NotFoundView from './views/NotFoundView';
 import AppState, { AppReducer } from './AppState';
+import TrackmaniaView from './views/TrackmaniaView';
 
 const useStyles = makeStyles((theme) => ({
     views: {
@@ -49,16 +50,18 @@ const App = () => {
         <ThemeProvider theme={theme}>
             <CssBaseline />
             <AppState.Provider value={context}>
-                <BrowserRouter basename={process.env.NODE_ENV === 'production' ? '/tmx-records' : '/'}>
+                <BrowserRouter basename={process.env.NODE_ENV === 'production' ? '/trackmania-records' : '/'}>
                     <AppBar />
                     <div className={classes.views}>
                         <Switch>
-                            <Redirect exact from="/" to="/tm2" />
+                            <Redirect exact from="/" to="/trackmania" />
+                            <Redirect exact from="/tm" to="/trackmania" />
                             <Redirect exact from="/wii" to="/tmwii" />
                             <Redirect exact from="/tmo" to="/original" />
                             <Redirect exact from="/tmn" to="/nations" />
                             <Redirect exact from="/tms" to="/sunrise" />
                             <Redirect exact from="/tmnf" to="/tmnforever" />
+                            <Route exact path="/trackmania" component={TrackmaniaView} />
                             <Route
                                 exact
                                 path="/(nations|original|sunrise|tm2|tmnforever|tmwii|united)/:date?"

@@ -2,7 +2,7 @@ const moment = require('moment');
 const fetch = require('node-fetch');
 const { importJson, tryExportJson, tryMakeDir } = require('./utils');
 
-const config = { headers: { 'User-Agent': 'tmx-records-v1' } };
+const config = { headers: { 'User-Agent': 'trackmania-records-v1' } };
 
 const tmwii = '369p3m31';
 const baseApi = 'https://www.speedrun.com/api/v1';

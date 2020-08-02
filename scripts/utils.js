@@ -27,24 +27,26 @@ const importJson = (file) => {
 };
 
 const log = {
-    info: (msg) =>
-        console.log(chalk`{bold.white [${moment().format('YYYY-MM-DD')}] [${moment().format('HH:mm:ss')}]} ${msg}`),
-    success: (msg) =>
+    info: (...msg) =>
+        console.log(chalk`{bold.white [${moment().format('YYYY-MM-DD')}] [${moment().format('HH:mm:ss')}]} ${msg.join(' ')}`),
+    success: (...msg) =>
         console.log(
             chalk`{bold.white [${moment().format('YYYY-MM-DD')}] [${moment().format(
                 'HH:mm:ss',
-            )}]} {greenBright ${msg}}`,
+            )}]} {greenBright ${msg.join(' ')}}`,
         ),
-    warn: (msg) =>
+    warn: (...msg) =>
         console.log(
             chalk`{bold.white [${moment().format('YYYY-MM-DD')}] [${moment().format(
                 'HH:mm:ss',
-            )}]} {yellowBright ${msg}}`,
+            )}]} {yellowBright ${msg.join(' ')}}`,
         ),
-    error: (msg) =>
+    error: (...msg) => {
+        msg.forEach(console.error);
         console.log(
-            chalk`{bold.white [${moment().format('YYYY-MM-DD')}] [${moment().format('HH:mm:ss')}]} {redBright ${msg}}`,
-        ),
+            chalk`{bold.white [${moment().format('YYYY-MM-DD')}] [${moment().format('HH:mm:ss')}]} {redBright ${msg.join(' ')}}`,
+        );
+    },
 };
 
 module.exports = {

@@ -3,19 +3,14 @@ const cron = require('node-cron');
 const tmx = require('./tmx');
 const tmx2 = require('./tmx2');
 const tmwii = require('./tmwii');
+const trackmania = require('./trackmania');
 const { log } = require('./utils');
 
-const output = process.argv[3] || __dirname + '/../api';
+const output = require('path').join(__dirname, '/../api');
+const now = process.argv.some((arg) => arg === '-n' || arg === '--now');
 
-cron.schedule('0 18 * * *', async () => {
-    const now = new Date();
-    const tm1 = ['tmnforever', 'united', 'nations'];
-
-    if (now.getDate() === 1) {
-        tm1.push('sunrise', 'original');
-    }
-
-    for (const game of tm1) {
+const main = async () => {
+    for (const game of ['tmnforever', 'united', 'nations']) {
         try {
             log.info(`scraping ${game}...`);
             await tmx(game, output);
@@ -38,6 +33,13 @@ cron.schedule('0 18 * * *', async () => {
         log.error(err);
     }
 
+    try {
+        log.info('scraping trackmania');
+        await trackmania(output);
+    } catch (err) {
+        log.error(err);
+    }
+
     ghPages.publish(
         output,
         {
@@ -52,4 +54,10 @@ cron.schedule('0 18 * * *', async () => {
         },
         (err) => (err ? log.error(err) : log.success('Published')),
     );
-});
+};
+
+if (now) {
+    main();
+}
+
+cron.schedule('0 18 * * *', main);

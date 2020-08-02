@@ -1,5 +1,5 @@
-# tmx-records
+# trackmania-records
 
-Inspired by the many many TMNF world records that people have been setting recently.
+Inspired by the many many world records that people are setting every year.
 
-[![preview.png](preview.png)](https://nekzor.github.io/tmx-records)
+[![preview.png](preview.png)](https://nekz.me/trackmania-records)

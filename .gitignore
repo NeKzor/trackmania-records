@@ -1,4 +1,7 @@
 api/
+.env
+.login
+trackmania_stats.js
 
 node_modules/
 coverage/
