@@ -4,7 +4,7 @@ const { delay, importJson, tryExportJson, tryMakeDir } = require('./utils');
 
 const config = { headers: { 'User-Agent': 'trackmania-records-v1' } };
 
-const baseApi = 'https://tm.mania-exchange.com';
+const baseApi = 'https://api.mania-exchange.com';
 
 module.exports = async (output, maxFetch = undefined) => {
     const day = moment().format('YYYY-MM-DD');
@@ -15,7 +15,7 @@ module.exports = async (output, maxFetch = undefined) => {
         let count = 0;
 
         for (let { id, name, type } of campaign.tracks) {
-            let res = await fetch(baseApi + `/replays/get_replays/${id}/5`, config);
+            let res = await fetch(baseApi + `/tm/replays/${id}/5`, config);
             let records = await res.json();
 
             let wrs = [];
