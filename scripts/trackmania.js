@@ -12,7 +12,7 @@ const loadSession = (client) => {
     try {
         client.loginData = JSON.parse(fs.readFileSync(sessionFile, 'utf-8'));
 
-        if (moment(client.loginData.expiration).diff(client.loginData.serverTime, 'hours') >= 3) {
+        if (moment(client.loginData.expiration).diff(moment().utc(), 'seconds') <= 0) {
             return false;
         }
 
