@@ -57,6 +57,10 @@ const main = async (outputDir) => {
 
     tryExportJson(`${outputDir}/trackmania/${moment().format('YYYY-MM-DD')}.json`, game, true);
     tryExportJson(`${outputDir}/trackmania/latest.json`, game, true);
+
+    trackmania = null;
+    zones = null;
+    game = [];
 };
 
 const dumpOfficialCampaign = async () => {
