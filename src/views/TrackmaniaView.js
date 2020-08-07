@@ -39,7 +39,7 @@ const GameView = ({ match }) => {
 
     React.useEffect(() => {
         (async () => {
-            let game = await Api.request('trackmania', date);
+            const game = await Api.request('trackmania', date);
 
             if (game[0] && game[0].tracks[0].wrs) {
                 for (let campaign of game) {
@@ -49,7 +49,7 @@ const GameView = ({ match }) => {
                             .reduce((a, b) => a + b, 0);
                     }
 
-                    let rows = [];
+                    const rows = [];
                     for (let track of campaign.tracks) {
                         for (let wr of track.wrs) {
                             rows.push({
@@ -57,7 +57,6 @@ const GameView = ({ match }) => {
                                     id: track.id,
                                     name: track.name,
                                     monthDay: track.monthDay,
-                                    type: track.type,
                                     isFirst: wr === track.wrs[0],
                                     records: track.wrs.length,
                                 },

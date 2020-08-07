@@ -1,6 +1,7 @@
 import React from 'react';
 import moment from 'moment';
 import { makeStyles } from '@material-ui/core/styles';
+import Link from '@material-ui/core/Link';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
@@ -82,6 +83,16 @@ const noWrap = { whiteSpace: 'nowrap' };
 const minifiedStyle = { padding: '7px 0px 7px 16px' };
 const MinTableCell = (props) => <TableCell style={minifiedStyle} {...props} />;
 
+const linkToExchange = (track, isOfficial) => {
+    const ubisoftNadeo = isOfficial ? '&authorId=21' : '';
+    return `https://trackmania.exchange/mapsearch2?trackname=${encodeURIComponent(track.name)}${ubisoftNadeo}`;
+};
+
+const linkToLeaderboard = (trackName) => {
+    const [season, track] = trackName.name.split(' - ');
+    return `https://nekz.me/trackmania/#/${season.replace(' ', '').toLowerCase()}/${parseInt(track, 10)}`;
+};
+
 const RecordsTable = ({ data, stats, official }) => {
     const [{ order, rowsPerPage, page, ...state }, setState] = React.useState(defaultState);
 
@@ -114,22 +125,54 @@ const RecordsTable = ({ data, stats, official }) => {
                             const score = formatScore(wr.score, 'tm2', wr.track.type);
 
                             return (
-                                <TableRow tabIndex={-1} key={`${wr.track.name}-${wr.user.id}`}>
-                                    {!official && (
-                                        <MinTableCell align="left">{wr.track.monthDay}</MinTableCell>    
+                                <TableRow tabIndex={-1} key={`${wr.track.id}-${wr.user.id}`}>
+                                    {!official && (wr.track.isFirst || orderBy !== 'track.monthDay') && (
+                                        <MinTableCell
+                                            align="left"
+                                            rowSpan={orderBy !== 'track.monthDay' ? 1 : wr.track.records}
+                                        >
+                                            {wr.track.monthDay}
+                                        </MinTableCell>    
                                     )}
-                                    {(wr.track.isFirst || orderBy !== 'track.name') && (
+                                    {(wr.track.isFirst || orderBy !== 'track.monthDay') && (
                                         <MinTableCell
                                             style={noWrap}
-                                            rowSpan={orderBy !== 'track.name' ? 1 : wr.track.records}
+                                            rowSpan={orderBy !== 'track.monthDay' ? 1 : wr.track.records}
                                             align="left"
                                         >
-                                            {wr.track.name}
+                                            <Link
+                                                color="inherit"
+                                                href={linkToExchange(wr.track, official)}
+                                                rel="noreferrer"
+                                                target="_blank"
+                                            >
+                                                {wr.track.name}
+                                            </Link>
                                         </MinTableCell>
                                     )}
-                                    <MinTableCell align="left">{score}</MinTableCell>
+                                    <MinTableCell align="left">
+                                        {official && (
+                                            <Link
+                                                    color="inherit"
+                                                    href={linkToLeaderboard(wr.track, official)}
+                                                    rel="noreferrer"
+                                                    target="_blank"
+                                                >
+                                                    {score}
+                                                </Link>
+                                        )}
+                                        {!official && (score)}
+                                    </MinTableCell>
                                     <MinTableCell align="left">{wr.user.name}</MinTableCell>
-                                    <MinTableCell align="left">{wr.user.zone[2].name}</MinTableCell>
+                                    <MinTableCell align="left">
+                                        <Tooltip
+                                            title={wr.user.zone.map((zone) => zone.name).join(' | ')}
+                                            placement="bottom"
+                                            enterDelay={300}
+                                        >
+                                            <span>{wr.user.zone[2].name}</span>
+                                        </Tooltip>
+                                    </MinTableCell>
                                 </TableRow>
                             );
                         })}
