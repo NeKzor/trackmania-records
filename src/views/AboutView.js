@@ -34,6 +34,25 @@ const noWrap = { whiteSpace: 'nowrap' };
 const MinTableCell = (props) => <TableCell size="small" {...props} />;
 const Padding = () => <div style={{ paddingTop: '50px' }} />;
 
+const getUpdate = () => {
+    const now = moment.utc();
+    let updateIn = moment().utc().endOf('day').add(17, 'hours');
+
+    if (updateIn.isBefore(now)) {
+        updateIn = moment().utc().endOf('day').add(1, 'day').add(17, 'hours');
+    }
+
+    const duration = moment.duration({ from: now, to: updateIn });
+    const hours = duration.get('hours');
+    const minutes = duration.get('minutes');
+    const seconds = duration.get('seconds');
+
+    const g = (value) => (value === 1 ? '' : 's');
+    return `${hours} hour${g(hours)}, ${minutes} minute${g(minutes)}, ${seconds} second${g(seconds)}`;
+};
+
+let clockTimer = null;
+
 const AboutView = () => {
     const isMounted = useIsMounted();
 
@@ -43,6 +62,15 @@ const AboutView = () => {
     } = React.useContext(AppState);
 
     const [gitHub, setGitHub] = React.useState([]);
+    const [nextUpdate, setNextUpdate] = React.useState(getUpdate());
+
+    React.useEffect(() => {
+        clockTimer = setInterval(() => {
+            setNextUpdate(getUpdate());
+        }, 1000);
+
+        return () => clearInterval(clockTimer);
+    }, []);
 
     const toggleDarkMode = () => {
         dispatch({ action: 'toggleDarkMode' });
@@ -96,8 +124,15 @@ const AboutView = () => {
 
                 <Padding />
 
-                <Typography variant="h5">Last Update</Typography>
+                <Typography variant="h5">Next Update</Typography>
                 <br />
+                {nextUpdate}
+
+                <Padding />
+
+                <Typography variant="h5">Changelog</Typography>
+                <br />
+
                 {gitHub === undefined ? (
                     <Typography variant="body1">Unable to fetch status from GitHub.</Typography>
                 ) : gitHub.length === 0 ? (
