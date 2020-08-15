@@ -1,5 +1,6 @@
 import React from 'react';
 import { withRouter } from 'react-router';
+import moment from 'moment';
 import Box from '@material-ui/core/Box';
 import Grid from '@material-ui/core/Grid';
 import LinearProgress from '@material-ui/core/LinearProgress';
@@ -7,7 +8,8 @@ import Paper from '@material-ui/core/Paper';
 import Tab from '@material-ui/core/Tab';
 import Tabs from '@material-ui/core/Tabs';
 import Typography from '@material-ui/core/Typography';
-import RankingsTable from '../components/RankingsTableTrackmania';
+import RankingsTable from '../components/RankingsTable';
+import RankingsTableTOTD from '../components/RankingsTableTrackmania';
 import RecordsTable from '../components/RecordsTableTrackmania';
 import RecordsChart from '../components/RecordsChart';
 import { makeStyles } from '@material-ui/core';
@@ -32,6 +34,8 @@ const GameView = ({ match }) => {
 
     const page = match.params[0];
     const date = match.params.date;
+    const useLiveDuration = date === undefined || date === 'latest';
+
     React.useEffect(() => {
         setTab(0);
         setGame(undefined);
@@ -52,6 +56,23 @@ const GameView = ({ match }) => {
                     const rows = [];
                     for (let track of campaign.tracks) {
                         for (let wr of track.wrs) {
+                            const wrDate = moment(wr.date);
+                            const duration = useLiveDuration ? moment().diff(wrDate, 'd') : wr.duration;
+
+                            let setAfter = undefined;
+                            if (!campaign.isOfficial) {
+                                const releasedAt = moment([campaign.year, campaign.month]).utc().set({
+                                    date: track.monthDay,
+                                    hour: 17,
+                                    minute: 0,
+                                    second: 0,
+                                });
+
+                                const setAfterHours = wrDate.diff(releasedAt, 'hours');
+                                const setAfterMinutes = wrDate.diff(releasedAt, 'minutes') - setAfterHours * 60;
+                                setAfter = `set after ${setAfterHours} hours and ${setAfterMinutes} minutes`;
+                            }
+
                             rows.push({
                                 track: {
                                     id: track.id,
@@ -61,18 +82,29 @@ const GameView = ({ match }) => {
                                     records: track.wrs.length,
                                 },
                                 ...wr,
+                                duration,
+                                setAfter,
                             });
                         }
                     }
 
                     campaign.tracks = rows;
+
+                    if (useLiveDuration) {
+                        campaign.leaderboard.forEach((entry, idx) => {
+                            campaign.leaderboard[idx].duration = campaign.tracks
+                                .filter((r) => r.user.id === entry.user.id)
+                                .map((r) => r.duration)
+                                .reduce((a, b) => a + b, 0);
+                        });
+                    }
                 }
             }
 
             if (!isMounted.current) return;
             setGame(game);
         })();
-    }, [isMounted, page, date]);
+    }, [isMounted, page, date, useLiveDuration]);
 
     const handleTab = (_, newValue) => {
         setTab(newValue);
@@ -111,12 +143,17 @@ const GameView = ({ match }) => {
                                             data={game[tab].tracks}
                                             stats={game[tab].stats}
                                             official={game[tab].isOfficial}
+                                            useLiveDuration={useLiveDuration}
                                         />
                                     </Grid>
                                     <Grid item xs={12} className={classes.padTop}>
                                         <Grid container direction="row" justify="center" alignContent="center">
                                             <Grid item xs={12} md={6}>
-                                                <RankingsTable data={game[tab].leaderboard} />
+                                                {game[tab].isOfficial ? (
+                                                    <RankingsTable data={game[tab].leaderboard} />
+                                                ) : (
+                                                    <RankingsTableTOTD data={game[tab].leaderboard} />
+                                                )}
                                             </Grid>
                                             <Grid item xs={12} md={6} className={classes.padTop}>
                                                 <Grid container direction="column" justify="center">
@@ -130,7 +167,9 @@ const GameView = ({ match }) => {
                                                     <Grid item xs={12} className={classes.padTop}>
                                                         <RecordsChart
                                                             title="WRs by Zone"
-                                                            labels={game[tab].countryLeaderboard.map((row) => row.zone[2].name)}
+                                                            labels={game[tab].countryLeaderboard.map(
+                                                                (row) => row.zone[2].name,
+                                                            )}
                                                             series={game[tab].countryLeaderboard.map((row) => row.wrs)}
                                                         />
                                                     </Grid>

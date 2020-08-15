@@ -139,6 +139,9 @@ class TrackmaniaClient {
     async leaderboard(groupOrSeasonid, mapId, start, end) {
         return await Leaderboard.default(this).update(groupOrSeasonid, mapId, start, end);
     }
+    async mapRecords(accountIdList, mapIdList) {
+        return await MapRecords.default(this).update(accountIdList, mapIdList);
+    }
 }
 
 class Entity {
@@ -337,6 +340,32 @@ class Leaderboard extends Entity {
     *[Symbol.iterator]() {
         for (const top of this.data.tops) {
             yield top;
+        }
+    }
+}
+
+class MapRecords extends Entity {
+    async update(accountIdList, mapIdList) {
+        if (accountIdList !== undefined) this.accountIdList = accountIdList;
+        if (mapIdList !== undefined) this.mapIdList = mapIdList;
+
+        if (!this.accountIdList) {
+            throw new Error('accountIdList id required');
+        }
+
+        if (!this.mapIdList) {
+            throw new Error('mapIdList required');
+        }
+
+        this.data = await this.client.get(
+            `/mapRecords?accountIdList=${accountIdList.join(',')}&mapIdList=${mapIdList.join(',')}`,
+        );
+
+        return this;
+    }
+    *[Symbol.iterator]() {
+        for (const mapRecord of this.data) {
+            yield mapRecord;
         }
     }
 }

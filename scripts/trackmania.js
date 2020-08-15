@@ -81,12 +81,15 @@ const dumpOfficialCampaign = async () => {
         const tracks = [];
 
         for (const { mapUid } of playlist) {
-            const { name, filename } = maps.collect().find((map) => map.mapUid === mapUid);
+            const { name, filename, mapId } = maps.collect().find((map) => map.mapUid === mapUid);
             log.info(name, mapUid);
 
             const leaderboard = await trackmania.leaderboard(seasonUid, mapUid, 0, 5);
             const rankings = leaderboard.collect()[0].top;
-            const accounts = await trackmania.accounts(rankings.map((rank) => rank.accountId));
+
+            const accountIds = rankings.map((ranking) => ranking.accountId);
+            const accounts = await trackmania.accounts(accountIds);
+            const records = await trackmania.mapRecords(accountIds, [mapId]);
 
             let wrs = [];
             let wr = undefined;
@@ -97,6 +100,7 @@ const dumpOfficialCampaign = async () => {
                 }
 
                 if (wr === undefined || wr === score) {
+                    const record = records.collect().find((record) => record.accountId === accountId);
                     const account = accounts.collect().find((account) => account.accountId === accountId);
                     const zone = zones.search(zoneId);
 
@@ -109,6 +113,9 @@ const dumpOfficialCampaign = async () => {
                             zone,
                         },
                         score: (wr = score),
+                        date: record.timestamp,
+                        duration: moment().diff(moment(record.timestamp), 'd'),
+                        replay: record.url.slice(record.url.lastIndexOf('/') + 1),
                     });
                     continue;
                 }
@@ -141,12 +148,15 @@ const dumpTrackOfTheDay = async () => {
         const tracks = [];
 
         for (const { mapUid, seasonUid, monthDay } of days.filter((map) => map.mapUid !== '')) {
-            const { name } = maps.collect().find((map) => map.mapUid === mapUid);
+            const { name, mapId } = maps.collect().find((map) => map.mapUid === mapUid);
             log.info(name, seasonUid, mapUid);
 
             const leaderboard = await trackmania.leaderboard(seasonUid, mapUid, 0, 5);
             const rankings = leaderboard.collect()[0].top;
-            const accounts = await trackmania.accounts(rankings.map((rank) => rank.accountId));
+
+            const accountIds = rankings.map((ranking) => ranking.accountId);
+            const accounts = await trackmania.accounts(accountIds);
+            const records = await trackmania.mapRecords(accountIds, [mapId]);
 
             let wrs = [];
             let wr = undefined;
@@ -157,6 +167,7 @@ const dumpTrackOfTheDay = async () => {
                 }
 
                 if (wr === undefined || wr === score) {
+                    const record = records.collect().find((record) => record.accountId === accountId);
                     const account = accounts.collect().find((account) => account.accountId === accountId);
                     const zone = zones.search(zoneId);
 
@@ -169,6 +180,9 @@ const dumpTrackOfTheDay = async () => {
                             zone,
                         },
                         score: (wr = score),
+                        date: record.timestamp,
+                        duration: moment().diff(moment(record.timestamp), 'd'),
+                        replay: record.url.slice(record.url.lastIndexOf('/') + 1),
                     });
                     continue;
                 }
@@ -197,6 +211,7 @@ const generateStats = (tracks) => {
     const totalTime = tracks.map((t) => t.wrs[0].score).reduce((a, b) => a + b, 0);
 
     const users = tracks.map((t) => t.wrs.map((r) => r.user)).reduce((acc, val) => acc.concat(val), []);
+    const wrs = tracks.map((t) => t.wrs).reduce((acc, val) => acc.concat(val), []);
 
     const frequency = users.reduce((count, user) => {
         count[user.name] = (count[user.name] || 0) + 1;
@@ -208,6 +223,10 @@ const generateStats = (tracks) => {
         .map((key) => ({
             user: users.find((u) => u.name === key),
             wrs: frequency[key],
+            duration: wrs
+                    .filter((r) => r.user.id.toString() === key)
+                    .map((r) => r.duration)
+                    .reduce((a, b) => a + b, 0),
         }));
 
     const countryLeaderboard = [...new Set(users.map((user) => user.zone[Zones.Country].zoneId))]
@@ -246,6 +265,6 @@ const autoban = (accountId, score) => {
 
 const inspect = (obj) => console.dir(obj, { depth: 6 });
 
-//main().catch(inspect);
+//main(path.join(__dirname, '../api/')).catch(inspect);
 
 module.exports = main;

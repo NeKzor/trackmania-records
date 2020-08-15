@@ -1,6 +1,8 @@
 import React from 'react';
+import Moment from 'react-moment';
 import moment from 'moment';
 import { makeStyles } from '@material-ui/core/styles';
+import IconButton from '@material-ui/core/IconButton';
 import Link from '@material-ui/core/Link';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
@@ -9,10 +11,21 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import TableSortLabel from '@material-ui/core/TableSortLabel';
 import Tooltip from '@material-ui/core/Tooltip';
+import SaveAltIcon from '@material-ui/icons/SaveAlt';
 import { stableSort } from '../utils/stableSort';
-import { formatScore } from '../utils/tools';
+import { formatScore, getDateDifferenceColor } from '../utils/tools';
 
-const rows = [
+const rowsOfficial = [
+    { id: 'track.name', sortable: true, label: 'Track', align: 'left' },
+    { id: 'score', sortable: true, label: 'Record', align: 'left' },
+    { id: 'user.name', sortable: true, label: 'Player', align: 'left' },
+    { id: 'user.zone', sortable: true, label: 'Zone', align: 'left' },
+    { id: 'date', sortable: true, label: 'Date', align: 'left' },
+    { id: 'duration', sortable: true, label: 'Duration', align: 'left' },
+];
+
+const rowsTOTD = [
+    { id: 'track.monthDay', sortable: true, label: 'Day', align: 'left' },
     { id: 'track.name', sortable: true, label: 'Track', align: 'left' },
     { id: 'score', sortable: true, label: 'Record', align: 'left' },
     { id: 'user.name', sortable: true, label: 'Player', align: 'left' },
@@ -24,28 +37,18 @@ const RecordsTableHead = ({ order, orderBy, onRequestSort, official }) => {
         onRequestSort(event, property);
     };
 
+    const rows = official ? rowsOfficial : rowsTOTD;
+
     return (
         <TableHead>
             <TableRow>
-                {!official && (
-                    <TableCell>
-                        <Tooltip title={'Sort by day'} placement="bottom-start" enterDelay={300}>
-                                <TableSortLabel
-                                    active={orderBy === 'track.monthDay'}
-                                    direction={order}
-                                    onClick={createSortHandler('track.monthDay')}
-                                >
-                                    Day
-                                </TableSortLabel>
-                            </Tooltip>
-                    </TableCell>
-                )}
-                {rows.map((row) => (
+                {rows.map((row, idx) => (
                     <TableCell
                         key={row.id}
                         align={row.align}
                         padding="default"
                         sortDirection={orderBy === row.id ? order : false}
+                        colSpan={idx === rows.length - 1 ? 2 : 1}
                     >
                         {row.sortable === true && (
                             <Tooltip title={'Sort by ' + row.label} placement="bottom-start" enterDelay={300}>
@@ -93,7 +96,7 @@ const linkToLeaderboard = (trackName) => {
     return `https://nekz.me/trackmania/#/${season.replace(' ', '').toLowerCase()}/${parseInt(track, 10)}`;
 };
 
-const RecordsTable = ({ data, stats, official }) => {
+const RecordsTable = ({ data, stats, official, useLiveDuration }) => {
     const [{ order, rowsPerPage, page, ...state }, setState] = React.useState(defaultState);
 
     let { orderBy } = state;
@@ -117,7 +120,12 @@ const RecordsTable = ({ data, stats, official }) => {
     return (
         <div className={classes.root}>
             <Table size="small">
-                <RecordsTableHead order={order} orderBy={orderBy} onRequestSort={handleRequestSort} official={official} />
+                <RecordsTableHead
+                    order={order}
+                    orderBy={orderBy}
+                    onRequestSort={handleRequestSort}
+                    official={official}
+                />
                 <TableBody>
                     {stableSort(data, order, orderBy)
                         .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
@@ -132,7 +140,7 @@ const RecordsTable = ({ data, stats, official }) => {
                                             rowSpan={orderBy !== 'track.monthDay' ? 1 : wr.track.records}
                                         >
                                             {wr.track.monthDay}
-                                        </MinTableCell>    
+                                        </MinTableCell>
                                     )}
                                     {(wr.track.isFirst || orderBy !== 'track.monthDay') && (
                                         <MinTableCell
@@ -153,15 +161,23 @@ const RecordsTable = ({ data, stats, official }) => {
                                     <MinTableCell align="left">
                                         {official && (
                                             <Link
-                                                    color="inherit"
-                                                    href={linkToLeaderboard(wr.track, official)}
-                                                    rel="noreferrer"
-                                                    target="_blank"
-                                                >
-                                                    {score}
-                                                </Link>
+                                                color="inherit"
+                                                href={linkToLeaderboard(wr.track, official)}
+                                                rel="noreferrer"
+                                                target="_blank"
+                                            >
+                                                {score}
+                                            </Link>
                                         )}
-                                        {!official && (score)}
+                                        {!official && (
+                                            <Tooltip
+                                                title={wr.setAfter}
+                                                placement="bottom"
+                                                enterDelay={300}
+                                            >
+                                                <span>{score}</span>
+                                            </Tooltip>
+                                        )}
                                     </MinTableCell>
                                     <MinTableCell align="left">{wr.user.name}</MinTableCell>
                                     <MinTableCell align="left">
@@ -173,6 +189,50 @@ const RecordsTable = ({ data, stats, official }) => {
                                             <span>{wr.user.zone[2].name}</span>
                                         </Tooltip>
                                     </MinTableCell>
+                                    {official && (
+                                        <>
+                                            <MinTableCell align="left">
+                                                <Tooltip
+                                                    title={<Moment fromNow>{wr.date}</Moment>}
+                                                    placement="bottom-end"
+                                                    enterDelay={300}
+                                                >
+                                                    <Moment
+                                                        style={{ color: getDateDifferenceColor(wr.date), ...noWrap }}
+                                                        format="YYYY-MM-DD"
+                                                    >
+                                                        {wr.date}
+                                                    </Moment>
+                                                </Tooltip>
+                                            </MinTableCell>
+                                            <MinTableCell align="left">
+                                                <Tooltip title="in days" placement="bottom-end" enterDelay={300}>
+                                                    {useLiveDuration ? (
+                                                        <Moment style={noWrap} diff={wr.date} unit="days"></Moment>
+                                                    ) : (
+                                                        <span>{wr.duration}</span>
+                                                    )}
+                                                </Tooltip>
+                                            </MinTableCell>
+                                        </>
+                                    )}
+                                    <MinTableCell align="left">
+                                        <Tooltip title="Download Replay" placement="bottom" enterDelay={300}>
+                                            <IconButton
+                                                size="small"
+                                                style={noWrap}
+                                                color="inherit"
+                                                href={
+                                                    'https://prod.trackmania.core.nadeo.online/storageObjects/' +
+                                                    wr.replay
+                                                }
+                                                rel="noreferrer"
+                                                target="_blank"
+                                            >
+                                                <SaveAltIcon fontSize="inherit" />
+                                            </IconButton>
+                                        </Tooltip>
+                                    </MinTableCell>
                                 </TableRow>
                             );
                         })}
@@ -180,7 +240,9 @@ const RecordsTable = ({ data, stats, official }) => {
                 <TableBody>
                     {stats.totalTime > 0 && (
                         <TableRow>
-                            <MinTableCell align="right" colSpan={official ? 1 : 2}>Total Time</MinTableCell>
+                            <MinTableCell align="right" colSpan={official ? 1 : 2}>
+                                Total Time
+                            </MinTableCell>
                             <MinTableCell>
                                 <Tooltip
                                     title={moment.duration(stats.totalTime, 'ms').humanize()}
@@ -190,7 +252,7 @@ const RecordsTable = ({ data, stats, official }) => {
                                     <span>{formatScore(stats.totalTime, 'tm2')}</span>
                                 </Tooltip>
                             </MinTableCell>
-                            <MinTableCell colSpan={3}></MinTableCell>
+                            <MinTableCell colSpan={official ? 5 : 3}></MinTableCell>
                         </TableRow>
                     )}
                 </TableBody>
