@@ -76,7 +76,7 @@ const GameView = ({ match }) => {
                             rows.push({
                                 track: {
                                     id: track.id,
-                                    name: track.name,
+                                    name: track.name.replace(/(\$[0-9a-fA-F]{3}|\$[wnoitsgzb]{1})/g, ''),
                                     monthDay: track.monthDay,
                                     isFirst: wr === track.wrs[0],
                                     records: track.wrs.length,

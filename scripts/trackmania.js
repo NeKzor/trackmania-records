@@ -190,7 +190,7 @@ const dumpTrackOfTheDay = async () => {
 
             tracks.push({
                 id: mapUid,
-                name: name.replace(/(\$[0-9a-fA-F]{3}|\$[wnoitsgz]{1})/g, ''),
+                name,
                 monthDay,
                 wrs,
             });
