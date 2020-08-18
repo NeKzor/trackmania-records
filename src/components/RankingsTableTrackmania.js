@@ -9,15 +9,23 @@ import TableSortLabel from '@material-ui/core/TableSortLabel';
 import Tooltip from '@material-ui/core/Tooltip';
 import { stableSort } from '../utils/stableSort';
 
-const rows = [
+const rowsOficial = [
+    { id: 'user.name', sortable: false, label: 'Player', align: 'left' },
+    { id: 'wrs', sortable: true, label: 'World Records', align: 'left' },
+    { id: 'duration', sortable: true, label: 'Duration', align: 'left' },
+];
+
+const rowsTOTD = [
     { id: 'user.name', sortable: false, label: 'Player', align: 'left' },
     { id: 'wrs', sortable: true, label: 'World Records', align: 'left' },
 ];
 
-const RankingsTableHead = ({ order, orderBy, onRequestSort }) => {
+const RankingsTableHead = ({ order, orderBy, onRequestSort, official }) => {
     const createSortHandler = (prop1) => (event) => {
         onRequestSort(event, prop1);
     };
+
+    const rows = official ? rowsOficial : rowsTOTD;
 
     return (
         <TableHead>
@@ -64,7 +72,7 @@ const defaultState = {
 const minifiedStyle = { padding: '7px 0px 7px 16px' };
 const MinTableCell = (props) => <TableCell style={minifiedStyle} {...props} />;
 
-const RecordsTable = ({ data }) => {
+const RecordsTable = ({ data, official }) => {
     const [{ order, orderBy, rowsPerPage, page }, setState] = React.useState(defaultState);
 
     const handleRequestSort = (_, prop1) => {
@@ -81,7 +89,12 @@ const RecordsTable = ({ data }) => {
     return (
         <div className={classes.root}>
             <Table size="small">
-                <RankingsTableHead order={order} orderBy={orderBy} onRequestSort={handleRequestSort} />
+                <RankingsTableHead
+                    order={order}
+                    orderBy={orderBy}
+                    onRequestSort={handleRequestSort}
+                    official={official}
+                />
                 <TableBody>
                     {stableSort(data, order, orderBy)
                         .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
@@ -89,6 +102,9 @@ const RecordsTable = ({ data }) => {
                             <TableRow tabIndex={-1} key={row.user.name}>
                                 <MinTableCell align="left">{row.user.name}</MinTableCell>
                                 <MinTableCell align="left">{row.wrs}</MinTableCell>
+                                {official && (
+                                    <MinTableCell align="left">{row.duration}</MinTableCell>
+                                )}
                             </TableRow>
                         ))}
                 </TableBody>

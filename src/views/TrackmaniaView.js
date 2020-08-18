@@ -8,8 +8,7 @@ import Paper from '@material-ui/core/Paper';
 import Tab from '@material-ui/core/Tab';
 import Tabs from '@material-ui/core/Tabs';
 import Typography from '@material-ui/core/Typography';
-import RankingsTable from '../components/RankingsTable';
-import RankingsTableTOTD from '../components/RankingsTableTrackmania';
+import RankingsTable from '../components/RankingsTableTrackmania';
 import RecordsTable from '../components/RecordsTableTrackmania';
 import RecordsChart from '../components/RecordsChart';
 import { makeStyles } from '@material-ui/core';
@@ -149,11 +148,7 @@ const GameView = ({ match }) => {
                                     <Grid item xs={12} className={classes.padTop}>
                                         <Grid container direction="row" justify="center" alignContent="center">
                                             <Grid item xs={12} md={6}>
-                                                {game[tab].isOfficial ? (
-                                                    <RankingsTable data={game[tab].leaderboard} />
-                                                ) : (
-                                                    <RankingsTableTOTD data={game[tab].leaderboard} />
-                                                )}
+                                                <RankingsTable data={game[tab].leaderboard} official={game[tab].isOfficial} />
                                             </Grid>
                                             <Grid item xs={12} md={6} className={classes.padTop}>
                                                 <Grid container direction="column" justify="center">
