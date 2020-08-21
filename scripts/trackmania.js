@@ -3,6 +3,7 @@ const path = require('path');
 const moment = require('moment');
 const { UbisoftClient, TrackmaniaClient, Audiences, Campaigns, Zones } = require('./trackmania/api');
 const { log, tryExportJson, tryMakeDir, importJson } = require('./utils');
+const DiscordIntegration = require('./trackmania/discord');
 
 require('dotenv').config();
 
@@ -40,6 +41,16 @@ let zones = null;
 let game = [];
 let cheaters = [];
 let latest = [];
+let discord = null;
+
+const cleanup = () => {
+    trackmania = null;
+    zones = null;
+    game = [];
+    cheaters = [];
+    latest = [];
+    discord = null;
+};
 
 const main = async (outputDir, snapshot = true) => {
     const ubisoft = new UbisoftClient(process.env.UBI_EMAIL, process.env.UBI_PW);
@@ -63,9 +74,22 @@ const main = async (outputDir, snapshot = true) => {
     cheaters = importJson(gameFile).cheaters;
     latest = importJson(`${outputDir}/trackmania/latest.json`);
 
-    await dumpOfficialCampaign();
-    await dumpTrackOfTheDay();
-    await resolveGame();
+    discord = new DiscordIntegration(process.env.WEBHOOK_ID, process.env.WEBHOOK_TOKEN);
+
+    try {
+        await dumpOfficialCampaign();
+        await dumpTrackOfTheDay();
+        await resolveGame();
+    } catch (error) {
+        discord.client.destroy();
+        cleanup();
+
+        throw error;
+    } finally {
+        if (discord) {
+            discord.client.destroy();
+        }
+    }
 
     tryMakeDir(outputDir);
     tryMakeDir(path.join(outputDir, '/trackmania'));
@@ -77,11 +101,7 @@ const main = async (outputDir, snapshot = true) => {
 
     tryExportJson(gameFile, { cheaters }, true, true);
 
-    trackmania = null;
-    zones = null;
-    game = [];
-    cheaters = [];
-    latest = [];
+    cleanup();
 };
 
 const dumpOfficialCampaign = async () => {
@@ -106,7 +126,7 @@ const dumpOfficialCampaign = async () => {
             let wrs = [];
             let wr = undefined;
 
-            const latestTrack = latestCampaign ? latestCampaign.tracks.find((track) => track.id === mapUid) : null;
+            const latestTrack = latestCampaign ? latestCampaign.tracks.find((track) => track.id === mapUid) : undefined;
 
             for (const { accountId, zoneId, score } of rankings) {
                 if (autoban(accountId, score)) {
@@ -116,10 +136,10 @@ const dumpOfficialCampaign = async () => {
                 if (wr === undefined || wr === score) {
                     const zone = zones.search(zoneId);
 
-                    const latestScore = latestTrack && latestTrack.wrs[0] ?  latestTrack.wrs[0].score : null;
+                    const latestScore = latestTrack && latestTrack.wrs[0] ? latestTrack.wrs[0].score : undefined;
                     const latestWr = latestTrack
                         ? latestTrack.wrs.find((wr) => wr.user.id === accountId && wr.score === score)
-                        : null;
+                        : undefined;
 
                     wrs.push({
                         user: {
@@ -127,7 +147,8 @@ const dumpOfficialCampaign = async () => {
                             zone,
                         },
                         score: (wr = score),
-                        delta: latestWr ? latestWr.delta : latestScore ? score - latestScore : 0,
+                        delta: latestWr ? latestWr.delta : latestScore ? Math.abs(score - latestScore) : 0,
+                        isNew: !latestWr && latestScore ? true : false,
                     });
                     continue;
                 }
@@ -138,6 +159,7 @@ const dumpOfficialCampaign = async () => {
                 _id: mapId,
                 name: filename.slice(0, -8),
                 wrs,
+                isOfficial: true,
             });
         }
 
@@ -172,7 +194,7 @@ const dumpTrackOfTheDay = async () => {
             let wrs = [];
             let wr = undefined;
 
-            const latestTrack = latestCampaign ? latestCampaign.tracks.find((track) => track.id === mapUid) : null;
+            const latestTrack = latestCampaign ? latestCampaign.tracks.find((track) => track.id === mapUid) : undefined;
 
             for (const { accountId, zoneId, score } of rankings) {
                 if (autoban(accountId, score)) {
@@ -182,10 +204,10 @@ const dumpTrackOfTheDay = async () => {
                 if (wr === undefined || wr === score) {
                     const zone = zones.search(zoneId);
 
-                    const latestScore = latestTrack && latestTrack.wrs[0] ?  latestTrack.wrs[0].score : null;
+                    const latestScore = latestTrack && latestTrack.wrs[0] ? latestTrack.wrs[0].score : undefined;
                     const latestWr = latestTrack
                         ? latestTrack.wrs.find((wr) => wr.user.id === accountId && wr.score === score)
-                        : null;
+                        : undefined;
 
                     wrs.push({
                         user: {
@@ -194,6 +216,7 @@ const dumpTrackOfTheDay = async () => {
                         },
                         score: (wr = score),
                         delta: latestWr ? latestWr.delta : latestScore ? score - latestScore : 0,
+                        isNew: !latestWr && latestScore ? true : false,
                     });
                     continue;
                 }
@@ -205,6 +228,7 @@ const dumpTrackOfTheDay = async () => {
                 name,
                 monthDay,
                 wrs,
+                isOfficial: false,
             });
         }
 
@@ -281,13 +305,13 @@ const resolveGame = async () => {
 
     game.map(({ tracks }) => tracks)
         .reduce((acc, val) => acc.concat(val), [])
-        .forEach(({ _id, wrs }) => {
+        .forEach(({ wrs, ...track }) => {
             wrs.forEach((wr) => {
                 const user = users.get(wr.user.id);
                 if (user) {
-                    user.push({ _id, wr });
+                    user.push({ track, wr });
                 } else {
-                    users.set(wr.user.id, [{ _id, wr }]);
+                    users.set(wr.user.id, [{ track, wr }]);
                 }
             });
         });
@@ -300,17 +324,23 @@ const resolveGame = async () => {
             const { displayName } = accounts.find((account) => account.accountId === userId);
 
             /* chunk this if Hefest or one of the totd hunters gets more wrs... maybe */
-            const mapIds = user.map(({ _id }) => _id);
+            const mapIds = user.map(({ track }) => track._id);
             const records = await trackmania.mapRecords([userId], mapIds);
 
-            records.collect().forEach(({ mapId, timestamp, url }) => {
-                const { wr } = user.find(({ _id }) => _id === mapId);
+            for (const { mapId, timestamp, url } of records) {
+                const { wr, track } = user.find(({ track }) => track._id === mapId);
 
                 wr.user.name = displayName;
                 wr.date = timestamp;
                 wr.duration = moment().diff(moment(timestamp), 'd');
                 wr.replay = url.slice(url.lastIndexOf('/') + 1);
-            });
+
+                if (wr.isNew) {
+                    await discord.sendWebhook({ wr, track });
+                }
+
+                delete wr.isNew;
+            }
         }
     }
 
