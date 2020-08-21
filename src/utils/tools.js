@@ -2,6 +2,10 @@ import { scaleLinear } from 'd3-scale';
 import moment from 'moment';
 
 export function formatScore(score, game, type = undefined) {
+    if (score === undefined || score === null) {
+        return score;
+    }
+
     if (type === 'Stunts') {
         return score + ' pts.';
     }

@@ -131,6 +131,7 @@ const RecordsTable = ({ data, stats, official, useLiveDuration }) => {
                         .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
                         .map((wr) => {
                             const score = formatScore(wr.score, 'tm2', wr.track.type);
+                            const delta = wr.delta !== 0 ? formatScore(wr.delta, 'tm2', wr.track.type) : null;
 
                             return (
                                 <TableRow tabIndex={-1} key={`${wr.track.id}-${wr.user.id}`}>
@@ -159,24 +160,43 @@ const RecordsTable = ({ data, stats, official, useLiveDuration }) => {
                                         </MinTableCell>
                                     )}
                                     <MinTableCell align="left">
-                                        {official && (
+                                        {official && delta && (
+                                            <Tooltip
+                                                title={<span>{delta} to former record</span>}
+                                                placement="bottom"
+                                                enterDelay={300}
+                                            >
+                                                <Link
+                                                    color="inherit"
+                                                    href={linkToLeaderboard(wr.track, official)}
+                                                    rel="noreferrer"
+                                                    target="_blank"
+                                                >
+                                                    <span>{score}</span>
+                                                </Link>
+                                            </Tooltip>
+                                        )}
+                                        {official && !delta && (
                                             <Link
                                                 color="inherit"
                                                 href={linkToLeaderboard(wr.track, official)}
                                                 rel="noreferrer"
                                                 target="_blank"
                                             >
-                                                {score}
+                                                <span>{score}</span>
                                             </Link>
                                         )}
-                                        {!official && (
+                                        {!official && delta && (
                                             <Tooltip
-                                                title={wr.setAfter}
+                                                title={<span>{delta} to former record</span>}
                                                 placement="bottom"
                                                 enterDelay={300}
                                             >
                                                 <span>{score}</span>
                                             </Tooltip>
+                                        )}
+                                        {!official && !delta && (
+                                            <span>{score}</span>
                                         )}
                                     </MinTableCell>
                                     <MinTableCell align="left">{wr.user.name}</MinTableCell>
@@ -217,7 +237,7 @@ const RecordsTable = ({ data, stats, official, useLiveDuration }) => {
                                         </>
                                     )}
                                     <MinTableCell align="left">
-                                        <Tooltip title="Download Replay" placement="bottom" enterDelay={300}>
+                                        <Tooltip title="Download Ghost" placement="bottom" enterDelay={300}>
                                             <IconButton
                                                 size="small"
                                                 style={noWrap}

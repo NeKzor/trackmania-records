@@ -39,8 +39,9 @@ let trackmania = null;
 let zones = null;
 let game = [];
 let cheaters = [];
+let latest = [];
 
-const main = async (outputDir) => {
+const main = async (outputDir, snapshot = true) => {
     const ubisoft = new UbisoftClient(process.env.UBI_EMAIL, process.env.UBI_PW);
 
     /* save this session locally or we get rate limited */
@@ -60,6 +61,7 @@ const main = async (outputDir) => {
     zones.data.forEach((zone) => delete zone.icon);
 
     cheaters = importJson(gameFile).cheaters;
+    latest = importJson(`${outputDir}/trackmania/latest.json`);
 
     await dumpOfficialCampaign();
     await dumpTrackOfTheDay();
@@ -67,9 +69,11 @@ const main = async (outputDir) => {
 
     tryMakeDir(outputDir);
     tryMakeDir(path.join(outputDir, '/trackmania'));
-
-    tryExportJson(`${outputDir}/trackmania/${moment().format('YYYY-MM-DD')}.json`, game, true);
     tryExportJson(`${outputDir}/trackmania/latest.json`, game, true);
+
+    if (snapshot) {
+        tryExportJson(`${outputDir}/trackmania/${moment().format('YYYY-MM-DD')}.json`, game, true);
+    }
 
     tryExportJson(gameFile, { cheaters }, true, true);
 
@@ -77,13 +81,16 @@ const main = async (outputDir) => {
     zones = null;
     game = [];
     cheaters = [];
+    latest = [];
 };
 
 const dumpOfficialCampaign = async () => {
     const campaigns = await trackmania.campaigns(Campaigns.Official);
 
     for (const { seasonUid, name, playlist } of campaigns) {
-        log.info(name, seasonUid);
+        //log.info(name, seasonUid);
+
+        const latestCampaign = latest.find((campaign) => campaign.name === name);
 
         const maps = await trackmania.maps(playlist.map((map) => map.mapUid));
 
@@ -91,13 +98,15 @@ const dumpOfficialCampaign = async () => {
 
         for (const { mapUid } of playlist) {
             const { name, filename, mapId } = maps.collect().find((map) => map.mapUid === mapUid);
-            log.info(name, mapUid);
+            //log.info(name, mapUid);
 
             const leaderboard = await trackmania.leaderboard(seasonUid, mapUid, 0, 5);
             const rankings = leaderboard.collect()[0].top;
 
             let wrs = [];
             let wr = undefined;
+
+            const latestTrack = latestCampaign ? latestCampaign.tracks.find((track) => track.id === mapUid) : null;
 
             for (const { accountId, zoneId, score } of rankings) {
                 if (autoban(accountId, score)) {
@@ -107,12 +116,18 @@ const dumpOfficialCampaign = async () => {
                 if (wr === undefined || wr === score) {
                     const zone = zones.search(zoneId);
 
+                    const latestScore = latestTrack && latestTrack.wrs[0] ?  latestTrack.wrs[0].score : null;
+                    const latestWr = latestTrack
+                        ? latestTrack.wrs.find((wr) => wr.user.id === accountId && wr.score === score)
+                        : null;
+
                     wrs.push({
                         user: {
                             id: accountId,
                             zone,
                         },
                         score: (wr = score),
+                        delta: latestWr ? latestWr.delta : latestScore ? score - latestScore : 0,
                     });
                     continue;
                 }
@@ -139,7 +154,9 @@ const dumpTrackOfTheDay = async () => {
     const campaigns = await trackmania.campaigns(Campaigns.TrackOfTheDay, 0, 2);
 
     for (const { year, month, days } of campaigns) {
-        log.info(year, month);
+        //log.info(year, month);
+
+        const latestCampaign = latest.find((campaign) => campaign.year === year && campaign.month === month);
 
         const maps = await trackmania.maps(days.map((map) => map.mapUid).filter((uid) => uid));
 
@@ -147,13 +164,15 @@ const dumpTrackOfTheDay = async () => {
 
         for (const { mapUid, seasonUid, monthDay } of days.filter((map) => map.mapUid !== '')) {
             const { name, mapId } = maps.collect().find((map) => map.mapUid === mapUid);
-            log.info(name, seasonUid, mapUid);
+            //log.info(name, seasonUid, mapUid);
 
             const leaderboard = await trackmania.leaderboard(seasonUid, mapUid, 0, 5);
             const rankings = leaderboard.collect()[0].top;
 
             let wrs = [];
             let wr = undefined;
+
+            const latestTrack = latestCampaign ? latestCampaign.tracks.find((track) => track.id === mapUid) : null;
 
             for (const { accountId, zoneId, score } of rankings) {
                 if (autoban(accountId, score)) {
@@ -163,12 +182,18 @@ const dumpTrackOfTheDay = async () => {
                 if (wr === undefined || wr === score) {
                     const zone = zones.search(zoneId);
 
+                    const latestScore = latestTrack && latestTrack.wrs[0] ?  latestTrack.wrs[0].score : null;
+                    const latestWr = latestTrack
+                        ? latestTrack.wrs.find((wr) => wr.user.id === accountId && wr.score === score)
+                        : null;
+
                     wrs.push({
                         user: {
                             id: accountId,
                             zone,
                         },
                         score: (wr = score),
+                        delta: latestWr ? latestWr.delta : latestScore ? score - latestScore : 0,
                     });
                     continue;
                 }
@@ -294,6 +319,8 @@ const resolveGame = async () => {
 
 const inspect = (obj) => console.dir(obj, { depth: 6 });
 
-//main(path.join(__dirname, '../api/')).catch(inspect);
+if (process.argv[2] === '--test') {
+    main(path.join(__dirname, '../api/')).catch(inspect);
+}
 
 module.exports = main;
