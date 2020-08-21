@@ -131,7 +131,8 @@ const RecordsTable = ({ data, stats, official, useLiveDuration }) => {
                         .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
                         .map((wr) => {
                             const score = formatScore(wr.score, 'tm2', wr.track.type);
-                            const delta = wr.delta !== 0 ? formatScore(wr.delta, 'tm2', wr.track.type) : null;
+                            const delta =
+                                wr.delta !== 0 ? formatScore(Math.abs(wr.delta), 'tm2', wr.track.type) : null;
 
                             return (
                                 <TableRow tabIndex={-1} key={`${wr.track.id}-${wr.user.id}`}>
@@ -162,7 +163,7 @@ const RecordsTable = ({ data, stats, official, useLiveDuration }) => {
                                     <MinTableCell align="left">
                                         {official && delta && (
                                             <Tooltip
-                                                title={<span>{delta} to former record</span>}
+                                                title={<span>-{delta} to former record</span>}
                                                 placement="bottom"
                                                 enterDelay={300}
                                             >
@@ -188,16 +189,14 @@ const RecordsTable = ({ data, stats, official, useLiveDuration }) => {
                                         )}
                                         {!official && delta && (
                                             <Tooltip
-                                                title={<span>{delta} to former record</span>}
+                                                title={<span>-{delta} to former record</span>}
                                                 placement="bottom"
                                                 enterDelay={300}
                                             >
                                                 <span>{score}</span>
                                             </Tooltip>
                                         )}
-                                        {!official && !delta && (
-                                            <span>{score}</span>
-                                        )}
+                                        {!official && !delta && <span>{score}</span>}
                                     </MinTableCell>
                                     <MinTableCell align="left">{wr.user.name}</MinTableCell>
                                     <MinTableCell align="left">

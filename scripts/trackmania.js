@@ -127,7 +127,7 @@ const dumpOfficialCampaign = async () => {
                             zone,
                         },
                         score: (wr = score),
-                        delta: latestWr ? latestWr.delta : latestScore ? score - latestScore : 0,
+                        delta: latestWr ? latestWr.delta : latestScore ? Math.abs(score - latestScore) : 0,
                     });
                     continue;
                 }
@@ -193,7 +193,7 @@ const dumpTrackOfTheDay = async () => {
                             zone,
                         },
                         score: (wr = score),
-                        delta: latestWr ? latestWr.delta : latestScore ? score - latestScore : 0,
+                        delta: latestWr ? latestWr.delta : latestScore ? Math.abs(score - latestScore) : 0,
                     });
                     continue;
                 }
