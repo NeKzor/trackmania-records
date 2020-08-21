@@ -21,6 +21,10 @@ export const stableSort = (array, order, orderBy) => {
         .map((el) => el[0]);
 };
 export const stableSortSort = (array, order, orderBy, thenBy) => {
+    if (orderBy === thenBy) {
+        return stableSort(array, order, orderBy);
+    }
+
     let desc = (a, b) => {
         let aa = getPropFast(a, orderBy).toString();
         let bb = getPropFast(b, orderBy).toString();
