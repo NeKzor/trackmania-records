@@ -27,6 +27,14 @@ const saveSession = (client) => {
     fs.writeFileSync(sessionFile, JSON.stringify(client.loginData));
 };
 
+Array.prototype.chunk = function (size) {
+    return this.reduce((acc, val, idx) => {
+        const chunk = Math.floor(idx / size);
+        acc[chunk] = [].concat(acc[chunk] || [], val);
+        return acc;
+    }, []);
+};
+
 let trackmania = null;
 let zones = null;
 let game = [];
@@ -55,6 +63,7 @@ const main = async (outputDir) => {
 
     await dumpOfficialCampaign();
     await dumpTrackOfTheDay();
+    await resolveGame();
 
     tryMakeDir(outputDir);
     tryMakeDir(path.join(outputDir, '/trackmania'));
@@ -87,10 +96,6 @@ const dumpOfficialCampaign = async () => {
             const leaderboard = await trackmania.leaderboard(seasonUid, mapUid, 0, 5);
             const rankings = leaderboard.collect()[0].top;
 
-            const accountIds = rankings.map((ranking) => ranking.accountId);
-            const accounts = await trackmania.accounts(accountIds);
-            const records = await trackmania.mapRecords(accountIds, [mapId]);
-
             let wrs = [];
             let wr = undefined;
 
@@ -100,22 +105,14 @@ const dumpOfficialCampaign = async () => {
                 }
 
                 if (wr === undefined || wr === score) {
-                    const record = records.collect().find((record) => record.accountId === accountId);
-                    const account = accounts.collect().find((account) => account.accountId === accountId);
                     const zone = zones.search(zoneId);
-
-                    log.info(account.displayName, zone[Zones.Country].name, score);
 
                     wrs.push({
                         user: {
                             id: accountId,
-                            name: account.displayName,
                             zone,
                         },
                         score: (wr = score),
-                        date: record.timestamp,
-                        duration: moment().diff(moment(record.timestamp), 'd'),
-                        replay: record.url.slice(record.url.lastIndexOf('/') + 1),
                     });
                     continue;
                 }
@@ -123,6 +120,7 @@ const dumpOfficialCampaign = async () => {
 
             tracks.push({
                 id: mapUid,
+                _id: mapId,
                 name: filename.slice(0, -8),
                 wrs,
             });
@@ -154,10 +152,6 @@ const dumpTrackOfTheDay = async () => {
             const leaderboard = await trackmania.leaderboard(seasonUid, mapUid, 0, 5);
             const rankings = leaderboard.collect()[0].top;
 
-            const accountIds = rankings.map((ranking) => ranking.accountId);
-            const accounts = await trackmania.accounts(accountIds);
-            const records = await trackmania.mapRecords(accountIds, [mapId]);
-
             let wrs = [];
             let wr = undefined;
 
@@ -167,22 +161,14 @@ const dumpTrackOfTheDay = async () => {
                 }
 
                 if (wr === undefined || wr === score) {
-                    const record = records.collect().find((record) => record.accountId === accountId);
-                    const account = accounts.collect().find((account) => account.accountId === accountId);
                     const zone = zones.search(zoneId);
-
-                    log.info(account.displayName, zone[Zones.Country].name, score);
 
                     wrs.push({
                         user: {
                             id: accountId,
-                            name: account.displayName,
                             zone,
                         },
                         score: (wr = score),
-                        date: record.timestamp,
-                        duration: moment().diff(moment(record.timestamp), 'd'),
-                        replay: record.url.slice(record.url.lastIndexOf('/') + 1),
                     });
                     continue;
                 }
@@ -190,6 +176,7 @@ const dumpTrackOfTheDay = async () => {
 
             tracks.push({
                 id: mapUid,
+                _id: mapId,
                 name,
                 monthDay,
                 wrs,
@@ -200,9 +187,10 @@ const dumpTrackOfTheDay = async () => {
             isOfficial: false,
             year,
             month,
-            name: `${moment().set('month', month - 1).format('MMMM')} ${year}`,
+            name: `${moment()
+                .set('month', month - 1)
+                .format('MMMM')} ${year}`,
             tracks,
-            ...generateStats(tracks),
         });
     }
 };
@@ -224,9 +212,9 @@ const generateStats = (tracks) => {
             user: users.find((u) => u.name === key),
             wrs: frequency[key],
             duration: wrs
-                    .filter((r) => r.user.id.toString() === key)
-                    .map((r) => r.duration)
-                    .reduce((a, b) => a + b, 0),
+                .filter((r) => r.user.name === key)
+                .map((r) => r.duration)
+                .reduce((a, b) => a + b, 0),
         }));
 
     const countryLeaderboard = [...new Set(users.map((user) => user.zone[Zones.Country].zoneId))]
@@ -261,6 +249,47 @@ const autoban = (accountId, score) => {
     }
 
     return false;
+};
+
+const resolveGame = async () => {
+    const users = new Map();
+
+    game.map(({ tracks }) => tracks)
+        .reduce((acc, val) => acc.concat(val), [])
+        .forEach(({ _id, wrs }) => {
+            wrs.forEach((wr) => {
+                const user = users.get(wr.user.id);
+                if (user) {
+                    user.push({ _id, wr });
+                } else {
+                    users.set(wr.user.id, [{ _id, wr }]);
+                }
+            });
+        });
+
+    for (const userIds of [...users.keys()].chunk(10)) {
+        const accounts = (await trackmania.accounts(userIds)).collect();
+
+        for (const userId of userIds) {
+            const user = users.get(userId);
+            const { displayName } = accounts.find((account) => account.accountId === userId);
+
+            /* chunk this if Hefest or one of the totd hunters gets more wrs... maybe */
+            const mapIds = user.map(({ _id }) => _id);
+            const records = await trackmania.mapRecords([userId], mapIds);
+
+            records.collect().forEach(({ mapId, timestamp, url }) => {
+                const { wr } = user.find(({ _id }) => _id === mapId);
+
+                wr.user.name = displayName;
+                wr.date = timestamp;
+                wr.duration = moment().diff(moment(timestamp), 'd');
+                wr.replay = url.slice(url.lastIndexOf('/') + 1);
+            });
+        }
+    }
+
+    game.forEach((campaign) => Object.assign(campaign, generateStats(campaign.tracks)));
 };
 
 const inspect = (obj) => console.dir(obj, { depth: 6 });

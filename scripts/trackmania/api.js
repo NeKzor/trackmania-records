@@ -172,6 +172,7 @@ class Zones extends Entity {
 
     async update() {
         this.data = await this.client.get('/zones');
+        this.cache = {};
         return this;
     }
     *[Symbol.iterator]() {
@@ -180,6 +181,14 @@ class Zones extends Entity {
         }
     }
     search(zoneId) {
+        const cachedZone = this.cache[zoneId];
+        if (cachedZone) {
+            return cachedZone;
+        }
+
+        return (this.cache[zoneId] = this._search(zoneId));
+    }
+    _search(zoneId) {
         const result = [];
 
         for (const zone of this.data) {
