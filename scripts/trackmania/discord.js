@@ -32,20 +32,22 @@ class DiscordIntegration {
     buildEmbed({ wr, track }) {
         return {
             title: 'New World Record',
-            url: track.isOfficial
+            url: 'https://nekz.me/trackmania-records/trackmania',
+            /* url: track.isOfficial
                 ? 'https://nekz.me/trackmania/#/summer2020/' + parseInt(track.name.split(' - ')[1], 10)
-                : undefined,
-            color: 295077,
-            footer: {
+                : undefined, */
+            color: 44871,
+            timestamp: (new Date(wr.date)).toISOString(),
+            /* footer: {
                 text: 'nekz.me/trackmania-records',
-            },
+            }, */
             /* image: {
                 url: `https://raw.githubusercontent.com/NeKzor/nekzor.github.io/master/trackmania/images/summer2020/${mapId}.webp`,
             }, */
             fields: [
                 {
                     name: 'Track',
-                    value: track.name,
+                    value: track.name.replace(/(\$[0-9a-fA-F]{3}|\$[wnoitsgzb]{1})/g, ''),
                     inline: true,
                 },
                 {

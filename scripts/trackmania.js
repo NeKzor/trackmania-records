@@ -79,7 +79,7 @@ const main = async (outputDir, snapshot = true) => {
     try {
         await dumpOfficialCampaign();
         await dumpTrackOfTheDay();
-        await resolveGame();
+        await resolveGame(snapshot);
     } catch (error) {
         discord.client.destroy();
         cleanup();
@@ -147,7 +147,7 @@ const dumpOfficialCampaign = async () => {
                             zone,
                         },
                         score: (wr = score),
-                        delta: latestWr ? latestWr.delta : latestScore ? Math.abs(score - latestScore) : 0,
+                        delta:  Math.abs(latestWr ? latestWr.delta : latestScore ? score - latestScore : 0),
                         isNew: !latestWr && latestScore ? true : false,
                     });
                     continue;
@@ -167,26 +167,32 @@ const dumpOfficialCampaign = async () => {
             isOfficial: true,
             name,
             tracks,
-            ...generateStats(tracks),
         });
     }
 };
 
 const dumpTrackOfTheDay = async () => {
-    const campaigns = await trackmania.campaigns(Campaigns.TrackOfTheDay, 0, 2);
+    const campaigns = await trackmania.campaigns(Campaigns.TrackOfTheDay, 0, 1);
 
     for (const { year, month, days } of campaigns) {
-        //log.info(year, month);
+        log.info(year, month);
 
         const latestCampaign = latest.find((campaign) => campaign.year === year && campaign.month === month);
 
-        const maps = await trackmania.maps(days.map((map) => map.mapUid).filter((uid) => uid));
+        const playable = days.filter((day) => day.mapUid !== '');
 
-        const tracks = [];
+        const trackDays = latestCampaign
+            ? playable.filter((day) => !latestCampaign.tracks.slice(0, -1).find((track) => track.id === day.mapUid))
+            : playable;
 
-        for (const { mapUid, seasonUid, monthDay } of days.filter((map) => map.mapUid !== '')) {
-            const { name, mapId } = maps.collect().find((map) => map.mapUid === mapUid);
-            //log.info(name, seasonUid, mapUid);
+        const tracks = latestCampaign ? latestCampaign.tracks.slice(0, -1) : [];
+
+        const maps = await trackmania.maps(trackDays.map((map) => map.mapUid));
+        const mapList = maps.collect();
+
+        for (const { mapUid, seasonUid, monthDay } of trackDays) {
+            const { name, mapId } = mapList.find((map) => map.mapUid === mapUid);
+            log.info(name, seasonUid, mapUid);
 
             const leaderboard = await trackmania.leaderboard(seasonUid, mapUid, 0, 5);
             const rankings = leaderboard.collect()[0].top;
@@ -215,7 +221,7 @@ const dumpTrackOfTheDay = async () => {
                             zone,
                         },
                         score: (wr = score),
-                        delta: latestWr ? latestWr.delta : latestScore ? score - latestScore : 0,
+                        delta: Math.abs(latestWr ? latestWr.delta : latestScore ? score - latestScore : 0),
                         isNew: !latestWr && latestScore ? true : false,
                     });
                     continue;
@@ -244,48 +250,6 @@ const dumpTrackOfTheDay = async () => {
     }
 };
 
-const generateStats = (tracks) => {
-    const totalTime = tracks.map((t) => t.wrs[0].score).reduce((a, b) => a + b, 0);
-
-    const users = tracks.map((t) => t.wrs.map((r) => r.user)).reduce((acc, val) => acc.concat(val), []);
-    const wrs = tracks.map((t) => t.wrs).reduce((acc, val) => acc.concat(val), []);
-
-    const frequency = users.reduce((count, user) => {
-        count[user.name] = (count[user.name] || 0) + 1;
-        return count;
-    }, {});
-
-    const leaderboard = Object.keys(frequency)
-        .sort((a, b) => frequency[b] - frequency[a])
-        .map((key) => ({
-            user: users.find((u) => u.name === key),
-            wrs: frequency[key],
-            duration: wrs
-                .filter((r) => r.user.name === key)
-                .map((r) => r.duration)
-                .reduce((a, b) => a + b, 0),
-        }));
-
-    const countryLeaderboard = [...new Set(users.map((user) => user.zone[Zones.Country].zoneId))]
-        .map((zoneId) => ({
-            zone: zones.search(zoneId).slice(0, 3),
-            wrs: users.filter((user) => user.zone[Zones.Country].zoneId === zoneId).length,
-        }))
-        .sort((a, b) => {
-            const v1 = a.wrs;
-            const v2 = b.wrs;
-            return v1 === v2 ? 0 : v1 < v2 ? 1 : -1;
-        });
-
-    return {
-        stats: {
-            totalTime,
-        },
-        leaderboard,
-        countryLeaderboard,
-    };
-};
-
 const autoban = (accountId, score) => {
     if (cheaters.find((cheater) => cheater === accountId)) {
         return true;
@@ -300,7 +264,7 @@ const autoban = (accountId, score) => {
     return false;
 };
 
-const resolveGame = async () => {
+const resolveGame = async (snapshot) => {
     const users = new Map();
 
     game.map(({ tracks }) => tracks)
@@ -332,8 +296,11 @@ const resolveGame = async () => {
 
                 wr.user.name = displayName;
                 wr.date = timestamp;
-                wr.duration = moment().diff(moment(timestamp), 'd');
                 wr.replay = url.slice(url.lastIndexOf('/') + 1);
+
+                if (snapshot) {
+                    wr.duration = moment().diff(moment(timestamp), 'd');
+                }
 
                 if (wr.isNew) {
                     await discord.sendWebhook({ wr, track });
@@ -344,13 +311,63 @@ const resolveGame = async () => {
         }
     }
 
-    game.forEach((campaign) => Object.assign(campaign, generateStats(campaign.tracks)));
+    game.forEach((campaign) => Object.assign(campaign, generateStats(campaign.tracks, snapshot)));
+
+    game.push(...latest.filter((campaign) => {
+        return !campaign.isOfficial && !game.find((totd) => {
+            return totd.isOfficial === campaign.isOfficial
+                && totd.year === campaign.year
+                && totd.month === campaign.month;
+        });
+    }));
+};
+
+const generateStats = (tracks, snapshot) => {
+    const totalTime = tracks.map((t) => t.wrs[0].score).reduce((a, b) => a + b, 0);
+
+    const users = tracks.map((t) => t.wrs.map((r) => r.user)).reduce((acc, val) => acc.concat(val), []);
+    const wrs = tracks.map((t) => t.wrs).reduce((acc, val) => acc.concat(val), []);
+
+    const frequency = users.reduce((count, user) => {
+        count[user.name] = (count[user.name] || 0) + 1;
+        return count;
+    }, {});
+
+    const leaderboard = Object.keys(frequency)
+        .sort((a, b) => frequency[b] - frequency[a])
+        .map((key) => ({
+            user: users.find((u) => u.name === key),
+            wrs: frequency[key],
+            duration: snapshot ? wrs
+                .filter((r) => r.user.name === key)
+                .map((r) => r.duration)
+                .reduce((a, b) => a + b, 0) : undefined,
+        }));
+
+    const countryLeaderboard = [...new Set(users.map((user) => user.zone[Zones.Country].zoneId))]
+        .map((zoneId) => ({
+            zone: zones.search(zoneId).slice(0, 3),
+            wrs: users.filter((user) => user.zone[Zones.Country].zoneId === zoneId).length,
+        }))
+        .sort((a, b) => {
+            const v1 = a.wrs;
+            const v2 = b.wrs;
+            return v1 === v2 ? 0 : v1 < v2 ? 1 : -1;
+        });
+
+    return {
+        stats: {
+            totalTime,
+        },
+        leaderboard,
+        countryLeaderboard,
+    };
 };
 
 const inspect = (obj) => console.dir(obj, { depth: 6 });
 
 if (process.argv[2] === '--test') {
-    main(path.join(__dirname, '../api/')).catch(inspect);
+    main(path.join(__dirname, '../api/'), false).catch(inspect);
 }
 
 module.exports = main;
