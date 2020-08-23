@@ -74,6 +74,16 @@ const main = async (outputDir, snapshot = true) => {
     cheaters = importJson(gameFile).cheaters;
     latest = importJson(`${outputDir}/trackmania/latest.json`);
 
+    latest.forEach((campaign) => campaign.tracks.forEach((track) => {
+        if (!track.history) {
+            track.history = [];
+        }
+
+        if (!snapshot) {
+            track.wrs.forEach((wr) => delete wr.duration);
+        }
+    }));
+
     discord = new DiscordIntegration(process.env.WEBHOOK_ID, process.env.WEBHOOK_TOKEN);
 
     try {
@@ -113,11 +123,12 @@ const dumpOfficialCampaign = async () => {
         const latestCampaign = latest.find((campaign) => campaign.name === name);
 
         const maps = await trackmania.maps(playlist.map((map) => map.mapUid));
+        const mapList = maps.collect();
 
         const tracks = [];
 
         for (const { mapUid } of playlist) {
-            const { name, filename, mapId } = maps.collect().find((map) => map.mapUid === mapUid);
+            const { name, mapId, thumbnailUrl } = mapList.find((map) => map.mapUid === mapUid);
             //log.info(name, mapUid);
 
             const leaderboard = await trackmania.leaderboard(seasonUid, mapUid, 0, 5);
@@ -157,9 +168,11 @@ const dumpOfficialCampaign = async () => {
             tracks.push({
                 id: mapUid,
                 _id: mapId,
-                name: filename.slice(0, -8),
+                name,
                 wrs,
                 isOfficial: true,
+                history: latestTrack && latestTrack.history ? latestTrack.history : [],
+                thumbnail: thumbnailUrl.slice(thumbnailUrl.lastIndexOf('/') + 1, -4),
             });
         }
 
@@ -190,7 +203,7 @@ const dumpTrackOfTheDay = async () => {
         const maps = await trackmania.maps(trackDays.map((map) => map.mapUid));
         const mapList = maps.collect();
 
-        for (const { mapUid, seasonUid, monthDay } of trackDays) {
+        for (const { mapUid, seasonUid, monthDay, thumbnailUrl } of trackDays) {
             const { name, mapId } = mapList.find((map) => map.mapUid === mapUid);
             log.info(name, seasonUid, mapUid);
 
@@ -235,6 +248,8 @@ const dumpTrackOfTheDay = async () => {
                 monthDay,
                 wrs,
                 isOfficial: false,
+                history: latestTrack && latestTrack.history ? latestTrack.history : [],
+                thumbnail: thumbnailUrl.slice(thumbnailUrl.lastIndexOf('/') + 1, -4),
             });
         }
 
@@ -302,7 +317,12 @@ const resolveGame = async (snapshot) => {
                     wr.duration = moment().diff(moment(timestamp), 'd');
                 }
 
-                if (wr.isNew) {
+                const inHistory = track.history.find((formerWr) => {
+                    return formerWr.score === wr.score && formerWr.user.id === wr.user.id;
+                });
+
+                if (wr.isNew && !inHistory) {
+                    track.history.push(wr);
                     await discord.sendWebhook({ wr, track });
                 }
 
