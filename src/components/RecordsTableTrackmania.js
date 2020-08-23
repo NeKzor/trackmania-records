@@ -17,7 +17,7 @@ import Typography from '@material-ui/core/Typography';
 import SaveAltIcon from '@material-ui/icons/SaveAlt';
 import HistoryIcon from '@material-ui/icons/History';
 import { stableSort } from '../utils/stableSort';
-import { formatScore, getDateDifferenceColor } from '../utils/tools';
+import { formatScore, getDateDifferenceColor, getDateTimeDifferenceColor } from '../utils/tools';
 
 const rowsOfficial = [
     { id: 'track.name', sortable: true, label: 'Track', align: 'left' },
@@ -109,8 +109,8 @@ const useRowStyles = makeStyles({
 });
 
 const RecordsHistoryRow = ({ wr, official }) => {
-    const score = formatScore(wr.score, 'tm2', wr.track.type);
-    const delta = wr.delta !== 0 ? formatScore(wr.delta, 'tm2', wr.track.type) : null;
+    const score = formatScore(wr.score, 'tm2');
+    const delta = wr.delta !== 0 ? formatScore(wr.delta, 'tm2') : null;
 
     return (
         <TableRow tabIndex={-1}>
@@ -126,7 +126,7 @@ const RecordsHistoryRow = ({ wr, official }) => {
             {!official && (
                 <MinTableCell align="left">
                     <Tooltip title={wr.setAfter} placement="bottom-end" enterDelay={300}>
-                        <Moment style={{ color: getDateDifferenceColor(wr.date), ...noWrap }} format="HH:mm:ss">
+                        <Moment style={{ color: getDateTimeDifferenceColor(wr.date), ...noWrap }} format="HH:mm">
                             {wr.date}
                         </Moment>
                     </Tooltip>
@@ -159,8 +159,8 @@ const RecordsHistoryRow = ({ wr, official }) => {
 };
 
 const RecordsRow = ({ wr, official, orderBy, useLiveDuration }) => {
-    const score = formatScore(wr.score, 'tm2', wr.track.type);
-    const delta = wr.delta !== 0 ? formatScore(wr.delta, 'tm2', wr.track.type) : null;
+    const score = formatScore(wr.score, 'tm2');
+    const delta = wr.delta !== 0 ? formatScore(wr.delta, 'tm2') : null;
     const [open, setOpen] = React.useState(false);
 
     const classes = useRowStyles();
@@ -291,11 +291,15 @@ const RecordsRow = ({ wr, official, orderBy, useLiveDuration }) => {
                                         </TableRow>
                                     </TableHead>
                                     <TableBody>
-                                        <RecordsHistoryRow
-                                            wr={wr}
-                                            official={official}
-                                            key={`${wr.track.id}-${wr.user.id}`}
-                                        />
+                                        {wr.track.history.map((historyWr) => {
+                                            return (
+                                                <RecordsHistoryRow
+                                                    wr={historyWr}
+                                                    official={official}
+                                                    key={`${wr.track.id}-${wr.user.id}`}
+                                                />
+                                            );
+                                        })}
                                     </TableBody>
                                 </Table>
                             </Box>

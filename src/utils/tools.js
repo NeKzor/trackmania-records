@@ -42,6 +42,15 @@ const hourScale = scaleLinear()
     .range(['#2eb82e', '#258e25', '#cca300', '#e67300']);
 
 export function getDateDifferenceColor(date) {
-    let passedHours = moment().diff(moment(date), 'hours');
+    const passedHours = moment().diff(moment(date), 'hours');
     return passedHours <= 2 * 30 * 24 ? hourScale(passedHours) : undefined;
+}
+
+const minuteScale = scaleLinear()
+    .domain([0, 8 * 60, 16 * 60, 24 * 60])
+    .range(['#2eb82e', '#cca300', '#e67300', '#e63200']);
+
+export function getDateTimeDifferenceColor(date) {
+    const passedHours = moment().diff(moment(date), 'minutes');
+    return passedHours <= 24 * 60 ? minuteScale(passedHours) : undefined;
 }

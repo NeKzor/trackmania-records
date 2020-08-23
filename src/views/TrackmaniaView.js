@@ -25,6 +25,19 @@ const useStyles = makeStyles((_) => ({
     },
 }));
 
+const calculateSetAfter = (campaign, track, wrDate) => {
+    const releasedAt = moment([campaign.year, campaign.month]).utc().set({
+        date: track.monthDay,
+        hour: 17,
+        minute: 0,
+        second: 0,
+    });
+
+    const setAfterHours = wrDate.diff(releasedAt, 'hours');
+    const setAfterMinutes = wrDate.diff(releasedAt, 'minutes') - setAfterHours * 60;
+    return `set after ${setAfterHours} hours and ${setAfterMinutes} minutes`;
+};
+
 const GameView = ({ match }) => {
     const isMounted = useIsMounted();
 
@@ -58,18 +71,17 @@ const GameView = ({ match }) => {
                             const wrDate = moment(wr.date);
                             const duration = useLiveDuration ? moment().diff(wrDate, 'd') : wr.duration;
 
-                            let setAfter = undefined;
-                            if (!campaign.isOfficial) {
-                                const releasedAt = moment([campaign.year, campaign.month]).utc().set({
-                                    date: track.monthDay,
-                                    hour: 17,
-                                    minute: 0,
-                                    second: 0,
-                                });
+                            const setAfter = !campaign.isOfficial
+                                ? calculateSetAfter(campaign, track, wrDate)
+                                : undefined;
 
-                                const setAfterHours = wrDate.diff(releasedAt, 'hours');
-                                const setAfterMinutes = wrDate.diff(releasedAt, 'minutes') - setAfterHours * 60;
-                                setAfter = `set after ${setAfterHours} hours and ${setAfterMinutes} minutes`;
+                            const isLast = wr === track.wrs[track.wrs.length - 1];
+                            const history = isLast && (track.history || []).length > 0 ? track.history : undefined;
+
+                            if (history && !campaign.isOfficial) {
+                                history.forEach((historyWr) => {
+                                    historyWr.setAfter = calculateSetAfter(campaign, track, moment(historyWr.date));
+                                });
                             }
 
                             rows.push({
@@ -78,9 +90,9 @@ const GameView = ({ match }) => {
                                     name: track.name.replace(/(\$[0-9a-fA-F]{3}|\$[wnoitsgzb]{1})/g, ''),
                                     monthDay: track.monthDay,
                                     isFirst: wr === track.wrs[0],
-                                    isLast: wr === track.wrs[track.wrs.length - 1],
+                                    isLast,
                                     records: track.wrs.length,
-                                    history: (track.history || []).length > 0 ? track.history : undefined,
+                                    history,
                                 },
                                 ...wr,
                                 duration,
