@@ -40,6 +40,10 @@ const main = async () => {
         log.error(err);
     }
 
+    publish();
+};
+
+const publish = () => {
     ghPages.publish(
         output,
         {
@@ -60,4 +64,14 @@ if (now) {
     main();
 }
 
-cron.schedule('0 18 * * *', main);
+cron.schedule('0 19 * * *', main);
+
+cron.schedule('0 0-18,20-23 * * *', async () => {
+    try {
+        log.info('scraping trackmania');
+        await trackmania(output, false);
+        publish();
+    } catch (err) {
+        log.error(err);
+    }
+});
