@@ -3,6 +3,7 @@ const path = require('path');
 const moment = require('moment');
 const { UbisoftClient, TrackmaniaClient, Audiences, Campaigns, Zones } = require('./trackmania/api');
 const { log, tryExportJson, tryMakeDir, importJson } = require('./utils');
+const DiscordIntegration = require('./trackmania/discord');
 
 require('dotenv').config();
 
@@ -40,6 +41,16 @@ let zones = null;
 let game = [];
 let cheaters = [];
 let latest = [];
+let discord = null;
+
+const cleanup = () => {
+    trackmania = null;
+    zones = null;
+    game = [];
+    cheaters = [];
+    latest = [];
+    discord = null;
+};
 
 const main = async (outputDir, snapshot = true) => {
     const ubisoft = new UbisoftClient(process.env.UBI_EMAIL, process.env.UBI_PW);
@@ -63,9 +74,32 @@ const main = async (outputDir, snapshot = true) => {
     cheaters = importJson(gameFile).cheaters;
     latest = importJson(`${outputDir}/trackmania/latest.json`);
 
-    await dumpOfficialCampaign();
-    await dumpTrackOfTheDay();
-    await resolveGame();
+    latest.forEach((campaign) => campaign.tracks.forEach((track) => {
+        if (!track.history) {
+            track.history = [];
+        }
+
+        if (!snapshot) {
+            track.wrs.forEach((wr) => delete wr.duration);
+        }
+    }));
+
+    discord = new DiscordIntegration(process.env.WEBHOOK_ID, process.env.WEBHOOK_TOKEN);
+
+    try {
+        await dumpOfficialCampaign();
+        await dumpTrackOfTheDay();
+        await resolveGame(snapshot);
+    } catch (error) {
+        discord.client.destroy();
+        cleanup();
+
+        throw error;
+    } finally {
+        if (discord) {
+            discord.client.destroy();
+        }
+    }
 
     tryMakeDir(outputDir);
     tryMakeDir(path.join(outputDir, '/trackmania'));
@@ -77,11 +111,7 @@ const main = async (outputDir, snapshot = true) => {
 
     tryExportJson(gameFile, { cheaters }, true, true);
 
-    trackmania = null;
-    zones = null;
-    game = [];
-    cheaters = [];
-    latest = [];
+    cleanup();
 };
 
 const dumpOfficialCampaign = async () => {
@@ -93,11 +123,12 @@ const dumpOfficialCampaign = async () => {
         const latestCampaign = latest.find((campaign) => campaign.name === name);
 
         const maps = await trackmania.maps(playlist.map((map) => map.mapUid));
+        const mapList = maps.collect();
 
         const tracks = [];
 
         for (const { mapUid } of playlist) {
-            const { name, filename, mapId } = maps.collect().find((map) => map.mapUid === mapUid);
+            const { name, mapId, thumbnailUrl } = mapList.find((map) => map.mapUid === mapUid);
             //log.info(name, mapUid);
 
             const leaderboard = await trackmania.leaderboard(seasonUid, mapUid, 0, 5);
@@ -106,7 +137,7 @@ const dumpOfficialCampaign = async () => {
             let wrs = [];
             let wr = undefined;
 
-            const latestTrack = latestCampaign ? latestCampaign.tracks.find((track) => track.id === mapUid) : null;
+            const latestTrack = latestCampaign ? latestCampaign.tracks.find((track) => track.id === mapUid) : undefined;
 
             for (const { accountId, zoneId, score } of rankings) {
                 if (autoban(accountId, score)) {
@@ -116,10 +147,10 @@ const dumpOfficialCampaign = async () => {
                 if (wr === undefined || wr === score) {
                     const zone = zones.search(zoneId);
 
-                    const latestScore = latestTrack && latestTrack.wrs[0] ?  latestTrack.wrs[0].score : null;
+                    const latestScore = latestTrack && latestTrack.wrs[0] ? latestTrack.wrs[0].score : undefined;
                     const latestWr = latestTrack
                         ? latestTrack.wrs.find((wr) => wr.user.id === accountId && wr.score === score)
-                        : null;
+                        : undefined;
 
                     wrs.push({
                         user: {
@@ -127,7 +158,8 @@ const dumpOfficialCampaign = async () => {
                             zone,
                         },
                         score: (wr = score),
-                        delta: latestWr ? latestWr.delta : latestScore ? Math.abs(score - latestScore) : 0,
+                        delta:  Math.abs(latestWr ? latestWr.delta : latestScore ? score - latestScore : 0),
+                        isNew: !latestWr && latestScore ? true : false,
                     });
                     continue;
                 }
@@ -136,8 +168,11 @@ const dumpOfficialCampaign = async () => {
             tracks.push({
                 id: mapUid,
                 _id: mapId,
-                name: filename.slice(0, -8),
+                name,
                 wrs,
+                isOfficial: true,
+                history: latestTrack && latestTrack.history ? latestTrack.history : [],
+                thumbnail: thumbnailUrl.slice(thumbnailUrl.lastIndexOf('/') + 1, -4),
             });
         }
 
@@ -145,26 +180,32 @@ const dumpOfficialCampaign = async () => {
             isOfficial: true,
             name,
             tracks,
-            ...generateStats(tracks),
         });
     }
 };
 
 const dumpTrackOfTheDay = async () => {
-    const campaigns = await trackmania.campaigns(Campaigns.TrackOfTheDay, 0, 2);
+    const campaigns = await trackmania.campaigns(Campaigns.TrackOfTheDay, 0, 1);
 
     for (const { year, month, days } of campaigns) {
-        //log.info(year, month);
+        log.info(year, month);
 
         const latestCampaign = latest.find((campaign) => campaign.year === year && campaign.month === month);
 
-        const maps = await trackmania.maps(days.map((map) => map.mapUid).filter((uid) => uid));
+        const playable = days.filter((day) => day.mapUid !== '');
 
-        const tracks = [];
+        const trackDays = latestCampaign
+            ? playable.filter((day) => !latestCampaign.tracks.slice(0, -1).find((track) => track.id === day.mapUid))
+            : playable;
 
-        for (const { mapUid, seasonUid, monthDay } of days.filter((map) => map.mapUid !== '')) {
-            const { name, mapId } = maps.collect().find((map) => map.mapUid === mapUid);
-            //log.info(name, seasonUid, mapUid);
+        const tracks = latestCampaign ? latestCampaign.tracks.slice(0, -1) : [];
+
+        const maps = await trackmania.maps(trackDays.map((map) => map.mapUid));
+        const mapList = maps.collect();
+
+        for (const { mapUid, seasonUid, monthDay, thumbnailUrl } of trackDays) {
+            const { name, mapId } = mapList.find((map) => map.mapUid === mapUid);
+            log.info(name, seasonUid, mapUid);
 
             const leaderboard = await trackmania.leaderboard(seasonUid, mapUid, 0, 5);
             const rankings = leaderboard.collect()[0].top;
@@ -172,7 +213,7 @@ const dumpTrackOfTheDay = async () => {
             let wrs = [];
             let wr = undefined;
 
-            const latestTrack = latestCampaign ? latestCampaign.tracks.find((track) => track.id === mapUid) : null;
+            const latestTrack = latestCampaign ? latestCampaign.tracks.find((track) => track.id === mapUid) : undefined;
 
             for (const { accountId, zoneId, score } of rankings) {
                 if (autoban(accountId, score)) {
@@ -182,10 +223,10 @@ const dumpTrackOfTheDay = async () => {
                 if (wr === undefined || wr === score) {
                     const zone = zones.search(zoneId);
 
-                    const latestScore = latestTrack && latestTrack.wrs[0] ?  latestTrack.wrs[0].score : null;
+                    const latestScore = latestTrack && latestTrack.wrs[0] ? latestTrack.wrs[0].score : undefined;
                     const latestWr = latestTrack
                         ? latestTrack.wrs.find((wr) => wr.user.id === accountId && wr.score === score)
-                        : null;
+                        : undefined;
 
                     wrs.push({
                         user: {
@@ -193,7 +234,8 @@ const dumpTrackOfTheDay = async () => {
                             zone,
                         },
                         score: (wr = score),
-                        delta: latestWr ? latestWr.delta : latestScore ? Math.abs(score - latestScore) : 0,
+                        delta: Math.abs(latestWr ? latestWr.delta : latestScore ? score - latestScore : 0),
+                        isNew: !latestWr && latestScore ? true : false,
                     });
                     continue;
                 }
@@ -205,6 +247,9 @@ const dumpTrackOfTheDay = async () => {
                 name,
                 monthDay,
                 wrs,
+                isOfficial: false,
+                history: latestTrack && latestTrack.history ? latestTrack.history : [],
+                thumbnail: thumbnailUrl.slice(thumbnailUrl.lastIndexOf('/') + 1, -4),
             });
         }
 
@@ -220,7 +265,84 @@ const dumpTrackOfTheDay = async () => {
     }
 };
 
-const generateStats = (tracks) => {
+const autoban = (accountId, score) => {
+    if (cheaters.find((cheater) => cheater === accountId)) {
+        return true;
+    }
+
+    if (score <= 13000) {
+        log.warn('banned: ' + accountId);
+        cheaters.push(accountId);
+        return true;
+    }
+
+    return false;
+};
+
+const resolveGame = async (snapshot) => {
+    const users = new Map();
+
+    game.map(({ tracks }) => tracks)
+        .reduce((acc, val) => acc.concat(val), [])
+        .forEach(({ wrs, ...track }) => {
+            wrs.forEach((wr) => {
+                const user = users.get(wr.user.id);
+                if (user) {
+                    user.push({ track, wr });
+                } else {
+                    users.set(wr.user.id, [{ track, wr }]);
+                }
+            });
+        });
+
+    for (const userIds of [...users.keys()].chunk(10)) {
+        const accounts = (await trackmania.accounts(userIds)).collect();
+
+        for (const userId of userIds) {
+            const user = users.get(userId);
+            const { displayName } = accounts.find((account) => account.accountId === userId);
+
+            /* chunk this if Hefest or one of the totd hunters gets more wrs... maybe */
+            const mapIds = user.map(({ track }) => track._id);
+            const records = await trackmania.mapRecords([userId], mapIds);
+
+            for (const { mapId, timestamp, url } of records) {
+                const { wr, track } = user.find(({ track }) => track._id === mapId);
+
+                wr.user.name = displayName;
+                wr.date = timestamp;
+                wr.replay = url.slice(url.lastIndexOf('/') + 1);
+
+                if (snapshot) {
+                    wr.duration = moment().diff(moment(timestamp), 'd');
+                }
+
+                const inHistory = track.history.find((formerWr) => {
+                    return formerWr.score === wr.score && formerWr.user.id === wr.user.id;
+                });
+
+                if (wr.isNew && !inHistory) {
+                    track.history.push(wr);
+                    await discord.sendWebhook({ wr, track });
+                }
+
+                delete wr.isNew;
+            }
+        }
+    }
+
+    game.forEach((campaign) => Object.assign(campaign, generateStats(campaign.tracks, snapshot)));
+
+    game.push(...latest.filter((campaign) => {
+        return !campaign.isOfficial && !game.find((totd) => {
+            return totd.isOfficial === campaign.isOfficial
+                && totd.year === campaign.year
+                && totd.month === campaign.month;
+        });
+    }));
+};
+
+const generateStats = (tracks, snapshot) => {
     const totalTime = tracks.map((t) => t.wrs[0].score).reduce((a, b) => a + b, 0);
 
     const users = tracks.map((t) => t.wrs.map((r) => r.user)).reduce((acc, val) => acc.concat(val), []);
@@ -236,10 +358,10 @@ const generateStats = (tracks) => {
         .map((key) => ({
             user: users.find((u) => u.name === key),
             wrs: frequency[key],
-            duration: wrs
+            duration: snapshot ? wrs
                 .filter((r) => r.user.name === key)
                 .map((r) => r.duration)
-                .reduce((a, b) => a + b, 0),
+                .reduce((a, b) => a + b, 0) : undefined,
         }));
 
     const countryLeaderboard = [...new Set(users.map((user) => user.zone[Zones.Country].zoneId))]
@@ -262,65 +384,10 @@ const generateStats = (tracks) => {
     };
 };
 
-const autoban = (accountId, score) => {
-    if (cheaters.find((cheater) => cheater === accountId)) {
-        return true;
-    }
-
-    if (score <= 13000) {
-        log.warn('banned: ' + accountId);
-        cheaters.push(accountId);
-        return true;
-    }
-
-    return false;
-};
-
-const resolveGame = async () => {
-    const users = new Map();
-
-    game.map(({ tracks }) => tracks)
-        .reduce((acc, val) => acc.concat(val), [])
-        .forEach(({ _id, wrs }) => {
-            wrs.forEach((wr) => {
-                const user = users.get(wr.user.id);
-                if (user) {
-                    user.push({ _id, wr });
-                } else {
-                    users.set(wr.user.id, [{ _id, wr }]);
-                }
-            });
-        });
-
-    for (const userIds of [...users.keys()].chunk(10)) {
-        const accounts = (await trackmania.accounts(userIds)).collect();
-
-        for (const userId of userIds) {
-            const user = users.get(userId);
-            const { displayName } = accounts.find((account) => account.accountId === userId);
-
-            /* chunk this if Hefest or one of the totd hunters gets more wrs... maybe */
-            const mapIds = user.map(({ _id }) => _id);
-            const records = await trackmania.mapRecords([userId], mapIds);
-
-            records.collect().forEach(({ mapId, timestamp, url }) => {
-                const { wr } = user.find(({ _id }) => _id === mapId);
-
-                wr.user.name = displayName;
-                wr.date = timestamp;
-                wr.duration = moment().diff(moment(timestamp), 'd');
-                wr.replay = url.slice(url.lastIndexOf('/') + 1);
-            });
-        }
-    }
-
-    game.forEach((campaign) => Object.assign(campaign, generateStats(campaign.tracks)));
-};
-
 const inspect = (obj) => console.dir(obj, { depth: 6 });
 
 if (process.argv[2] === '--test') {
-    main(path.join(__dirname, '../api/')).catch(inspect);
+    main(path.join(__dirname, '../api/'), false).catch(inspect);
 }
 
 module.exports = main;
