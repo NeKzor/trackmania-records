@@ -203,8 +203,8 @@ const dumpTrackOfTheDay = async () => {
         const maps = await trackmania.maps(trackDays.map((map) => map.mapUid));
         const mapList = maps.collect();
 
-        for (const { mapUid, seasonUid, monthDay, thumbnailUrl } of trackDays) {
-            const { name, mapId } = mapList.find((map) => map.mapUid === mapUid);
+        for (const { mapUid, seasonUid, monthDay } of trackDays) {
+            const { name, mapId, thumbnailUrl } = mapList.find((map) => map.mapUid === mapUid);
             log.info(name, seasonUid, mapUid);
 
             const leaderboard = await trackmania.leaderboard(seasonUid, mapUid, 0, 5);
@@ -321,7 +321,7 @@ const resolveGame = async (snapshot) => {
                     return formerWr.score === wr.score && formerWr.user.id === wr.user.id;
                 });
 
-                if (wr.isNew && !inHistory) {
+                if (wr.isNew && !inHistory && (track.isOfficial || !snapshot)) {
                     track.history.push(wr);
                     await discord.sendWebhook({ wr, track });
                 }

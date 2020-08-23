@@ -60,13 +60,7 @@ const publish = () => {
     );
 };
 
-if (now) {
-    main();
-}
-
-cron.schedule('0 19 * * *', main);
-
-cron.schedule('0 0-18,20-23 * * *', async () => {
+const trackmaniaOnly = async () => {
     try {
         log.info('scraping trackmania');
         await trackmania(output, false);
@@ -74,4 +68,12 @@ cron.schedule('0 0-18,20-23 * * *', async () => {
     } catch (err) {
         log.error(err);
     }
-});
+};
+
+if (now) {
+    main();
+}
+
+cron.schedule('0 19 * * *', main);
+cron.schedule('0,15,30,45 0-18,20-23 * * *', trackmaniaOnly);
+cron.schedule('15,30,45 19 * * *', trackmaniaOnly);
