@@ -79,6 +79,12 @@ const main = async (outputDir, snapshot = true) => {
             track.history = [];
         }
 
+        if (track.history.length === 0) {
+            track.history.push(...track.wrs);
+        }
+
+        track.history = track.history.filter((historyWr) => !autoban(historyWr.user.id));
+
         if (!snapshot) {
             track.wrs.forEach((wr) => delete wr.duration);
         }
@@ -270,7 +276,7 @@ const autoban = (accountId, score) => {
         return true;
     }
 
-    if (score <= 13000) {
+    if (score !== undefined && score <= 13000) {
         log.warn('banned: ' + accountId);
         cheaters.push(accountId);
         return true;
@@ -322,6 +328,7 @@ const resolveGame = async (snapshot) => {
                 });
 
                 if (wr.isNew && !inHistory && (track.isOfficial || !snapshot)) {
+                    track.history = track.history.filter((formerWr) => formerWr.score >= wr.score);
                     track.history.push(wr);
                     await discord.sendWebhook({ wr, track });
                 }
