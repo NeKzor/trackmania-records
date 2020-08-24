@@ -167,7 +167,7 @@ const RecordsRow = ({ wr, official, orderBy, useLiveDuration }) => {
 
     return (
         <>
-            <TableRow className={wr.track.history ? classes.root : undefined} tabIndex={-1}>
+            <TableRow className={wr.track.history || !open ? classes.root : undefined} tabIndex={-1}>
                 {!official && (wr.track.isFirst || orderBy !== 'track.monthDay') && (
                     <MinTableCell align="left" rowSpan={orderBy !== 'track.monthDay' ? 1 : wr.track.records}>
                         {wr.track.monthDay}
