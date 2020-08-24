@@ -326,8 +326,6 @@ const RecordsTable = ({ data, stats, official, useLiveDuration }) => {
         }));
     };
 
-    console.log(data);
-
     React.useEffect(() => {
         setState((s) => ({ ...s, orderBy: official ? 'track.name' : 'track.monthDay' }));
     }, [data, official]);
