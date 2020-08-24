@@ -25,14 +25,7 @@ const useStyles = makeStyles((_) => ({
     },
 }));
 
-const calculateSetAfter = (campaign, track, wrDate) => {
-    const releasedAt = moment([campaign.year, campaign.month]).utc().set({
-        date: track.monthDay,
-        hour: 17,
-        minute: 0,
-        second: 0,
-    });
-
+const calculateSetAfter = (releasedAt, wrDate) => {
     const setAfterHours = wrDate.diff(releasedAt, 'hours');
     const setAfterMinutes = wrDate.diff(releasedAt, 'minutes') - setAfterHours * 60;
     return `set after ${setAfterHours} hours and ${setAfterMinutes} minutes`;
@@ -70,9 +63,17 @@ const GameView = ({ match }) => {
                         for (let wr of track.wrs) {
                             const wrDate = moment(wr.date);
                             const duration = useLiveDuration ? moment().diff(wrDate, 'd') : wr.duration;
+                            const releasedAt = !campaign.isOfficial
+                                ? moment([campaign.year, campaign.month]).utc().set({
+                                      date: track.monthDay,
+                                      hour: 17,
+                                      minute: 0,
+                                      second: 0,
+                                  })
+                                : undefined;
 
                             const setAfter = !campaign.isOfficial
-                                ? calculateSetAfter(campaign, track, wrDate)
+                                ? calculateSetAfter(releasedAt, wrDate)
                                 : undefined;
 
                             const isLast = wr === track.wrs[track.wrs.length - 1];
@@ -80,7 +81,9 @@ const GameView = ({ match }) => {
 
                             if (history && !campaign.isOfficial) {
                                 history.forEach((historyWr) => {
-                                    historyWr.setAfter = calculateSetAfter(campaign, track, moment(historyWr.date));
+                                    const historyWrDate = moment(historyWr.date);
+                                    historyWr.setAfter = calculateSetAfter(releasedAt, historyWrDate);
+                                    historyWr.pastMinutes = historyWrDate.diff(releasedAt, 'minutes');
                                 });
                             }
 
@@ -162,7 +165,10 @@ const GameView = ({ match }) => {
                                     <Grid item xs={12} className={classes.padTop}>
                                         <Grid container direction="row" justify="center" alignContent="center">
                                             <Grid item xs={12} md={6}>
-                                                <RankingsTable data={game[tab].leaderboard} official={game[tab].isOfficial} />
+                                                <RankingsTable
+                                                    data={game[tab].leaderboard}
+                                                    official={game[tab].isOfficial}
+                                                />
                                             </Grid>
                                             <Grid item xs={12} md={6} className={classes.padTop}>
                                                 <Grid container direction="column" justify="center">

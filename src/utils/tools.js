@@ -48,9 +48,8 @@ export function getDateDifferenceColor(date) {
 
 const minuteScale = scaleLinear()
     .domain([0, 8 * 60, 16 * 60, 24 * 60])
-    .range(['#e63200', '#e67300', '#cca300', '#2eb82e']);
+    .range(['#2eb82e', '#cca300', '#e67300', '#e63200']);
 
-export function getDateTimeDifferenceColor(date) {
-    const passedHours = moment().diff(moment(date), 'minutes');
-    return passedHours <= 24 * 60 ? minuteScale(passedHours) : undefined;
+export function getDateTimeDifferenceColor(pastMinutes) {
+    return pastMinutes <= 24 * 60 ? minuteScale(pastMinutes) : undefined;
 }

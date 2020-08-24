@@ -126,7 +126,7 @@ const RecordsHistoryRow = ({ wr, official }) => {
             {!official && (
                 <MinTableCell align="left">
                     <Tooltip title={wr.setAfter} placement="bottom-end" enterDelay={300}>
-                        <Moment style={{ color: getDateTimeDifferenceColor(wr.date), ...noWrap }} format="HH:mm">
+                        <Moment style={{ color: getDateTimeDifferenceColor(wr.pastMinutes), ...noWrap }} format="HH:mm">
                             {wr.date}
                         </Moment>
                     </Tooltip>
