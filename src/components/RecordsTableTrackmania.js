@@ -48,7 +48,7 @@ const RecordsTableHead = ({ order, orderBy, onRequestSort, official }) => {
             <TableRow>
                 {rows.map((row, idx) => (
                     <TableCell
-                        key={row.id}
+                        key={idx}
                         align={row.align}
                         padding="default"
                         sortDirection={orderBy === row.id ? order : false}
@@ -133,7 +133,7 @@ const RecordsHistoryRow = ({ wr, official }) => {
                 </MinTableCell>
             )}
             <MinTableCell align="left">{score}</MinTableCell>
-            <MinTableCell align="left">-{delta}</MinTableCell>
+            <MinTableCell align="left">{delta ? '-' + delta : ''}</MinTableCell>
             <MinTableCell align="left">{wr.user.name}</MinTableCell>
             <MinTableCell align="left">
                 <Tooltip title={wr.user.zone.map((zone) => zone.name).join(' | ')} placement="bottom" enterDelay={300}>
@@ -291,12 +291,12 @@ const RecordsRow = ({ wr, official, orderBy, useLiveDuration }) => {
                                         </TableRow>
                                     </TableHead>
                                     <TableBody>
-                                        {wr.track.history.map((historyWr) => {
+                                        {wr.track.history.map((historyWr, idx) => {
                                             return (
                                                 <RecordsHistoryRow
                                                     wr={historyWr}
                                                     official={official}
-                                                    key={`${wr.track.id}-${wr.user.id}`}
+                                                    key={idx}
                                                 />
                                             );
                                         })}
@@ -326,6 +326,8 @@ const RecordsTable = ({ data, stats, official, useLiveDuration }) => {
         }));
     };
 
+    console.log(data);
+
     React.useEffect(() => {
         setState((s) => ({ ...s, orderBy: official ? 'track.name' : 'track.monthDay' }));
     }, [data, official]);
@@ -344,14 +346,14 @@ const RecordsTable = ({ data, stats, official, useLiveDuration }) => {
                 <TableBody>
                     {stableSort(data, order, orderBy)
                         .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-                        .map((wr) => {
+                        .map((wr, idx) => {
                             return (
                                 <RecordsRow
                                     wr={wr}
                                     official={official}
                                     orderBy={orderBy}
                                     useLiveDuration={useLiveDuration}
-                                    key={`${wr.track.id}-${wr.user.id}`}
+                                    key={idx}
                                 />
                             );
                         })}
