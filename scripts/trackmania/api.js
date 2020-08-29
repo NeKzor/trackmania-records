@@ -267,7 +267,7 @@ class Maps extends Entity {
         } */
 
         if (this.ids.length > 0) {
-            const idType = this.ids[0].length === 27 ? 'Uid' : 'Id';
+            const idType = this.ids[0].length === 36 ? 'Id' : 'Uid';
 
             this.data = await this.client.get(`/maps?map${idType}List=` + this.ids.join(','));
         } else {
