@@ -95,6 +95,21 @@ class TrackmaniaClient {
 
         return this;
     }
+    async refresh() {
+        const res = await fetch(`${this.baseUrl}/v2/authentication/token/refresh`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': 'nadeo_v1 t=' + this.loginData.refreshToken,
+            },
+       });
+
+       if (res.status !== 200) {
+           throw new ResponseError(res);
+       }
+
+       return this;
+    }
     async get(route, nadeo) {
         if (!nadeo && !this.loginData) {
             throw new Error('need to be logged in first');
