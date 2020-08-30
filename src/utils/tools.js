@@ -51,5 +51,5 @@ const minuteScale = scaleLinear()
     .range(['#2eb82e', '#cca300', '#e67300', '#e63200']);
 
 export function getDateTimeDifferenceColor(pastMinutes) {
-    return pastMinutes <= 24 * 60 ? minuteScale(pastMinutes) : undefined;
+    return pastMinutes >= 0 && pastMinutes <= 24 * 60 ? minuteScale(pastMinutes) : undefined;
 }

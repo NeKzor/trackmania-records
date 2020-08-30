@@ -26,9 +26,16 @@ const useStyles = makeStyles((_) => ({
 }));
 
 const calculateSetAfter = (releasedAt, wrDate) => {
+    const diffSeconds = wrDate.diff(releasedAt, 'seconds');
     const setAfterHours = wrDate.diff(releasedAt, 'hours');
-    const setAfterMinutes = wrDate.diff(releasedAt, 'minutes') - setAfterHours * 60;
-    return `set after ${setAfterHours} hours and ${setAfterMinutes} minutes`;
+    if (diffSeconds > 0) {
+        const setAfterMinutes = wrDate.diff(releasedAt, 'minutes') - setAfterHours * 60;
+        return `set after ${setAfterHours} hours and ${setAfterMinutes} minutes`;
+    } else {
+        const setBeforeHours = -setAfterHours;
+        const setBeforeMinutes = -wrDate.diff(releasedAt, 'minutes') - setBeforeHours * 60;
+        return `set before ${setBeforeHours} hours and ${setBeforeMinutes} minutes`;
+    }
 };
 
 const GameView = ({ match }) => {
