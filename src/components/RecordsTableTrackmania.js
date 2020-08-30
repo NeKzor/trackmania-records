@@ -158,16 +158,17 @@ const RecordsHistoryRow = ({ wr, official }) => {
     );
 };
 
-const RecordsRow = ({ wr, official, orderBy, useLiveDuration }) => {
+const RecordsRow = ({ wr, official, orderBy, useLiveDuration, history, onClickHistory }) => {
     const score = formatScore(wr.score, 'tm2');
     const delta = wr.delta !== 0 ? formatScore(wr.delta, 'tm2') : null;
-    const [open, setOpen] = React.useState(false);
 
     const classes = useRowStyles();
 
+    const open = history === wr.track.id;
+
     return (
         <>
-            <TableRow className={wr.track.history || !open ? classes.root : undefined} tabIndex={-1}>
+            <TableRow tabIndex={-1}>
                 {!official && (wr.track.isFirst || orderBy !== 'track.monthDay') && (
                     <MinTableCell align="left" rowSpan={orderBy !== 'track.monthDay' ? 1 : wr.track.records}>
                         {wr.track.monthDay}
@@ -266,14 +267,14 @@ const RecordsRow = ({ wr, official, orderBy, useLiveDuration }) => {
                         </IconButton>
                     </Tooltip>
                     {wr.track.isLast && wr.track.history && (
-                        <IconButton color="inherit" size="small" style={noWrap} onClick={() => setOpen(!open)}>
+                        <IconButton color="inherit" size="small" style={noWrap} onClick={() => onClickHistory(wr.track.id)}>
                             <HistoryIcon fontSize="inherit" />
                         </IconButton>
                     )}
                 </MinTableCell>
             </TableRow>
             {wr.track.isLast && wr.track.history && (
-                <TableRow>
+                <TableRow  className={classes.root}>
                     <MinTableCell style={{ paddingBottom: 0, paddingTop: 0 }} colSpan={7}>
                         <Collapse in={open} timeout="auto" unmountOnExit>
                             <Box margin={1}>
@@ -313,6 +314,7 @@ const RecordsRow = ({ wr, official, orderBy, useLiveDuration }) => {
 
 const RecordsTable = ({ data, stats, official, useLiveDuration }) => {
     const [{ order, rowsPerPage, page, ...state }, setState] = React.useState(defaultState);
+    const [history, setHistory] = React.useState(null);
 
     let { orderBy } = state;
     orderBy = official && orderBy === 'track.monthDay' ? 'track.name' : orderBy;
@@ -329,6 +331,14 @@ const RecordsTable = ({ data, stats, official, useLiveDuration }) => {
     React.useEffect(() => {
         setState((s) => ({ ...s, orderBy: official ? 'track.name' : 'track.monthDay' }));
     }, [data, official]);
+
+    const onClickHistory = React.useCallback((id) => {
+        if (history !== id) {
+            setHistory(id);
+        } else {
+            setHistory(null);
+        }
+    }, [history, setHistory]);
 
     const classes = useStyles();
 
@@ -351,6 +361,8 @@ const RecordsTable = ({ data, stats, official, useLiveDuration }) => {
                                     official={official}
                                     orderBy={orderBy}
                                     useLiveDuration={useLiveDuration}
+                                    history={history}
+                                    onClickHistory={onClickHistory}
                                     key={idx}
                                 />
                             );
