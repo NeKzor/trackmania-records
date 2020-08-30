@@ -84,7 +84,7 @@ const GameView = ({ match }) => {
                                 : undefined;
 
                             const isLast = wr === track.wrs[track.wrs.length - 1];
-                            const history = isLast && (track.history || []).length > 0 ? track.history : undefined;
+                            const history = isLast && (track.history || []).length > 1 ? track.history : undefined;
 
                             if (history && !campaign.isOfficial) {
                                 history.forEach((historyWr) => {
