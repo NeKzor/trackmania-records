@@ -74,18 +74,22 @@ const main = async (outputDir, snapshot = true) => {
     gameInfo = importJson(gameFile);
     latest = importJson(`${outputDir}/trackmania/latest.json`);
 
-    track.history = track.history.filter((historyWr) => {
-        if (!autoban(historyWr.user.id)) {
-            return true;
-        }
+    latest.forEach(({ tracks }) =>
+        tracks.forEach((track) => {
+            track.history = track.history.filter((historyWr) => {
+                if (!autoban(historyWr.user.id)) {
+                    return true;
+                }
 
-        const wr = track.wrs[0];
-        if (wr && historyWr.score >= wr.score) {
-            return true;
-        }
+                const wr = track.wrs[0];
+                if (wr && historyWr.score >= wr.score) {
+                    return true;
+                }
 
-        return false;
-    });
+                return false;
+            });
+        }),
+    );
 
     discord = new DiscordIntegration(process.env.WEBHOOK_ID, process.env.WEBHOOK_TOKEN);
 
