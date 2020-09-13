@@ -12,6 +12,88 @@
         "97936bad-2e13-42e9-bca6-b42fb8d2d9c2",
         "ff5edc6a-b5f4-47c1-b4cc-112636951717",
         "e8fef014-a7b1-4ec3-81a5-bbf62f9904ad",
-        "dfc024d9-aed0-4793-8314-1678765525c0"
-    ]
+        "dfc024d9-aed0-4793-8314-1678765525c0",
+        "2b326ace-d167-43ad-9307-8b60b23c2d58"
+    ],
+    "training": {
+        "name": "Training",
+        "seasonUid": "NLS-QgdzyWx3sNU7IOGuJGKVBKkps6rMiNTGesM",
+        "playlist": [
+            {
+                "mapUid": "olsKnq_qAghcVAnEkoeUnVHFZei"
+            },
+            {
+                "mapUid": "btmbJWADQOS20ginP9DJ0i8sh3f"
+            },
+            {
+                "mapUid": "lNP8O0sqatiHqecUXrhH65rpQ8a"
+            },
+            {
+                "mapUid": "ga3zTKvSo7yJca60Ry_Z003L031"
+            },
+            {
+                "mapUid": "xSOA3Fs8k3bGNHFQhwskyAjN3Nh"
+            },
+            {
+                "mapUid": "LcBa4OZLeElnJksgbBEpQggitsh"
+            },
+            {
+                "mapUid": "vTqUpE1iiXupNABp5Mfx0YOf33j"
+            },
+            {
+                "mapUid": "OeJCW8sHENIcYscK8o5zVHAxADd"
+            },
+            {
+                "mapUid": "us4gaCDQSxmjVMtp5nYfReezTqh"
+            },
+            {
+                "mapUid": "DyNBxhQ6006991FwvVOaBX9Gcv1"
+            },
+            {
+                "mapUid": "PhJGvGjkCaw299rBhVsEhNJKX1"
+            },
+            {
+                "mapUid": "AJFJd6yABuSMfgJGc8UpWRwUVa0"
+            },
+            {
+                "mapUid": "Nw8BZ8CtZZcFO547WnqdPzp8ydi"
+            },
+            {
+                "mapUid": "eOA1X_xnvKbdDSuyymweOZzSrQ3"
+            },
+            {
+                "mapUid": "0hI2P3y8sENgIkruI_X7s3efES"
+            },
+            {
+                "mapUid": "RlZ2HVhAwN5nD7I1lLciKhPsbb7"
+            },
+            {
+                "mapUid": "EnMnBg3D4Uvb5bz8VLod73z6n47"
+            },
+            {
+                "mapUid": "TVUF91YlnL78BFJwG5ADkNlymqe"
+            },
+            {
+                "mapUid": "SsCdL6nGC__n8UrYnsX8xaqnjCh"
+            },
+            {
+                "mapUid": "Yakz8xDlVWDfVCfXxW2_paCaHil"
+            },
+            {
+                "mapUid": "f1tlOzXvdELVhwrhPpoJDsg9xs8"
+            },
+            {
+                "mapUid": "OHRxJCE_cKxEGOGmhF9z6Hf0YZb"
+            },
+            {
+                "mapUid": "qQEgNKxDhXtTsxWYRW0V4pvpER7"
+            },
+            {
+                "mapUid": "1rwAkLrbqhN47zCsVvJJFJimlcf"
+            },
+            {
+                "mapUid": "TkyKsOEG7gHqVqjjc3A1Qj5rPgi"
+            }
+        ]
+    }
 }

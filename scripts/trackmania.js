@@ -36,10 +36,10 @@ Array.prototype.chunk = function (size) {
     }, []);
 };
 
-let trackmania = null;
+let trackmania = new TrackmaniaClient();
 let zones = null;
 let game = [];
-let cheaters = [];
+let gameInfo = { cheaters: [], training: { groupId: null, maps: [] } };
 let latest = [];
 let discord = null;
 
@@ -47,7 +47,7 @@ const cleanup = () => {
     trackmania = null;
     zones = null;
     game = [];
-    cheaters = [];
+    gameInfo = { cheaters: [], training: { groupId: null, maps: [] } };
     latest = [];
     discord = null;
 };
@@ -71,24 +71,21 @@ const main = async (outputDir, snapshot = true) => {
     zones = await trackmania.zones();
     zones.data.forEach((zone) => delete zone.icon);
 
-    cheaters = importJson(gameFile).cheaters;
+    gameInfo = importJson(gameFile);
     latest = importJson(`${outputDir}/trackmania/latest.json`);
 
-    latest.forEach((campaign) => campaign.tracks.forEach((track) => {
-        if (!track.history) {
-            track.history = [];
+    track.history = track.history.filter((historyWr) => {
+        if (!autoban(historyWr.user.id)) {
+            return true;
         }
 
-        if (track.history.length === 0) {
-            track.history.push(...track.wrs);
+        const wr = track.wrs[0];
+        if (wr && historyWr.score >= wr.score) {
+            return true;
         }
 
-        track.history = track.history.filter((historyWr) => !autoban(historyWr.user.id));
-
-        if (!snapshot) {
-            track.wrs.forEach((wr) => delete wr.duration);
-        }
-    }));
+        return false;
+    });
 
     discord = new DiscordIntegration(process.env.WEBHOOK_ID, process.env.WEBHOOK_TOKEN);
 
@@ -115,15 +112,17 @@ const main = async (outputDir, snapshot = true) => {
         tryExportJson(`${outputDir}/trackmania/${moment().format('YYYY-MM-DD')}.json`, game, true);
     }
 
-    tryExportJson(gameFile, { cheaters }, true, true);
+    tryExportJson(gameFile, gameInfo, true, true);
 
     cleanup();
 };
 
 const dumpOfficialCampaign = async () => {
-    const campaigns = await trackmania.campaigns(Campaigns.Official);
+    const campaigns = (await trackmania.campaigns(Campaigns.Official)).collect();
+    campaigns.push(gameInfo.training);
 
     for (const { seasonUid, name, playlist } of campaigns) {
+        const isTraining = name === 'Training';
         //log.info(name, seasonUid);
 
         const latestCampaign = latest.find((campaign) => campaign.name === name);
@@ -146,7 +145,7 @@ const dumpOfficialCampaign = async () => {
             const latestTrack = latestCampaign ? latestCampaign.tracks.find((track) => track.id === mapUid) : undefined;
 
             for (const { accountId, zoneId, score } of rankings) {
-                if (autoban(accountId, score)) {
+                if (autoban(accountId, score, isTraining)) {
                     continue;
                 }
 
@@ -164,7 +163,7 @@ const dumpOfficialCampaign = async () => {
                             zone,
                         },
                         score: (wr = score),
-                        delta:  Math.abs(latestWr ? latestWr.delta : latestScore ? score - latestScore : 0),
+                        delta: Math.abs(latestWr ? latestWr.delta : latestScore ? score - latestScore : 0),
                         isNew: !latestWr && latestScore ? true : false,
                     });
                     continue;
@@ -271,14 +270,14 @@ const dumpTrackOfTheDay = async () => {
     }
 };
 
-const autoban = (accountId, score) => {
-    if (cheaters.find((cheater) => cheater === accountId)) {
+const autoban = (accountId, score, isTraining = false) => {
+    if (gameInfo.cheaters.find((cheater) => cheater === accountId)) {
         return true;
     }
 
-    if (score !== undefined && score <= 13000) {
+    if (score !== undefined && score <= (isTraining ? 4000 : 13000)) {
         log.warn('banned: ' + accountId);
-        cheaters.push(accountId);
+        gameInfo.cheaters.push(accountId);
         return true;
     }
 
@@ -328,7 +327,7 @@ const resolveGame = async (snapshot) => {
                 });
 
                 if (wr.isNew && !inHistory && (track.isOfficial || !snapshot)) {
-                    track.history = track.history.filter((formerWr) => formerWr.score >= wr.score);
+                    //track.history = track.history.filter((formerWr) => formerWr.score >= wr.score);
                     track.history.push(wr);
                     await discord.sendWebhook({ wr, track });
                 }
@@ -340,13 +339,20 @@ const resolveGame = async (snapshot) => {
 
     game.forEach((campaign) => Object.assign(campaign, generateStats(campaign.tracks, snapshot)));
 
-    game.push(...latest.filter((campaign) => {
-        return !campaign.isOfficial && !game.find((totd) => {
-            return totd.isOfficial === campaign.isOfficial
-                && totd.year === campaign.year
-                && totd.month === campaign.month;
-        });
-    }));
+    game.push(
+        ...latest.filter((campaign) => {
+            return (
+                !campaign.isOfficial &&
+                !game.find((totd) => {
+                    return (
+                        totd.isOfficial === campaign.isOfficial &&
+                        totd.year === campaign.year &&
+                        totd.month === campaign.month
+                    );
+                })
+            );
+        }),
+    );
 };
 
 const generateStats = (tracks, snapshot) => {
@@ -365,10 +371,12 @@ const generateStats = (tracks, snapshot) => {
         .map((key) => ({
             user: users.find((u) => u.name === key),
             wrs: frequency[key],
-            duration: snapshot ? wrs
-                .filter((r) => r.user.name === key)
-                .map((r) => r.duration)
-                .reduce((a, b) => a + b, 0) : undefined,
+            duration: snapshot
+                ? wrs
+                      .filter((r) => r.user.name === key)
+                      .map((r) => r.duration)
+                      .reduce((a, b) => a + b, 0)
+                : undefined,
         }));
 
     const countryLeaderboard = [...new Set(users.map((user) => user.zone[Zones.Country].zoneId))]

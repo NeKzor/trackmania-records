@@ -8,6 +8,7 @@ const { log } = require('./utils');
 
 const output = require('path').join(__dirname, '/../api');
 const now = process.argv.some((arg) => arg === '-n' || arg === '--now');
+const nowTrackmania = process.argv.some((arg) => arg === '-ntm' || arg === '--now-trackmania');
 
 const main = async () => {
     for (const game of ['tmnforever', 'united', 'nations']) {
@@ -72,6 +73,10 @@ const trackmaniaOnly = async () => {
 
 if (now) {
     main();
+}
+
+if (nowTrackmania) {
+    trackmaniaOnly();
 }
 
 cron.schedule('0 19 * * *', main);
