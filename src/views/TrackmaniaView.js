@@ -25,16 +25,20 @@ const useStyles = makeStyles((_) => ({
     },
 }));
 
+const s = (value) => (value === 1 ? '' : 's');
+
 const calculateSetAfter = (releasedAt, wrDate) => {
     const diffSeconds = wrDate.diff(releasedAt, 'seconds');
     const setAfterHours = wrDate.diff(releasedAt, 'hours');
     if (diffSeconds > 0) {
         const setAfterMinutes = wrDate.diff(releasedAt, 'minutes') - setAfterHours * 60;
-        return `set after ${setAfterHours} hours and ${setAfterMinutes} minutes`;
+        return `set after ${setAfterHours} hour${s(setAfterHours)} and ${setAfterMinutes} minute${s(setAfterMinutes)}`;
     } else {
         const setBeforeHours = -setAfterHours;
         const setBeforeMinutes = -wrDate.diff(releasedAt, 'minutes') - setBeforeHours * 60;
-        return `set before ${setBeforeHours} hours and ${setBeforeMinutes} minutes`;
+        return `set before ${setBeforeHours} hour${s(setBeforeHours)} and ${setBeforeMinutes} minute${s(
+            setBeforeMinutes,
+        )}`;
     }
 };
 
@@ -79,9 +83,7 @@ const GameView = ({ match }) => {
                                   })
                                 : undefined;
 
-                            const setAfter = !campaign.isOfficial
-                                ? calculateSetAfter(releasedAt, wrDate)
-                                : undefined;
+                            const setAfter = !campaign.isOfficial ? calculateSetAfter(releasedAt, wrDate) : undefined;
 
                             const isLast = wr === track.wrs[track.wrs.length - 1];
                             const history = isLast && (track.history || []).length > 1 ? track.history : undefined;
@@ -97,7 +99,7 @@ const GameView = ({ match }) => {
                             rows.push({
                                 track: {
                                     id: track.id,
-                                    name: track.name.replace(/(\$[0-9a-fA-F]{3}|\$[wnoitsgzb]{1})/g, ''),
+                                    name: track.name.replace(/(\$[0-9a-fA-F]{3}|\$[WNOITSGZBEMwnoitsgzbem]{1})/g, ''),
                                     monthDay: track.monthDay,
                                     isFirst: wr === track.wrs[0],
                                     isLast,
