@@ -5,10 +5,15 @@ class Api {
                 ? 'http://localhost:8080'
                 : 'https://raw.githubusercontent.com/NeKzBot/tmx-records/api';
     }
-    async request(game, date) {
-        let res = await fetch(`${this.baseApi}/${game}/${date || 'latest'}.json`);
+    async request(game, file) {
+        const res = await fetch(`${this.baseApi}/${game}/${file || 'latest'}.json`);
         console.log(`GET ${res.url} (${res.status})`);
-        return res.ok ? await res.json() : [];
+
+        if (!res.ok) {
+            throw res;
+        }
+
+        return await res.json();
     }
 }
 
