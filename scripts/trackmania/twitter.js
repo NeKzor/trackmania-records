@@ -33,7 +33,7 @@ class TwitterIntegration {
     }
     buildStatus({ wr, track }) {
         return `
-${track.name}
+${track.name.replace(/(\$[0-9a-fA-F]{3}|\$[WNOITSGZBEMwnoitsgzbem]{1})/g, '')}
 ${formatScore(wr.score)} (-${formatScore(wr.delta)})
 ${wr.user.name}`;
     }

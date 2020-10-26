@@ -30,7 +30,7 @@ class DiscordIntegration {
             fields: [
                 {
                     name: 'Track',
-                    value: track.name.replace(/(\$[0-9a-fA-F]{3}|\$[wnoitsgzb]{1})/g, ''),
+                    value: track.name.replace(/(\$[0-9a-fA-F]{3}|\$[WNOITSGZBEMwnoitsgzbem]{1})/g, ''),
                     inline: true,
                 },
                 {
