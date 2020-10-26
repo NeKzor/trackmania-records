@@ -8619,7 +8619,7 @@
                     "delta": 200,
                     "date": "2020-10-10T21:58:55+00:00",
                     "replay": "79f5855b-75f4-4fb6-9e48-73f86cc2d477",
-                    "duration": 15
+                    "duration": 16
                 }
             ],
             "isOfficial": true,
@@ -9035,7 +9035,7 @@
                     "delta": 200,
                     "date": "2020-10-10T21:58:55+00:00",
                     "replay": "79f5855b-75f4-4fb6-9e48-73f86cc2d477",
-                    "duration": 15,
+                    "duration": 16,
                     "durationMs": 1378865954
                 }
             ],
@@ -15143,7 +15143,7 @@
                 "name": "MTP.hugo220"
             },
             "wrs": 3,
-            "duration": 29
+            "duration": 30
         },
         {
             "user": {
@@ -15692,7 +15692,7 @@
                 "name": "MTP.hugo220"
             },
             "wrs": 23,
-            "duration": 56
+            "duration": 57
         },
         {
             "user": {
