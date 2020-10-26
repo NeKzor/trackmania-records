@@ -161,7 +161,7 @@ const main = async (outputDir, snapshot = true) => {
         const overallTotd = game
             .filter((campaign) => !campaign.isOfficial)
             .map((campaign) => campaign.tracks)
-            .reduce((acc, val) => acc.concat(val), []);
+            .flat();
 
         game.forEach((campaign) => Object.assign(campaign, generateRankings(campaign.tracks)));
 
@@ -384,7 +384,7 @@ const resolveGame = async (snapshot) => {
     const users = new Map();
 
     game.map(({ tracks }) => tracks)
-        .reduce((acc, val) => acc.concat(val), [])
+        .flat()
         .forEach(({ wrs, ...track }) => {
             wrs.forEach((wr) => {
                 const user = users.get(wr.user.id);
@@ -439,10 +439,10 @@ const generateRankings = (tracks) => {
     const createLeaderboard = (key) => {
         const wrs = tracks
             .map((t) => (t[key].length > 0 ? t[key] : t.wrs).filter(validRecords))
-            .reduce((acc, val) => acc.concat(val), []);
+            .flat();
         const users = tracks
             .map((t) => t[key].filter(validRecords).map((r) => r.user))
-            .reduce((acc, val) => acc.concat(val), []);
+            .flat();
 
         const frequency = users.reduce((count, user) => {
             count[user.name] = (count[user.name] || 0) + 1;
@@ -486,7 +486,7 @@ const generateRankings = (tracks) => {
             const ids = [...new Set(all.map((user) => user.id))];
             return ids.map((id) => all.find((user) => user.id === id));
         })
-        .reduce((acc, val) => acc.concat(val), []);
+        .flat();
     const frequency = users.reduce((count, user) => {
         count[user.id] = (count[user.id] || 0) + 1;
         return count;
