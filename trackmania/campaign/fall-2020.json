@@ -897,7 +897,7 @@
                     "date": "2020-10-09T13:00:05+00:00",
                     "replay": "85de4a7d-63e4-40cd-86f5-daabacd30781",
                     "duration": 17,
-                    "durationMs": 1493996220
+                    "durationMs": 1494895968
                 }
             ],
             "thumbnail": "48f6e3db-0153-4cef-81bf-9b68504dcbd6"
@@ -1452,7 +1452,7 @@
                     "date": "2020-10-22T03:32:04+00:00",
                     "replay": "2d21e8ef-5c75-4050-ba39-e8174f393298",
                     "duration": 4,
-                    "durationMs": 404877237
+                    "durationMs": 405776970
                 }
             ],
             "thumbnail": "5233e729-1810-4e89-bf0d-b9d832562680"
@@ -2001,7 +2001,7 @@
                     "date": "2020-10-06T21:25:20+00:00",
                     "replay": "56c780b8-3530-4dcb-94db-2740a6dca3d6",
                     "duration": 19,
-                    "durationMs": 1722881247
+                    "durationMs": 1723780973
                 }
             ],
             "thumbnail": "e48236b6-c4b7-41b8-9b8e-e2ce1edf67c2"
@@ -2521,7 +2521,7 @@
                     "date": "2020-10-09T18:20:04+00:00",
                     "replay": "153c3526-c047-4c76-8b91-b77abc1f0cb4",
                     "duration": 17,
-                    "durationMs": 1474797260
+                    "durationMs": 1475696977
                 }
             ],
             "thumbnail": "3015d916-855d-4c7d-a03f-c3ae6f3917cf"
@@ -2963,7 +2963,7 @@
                     "date": "2020-10-15T17:50:06+00:00",
                     "replay": "b4ffd392-985f-4beb-851f-61b4773ede7b",
                     "duration": 11,
-                    "durationMs": 958195263
+                    "durationMs": 959094979
                 }
             ],
             "thumbnail": "64193fda-bcc5-4587-beac-3423173e9890"
@@ -3386,7 +3386,7 @@
                     "date": "2020-10-16T17:41:31+00:00",
                     "replay": "8e5e5a06-1ecf-486b-9db0-0cc400bd1b2d",
                     "duration": 10,
-                    "durationMs": 872310290
+                    "durationMs": 873209990
                 }
             ],
             "thumbnail": "6f499088-149a-4ae2-8c57-8e4367e15533"
@@ -3696,8 +3696,125 @@
                     "delta": 18,
                     "date": "2020-10-24T23:06:20+00:00",
                     "replay": "6d71c45f-8191-45b6-9853-a00af65cbce7",
-                    "duration": 1,
-                    "durationMs": 145133000
+                    "duration": 0,
+                    "durationMs": 84462000
+                },
+                {
+                    "user": {
+                        "id": "f781e6ad-8a11-4093-a297-e48638d5fa1a",
+                        "zone": [
+                            {
+                                "name": "World",
+                                "parentId": null,
+                                "zoneId": "301e1b69-7e13-11e8-8060-e284abfd2bc4"
+                            },
+                            {
+                                "name": "Europe",
+                                "parentId": "301e1b69-7e13-11e8-8060-e284abfd2bc4",
+                                "zoneId": "301e2106-7e13-11e8-8060-e284abfd2bc4"
+                            },
+                            {
+                                "name": "France",
+                                "parentId": "301e2106-7e13-11e8-8060-e284abfd2bc4",
+                                "zoneId": "301f6188-7e13-11e8-8060-e284abfd2bc4"
+                            },
+                            {
+                                "name": "Grand Est",
+                                "parentId": "301f6188-7e13-11e8-8060-e284abfd2bc4",
+                                "zoneId": "301fa0c0-7e13-11e8-8060-e284abfd2bc4"
+                            },
+                            {
+                                "name": "Bas-Rhin",
+                                "parentId": "301fa0c0-7e13-11e8-8060-e284abfd2bc4",
+                                "zoneId": "301fa363-7e13-11e8-8060-e284abfd2bc4"
+                            }
+                        ],
+                        "name": "MTP.hugo220"
+                    },
+                    "score": 30498,
+                    "delta": 8,
+                    "date": "2020-10-25T22:34:02+00:00",
+                    "replay": "5b96c3db-ba80-49db-8e03-746187027677",
+                    "duration": 0,
+                    "durationMs": 1605000
+                },
+                {
+                    "user": {
+                        "id": "f781e6ad-8a11-4093-a297-e48638d5fa1a",
+                        "zone": [
+                            {
+                                "name": "World",
+                                "parentId": null,
+                                "zoneId": "301e1b69-7e13-11e8-8060-e284abfd2bc4"
+                            },
+                            {
+                                "name": "Europe",
+                                "parentId": "301e1b69-7e13-11e8-8060-e284abfd2bc4",
+                                "zoneId": "301e2106-7e13-11e8-8060-e284abfd2bc4"
+                            },
+                            {
+                                "name": "France",
+                                "parentId": "301e2106-7e13-11e8-8060-e284abfd2bc4",
+                                "zoneId": "301f6188-7e13-11e8-8060-e284abfd2bc4"
+                            },
+                            {
+                                "name": "Grand Est",
+                                "parentId": "301f6188-7e13-11e8-8060-e284abfd2bc4",
+                                "zoneId": "301fa0c0-7e13-11e8-8060-e284abfd2bc4"
+                            },
+                            {
+                                "name": "Bas-Rhin",
+                                "parentId": "301fa0c0-7e13-11e8-8060-e284abfd2bc4",
+                                "zoneId": "301fa363-7e13-11e8-8060-e284abfd2bc4"
+                            }
+                        ],
+                        "name": "MTP.hugo220"
+                    },
+                    "score": 30494,
+                    "delta": 4,
+                    "date": "2020-10-25T23:00:47+00:00",
+                    "replay": "40882589-a216-4c83-affd-72dc46f288b2",
+                    "duration": 0,
+                    "durationMs": 52313000
+                },
+                {
+                    "user": {
+                        "id": "f781e6ad-8a11-4093-a297-e48638d5fa1a",
+                        "zone": [
+                            {
+                                "name": "World",
+                                "parentId": null,
+                                "zoneId": "301e1b69-7e13-11e8-8060-e284abfd2bc4"
+                            },
+                            {
+                                "name": "Europe",
+                                "parentId": "301e1b69-7e13-11e8-8060-e284abfd2bc4",
+                                "zoneId": "301e2106-7e13-11e8-8060-e284abfd2bc4"
+                            },
+                            {
+                                "name": "France",
+                                "parentId": "301e2106-7e13-11e8-8060-e284abfd2bc4",
+                                "zoneId": "301f6188-7e13-11e8-8060-e284abfd2bc4"
+                            },
+                            {
+                                "name": "Grand Est",
+                                "parentId": "301f6188-7e13-11e8-8060-e284abfd2bc4",
+                                "zoneId": "301fa0c0-7e13-11e8-8060-e284abfd2bc4"
+                            },
+                            {
+                                "name": "Bas-Rhin",
+                                "parentId": "301fa0c0-7e13-11e8-8060-e284abfd2bc4",
+                                "zoneId": "301fa363-7e13-11e8-8060-e284abfd2bc4"
+                            }
+                        ],
+                        "name": "MTP.hugo220"
+                    },
+                    "score": 30473,
+                    "delta": 21,
+                    "date": "2020-10-26T13:32:40+00:00",
+                    "replay": "05d0552a-e26e-48e5-8b9d-f8b3629493d5",
+                    "duration": 0,
+                    "durationMs": 6753000
                 },
                 {
                     "user": {
@@ -3736,7 +3853,7 @@
                     "date": "2020-10-26T15:25:13+00:00",
                     "replay": "64f21e43-17cb-43ea-a738-beaf4daa8f1c",
                     "duration": 0,
-                    "durationMs": 16488292
+                    "durationMs": 17387992
                 }
             ],
             "thumbnail": "330c886f-02c9-4f6c-9e41-a6a395de2387"
@@ -4300,7 +4417,7 @@
                     "date": "2020-10-21T22:57:16+00:00",
                     "replay": "e0e45e5e-351c-4ef8-b8b6-967d1cae483e",
                     "duration": 4,
-                    "durationMs": 421365304
+                    "durationMs": 422265000
                 }
             ],
             "thumbnail": "45b58345-f15a-48e1-a333-d603136952f2"
@@ -5156,7 +5273,7 @@
                     "date": "2020-10-14T20:33:21+00:00",
                     "replay": "39db5ce6-df4e-45f1-966a-6f52035c7d92",
                     "duration": 11,
-                    "durationMs": 1034800328
+                    "durationMs": 1035700014
                 }
             ],
             "thumbnail": "01f06d0f-4122-4ea3-b8b5-1cde301fb329"
@@ -5773,7 +5890,7 @@
                     "date": "2020-10-20T22:18:20+00:00",
                     "replay": "641f6b9e-2b1a-48ed-a6af-acdcc8fa4e9d",
                     "duration": 5,
-                    "durationMs": 510101344
+                    "durationMs": 511001021
                 }
             ],
             "thumbnail": "d443c819-7cfc-48d5-a1da-6f2e40ab489f"
@@ -6483,7 +6600,7 @@
                     "date": "2020-10-07T06:02:45+00:00",
                     "replay": "8e0a21d0-c475-47bb-8cbd-4610cf6772c3",
                     "duration": 19,
-                    "durationMs": 1691836356
+                    "durationMs": 1692736024
                 }
             ],
             "thumbnail": "48086d1c-6221-47de-8083-8805cc36ab6d"
@@ -7347,7 +7464,7 @@
                     "date": "2020-10-22T12:22:02+00:00",
                     "replay": "0f02f1f9-2efd-4fff-acf2-98dd3e6d3da5",
                     "duration": 4,
-                    "durationMs": 373079375
+                    "durationMs": 373979028
                 }
             ],
             "thumbnail": "c245ca2e-2597-41b7-81cf-05ba493d5445"
@@ -8008,7 +8125,7 @@
                     "date": "2020-10-25T22:14:15+00:00",
                     "replay": "c3f74a24-f87f-4214-9af3-d8507c4e3fed",
                     "duration": 0,
-                    "durationMs": 78346377
+                    "durationMs": 79246031
                 }
             ],
             "thumbnail": "85ff0a77-1928-4d84-b3a3-888e4639676f"
@@ -8456,7 +8573,7 @@
                     "date": "2020-10-22T14:06:59+00:00",
                     "replay": "0ddbca78-23e7-45ff-b4c3-fdc89c05da1a",
                     "duration": 4,
-                    "durationMs": 366782385
+                    "durationMs": 367682032
                 }
             ],
             "thumbnail": "4d6e4dfe-690d-431b-8471-c610ed593c27"
@@ -8919,7 +9036,7 @@
                     "date": "2020-10-10T21:58:55+00:00",
                     "replay": "79f5855b-75f4-4fb6-9e48-73f86cc2d477",
                     "duration": 15,
-                    "durationMs": 1375266387
+                    "durationMs": 1376166035
                 }
             ],
             "thumbnail": "79bcc750-d0a3-4204-af7d-d8f9728ba044"
@@ -8960,7 +9077,7 @@
                     "delta": 27,
                     "date": "2020-10-19T19:03:46+00:00",
                     "replay": "cc2e480f-6435-488c-9366-31a608441719",
-                    "duration": 6
+                    "duration": 7
                 }
             ],
             "isOfficial": true,
@@ -9570,8 +9687,8 @@
                     "delta": 27,
                     "date": "2020-10-19T19:03:46+00:00",
                     "replay": "cc2e480f-6435-488c-9366-31a608441719",
-                    "duration": 6,
-                    "durationMs": 608175394
+                    "duration": 7,
+                    "durationMs": 609075041
                 }
             ],
             "thumbnail": "c3790815-48dd-492b-a31f-ca2a4467866a"
@@ -10220,7 +10337,7 @@
                     "date": "2020-10-23T00:45:15+00:00",
                     "replay": "2e4086be-ce1f-433a-b18f-4299bc00c2d2",
                     "duration": 3,
-                    "durationMs": 328486406
+                    "durationMs": 329386043
                 }
             ],
             "thumbnail": "211c41a4-1e30-42cf-91a0-45afaa45ee34"
@@ -11025,7 +11142,7 @@
                     "date": "2020-10-08T07:53:29+00:00",
                     "replay": "2f4829ea-7101-4e79-a122-48789ec96be1",
                     "duration": 18,
-                    "durationMs": 1598792409
+                    "durationMs": 1599692046
                 }
             ],
             "thumbnail": "ee46429e-9024-4615-82ce-36849d81bf33"
@@ -11755,7 +11872,7 @@
                     "date": "2020-10-25T20:16:37+00:00",
                     "replay": "e1dac10c-03e6-4b22-9132-27ff8725f46e",
                     "duration": 0,
-                    "durationMs": 85404420
+                    "durationMs": 86304054
                 }
             ],
             "thumbnail": "6b5b23df-e663-4bf7-b5f7-ce200c49bfa2"
@@ -12310,7 +12427,7 @@
                     "date": "2020-10-25T01:50:43+00:00",
                     "replay": "536b8c87-3b81-485a-b7c1-d4494275eac8",
                     "duration": 1,
-                    "durationMs": 151758427
+                    "durationMs": 152658056
                 }
             ],
             "thumbnail": "9ca47564-4f73-43ec-8cb3-d66f312487b7"
@@ -12884,7 +13001,7 @@
                     "date": "2020-10-11T22:27:16+00:00",
                     "replay": "8da59401-e698-4727-8f66-d7544ee60ebe",
                     "duration": 14,
-                    "durationMs": 1287165443
+                    "durationMs": 1288065066
                 }
             ],
             "thumbnail": "fd2122eb-4033-4c66-aa66-f1c2813a8cb3"
@@ -13291,7 +13408,7 @@
                     "date": "2020-10-22T00:42:50+00:00",
                     "replay": "55872caa-6477-4972-a349-da65a757288b",
                     "duration": 4,
-                    "durationMs": 415031450
+                    "durationMs": 415931068
                 }
             ],
             "thumbnail": "576c525c-9be4-44a5-aad0-6648e6f68140"
@@ -13797,7 +13914,7 @@
                     "date": "2020-10-07T19:54:02+00:00",
                     "replay": "b8683692-d8ac-4395-846d-e0c2b88ab9c2",
                     "duration": 18,
-                    "durationMs": 1641959452
+                    "durationMs": 1642859070
                 }
             ],
             "thumbnail": "e0dd403f-d5ee-4957-8b71-6a86a0013240"
@@ -14406,7 +14523,7 @@
                     "date": "2020-10-21T12:58:00+00:00",
                     "replay": "ec419526-2a01-4efa-a0aa-e008d3542d52",
                     "duration": 5,
-                    "durationMs": 457321460
+                    "durationMs": 458221072
                 }
             ],
             "thumbnail": "9387fe0f-7db7-4105-a95e-522d6aadd558"
@@ -14820,7 +14937,46 @@
                     "date": "2020-10-20T17:38:13+00:00",
                     "replay": "67f0c4e6-1b8e-4f27-9793-69425e7a98c6",
                     "duration": 5,
-                    "durationMs": 514798000
+                    "durationMs": 465306000
+                },
+                {
+                    "user": {
+                        "id": "2517d060-4c15-4949-9f2e-31bd2f8adaa1",
+                        "zone": [
+                            {
+                                "name": "World",
+                                "parentId": null,
+                                "zoneId": "301e1b69-7e13-11e8-8060-e284abfd2bc4"
+                            },
+                            {
+                                "name": "Europe",
+                                "parentId": "301e1b69-7e13-11e8-8060-e284abfd2bc4",
+                                "zoneId": "301e2106-7e13-11e8-8060-e284abfd2bc4"
+                            },
+                            {
+                                "name": "Germany",
+                                "parentId": "301e2106-7e13-11e8-8060-e284abfd2bc4",
+                                "zoneId": "301ff622-7e13-11e8-8060-e284abfd2bc4"
+                            },
+                            {
+                                "name": "Mecklenburg-Vorpommern",
+                                "parentId": "301ff622-7e13-11e8-8060-e284abfd2bc4",
+                                "zoneId": "30200848-7e13-11e8-8060-e284abfd2bc4"
+                            },
+                            {
+                                "name": "Rostock",
+                                "parentId": "30200848-7e13-11e8-8060-e284abfd2bc4",
+                                "zoneId": "302008de-7e13-11e8-8060-e284abfd2bc4"
+                            }
+                        ],
+                        "name": "chillhase."
+                    },
+                    "score": 68948,
+                    "delta": 8,
+                    "date": "2020-10-26T02:53:19+00:00",
+                    "replay": "29490a61-1a15-436d-9627-d2068ae6ffe8",
+                    "duration": 0,
+                    "durationMs": 49492000
                 },
                 {
                     "user": {
@@ -14859,7 +15015,7 @@
                     "date": "2020-10-26T16:38:11+00:00",
                     "replay": "87bd657d-d040-4226-8fbb-4ff2f5618923",
                     "duration": 0,
-                    "durationMs": 12110461
+                    "durationMs": 13010073
                 }
             ],
             "thumbnail": "cf656560-e29c-4f29-bfc6-eed15a19b2e8"
@@ -15191,7 +15347,7 @@
                 "name": "Spaghett37"
             },
             "wrs": 1,
-            "duration": 6,
+            "duration": 7,
             "durationMs": 0
         },
         {
@@ -15516,33 +15672,7 @@
             },
             "wrs": 27,
             "duration": 62,
-            "durationMs": 6140410074
-        },
-        {
-            "user": {
-                "id": "445a6375-a8aa-4b56-b3b5-18d4bff53351",
-                "zone": [
-                    {
-                        "name": "World",
-                        "parentId": null,
-                        "zoneId": "301e1b69-7e13-11e8-8060-e284abfd2bc4"
-                    },
-                    {
-                        "name": "Middle East",
-                        "parentId": "301e1b69-7e13-11e8-8060-e284abfd2bc4",
-                        "zoneId": "301e2195-7e13-11e8-8060-e284abfd2bc4"
-                    },
-                    {
-                        "name": "Israel",
-                        "parentId": "301e2195-7e13-11e8-8060-e284abfd2bc4",
-                        "zoneId": "30205c20-7e13-11e8-8060-e284abfd2bc4"
-                    }
-                ],
-                "name": "RacetalTM"
-            },
-            "wrs": 21,
-            "duration": 61,
-            "durationMs": 5711167813
+            "durationMs": 6143109072
         },
         {
             "user": {
@@ -15576,9 +15706,35 @@
                 ],
                 "name": "MTP.hugo220"
             },
-            "wrs": 20,
-            "duration": 57,
-            "durationMs": 5405970122
+            "wrs": 23,
+            "duration": 56,
+            "durationMs": 5408669093
+        },
+        {
+            "user": {
+                "id": "445a6375-a8aa-4b56-b3b5-18d4bff53351",
+                "zone": [
+                    {
+                        "name": "World",
+                        "parentId": null,
+                        "zoneId": "301e1b69-7e13-11e8-8060-e284abfd2bc4"
+                    },
+                    {
+                        "name": "Middle East",
+                        "parentId": "301e1b69-7e13-11e8-8060-e284abfd2bc4",
+                        "zoneId": "301e2195-7e13-11e8-8060-e284abfd2bc4"
+                    },
+                    {
+                        "name": "Israel",
+                        "parentId": "301e2195-7e13-11e8-8060-e284abfd2bc4",
+                        "zoneId": "30205c20-7e13-11e8-8060-e284abfd2bc4"
+                    }
+                ],
+                "name": "RacetalTM"
+            },
+            "wrs": 21,
+            "duration": 61,
+            "durationMs": 5713866946
         },
         {
             "user": {
@@ -15609,7 +15765,7 @@
             },
             "wrs": 20,
             "duration": 48,
-            "durationMs": 4791704765
+            "durationMs": 4793504070
         },
         {
             "user": {
@@ -15645,7 +15801,7 @@
             },
             "wrs": 17,
             "duration": 61,
-            "durationMs": 6027192196
+            "durationMs": 6030791003
         },
         {
             "user": {
@@ -15737,8 +15893,8 @@
                 "name": "Spaghett37"
             },
             "wrs": 11,
-            "duration": 17,
-            "durationMs": 1848091394
+            "duration": 18,
+            "durationMs": 1848991041
         },
         {
             "user": {
@@ -16063,7 +16219,7 @@
             },
             "wrs": 5,
             "duration": 17,
-            "durationMs": 1697406385
+            "durationMs": 1698306032
         },
         {
             "user": {
@@ -16249,7 +16405,7 @@
             },
             "wrs": 5,
             "duration": 7,
-            "durationMs": 757804406
+            "durationMs": 758704043
         },
         {
             "user": {
@@ -16414,7 +16570,7 @@
             },
             "wrs": 4,
             "duration": 7,
-            "durationMs": 646369375
+            "durationMs": 647269028
         },
         {
             "user": {
@@ -16512,7 +16668,7 @@
             },
             "wrs": 4,
             "duration": 20,
-            "durationMs": 1970094452
+            "durationMs": 1970994070
         },
         {
             "user": {
@@ -16867,7 +17023,7 @@
             },
             "wrs": 3,
             "duration": 5,
-            "durationMs": 534537461
+            "durationMs": 485945073
         },
         {
             "user": {
@@ -16939,7 +17095,7 @@
             },
             "wrs": 2,
             "duration": 4,
-            "durationMs": 412793237
+            "durationMs": 413692970
         },
         {
             "user": {
@@ -17326,7 +17482,7 @@
             },
             "wrs": 2,
             "duration": 1,
-            "durationMs": 237162847
+            "durationMs": 238962110
         },
         {
             "user": {
@@ -17384,6 +17540,42 @@
             "wrs": 2,
             "duration": 0,
             "durationMs": 2991000
+        },
+        {
+            "user": {
+                "id": "2517d060-4c15-4949-9f2e-31bd2f8adaa1",
+                "zone": [
+                    {
+                        "name": "World",
+                        "parentId": null,
+                        "zoneId": "301e1b69-7e13-11e8-8060-e284abfd2bc4"
+                    },
+                    {
+                        "name": "Europe",
+                        "parentId": "301e1b69-7e13-11e8-8060-e284abfd2bc4",
+                        "zoneId": "301e2106-7e13-11e8-8060-e284abfd2bc4"
+                    },
+                    {
+                        "name": "Germany",
+                        "parentId": "301e2106-7e13-11e8-8060-e284abfd2bc4",
+                        "zoneId": "301ff622-7e13-11e8-8060-e284abfd2bc4"
+                    },
+                    {
+                        "name": "Mecklenburg-Vorpommern",
+                        "parentId": "301ff622-7e13-11e8-8060-e284abfd2bc4",
+                        "zoneId": "30200848-7e13-11e8-8060-e284abfd2bc4"
+                    },
+                    {
+                        "name": "Rostock",
+                        "parentId": "30200848-7e13-11e8-8060-e284abfd2bc4",
+                        "zoneId": "302008de-7e13-11e8-8060-e284abfd2bc4"
+                    }
+                ],
+                "name": "chillhase."
+            },
+            "wrs": 2,
+            "duration": 0,
+            "durationMs": 54858000
         },
         {
             "user": {
@@ -18729,43 +18921,7 @@
             },
             "wrs": 1,
             "duration": 5,
-            "durationMs": 457321460
-        },
-        {
-            "user": {
-                "id": "2517d060-4c15-4949-9f2e-31bd2f8adaa1",
-                "zone": [
-                    {
-                        "name": "World",
-                        "parentId": null,
-                        "zoneId": "301e1b69-7e13-11e8-8060-e284abfd2bc4"
-                    },
-                    {
-                        "name": "Europe",
-                        "parentId": "301e1b69-7e13-11e8-8060-e284abfd2bc4",
-                        "zoneId": "301e2106-7e13-11e8-8060-e284abfd2bc4"
-                    },
-                    {
-                        "name": "Germany",
-                        "parentId": "301e2106-7e13-11e8-8060-e284abfd2bc4",
-                        "zoneId": "301ff622-7e13-11e8-8060-e284abfd2bc4"
-                    },
-                    {
-                        "name": "Mecklenburg-Vorpommern",
-                        "parentId": "301ff622-7e13-11e8-8060-e284abfd2bc4",
-                        "zoneId": "30200848-7e13-11e8-8060-e284abfd2bc4"
-                    },
-                    {
-                        "name": "Rostock",
-                        "parentId": "30200848-7e13-11e8-8060-e284abfd2bc4",
-                        "zoneId": "302008de-7e13-11e8-8060-e284abfd2bc4"
-                    }
-                ],
-                "name": "chillhase."
-            },
-            "wrs": 1,
-            "duration": 0,
-            "durationMs": 5366000
+            "durationMs": 458221072
         }
     ],
     "historyCountryLeaderboard": [
@@ -18787,7 +18943,7 @@
                     "zoneId": "301f6188-7e13-11e8-8060-e284abfd2bc4"
                 }
             ],
-            "wrs": 109
+            "wrs": 112
         },
         {
             "zone": [
@@ -18807,7 +18963,7 @@
                     "zoneId": "301ff622-7e13-11e8-8060-e284abfd2bc4"
                 }
             ],
-            "wrs": 57
+            "wrs": 58
         },
         {
             "zone": [

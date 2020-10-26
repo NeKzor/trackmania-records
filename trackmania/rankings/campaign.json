@@ -518,7 +518,7 @@
                 "name": "Spaghett37"
             },
             "wrs": 1,
-            "duration": 6,
+            "duration": 7,
             "durationMs": 0
         },
         {
@@ -1837,64 +1837,7 @@
             },
             "wrs": 27,
             "duration": 62,
-            "durationMs": 6140410074
-        },
-        {
-            "user": {
-                "id": "445a6375-a8aa-4b56-b3b5-18d4bff53351",
-                "zone": [
-                    {
-                        "name": "World",
-                        "parentId": null,
-                        "zoneId": "301e1b69-7e13-11e8-8060-e284abfd2bc4"
-                    },
-                    {
-                        "name": "Middle East",
-                        "parentId": "301e1b69-7e13-11e8-8060-e284abfd2bc4",
-                        "zoneId": "301e2195-7e13-11e8-8060-e284abfd2bc4"
-                    },
-                    {
-                        "name": "Israel",
-                        "parentId": "301e2195-7e13-11e8-8060-e284abfd2bc4",
-                        "zoneId": "30205c20-7e13-11e8-8060-e284abfd2bc4"
-                    }
-                ],
-                "name": "RacetalTM"
-            },
-            "wrs": 23,
-            "duration": 61,
-            "durationMs": 5711167813
-        },
-        {
-            "user": {
-                "id": "6c26b761-bd62-42b5-8190-e3e732c2b937",
-                "zone": [
-                    {
-                        "name": "World",
-                        "parentId": null,
-                        "zoneId": "301e1b69-7e13-11e8-8060-e284abfd2bc4"
-                    },
-                    {
-                        "name": "South America",
-                        "parentId": "301e1b69-7e13-11e8-8060-e284abfd2bc4",
-                        "zoneId": "301e243e-7e13-11e8-8060-e284abfd2bc4"
-                    },
-                    {
-                        "name": "Brazil",
-                        "parentId": "301e243e-7e13-11e8-8060-e284abfd2bc4",
-                        "zoneId": "301e6521-7e13-11e8-8060-e284abfd2bc4"
-                    },
-                    {
-                        "name": "São Paulo",
-                        "parentId": "301e6521-7e13-11e8-8060-e284abfd2bc4",
-                        "zoneId": "825a3452-6a36-4fe1-94b5-637986936ef7"
-                    }
-                ],
-                "name": "GNR-HASKELL"
-            },
-            "wrs": 23,
-            "duration": 48,
-            "durationMs": 4791704765
+            "durationMs": 6143109072
         },
         {
             "user": {
@@ -1928,9 +1871,66 @@
                 ],
                 "name": "MTP.hugo220"
             },
-            "wrs": 22,
-            "duration": 57,
-            "durationMs": 5405970122
+            "wrs": 25,
+            "duration": 56,
+            "durationMs": 5408669093
+        },
+        {
+            "user": {
+                "id": "445a6375-a8aa-4b56-b3b5-18d4bff53351",
+                "zone": [
+                    {
+                        "name": "World",
+                        "parentId": null,
+                        "zoneId": "301e1b69-7e13-11e8-8060-e284abfd2bc4"
+                    },
+                    {
+                        "name": "Middle East",
+                        "parentId": "301e1b69-7e13-11e8-8060-e284abfd2bc4",
+                        "zoneId": "301e2195-7e13-11e8-8060-e284abfd2bc4"
+                    },
+                    {
+                        "name": "Israel",
+                        "parentId": "301e2195-7e13-11e8-8060-e284abfd2bc4",
+                        "zoneId": "30205c20-7e13-11e8-8060-e284abfd2bc4"
+                    }
+                ],
+                "name": "RacetalTM"
+            },
+            "wrs": 23,
+            "duration": 61,
+            "durationMs": 5713866946
+        },
+        {
+            "user": {
+                "id": "6c26b761-bd62-42b5-8190-e3e732c2b937",
+                "zone": [
+                    {
+                        "name": "World",
+                        "parentId": null,
+                        "zoneId": "301e1b69-7e13-11e8-8060-e284abfd2bc4"
+                    },
+                    {
+                        "name": "South America",
+                        "parentId": "301e1b69-7e13-11e8-8060-e284abfd2bc4",
+                        "zoneId": "301e243e-7e13-11e8-8060-e284abfd2bc4"
+                    },
+                    {
+                        "name": "Brazil",
+                        "parentId": "301e243e-7e13-11e8-8060-e284abfd2bc4",
+                        "zoneId": "301e6521-7e13-11e8-8060-e284abfd2bc4"
+                    },
+                    {
+                        "name": "São Paulo",
+                        "parentId": "301e6521-7e13-11e8-8060-e284abfd2bc4",
+                        "zoneId": "825a3452-6a36-4fe1-94b5-637986936ef7"
+                    }
+                ],
+                "name": "GNR-HASKELL"
+            },
+            "wrs": 23,
+            "duration": 48,
+            "durationMs": 4793504070
         },
         {
             "user": {
@@ -1966,7 +1966,7 @@
             },
             "wrs": 18,
             "duration": 61,
-            "durationMs": 6027192196
+            "durationMs": 6030791003
         },
         {
             "user": {
@@ -2084,8 +2084,8 @@
                 "name": "Spaghett37"
             },
             "wrs": 11,
-            "duration": 17,
-            "durationMs": 1848091394
+            "duration": 18,
+            "durationMs": 1848991041
         },
         {
             "user": {
@@ -2183,7 +2183,7 @@
             },
             "wrs": 8,
             "duration": 17,
-            "durationMs": 1697406385
+            "durationMs": 1698306032
         },
         {
             "user": {
@@ -2668,7 +2668,7 @@
             },
             "wrs": 5,
             "duration": 7,
-            "durationMs": 757804406
+            "durationMs": 758704043
         },
         {
             "user": {
@@ -2833,7 +2833,7 @@
             },
             "wrs": 4,
             "duration": 7,
-            "durationMs": 646369375
+            "durationMs": 647269028
         },
         {
             "user": {
@@ -2931,7 +2931,7 @@
             },
             "wrs": 4,
             "duration": 20,
-            "durationMs": 1970094452
+            "durationMs": 1970994070
         },
         {
             "user": {
@@ -3322,7 +3322,7 @@
             },
             "wrs": 3,
             "duration": 5,
-            "durationMs": 534537461
+            "durationMs": 485945073
         },
         {
             "user": {
@@ -3425,7 +3425,7 @@
             },
             "wrs": 2,
             "duration": 4,
-            "durationMs": 412793237
+            "durationMs": 413692970
         },
         {
             "user": {
@@ -3812,7 +3812,7 @@
             },
             "wrs": 2,
             "duration": 1,
-            "durationMs": 237162847
+            "durationMs": 238962110
         },
         {
             "user": {
@@ -3870,6 +3870,42 @@
             "wrs": 2,
             "duration": 0,
             "durationMs": 2991000
+        },
+        {
+            "user": {
+                "id": "2517d060-4c15-4949-9f2e-31bd2f8adaa1",
+                "zone": [
+                    {
+                        "name": "World",
+                        "parentId": null,
+                        "zoneId": "301e1b69-7e13-11e8-8060-e284abfd2bc4"
+                    },
+                    {
+                        "name": "Europe",
+                        "parentId": "301e1b69-7e13-11e8-8060-e284abfd2bc4",
+                        "zoneId": "301e2106-7e13-11e8-8060-e284abfd2bc4"
+                    },
+                    {
+                        "name": "Germany",
+                        "parentId": "301e2106-7e13-11e8-8060-e284abfd2bc4",
+                        "zoneId": "301ff622-7e13-11e8-8060-e284abfd2bc4"
+                    },
+                    {
+                        "name": "Mecklenburg-Vorpommern",
+                        "parentId": "301ff622-7e13-11e8-8060-e284abfd2bc4",
+                        "zoneId": "30200848-7e13-11e8-8060-e284abfd2bc4"
+                    },
+                    {
+                        "name": "Rostock",
+                        "parentId": "30200848-7e13-11e8-8060-e284abfd2bc4",
+                        "zoneId": "302008de-7e13-11e8-8060-e284abfd2bc4"
+                    }
+                ],
+                "name": "chillhase."
+            },
+            "wrs": 2,
+            "duration": 0,
+            "durationMs": 54858000
         },
         {
             "user": {
@@ -5169,43 +5205,7 @@
             },
             "wrs": 1,
             "duration": 5,
-            "durationMs": 457321460
-        },
-        {
-            "user": {
-                "id": "2517d060-4c15-4949-9f2e-31bd2f8adaa1",
-                "zone": [
-                    {
-                        "name": "World",
-                        "parentId": null,
-                        "zoneId": "301e1b69-7e13-11e8-8060-e284abfd2bc4"
-                    },
-                    {
-                        "name": "Europe",
-                        "parentId": "301e1b69-7e13-11e8-8060-e284abfd2bc4",
-                        "zoneId": "301e2106-7e13-11e8-8060-e284abfd2bc4"
-                    },
-                    {
-                        "name": "Germany",
-                        "parentId": "301e2106-7e13-11e8-8060-e284abfd2bc4",
-                        "zoneId": "301ff622-7e13-11e8-8060-e284abfd2bc4"
-                    },
-                    {
-                        "name": "Mecklenburg-Vorpommern",
-                        "parentId": "301ff622-7e13-11e8-8060-e284abfd2bc4",
-                        "zoneId": "30200848-7e13-11e8-8060-e284abfd2bc4"
-                    },
-                    {
-                        "name": "Rostock",
-                        "parentId": "30200848-7e13-11e8-8060-e284abfd2bc4",
-                        "zoneId": "302008de-7e13-11e8-8060-e284abfd2bc4"
-                    }
-                ],
-                "name": "chillhase."
-            },
-            "wrs": 1,
-            "duration": 0,
-            "durationMs": 5366000
+            "durationMs": 458221072
         },
         {
             "user": {
@@ -5666,7 +5666,7 @@
                     "zoneId": "301f6188-7e13-11e8-8060-e284abfd2bc4"
                 }
             ],
-            "wrs": 121
+            "wrs": 124
         },
         {
             "zone": [
@@ -5686,7 +5686,7 @@
                     "zoneId": "301ff622-7e13-11e8-8060-e284abfd2bc4"
                 }
             ],
-            "wrs": 66
+            "wrs": 67
         },
         {
             "zone": [
