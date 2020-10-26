@@ -33,8 +33,7 @@
                 "name": "riolu-tm"
             },
             "wrs": 20,
-            "duration": 160,
-            "durationMs": 0
+            "duration": 160
         },
         {
             "user": {
@@ -64,8 +63,7 @@
                 "name": "mime.."
             },
             "wrs": 11,
-            "duration": 105,
-            "durationMs": 0
+            "duration": 105
         },
         {
             "user": {
@@ -95,8 +93,7 @@
                 "name": "PokeR.4W"
             },
             "wrs": 10,
-            "duration": 103,
-            "durationMs": 0
+            "duration": 103
         },
         {
             "user": {
@@ -131,8 +128,7 @@
                 "name": "Roa_TM"
             },
             "wrs": 8,
-            "duration": 48,
-            "durationMs": 0
+            "duration": 48
         },
         {
             "user": {
@@ -167,8 +163,7 @@
                 "name": "DarkBringer94"
             },
             "wrs": 8,
-            "duration": 85,
-            "durationMs": 0
+            "duration": 85
         },
         {
             "user": {
@@ -203,8 +198,7 @@
                 "name": "MTP.hugo220"
             },
             "wrs": 7,
-            "duration": 93,
-            "durationMs": 0
+            "duration": 93
         },
         {
             "user": {
@@ -229,8 +223,7 @@
                 "name": "Erizel"
             },
             "wrs": 6,
-            "duration": 25,
-            "durationMs": 0
+            "duration": 25
         },
         {
             "user": {
@@ -255,8 +248,7 @@
                 "name": "RacetalTM"
             },
             "wrs": 6,
-            "duration": 73,
-            "durationMs": 0
+            "duration": 73
         },
         {
             "user": {
@@ -286,8 +278,7 @@
                 "name": "AR_Mudda"
             },
             "wrs": 6,
-            "duration": 148,
-            "durationMs": 0
+            "duration": 148
         },
         {
             "user": {
@@ -317,8 +308,7 @@
                 "name": "AffiTM"
             },
             "wrs": 5,
-            "duration": 160,
-            "durationMs": 0
+            "duration": 160
         },
         {
             "user": {
@@ -343,8 +333,7 @@
                 "name": "Hefest."
             },
             "wrs": 5,
-            "duration": 279,
-            "durationMs": 0
+            "duration": 279
         },
         {
             "user": {
@@ -374,8 +363,7 @@
                 "name": "GNR-HASKELL"
             },
             "wrs": 4,
-            "duration": 58,
-            "durationMs": 0
+            "duration": 58
         },
         {
             "user": {
@@ -410,8 +398,7 @@
                 "name": "DexteR.771"
             },
             "wrs": 4,
-            "duration": 0,
-            "durationMs": 0
+            "duration": 0
         },
         {
             "user": {
@@ -441,8 +428,7 @@
                 "name": "FrevTM"
             },
             "wrs": 4,
-            "duration": 5,
-            "durationMs": 0
+            "duration": 5
         },
         {
             "user": {
@@ -477,8 +463,7 @@
                 "name": "KC.DarkeR"
             },
             "wrs": 3,
-            "duration": 32,
-            "durationMs": 0
+            "duration": 32
         },
         {
             "user": {
@@ -513,8 +498,7 @@
                 "name": "CamionTM"
             },
             "wrs": 3,
-            "duration": 0,
-            "durationMs": 0
+            "duration": 0
         },
         {
             "user": {
@@ -544,8 +528,7 @@
                 "name": "eLconn21"
             },
             "wrs": 3,
-            "duration": 22,
-            "durationMs": 0
+            "duration": 22
         },
         {
             "user": {
@@ -570,8 +553,7 @@
                 "name": "tekky_TM"
             },
             "wrs": 3,
-            "duration": 9,
-            "durationMs": 0
+            "duration": 9
         },
         {
             "user": {
@@ -606,8 +588,7 @@
                 "name": "Shadow_Crancer"
             },
             "wrs": 3,
-            "duration": 22,
-            "durationMs": 0
+            "duration": 22
         },
         {
             "user": {
@@ -637,8 +618,7 @@
                 "name": "Spammiej"
             },
             "wrs": 3,
-            "duration": 0,
-            "durationMs": 0
+            "duration": 0
         },
         {
             "user": {
@@ -673,8 +653,7 @@
                 "name": "WHENSTARTINK"
             },
             "wrs": 2,
-            "duration": 2,
-            "durationMs": 0
+            "duration": 2
         },
         {
             "user": {
@@ -709,8 +688,7 @@
                 "name": "esu-LX"
             },
             "wrs": 2,
-            "duration": 11,
-            "durationMs": 0
+            "duration": 11
         },
         {
             "user": {
@@ -745,8 +723,7 @@
                 "name": "Flechetas"
             },
             "wrs": 2,
-            "duration": 0,
-            "durationMs": 0
+            "duration": 0
         },
         {
             "user": {
@@ -771,8 +748,7 @@
                 "name": "BIG_MAN_TAXON"
             },
             "wrs": 2,
-            "duration": 22,
-            "durationMs": 0
+            "duration": 22
         },
         {
             "user": {
@@ -807,8 +783,7 @@
                 "name": "BIG.MASSA"
             },
             "wrs": 2,
-            "duration": 0,
-            "durationMs": 0
+            "duration": 0
         },
         {
             "user": {
@@ -838,8 +813,7 @@
                 "name": "Rollin.9D"
             },
             "wrs": 2,
-            "duration": 19,
-            "durationMs": 0
+            "duration": 19
         },
         {
             "user": {
@@ -874,8 +848,7 @@
                 "name": "PacTM"
             },
             "wrs": 2,
-            "duration": 0,
-            "durationMs": 0
+            "duration": 0
         },
         {
             "user": {
@@ -910,8 +883,7 @@
                 "name": "NeqzoTM"
             },
             "wrs": 2,
-            "duration": 6,
-            "durationMs": 0
+            "duration": 6
         },
         {
             "user": {
@@ -946,8 +918,7 @@
                 "name": "solo23101"
             },
             "wrs": 2,
-            "duration": 24,
-            "durationMs": 0
+            "duration": 24
         },
         {
             "user": {
@@ -982,8 +953,7 @@
                 "name": "maxmad-46"
             },
             "wrs": 1,
-            "duration": 4,
-            "durationMs": 0
+            "duration": 4
         },
         {
             "user": {
@@ -1013,8 +983,7 @@
                 "name": "Hyll.BrokenPad"
             },
             "wrs": 1,
-            "duration": 4,
-            "durationMs": 0
+            "duration": 4
         },
         {
             "user": {
@@ -1044,8 +1013,7 @@
                 "name": "Spaghett37"
             },
             "wrs": 1,
-            "duration": 7,
-            "durationMs": 0
+            "duration": 7
         },
         {
             "user": {
@@ -1080,8 +1048,7 @@
                 "name": "Dog.."
             },
             "wrs": 1,
-            "duration": 3,
-            "durationMs": 0
+            "duration": 3
         },
         {
             "user": {
@@ -1106,8 +1073,7 @@
                 "name": "Gerard.Filoche"
             },
             "wrs": 1,
-            "duration": 19,
-            "durationMs": 0
+            "duration": 19
         },
         {
             "user": {
@@ -1142,8 +1108,7 @@
                 "name": "DrimisbacK46"
             },
             "wrs": 1,
-            "duration": 5,
-            "durationMs": 0
+            "duration": 5
         },
         {
             "user": {
@@ -1178,8 +1143,7 @@
                 "name": "OstrAleX_TM"
             },
             "wrs": 1,
-            "duration": 0,
-            "durationMs": 0
+            "duration": 0
         },
         {
             "user": {
@@ -1209,8 +1173,7 @@
                 "name": "SamGusta"
             },
             "wrs": 1,
-            "duration": 48,
-            "durationMs": 0
+            "duration": 48
         },
         {
             "user": {
@@ -1235,8 +1198,7 @@
                 "name": "azinazz"
             },
             "wrs": 1,
-            "duration": 46,
-            "durationMs": 0
+            "duration": 46
         },
         {
             "user": {
@@ -1266,8 +1228,7 @@
                 "name": "Danio_TM"
             },
             "wrs": 1,
-            "duration": 48,
-            "durationMs": 0
+            "duration": 48
         },
         {
             "user": {
@@ -1292,8 +1253,7 @@
                 "name": "Sir.Cato"
             },
             "wrs": 1,
-            "duration": 40,
-            "durationMs": 0
+            "duration": 40
         },
         {
             "user": {
@@ -1318,8 +1278,7 @@
                 "name": "WirtualTM"
             },
             "wrs": 1,
-            "duration": 0,
-            "durationMs": 0
+            "duration": 0
         },
         {
             "user": {
@@ -1354,8 +1313,7 @@
                 "name": "xdennis090"
             },
             "wrs": 1,
-            "duration": 10,
-            "durationMs": 0
+            "duration": 10
         },
         {
             "user": {
@@ -1390,8 +1348,7 @@
                 "name": "trabadia"
             },
             "wrs": 1,
-            "duration": 0,
-            "durationMs": 0
+            "duration": 0
         },
         {
             "user": {
@@ -1416,8 +1373,7 @@
                 "name": "ASdaS-BLR"
             },
             "wrs": 1,
-            "duration": 0,
-            "durationMs": 0
+            "duration": 0
         },
         {
             "user": {
@@ -1452,8 +1408,7 @@
                 "name": "FonkyWindho"
             },
             "wrs": 1,
-            "duration": 0,
-            "durationMs": 0
+            "duration": 0
         },
         {
             "user": {
@@ -1483,8 +1438,7 @@
                 "name": "BODIVOD"
             },
             "wrs": 1,
-            "duration": 0,
-            "durationMs": 0
+            "duration": 0
         },
         {
             "user": {
@@ -1519,8 +1473,7 @@
                 "name": "Nodd_"
             },
             "wrs": 1,
-            "duration": 0,
-            "durationMs": 0
+            "duration": 0
         },
         {
             "user": {
@@ -1555,8 +1508,7 @@
                 "name": "LogicxTM"
             },
             "wrs": 1,
-            "duration": 0,
-            "durationMs": 0
+            "duration": 0
         },
         {
             "user": {
@@ -1586,8 +1538,7 @@
                 "name": "AR_bcp"
             },
             "wrs": 1,
-            "duration": 0,
-            "durationMs": 0
+            "duration": 0
         },
         {
             "user": {
@@ -1612,8 +1563,7 @@
                 "name": "ADM1R0"
             },
             "wrs": 1,
-            "duration": 0,
-            "durationMs": 0
+            "duration": 0
         },
         {
             "user": {
@@ -1643,8 +1593,7 @@
                 "name": "TronTM"
             },
             "wrs": 1,
-            "duration": 0,
-            "durationMs": 0
+            "duration": 0
         },
         {
             "user": {
@@ -1674,8 +1623,7 @@
                 "name": "lilpoker96"
             },
             "wrs": 1,
-            "duration": 0,
-            "durationMs": 0
+            "duration": 0
         },
         {
             "user": {
@@ -1705,8 +1653,7 @@
                 "name": "CMC_Aru"
             },
             "wrs": 1,
-            "duration": 0,
-            "durationMs": 0
+            "duration": 0
         },
         {
             "user": {
@@ -1736,8 +1683,7 @@
                 "name": "sancirigo"
             },
             "wrs": 1,
-            "duration": 0,
-            "durationMs": 0
+            "duration": 0
         },
         {
             "user": {
@@ -1767,8 +1713,7 @@
                 "name": "RotakeR.9D"
             },
             "wrs": 1,
-            "duration": 0,
-            "durationMs": 0
+            "duration": 0
         },
         {
             "user": {
@@ -1803,8 +1748,7 @@
                 "name": "Ice-TM"
             },
             "wrs": 1,
-            "duration": 0,
-            "durationMs": 0
+            "duration": 0
         },
         {
             "user": {
@@ -1839,8 +1783,7 @@
                 "name": "LulZTM"
             },
             "wrs": 1,
-            "duration": 0,
-            "durationMs": 0
+            "duration": 0
         },
         {
             "user": {
@@ -1870,8 +1813,7 @@
                 "name": "xTigershark777"
             },
             "wrs": 1,
-            "duration": 0,
-            "durationMs": 0
+            "duration": 0
         },
         {
             "user": {
@@ -1901,8 +1843,7 @@
                 "name": "Nersons"
             },
             "wrs": 1,
-            "duration": 0,
-            "durationMs": 0
+            "duration": 0
         },
         {
             "user": {
@@ -1932,8 +1873,7 @@
                 "name": "theinsan3"
             },
             "wrs": 1,
-            "duration": 0,
-            "durationMs": 0
+            "duration": 0
         },
         {
             "user": {
@@ -1968,8 +1908,7 @@
                 "name": "the.Piranha"
             },
             "wrs": 1,
-            "duration": 19,
-            "durationMs": 0
+            "duration": 19
         },
         {
             "user": {
@@ -2004,8 +1943,7 @@
                 "name": "Marius.89"
             },
             "wrs": 1,
-            "duration": 14,
-            "durationMs": 0
+            "duration": 14
         },
         {
             "user": {
@@ -2030,8 +1968,7 @@
                 "name": "AR_Madzen"
             },
             "wrs": 1,
-            "duration": 13,
-            "durationMs": 0
+            "duration": 13
         },
         {
             "user": {
@@ -2061,8 +1998,7 @@
                 "name": "sightorld"
             },
             "wrs": 1,
-            "duration": 12,
-            "durationMs": 0
+            "duration": 12
         },
         {
             "user": {
@@ -2097,8 +2033,7 @@
                 "name": "XerarTM"
             },
             "wrs": 1,
-            "duration": 0,
-            "durationMs": 0
+            "duration": 0
         },
         {
             "user": {
@@ -2128,8 +2063,7 @@
                 "name": "CarlJr."
             },
             "wrs": 1,
-            "duration": 0,
-            "durationMs": 0
+            "duration": 0
         },
         {
             "user": {
@@ -2159,8 +2093,7 @@
                 "name": "mime.cut"
             },
             "wrs": 1,
-            "duration": 0,
-            "durationMs": 0
+            "duration": 0
         },
         {
             "user": {
@@ -2195,8 +2128,7 @@
                 "name": "Chibbo_"
             },
             "wrs": 1,
-            "duration": 0,
-            "durationMs": 0
+            "duration": 0
         },
         {
             "user": {
@@ -2231,8 +2163,7 @@
                 "name": "Passki"
             },
             "wrs": 1,
-            "duration": 0,
-            "durationMs": 0
+            "duration": 0
         },
         {
             "user": {
@@ -2267,8 +2198,7 @@
                 "name": "Cocow_"
             },
             "wrs": 1,
-            "duration": 0,
-            "durationMs": 0
+            "duration": 0
         },
         {
             "user": {
@@ -2293,8 +2223,7 @@
                 "name": "levoooooon"
             },
             "wrs": 1,
-            "duration": 0,
-            "durationMs": 0
+            "duration": 0
         },
         {
             "user": {
@@ -2324,8 +2253,7 @@
                 "name": "Scrapie98"
             },
             "wrs": 1,
-            "duration": 0,
-            "durationMs": 0
+            "duration": 0
         },
         {
             "user": {
@@ -2360,8 +2288,7 @@
                 "name": "TRASHER_172"
             },
             "wrs": 1,
-            "duration": 0,
-            "durationMs": 0
+            "duration": 0
         },
         {
             "user": {
@@ -2386,8 +2313,7 @@
                 "name": "cmcsand"
             },
             "wrs": 1,
-            "duration": 0,
-            "durationMs": 0
+            "duration": 0
         },
         {
             "user": {
@@ -2417,8 +2343,7 @@
                 "name": "SIMPLYNICK"
             },
             "wrs": 1,
-            "duration": 0,
-            "durationMs": 0
+            "duration": 0
         },
         {
             "user": {
@@ -2448,8 +2373,7 @@
                 "name": "xMrNovis"
             },
             "wrs": 1,
-            "duration": 0,
-            "durationMs": 0
+            "duration": 0
         },
         {
             "user": {
@@ -2484,8 +2408,7 @@
                 "name": "PeskyQuietMan"
             },
             "wrs": 1,
-            "duration": 0,
-            "durationMs": 0
+            "duration": 0
         },
         {
             "user": {
@@ -2520,8 +2443,7 @@
                 "name": "ConiFox"
             },
             "wrs": 1,
-            "duration": 0,
-            "durationMs": 0
+            "duration": 0
         },
         {
             "user": {
@@ -2551,8 +2473,7 @@
                 "name": "DontCareTM"
             },
             "wrs": 1,
-            "duration": 0,
-            "durationMs": 0
+            "duration": 0
         },
         {
             "user": {
@@ -2577,8 +2498,7 @@
                 "name": "KarjeN.4W"
             },
             "wrs": 1,
-            "duration": 26,
-            "durationMs": 0
+            "duration": 26
         },
         {
             "user": {
@@ -2608,8 +2528,7 @@
                 "name": "ComplexStatics_"
             },
             "wrs": 1,
-            "duration": 24,
-            "durationMs": 0
+            "duration": 24
         },
         {
             "user": {
@@ -2639,8 +2558,7 @@
                 "name": "SinasAppel_tm"
             },
             "wrs": 1,
-            "duration": 24,
-            "durationMs": 0
+            "duration": 24
         },
         {
             "user": {
@@ -2675,8 +2593,7 @@
                 "name": "Harryesu"
             },
             "wrs": 1,
-            "duration": 22,
-            "durationMs": 0
+            "duration": 22
         },
         {
             "user": {
@@ -2711,8 +2628,7 @@
                 "name": "PatroseTV"
             },
             "wrs": 1,
-            "duration": 21,
-            "durationMs": 0
+            "duration": 21
         },
         {
             "user": {
@@ -2742,8 +2658,7 @@
                 "name": "Magorian0212"
             },
             "wrs": 1,
-            "duration": 15,
-            "durationMs": 0
+            "duration": 15
         },
         {
             "user": {
@@ -2773,8 +2688,7 @@
                 "name": "Nova.Zypher"
             },
             "wrs": 1,
-            "duration": 3,
-            "durationMs": 0
+            "duration": 3
         }
     ],
     "countryLeaderboard": [
@@ -3328,8 +3242,7 @@
                 "name": "mime.."
             },
             "wrs": 53,
-            "duration": 89,
-            "durationMs": 8240599364
+            "duration": 89
         },
         {
             "user": {
@@ -3364,8 +3277,7 @@
                 "name": "riolu-tm"
             },
             "wrs": 50,
-            "duration": 61,
-            "durationMs": 6041590583
+            "duration": 61
         },
         {
             "user": {
@@ -3390,8 +3302,7 @@
                 "name": "Erizel"
             },
             "wrs": 48,
-            "duration": 62,
-            "durationMs": 6178866829
+            "duration": 62
         },
         {
             "user": {
@@ -3421,8 +3332,7 @@
                 "name": "PokeR.4W"
             },
             "wrs": 46,
-            "duration": 91,
-            "durationMs": 8195639690
+            "duration": 91
         },
         {
             "user": {
@@ -3457,8 +3367,7 @@
                 "name": "DarkBringer94"
             },
             "wrs": 38,
-            "duration": 0,
-            "durationMs": 0
+            "duration": 0
         },
         {
             "user": {
@@ -3488,8 +3397,7 @@
                 "name": "AR_Mudda"
             },
             "wrs": 30,
-            "duration": 31,
-            "durationMs": 2949773626
+            "duration": 31
         },
         {
             "user": {
@@ -3524,8 +3432,7 @@
                 "name": "Micka_TM"
             },
             "wrs": 26,
-            "duration": 2,
-            "durationMs": 388247000
+            "duration": 2
         },
         {
             "user": {
@@ -3560,8 +3467,7 @@
                 "name": "MTP.hugo220"
             },
             "wrs": 26,
-            "duration": 56,
-            "durationMs": 5416768868
+            "duration": 56
         },
         {
             "user": {
@@ -3596,8 +3502,7 @@
                 "name": "NeqzoTM"
             },
             "wrs": 26,
-            "duration": 10,
-            "durationMs": 1012816000
+            "duration": 10
         },
         {
             "user": {
@@ -3622,8 +3527,7 @@
                 "name": "RacetalTM"
             },
             "wrs": 24,
-            "duration": 61,
-            "durationMs": 5721966589
+            "duration": 61
         },
         {
             "user": {
@@ -3653,8 +3557,7 @@
                 "name": "GNR-HASKELL"
             },
             "wrs": 23,
-            "duration": 48,
-            "durationMs": 4798903930
+            "duration": 48
         },
         {
             "user": {
@@ -3684,8 +3587,7 @@
                 "name": "mime.cut"
             },
             "wrs": 22,
-            "duration": 0,
-            "durationMs": 0
+            "duration": 0
         },
         {
             "user": {
@@ -3720,8 +3622,7 @@
                 "name": "solo23101"
             },
             "wrs": 20,
-            "duration": 7,
-            "durationMs": 706972649
+            "duration": 7
         },
         {
             "user": {
@@ -3756,8 +3657,7 @@
                 "name": "Harryesu"
             },
             "wrs": 20,
-            "duration": 0,
-            "durationMs": 0
+            "duration": 0
         },
         {
             "user": {
@@ -3792,8 +3692,7 @@
                 "name": "Marius.89"
             },
             "wrs": 19,
-            "duration": 14,
-            "durationMs": 1399064616
+            "duration": 14
         },
         {
             "user": {
@@ -3828,8 +3727,7 @@
                 "name": "Shadow_Crancer"
             },
             "wrs": 18,
-            "duration": 12,
-            "durationMs": 1146639306
+            "duration": 12
         },
         {
             "user": {
@@ -3854,8 +3752,7 @@
                 "name": "BIG_MAN_TAXON"
             },
             "wrs": 17,
-            "duration": 22,
-            "durationMs": 1991831590
+            "duration": 22
         },
         {
             "user": {
@@ -3880,8 +3777,7 @@
                 "name": "levoooooon"
             },
             "wrs": 14,
-            "duration": 21,
-            "durationMs": 2027051000
+            "duration": 21
         },
         {
             "user": {
@@ -3916,8 +3812,7 @@
                 "name": "Larstm"
             },
             "wrs": 13,
-            "duration": 0,
-            "durationMs": 93776000
+            "duration": 0
         },
         {
             "user": {
@@ -3947,8 +3842,7 @@
                 "name": "YannexTM"
             },
             "wrs": 13,
-            "duration": 0,
-            "durationMs": 43045000
+            "duration": 0
         },
         {
             "user": {
@@ -3973,8 +3867,7 @@
                 "name": "tekky_TM"
             },
             "wrs": 12,
-            "duration": 9,
-            "durationMs": 944832638
+            "duration": 9
         },
         {
             "user": {
@@ -3999,8 +3892,7 @@
                 "name": "Hefest.9D"
             },
             "wrs": 12,
-            "duration": 0,
-            "durationMs": 0
+            "duration": 0
         },
         {
             "user": {
@@ -4035,8 +3927,7 @@
                 "name": "KC.DarkeR"
             },
             "wrs": 11,
-            "duration": 17,
-            "durationMs": 1701111948
+            "duration": 17
         },
         {
             "user": {
@@ -4066,8 +3957,7 @@
                 "name": "Spaghett37"
             },
             "wrs": 11,
-            "duration": 18,
-            "durationMs": 1851690983
+            "duration": 18
         },
         {
             "user": {
@@ -4097,8 +3987,7 @@
                 "name": "Nova.Zypher"
             },
             "wrs": 11,
-            "duration": 1,
-            "durationMs": 105389000
+            "duration": 1
         },
         {
             "user": {
@@ -4133,8 +4022,7 @@
                 "name": "Roa_TM"
             },
             "wrs": 11,
-            "duration": 0,
-            "durationMs": 0
+            "duration": 0
         },
         {
             "user": {
@@ -4164,8 +4052,7 @@
                 "name": "RDN.rellhoq"
             },
             "wrs": 10,
-            "duration": 3,
-            "durationMs": 378417000
+            "duration": 3
         },
         {
             "user": {
@@ -4195,8 +4082,7 @@
                 "name": "eLconn21"
             },
             "wrs": 10,
-            "duration": 31,
-            "durationMs": 2815040615
+            "duration": 31
         },
         {
             "user": {
@@ -4226,8 +4112,7 @@
                 "name": "CarlJr."
             },
             "wrs": 10,
-            "duration": 0,
-            "durationMs": 3794000
+            "duration": 0
         },
         {
             "user": {
@@ -4257,8 +4142,7 @@
                 "name": "FrevTM"
             },
             "wrs": 10,
-            "duration": 0,
-            "durationMs": 0
+            "duration": 0
         },
         {
             "user": {
@@ -4283,8 +4167,7 @@
                 "name": "AR_Madzen"
             },
             "wrs": 9,
-            "duration": 2,
-            "durationMs": 238947000
+            "duration": 2
         },
         {
             "user": {
@@ -4319,8 +4202,7 @@
                 "name": "Paulmar35"
             },
             "wrs": 9,
-            "duration": 3,
-            "durationMs": 388924000
+            "duration": 3
         },
         {
             "user": {
@@ -4355,8 +4237,7 @@
                 "name": "the.Piranha"
             },
             "wrs": 9,
-            "duration": 19,
-            "durationMs": 1719149599
+            "duration": 19
         },
         {
             "user": {
@@ -4381,8 +4262,7 @@
                 "name": "KarjeN.4W"
             },
             "wrs": 9,
-            "duration": 0,
-            "durationMs": 0
+            "duration": 0
         },
         {
             "user": {
@@ -4417,8 +4297,7 @@
                 "name": "exalty.link"
             },
             "wrs": 8,
-            "duration": 0,
-            "durationMs": 109206000
+            "duration": 0
         },
         {
             "user": {
@@ -4453,8 +4332,7 @@
                 "name": "SapiTM"
             },
             "wrs": 7,
-            "duration": 0,
-            "durationMs": 166022000
+            "duration": 0
         },
         {
             "user": {
@@ -4484,8 +4362,7 @@
                 "name": "Fish_LyRooZ"
             },
             "wrs": 6,
-            "duration": 1,
-            "durationMs": 163088000
+            "duration": 1
         },
         {
             "user": {
@@ -4515,8 +4392,7 @@
                 "name": "SIMPLYNICK"
             },
             "wrs": 6,
-            "duration": 0,
-            "durationMs": 851000
+            "duration": 0
         },
         {
             "user": {
@@ -4551,8 +4427,7 @@
                 "name": "Tona."
             },
             "wrs": 6,
-            "duration": 0,
-            "durationMs": 9028000
+            "duration": 0
         },
         {
             "user": {
@@ -4582,8 +4457,7 @@
                 "name": "VaderoPL"
             },
             "wrs": 6,
-            "duration": 11,
-            "durationMs": 1057751000
+            "duration": 11
         },
         {
             "user": {
@@ -4613,8 +4487,7 @@
                 "name": "rellhoqTM"
             },
             "wrs": 6,
-            "duration": 4,
-            "durationMs": 468603000
+            "duration": 4
         },
         {
             "user": {
@@ -4639,8 +4512,7 @@
                 "name": "x7ven."
             },
             "wrs": 6,
-            "duration": 0,
-            "durationMs": 109595000
+            "duration": 0
         },
         {
             "user": {
@@ -4665,8 +4537,7 @@
                 "name": "WirtualTM"
             },
             "wrs": 6,
-            "duration": 0,
-            "durationMs": 26122000
+            "duration": 0
         },
         {
             "user": {
@@ -4701,8 +4572,7 @@
                 "name": "ConiFox"
             },
             "wrs": 6,
-            "duration": 0,
-            "durationMs": 10605000
+            "duration": 0
         },
         {
             "user": {
@@ -4737,8 +4607,7 @@
                 "name": "esu-LX"
             },
             "wrs": 6,
-            "duration": 0,
-            "durationMs": 0
+            "duration": 0
         },
         {
             "user": {
@@ -4773,8 +4642,7 @@
                 "name": "TRASHER_172"
             },
             "wrs": 6,
-            "duration": 0,
-            "durationMs": 880000
+            "duration": 0
         },
         {
             "user": {
@@ -4809,8 +4677,7 @@
                 "name": "AreogonTM"
             },
             "wrs": 6,
-            "duration": 0,
-            "durationMs": 8418000
+            "duration": 0
         },
         {
             "user": {
@@ -4845,8 +4712,7 @@
                 "name": "Kerberos.4W"
             },
             "wrs": 6,
-            "duration": 0,
-            "durationMs": 2726000
+            "duration": 0
         },
         {
             "user": {
@@ -4876,8 +4742,37 @@
                 "name": "SSG_matt"
             },
             "wrs": 6,
-            "duration": 0,
-            "durationMs": 0
+            "duration": 0
+        },
+        {
+            "user": {
+                "id": "cb137a6a-7112-4917-8e57-c457e082ea3d",
+                "zone": [
+                    {
+                        "name": "World",
+                        "parentId": null,
+                        "zoneId": "301e1b69-7e13-11e8-8060-e284abfd2bc4"
+                    },
+                    {
+                        "name": "Europe",
+                        "parentId": "301e1b69-7e13-11e8-8060-e284abfd2bc4",
+                        "zoneId": "301e2106-7e13-11e8-8060-e284abfd2bc4"
+                    },
+                    {
+                        "name": "Russia",
+                        "parentId": "301e2106-7e13-11e8-8060-e284abfd2bc4",
+                        "zoneId": "3022427b-7e13-11e8-8060-e284abfd2bc4"
+                    },
+                    {
+                        "name": "Сибирский федеральный округ",
+                        "parentId": "3022427b-7e13-11e8-8060-e284abfd2bc4",
+                        "zoneId": "302244ee-7e13-11e8-8060-e284abfd2bc4"
+                    }
+                ],
+                "name": "xTigershark777"
+            },
+            "wrs": 5,
+            "duration": 0
         },
         {
             "user": {
@@ -4912,8 +4807,7 @@
                 "name": "xdennis090"
             },
             "wrs": 5,
-            "duration": 1,
-            "durationMs": 124497000
+            "duration": 1
         },
         {
             "user": {
@@ -4948,8 +4842,7 @@
                 "name": "Dog.."
             },
             "wrs": 5,
-            "duration": 7,
-            "durationMs": 761403985
+            "duration": 7
         },
         {
             "user": {
@@ -4974,8 +4867,7 @@
                 "name": "levooooooooooon"
             },
             "wrs": 5,
-            "duration": 1,
-            "durationMs": 172358000
+            "duration": 1
         },
         {
             "user": {
@@ -5010,8 +4902,37 @@
                 "name": "Acide.."
             },
             "wrs": 5,
-            "duration": 10,
-            "durationMs": 955997000
+            "duration": 10
+        },
+        {
+            "user": {
+                "id": "a9cbdeff-daa3-4bc2-998c-b2838183fb97",
+                "zone": [
+                    {
+                        "name": "World",
+                        "parentId": null,
+                        "zoneId": "301e1b69-7e13-11e8-8060-e284abfd2bc4"
+                    },
+                    {
+                        "name": "Europe",
+                        "parentId": "301e1b69-7e13-11e8-8060-e284abfd2bc4",
+                        "zoneId": "301e2106-7e13-11e8-8060-e284abfd2bc4"
+                    },
+                    {
+                        "name": "Switzerland",
+                        "parentId": "301e2106-7e13-11e8-8060-e284abfd2bc4",
+                        "zoneId": "30228733-7e13-11e8-8060-e284abfd2bc4"
+                    },
+                    {
+                        "name": "Vaud",
+                        "parentId": "30228733-7e13-11e8-8060-e284abfd2bc4",
+                        "zoneId": "30229617-7e13-11e8-8060-e284abfd2bc4"
+                    }
+                ],
+                "name": "AffiTM"
+            },
+            "wrs": 5,
+            "duration": 0
         },
         {
             "user": {
@@ -5046,8 +4967,7 @@
                 "name": "AR_Down"
             },
             "wrs": 5,
-            "duration": 0,
-            "durationMs": 71751000
+            "duration": 0
         },
         {
             "user": {
@@ -5077,8 +4997,7 @@
                 "name": "ComplexStatics_"
             },
             "wrs": 5,
-            "duration": 0,
-            "durationMs": 0
+            "duration": 0
         },
         {
             "user": {
@@ -5108,12 +5027,11 @@
                 "name": "Brionac_95"
             },
             "wrs": 4,
-            "duration": 2,
-            "durationMs": 226211000
+            "duration": 2
         },
         {
             "user": {
-                "id": "cb137a6a-7112-4917-8e57-c457e082ea3d",
+                "id": "cd32b288-a361-483a-9c48-68417eb83c74",
                 "zone": [
                     {
                         "name": "World",
@@ -5126,21 +5044,25 @@
                         "zoneId": "301e2106-7e13-11e8-8060-e284abfd2bc4"
                     },
                     {
-                        "name": "Russia",
+                        "name": "France",
                         "parentId": "301e2106-7e13-11e8-8060-e284abfd2bc4",
-                        "zoneId": "3022427b-7e13-11e8-8060-e284abfd2bc4"
+                        "zoneId": "301f6188-7e13-11e8-8060-e284abfd2bc4"
                     },
                     {
-                        "name": "Сибирский федеральный округ",
-                        "parentId": "3022427b-7e13-11e8-8060-e284abfd2bc4",
-                        "zoneId": "302244ee-7e13-11e8-8060-e284abfd2bc4"
+                        "name": "Nouvelle-Aquitaine",
+                        "parentId": "301f6188-7e13-11e8-8060-e284abfd2bc4",
+                        "zoneId": "301fb84d-7e13-11e8-8060-e284abfd2bc4"
+                    },
+                    {
+                        "name": "Deux-Sèvres",
+                        "parentId": "301fb84d-7e13-11e8-8060-e284abfd2bc4",
+                        "zoneId": "301fc272-7e13-11e8-8060-e284abfd2bc4"
                     }
                 ],
-                "name": "xTigershark777"
+                "name": "Flechetas"
             },
             "wrs": 4,
-            "duration": 0,
-            "durationMs": 93809000
+            "duration": 0
         },
         {
             "user": {
@@ -5175,8 +5097,7 @@
                 "name": "JurixTM"
             },
             "wrs": 4,
-            "duration": 0,
-            "durationMs": 22014000
+            "duration": 0
         },
         {
             "user": {
@@ -5206,8 +5127,7 @@
                 "name": "Hyll.BrokenPad"
             },
             "wrs": 4,
-            "duration": 7,
-            "durationMs": 649968941
+            "duration": 7
         },
         {
             "user": {
@@ -5232,8 +5152,7 @@
                 "name": "kebytm"
             },
             "wrs": 4,
-            "duration": 0,
-            "durationMs": 21391000
+            "duration": 0
         },
         {
             "user": {
@@ -5268,39 +5187,7 @@
                 "name": "Insanity.TM"
             },
             "wrs": 4,
-            "duration": 21,
-            "durationMs": 1973694038
-        },
-        {
-            "user": {
-                "id": "a9cbdeff-daa3-4bc2-998c-b2838183fb97",
-                "zone": [
-                    {
-                        "name": "World",
-                        "parentId": null,
-                        "zoneId": "301e1b69-7e13-11e8-8060-e284abfd2bc4"
-                    },
-                    {
-                        "name": "Europe",
-                        "parentId": "301e1b69-7e13-11e8-8060-e284abfd2bc4",
-                        "zoneId": "301e2106-7e13-11e8-8060-e284abfd2bc4"
-                    },
-                    {
-                        "name": "Switzerland",
-                        "parentId": "301e2106-7e13-11e8-8060-e284abfd2bc4",
-                        "zoneId": "30228733-7e13-11e8-8060-e284abfd2bc4"
-                    },
-                    {
-                        "name": "Vaud",
-                        "parentId": "30228733-7e13-11e8-8060-e284abfd2bc4",
-                        "zoneId": "30229617-7e13-11e8-8060-e284abfd2bc4"
-                    }
-                ],
-                "name": "AffiTM"
-            },
-            "wrs": 4,
-            "duration": 0,
-            "durationMs": 0
+            "duration": 21
         },
         {
             "user": {
@@ -5335,8 +5222,7 @@
                 "name": "Wavy.Aynyx"
             },
             "wrs": 4,
-            "duration": 0,
-            "durationMs": 2122000
+            "duration": 0
         },
         {
             "user": {
@@ -5371,8 +5257,7 @@
                 "name": "KakkouTM"
             },
             "wrs": 4,
-            "duration": 0,
-            "durationMs": 1669000
+            "duration": 0
         },
         {
             "user": {
@@ -5407,8 +5292,7 @@
                 "name": "Daxtorim"
             },
             "wrs": 4,
-            "duration": 0,
-            "durationMs": 6199000
+            "duration": 0
         },
         {
             "user": {
@@ -5443,8 +5327,7 @@
                 "name": "ShaDenis_"
             },
             "wrs": 4,
-            "duration": 0,
-            "durationMs": 2170000
+            "duration": 0
         },
         {
             "user": {
@@ -5479,8 +5362,7 @@
                 "name": "Kainry."
             },
             "wrs": 4,
-            "duration": 0,
-            "durationMs": 72000
+            "duration": 0
         },
         {
             "user": {
@@ -5510,8 +5392,7 @@
                 "name": "DaFlexBoss"
             },
             "wrs": 4,
-            "duration": 0,
-            "durationMs": 1673000
+            "duration": 0
         },
         {
             "user": {
@@ -5541,8 +5422,7 @@
                 "name": "Rollin.9D"
             },
             "wrs": 4,
-            "duration": 0,
-            "durationMs": 0
+            "duration": 0
         },
         {
             "user": {
@@ -5572,8 +5452,7 @@
                 "name": "Spammiej"
             },
             "wrs": 4,
-            "duration": 0,
-            "durationMs": 0
+            "duration": 0
         },
         {
             "user": {
@@ -5598,8 +5477,7 @@
                 "name": "cmcsand"
             },
             "wrs": 4,
-            "duration": 0,
-            "durationMs": 0
+            "duration": 0
         },
         {
             "user": {
@@ -5634,8 +5512,7 @@
                 "name": "DexteR.771"
             },
             "wrs": 4,
-            "duration": 0,
-            "durationMs": 0
+            "duration": 0
         },
         {
             "user": {
@@ -5670,8 +5547,7 @@
                 "name": "sukeTM"
             },
             "wrs": 3,
-            "duration": 0,
-            "durationMs": 8404000
+            "duration": 0
         },
         {
             "user": {
@@ -5706,8 +5582,7 @@
                 "name": "Gwen_TM"
             },
             "wrs": 3,
-            "duration": 18,
-            "durationMs": 1579861000
+            "duration": 18
         },
         {
             "user": {
@@ -5742,8 +5617,7 @@
                 "name": "amgreborn"
             },
             "wrs": 3,
-            "duration": 0,
-            "durationMs": 24111000
+            "duration": 0
         },
         {
             "user": {
@@ -5778,44 +5652,7 @@
                 "name": "Switch999"
             },
             "wrs": 3,
-            "duration": 0,
-            "durationMs": 58740000
-        },
-        {
-            "user": {
-                "id": "cd32b288-a361-483a-9c48-68417eb83c74",
-                "zone": [
-                    {
-                        "name": "World",
-                        "parentId": null,
-                        "zoneId": "301e1b69-7e13-11e8-8060-e284abfd2bc4"
-                    },
-                    {
-                        "name": "Europe",
-                        "parentId": "301e1b69-7e13-11e8-8060-e284abfd2bc4",
-                        "zoneId": "301e2106-7e13-11e8-8060-e284abfd2bc4"
-                    },
-                    {
-                        "name": "France",
-                        "parentId": "301e2106-7e13-11e8-8060-e284abfd2bc4",
-                        "zoneId": "301f6188-7e13-11e8-8060-e284abfd2bc4"
-                    },
-                    {
-                        "name": "Nouvelle-Aquitaine",
-                        "parentId": "301f6188-7e13-11e8-8060-e284abfd2bc4",
-                        "zoneId": "301fb84d-7e13-11e8-8060-e284abfd2bc4"
-                    },
-                    {
-                        "name": "Deux-Sèvres",
-                        "parentId": "301fb84d-7e13-11e8-8060-e284abfd2bc4",
-                        "zoneId": "301fc272-7e13-11e8-8060-e284abfd2bc4"
-                    }
-                ],
-                "name": "Flechetas"
-            },
-            "wrs": 3,
-            "duration": 0,
-            "durationMs": 720000
+            "duration": 0
         },
         {
             "user": {
@@ -5850,8 +5687,42 @@
                 "name": "maxi46maxi"
             },
             "wrs": 3,
-            "duration": 6,
-            "durationMs": 729043000
+            "duration": 6
+        },
+        {
+            "user": {
+                "id": "8da51c17-1651-4ab1-af35-7d26e0e68e23",
+                "zone": [
+                    {
+                        "name": "World",
+                        "parentId": null,
+                        "zoneId": "301e1b69-7e13-11e8-8060-e284abfd2bc4"
+                    },
+                    {
+                        "name": "Europe",
+                        "parentId": "301e1b69-7e13-11e8-8060-e284abfd2bc4",
+                        "zoneId": "301e2106-7e13-11e8-8060-e284abfd2bc4"
+                    },
+                    {
+                        "name": "France",
+                        "parentId": "301e2106-7e13-11e8-8060-e284abfd2bc4",
+                        "zoneId": "301f6188-7e13-11e8-8060-e284abfd2bc4"
+                    },
+                    {
+                        "name": "Bretagne",
+                        "parentId": "301f6188-7e13-11e8-8060-e284abfd2bc4",
+                        "zoneId": "301f9522-7e13-11e8-8060-e284abfd2bc4"
+                    },
+                    {
+                        "name": "Ille-et-Vilaine",
+                        "parentId": "301f9522-7e13-11e8-8060-e284abfd2bc4",
+                        "zoneId": "301f96de-7e13-11e8-8060-e284abfd2bc4"
+                    }
+                ],
+                "name": "Nodd_"
+            },
+            "wrs": 3,
+            "duration": 1
         },
         {
             "user": {
@@ -5886,8 +5757,7 @@
                 "name": "YEPTREE"
             },
             "wrs": 3,
-            "duration": 0,
-            "durationMs": 9552000
+            "duration": 0
         },
         {
             "user": {
@@ -5922,8 +5792,7 @@
                 "name": "iocto."
             },
             "wrs": 3,
-            "duration": 0,
-            "durationMs": 6026000
+            "duration": 0
         },
         {
             "user": {
@@ -5958,8 +5827,7 @@
                 "name": "Mooneyman____"
             },
             "wrs": 3,
-            "duration": 1,
-            "durationMs": 93438000
+            "duration": 1
         },
         {
             "user": {
@@ -5994,8 +5862,7 @@
                 "name": "Vaylon."
             },
             "wrs": 3,
-            "duration": 0,
-            "durationMs": 33312000
+            "duration": 0
         },
         {
             "user": {
@@ -6030,8 +5897,7 @@
                 "name": "Speedself"
             },
             "wrs": 3,
-            "duration": 0,
-            "durationMs": 14221000
+            "duration": 0
         },
         {
             "user": {
@@ -6061,8 +5927,7 @@
                 "name": "Ornyx_x"
             },
             "wrs": 3,
-            "duration": 1,
-            "durationMs": 101544000
+            "duration": 1
         },
         {
             "user": {
@@ -6097,8 +5962,7 @@
                 "name": "OstrAleX_TM"
             },
             "wrs": 3,
-            "duration": 5,
-            "durationMs": 488645047
+            "duration": 5
         },
         {
             "user": {
@@ -6133,8 +5997,77 @@
                 "name": "PacTM"
             },
             "wrs": 3,
-            "duration": 0,
-            "durationMs": 0
+            "duration": 0
+        },
+        {
+            "user": {
+                "id": "49965c7b-d71c-467d-99c7-ff4092daf0ca",
+                "zone": [
+                    {
+                        "name": "World",
+                        "parentId": null,
+                        "zoneId": "301e1b69-7e13-11e8-8060-e284abfd2bc4"
+                    },
+                    {
+                        "name": "Europe",
+                        "parentId": "301e1b69-7e13-11e8-8060-e284abfd2bc4",
+                        "zoneId": "301e2106-7e13-11e8-8060-e284abfd2bc4"
+                    },
+                    {
+                        "name": "France",
+                        "parentId": "301e2106-7e13-11e8-8060-e284abfd2bc4",
+                        "zoneId": "301f6188-7e13-11e8-8060-e284abfd2bc4"
+                    },
+                    {
+                        "name": "Auvergne-Rhône-Alpes",
+                        "parentId": "301f6188-7e13-11e8-8060-e284abfd2bc4",
+                        "zoneId": "301f6458-7e13-11e8-8060-e284abfd2bc4"
+                    },
+                    {
+                        "name": "Isère",
+                        "parentId": "301f6458-7e13-11e8-8060-e284abfd2bc4",
+                        "zoneId": "301f6969-7e13-11e8-8060-e284abfd2bc4"
+                    }
+                ],
+                "name": "CamionTM"
+            },
+            "wrs": 3,
+            "duration": 0
+        },
+        {
+            "user": {
+                "id": "a90404b4-7217-4f78-8891-135da2b442b2",
+                "zone": [
+                    {
+                        "name": "World",
+                        "parentId": null,
+                        "zoneId": "301e1b69-7e13-11e8-8060-e284abfd2bc4"
+                    },
+                    {
+                        "name": "Europe",
+                        "parentId": "301e1b69-7e13-11e8-8060-e284abfd2bc4",
+                        "zoneId": "301e2106-7e13-11e8-8060-e284abfd2bc4"
+                    },
+                    {
+                        "name": "France",
+                        "parentId": "301e2106-7e13-11e8-8060-e284abfd2bc4",
+                        "zoneId": "301f6188-7e13-11e8-8060-e284abfd2bc4"
+                    },
+                    {
+                        "name": "Grand Est",
+                        "parentId": "301f6188-7e13-11e8-8060-e284abfd2bc4",
+                        "zoneId": "301fa0c0-7e13-11e8-8060-e284abfd2bc4"
+                    },
+                    {
+                        "name": "Bas-Rhin",
+                        "parentId": "301fa0c0-7e13-11e8-8060-e284abfd2bc4",
+                        "zoneId": "301fa363-7e13-11e8-8060-e284abfd2bc4"
+                    }
+                ],
+                "name": "Ice-TM"
+            },
+            "wrs": 3,
+            "duration": 0
         },
         {
             "user": {
@@ -6164,8 +6097,7 @@
                 "name": "habichuelotm"
             },
             "wrs": 3,
-            "duration": 0,
-            "durationMs": 7928000
+            "duration": 0
         },
         {
             "user": {
@@ -6195,8 +6127,7 @@
                 "name": "MnM_Speedy"
             },
             "wrs": 3,
-            "duration": 0,
-            "durationMs": 0
+            "duration": 0
         },
         {
             "user": {
@@ -6226,8 +6157,7 @@
                 "name": "DontCareTM"
             },
             "wrs": 3,
-            "duration": 0,
-            "durationMs": 0
+            "duration": 0
         },
         {
             "user": {
@@ -6257,8 +6187,7 @@
                 "name": "SinasAppel_tm"
             },
             "wrs": 3,
-            "duration": 0,
-            "durationMs": 0
+            "duration": 0
         },
         {
             "user": {
@@ -6293,8 +6222,7 @@
                 "name": "PatroseTV"
             },
             "wrs": 3,
-            "duration": 0,
-            "durationMs": 0
+            "duration": 0
         },
         {
             "user": {
@@ -6329,8 +6257,7 @@
                 "name": "matza_"
             },
             "wrs": 3,
-            "duration": 0,
-            "durationMs": 0
+            "duration": 0
         },
         {
             "user": {
@@ -6365,8 +6292,7 @@
                 "name": "WilligamerTM"
             },
             "wrs": 2,
-            "duration": 0,
-            "durationMs": 10593000
+            "duration": 0
         },
         {
             "user": {
@@ -6401,8 +6327,7 @@
                 "name": "maxmad-46"
             },
             "wrs": 2,
-            "duration": 4,
-            "durationMs": 416392846
+            "duration": 4
         },
         {
             "user": {
@@ -6432,8 +6357,7 @@
                 "name": "versa.lulutalu"
             },
             "wrs": 2,
-            "duration": 0,
-            "durationMs": 12140000
+            "duration": 0
         },
         {
             "user": {
@@ -6468,44 +6392,7 @@
                 "name": "LykerTm"
             },
             "wrs": 2,
-            "duration": 0,
-            "durationMs": 1453000
-        },
-        {
-            "user": {
-                "id": "8da51c17-1651-4ab1-af35-7d26e0e68e23",
-                "zone": [
-                    {
-                        "name": "World",
-                        "parentId": null,
-                        "zoneId": "301e1b69-7e13-11e8-8060-e284abfd2bc4"
-                    },
-                    {
-                        "name": "Europe",
-                        "parentId": "301e1b69-7e13-11e8-8060-e284abfd2bc4",
-                        "zoneId": "301e2106-7e13-11e8-8060-e284abfd2bc4"
-                    },
-                    {
-                        "name": "France",
-                        "parentId": "301e2106-7e13-11e8-8060-e284abfd2bc4",
-                        "zoneId": "301f6188-7e13-11e8-8060-e284abfd2bc4"
-                    },
-                    {
-                        "name": "Bretagne",
-                        "parentId": "301f6188-7e13-11e8-8060-e284abfd2bc4",
-                        "zoneId": "301f9522-7e13-11e8-8060-e284abfd2bc4"
-                    },
-                    {
-                        "name": "Ille-et-Vilaine",
-                        "parentId": "301f9522-7e13-11e8-8060-e284abfd2bc4",
-                        "zoneId": "301f96de-7e13-11e8-8060-e284abfd2bc4"
-                    }
-                ],
-                "name": "Nodd_"
-            },
-            "wrs": 2,
-            "duration": 1,
-            "durationMs": 166333000
+            "duration": 0
         },
         {
             "user": {
@@ -6530,8 +6417,7 @@
                 "name": "Marmerladi"
             },
             "wrs": 2,
-            "duration": 0,
-            "durationMs": 18703000
+            "duration": 0
         },
         {
             "user": {
@@ -6561,8 +6447,7 @@
                 "name": "Marple."
             },
             "wrs": 2,
-            "duration": 2,
-            "durationMs": 209645000
+            "duration": 2
         },
         {
             "user": {
@@ -6592,8 +6477,7 @@
                 "name": "SkandeaR"
             },
             "wrs": 2,
-            "duration": 0,
-            "durationMs": 1342000
+            "duration": 0
         },
         {
             "user": {
@@ -6623,8 +6507,7 @@
                 "name": "t.tv-chriso250"
             },
             "wrs": 2,
-            "duration": 0,
-            "durationMs": 99439000
+            "duration": 0
         },
         {
             "user": {
@@ -6659,8 +6542,7 @@
                 "name": "Gyrule"
             },
             "wrs": 2,
-            "duration": 0,
-            "durationMs": 1420000
+            "duration": 0
         },
         {
             "user": {
@@ -6690,8 +6572,7 @@
                 "name": "Mehh47"
             },
             "wrs": 2,
-            "duration": 0,
-            "durationMs": 53668000
+            "duration": 0
         },
         {
             "user": {
@@ -6726,8 +6607,7 @@
                 "name": "JL_Boris_TM"
             },
             "wrs": 2,
-            "duration": 1,
-            "durationMs": 99741000
+            "duration": 1
         },
         {
             "user": {
@@ -6757,8 +6637,7 @@
                 "name": "MorceTM"
             },
             "wrs": 2,
-            "duration": 6,
-            "durationMs": 565029000
+            "duration": 6
         },
         {
             "user": {
@@ -6793,8 +6672,7 @@
                 "name": "Buuuuurd"
             },
             "wrs": 2,
-            "duration": 7,
-            "durationMs": 696048000
+            "duration": 7
         },
         {
             "user": {
@@ -6829,8 +6707,7 @@
                 "name": "WHENSTARTINK"
             },
             "wrs": 2,
-            "duration": 2,
-            "durationMs": 244362046
+            "duration": 2
         },
         {
             "user": {
@@ -6855,8 +6732,7 @@
                 "name": "Dividedz"
             },
             "wrs": 2,
-            "duration": 0,
-            "durationMs": 1461000
+            "duration": 0
         },
         {
             "user": {
@@ -6886,8 +6762,7 @@
                 "name": "RW.Clem"
             },
             "wrs": 2,
-            "duration": 0,
-            "durationMs": 1908000
+            "duration": 0
         },
         {
             "user": {
@@ -6912,8 +6787,7 @@
                 "name": "ImFluct"
             },
             "wrs": 2,
-            "duration": 0,
-            "durationMs": 2991000
+            "duration": 0
         },
         {
             "user": {
@@ -6948,8 +6822,7 @@
                 "name": "chillhase."
             },
             "wrs": 2,
-            "duration": 0,
-            "durationMs": 54858000
+            "duration": 0
         },
         {
             "user": {
@@ -6974,8 +6847,7 @@
                 "name": "Morning29"
             },
             "wrs": 2,
-            "duration": 0,
-            "durationMs": 0
+            "duration": 0
         },
         {
             "user": {
@@ -7000,8 +6872,7 @@
                 "name": "hug0220"
             },
             "wrs": 2,
-            "duration": 0,
-            "durationMs": 0
+            "duration": 0
         },
         {
             "user": {
@@ -7036,8 +6907,7 @@
                 "name": "Stillhuge"
             },
             "wrs": 2,
-            "duration": 0,
-            "durationMs": 1777000
+            "duration": 0
         },
         {
             "user": {
@@ -7067,8 +6937,7 @@
                 "name": "sightorld"
             },
             "wrs": 2,
-            "duration": 12,
-            "durationMs": 1064795628
+            "duration": 12
         },
         {
             "user": {
@@ -7103,8 +6972,7 @@
                 "name": "NUMELOPSDAN"
             },
             "wrs": 2,
-            "duration": 0,
-            "durationMs": 2626000
+            "duration": 0
         },
         {
             "user": {
@@ -7139,8 +7007,7 @@
                 "name": "VoMF1TeN"
             },
             "wrs": 2,
-            "duration": 0,
-            "durationMs": 5151000
+            "duration": 0
         },
         {
             "user": {
@@ -7175,8 +7042,7 @@
                 "name": "BIG.MASSA"
             },
             "wrs": 2,
-            "duration": 0,
-            "durationMs": 0
+            "duration": 0
         },
         {
             "user": {
@@ -7211,8 +7077,7 @@
                 "name": "TMBren"
             },
             "wrs": 2,
-            "duration": 0,
-            "durationMs": 0
+            "duration": 0
         },
         {
             "user": {
@@ -7247,8 +7112,7 @@
                 "name": "Passki"
             },
             "wrs": 2,
-            "duration": 0,
-            "durationMs": 0
+            "duration": 0
         },
         {
             "user": {
@@ -7283,8 +7147,7 @@
                 "name": "Richie01308"
             },
             "wrs": 2,
-            "duration": 0,
-            "durationMs": 0
+            "duration": 0
         },
         {
             "user": {
@@ -7309,8 +7172,7 @@
                 "name": "clem_rpg"
             },
             "wrs": 2,
-            "duration": 0,
-            "durationMs": 0
+            "duration": 0
         },
         {
             "user": {
@@ -7345,8 +7207,7 @@
                 "name": "SabreAMW"
             },
             "wrs": 2,
-            "duration": 0,
-            "durationMs": 0
+            "duration": 0
         },
         {
             "user": {
@@ -7381,44 +7242,7 @@
                 "name": "Yotokotokolo"
             },
             "wrs": 2,
-            "duration": 0,
-            "durationMs": 0
-        },
-        {
-            "user": {
-                "id": "a90404b4-7217-4f78-8891-135da2b442b2",
-                "zone": [
-                    {
-                        "name": "World",
-                        "parentId": null,
-                        "zoneId": "301e1b69-7e13-11e8-8060-e284abfd2bc4"
-                    },
-                    {
-                        "name": "Europe",
-                        "parentId": "301e1b69-7e13-11e8-8060-e284abfd2bc4",
-                        "zoneId": "301e2106-7e13-11e8-8060-e284abfd2bc4"
-                    },
-                    {
-                        "name": "France",
-                        "parentId": "301e2106-7e13-11e8-8060-e284abfd2bc4",
-                        "zoneId": "301f6188-7e13-11e8-8060-e284abfd2bc4"
-                    },
-                    {
-                        "name": "Grand Est",
-                        "parentId": "301f6188-7e13-11e8-8060-e284abfd2bc4",
-                        "zoneId": "301fa0c0-7e13-11e8-8060-e284abfd2bc4"
-                    },
-                    {
-                        "name": "Bas-Rhin",
-                        "parentId": "301fa0c0-7e13-11e8-8060-e284abfd2bc4",
-                        "zoneId": "301fa363-7e13-11e8-8060-e284abfd2bc4"
-                    }
-                ],
-                "name": "Ice-TM"
-            },
-            "wrs": 2,
-            "duration": 0,
-            "durationMs": 0
+            "duration": 0
         },
         {
             "user": {
@@ -7453,8 +7277,7 @@
                 "name": "PREX_TM"
             },
             "wrs": 2,
-            "duration": 0,
-            "durationMs": 0
+            "duration": 0
         },
         {
             "user": {
@@ -7484,8 +7307,7 @@
                 "name": "Cauazone"
             },
             "wrs": 1,
-            "duration": 0,
-            "durationMs": 1189000
+            "duration": 0
         },
         {
             "user": {
@@ -7520,8 +7342,7 @@
                 "name": "Machrix_"
             },
             "wrs": 1,
-            "duration": 0,
-            "durationMs": 37078000
+            "duration": 0
         },
         {
             "user": {
@@ -7556,8 +7377,7 @@
                 "name": "Chayrim"
             },
             "wrs": 1,
-            "duration": 0,
-            "durationMs": 3506000
+            "duration": 0
         },
         {
             "user": {
@@ -7587,8 +7407,7 @@
                 "name": "Draggyyy"
             },
             "wrs": 1,
-            "duration": 0,
-            "durationMs": 2487000
+            "duration": 0
         },
         {
             "user": {
@@ -7623,8 +7442,7 @@
                 "name": "Salhigan"
             },
             "wrs": 1,
-            "duration": 0,
-            "durationMs": 238000
+            "duration": 0
         },
         {
             "user": {
@@ -7659,8 +7477,7 @@
                 "name": "jiboorney"
             },
             "wrs": 1,
-            "duration": 0,
-            "durationMs": 1378000
+            "duration": 0
         },
         {
             "user": {
@@ -7695,8 +7512,7 @@
                 "name": "WorkerTm"
             },
             "wrs": 1,
-            "duration": 0,
-            "durationMs": 1684000
+            "duration": 0
         },
         {
             "user": {
@@ -7721,8 +7537,7 @@
                 "name": "kulvgod"
             },
             "wrs": 1,
-            "duration": 0,
-            "durationMs": 4288000
+            "duration": 0
         },
         {
             "user": {
@@ -7752,8 +7567,7 @@
                 "name": "apX.Vixxa"
             },
             "wrs": 1,
-            "duration": 0,
-            "durationMs": 17108000
+            "duration": 0
         },
         {
             "user": {
@@ -7778,8 +7592,7 @@
                 "name": "raizo_O"
             },
             "wrs": 1,
-            "duration": 0,
-            "durationMs": 455000
+            "duration": 0
         },
         {
             "user": {
@@ -7804,8 +7617,7 @@
                 "name": "B1tsy"
             },
             "wrs": 1,
-            "duration": 0,
-            "durationMs": 20087000
+            "duration": 0
         },
         {
             "user": {
@@ -7835,8 +7647,7 @@
                 "name": "DeskaTM"
             },
             "wrs": 1,
-            "duration": 0,
-            "durationMs": 62169000
+            "duration": 0
         },
         {
             "user": {
@@ -7871,8 +7682,7 @@
                 "name": "Navi_tm"
             },
             "wrs": 1,
-            "duration": 0,
-            "durationMs": 6478000
+            "duration": 0
         },
         {
             "user": {
@@ -7907,8 +7717,7 @@
                 "name": "iNf3cTeD-"
             },
             "wrs": 1,
-            "duration": 2,
-            "durationMs": 187733000
+            "duration": 2
         },
         {
             "user": {
@@ -7933,8 +7742,7 @@
                 "name": "LookidTM"
             },
             "wrs": 1,
-            "duration": 0,
-            "durationMs": 557000
+            "duration": 0
         },
         {
             "user": {
@@ -7969,8 +7777,7 @@
                 "name": "sMN."
             },
             "wrs": 1,
-            "duration": 0,
-            "durationMs": 1157000
+            "duration": 0
         },
         {
             "user": {
@@ -8005,8 +7812,7 @@
                 "name": "KienStien"
             },
             "wrs": 1,
-            "duration": 3,
-            "durationMs": 312056000
+            "duration": 3
         },
         {
             "user": {
@@ -8041,8 +7847,7 @@
                 "name": "Im_MiThyX"
             },
             "wrs": 1,
-            "duration": 0,
-            "durationMs": 79668000
+            "duration": 0
         },
         {
             "user": {
@@ -8072,8 +7877,7 @@
                 "name": "Wowit_"
             },
             "wrs": 1,
-            "duration": 0,
-            "durationMs": 640000
+            "duration": 0
         },
         {
             "user": {
@@ -8098,8 +7902,7 @@
                 "name": "Loud_Taak"
             },
             "wrs": 1,
-            "duration": 0,
-            "durationMs": 5238000
+            "duration": 0
         },
         {
             "user": {
@@ -8134,8 +7937,7 @@
                 "name": "NathPlayer"
             },
             "wrs": 1,
-            "duration": 0,
-            "durationMs": 1161000
+            "duration": 0
         },
         {
             "user": {
@@ -8170,8 +7972,7 @@
                 "name": "seiif_TM"
             },
             "wrs": 1,
-            "duration": 0,
-            "durationMs": 456000
+            "duration": 0
         },
         {
             "user": {
@@ -8196,8 +7997,7 @@
                 "name": "Clearvision.wp"
             },
             "wrs": 1,
-            "duration": 0,
-            "durationMs": 7626000
+            "duration": 0
         },
         {
             "user": {
@@ -8232,8 +8032,7 @@
                 "name": "dF_46"
             },
             "wrs": 1,
-            "duration": 0,
-            "durationMs": 946000
+            "duration": 0
         },
         {
             "user": {
@@ -8268,8 +8067,7 @@
                 "name": "Versa.BRand0M"
             },
             "wrs": 1,
-            "duration": 8,
-            "durationMs": 747649000
+            "duration": 8
         },
         {
             "user": {
@@ -8304,8 +8102,7 @@
                 "name": "DrimisbacK46"
             },
             "wrs": 1,
-            "duration": 5,
-            "durationMs": 460921046
+            "duration": 5
         },
         {
             "user": {
@@ -8335,8 +8132,7 @@
                 "name": "fibonacho"
             },
             "wrs": 1,
-            "duration": 0,
-            "durationMs": 0
+            "duration": 0
         },
         {
             "user": {
@@ -8371,8 +8167,7 @@
                 "name": "W0scht83"
             },
             "wrs": 1,
-            "duration": 0,
-            "durationMs": 0
+            "duration": 0
         },
         {
             "user": {
@@ -8402,8 +8197,7 @@
                 "name": "AConstipatedCow"
             },
             "wrs": 1,
-            "duration": 0,
-            "durationMs": 0
+            "duration": 0
         },
         {
             "user": {
@@ -8433,8 +8227,7 @@
                 "name": "SamGusta"
             },
             "wrs": 1,
-            "duration": 0,
-            "durationMs": 0
+            "duration": 0
         },
         {
             "user": {
@@ -8459,8 +8252,7 @@
                 "name": "azinazz"
             },
             "wrs": 1,
-            "duration": 0,
-            "durationMs": 0
+            "duration": 0
         },
         {
             "user": {
@@ -8490,8 +8282,7 @@
                 "name": "HanZBEAST"
             },
             "wrs": 1,
-            "duration": 0,
-            "durationMs": 0
+            "duration": 0
         },
         {
             "user": {
@@ -8521,8 +8312,7 @@
                 "name": "Danio_TM"
             },
             "wrs": 1,
-            "duration": 0,
-            "durationMs": 0
+            "duration": 0
         },
         {
             "user": {
@@ -8557,8 +8347,7 @@
                 "name": "Chrisius-"
             },
             "wrs": 1,
-            "duration": 0,
-            "durationMs": 0
+            "duration": 0
         },
         {
             "user": {
@@ -8583,8 +8372,7 @@
                 "name": "Sir.Cato"
             },
             "wrs": 1,
-            "duration": 0,
-            "durationMs": 0
+            "duration": 0
         },
         {
             "user": {
@@ -8619,8 +8407,222 @@
                 "name": "Navvkk"
             },
             "wrs": 1,
-            "duration": 0,
-            "durationMs": 0
+            "duration": 0
+        },
+        {
+            "user": {
+                "id": "30377a82-ef34-4bbf-a4e6-4b12200ed19b",
+                "zone": [
+                    {
+                        "name": "World",
+                        "parentId": null,
+                        "zoneId": "301e1b69-7e13-11e8-8060-e284abfd2bc4"
+                    },
+                    {
+                        "name": "Europe",
+                        "parentId": "301e1b69-7e13-11e8-8060-e284abfd2bc4",
+                        "zoneId": "301e2106-7e13-11e8-8060-e284abfd2bc4"
+                    },
+                    {
+                        "name": "France",
+                        "parentId": "301e2106-7e13-11e8-8060-e284abfd2bc4",
+                        "zoneId": "301f6188-7e13-11e8-8060-e284abfd2bc4"
+                    },
+                    {
+                        "name": "Normandie",
+                        "parentId": "301f6188-7e13-11e8-8060-e284abfd2bc4",
+                        "zoneId": "301fb0d7-7e13-11e8-8060-e284abfd2bc4"
+                    },
+                    {
+                        "name": "Manche",
+                        "parentId": "301fb0d7-7e13-11e8-8060-e284abfd2bc4",
+                        "zoneId": "301fb2a7-7e13-11e8-8060-e284abfd2bc4"
+                    }
+                ],
+                "name": "trabadia"
+            },
+            "wrs": 1,
+            "duration": 0
+        },
+        {
+            "user": {
+                "id": "68e01ca6-e70c-477d-b1a1-60244f824848",
+                "zone": [
+                    {
+                        "name": "World",
+                        "parentId": null,
+                        "zoneId": "301e1b69-7e13-11e8-8060-e284abfd2bc4"
+                    },
+                    {
+                        "name": "Europe",
+                        "parentId": "301e1b69-7e13-11e8-8060-e284abfd2bc4",
+                        "zoneId": "301e2106-7e13-11e8-8060-e284abfd2bc4"
+                    },
+                    {
+                        "name": "Belarus",
+                        "parentId": "301e2106-7e13-11e8-8060-e284abfd2bc4",
+                        "zoneId": "301e5b40-7e13-11e8-8060-e284abfd2bc4"
+                    }
+                ],
+                "name": "ASdaS-BLR"
+            },
+            "wrs": 1,
+            "duration": 0
+        },
+        {
+            "user": {
+                "id": "a25de51a-e026-466d-a687-e6b31cf3af90",
+                "zone": [
+                    {
+                        "name": "World",
+                        "parentId": null,
+                        "zoneId": "301e1b69-7e13-11e8-8060-e284abfd2bc4"
+                    },
+                    {
+                        "name": "Europe",
+                        "parentId": "301e1b69-7e13-11e8-8060-e284abfd2bc4",
+                        "zoneId": "301e2106-7e13-11e8-8060-e284abfd2bc4"
+                    },
+                    {
+                        "name": "France",
+                        "parentId": "301e2106-7e13-11e8-8060-e284abfd2bc4",
+                        "zoneId": "301f6188-7e13-11e8-8060-e284abfd2bc4"
+                    },
+                    {
+                        "name": "Île-de-France",
+                        "parentId": "301f6188-7e13-11e8-8060-e284abfd2bc4",
+                        "zoneId": "301fab89-7e13-11e8-8060-e284abfd2bc4"
+                    },
+                    {
+                        "name": "Yvelines",
+                        "parentId": "301fab89-7e13-11e8-8060-e284abfd2bc4",
+                        "zoneId": "301fb040-7e13-11e8-8060-e284abfd2bc4"
+                    }
+                ],
+                "name": "FonkyWindho"
+            },
+            "wrs": 1,
+            "duration": 0
+        },
+        {
+            "user": {
+                "id": "f0f5bae5-f513-4b3b-9e98-0753e1504947",
+                "zone": [
+                    {
+                        "name": "World",
+                        "parentId": null,
+                        "zoneId": "301e1b69-7e13-11e8-8060-e284abfd2bc4"
+                    },
+                    {
+                        "name": "North America",
+                        "parentId": "301e1b69-7e13-11e8-8060-e284abfd2bc4",
+                        "zoneId": "301e2274-7e13-11e8-8060-e284abfd2bc4"
+                    },
+                    {
+                        "name": "Canada",
+                        "parentId": "301e2274-7e13-11e8-8060-e284abfd2bc4",
+                        "zoneId": "301e6dd7-7e13-11e8-8060-e284abfd2bc4"
+                    },
+                    {
+                        "name": "Quebec",
+                        "parentId": "301e6dd7-7e13-11e8-8060-e284abfd2bc4",
+                        "zoneId": "301e73a7-7e13-11e8-8060-e284abfd2bc4"
+                    }
+                ],
+                "name": "BODIVOD"
+            },
+            "wrs": 1,
+            "duration": 0
+        },
+        {
+            "user": {
+                "id": "5f2f50f2-1e9b-4253-b651-da1ca690629b",
+                "zone": [
+                    {
+                        "name": "World",
+                        "parentId": null,
+                        "zoneId": "301e1b69-7e13-11e8-8060-e284abfd2bc4"
+                    },
+                    {
+                        "name": "Europe",
+                        "parentId": "301e1b69-7e13-11e8-8060-e284abfd2bc4",
+                        "zoneId": "301e2106-7e13-11e8-8060-e284abfd2bc4"
+                    },
+                    {
+                        "name": "Germany",
+                        "parentId": "301e2106-7e13-11e8-8060-e284abfd2bc4",
+                        "zoneId": "301ff622-7e13-11e8-8060-e284abfd2bc4"
+                    },
+                    {
+                        "name": "Baden-Württemberg",
+                        "parentId": "301ff622-7e13-11e8-8060-e284abfd2bc4",
+                        "zoneId": "301ff6b7-7e13-11e8-8060-e284abfd2bc4"
+                    },
+                    {
+                        "name": "Stuttgart",
+                        "parentId": "301ff6b7-7e13-11e8-8060-e284abfd2bc4",
+                        "zoneId": "301ff90f-7e13-11e8-8060-e284abfd2bc4"
+                    }
+                ],
+                "name": "LogicxTM"
+            },
+            "wrs": 1,
+            "duration": 0
+        },
+        {
+            "user": {
+                "id": "1b36edfa-8243-49cd-8651-fdb76cf27d83",
+                "zone": [
+                    {
+                        "name": "World",
+                        "parentId": null,
+                        "zoneId": "301e1b69-7e13-11e8-8060-e284abfd2bc4"
+                    },
+                    {
+                        "name": "Oceania",
+                        "parentId": "301e1b69-7e13-11e8-8060-e284abfd2bc4",
+                        "zoneId": "301e237a-7e13-11e8-8060-e284abfd2bc4"
+                    },
+                    {
+                        "name": "Australia",
+                        "parentId": "301e237a-7e13-11e8-8060-e284abfd2bc4",
+                        "zoneId": "301e2dc2-7e13-11e8-8060-e284abfd2bc4"
+                    },
+                    {
+                        "name": "New South Wales",
+                        "parentId": "301e2dc2-7e13-11e8-8060-e284abfd2bc4",
+                        "zoneId": "301e309b-7e13-11e8-8060-e284abfd2bc4"
+                    }
+                ],
+                "name": "AR_bcp"
+            },
+            "wrs": 1,
+            "duration": 0
+        },
+        {
+            "user": {
+                "id": "8fcc1ccb-8d97-4f64-b199-5f7539227f86",
+                "zone": [
+                    {
+                        "name": "World",
+                        "parentId": null,
+                        "zoneId": "301e1b69-7e13-11e8-8060-e284abfd2bc4"
+                    },
+                    {
+                        "name": "Europe",
+                        "parentId": "301e1b69-7e13-11e8-8060-e284abfd2bc4",
+                        "zoneId": "301e2106-7e13-11e8-8060-e284abfd2bc4"
+                    },
+                    {
+                        "name": "Bosnia and Herzegovina",
+                        "parentId": "301e2106-7e13-11e8-8060-e284abfd2bc4",
+                        "zoneId": "301e6414-7e13-11e8-8060-e284abfd2bc4"
+                    }
+                ],
+                "name": "ADM1R0"
+            },
+            "wrs": 1,
+            "duration": 0
         },
         {
             "user": {
@@ -8650,8 +8652,162 @@
                 "name": "TronTM"
             },
             "wrs": 1,
-            "duration": 0,
-            "durationMs": 0
+            "duration": 0
+        },
+        {
+            "user": {
+                "id": "8e078751-4afd-4beb-a17c-305002db9e9c",
+                "zone": [
+                    {
+                        "name": "World",
+                        "parentId": null,
+                        "zoneId": "301e1b69-7e13-11e8-8060-e284abfd2bc4"
+                    },
+                    {
+                        "name": "Europe",
+                        "parentId": "301e1b69-7e13-11e8-8060-e284abfd2bc4",
+                        "zoneId": "301e2106-7e13-11e8-8060-e284abfd2bc4"
+                    },
+                    {
+                        "name": "Austria",
+                        "parentId": "301e2106-7e13-11e8-8060-e284abfd2bc4",
+                        "zoneId": "301e41fc-7e13-11e8-8060-e284abfd2bc4"
+                    },
+                    {
+                        "name": "Styria",
+                        "parentId": "301e41fc-7e13-11e8-8060-e284abfd2bc4",
+                        "zoneId": "301e54c0-7e13-11e8-8060-e284abfd2bc4"
+                    }
+                ],
+                "name": "lilpoker96"
+            },
+            "wrs": 1,
+            "duration": 0
+        },
+        {
+            "user": {
+                "id": "804cc3ef-fe36-4e92-bedf-9cfe66056fe7",
+                "zone": [
+                    {
+                        "name": "World",
+                        "parentId": null,
+                        "zoneId": "301e1b69-7e13-11e8-8060-e284abfd2bc4"
+                    },
+                    {
+                        "name": "Europe",
+                        "parentId": "301e1b69-7e13-11e8-8060-e284abfd2bc4",
+                        "zoneId": "301e2106-7e13-11e8-8060-e284abfd2bc4"
+                    },
+                    {
+                        "name": "Netherlands",
+                        "parentId": "301e2106-7e13-11e8-8060-e284abfd2bc4",
+                        "zoneId": "302094fd-7e13-11e8-8060-e284abfd2bc4"
+                    },
+                    {
+                        "name": "Zuid-Holland",
+                        "parentId": "302094fd-7e13-11e8-8060-e284abfd2bc4",
+                        "zoneId": "30209e41-7e13-11e8-8060-e284abfd2bc4"
+                    }
+                ],
+                "name": "CMC_Aru"
+            },
+            "wrs": 1,
+            "duration": 0
+        },
+        {
+            "user": {
+                "id": "2f660031-21f7-4f27-bca8-dc7d4b127391",
+                "zone": [
+                    {
+                        "name": "World",
+                        "parentId": null,
+                        "zoneId": "301e1b69-7e13-11e8-8060-e284abfd2bc4"
+                    },
+                    {
+                        "name": "Europe",
+                        "parentId": "301e1b69-7e13-11e8-8060-e284abfd2bc4",
+                        "zoneId": "301e2106-7e13-11e8-8060-e284abfd2bc4"
+                    },
+                    {
+                        "name": "Hungary",
+                        "parentId": "301e2106-7e13-11e8-8060-e284abfd2bc4",
+                        "zoneId": "30204b2f-7e13-11e8-8060-e284abfd2bc4"
+                    },
+                    {
+                        "name": "Gyõr-Moson-Sopron",
+                        "parentId": "30204b2f-7e13-11e8-8060-e284abfd2bc4",
+                        "zoneId": "302050fb-7e13-11e8-8060-e284abfd2bc4"
+                    }
+                ],
+                "name": "sancirigo"
+            },
+            "wrs": 1,
+            "duration": 0
+        },
+        {
+            "user": {
+                "id": "a5af97bc-d185-404f-a7d1-5c4e48d05db6",
+                "zone": [
+                    {
+                        "name": "World",
+                        "parentId": null,
+                        "zoneId": "301e1b69-7e13-11e8-8060-e284abfd2bc4"
+                    },
+                    {
+                        "name": "Europe",
+                        "parentId": "301e1b69-7e13-11e8-8060-e284abfd2bc4",
+                        "zoneId": "301e2106-7e13-11e8-8060-e284abfd2bc4"
+                    },
+                    {
+                        "name": "Poland",
+                        "parentId": "301e2106-7e13-11e8-8060-e284abfd2bc4",
+                        "zoneId": "3020aa8e-7e13-11e8-8060-e284abfd2bc4"
+                    },
+                    {
+                        "name": "Wielkopolskie",
+                        "parentId": "3020aa8e-7e13-11e8-8060-e284abfd2bc4",
+                        "zoneId": "30222b92-7e13-11e8-8060-e284abfd2bc4"
+                    }
+                ],
+                "name": "RotakeR.9D"
+            },
+            "wrs": 1,
+            "duration": 0
+        },
+        {
+            "user": {
+                "id": "02239e09-fc52-447c-9614-d02fc57d4b49",
+                "zone": [
+                    {
+                        "name": "World",
+                        "parentId": null,
+                        "zoneId": "301e1b69-7e13-11e8-8060-e284abfd2bc4"
+                    },
+                    {
+                        "name": "Europe",
+                        "parentId": "301e1b69-7e13-11e8-8060-e284abfd2bc4",
+                        "zoneId": "301e2106-7e13-11e8-8060-e284abfd2bc4"
+                    },
+                    {
+                        "name": "France",
+                        "parentId": "301e2106-7e13-11e8-8060-e284abfd2bc4",
+                        "zoneId": "301f6188-7e13-11e8-8060-e284abfd2bc4"
+                    },
+                    {
+                        "name": "Pays-de-la-Loire",
+                        "parentId": "301f6188-7e13-11e8-8060-e284abfd2bc4",
+                        "zoneId": "301feb1f-7e13-11e8-8060-e284abfd2bc4"
+                    },
+                    {
+                        "name": "Loire-Atlantique",
+                        "parentId": "301feb1f-7e13-11e8-8060-e284abfd2bc4",
+                        "zoneId": "301febb8-7e13-11e8-8060-e284abfd2bc4"
+                    }
+                ],
+                "name": "LulZTM"
+            },
+            "wrs": 1,
+            "duration": 0
         },
         {
             "user": {
@@ -8681,8 +8837,37 @@
                 "name": "Nersons"
             },
             "wrs": 1,
-            "duration": 0,
-            "durationMs": 0
+            "duration": 0
+        },
+        {
+            "user": {
+                "id": "eece69af-176a-4306-9d70-470c8e5e1391",
+                "zone": [
+                    {
+                        "name": "World",
+                        "parentId": null,
+                        "zoneId": "301e1b69-7e13-11e8-8060-e284abfd2bc4"
+                    },
+                    {
+                        "name": "Europe",
+                        "parentId": "301e1b69-7e13-11e8-8060-e284abfd2bc4",
+                        "zoneId": "301e2106-7e13-11e8-8060-e284abfd2bc4"
+                    },
+                    {
+                        "name": "Germany",
+                        "parentId": "301e2106-7e13-11e8-8060-e284abfd2bc4",
+                        "zoneId": "301ff622-7e13-11e8-8060-e284abfd2bc4"
+                    },
+                    {
+                        "name": "Berlin",
+                        "parentId": "301ff622-7e13-11e8-8060-e284abfd2bc4",
+                        "zoneId": "301ffe91-7e13-11e8-8060-e284abfd2bc4"
+                    }
+                ],
+                "name": "theinsan3"
+            },
+            "wrs": 1,
+            "duration": 0
         },
         {
             "user": {
@@ -8717,8 +8902,7 @@
                 "name": "Dexarys"
             },
             "wrs": 1,
-            "duration": 0,
-            "durationMs": 1584000
+            "duration": 0
         },
         {
             "user": {
@@ -8748,8 +8932,7 @@
                 "name": "Carpenostra"
             },
             "wrs": 1,
-            "duration": 0,
-            "durationMs": 2351000
+            "duration": 0
         },
         {
             "user": {
@@ -8774,8 +8957,7 @@
                 "name": "HoopTM2"
             },
             "wrs": 1,
-            "duration": 0,
-            "durationMs": 4008000
+            "duration": 0
         },
         {
             "user": {
@@ -8810,8 +8992,7 @@
                 "name": "BubbL3man"
             },
             "wrs": 1,
-            "duration": 0,
-            "durationMs": 4554000
+            "duration": 0
         },
         {
             "user": {
@@ -8846,8 +9027,7 @@
                 "name": "Evo.Chroma"
             },
             "wrs": 1,
-            "duration": 0,
-            "durationMs": 29572000
+            "duration": 0
         },
         {
             "user": {
@@ -8882,8 +9062,7 @@
                 "name": "Nyaruko92"
             },
             "wrs": 1,
-            "duration": 0,
-            "durationMs": 6643000
+            "duration": 0
         },
         {
             "user": {
@@ -8918,8 +9097,7 @@
                 "name": "Nerms23"
             },
             "wrs": 1,
-            "duration": 0,
-            "durationMs": 9866000
+            "duration": 0
         },
         {
             "user": {
@@ -8949,8 +9127,7 @@
                 "name": "Ortixah"
             },
             "wrs": 1,
-            "duration": 0,
-            "durationMs": 8559000
+            "duration": 0
         },
         {
             "user": {
@@ -8975,8 +9152,7 @@
                 "name": "Asetek.Dunste"
             },
             "wrs": 1,
-            "duration": 0,
-            "durationMs": 18466000
+            "duration": 0
         },
         {
             "user": {
@@ -9001,8 +9177,7 @@
                 "name": "BG_Kiwi"
             },
             "wrs": 1,
-            "duration": 0,
-            "durationMs": 625000
+            "duration": 0
         },
         {
             "user": {
@@ -9032,8 +9207,7 @@
                 "name": "TM_West"
             },
             "wrs": 1,
-            "duration": 0,
-            "durationMs": 4568000
+            "duration": 0
         },
         {
             "user": {
@@ -9063,8 +9237,7 @@
                 "name": "grit.4W"
             },
             "wrs": 1,
-            "duration": 0,
-            "durationMs": 72396000
+            "duration": 0
         },
         {
             "user": {
@@ -9099,8 +9272,7 @@
                 "name": "Ubiteam.DyZroD"
             },
             "wrs": 1,
-            "duration": 0,
-            "durationMs": 3073000
+            "duration": 0
         },
         {
             "user": {
@@ -9135,8 +9307,7 @@
                 "name": "marsliiiTV"
             },
             "wrs": 1,
-            "duration": 0,
-            "durationMs": 2377000
+            "duration": 0
         },
         {
             "user": {
@@ -9166,8 +9337,7 @@
                 "name": "Aqlx"
             },
             "wrs": 1,
-            "duration": 0,
-            "durationMs": 570000
+            "duration": 0
         },
         {
             "user": {
@@ -9202,8 +9372,7 @@
                 "name": "Kaslacroute"
             },
             "wrs": 1,
-            "duration": 0,
-            "durationMs": 846000
+            "duration": 0
         },
         {
             "user": {
@@ -9238,8 +9407,7 @@
                 "name": "XerarTM"
             },
             "wrs": 1,
-            "duration": 0,
-            "durationMs": 0
+            "duration": 0
         },
         {
             "user": {
@@ -9274,8 +9442,7 @@
                 "name": "Chibbo_"
             },
             "wrs": 1,
-            "duration": 0,
-            "durationMs": 0
+            "duration": 0
         },
         {
             "user": {
@@ -9300,8 +9467,7 @@
                 "name": "RadianceTM"
             },
             "wrs": 1,
-            "duration": 0,
-            "durationMs": 0
+            "duration": 0
         },
         {
             "user": {
@@ -9336,8 +9502,7 @@
                 "name": "Vayq.wp"
             },
             "wrs": 1,
-            "duration": 0,
-            "durationMs": 0
+            "duration": 0
         },
         {
             "user": {
@@ -9362,8 +9527,7 @@
                 "name": "Karhu.4W"
             },
             "wrs": 1,
-            "duration": 0,
-            "durationMs": 0
+            "duration": 0
         },
         {
             "user": {
@@ -9398,8 +9562,7 @@
                 "name": "CiremyxX"
             },
             "wrs": 1,
-            "duration": 0,
-            "durationMs": 0
+            "duration": 0
         },
         {
             "user": {
@@ -9434,8 +9597,7 @@
                 "name": "Siikret79e"
             },
             "wrs": 1,
-            "duration": 0,
-            "durationMs": 0
+            "duration": 0
         },
         {
             "user": {
@@ -9465,8 +9627,7 @@
                 "name": "skybaxrider"
             },
             "wrs": 1,
-            "duration": 0,
-            "durationMs": 0
+            "duration": 0
         },
         {
             "user": {
@@ -9496,8 +9657,7 @@
                 "name": "Hand__"
             },
             "wrs": 1,
-            "duration": 0,
-            "durationMs": 0
+            "duration": 0
         },
         {
             "user": {
@@ -9527,8 +9687,7 @@
                 "name": "Smety93"
             },
             "wrs": 1,
-            "duration": 0,
-            "durationMs": 0
+            "duration": 0
         },
         {
             "user": {
@@ -9563,8 +9722,7 @@
                 "name": "Cocow_"
             },
             "wrs": 1,
-            "duration": 0,
-            "durationMs": 0
+            "duration": 0
         },
         {
             "user": {
@@ -9594,8 +9752,7 @@
                 "name": "Scrapie98"
             },
             "wrs": 1,
-            "duration": 0,
-            "durationMs": 0
+            "duration": 0
         },
         {
             "user": {
@@ -9625,8 +9782,7 @@
                 "name": "xMrNovis"
             },
             "wrs": 1,
-            "duration": 0,
-            "durationMs": 0
+            "duration": 0
         },
         {
             "user": {
@@ -9661,8 +9817,7 @@
                 "name": "PeskyQuietMan"
             },
             "wrs": 1,
-            "duration": 0,
-            "durationMs": 0
+            "duration": 0
         },
         {
             "user": {
@@ -9697,8 +9852,7 @@
                 "name": "Rafmax.Sharp"
             },
             "wrs": 1,
-            "duration": 0,
-            "durationMs": 0
+            "duration": 0
         },
         {
             "user": {
@@ -9733,8 +9887,7 @@
                 "name": "tm_link"
             },
             "wrs": 1,
-            "duration": 0,
-            "durationMs": 0
+            "duration": 0
         },
         {
             "user": {
@@ -9769,8 +9922,7 @@
                 "name": "softyBcKK"
             },
             "wrs": 1,
-            "duration": 0,
-            "durationMs": 0
+            "duration": 0
         },
         {
             "user": {
@@ -9800,8 +9952,7 @@
                 "name": "Survive95"
             },
             "wrs": 1,
-            "duration": 0,
-            "durationMs": 0
+            "duration": 0
         },
         {
             "user": {
@@ -9836,8 +9987,7 @@
                 "name": "Tomaa_"
             },
             "wrs": 1,
-            "duration": 0,
-            "durationMs": 0
+            "duration": 0
         },
         {
             "user": {
@@ -9872,8 +10022,7 @@
                 "name": "ChillerSide.4W"
             },
             "wrs": 1,
-            "duration": 0,
-            "durationMs": 0
+            "duration": 0
         },
         {
             "user": {
@@ -9908,8 +10057,7 @@
                 "name": "styx-tm"
             },
             "wrs": 1,
-            "duration": 0,
-            "durationMs": 0
+            "duration": 0
         },
         {
             "user": {
@@ -9944,8 +10092,7 @@
                 "name": "Dam_Tm"
             },
             "wrs": 1,
-            "duration": 0,
-            "durationMs": 0
+            "duration": 0
         },
         {
             "user": {
@@ -9975,8 +10122,7 @@
                 "name": "roxxontm"
             },
             "wrs": 1,
-            "duration": 0,
-            "durationMs": 0
+            "duration": 0
         },
         {
             "user": {
@@ -10011,8 +10157,7 @@
                 "name": "ZazimutTM"
             },
             "wrs": 1,
-            "duration": 0,
-            "durationMs": 0
+            "duration": 0
         },
         {
             "user": {
@@ -10047,8 +10192,7 @@
                 "name": "MaxTheWizard31"
             },
             "wrs": 1,
-            "duration": 0,
-            "durationMs": 0
+            "duration": 0
         },
         {
             "user": {
@@ -10078,8 +10222,7 @@
                 "name": "Khor__"
             },
             "wrs": 1,
-            "duration": 0,
-            "durationMs": 0
+            "duration": 0
         },
         {
             "user": {
@@ -10109,8 +10252,7 @@
                 "name": "Magyarguyy"
             },
             "wrs": 1,
-            "duration": 0,
-            "durationMs": 0
+            "duration": 0
         },
         {
             "user": {
@@ -10145,8 +10287,7 @@
                 "name": "helzinka"
             },
             "wrs": 1,
-            "duration": 0,
-            "durationMs": 0
+            "duration": 0
         },
         {
             "user": {
@@ -10171,8 +10312,7 @@
                 "name": "MnM_nevermind"
             },
             "wrs": 1,
-            "duration": 0,
-            "durationMs": 0
+            "duration": 0
         },
         {
             "user": {
@@ -10207,8 +10347,7 @@
                 "name": "dauli"
             },
             "wrs": 1,
-            "duration": 0,
-            "durationMs": 0
+            "duration": 0
         },
         {
             "user": {
@@ -10238,8 +10377,7 @@
                 "name": "Magorian0212"
             },
             "wrs": 1,
-            "duration": 0,
-            "durationMs": 0
+            "duration": 0
         },
         {
             "user": {
@@ -10274,8 +10412,7 @@
                 "name": "Shpluk"
             },
             "wrs": 1,
-            "duration": 0,
-            "durationMs": 0
+            "duration": 0
         },
         {
             "user": {
@@ -10305,8 +10442,7 @@
                 "name": "NotSintoh"
             },
             "wrs": 1,
-            "duration": 0,
-            "durationMs": 0
+            "duration": 0
         },
         {
             "user": {
@@ -10341,8 +10477,7 @@
                 "name": "lolgamer_tm"
             },
             "wrs": 1,
-            "duration": 0,
-            "durationMs": 0
+            "duration": 0
         },
         {
             "user": {
@@ -10377,8 +10512,7 @@
                 "name": "BLUTIG."
             },
             "wrs": 1,
-            "duration": 0,
-            "durationMs": 0
+            "duration": 0
         }
     ],
     "historyCountryLeaderboard": [
@@ -10400,7 +10534,7 @@
                     "zoneId": "301f6188-7e13-11e8-8060-e284abfd2bc4"
                 }
             ],
-            "wrs": 280
+            "wrs": 289
         },
         {
             "zone": [
@@ -10420,7 +10554,7 @@
                     "zoneId": "301ff622-7e13-11e8-8060-e284abfd2bc4"
                 }
             ],
-            "wrs": 250
+            "wrs": 252
         },
         {
             "zone": [
@@ -10440,7 +10574,7 @@
                     "zoneId": "3020aa8e-7e13-11e8-8060-e284abfd2bc4"
                 }
             ],
-            "wrs": 111
+            "wrs": 112
         },
         {
             "zone": [
@@ -10480,7 +10614,7 @@
                     "zoneId": "301e41fc-7e13-11e8-8060-e284abfd2bc4"
                 }
             ],
-            "wrs": 54
+            "wrs": 55
         },
         {
             "zone": [
@@ -10500,7 +10634,7 @@
                     "zoneId": "301e2dc2-7e13-11e8-8060-e284abfd2bc4"
                 }
             ],
-            "wrs": 40
+            "wrs": 41
         },
         {
             "zone": [
@@ -10540,7 +10674,7 @@
                     "zoneId": "302094fd-7e13-11e8-8060-e284abfd2bc4"
                 }
             ],
-            "wrs": 27
+            "wrs": 28
         },
         {
             "zone": [
@@ -10620,7 +10754,7 @@
                     "zoneId": "30228733-7e13-11e8-8060-e284abfd2bc4"
                 }
             ],
-            "wrs": 20
+            "wrs": 21
         },
         {
             "zone": [
@@ -10640,7 +10774,7 @@
                     "zoneId": "301e6dd7-7e13-11e8-8060-e284abfd2bc4"
                 }
             ],
-            "wrs": 20
+            "wrs": 21
         },
         {
             "zone": [
@@ -10760,7 +10894,7 @@
                     "zoneId": "3022427b-7e13-11e8-8060-e284abfd2bc4"
                 }
             ],
-            "wrs": 8
+            "wrs": 9
         },
         {
             "zone": [
@@ -10935,6 +11069,26 @@
                     "zoneId": "301e2106-7e13-11e8-8060-e284abfd2bc4"
                 },
                 {
+                    "name": "Hungary",
+                    "parentId": "301e2106-7e13-11e8-8060-e284abfd2bc4",
+                    "zoneId": "30204b2f-7e13-11e8-8060-e284abfd2bc4"
+                }
+            ],
+            "wrs": 2
+        },
+        {
+            "zone": [
+                {
+                    "name": "World",
+                    "parentId": null,
+                    "zoneId": "301e1b69-7e13-11e8-8060-e284abfd2bc4"
+                },
+                {
+                    "name": "Europe",
+                    "parentId": "301e1b69-7e13-11e8-8060-e284abfd2bc4",
+                    "zoneId": "301e2106-7e13-11e8-8060-e284abfd2bc4"
+                },
+                {
                     "name": "Slovakia",
                     "parentId": "301e2106-7e13-11e8-8060-e284abfd2bc4",
                     "zoneId": "302251c1-7e13-11e8-8060-e284abfd2bc4"
@@ -11010,14 +11164,14 @@
                     "zoneId": "301e1b69-7e13-11e8-8060-e284abfd2bc4"
                 },
                 {
-                    "name": "North America",
+                    "name": "Europe",
                     "parentId": "301e1b69-7e13-11e8-8060-e284abfd2bc4",
-                    "zoneId": "301e2274-7e13-11e8-8060-e284abfd2bc4"
+                    "zoneId": "301e2106-7e13-11e8-8060-e284abfd2bc4"
                 },
                 {
-                    "name": "Mexico",
-                    "parentId": "301e2274-7e13-11e8-8060-e284abfd2bc4",
-                    "zoneId": "30208dc1-7e13-11e8-8060-e284abfd2bc4"
+                    "name": "Belarus",
+                    "parentId": "301e2106-7e13-11e8-8060-e284abfd2bc4",
+                    "zoneId": "301e5b40-7e13-11e8-8060-e284abfd2bc4"
                 }
             ],
             "wrs": 1
@@ -11035,9 +11189,29 @@
                     "zoneId": "301e2106-7e13-11e8-8060-e284abfd2bc4"
                 },
                 {
-                    "name": "Hungary",
+                    "name": "Bosnia and Herzegovina",
                     "parentId": "301e2106-7e13-11e8-8060-e284abfd2bc4",
-                    "zoneId": "30204b2f-7e13-11e8-8060-e284abfd2bc4"
+                    "zoneId": "301e6414-7e13-11e8-8060-e284abfd2bc4"
+                }
+            ],
+            "wrs": 1
+        },
+        {
+            "zone": [
+                {
+                    "name": "World",
+                    "parentId": null,
+                    "zoneId": "301e1b69-7e13-11e8-8060-e284abfd2bc4"
+                },
+                {
+                    "name": "North America",
+                    "parentId": "301e1b69-7e13-11e8-8060-e284abfd2bc4",
+                    "zoneId": "301e2274-7e13-11e8-8060-e284abfd2bc4"
+                },
+                {
+                    "name": "Mexico",
+                    "parentId": "301e2274-7e13-11e8-8060-e284abfd2bc4",
+                    "zoneId": "30208dc1-7e13-11e8-8060-e284abfd2bc4"
                 }
             ],
             "wrs": 1

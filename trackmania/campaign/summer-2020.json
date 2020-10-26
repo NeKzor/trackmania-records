@@ -2668,8 +2668,7 @@
                 "name": "Hefest."
             },
             "wrs": 5,
-            "duration": 279,
-            "durationMs": 0
+            "duration": 279
         },
         {
             "user": {
@@ -2699,8 +2698,7 @@
                 "name": "AffiTM"
             },
             "wrs": 2,
-            "duration": 160,
-            "durationMs": 0
+            "duration": 160
         },
         {
             "user": {
@@ -2730,8 +2728,7 @@
                 "name": "GNR-HASKELL"
             },
             "wrs": 2,
-            "duration": 21,
-            "durationMs": 0
+            "duration": 21
         },
         {
             "user": {
@@ -2766,8 +2763,7 @@
                 "name": "riolu-tm"
             },
             "wrs": 2,
-            "duration": 70,
-            "durationMs": 0
+            "duration": 70
         },
         {
             "user": {
@@ -2797,8 +2793,7 @@
                 "name": "AR_Mudda"
             },
             "wrs": 2,
-            "duration": 104,
-            "durationMs": 0
+            "duration": 104
         },
         {
             "user": {
@@ -2833,8 +2828,7 @@
                 "name": "KC.DarkeR"
             },
             "wrs": 2,
-            "duration": 28,
-            "durationMs": 0
+            "duration": 28
         },
         {
             "user": {
@@ -2859,8 +2853,7 @@
                 "name": "RacetalTM"
             },
             "wrs": 2,
-            "duration": 35,
-            "durationMs": 0
+            "duration": 35
         },
         {
             "user": {
@@ -2895,8 +2888,7 @@
                 "name": "esu-LX"
             },
             "wrs": 1,
-            "duration": 11,
-            "durationMs": 0
+            "duration": 11
         },
         {
             "user": {
@@ -2926,8 +2918,7 @@
                 "name": "SamGusta"
             },
             "wrs": 1,
-            "duration": 48,
-            "durationMs": 0
+            "duration": 48
         },
         {
             "user": {
@@ -2952,8 +2943,7 @@
                 "name": "azinazz"
             },
             "wrs": 1,
-            "duration": 46,
-            "durationMs": 0
+            "duration": 46
         },
         {
             "user": {
@@ -2983,8 +2973,7 @@
                 "name": "Danio_TM"
             },
             "wrs": 1,
-            "duration": 48,
-            "durationMs": 0
+            "duration": 48
         },
         {
             "user": {
@@ -3019,8 +3008,7 @@
                 "name": "MTP.hugo220"
             },
             "wrs": 1,
-            "duration": 64,
-            "durationMs": 0
+            "duration": 64
         },
         {
             "user": {
@@ -3045,8 +3033,7 @@
                 "name": "Sir.Cato"
             },
             "wrs": 1,
-            "duration": 40,
-            "durationMs": 0
+            "duration": 40
         },
         {
             "user": {
@@ -3071,8 +3058,7 @@
                 "name": "WirtualTM"
             },
             "wrs": 1,
-            "duration": 0,
-            "durationMs": 0
+            "duration": 0
         },
         {
             "user": {
@@ -3107,8 +3093,7 @@
                 "name": "xdennis090"
             },
             "wrs": 1,
-            "duration": 10,
-            "durationMs": 0
+            "duration": 10
         }
     ],
     "countryLeaderboard": [
@@ -3377,8 +3362,7 @@
                 "name": "Hefest.9D"
             },
             "wrs": 12,
-            "duration": 0,
-            "durationMs": 0
+            "duration": 0
         },
         {
             "user": {
@@ -3413,8 +3397,7 @@
                 "name": "esu-LX"
             },
             "wrs": 5,
-            "duration": 0,
-            "durationMs": 0
+            "duration": 0
         },
         {
             "user": {
@@ -3444,8 +3427,7 @@
                 "name": "GNR-HASKELL"
             },
             "wrs": 3,
-            "duration": 0,
-            "durationMs": 0
+            "duration": 0
         },
         {
             "user": {
@@ -3480,8 +3462,7 @@
                 "name": "KC.DarkeR"
             },
             "wrs": 3,
-            "duration": 0,
-            "durationMs": 0
+            "duration": 0
         },
         {
             "user": {
@@ -3516,8 +3497,7 @@
                 "name": "ConiFox"
             },
             "wrs": 3,
-            "duration": 0,
-            "durationMs": 0
+            "duration": 0
         },
         {
             "user": {
@@ -3547,8 +3527,7 @@
                 "name": "AffiTM"
             },
             "wrs": 2,
-            "duration": 0,
-            "durationMs": 0
+            "duration": 0
         },
         {
             "user": {
@@ -3573,8 +3552,7 @@
                 "name": "Morning29"
             },
             "wrs": 2,
-            "duration": 0,
-            "durationMs": 0
+            "duration": 0
         },
         {
             "user": {
@@ -3604,8 +3582,7 @@
                 "name": "AR_Mudda"
             },
             "wrs": 2,
-            "duration": 0,
-            "durationMs": 0
+            "duration": 0
         },
         {
             "user": {
@@ -3630,8 +3607,7 @@
                 "name": "RacetalTM"
             },
             "wrs": 2,
-            "duration": 0,
-            "durationMs": 0
+            "duration": 0
         },
         {
             "user": {
@@ -3661,8 +3637,7 @@
                 "name": "fibonacho"
             },
             "wrs": 1,
-            "duration": 0,
-            "durationMs": 0
+            "duration": 0
         },
         {
             "user": {
@@ -3697,8 +3672,7 @@
                 "name": "W0scht83"
             },
             "wrs": 1,
-            "duration": 0,
-            "durationMs": 0
+            "duration": 0
         },
         {
             "user": {
@@ -3728,8 +3702,7 @@
                 "name": "AConstipatedCow"
             },
             "wrs": 1,
-            "duration": 0,
-            "durationMs": 0
+            "duration": 0
         },
         {
             "user": {
@@ -3759,8 +3732,7 @@
                 "name": "SamGusta"
             },
             "wrs": 1,
-            "duration": 0,
-            "durationMs": 0
+            "duration": 0
         },
         {
             "user": {
@@ -3785,8 +3757,7 @@
                 "name": "azinazz"
             },
             "wrs": 1,
-            "duration": 0,
-            "durationMs": 0
+            "duration": 0
         },
         {
             "user": {
@@ -3816,8 +3787,7 @@
                 "name": "HanZBEAST"
             },
             "wrs": 1,
-            "duration": 0,
-            "durationMs": 0
+            "duration": 0
         },
         {
             "user": {
@@ -3847,8 +3817,7 @@
                 "name": "Danio_TM"
             },
             "wrs": 1,
-            "duration": 0,
-            "durationMs": 0
+            "duration": 0
         },
         {
             "user": {
@@ -3883,8 +3852,7 @@
                 "name": "Chrisius-"
             },
             "wrs": 1,
-            "duration": 0,
-            "durationMs": 0
+            "duration": 0
         },
         {
             "user": {
@@ -3909,8 +3877,7 @@
                 "name": "hug0220"
             },
             "wrs": 1,
-            "duration": 0,
-            "durationMs": 0
+            "duration": 0
         },
         {
             "user": {
@@ -3935,8 +3902,7 @@
                 "name": "Sir.Cato"
             },
             "wrs": 1,
-            "duration": 0,
-            "durationMs": 0
+            "duration": 0
         },
         {
             "user": {
@@ -3961,8 +3927,7 @@
                 "name": "WirtualTM"
             },
             "wrs": 1,
-            "duration": 0,
-            "durationMs": 0
+            "duration": 0
         },
         {
             "user": {
@@ -3997,8 +3962,7 @@
                 "name": "Navvkk"
             },
             "wrs": 1,
-            "duration": 0,
-            "durationMs": 0
+            "duration": 0
         },
         {
             "user": {
@@ -4033,8 +3997,7 @@
                 "name": "xdennis090"
             },
             "wrs": 1,
-            "duration": 0,
-            "durationMs": 0
+            "duration": 0
         },
         {
             "user": {
@@ -4069,8 +4032,7 @@
                 "name": "riolu-tm"
             },
             "wrs": 1,
-            "duration": 0,
-            "durationMs": 0
+            "duration": 0
         },
         {
             "user": {
@@ -4105,8 +4067,7 @@
                 "name": "PacTM"
             },
             "wrs": 1,
-            "duration": 0,
-            "durationMs": 0
+            "duration": 0
         }
     ],
     "historyCountryLeaderboard": [
