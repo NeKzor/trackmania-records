@@ -86,7 +86,6 @@ const importLatest = (file) => {
                 const thisWr = moment(wr.date);
                 const nextWr = moment(items[idx + 1] ? items[idx + 1].date : undefined);
                 wr.duration = nextWr.diff(thisWr, 'days');
-                wr.durationMs = nextWr.diff(thisWr, 'milliseconds');
             });
         });
     }
@@ -458,10 +457,6 @@ const generateRankings = (tracks) => {
                     duration: wrs
                         .filter((r) => r.user.name === key && r.duration)
                         .map((r) => r.duration)
-                        .reduce((a, b) => a + b, 0),
-                    durationMs: wrs
-                        .filter((r) => r.user.name === key && r.durationMs)
-                        .map((r) => r.durationMs)
                         .reduce((a, b) => a + b, 0),
                 })),
             [...new Set(users.map((user) => user.zone[Zones.Country].zoneId))]
