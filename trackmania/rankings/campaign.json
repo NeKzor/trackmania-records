@@ -59,7 +59,7 @@
                 "name": "RacetalTM"
             },
             "wrs": 5,
-            "duration": 70,
+            "duration": 71,
             "durationMs": 0
         },
         {
@@ -1837,7 +1837,7 @@
             },
             "wrs": 27,
             "duration": 62,
-            "durationMs": 6124209007
+            "durationMs": 6126908781
         },
         {
             "user": {
@@ -1862,8 +1862,8 @@
                 "name": "RacetalTM"
             },
             "wrs": 23,
-            "duration": 58,
-            "durationMs": 5694966884
+            "duration": 59,
+            "durationMs": 5697666628
         },
         {
             "user": {
@@ -1894,7 +1894,7 @@
             },
             "wrs": 23,
             "duration": 48,
-            "durationMs": 4780904024
+            "durationMs": 4782703880
         },
         {
             "user": {
@@ -1930,7 +1930,7 @@
             },
             "wrs": 22,
             "duration": 57,
-            "durationMs": 5389769035
+            "durationMs": 5392468807
         },
         {
             "user": {
@@ -1966,7 +1966,7 @@
             },
             "wrs": 18,
             "duration": 61,
-            "durationMs": 6005590908
+            "durationMs": 6009190580
         },
         {
             "user": {
@@ -2085,7 +2085,7 @@
             },
             "wrs": 11,
             "duration": 17,
-            "durationMs": 1842691013
+            "durationMs": 1843590942
         },
         {
             "user": {
@@ -2183,7 +2183,7 @@
             },
             "wrs": 8,
             "duration": 17,
-            "durationMs": 1692006009
+            "durationMs": 1692905937
         },
         {
             "user": {
@@ -2668,7 +2668,7 @@
             },
             "wrs": 5,
             "duration": 7,
-            "durationMs": 752404021
+            "durationMs": 753303950
         },
         {
             "user": {
@@ -2833,7 +2833,7 @@
             },
             "wrs": 4,
             "duration": 7,
-            "durationMs": 640969005
+            "durationMs": 641868932
         },
         {
             "user": {
@@ -2931,7 +2931,7 @@
             },
             "wrs": 4,
             "duration": 20,
-            "durationMs": 1964694052
+            "durationMs": 1965593982
         },
         {
             "user": {
@@ -3322,7 +3322,7 @@
             },
             "wrs": 3,
             "duration": 5,
-            "durationMs": 529137055
+            "durationMs": 530036987
         },
         {
             "user": {
@@ -3425,7 +3425,7 @@
             },
             "wrs": 2,
             "duration": 4,
-            "durationMs": 407392949
+            "durationMs": 408292864
         },
         {
             "user": {
@@ -3812,7 +3812,7 @@
             },
             "wrs": 2,
             "duration": 1,
-            "durationMs": 226362070
+            "durationMs": 228161926
         },
         {
             "user": {
@@ -5169,7 +5169,7 @@
             },
             "wrs": 1,
             "duration": 5,
-            "durationMs": 451921054
+            "durationMs": 452820985
         },
         {
             "user": {
