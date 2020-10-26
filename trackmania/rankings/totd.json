@@ -94,7 +94,7 @@
                 ],
                 "name": "PokeR.4W"
             },
-            "wrs": 9,
+            "wrs": 10,
             "duration": 101,
             "durationMs": 0
         },
@@ -270,32 +270,6 @@
         },
         {
             "user": {
-                "id": "4d949246-4a71-46b0-b30d-43cbbf63d0f7",
-                "zone": [
-                    {
-                        "name": "World",
-                        "parentId": null,
-                        "zoneId": "301e1b69-7e13-11e8-8060-e284abfd2bc4"
-                    },
-                    {
-                        "name": "Africa",
-                        "parentId": "301e1b69-7e13-11e8-8060-e284abfd2bc4",
-                        "zoneId": "301e1f9b-7e13-11e8-8060-e284abfd2bc4"
-                    },
-                    {
-                        "name": "Uganda",
-                        "parentId": "301e1f9b-7e13-11e8-8060-e284abfd2bc4",
-                        "zoneId": "30229fdb-7e13-11e8-8060-e284abfd2bc4"
-                    }
-                ],
-                "name": "BIG_MAN_TAXON"
-            },
-            "wrs": 3,
-            "duration": 22,
-            "durationMs": 0
-        },
-        {
-            "user": {
                 "id": "d46fb45d-d422-47c9-9785-67270a311e25",
                 "zone": [
                     {
@@ -442,6 +416,32 @@
             },
             "wrs": 3,
             "duration": 0,
+            "durationMs": 0
+        },
+        {
+            "user": {
+                "id": "4d949246-4a71-46b0-b30d-43cbbf63d0f7",
+                "zone": [
+                    {
+                        "name": "World",
+                        "parentId": null,
+                        "zoneId": "301e1b69-7e13-11e8-8060-e284abfd2bc4"
+                    },
+                    {
+                        "name": "Africa",
+                        "parentId": "301e1b69-7e13-11e8-8060-e284abfd2bc4",
+                        "zoneId": "301e1f9b-7e13-11e8-8060-e284abfd2bc4"
+                    },
+                    {
+                        "name": "Uganda",
+                        "parentId": "301e1f9b-7e13-11e8-8060-e284abfd2bc4",
+                        "zoneId": "30229fdb-7e13-11e8-8060-e284abfd2bc4"
+                    }
+                ],
+                "name": "BIG_MAN_TAXON"
+            },
+            "wrs": 2,
+            "duration": 22,
             "durationMs": 0
         },
         {
@@ -1633,7 +1633,7 @@
                     "zoneId": "301e41fc-7e13-11e8-8060-e284abfd2bc4"
                 }
             ],
-            "wrs": 11
+            "wrs": 12
         },
         {
             "zone": [
@@ -1723,26 +1723,6 @@
                     "zoneId": "301e1b69-7e13-11e8-8060-e284abfd2bc4"
                 },
                 {
-                    "name": "Africa",
-                    "parentId": "301e1b69-7e13-11e8-8060-e284abfd2bc4",
-                    "zoneId": "301e1f9b-7e13-11e8-8060-e284abfd2bc4"
-                },
-                {
-                    "name": "Uganda",
-                    "parentId": "301e1f9b-7e13-11e8-8060-e284abfd2bc4",
-                    "zoneId": "30229fdb-7e13-11e8-8060-e284abfd2bc4"
-                }
-            ],
-            "wrs": 3
-        },
-        {
-            "zone": [
-                {
-                    "name": "World",
-                    "parentId": null,
-                    "zoneId": "301e1b69-7e13-11e8-8060-e284abfd2bc4"
-                },
-                {
                     "name": "Europe",
                     "parentId": "301e1b69-7e13-11e8-8060-e284abfd2bc4",
                     "zoneId": "301e2106-7e13-11e8-8060-e284abfd2bc4"
@@ -1774,6 +1754,26 @@
                 }
             ],
             "wrs": 3
+        },
+        {
+            "zone": [
+                {
+                    "name": "World",
+                    "parentId": null,
+                    "zoneId": "301e1b69-7e13-11e8-8060-e284abfd2bc4"
+                },
+                {
+                    "name": "Africa",
+                    "parentId": "301e1b69-7e13-11e8-8060-e284abfd2bc4",
+                    "zoneId": "301e1f9b-7e13-11e8-8060-e284abfd2bc4"
+                },
+                {
+                    "name": "Uganda",
+                    "parentId": "301e1f9b-7e13-11e8-8060-e284abfd2bc4",
+                    "zoneId": "30229fdb-7e13-11e8-8060-e284abfd2bc4"
+                }
+            ],
+            "wrs": 2
         },
         {
             "zone": [
@@ -2006,7 +2006,7 @@
             },
             "wrs": 53,
             "duration": 89,
-            "durationMs": 8171299904
+            "durationMs": 8177597304
         },
         {
             "user": {
@@ -2035,9 +2035,9 @@
                 ],
                 "name": "PokeR.4W"
             },
-            "wrs": 43,
+            "wrs": 44,
             "duration": 89,
-            "durationMs": 8103679602
+            "durationMs": 8110876638
         },
         {
             "user": {
@@ -2202,7 +2202,7 @@
             },
             "wrs": 20,
             "duration": 7,
-            "durationMs": 697072710
+            "durationMs": 697972349
         },
         {
             "user": {
@@ -2233,7 +2233,7 @@
             },
             "wrs": 20,
             "duration": 13,
-            "durationMs": 1221254701
+            "durationMs": 1222154333
         },
         {
             "user": {
@@ -2341,7 +2341,7 @@
             },
             "wrs": 19,
             "duration": 14,
-            "durationMs": 1389164700
+            "durationMs": 1390064332
         },
         {
             "user": {
@@ -2367,7 +2367,7 @@
             },
             "wrs": 17,
             "duration": 22,
-            "durationMs": 1981233684
+            "durationMs": 1983064660
         },
         {
             "user": {
@@ -2403,7 +2403,7 @@
             },
             "wrs": 17,
             "duration": 12,
-            "durationMs": 1102454420
+            "durationMs": 1104253702
         },
         {
             "user": {
@@ -2501,7 +2501,7 @@
             },
             "wrs": 10,
             "duration": 9,
-            "durationMs": 876454707
+            "durationMs": 877354338
         },
         {
             "user": {
@@ -2568,7 +2568,7 @@
             },
             "wrs": 9,
             "duration": 18,
-            "durationMs": 1709249689
+            "durationMs": 1710149304
         },
         {
             "user": {
@@ -2893,7 +2893,7 @@
             },
             "wrs": 5,
             "duration": 15,
-            "durationMs": 1351608699
+            "durationMs": 1352508327
         },
         {
             "user": {
@@ -3821,7 +3821,7 @@
             },
             "wrs": 2,
             "duration": 12,
-            "durationMs": 1054895704
+            "durationMs": 1055795334
         },
         {
             "user": {
@@ -6542,7 +6542,7 @@
                     "zoneId": "301e41fc-7e13-11e8-8060-e284abfd2bc4"
                 }
             ],
-            "wrs": 51
+            "wrs": 52
         },
         {
             "zone": [
@@ -7136,7 +7136,7 @@
                 ],
                 "name": "PokeR.4W"
             },
-            "wrs": 19
+            "wrs": 20
         },
         {
             "user": {
@@ -11220,7 +11220,7 @@
                     "zoneId": "301e41fc-7e13-11e8-8060-e284abfd2bc4"
                 }
             ],
-            "wrs": 25
+            "wrs": 26
         },
         {
             "zone": [

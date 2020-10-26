@@ -94,7 +94,7 @@
                 ],
                 "name": "PokeR.4W"
             },
-            "wrs": 9,
+            "wrs": 10,
             "duration": 101,
             "durationMs": 0
         },
@@ -518,32 +518,6 @@
         },
         {
             "user": {
-                "id": "4d949246-4a71-46b0-b30d-43cbbf63d0f7",
-                "zone": [
-                    {
-                        "name": "World",
-                        "parentId": null,
-                        "zoneId": "301e1b69-7e13-11e8-8060-e284abfd2bc4"
-                    },
-                    {
-                        "name": "Africa",
-                        "parentId": "301e1b69-7e13-11e8-8060-e284abfd2bc4",
-                        "zoneId": "301e1f9b-7e13-11e8-8060-e284abfd2bc4"
-                    },
-                    {
-                        "name": "Uganda",
-                        "parentId": "301e1f9b-7e13-11e8-8060-e284abfd2bc4",
-                        "zoneId": "30229fdb-7e13-11e8-8060-e284abfd2bc4"
-                    }
-                ],
-                "name": "BIG_MAN_TAXON"
-            },
-            "wrs": 3,
-            "duration": 22,
-            "durationMs": 0
-        },
-        {
-            "user": {
                 "id": "d46fb45d-d422-47c9-9785-67270a311e25",
                 "zone": [
                     {
@@ -772,6 +746,32 @@
             },
             "wrs": 2,
             "duration": 0,
+            "durationMs": 0
+        },
+        {
+            "user": {
+                "id": "4d949246-4a71-46b0-b30d-43cbbf63d0f7",
+                "zone": [
+                    {
+                        "name": "World",
+                        "parentId": null,
+                        "zoneId": "301e1b69-7e13-11e8-8060-e284abfd2bc4"
+                    },
+                    {
+                        "name": "Africa",
+                        "parentId": "301e1b69-7e13-11e8-8060-e284abfd2bc4",
+                        "zoneId": "301e1f9b-7e13-11e8-8060-e284abfd2bc4"
+                    },
+                    {
+                        "name": "Uganda",
+                        "parentId": "301e1f9b-7e13-11e8-8060-e284abfd2bc4",
+                        "zoneId": "30229fdb-7e13-11e8-8060-e284abfd2bc4"
+                    }
+                ],
+                "name": "BIG_MAN_TAXON"
+            },
+            "wrs": 2,
+            "duration": 22,
             "durationMs": 0
         },
         {
@@ -2856,7 +2856,7 @@
                     "zoneId": "301e41fc-7e13-11e8-8060-e284abfd2bc4"
                 }
             ],
-            "wrs": 12
+            "wrs": 13
         },
         {
             "zone": [
@@ -3036,7 +3036,7 @@
                     "zoneId": "30229fdb-7e13-11e8-8060-e284abfd2bc4"
                 }
             ],
-            "wrs": 4
+            "wrs": 3
         },
         {
             "zone": [
@@ -3329,7 +3329,7 @@
             },
             "wrs": 53,
             "duration": 89,
-            "durationMs": 8171299904
+            "durationMs": 8177597304
         },
         {
             "user": {
@@ -3365,7 +3365,7 @@
             },
             "wrs": 50,
             "duration": 61,
-            "durationMs": 6001992192
+            "durationMs": 6005590908
         },
         {
             "user": {
@@ -3391,7 +3391,7 @@
             },
             "wrs": 48,
             "duration": 62,
-            "durationMs": 6149168010
+            "durationMs": 6151867007
         },
         {
             "user": {
@@ -3420,9 +3420,9 @@
                 ],
                 "name": "PokeR.4W"
             },
-            "wrs": 44,
+            "wrs": 45,
             "duration": 89,
-            "durationMs": 8107206602
+            "durationMs": 8114403638
         },
         {
             "user": {
@@ -3489,7 +3489,7 @@
             },
             "wrs": 30,
             "duration": 31,
-            "durationMs": 2939873701
+            "durationMs": 2940773333
         },
         {
             "user": {
@@ -3587,7 +3587,7 @@
             },
             "wrs": 24,
             "duration": 58,
-            "durationMs": 5692267834
+            "durationMs": 5694966884
         },
         {
             "user": {
@@ -3623,7 +3623,7 @@
             },
             "wrs": 23,
             "duration": 57,
-            "durationMs": 5387070032
+            "durationMs": 5389769035
         },
         {
             "user": {
@@ -3654,7 +3654,7 @@
             },
             "wrs": 23,
             "duration": 48,
-            "durationMs": 4779104700
+            "durationMs": 4780904024
         },
         {
             "user": {
@@ -3721,7 +3721,7 @@
             },
             "wrs": 20,
             "duration": 7,
-            "durationMs": 697072710
+            "durationMs": 697972349
         },
         {
             "user": {
@@ -3793,7 +3793,7 @@
             },
             "wrs": 19,
             "duration": 14,
-            "durationMs": 1389164700
+            "durationMs": 1390064332
         },
         {
             "user": {
@@ -3829,7 +3829,7 @@
             },
             "wrs": 18,
             "duration": 12,
-            "durationMs": 1126839420
+            "durationMs": 1128638702
         },
         {
             "user": {
@@ -3855,7 +3855,7 @@
             },
             "wrs": 17,
             "duration": 22,
-            "durationMs": 1981233684
+            "durationMs": 1983064660
         },
         {
             "user": {
@@ -3974,7 +3974,7 @@
             },
             "wrs": 12,
             "duration": 9,
-            "durationMs": 934932707
+            "durationMs": 935832338
         },
         {
             "user": {
@@ -4036,7 +4036,7 @@
             },
             "wrs": 11,
             "duration": 17,
-            "durationMs": 1691212338
+            "durationMs": 1692112009
         },
         {
             "user": {
@@ -4067,7 +4067,7 @@
             },
             "wrs": 11,
             "duration": 17,
-            "durationMs": 1841791359
+            "durationMs": 1842691013
         },
         {
             "user": {
@@ -4196,7 +4196,7 @@
             },
             "wrs": 10,
             "duration": 31,
-            "durationMs": 2805140699
+            "durationMs": 2806040327
         },
         {
             "user": {
@@ -4356,7 +4356,7 @@
             },
             "wrs": 9,
             "duration": 18,
-            "durationMs": 1709249689
+            "durationMs": 1710149304
         },
         {
             "user": {
@@ -4949,7 +4949,7 @@
             },
             "wrs": 5,
             "duration": 7,
-            "durationMs": 751504368
+            "durationMs": 752404021
         },
         {
             "user": {
@@ -5207,7 +5207,7 @@
             },
             "wrs": 4,
             "duration": 7,
-            "durationMs": 640069333
+            "durationMs": 640969005
         },
         {
             "user": {
@@ -5269,7 +5269,7 @@
             },
             "wrs": 4,
             "duration": 20,
-            "durationMs": 1963794408
+            "durationMs": 1964694052
         },
         {
             "user": {
@@ -6098,7 +6098,7 @@
             },
             "wrs": 3,
             "duration": 5,
-            "durationMs": 528237412
+            "durationMs": 529137055
         },
         {
             "user": {
@@ -6402,7 +6402,7 @@
             },
             "wrs": 2,
             "duration": 4,
-            "durationMs": 406493265
+            "durationMs": 407392949
         },
         {
             "user": {
@@ -6830,7 +6830,7 @@
             },
             "wrs": 2,
             "duration": 1,
-            "durationMs": 224562768
+            "durationMs": 226362070
         },
         {
             "user": {
@@ -7032,7 +7032,7 @@
             },
             "wrs": 2,
             "duration": 12,
-            "durationMs": 1054895704
+            "durationMs": 1055795334
         },
         {
             "user": {
@@ -8269,7 +8269,7 @@
             },
             "wrs": 1,
             "duration": 5,
-            "durationMs": 451021411
+            "durationMs": 451921054
         },
         {
             "user": {
@@ -10480,7 +10480,7 @@
                     "zoneId": "301e41fc-7e13-11e8-8060-e284abfd2bc4"
                 }
             ],
-            "wrs": 52
+            "wrs": 53
         },
         {
             "zone": [
@@ -11154,7 +11154,7 @@
                 ],
                 "name": "PokeR.4W"
             },
-            "wrs": 20
+            "wrs": 21
         },
         {
             "user": {
@@ -17572,7 +17572,7 @@
                     "zoneId": "301e41fc-7e13-11e8-8060-e284abfd2bc4"
                 }
             ],
-            "wrs": 26
+            "wrs": 27
         },
         {
             "zone": [
