@@ -424,7 +424,7 @@ const resolveGame = async (snapshot) => {
                     track.history.push(wr);
 
                     const data = { wr, track };
-                    for (const integration of [/* discord,  */ twitter]) {
+                    for (const integration of [discord,  twitter]) {
                         integration.send(data);
                     }
                 }
