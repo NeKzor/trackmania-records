@@ -437,7 +437,9 @@ const resolveGame = async (snapshot) => {
 
 const generateRankings = (tracks) => {
     const createLeaderboard = (key) => {
-        const wrs = tracks.map((t) => t[key].filter(validRecords)).reduce((acc, val) => acc.concat(val), []);
+        const wrs = tracks
+            .map((t) => (t[key].length > 0 ? t[key] : t.wrs).filter(validRecords))
+            .reduce((acc, val) => acc.concat(val), []);
         const users = tracks
             .map((t) => t[key].filter(validRecords).map((r) => r.user))
             .reduce((acc, val) => acc.concat(val), []);
@@ -480,7 +482,7 @@ const generateRankings = (tracks) => {
 
     const users = tracks
         .map((t) => {
-            const all = t.history.filter(validRecords).map((r) => r.user);
+            const all = (t.history.length > 0 ? t.history : t.wrs).filter(validRecords).map((r) => r.user);
             const ids = [...new Set(all.map((user) => user.id))];
             return ids.map((id) => all.find((user) => user.id === id));
         })
