@@ -897,7 +897,7 @@
                     "date": "2020-10-09T13:00:05+00:00",
                     "replay": "85de4a7d-63e4-40cd-86f5-daabacd30781",
                     "duration": 17,
-                    "durationMs": 1485213729
+                    "durationMs": 1485895924
                 }
             ],
             "thumbnail": "48f6e3db-0153-4cef-81bf-9b68504dcbd6"
@@ -1452,7 +1452,7 @@
                     "date": "2020-10-22T03:32:04+00:00",
                     "replay": "2d21e8ef-5c75-4050-ba39-e8174f393298",
                     "duration": 4,
-                    "durationMs": 396094731
+                    "durationMs": 396776927
                 }
             ],
             "thumbnail": "5233e729-1810-4e89-bf0d-b9d832562680"
@@ -2001,7 +2001,7 @@
                     "date": "2020-10-06T21:25:20+00:00",
                     "replay": "56c780b8-3530-4dcb-94db-2740a6dca3d6",
                     "duration": 19,
-                    "durationMs": 1714098734
+                    "durationMs": 1714780931
                 }
             ],
             "thumbnail": "e48236b6-c4b7-41b8-9b8e-e2ce1edf67c2"
@@ -2521,7 +2521,7 @@
                     "date": "2020-10-09T18:20:04+00:00",
                     "replay": "153c3526-c047-4c76-8b91-b77abc1f0cb4",
                     "duration": 16,
-                    "durationMs": 1466014737
+                    "durationMs": 1466696934
                 }
             ],
             "thumbnail": "3015d916-855d-4c7d-a03f-c3ae6f3917cf"
@@ -2963,7 +2963,7 @@
                     "date": "2020-10-15T17:50:06+00:00",
                     "replay": "b4ffd392-985f-4beb-851f-61b4773ede7b",
                     "duration": 10,
-                    "durationMs": 949412739
+                    "durationMs": 950094936
                 }
             ],
             "thumbnail": "64193fda-bcc5-4587-beac-3423173e9890"
@@ -3386,7 +3386,7 @@
                     "date": "2020-10-16T17:41:31+00:00",
                     "replay": "8e5e5a06-1ecf-486b-9db0-0cc400bd1b2d",
                     "duration": 9,
-                    "durationMs": 863527750
+                    "durationMs": 864209950
                 }
             ],
             "thumbnail": "6f499088-149a-4ae2-8c57-8e4367e15533"
@@ -3697,7 +3697,7 @@
                     "date": "2020-10-24T23:06:20+00:00",
                     "replay": "6d71c45f-8191-45b6-9853-a00af65cbce7",
                     "duration": 1,
-                    "durationMs": 152838751
+                    "durationMs": 145133000
                 },
                 {
                     "user": {
@@ -3735,7 +3735,8 @@
                     "delta": 41,
                     "date": "2020-10-26T15:25:13+00:00",
                     "replay": "64f21e43-17cb-43ea-a738-beaf4daa8f1c",
-                    "duration": 0
+                    "duration": 0,
+                    "durationMs": 8387951
                 }
             ],
             "thumbnail": "330c886f-02c9-4f6c-9e41-a6a395de2387"
@@ -4299,7 +4300,7 @@
                     "date": "2020-10-21T22:57:16+00:00",
                     "replay": "e0e45e5e-351c-4ef8-b8b6-967d1cae483e",
                     "duration": 4,
-                    "durationMs": 412582758
+                    "durationMs": 413264958
                 }
             ],
             "thumbnail": "45b58345-f15a-48e1-a333-d603136952f2"
@@ -5155,7 +5156,7 @@
                     "date": "2020-10-14T20:33:21+00:00",
                     "replay": "39db5ce6-df4e-45f1-966a-6f52035c7d92",
                     "duration": 11,
-                    "durationMs": 1026017768
+                    "durationMs": 1026699966
                 }
             ],
             "thumbnail": "01f06d0f-4122-4ea3-b8b5-1cde301fb329"
@@ -5772,7 +5773,7 @@
                     "date": "2020-10-20T22:18:20+00:00",
                     "replay": "641f6b9e-2b1a-48ed-a6af-acdcc8fa4e9d",
                     "duration": 5,
-                    "durationMs": 501318777
+                    "durationMs": 502000974
                 }
             ],
             "thumbnail": "d443c819-7cfc-48d5-a1da-6f2e40ab489f"
@@ -6482,7 +6483,7 @@
                     "date": "2020-10-07T06:02:45+00:00",
                     "replay": "8e0a21d0-c475-47bb-8cbd-4610cf6772c3",
                     "duration": 19,
-                    "durationMs": 1683053791
+                    "durationMs": 1683735977
                 }
             ],
             "thumbnail": "48086d1c-6221-47de-8083-8805cc36ab6d"
@@ -7346,7 +7347,7 @@
                     "date": "2020-10-22T12:22:02+00:00",
                     "replay": "0f02f1f9-2efd-4fff-acf2-98dd3e6d3da5",
                     "duration": 4,
-                    "durationMs": 364296794
+                    "durationMs": 364978981
                 }
             ],
             "thumbnail": "c245ca2e-2597-41b7-81cf-05ba493d5445"
@@ -7978,7 +7979,7 @@
                     "date": "2020-10-19T18:04:47+00:00",
                     "replay": "53875cfd-8773-4faa-9de6-f2341fbd3da3",
                     "duration": 6,
-                    "durationMs": 602931796
+                    "durationMs": 533368000
                 },
                 {
                     "user": {
@@ -8006,7 +8007,8 @@
                     "delta": 61,
                     "date": "2020-10-25T22:14:15+00:00",
                     "replay": "c3f74a24-f87f-4214-9af3-d8507c4e3fed",
-                    "duration": 0
+                    "duration": 0,
+                    "durationMs": 70245983
                 }
             ],
             "thumbnail": "85ff0a77-1928-4d84-b3a3-888e4639676f"
@@ -8454,7 +8456,7 @@
                     "date": "2020-10-22T14:06:59+00:00",
                     "replay": "0ddbca78-23e7-45ff-b4c3-fdc89c05da1a",
                     "duration": 4,
-                    "durationMs": 357999798
+                    "durationMs": 358681985
                 }
             ],
             "thumbnail": "4d6e4dfe-690d-431b-8471-c610ed593c27"
@@ -8917,7 +8919,7 @@
                     "date": "2020-10-10T21:58:55+00:00",
                     "replay": "79f5855b-75f4-4fb6-9e48-73f86cc2d477",
                     "duration": 15,
-                    "durationMs": 1366483799
+                    "durationMs": 1367165987
                 }
             ],
             "thumbnail": "79bcc750-d0a3-4204-af7d-d8f9728ba044"
@@ -9569,7 +9571,7 @@
                     "date": "2020-10-19T19:03:46+00:00",
                     "replay": "cc2e480f-6435-488c-9366-31a608441719",
                     "duration": 6,
-                    "durationMs": 599392801
+                    "durationMs": 600074989
                 }
             ],
             "thumbnail": "c3790815-48dd-492b-a31f-ca2a4467866a"
@@ -10218,7 +10220,7 @@
                     "date": "2020-10-23T00:45:15+00:00",
                     "replay": "2e4086be-ce1f-433a-b18f-4299bc00c2d2",
                     "duration": 3,
-                    "durationMs": 319703804
+                    "durationMs": 320385996
                 }
             ],
             "thumbnail": "211c41a4-1e30-42cf-91a0-45afaa45ee34"
@@ -11023,7 +11025,7 @@
                     "date": "2020-10-08T07:53:29+00:00",
                     "replay": "2f4829ea-7101-4e79-a122-48789ec96be1",
                     "duration": 18,
-                    "durationMs": 1590009807
+                    "durationMs": 1590692000
                 }
             ],
             "thumbnail": "ee46429e-9024-4615-82ce-36849d81bf33"
@@ -11713,8 +11715,8 @@
                     "delta": 401,
                     "date": "2020-10-07T14:15:38+00:00",
                     "replay": "c160f16a-6cc7-4504-8c2d-64eac9bf4f85",
-                    "duration": 19,
-                    "durationMs": 1653480813
+                    "duration": 18,
+                    "durationMs": 1576859000
                 },
                 {
                     "user": {
@@ -11752,7 +11754,8 @@
                     "delta": 8,
                     "date": "2020-10-25T20:16:37+00:00",
                     "replay": "e1dac10c-03e6-4b22-9132-27ff8725f46e",
-                    "duration": 0
+                    "duration": 0,
+                    "durationMs": 77304017
                 }
             ],
             "thumbnail": "6b5b23df-e663-4bf7-b5f7-ce200c49bfa2"
@@ -12307,7 +12310,7 @@
                     "date": "2020-10-25T01:50:43+00:00",
                     "replay": "536b8c87-3b81-485a-b7c1-d4494275eac8",
                     "duration": 1,
-                    "durationMs": 142975819
+                    "durationMs": 143658022
                 }
             ],
             "thumbnail": "9ca47564-4f73-43ec-8cb3-d66f312487b7"
@@ -12881,7 +12884,7 @@
                     "date": "2020-10-11T22:27:16+00:00",
                     "replay": "8da59401-e698-4727-8f66-d7544ee60ebe",
                     "duration": 14,
-                    "durationMs": 1278382826
+                    "durationMs": 1279065031
                 }
             ],
             "thumbnail": "fd2122eb-4033-4c66-aa66-f1c2813a8cb3"
@@ -13288,7 +13291,7 @@
                     "date": "2020-10-22T00:42:50+00:00",
                     "replay": "55872caa-6477-4972-a349-da65a757288b",
                     "duration": 4,
-                    "durationMs": 406248827
+                    "durationMs": 406931035
                 }
             ],
             "thumbnail": "576c525c-9be4-44a5-aad0-6648e6f68140"
@@ -13794,7 +13797,7 @@
                     "date": "2020-10-07T19:54:02+00:00",
                     "replay": "b8683692-d8ac-4395-846d-e0c2b88ab9c2",
                     "duration": 18,
-                    "durationMs": 1633176831
+                    "durationMs": 1633859037
                 }
             ],
             "thumbnail": "e0dd403f-d5ee-4957-8b71-6a86a0013240"
@@ -14403,7 +14406,7 @@
                     "date": "2020-10-21T12:58:00+00:00",
                     "replay": "ec419526-2a01-4efa-a0aa-e008d3542d52",
                     "duration": 5,
-                    "durationMs": 448538833
+                    "durationMs": 449221039
                 }
             ],
             "thumbnail": "9387fe0f-7db7-4105-a95e-522d6aadd558"
@@ -14817,7 +14820,7 @@
                     "date": "2020-10-20T17:38:13+00:00",
                     "replay": "67f0c4e6-1b8e-4f27-9793-69425e7a98c6",
                     "duration": 5,
-                    "durationMs": 518125835
+                    "durationMs": 514798000
                 },
                 {
                     "user": {
@@ -14855,7 +14858,8 @@
                     "delta": 190,
                     "date": "2020-10-26T16:38:11+00:00",
                     "replay": "87bd657d-d040-4226-8fbb-4ff2f5618923",
-                    "duration": 0
+                    "duration": 0,
+                    "durationMs": 4010040
                 }
             ],
             "thumbnail": "cf656560-e29c-4f29-bfc6-eed15a19b2e8"
@@ -15509,7 +15513,7 @@
             },
             "wrs": 27,
             "duration": 62,
-            "durationMs": 6044498561
+            "durationMs": 6116108949
         },
         {
             "user": {
@@ -15535,7 +15539,7 @@
             },
             "wrs": 21,
             "duration": 58,
-            "durationMs": 5684820226
+            "durationMs": 5686866820
         },
         {
             "user": {
@@ -15571,7 +15575,7 @@
             },
             "wrs": 20,
             "duration": 57,
-            "durationMs": 5379622376
+            "durationMs": 5381668969
         },
         {
             "user": {
@@ -15602,7 +15606,7 @@
             },
             "wrs": 20,
             "duration": 48,
-            "durationMs": 4774139598
+            "durationMs": 4775503977
         },
         {
             "user": {
@@ -15638,7 +15642,7 @@
             },
             "wrs": 17,
             "duration": 61,
-            "durationMs": 5992062032
+            "durationMs": 5994790822
         },
         {
             "user": {
@@ -15731,7 +15735,7 @@
             },
             "wrs": 11,
             "duration": 17,
-            "durationMs": 1839308801
+            "durationMs": 1839990989
         },
         {
             "user": {
@@ -16056,7 +16060,7 @@
             },
             "wrs": 5,
             "duration": 17,
-            "durationMs": 1688623798
+            "durationMs": 1689305985
         },
         {
             "user": {
@@ -16242,7 +16246,7 @@
             },
             "wrs": 5,
             "duration": 7,
-            "durationMs": 749021804
+            "durationMs": 749703996
         },
         {
             "user": {
@@ -16407,7 +16411,7 @@
             },
             "wrs": 4,
             "duration": 7,
-            "durationMs": 637586794
+            "durationMs": 638268981
         },
         {
             "user": {
@@ -16505,7 +16509,7 @@
             },
             "wrs": 4,
             "duration": 20,
-            "durationMs": 1961311831
+            "durationMs": 1961994037
         },
         {
             "user": {
@@ -16540,8 +16544,8 @@
                 "name": "Gwen_TM"
             },
             "wrs": 3,
-            "duration": 19,
-            "durationMs": 1656482813
+            "duration": 18,
+            "durationMs": 1579861000
         },
         {
             "user": {
@@ -16860,7 +16864,7 @@
             },
             "wrs": 3,
             "duration": 5,
-            "durationMs": 525754835
+            "durationMs": 526437040
         },
         {
             "user": {
@@ -16932,7 +16936,7 @@
             },
             "wrs": 2,
             "duration": 4,
-            "durationMs": 404010731
+            "durationMs": 404692927
         },
         {
             "user": {
@@ -17221,7 +17225,7 @@
             },
             "wrs": 2,
             "duration": 6,
-            "durationMs": 634592796
+            "durationMs": 565029000
         },
         {
             "user": {
@@ -17319,7 +17323,7 @@
             },
             "wrs": 2,
             "duration": 1,
-            "durationMs": 142975819
+            "durationMs": 220962039
         },
         {
             "user": {
@@ -18722,7 +18726,7 @@
             },
             "wrs": 1,
             "duration": 5,
-            "durationMs": 448538833
+            "durationMs": 449221039
         },
         {
             "user": {
