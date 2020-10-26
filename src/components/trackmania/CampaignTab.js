@@ -173,7 +173,7 @@ const CampaignTab = ({ campaign, onChangeCampaign, useLiveDuration, isOfficial }
                                 <Grid item xs={12} md={6}>
                                     <RankingsTable
                                         data={game[rankingsType]}
-                                        hasDuration={false && rankingsType === 'historyLeaderboard'}
+                                        hasDuration={game.isOfficial && rankingsType !== 'uniqueLeaderboard'}
                                     />
                                 </Grid>
                                 <Grid item xs={12} md={6} className={classes.padTop}>

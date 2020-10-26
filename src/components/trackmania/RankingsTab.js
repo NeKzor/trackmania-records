@@ -91,7 +91,7 @@ const RankingsTab = () => {
                     <Grid item xs={12} md={6}>
                         <RankingsTable
                             data={game[rankingsType]}
-                            hasDuration={rankingsType !== 'uniqueLeaderboard'}
+                            hasDuration={campaign === 'rankings/campaign' && rankingsType !== 'uniqueLeaderboard'}
                         />
                     </Grid>
                     <Grid item xs={12} md={6}>
