@@ -16,6 +16,7 @@ import Tooltip from '@material-ui/core/Tooltip';
 import Typography from '@material-ui/core/Typography';
 import SaveAltIcon from '@material-ui/icons/SaveAlt';
 import HistoryIcon from '@material-ui/icons/History';
+import WarningIcon from '@material-ui/icons/Warning';
 import { stableSort } from '../utils/stableSort';
 import { formatScore, getDateDifferenceColor, getDateTimeDifferenceColor } from '../utils/tools';
 
@@ -132,7 +133,18 @@ const RecordsHistoryRow = ({ wr, official }) => {
                     </Tooltip>
                 </MinTableCell>
             )}
-            <MinTableCell align="left">{score}</MinTableCell>
+            <MinTableCell align="left">
+                {score}
+                {wr.note && (
+                    <Tooltip title={wr.note} placement="bottom-end" enterDelay={300}>
+                        <span>
+                            <IconButton size="small" disabled>
+                                <WarningIcon fontSize="inherit" />
+                            </IconButton>
+                        </span>
+                    </Tooltip>
+                )}
+            </MinTableCell>
             <MinTableCell align="left">{delta ? '-' + delta : ''}</MinTableCell>
             <MinTableCell align="left">{wr.user.name}</MinTableCell>
             <MinTableCell align="left">
@@ -267,14 +279,19 @@ const RecordsRow = ({ wr, official, orderBy, useLiveDuration, history, onClickHi
                         </IconButton>
                     </Tooltip>
                     {wr.track.isLast && wr.track.history && (
-                        <IconButton color="inherit" size="small" style={noWrap} onClick={() => onClickHistory(wr.track.id)}>
+                        <IconButton
+                            color="inherit"
+                            size="small"
+                            style={noWrap}
+                            onClick={() => onClickHistory(wr.track.id)}
+                        >
                             <HistoryIcon fontSize="inherit" />
                         </IconButton>
                     )}
                 </MinTableCell>
             </TableRow>
             {wr.track.isLast && wr.track.history && (
-                <TableRow  className={classes.root}>
+                <TableRow className={classes.root}>
                     <MinTableCell style={{ paddingBottom: 0, paddingTop: 0 }} colSpan={7}>
                         <Collapse in={open} timeout="auto" unmountOnExit>
                             <Box margin={1}>
@@ -293,13 +310,7 @@ const RecordsRow = ({ wr, official, orderBy, useLiveDuration, history, onClickHi
                                     </TableHead>
                                     <TableBody>
                                         {wr.track.history.map((historyWr, idx) => {
-                                            return (
-                                                <RecordsHistoryRow
-                                                    wr={historyWr}
-                                                    official={official}
-                                                    key={idx}
-                                                />
-                                            );
+                                            return <RecordsHistoryRow wr={historyWr} official={official} key={idx} />;
                                         })}
                                     </TableBody>
                                 </Table>
@@ -332,13 +343,16 @@ const RecordsTable = ({ data, stats, official, useLiveDuration }) => {
         setState((s) => ({ ...s, orderBy: official ? 'track.name' : 'track.monthDay' }));
     }, [data, official]);
 
-    const onClickHistory = React.useCallback((id) => {
-        if (history !== id) {
-            setHistory(id);
-        } else {
-            setHistory(null);
-        }
-    }, [history, setHistory]);
+    const onClickHistory = React.useCallback(
+        (id) => {
+            if (history !== id) {
+                setHistory(id);
+            } else {
+                setHistory(null);
+            }
+        },
+        [history, setHistory],
+    );
 
     const classes = useStyles();
 

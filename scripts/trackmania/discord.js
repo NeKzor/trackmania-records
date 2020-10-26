@@ -1,29 +1,12 @@
 const Discord = require('discord.js');
-
-const formatScore = (score) => {
-    if (score === undefined || score === null) {
-        return '';
-    }
-
-    let msec = score % 1000;
-    let tsec = Math.floor(score / 1000);
-    let sec = tsec % 60;
-    let min = Math.floor(tsec / 60);
-
-    return (
-        (min > 0 ? min + ':' : '') +
-        (sec < 10 && min > 0 ? '0' + sec : sec) +
-        '.' +
-        (msec < 100 ? (msec < 10 ? '00' + msec : '0' + msec) : msec)
-    );
-};
+const { formatScore } = require('../utils');
 
 class DiscordIntegration {
     constructor(id, token) {
         this.client = new Discord.WebhookClient(id, token);
         this.username = 'Trackmania';
     }
-    sendWebhook(data) {
+    send(data) {
         return this.client
             .send('', { embeds: [this.buildEmbed(data)] })
             .then(console.log)

@@ -2,8 +2,23 @@ import React from 'react';
 import Chart from 'react-apexcharts';
 import { withTheme } from '@material-ui/styles';
 
-const RecordsChart = ({ labels, series, title, theme }) => {
+const randomColor = () => '#' + ((Math.random() * 0xffffff) << 0).toString(16).padStart(6, '0');
+
+const RecordsChart = ({ labels, series, title, theme, rest = true }) => {
     const isDarkTheme = theme.palette.type === 'dark';
+
+    if (rest) {
+        const max = 30;
+        const rest = series.slice(max).reduce((acc, val) => acc += val, 0);
+        
+        series = series.slice(0, max);
+        labels = labels.slice(0, max);
+        
+        series.push(rest);
+        labels.push('Rest');
+    }
+
+    const colors = new Array(series.length).fill(0).map(() => randomColor());
 
     return (
         <Chart
@@ -43,6 +58,7 @@ const RecordsChart = ({ labels, series, title, theme }) => {
                         },
                     },
                 },
+                colors,
             }}
             series={series}
             type="donut"

@@ -1,6 +1,6 @@
 {
     "name": "trackmania-records",
-    "version": "1.0.0",
+    "version": "2.0.0",
     "author": "NeKz",
     "scripts": {
         "predeploy": "npm run build",
@@ -11,7 +11,7 @@
         "clone-api": "git clone --single-branch --branch api https://github.com/NeKzBot/tmx-records api",
         "clone-build": "git clone --single-branch --branch gh-pages https://github.com/NeKzor/trackmania-records build",
         "dev": "hs ./api --cors",
-        "prettier": "prettier --config ./prettier.config.js --write './src/**/*.js' './scripts/**/*.js'"
+        "prettier": "prettier --config prettier.config.js --write src/**/*.js scripts/**/*.js"
     },
     "dependencies": {
         "@material-ui/core": "^4.9.2",

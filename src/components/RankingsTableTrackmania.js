@@ -7,7 +7,7 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import TableSortLabel from '@material-ui/core/TableSortLabel';
 import Tooltip from '@material-ui/core/Tooltip';
-import { stableSortSort } from '../utils/stableSort';
+import { stableSort, stableSortSort } from '../utils/stableSort';
 
 const rowsOficial = [
     { id: 'user.name', sortable: false, label: 'Player', align: 'left' },
@@ -20,12 +20,12 @@ const rowsTOTD = [
     { id: 'wrs', sortable: true, label: 'World Records', align: 'left' },
 ];
 
-const RankingsTableHead = ({ order, orderBy, onRequestSort, official }) => {
+const RankingsTableHead = ({ order, orderBy, onRequestSort, hasDuration }) => {
     const createSortHandler = (prop1, prop2) => (event) => {
         onRequestSort(event, prop1, prop2);
     };
 
-    const rows = official ? rowsOficial : rowsTOTD;
+    const rows = hasDuration ? rowsOficial : rowsTOTD;
 
     return (
         <TableHead>
@@ -73,8 +73,8 @@ const defaultState = {
 const minifiedStyle = { padding: '7px 0px 7px 16px' };
 const MinTableCell = (props) => <TableCell style={minifiedStyle} {...props} />;
 
-const RecordsTable = ({ data, official }) => {
-    const [{ order, orderBy, thenBy, rowsPerPage, page }, setState] = React.useState(defaultState);
+const RecordsTable = ({ data, hasDuration }) => {
+    const [{ order, orderBy, thenBy }, setState] = React.useState(defaultState);
 
     const handleRequestSort = (_, prop1, prop2) => {
         const newOrderBy = prop1;
@@ -96,16 +96,15 @@ const RecordsTable = ({ data, official }) => {
                     order={order}
                     orderBy={orderBy}
                     onRequestSort={handleRequestSort}
-                    official={official}
+                    hasDuration={hasDuration}
                 />
                 <TableBody>
-                    {stableSortSort(data, order, orderBy, thenBy)
-                        .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+                    {(hasDuration ? stableSortSort : stableSort)(data, order, orderBy, thenBy)
                         .map((row) => (
                             <TableRow tabIndex={-1} key={row.user.name}>
                                 <MinTableCell align="left">{row.user.name}</MinTableCell>
                                 <MinTableCell align="left">{row.wrs}</MinTableCell>
-                                {official && (
+                                {hasDuration && (
                                     <MinTableCell align="left">{row.duration}</MinTableCell>
                                 )}
                             </TableRow>
