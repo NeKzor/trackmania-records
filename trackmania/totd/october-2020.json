@@ -282,7 +282,7 @@
                     "date": "2020-10-02T10:09:55+00:00",
                     "replay": "5f966a49-1f03-4c8b-91e3-c4db6cfa798b",
                     "duration": 24,
-                    "durationMs": 2109909402
+                    "durationMs": 2110809399
                 }
             ],
             "thumbnail": "daef5eec-a27d-4d8b-a06d-01061d8b59ec"
@@ -565,7 +565,7 @@
                     "date": "2020-10-03T09:33:04+00:00",
                     "replay": "2dfb965f-3130-4ce7-b844-e1c76c4beb2c",
                     "duration": 23,
-                    "durationMs": 2025720403
+                    "durationMs": 2026620400
                 }
             ],
             "thumbnail": "fa3f05be-1fd7-4322-8ced-fd34078de8fd"
@@ -1100,7 +1100,7 @@
                     "date": "2020-10-04T11:17:36+00:00",
                     "replay": "616e4a9c-f2b9-4100-a334-b6874a298c1e",
                     "duration": 22,
-                    "durationMs": 1933048410
+                    "durationMs": 1933948402
                 }
             ],
             "thumbnail": "ffe1b1bc-c7b4-4b8e-ba72-d094697536a5"
@@ -1617,7 +1617,7 @@
                     "date": "2020-10-05T15:32:15+00:00",
                     "replay": "8e574dfb-f97d-4400-b226-969cfa62b358",
                     "duration": 21,
-                    "durationMs": 1831369412
+                    "durationMs": 1832269406
                 }
             ],
             "thumbnail": "d5cdd0cd-fac8-4785-a34f-e47ad5f94b4e"
@@ -2056,7 +2056,7 @@
                     "date": "2020-10-06T12:45:29+00:00",
                     "replay": "7790a3f4-8b71-44a4-a78b-3e34448cabf3",
                     "duration": 20,
-                    "durationMs": 1754975414
+                    "durationMs": 1755875408
                 }
             ],
             "thumbnail": "3c19e9dc-1726-4176-beb2-4cf22e2cbaee"
@@ -2281,7 +2281,7 @@
                     "date": "2020-10-06T18:11:31+00:00",
                     "replay": "e76e3bbe-e41e-4e47-aad0-9dbcc87cbded",
                     "duration": 20,
-                    "durationMs": 1735413415
+                    "durationMs": 1736313408
                 }
             ],
             "thumbnail": "32797507-46d4-4f23-9d58-b687aa1f13d9"
@@ -2584,7 +2584,7 @@
                     "date": "2020-10-07T19:30:21+00:00",
                     "replay": "f6b4cdba-8a64-40b4-a216-84b386d7dd99",
                     "duration": 18,
-                    "durationMs": 1644283418
+                    "durationMs": 1645183409
                 }
             ],
             "thumbnail": "e733a99f-847d-4b22-aff2-80e963d100ef"
@@ -2770,7 +2770,7 @@
                     "date": "2020-10-08T17:59:38+00:00",
                     "replay": "75b0083f-1e1a-4841-878a-22e4282240ea",
                     "duration": 18,
-                    "durationMs": 1563326426
+                    "durationMs": 1564226418
                 }
             ],
             "thumbnail": "72aa127f-fceb-4b9e-890d-fe2595574636"
@@ -3219,7 +3219,7 @@
                     "date": "2020-10-10T10:50:23+00:00",
                     "replay": "edc31e15-7880-4a48-9abc-c9f3b58c7a20",
                     "duration": 16,
-                    "durationMs": 1416281434
+                    "durationMs": 1417181419
                 }
             ],
             "thumbnail": "7805e110-83e0-4101-8c84-2fc0ab55b1b1"
@@ -3614,7 +3614,7 @@
                     "date": "2020-10-11T16:00:42+00:00",
                     "replay": "4d60b0d2-11b7-4d70-a288-381d874ea940",
                     "duration": 15,
-                    "durationMs": 1311262436
+                    "durationMs": 1312162420
                 }
             ],
             "thumbnail": "fb221d26-9938-433b-b9fc-735e9036f32b"
@@ -3926,7 +3926,7 @@
                     "date": "2020-10-12T00:00:14+00:00",
                     "replay": "7f702ce5-d32d-4941-ae0f-9e9e4103d50a",
                     "duration": 14,
-                    "durationMs": 1282490438
+                    "durationMs": 1283390421
                 }
             ],
             "thumbnail": "d23a2562-4c5b-4b0a-9ddf-e576cb328a5a"
@@ -4199,7 +4199,7 @@
                     "date": "2020-10-13T15:33:48+00:00",
                     "replay": "ac52558f-8cce-4cb1-98aa-f5ca7f9ad3df",
                     "duration": 13,
-                    "durationMs": 1140076440
+                    "durationMs": 1140976422
                 }
             ],
             "thumbnail": "9a8e9167-d7bd-4525-8473-6735969ee895"
@@ -4541,7 +4541,7 @@
                     "date": "2020-10-14T14:29:14+00:00",
                     "replay": "ed0ca528-3e0a-46e2-b2b5-b3008a18cc0f",
                     "duration": 12,
-                    "durationMs": 1057550442
+                    "durationMs": 1058450426
                 }
             ],
             "thumbnail": "e228ce4d-2b30-4f28-8e5d-11211677770b"
@@ -4985,7 +4985,7 @@
                     "date": "2020-10-15T15:45:46+00:00",
                     "replay": "e1633159-e917-44cc-869f-75b3f4db02b7",
                     "duration": 11,
-                    "durationMs": 966558445
+                    "durationMs": 967458430
                 }
             ],
             "thumbnail": "7ab4ef0c-c783-445f-8d1b-fe6231a8ee0d"
@@ -5453,7 +5453,7 @@
                     "date": "2020-10-16T16:05:27+00:00",
                     "replay": "93a277ef-8e89-4185-8fa7-85992b46fa19",
                     "duration": 10,
-                    "durationMs": 878977450
+                    "durationMs": 879877431
                 }
             ],
             "thumbnail": "c4d7b5b1-040e-4bb7-a4bc-f6206da6822b"
@@ -5784,7 +5784,7 @@
                     "date": "2020-10-17T11:28:45+00:00",
                     "replay": "05b456da-8d0b-43b1-9d0b-dfc1b5b02ad0",
                     "duration": 9,
-                    "durationMs": 809179451
+                    "durationMs": 810079433
                 }
             ],
             "thumbnail": "c174f5ed-a661-4c12-9ab9-7f0d03f6878a"
@@ -6213,7 +6213,7 @@
                     "date": "2020-10-18T15:59:46+00:00",
                     "replay": "d9a0ad16-82e5-4135-b2c5-dd516d5b144d",
                     "duration": 8,
-                    "durationMs": 706518456
+                    "durationMs": 707418434
                 }
             ],
             "thumbnail": "03fe8d1b-4c84-44bc-a4c1-2bc31f7dc1f4"
@@ -6783,7 +6783,7 @@
                     "date": "2020-10-19T16:42:41+00:00",
                     "replay": "275e4549-2cdb-483e-a205-8b3bf6b200b3",
                     "duration": 7,
-                    "durationMs": 617543459
+                    "durationMs": 618443437
                 }
             ],
             "thumbnail": "07e6f0ab-93e6-4369-a924-21c3dd77a01f"
@@ -7222,7 +7222,7 @@
                     "date": "2020-10-20T12:27:12+00:00",
                     "replay": "d72e2e62-1d17-4173-a581-a85ba11f1ea6",
                     "duration": 6,
-                    "durationMs": 546472460
+                    "durationMs": 547372437
                 }
             ],
             "thumbnail": "ec86e7a2-8b8e-4bf0-bfd5-f02551582f91"
@@ -7525,7 +7525,7 @@
                     "date": "2020-10-21T14:55:32+00:00",
                     "replay": "6314288c-0cee-48f3-92af-3bd2bcf7db9b",
                     "duration": 5,
-                    "durationMs": 451172462
+                    "durationMs": 452072438
                 }
             ],
             "thumbnail": "c75e1744-d172-4174-913a-0af68290cdea"
@@ -7979,7 +7979,7 @@
                     "date": "2020-10-22T15:31:51+00:00",
                     "replay": "f7435240-cbd9-4ba3-b193-5942f89c9c18",
                     "duration": 4,
-                    "durationMs": 362593464
+                    "durationMs": 363493440
                 }
             ],
             "thumbnail": "124d7109-41e0-47bf-b510-05e5e84bef98"
@@ -8355,7 +8355,7 @@
                     "date": "2020-10-23T16:18:37+00:00",
                     "replay": "ccf6a979-f2d0-48fa-bfd9-15fa62a6fba3",
                     "duration": 3,
-                    "durationMs": 273387468
+                    "durationMs": 274287441
                 }
             ],
             "thumbnail": "81c2558f-5c2f-4d84-85ea-febcc91b51c5"
@@ -8780,7 +8780,7 @@
                     "date": "2020-10-24T16:29:02+00:00",
                     "replay": "f4765bca-2806-4118-9c97-e6906012c083",
                     "duration": 2,
-                    "durationMs": 186362470
+                    "durationMs": 187262441
                 }
             ],
             "thumbnail": "ca16ad62-6026-4030-86cf-b06ca9b9601f"
@@ -9180,7 +9180,7 @@
                     "date": "2020-10-25T13:18:25+00:00",
                     "replay": "fedea062-8290-4c74-8cb8-688f7af49e78",
                     "duration": 1,
-                    "durationMs": 111399471
+                    "durationMs": 112299443
                 }
             ],
             "thumbnail": "eb35c4bc-f42d-49f6-8ae1-88f2a02e1766"
@@ -9366,7 +9366,7 @@
                     "date": "2020-10-26T12:24:44+00:00",
                     "replay": "12f4f42b-9687-460c-a6ed-0475eddf1b27",
                     "duration": 0,
-                    "durationMs": 28220472
+                    "durationMs": 29120443
                 }
             ],
             "thumbnail": "fd7a6112-9240-4f09-a761-df27e99474b6"
@@ -9508,7 +9508,7 @@
                     "date": "2020-10-26T19:06:51+00:00",
                     "replay": "c19e8726-d3b6-4ca6-be10-8c72f4fd16fe",
                     "duration": 0,
-                    "durationMs": 4093472
+                    "durationMs": 4993444
                 }
             ],
             "thumbnail": "df87bf24-9889-4308-afc4-ce9521439f5e"
@@ -10041,7 +10041,7 @@
             },
             "wrs": 53,
             "duration": 89,
-            "durationMs": 8221698074
+            "durationMs": 8227997964
         },
         {
             "user": {
@@ -10072,7 +10072,7 @@
             },
             "wrs": 24,
             "duration": 91,
-            "durationMs": 8167811002
+            "durationMs": 8175910842
         },
         {
             "user": {
@@ -10098,7 +10098,7 @@
             },
             "wrs": 14,
             "duration": 22,
-            "durationMs": 1989131410
+            "durationMs": 1990031402
         },
         {
             "user": {
@@ -10134,7 +10134,7 @@
             },
             "wrs": 14,
             "duration": 12,
-            "durationMs": 1116853920
+            "durationMs": 1118653874
         },
         {
             "user": {
@@ -10170,7 +10170,7 @@
             },
             "wrs": 13,
             "duration": 7,
-            "durationMs": 704272459
+            "durationMs": 705172437
         },
         {
             "user": {
@@ -10206,7 +10206,7 @@
             },
             "wrs": 12,
             "duration": 14,
-            "durationMs": 1396364438
+            "durationMs": 1397264421
         },
         {
             "user": {
@@ -10232,7 +10232,7 @@
             },
             "wrs": 7,
             "duration": 9,
-            "durationMs": 883654451
+            "durationMs": 884554433
         },
         {
             "user": {
@@ -10268,7 +10268,7 @@
             },
             "wrs": 6,
             "duration": 18,
-            "durationMs": 1716449418
+            "durationMs": 1717349409
         },
         {
             "user": {
@@ -10299,7 +10299,7 @@
             },
             "wrs": 6,
             "duration": 13,
-            "durationMs": 1228454440
+            "durationMs": 1229354422
         },
         {
             "user": {
@@ -10402,7 +10402,7 @@
             },
             "wrs": 4,
             "duration": 15,
-            "durationMs": 1358808436
+            "durationMs": 1359708420
         },
         {
             "user": {
@@ -10763,7 +10763,7 @@
             },
             "wrs": 2,
             "duration": 12,
-            "durationMs": 1062095442
+            "durationMs": 1062995426
         },
         {
             "user": {

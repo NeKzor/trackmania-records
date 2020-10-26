@@ -317,7 +317,7 @@
                 "name": "WHENSTARTINK"
             },
             "wrs": 2,
-            "duration": 1,
+            "duration": 2,
             "durationMs": 0
         },
         {
@@ -1837,7 +1837,7 @@
             },
             "wrs": 27,
             "duration": 62,
-            "durationMs": 6143109072
+            "durationMs": 6145808885
         },
         {
             "user": {
@@ -1873,7 +1873,7 @@
             },
             "wrs": 25,
             "duration": 56,
-            "durationMs": 5408669093
+            "durationMs": 5411368908
         },
         {
             "user": {
@@ -1899,7 +1899,7 @@
             },
             "wrs": 23,
             "duration": 61,
-            "durationMs": 5713866946
+            "durationMs": 5716566764
         },
         {
             "user": {
@@ -1930,7 +1930,7 @@
             },
             "wrs": 23,
             "duration": 48,
-            "durationMs": 4793504070
+            "durationMs": 4795303953
         },
         {
             "user": {
@@ -1966,7 +1966,7 @@
             },
             "wrs": 18,
             "duration": 61,
-            "durationMs": 6030791003
+            "durationMs": 6034390759
         },
         {
             "user": {
@@ -2085,7 +2085,7 @@
             },
             "wrs": 11,
             "duration": 18,
-            "durationMs": 1848991041
+            "durationMs": 1849890978
         },
         {
             "user": {
@@ -2183,7 +2183,7 @@
             },
             "wrs": 8,
             "duration": 17,
-            "durationMs": 1698306032
+            "durationMs": 1699205974
         },
         {
             "user": {
@@ -2668,7 +2668,7 @@
             },
             "wrs": 5,
             "duration": 7,
-            "durationMs": 758704043
+            "durationMs": 759603980
         },
         {
             "user": {
@@ -2833,7 +2833,7 @@
             },
             "wrs": 4,
             "duration": 7,
-            "durationMs": 647269028
+            "durationMs": 648168971
         },
         {
             "user": {
@@ -2931,7 +2931,7 @@
             },
             "wrs": 4,
             "duration": 20,
-            "durationMs": 1970994070
+            "durationMs": 1971894002
         },
         {
             "user": {
@@ -3322,7 +3322,7 @@
             },
             "wrs": 3,
             "duration": 5,
-            "durationMs": 485945073
+            "durationMs": 486845005
         },
         {
             "user": {
@@ -3425,7 +3425,7 @@
             },
             "wrs": 2,
             "duration": 4,
-            "durationMs": 413692970
+            "durationMs": 414592910
         },
         {
             "user": {
@@ -3811,8 +3811,8 @@
                 "name": "WHENSTARTINK"
             },
             "wrs": 2,
-            "duration": 1,
-            "durationMs": 238962110
+            "duration": 2,
+            "durationMs": 240761988
         },
         {
             "user": {
@@ -5205,7 +5205,7 @@
             },
             "wrs": 1,
             "duration": 5,
-            "durationMs": 458221072
+            "durationMs": 459121004
         },
         {
             "user": {
