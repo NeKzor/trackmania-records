@@ -580,7 +580,7 @@
                 "name": "Gerard.Filoche"
             },
             "wrs": 1,
-            "duration": 18,
+            "duration": 19,
             "durationMs": 0
         },
         {
@@ -1837,7 +1837,7 @@
             },
             "wrs": 27,
             "duration": 62,
-            "durationMs": 6148509083
+            "durationMs": 6151208829
         },
         {
             "user": {
@@ -1873,7 +1873,7 @@
             },
             "wrs": 25,
             "duration": 56,
-            "durationMs": 5414069111
+            "durationMs": 5416768868
         },
         {
             "user": {
@@ -1899,7 +1899,7 @@
             },
             "wrs": 23,
             "duration": 61,
-            "durationMs": 5719266960
+            "durationMs": 5721966589
         },
         {
             "user": {
@@ -1930,7 +1930,7 @@
             },
             "wrs": 23,
             "duration": 48,
-            "durationMs": 4797104078
+            "durationMs": 4798903930
         },
         {
             "user": {
@@ -1966,7 +1966,7 @@
             },
             "wrs": 18,
             "duration": 61,
-            "durationMs": 6037991026
+            "durationMs": 6041590583
         },
         {
             "user": {
@@ -2085,7 +2085,7 @@
             },
             "wrs": 11,
             "duration": 18,
-            "durationMs": 1850791045
+            "durationMs": 1851690983
         },
         {
             "user": {
@@ -2183,7 +2183,7 @@
             },
             "wrs": 8,
             "duration": 17,
-            "durationMs": 1700106035
+            "durationMs": 1701005948
         },
         {
             "user": {
@@ -2668,7 +2668,7 @@
             },
             "wrs": 5,
             "duration": 7,
-            "durationMs": 760504047
+            "durationMs": 761403985
         },
         {
             "user": {
@@ -2833,7 +2833,7 @@
             },
             "wrs": 4,
             "duration": 7,
-            "durationMs": 649069031
+            "durationMs": 649968941
         },
         {
             "user": {
@@ -2930,8 +2930,8 @@
                 "name": "Insanity.TM"
             },
             "wrs": 4,
-            "duration": 20,
-            "durationMs": 1972794075
+            "duration": 21,
+            "durationMs": 1973694038
         },
         {
             "user": {
@@ -3322,7 +3322,7 @@
             },
             "wrs": 3,
             "duration": 5,
-            "durationMs": 487745078
+            "durationMs": 488645047
         },
         {
             "user": {
@@ -3425,7 +3425,7 @@
             },
             "wrs": 2,
             "duration": 4,
-            "durationMs": 415492974
+            "durationMs": 416392846
         },
         {
             "user": {
@@ -3812,7 +3812,7 @@
             },
             "wrs": 2,
             "duration": 2,
-            "durationMs": 242562120
+            "durationMs": 244362046
         },
         {
             "user": {
@@ -5205,7 +5205,7 @@
             },
             "wrs": 1,
             "duration": 5,
-            "durationMs": 460021077
+            "durationMs": 460921046
         },
         {
             "user": {
