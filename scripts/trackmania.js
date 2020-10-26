@@ -441,7 +441,7 @@ const generateRankings = (tracks) => {
             .map((t) => (t[key].length > 0 ? t[key] : t.wrs).filter(validRecords))
             .flat();
         const users = tracks
-            .map((t) => t[key].filter(validRecords).map((r) => r.user))
+            .map((t) => (t[key].length > 0 ? t[key] : t.wrs).filter(validRecords).map((r) => r.user))
             .flat();
 
         const frequency = users.reduce((count, user) => {
