@@ -264,10 +264,15 @@ const dumpOfficialCampaign = async (outputDir) => {
             });
         }
 
+        const totalTime = tracks.map((t) => t.wrs[0].score).reduce((a, b) => a + b, 0);
+
         game.push({
             isOfficial: true,
             name,
             tracks,
+            stats: {
+                totalTime,
+            },
         });
     }
 };
