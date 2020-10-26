@@ -296,7 +296,7 @@
                 "name": "eLconn21"
             },
             "wrs": 3,
-            "duration": 21,
+            "duration": 22,
             "durationMs": 0
         },
         {
@@ -750,7 +750,7 @@
                 "name": "AR_Madzen"
             },
             "wrs": 1,
-            "duration": 12,
+            "duration": 13,
             "durationMs": 0
         },
         {
@@ -782,6 +782,42 @@
             },
             "wrs": 1,
             "duration": 12,
+            "durationMs": 0
+        },
+        {
+            "user": {
+                "id": "10343c07-d1c3-46e4-8036-1c37343c312a",
+                "zone": [
+                    {
+                        "name": "World",
+                        "parentId": null,
+                        "zoneId": "301e1b69-7e13-11e8-8060-e284abfd2bc4"
+                    },
+                    {
+                        "name": "Europe",
+                        "parentId": "301e1b69-7e13-11e8-8060-e284abfd2bc4",
+                        "zoneId": "301e2106-7e13-11e8-8060-e284abfd2bc4"
+                    },
+                    {
+                        "name": "United Kingdom",
+                        "parentId": "301e2106-7e13-11e8-8060-e284abfd2bc4",
+                        "zoneId": "3022a1b2-7e13-11e8-8060-e284abfd2bc4"
+                    },
+                    {
+                        "name": "England",
+                        "parentId": "3022a1b2-7e13-11e8-8060-e284abfd2bc4",
+                        "zoneId": "3022a3c9-7e13-11e8-8060-e284abfd2bc4"
+                    },
+                    {
+                        "name": "East of England",
+                        "parentId": "3022a3c9-7e13-11e8-8060-e284abfd2bc4",
+                        "zoneId": "3022a504-7e13-11e8-8060-e284abfd2bc4"
+                    }
+                ],
+                "name": "Alectrum"
+            },
+            "wrs": 1,
+            "duration": 0,
             "durationMs": 0
         },
         {
@@ -1708,6 +1744,26 @@
                     "zoneId": "301e2106-7e13-11e8-8060-e284abfd2bc4"
                 },
                 {
+                    "name": "United Kingdom",
+                    "parentId": "301e2106-7e13-11e8-8060-e284abfd2bc4",
+                    "zoneId": "3022a1b2-7e13-11e8-8060-e284abfd2bc4"
+                }
+            ],
+            "wrs": 4
+        },
+        {
+            "zone": [
+                {
+                    "name": "World",
+                    "parentId": null,
+                    "zoneId": "301e1b69-7e13-11e8-8060-e284abfd2bc4"
+                },
+                {
+                    "name": "Europe",
+                    "parentId": "301e1b69-7e13-11e8-8060-e284abfd2bc4",
+                    "zoneId": "301e2106-7e13-11e8-8060-e284abfd2bc4"
+                },
+                {
                     "name": "Norway",
                     "parentId": "301e2106-7e13-11e8-8060-e284abfd2bc4",
                     "zoneId": "3020a27d-7e13-11e8-8060-e284abfd2bc4"
@@ -1731,26 +1787,6 @@
                     "name": "Croatia",
                     "parentId": "301e2106-7e13-11e8-8060-e284abfd2bc4",
                     "zoneId": "301f40ae-7e13-11e8-8060-e284abfd2bc4"
-                }
-            ],
-            "wrs": 3
-        },
-        {
-            "zone": [
-                {
-                    "name": "World",
-                    "parentId": null,
-                    "zoneId": "301e1b69-7e13-11e8-8060-e284abfd2bc4"
-                },
-                {
-                    "name": "Europe",
-                    "parentId": "301e1b69-7e13-11e8-8060-e284abfd2bc4",
-                    "zoneId": "301e2106-7e13-11e8-8060-e284abfd2bc4"
-                },
-                {
-                    "name": "United Kingdom",
-                    "parentId": "301e2106-7e13-11e8-8060-e284abfd2bc4",
-                    "zoneId": "3022a1b2-7e13-11e8-8060-e284abfd2bc4"
                 }
             ],
             "wrs": 3
@@ -2006,7 +2042,7 @@
             },
             "wrs": 53,
             "duration": 89,
-            "durationMs": 8158697258
+            "durationMs": 8165571751
         },
         {
             "user": {
@@ -2037,7 +2073,7 @@
             },
             "wrs": 43,
             "duration": 89,
-            "durationMs": 8089276612
+            "durationMs": 8097133150
         },
         {
             "user": {
@@ -2202,7 +2238,7 @@
             },
             "wrs": 20,
             "duration": 7,
-            "durationMs": 695272329
+            "durationMs": 696254403
         },
         {
             "user": {
@@ -2233,7 +2269,7 @@
             },
             "wrs": 20,
             "duration": 13,
-            "durationMs": 1219454319
+            "durationMs": 1220436395
         },
         {
             "user": {
@@ -2341,7 +2377,7 @@
             },
             "wrs": 19,
             "duration": 14,
-            "durationMs": 1387364318
+            "durationMs": 1388346395
         },
         {
             "user": {
@@ -2377,7 +2413,7 @@
             },
             "wrs": 17,
             "duration": 12,
-            "durationMs": 1098853659
+            "durationMs": 1100817814
         },
         {
             "user": {
@@ -2403,7 +2439,7 @@
             },
             "wrs": 16,
             "duration": 22,
-            "durationMs": 1979433311
+            "durationMs": 1980415370
         },
         {
             "user": {
@@ -2501,7 +2537,7 @@
             },
             "wrs": 10,
             "duration": 9,
-            "durationMs": 874654325
+            "durationMs": 875636401
         },
         {
             "user": {
@@ -2568,7 +2604,7 @@
             },
             "wrs": 9,
             "duration": 18,
-            "durationMs": 1707449314
+            "durationMs": 1708431376
         },
         {
             "user": {
@@ -2893,7 +2929,7 @@
             },
             "wrs": 5,
             "duration": 15,
-            "durationMs": 1349808317
+            "durationMs": 1350790394
         },
         {
             "user": {
@@ -3821,7 +3857,7 @@
             },
             "wrs": 2,
             "duration": 12,
-            "durationMs": 1053095320
+            "durationMs": 1054077396
         },
         {
             "user": {
