@@ -518,6 +518,32 @@
         },
         {
             "user": {
+                "id": "4d949246-4a71-46b0-b30d-43cbbf63d0f7",
+                "zone": [
+                    {
+                        "name": "World",
+                        "parentId": null,
+                        "zoneId": "301e1b69-7e13-11e8-8060-e284abfd2bc4"
+                    },
+                    {
+                        "name": "Africa",
+                        "parentId": "301e1b69-7e13-11e8-8060-e284abfd2bc4",
+                        "zoneId": "301e1f9b-7e13-11e8-8060-e284abfd2bc4"
+                    },
+                    {
+                        "name": "Uganda",
+                        "parentId": "301e1f9b-7e13-11e8-8060-e284abfd2bc4",
+                        "zoneId": "30229fdb-7e13-11e8-8060-e284abfd2bc4"
+                    }
+                ],
+                "name": "BIG_MAN_TAXON"
+            },
+            "wrs": 3,
+            "duration": 22,
+            "durationMs": 0
+        },
+        {
+            "user": {
                 "id": "d46fb45d-d422-47c9-9785-67270a311e25",
                 "zone": [
                     {
@@ -746,32 +772,6 @@
             },
             "wrs": 2,
             "duration": 0,
-            "durationMs": 0
-        },
-        {
-            "user": {
-                "id": "4d949246-4a71-46b0-b30d-43cbbf63d0f7",
-                "zone": [
-                    {
-                        "name": "World",
-                        "parentId": null,
-                        "zoneId": "301e1b69-7e13-11e8-8060-e284abfd2bc4"
-                    },
-                    {
-                        "name": "Africa",
-                        "parentId": "301e1b69-7e13-11e8-8060-e284abfd2bc4",
-                        "zoneId": "301e1f9b-7e13-11e8-8060-e284abfd2bc4"
-                    },
-                    {
-                        "name": "Uganda",
-                        "parentId": "301e1f9b-7e13-11e8-8060-e284abfd2bc4",
-                        "zoneId": "30229fdb-7e13-11e8-8060-e284abfd2bc4"
-                    }
-                ],
-                "name": "BIG_MAN_TAXON"
-            },
-            "wrs": 2,
-            "duration": 22,
             "durationMs": 0
         },
         {
@@ -2066,42 +2066,6 @@
         },
         {
             "user": {
-                "id": "10343c07-d1c3-46e4-8036-1c37343c312a",
-                "zone": [
-                    {
-                        "name": "World",
-                        "parentId": null,
-                        "zoneId": "301e1b69-7e13-11e8-8060-e284abfd2bc4"
-                    },
-                    {
-                        "name": "Europe",
-                        "parentId": "301e1b69-7e13-11e8-8060-e284abfd2bc4",
-                        "zoneId": "301e2106-7e13-11e8-8060-e284abfd2bc4"
-                    },
-                    {
-                        "name": "United Kingdom",
-                        "parentId": "301e2106-7e13-11e8-8060-e284abfd2bc4",
-                        "zoneId": "3022a1b2-7e13-11e8-8060-e284abfd2bc4"
-                    },
-                    {
-                        "name": "England",
-                        "parentId": "3022a1b2-7e13-11e8-8060-e284abfd2bc4",
-                        "zoneId": "3022a3c9-7e13-11e8-8060-e284abfd2bc4"
-                    },
-                    {
-                        "name": "East of England",
-                        "parentId": "3022a3c9-7e13-11e8-8060-e284abfd2bc4",
-                        "zoneId": "3022a504-7e13-11e8-8060-e284abfd2bc4"
-                    }
-                ],
-                "name": "Alectrum"
-            },
-            "wrs": 1,
-            "duration": 0,
-            "durationMs": 0
-        },
-        {
-            "user": {
                 "id": "c367a4eb-78b0-4767-97e2-6b21c7e0ca01",
                 "zone": [
                     {
@@ -3062,14 +3026,14 @@
                     "zoneId": "301e1b69-7e13-11e8-8060-e284abfd2bc4"
                 },
                 {
-                    "name": "Europe",
+                    "name": "Africa",
                     "parentId": "301e1b69-7e13-11e8-8060-e284abfd2bc4",
-                    "zoneId": "301e2106-7e13-11e8-8060-e284abfd2bc4"
+                    "zoneId": "301e1f9b-7e13-11e8-8060-e284abfd2bc4"
                 },
                 {
-                    "name": "United Kingdom",
-                    "parentId": "301e2106-7e13-11e8-8060-e284abfd2bc4",
-                    "zoneId": "3022a1b2-7e13-11e8-8060-e284abfd2bc4"
+                    "name": "Uganda",
+                    "parentId": "301e1f9b-7e13-11e8-8060-e284abfd2bc4",
+                    "zoneId": "30229fdb-7e13-11e8-8060-e284abfd2bc4"
                 }
             ],
             "wrs": 4
@@ -3082,14 +3046,14 @@
                     "zoneId": "301e1b69-7e13-11e8-8060-e284abfd2bc4"
                 },
                 {
-                    "name": "Africa",
+                    "name": "Europe",
                     "parentId": "301e1b69-7e13-11e8-8060-e284abfd2bc4",
-                    "zoneId": "301e1f9b-7e13-11e8-8060-e284abfd2bc4"
+                    "zoneId": "301e2106-7e13-11e8-8060-e284abfd2bc4"
                 },
                 {
-                    "name": "Uganda",
-                    "parentId": "301e1f9b-7e13-11e8-8060-e284abfd2bc4",
-                    "zoneId": "30229fdb-7e13-11e8-8060-e284abfd2bc4"
+                    "name": "United Kingdom",
+                    "parentId": "301e2106-7e13-11e8-8060-e284abfd2bc4",
+                    "zoneId": "3022a1b2-7e13-11e8-8060-e284abfd2bc4"
                 }
             ],
             "wrs": 3
@@ -3365,7 +3329,7 @@
             },
             "wrs": 53,
             "duration": 89,
-            "durationMs": 8165571751
+            "durationMs": 8171299904
         },
         {
             "user": {
@@ -3401,7 +3365,7 @@
             },
             "wrs": 50,
             "duration": 61,
-            "durationMs": 5998719072
+            "durationMs": 6001992192
         },
         {
             "user": {
@@ -3427,7 +3391,7 @@
             },
             "wrs": 48,
             "duration": 62,
-            "durationMs": 6146713130
+            "durationMs": 6149168010
         },
         {
             "user": {
@@ -3458,7 +3422,7 @@
             },
             "wrs": 44,
             "duration": 89,
-            "durationMs": 8100660150
+            "durationMs": 8107206602
         },
         {
             "user": {
@@ -3525,7 +3489,7 @@
             },
             "wrs": 30,
             "duration": 31,
-            "durationMs": 2939055395
+            "durationMs": 2939873701
         },
         {
             "user": {
@@ -3623,7 +3587,7 @@
             },
             "wrs": 24,
             "duration": 58,
-            "durationMs": 5689813037
+            "durationMs": 5692267834
         },
         {
             "user": {
@@ -3659,7 +3623,7 @@
             },
             "wrs": 23,
             "duration": 57,
-            "durationMs": 5384615147
+            "durationMs": 5387070032
         },
         {
             "user": {
@@ -3690,7 +3654,7 @@
             },
             "wrs": 23,
             "duration": 48,
-            "durationMs": 4777468099
+            "durationMs": 4779104700
         },
         {
             "user": {
@@ -3757,7 +3721,7 @@
             },
             "wrs": 20,
             "duration": 7,
-            "durationMs": 696254403
+            "durationMs": 697072710
         },
         {
             "user": {
@@ -3829,7 +3793,7 @@
             },
             "wrs": 19,
             "duration": 14,
-            "durationMs": 1388346395
+            "durationMs": 1389164700
         },
         {
             "user": {
@@ -3865,7 +3829,7 @@
             },
             "wrs": 18,
             "duration": 12,
-            "durationMs": 1125202814
+            "durationMs": 1126839420
         },
         {
             "user": {
@@ -3889,9 +3853,9 @@
                 ],
                 "name": "BIG_MAN_TAXON"
             },
-            "wrs": 16,
+            "wrs": 17,
             "duration": 22,
-            "durationMs": 1980415370
+            "durationMs": 1981233684
         },
         {
             "user": {
@@ -4010,7 +3974,7 @@
             },
             "wrs": 12,
             "duration": 9,
-            "durationMs": 934114401
+            "durationMs": 934932707
         },
         {
             "user": {
@@ -4072,7 +4036,7 @@
             },
             "wrs": 11,
             "duration": 17,
-            "durationMs": 1690394035
+            "durationMs": 1691212338
         },
         {
             "user": {
@@ -4103,7 +4067,7 @@
             },
             "wrs": 11,
             "duration": 17,
-            "durationMs": 1840973053
+            "durationMs": 1841791359
         },
         {
             "user": {
@@ -4232,7 +4196,7 @@
             },
             "wrs": 10,
             "duration": 31,
-            "durationMs": 2804322394
+            "durationMs": 2805140699
         },
         {
             "user": {
@@ -4392,7 +4356,7 @@
             },
             "wrs": 9,
             "duration": 18,
-            "durationMs": 1708431376
+            "durationMs": 1709249689
         },
         {
             "user": {
@@ -4985,7 +4949,7 @@
             },
             "wrs": 5,
             "duration": 7,
-            "durationMs": 750686059
+            "durationMs": 751504368
         },
         {
             "user": {
@@ -5243,7 +5207,7 @@
             },
             "wrs": 4,
             "duration": 7,
-            "durationMs": 639251032
+            "durationMs": 640069333
         },
         {
             "user": {
@@ -5305,7 +5269,7 @@
             },
             "wrs": 4,
             "duration": 20,
-            "durationMs": 1962976098
+            "durationMs": 1963794408
         },
         {
             "user": {
@@ -6134,7 +6098,7 @@
             },
             "wrs": 3,
             "duration": 5,
-            "durationMs": 527419100
+            "durationMs": 528237412
         },
         {
             "user": {
@@ -6438,7 +6402,7 @@
             },
             "wrs": 2,
             "duration": 4,
-            "durationMs": 405675005
+            "durationMs": 406493265
         },
         {
             "user": {
@@ -6866,7 +6830,7 @@
             },
             "wrs": 2,
             "duration": 1,
-            "durationMs": 222926165
+            "durationMs": 224562768
         },
         {
             "user": {
@@ -7068,7 +7032,7 @@
             },
             "wrs": 2,
             "duration": 12,
-            "durationMs": 1054077396
+            "durationMs": 1054895704
         },
         {
             "user": {
@@ -8305,7 +8269,7 @@
             },
             "wrs": 1,
             "duration": 5,
-            "durationMs": 450203099
+            "durationMs": 451021411
         },
         {
             "user": {
@@ -10636,7 +10600,7 @@
                     "zoneId": "30229fdb-7e13-11e8-8060-e284abfd2bc4"
                 }
             ],
-            "wrs": 22
+            "wrs": 23
         },
         {
             "zone": [
@@ -11591,6 +11555,30 @@
         },
         {
             "user": {
+                "id": "4d949246-4a71-46b0-b30d-43cbbf63d0f7",
+                "zone": [
+                    {
+                        "name": "World",
+                        "parentId": null,
+                        "zoneId": "301e1b69-7e13-11e8-8060-e284abfd2bc4"
+                    },
+                    {
+                        "name": "Africa",
+                        "parentId": "301e1b69-7e13-11e8-8060-e284abfd2bc4",
+                        "zoneId": "301e1f9b-7e13-11e8-8060-e284abfd2bc4"
+                    },
+                    {
+                        "name": "Uganda",
+                        "parentId": "301e1f9b-7e13-11e8-8060-e284abfd2bc4",
+                        "zoneId": "30229fdb-7e13-11e8-8060-e284abfd2bc4"
+                    }
+                ],
+                "name": "BIG_MAN_TAXON"
+            },
+            "wrs": 9
+        },
+        {
+            "user": {
                 "id": "a6ae76c9-9030-4a7b-b533-cacfd6e85cb2",
                 "zone": [
                     {
@@ -11717,30 +11705,6 @@
                     }
                 ],
                 "name": "Nova.Zypher"
-            },
-            "wrs": 8
-        },
-        {
-            "user": {
-                "id": "4d949246-4a71-46b0-b30d-43cbbf63d0f7",
-                "zone": [
-                    {
-                        "name": "World",
-                        "parentId": null,
-                        "zoneId": "301e1b69-7e13-11e8-8060-e284abfd2bc4"
-                    },
-                    {
-                        "name": "Africa",
-                        "parentId": "301e1b69-7e13-11e8-8060-e284abfd2bc4",
-                        "zoneId": "301e1f9b-7e13-11e8-8060-e284abfd2bc4"
-                    },
-                    {
-                        "name": "Uganda",
-                        "parentId": "301e1f9b-7e13-11e8-8060-e284abfd2bc4",
-                        "zoneId": "30229fdb-7e13-11e8-8060-e284abfd2bc4"
-                    }
-                ],
-                "name": "BIG_MAN_TAXON"
             },
             "wrs": 8
         },
@@ -17778,17 +17742,17 @@
                     "zoneId": "301e1b69-7e13-11e8-8060-e284abfd2bc4"
                 },
                 {
-                    "name": "Europe",
+                    "name": "Africa",
                     "parentId": "301e1b69-7e13-11e8-8060-e284abfd2bc4",
-                    "zoneId": "301e2106-7e13-11e8-8060-e284abfd2bc4"
+                    "zoneId": "301e1f9b-7e13-11e8-8060-e284abfd2bc4"
                 },
                 {
-                    "name": "Denmark",
-                    "parentId": "301e2106-7e13-11e8-8060-e284abfd2bc4",
-                    "zoneId": "301f5723-7e13-11e8-8060-e284abfd2bc4"
+                    "name": "Uganda",
+                    "parentId": "301e1f9b-7e13-11e8-8060-e284abfd2bc4",
+                    "zoneId": "30229fdb-7e13-11e8-8060-e284abfd2bc4"
                 }
             ],
-            "wrs": 10
+            "wrs": 11
         },
         {
             "zone": [
@@ -17798,14 +17762,14 @@
                     "zoneId": "301e1b69-7e13-11e8-8060-e284abfd2bc4"
                 },
                 {
-                    "name": "Africa",
+                    "name": "Europe",
                     "parentId": "301e1b69-7e13-11e8-8060-e284abfd2bc4",
-                    "zoneId": "301e1f9b-7e13-11e8-8060-e284abfd2bc4"
+                    "zoneId": "301e2106-7e13-11e8-8060-e284abfd2bc4"
                 },
                 {
-                    "name": "Uganda",
-                    "parentId": "301e1f9b-7e13-11e8-8060-e284abfd2bc4",
-                    "zoneId": "30229fdb-7e13-11e8-8060-e284abfd2bc4"
+                    "name": "Denmark",
+                    "parentId": "301e2106-7e13-11e8-8060-e284abfd2bc4",
+                    "zoneId": "301f5723-7e13-11e8-8060-e284abfd2bc4"
                 }
             ],
             "wrs": 10
