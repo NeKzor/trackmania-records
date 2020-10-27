@@ -14673,7 +14673,7 @@
                     "delta": 190,
                     "date": "2020-10-26T16:38:11+00:00",
                     "replay": "87bd657d-d040-4226-8fbb-4ff2f5618923",
-                    "duration": 0
+                    "duration": 1
                 }
             ],
             "isOfficial": true,
@@ -15118,7 +15118,7 @@
                     "delta": 190,
                     "date": "2020-10-26T16:38:11+00:00",
                     "replay": "87bd657d-d040-4226-8fbb-4ff2f5618923",
-                    "duration": 0,
+                    "duration": 1,
                     "durationMs": 15710047
                 }
             ],
@@ -15572,7 +15572,7 @@
                 "name": "OstrAleX_TM"
             },
             "wrs": 1,
-            "duration": 0
+            "duration": 1
         }
     ],
     "countryLeaderboard": [
@@ -17071,7 +17071,7 @@
                 "name": "OstrAleX_TM"
             },
             "wrs": 3,
-            "duration": 5
+            "duration": 6
         },
         {
             "user": {
