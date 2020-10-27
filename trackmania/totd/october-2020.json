@@ -9584,10 +9584,10 @@
                         ],
                         "name": "TomsenTM"
                     },
-                    "score": 44108,
-                    "delta": 53,
-                    "date": "2020-10-27T22:09:10+00:00",
-                    "replay": "f258a8f3-ae34-44ef-b2a9-aa7dfdc6d58c",
+                    "score": 44067,
+                    "delta": 41,
+                    "date": "2020-10-27T23:09:25+00:00",
+                    "replay": "42509761-92f8-4b9c-a0a9-b63d0e8659a1",
                     "duration": 0
                 }
             ],
@@ -9891,13 +9891,51 @@
                     "date": "2020-10-27T22:09:10+00:00",
                     "replay": "f258a8f3-ae34-44ef-b2a9-aa7dfdc6d58c",
                     "duration": 0
+                },
+                {
+                    "user": {
+                        "id": "1addcb03-37e7-4463-82ae-65d64e144015",
+                        "zone": [
+                            {
+                                "name": "World",
+                                "parentId": null,
+                                "zoneId": "301e1b69-7e13-11e8-8060-e284abfd2bc4"
+                            },
+                            {
+                                "name": "Europe",
+                                "parentId": "301e1b69-7e13-11e8-8060-e284abfd2bc4",
+                                "zoneId": "301e2106-7e13-11e8-8060-e284abfd2bc4"
+                            },
+                            {
+                                "name": "Germany",
+                                "parentId": "301e2106-7e13-11e8-8060-e284abfd2bc4",
+                                "zoneId": "301ff622-7e13-11e8-8060-e284abfd2bc4"
+                            },
+                            {
+                                "name": "Bayern",
+                                "parentId": "301ff622-7e13-11e8-8060-e284abfd2bc4",
+                                "zoneId": "301ff9a2-7e13-11e8-8060-e284abfd2bc4"
+                            },
+                            {
+                                "name": "Augsburg",
+                                "parentId": "301ff9a2-7e13-11e8-8060-e284abfd2bc4",
+                                "zoneId": "301ffa36-7e13-11e8-8060-e284abfd2bc4"
+                            }
+                        ],
+                        "name": "TomsenTM"
+                    },
+                    "score": 44067,
+                    "delta": 41,
+                    "date": "2020-10-27T23:09:25+00:00",
+                    "replay": "42509761-92f8-4b9c-a0a9-b63d0e8659a1",
+                    "duration": 0
                 }
             ],
             "thumbnail": "9149c14b-2b5b-48f6-8819-602cfd032969"
         }
     ],
     "stats": {
-        "totalTime": 1133610
+        "totalTime": 1133569
     },
     "leaderboard": [
         {
@@ -10851,6 +10889,41 @@
         },
         {
             "user": {
+                "id": "1addcb03-37e7-4463-82ae-65d64e144015",
+                "zone": [
+                    {
+                        "name": "World",
+                        "parentId": null,
+                        "zoneId": "301e1b69-7e13-11e8-8060-e284abfd2bc4"
+                    },
+                    {
+                        "name": "Europe",
+                        "parentId": "301e1b69-7e13-11e8-8060-e284abfd2bc4",
+                        "zoneId": "301e2106-7e13-11e8-8060-e284abfd2bc4"
+                    },
+                    {
+                        "name": "Germany",
+                        "parentId": "301e2106-7e13-11e8-8060-e284abfd2bc4",
+                        "zoneId": "301ff622-7e13-11e8-8060-e284abfd2bc4"
+                    },
+                    {
+                        "name": "Bayern",
+                        "parentId": "301ff622-7e13-11e8-8060-e284abfd2bc4",
+                        "zoneId": "301ff9a2-7e13-11e8-8060-e284abfd2bc4"
+                    },
+                    {
+                        "name": "Augsburg",
+                        "parentId": "301ff9a2-7e13-11e8-8060-e284abfd2bc4",
+                        "zoneId": "301ffa36-7e13-11e8-8060-e284abfd2bc4"
+                    }
+                ],
+                "name": "TomsenTM"
+            },
+            "wrs": 4,
+            "duration": 0
+        },
+        {
+            "user": {
                 "id": "a98c34ef-5896-417b-bdfe-35c8ed25c4bc",
                 "zone": [
                     {
@@ -11080,41 +11153,6 @@
                     }
                 ],
                 "name": "habichuelotm"
-            },
-            "wrs": 3,
-            "duration": 0
-        },
-        {
-            "user": {
-                "id": "1addcb03-37e7-4463-82ae-65d64e144015",
-                "zone": [
-                    {
-                        "name": "World",
-                        "parentId": null,
-                        "zoneId": "301e1b69-7e13-11e8-8060-e284abfd2bc4"
-                    },
-                    {
-                        "name": "Europe",
-                        "parentId": "301e1b69-7e13-11e8-8060-e284abfd2bc4",
-                        "zoneId": "301e2106-7e13-11e8-8060-e284abfd2bc4"
-                    },
-                    {
-                        "name": "Germany",
-                        "parentId": "301e2106-7e13-11e8-8060-e284abfd2bc4",
-                        "zoneId": "301ff622-7e13-11e8-8060-e284abfd2bc4"
-                    },
-                    {
-                        "name": "Bayern",
-                        "parentId": "301ff622-7e13-11e8-8060-e284abfd2bc4",
-                        "zoneId": "301ff9a2-7e13-11e8-8060-e284abfd2bc4"
-                    },
-                    {
-                        "name": "Augsburg",
-                        "parentId": "301ff9a2-7e13-11e8-8060-e284abfd2bc4",
-                        "zoneId": "301ffa36-7e13-11e8-8060-e284abfd2bc4"
-                    }
-                ],
-                "name": "TomsenTM"
             },
             "wrs": 3,
             "duration": 0
@@ -12409,7 +12447,7 @@
                     "zoneId": "301ff622-7e13-11e8-8060-e284abfd2bc4"
                 }
             ],
-            "wrs": 50
+            "wrs": 51
         },
         {
             "zone": [
