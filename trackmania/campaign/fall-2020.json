@@ -8171,7 +8171,7 @@
                     "delta": 181,
                     "date": "2020-10-22T14:06:59+00:00",
                     "replay": "0ddbca78-23e7-45ff-b4c3-fdc89c05da1a",
-                    "duration": 4
+                    "duration": 5
                 }
             ],
             "isOfficial": true,
@@ -8572,7 +8572,7 @@
                     "delta": 181,
                     "date": "2020-10-22T14:06:59+00:00",
                     "replay": "0ddbca78-23e7-45ff-b4c3-fdc89c05da1a",
-                    "duration": 4,
+                    "duration": 5,
                     "durationMs": 370381948
                 }
             ],
@@ -15412,7 +15412,7 @@
                 "name": "KC.DarkeR"
             },
             "wrs": 1,
-            "duration": 4
+            "duration": 5
         },
         {
             "user": {
@@ -16326,7 +16326,7 @@
                 "name": "KC.DarkeR"
             },
             "wrs": 5,
-            "duration": 17
+            "duration": 18
         },
         {
             "user": {
