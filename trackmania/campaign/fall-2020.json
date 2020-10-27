@@ -13013,7 +13013,7 @@
             "wrs": [
                 {
                     "user": {
-                        "id": "2ed0997d-62bc-4a53-8c09-ffb793382ea2",
+                        "id": "e975fb83-c2b4-4830-9ec6-d8253f315865",
                         "zone": [
                             {
                                 "name": "World",
@@ -13026,27 +13026,17 @@
                                 "zoneId": "301e2106-7e13-11e8-8060-e284abfd2bc4"
                             },
                             {
-                                "name": "Germany",
+                                "name": "Norway",
                                 "parentId": "301e2106-7e13-11e8-8060-e284abfd2bc4",
-                                "zoneId": "301ff622-7e13-11e8-8060-e284abfd2bc4"
-                            },
-                            {
-                                "name": "Nordrhein-Westfalen",
-                                "parentId": "301ff622-7e13-11e8-8060-e284abfd2bc4",
-                                "zoneId": "30200d6a-7e13-11e8-8060-e284abfd2bc4"
-                            },
-                            {
-                                "name": "Dortmund",
-                                "parentId": "30200d6a-7e13-11e8-8060-e284abfd2bc4",
-                                "zoneId": "30201200-7e13-11e8-8060-e284abfd2bc4"
+                                "zoneId": "3020a27d-7e13-11e8-8060-e284abfd2bc4"
                             }
                         ],
-                        "name": "riolu-tm"
+                        "name": "Erizel"
                     },
-                    "score": 52755,
-                    "delta": 6,
-                    "date": "2020-10-27T00:01:34+00:00",
-                    "replay": "8bb0d494-e0a8-4975-8e5f-0a816733fa99",
+                    "score": 52678,
+                    "delta": 77,
+                    "date": "2020-10-27T01:03:32+00:00",
+                    "replay": "0f51af55-70a8-45ab-8093-384e72dc2684",
                     "duration": 0
                 }
             ],
@@ -13456,6 +13446,34 @@
                     "delta": 6,
                     "date": "2020-10-27T00:01:34+00:00",
                     "replay": "8bb0d494-e0a8-4975-8e5f-0a816733fa99",
+                    "duration": 0
+                },
+                {
+                    "user": {
+                        "id": "e975fb83-c2b4-4830-9ec6-d8253f315865",
+                        "zone": [
+                            {
+                                "name": "World",
+                                "parentId": null,
+                                "zoneId": "301e1b69-7e13-11e8-8060-e284abfd2bc4"
+                            },
+                            {
+                                "name": "Europe",
+                                "parentId": "301e1b69-7e13-11e8-8060-e284abfd2bc4",
+                                "zoneId": "301e2106-7e13-11e8-8060-e284abfd2bc4"
+                            },
+                            {
+                                "name": "Norway",
+                                "parentId": "301e2106-7e13-11e8-8060-e284abfd2bc4",
+                                "zoneId": "3020a27d-7e13-11e8-8060-e284abfd2bc4"
+                            }
+                        ],
+                        "name": "Erizel"
+                    },
+                    "score": 52678,
+                    "delta": 77,
+                    "date": "2020-10-27T01:03:32+00:00",
+                    "replay": "0f51af55-70a8-45ab-8093-384e72dc2684",
                     "duration": 0
                 }
             ],
@@ -15070,7 +15088,7 @@
         }
     ],
     "stats": {
-        "totalTime": 927459
+        "totalTime": 927382
     },
     "leaderboard": [
         {
@@ -15105,8 +15123,33 @@
                 ],
                 "name": "riolu-tm"
             },
-            "wrs": 5,
+            "wrs": 4,
             "duration": 40
+        },
+        {
+            "user": {
+                "id": "e975fb83-c2b4-4830-9ec6-d8253f315865",
+                "zone": [
+                    {
+                        "name": "World",
+                        "parentId": null,
+                        "zoneId": "301e1b69-7e13-11e8-8060-e284abfd2bc4"
+                    },
+                    {
+                        "name": "Europe",
+                        "parentId": "301e1b69-7e13-11e8-8060-e284abfd2bc4",
+                        "zoneId": "301e2106-7e13-11e8-8060-e284abfd2bc4"
+                    },
+                    {
+                        "name": "Norway",
+                        "parentId": "301e2106-7e13-11e8-8060-e284abfd2bc4",
+                        "zoneId": "3020a27d-7e13-11e8-8060-e284abfd2bc4"
+                    }
+                ],
+                "name": "Erizel"
+            },
+            "wrs": 3,
+            "duration": 21
         },
         {
             "user": {
@@ -15167,31 +15210,6 @@
             },
             "wrs": 3,
             "duration": 31
-        },
-        {
-            "user": {
-                "id": "e975fb83-c2b4-4830-9ec6-d8253f315865",
-                "zone": [
-                    {
-                        "name": "World",
-                        "parentId": null,
-                        "zoneId": "301e1b69-7e13-11e8-8060-e284abfd2bc4"
-                    },
-                    {
-                        "name": "Europe",
-                        "parentId": "301e1b69-7e13-11e8-8060-e284abfd2bc4",
-                        "zoneId": "301e2106-7e13-11e8-8060-e284abfd2bc4"
-                    },
-                    {
-                        "name": "Norway",
-                        "parentId": "301e2106-7e13-11e8-8060-e284abfd2bc4",
-                        "zoneId": "3020a27d-7e13-11e8-8060-e284abfd2bc4"
-                    }
-                ],
-                "name": "Erizel"
-            },
-            "wrs": 2,
-            "duration": 21
         },
         {
             "user": {
@@ -15538,7 +15556,7 @@
                     "zoneId": "301ff622-7e13-11e8-8060-e284abfd2bc4"
                 }
             ],
-            "wrs": 9
+            "wrs": 8
         },
         {
             "zone": [
@@ -15568,14 +15586,14 @@
                     "zoneId": "301e1b69-7e13-11e8-8060-e284abfd2bc4"
                 },
                 {
-                    "name": "Middle East",
+                    "name": "Europe",
                     "parentId": "301e1b69-7e13-11e8-8060-e284abfd2bc4",
-                    "zoneId": "301e2195-7e13-11e8-8060-e284abfd2bc4"
+                    "zoneId": "301e2106-7e13-11e8-8060-e284abfd2bc4"
                 },
                 {
-                    "name": "Israel",
-                    "parentId": "301e2195-7e13-11e8-8060-e284abfd2bc4",
-                    "zoneId": "30205c20-7e13-11e8-8060-e284abfd2bc4"
+                    "name": "Norway",
+                    "parentId": "301e2106-7e13-11e8-8060-e284abfd2bc4",
+                    "zoneId": "3020a27d-7e13-11e8-8060-e284abfd2bc4"
                 }
             ],
             "wrs": 3
@@ -15588,17 +15606,17 @@
                     "zoneId": "301e1b69-7e13-11e8-8060-e284abfd2bc4"
                 },
                 {
-                    "name": "Europe",
+                    "name": "Middle East",
                     "parentId": "301e1b69-7e13-11e8-8060-e284abfd2bc4",
-                    "zoneId": "301e2106-7e13-11e8-8060-e284abfd2bc4"
+                    "zoneId": "301e2195-7e13-11e8-8060-e284abfd2bc4"
                 },
                 {
-                    "name": "Norway",
-                    "parentId": "301e2106-7e13-11e8-8060-e284abfd2bc4",
-                    "zoneId": "3020a27d-7e13-11e8-8060-e284abfd2bc4"
+                    "name": "Israel",
+                    "parentId": "301e2195-7e13-11e8-8060-e284abfd2bc4",
+                    "zoneId": "30205c20-7e13-11e8-8060-e284abfd2bc4"
                 }
             ],
-            "wrs": 2
+            "wrs": 3
         },
         {
             "zone": [
@@ -15704,7 +15722,7 @@
                 ],
                 "name": "Erizel"
             },
-            "wrs": 27,
+            "wrs": 28,
             "duration": 64
         },
         {
@@ -18917,7 +18935,7 @@
                     "zoneId": "3020a27d-7e13-11e8-8060-e284abfd2bc4"
                 }
             ],
-            "wrs": 46
+            "wrs": 47
         },
         {
             "zone": [
