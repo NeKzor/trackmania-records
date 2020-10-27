@@ -2328,7 +2328,7 @@
                     "delta": 44,
                     "date": "2020-10-07T19:30:21+00:00",
                     "replay": "f6b4cdba-8a64-40b4-a216-84b386d7dd99",
-                    "duration": 19
+                    "duration": 20
                 }
             ],
             "isOfficial": false,
@@ -2583,7 +2583,7 @@
                     "delta": 44,
                     "date": "2020-10-07T19:30:21+00:00",
                     "replay": "f6b4cdba-8a64-40b4-a216-84b386d7dd99",
-                    "duration": 19,
+                    "duration": 20,
                     "durationMs": 1646983599
                 }
             ],
@@ -10042,7 +10042,7 @@
                 "name": "the.Piranha"
             },
             "wrs": 1,
-            "duration": 19
+            "duration": 20
         },
         {
             "user": {
@@ -10556,7 +10556,7 @@
                 "name": "the.Piranha"
             },
             "wrs": 6,
-            "duration": 19
+            "duration": 20
         },
         {
             "user": {
