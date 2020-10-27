@@ -4583,7 +4583,7 @@
                     "delta": 33,
                     "date": "2020-10-15T15:45:46+00:00",
                     "replay": "e1633159-e917-44cc-869f-75b3f4db02b7",
-                    "duration": 11
+                    "duration": 12
                 }
             ],
             "isOfficial": false,
@@ -4984,7 +4984,7 @@
                     "delta": 33,
                     "date": "2020-10-15T15:45:46+00:00",
                     "replay": "e1633159-e917-44cc-869f-75b3f4db02b7",
-                    "duration": 11,
+                    "duration": 12,
                     "durationMs": 969258635
                 }
             ],
@@ -5831,7 +5831,7 @@
                     "delta": 187,
                     "date": "2020-10-18T15:59:46+00:00",
                     "replay": "d9a0ad16-82e5-4135-b2c5-dd516d5b144d",
-                    "duration": 8
+                    "duration": 9
                 }
             ],
             "isOfficial": false,
@@ -6212,7 +6212,7 @@
                     "delta": 187,
                     "date": "2020-10-18T15:59:46+00:00",
                     "replay": "d9a0ad16-82e5-4135-b2c5-dd516d5b144d",
-                    "duration": 8,
+                    "duration": 9,
                     "durationMs": 709218647
                 }
             ],
@@ -9404,10 +9404,10 @@
                         ],
                         "name": "PokeR.4W"
                     },
-                    "score": 37181,
-                    "delta": 77,
-                    "date": "2020-10-26T19:06:51+00:00",
-                    "replay": "c19e8726-d3b6-4ca6-be10-8c72f4fd16fe",
+                    "score": 37123,
+                    "delta": 58,
+                    "date": "2020-10-27T16:49:00+00:00",
+                    "replay": "027cafdc-2175-4ff6-b60d-17a3b67c0943",
                     "duration": 0
                 }
             ],
@@ -9509,13 +9509,46 @@
                     "replay": "c19e8726-d3b6-4ca6-be10-8c72f4fd16fe",
                     "duration": 0,
                     "durationMs": 6793664
+                },
+                {
+                    "user": {
+                        "id": "eb30a7cb-d9c0-49e7-92b4-1eadeeddcd12",
+                        "zone": [
+                            {
+                                "name": "World",
+                                "parentId": null,
+                                "zoneId": "301e1b69-7e13-11e8-8060-e284abfd2bc4"
+                            },
+                            {
+                                "name": "Europe",
+                                "parentId": "301e1b69-7e13-11e8-8060-e284abfd2bc4",
+                                "zoneId": "301e2106-7e13-11e8-8060-e284abfd2bc4"
+                            },
+                            {
+                                "name": "Austria",
+                                "parentId": "301e2106-7e13-11e8-8060-e284abfd2bc4",
+                                "zoneId": "301e41fc-7e13-11e8-8060-e284abfd2bc4"
+                            },
+                            {
+                                "name": "Lower Austria",
+                                "parentId": "301e41fc-7e13-11e8-8060-e284abfd2bc4",
+                                "zoneId": "301e4b33-7e13-11e8-8060-e284abfd2bc4"
+                            }
+                        ],
+                        "name": "PokeR.4W"
+                    },
+                    "score": 37123,
+                    "delta": 58,
+                    "date": "2020-10-27T16:49:00+00:00",
+                    "replay": "027cafdc-2175-4ff6-b60d-17a3b67c0943",
+                    "duration": 0
                 }
             ],
             "thumbnail": "df87bf24-9889-4308-afc4-ce9521439f5e"
         }
     ],
     "stats": {
-        "totalTime": 1089560
+        "totalTime": 1089502
     },
     "leaderboard": [
         {
@@ -9576,7 +9609,7 @@
                 "name": "mime.."
             },
             "wrs": 7,
-            "duration": 93
+            "duration": 94
         },
         {
             "user": {
@@ -9641,7 +9674,7 @@
                 "name": "Shadow_Crancer"
             },
             "wrs": 2,
-            "duration": 13
+            "duration": 14
         },
         {
             "user": {
@@ -10030,7 +10063,7 @@
                 "name": "mime.."
             },
             "wrs": 53,
-            "duration": 93
+            "duration": 94
         },
         {
             "user": {
@@ -10059,7 +10092,7 @@
                 ],
                 "name": "PokeR.4W"
             },
-            "wrs": 24,
+            "wrs": 25,
             "duration": 96
         },
         {
@@ -10120,7 +10153,7 @@
                 "name": "Shadow_Crancer"
             },
             "wrs": 14,
-            "duration": 13
+            "duration": 14
         },
         {
             "user": {
@@ -11977,7 +12010,7 @@
                     "zoneId": "301e41fc-7e13-11e8-8060-e284abfd2bc4"
                 }
             ],
-            "wrs": 24
+            "wrs": 25
         },
         {
             "zone": [
