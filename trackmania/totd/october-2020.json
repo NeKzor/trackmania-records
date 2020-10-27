@@ -9554,7 +9554,7 @@
             "wrs": [
                 {
                     "user": {
-                        "id": "5d4509d8-7fa9-4a91-9520-6fa6c720fef4",
+                        "id": "de590c4e-f98c-4783-afa8-a01efb069ceb",
                         "zone": [
                             {
                                 "name": "World",
@@ -9572,32 +9572,71 @@
                                 "zoneId": "301f6188-7e13-11e8-8060-e284abfd2bc4"
                             },
                             {
-                                "name": "Île-de-France",
+                                "name": "Provence-Alpes-Côte d'Azur",
                                 "parentId": "301f6188-7e13-11e8-8060-e284abfd2bc4",
-                                "zoneId": "301fab89-7e13-11e8-8060-e284abfd2bc4"
+                                "zoneId": "301ff0a1-7e13-11e8-8060-e284abfd2bc4"
                             },
                             {
-                                "name": "Yvelines",
-                                "parentId": "301fab89-7e13-11e8-8060-e284abfd2bc4",
-                                "zoneId": "301fb040-7e13-11e8-8060-e284abfd2bc4"
+                                "name": "Var",
+                                "parentId": "301ff0a1-7e13-11e8-8060-e284abfd2bc4",
+                                "zoneId": "301ff3c1-7e13-11e8-8060-e284abfd2bc4"
                             }
                         ],
-                        "name": "Charlemagne8378"
+                        "name": "exalty.link"
                     },
-                    "score": 53135,
-                    "delta": 0,
-                    "date": "2020-10-27T18:01:18+00:00",
-                    "replay": "a88fee31-e4e3-4159-a75f-e5aae9299d32",
+                    "score": 44625,
+                    "delta": 8510,
+                    "date": "2020-10-27T18:12:10+00:00",
+                    "replay": "d513fb44-e414-479f-b73d-b5d165044158",
                     "duration": 0
                 }
             ],
             "isOfficial": false,
-            "history": [],
+            "history": [
+                {
+                    "user": {
+                        "id": "de590c4e-f98c-4783-afa8-a01efb069ceb",
+                        "zone": [
+                            {
+                                "name": "World",
+                                "parentId": null,
+                                "zoneId": "301e1b69-7e13-11e8-8060-e284abfd2bc4"
+                            },
+                            {
+                                "name": "Europe",
+                                "parentId": "301e1b69-7e13-11e8-8060-e284abfd2bc4",
+                                "zoneId": "301e2106-7e13-11e8-8060-e284abfd2bc4"
+                            },
+                            {
+                                "name": "France",
+                                "parentId": "301e2106-7e13-11e8-8060-e284abfd2bc4",
+                                "zoneId": "301f6188-7e13-11e8-8060-e284abfd2bc4"
+                            },
+                            {
+                                "name": "Provence-Alpes-Côte d'Azur",
+                                "parentId": "301f6188-7e13-11e8-8060-e284abfd2bc4",
+                                "zoneId": "301ff0a1-7e13-11e8-8060-e284abfd2bc4"
+                            },
+                            {
+                                "name": "Var",
+                                "parentId": "301ff0a1-7e13-11e8-8060-e284abfd2bc4",
+                                "zoneId": "301ff3c1-7e13-11e8-8060-e284abfd2bc4"
+                            }
+                        ],
+                        "name": "exalty.link"
+                    },
+                    "score": 44625,
+                    "delta": 8510,
+                    "date": "2020-10-27T18:12:10+00:00",
+                    "replay": "d513fb44-e414-479f-b73d-b5d165044158",
+                    "duration": 0
+                }
+            ],
             "thumbnail": "9149c14b-2b5b-48f6-8819-602cfd032969"
         }
     ],
     "stats": {
-        "totalTime": 1142637
+        "totalTime": 1134127
     },
     "leaderboard": [
         {
@@ -9902,7 +9941,7 @@
         },
         {
             "user": {
-                "id": "5d4509d8-7fa9-4a91-9520-6fa6c720fef4",
+                "id": "de590c4e-f98c-4783-afa8-a01efb069ceb",
                 "zone": [
                     {
                         "name": "World",
@@ -9920,17 +9959,17 @@
                         "zoneId": "301f6188-7e13-11e8-8060-e284abfd2bc4"
                     },
                     {
-                        "name": "Île-de-France",
+                        "name": "Provence-Alpes-Côte d'Azur",
                         "parentId": "301f6188-7e13-11e8-8060-e284abfd2bc4",
-                        "zoneId": "301fab89-7e13-11e8-8060-e284abfd2bc4"
+                        "zoneId": "301ff0a1-7e13-11e8-8060-e284abfd2bc4"
                     },
                     {
-                        "name": "Yvelines",
-                        "parentId": "301fab89-7e13-11e8-8060-e284abfd2bc4",
-                        "zoneId": "301fb040-7e13-11e8-8060-e284abfd2bc4"
+                        "name": "Var",
+                        "parentId": "301ff0a1-7e13-11e8-8060-e284abfd2bc4",
+                        "zoneId": "301ff3c1-7e13-11e8-8060-e284abfd2bc4"
                     }
                 ],
-                "name": "Charlemagne8378"
+                "name": "exalty.link"
             },
             "wrs": 1,
             "duration": 0
@@ -10686,6 +10725,41 @@
         },
         {
             "user": {
+                "id": "de590c4e-f98c-4783-afa8-a01efb069ceb",
+                "zone": [
+                    {
+                        "name": "World",
+                        "parentId": null,
+                        "zoneId": "301e1b69-7e13-11e8-8060-e284abfd2bc4"
+                    },
+                    {
+                        "name": "Europe",
+                        "parentId": "301e1b69-7e13-11e8-8060-e284abfd2bc4",
+                        "zoneId": "301e2106-7e13-11e8-8060-e284abfd2bc4"
+                    },
+                    {
+                        "name": "France",
+                        "parentId": "301e2106-7e13-11e8-8060-e284abfd2bc4",
+                        "zoneId": "301f6188-7e13-11e8-8060-e284abfd2bc4"
+                    },
+                    {
+                        "name": "Provence-Alpes-Côte d'Azur",
+                        "parentId": "301f6188-7e13-11e8-8060-e284abfd2bc4",
+                        "zoneId": "301ff0a1-7e13-11e8-8060-e284abfd2bc4"
+                    },
+                    {
+                        "name": "Var",
+                        "parentId": "301ff0a1-7e13-11e8-8060-e284abfd2bc4",
+                        "zoneId": "301ff3c1-7e13-11e8-8060-e284abfd2bc4"
+                    }
+                ],
+                "name": "exalty.link"
+            },
+            "wrs": 3,
+            "duration": 0
+        },
+        {
+            "user": {
                 "id": "2af66cfe-4ad9-4c0b-9459-f041636e11c6",
                 "zone": [
                     {
@@ -10848,41 +10922,6 @@
             },
             "wrs": 2,
             "duration": 13
-        },
-        {
-            "user": {
-                "id": "de590c4e-f98c-4783-afa8-a01efb069ceb",
-                "zone": [
-                    {
-                        "name": "World",
-                        "parentId": null,
-                        "zoneId": "301e1b69-7e13-11e8-8060-e284abfd2bc4"
-                    },
-                    {
-                        "name": "Europe",
-                        "parentId": "301e1b69-7e13-11e8-8060-e284abfd2bc4",
-                        "zoneId": "301e2106-7e13-11e8-8060-e284abfd2bc4"
-                    },
-                    {
-                        "name": "France",
-                        "parentId": "301e2106-7e13-11e8-8060-e284abfd2bc4",
-                        "zoneId": "301f6188-7e13-11e8-8060-e284abfd2bc4"
-                    },
-                    {
-                        "name": "Provence-Alpes-Côte d'Azur",
-                        "parentId": "301f6188-7e13-11e8-8060-e284abfd2bc4",
-                        "zoneId": "301ff0a1-7e13-11e8-8060-e284abfd2bc4"
-                    },
-                    {
-                        "name": "Var",
-                        "parentId": "301ff0a1-7e13-11e8-8060-e284abfd2bc4",
-                        "zoneId": "301ff3c1-7e13-11e8-8060-e284abfd2bc4"
-                    }
-                ],
-                "name": "exalty.link"
-            },
-            "wrs": 2,
-            "duration": 0
         },
         {
             "user": {
@@ -12013,41 +12052,6 @@
             },
             "wrs": 1,
             "duration": 0
-        },
-        {
-            "user": {
-                "id": "5d4509d8-7fa9-4a91-9520-6fa6c720fef4",
-                "zone": [
-                    {
-                        "name": "World",
-                        "parentId": null,
-                        "zoneId": "301e1b69-7e13-11e8-8060-e284abfd2bc4"
-                    },
-                    {
-                        "name": "Europe",
-                        "parentId": "301e1b69-7e13-11e8-8060-e284abfd2bc4",
-                        "zoneId": "301e2106-7e13-11e8-8060-e284abfd2bc4"
-                    },
-                    {
-                        "name": "France",
-                        "parentId": "301e2106-7e13-11e8-8060-e284abfd2bc4",
-                        "zoneId": "301f6188-7e13-11e8-8060-e284abfd2bc4"
-                    },
-                    {
-                        "name": "Île-de-France",
-                        "parentId": "301f6188-7e13-11e8-8060-e284abfd2bc4",
-                        "zoneId": "301fab89-7e13-11e8-8060-e284abfd2bc4"
-                    },
-                    {
-                        "name": "Yvelines",
-                        "parentId": "301fab89-7e13-11e8-8060-e284abfd2bc4",
-                        "zoneId": "301fb040-7e13-11e8-8060-e284abfd2bc4"
-                    }
-                ],
-                "name": "Charlemagne8378"
-            },
-            "wrs": 1,
-            "duration": 0
         }
     ],
     "historyCountryLeaderboard": [
@@ -12749,6 +12753,40 @@
         },
         {
             "user": {
+                "id": "de590c4e-f98c-4783-afa8-a01efb069ceb",
+                "zone": [
+                    {
+                        "name": "World",
+                        "parentId": null,
+                        "zoneId": "301e1b69-7e13-11e8-8060-e284abfd2bc4"
+                    },
+                    {
+                        "name": "Europe",
+                        "parentId": "301e1b69-7e13-11e8-8060-e284abfd2bc4",
+                        "zoneId": "301e2106-7e13-11e8-8060-e284abfd2bc4"
+                    },
+                    {
+                        "name": "France",
+                        "parentId": "301e2106-7e13-11e8-8060-e284abfd2bc4",
+                        "zoneId": "301f6188-7e13-11e8-8060-e284abfd2bc4"
+                    },
+                    {
+                        "name": "Provence-Alpes-Côte d'Azur",
+                        "parentId": "301f6188-7e13-11e8-8060-e284abfd2bc4",
+                        "zoneId": "301ff0a1-7e13-11e8-8060-e284abfd2bc4"
+                    },
+                    {
+                        "name": "Var",
+                        "parentId": "301ff0a1-7e13-11e8-8060-e284abfd2bc4",
+                        "zoneId": "301ff3c1-7e13-11e8-8060-e284abfd2bc4"
+                    }
+                ],
+                "name": "exalty.link"
+            },
+            "wrs": 3
+        },
+        {
+            "user": {
                 "id": "0f400a09-023c-4787-87ed-72261460f337",
                 "zone": [
                     {
@@ -12943,40 +12981,6 @@
                     }
                 ],
                 "name": "ShaDenis_"
-            },
-            "wrs": 2
-        },
-        {
-            "user": {
-                "id": "de590c4e-f98c-4783-afa8-a01efb069ceb",
-                "zone": [
-                    {
-                        "name": "World",
-                        "parentId": null,
-                        "zoneId": "301e1b69-7e13-11e8-8060-e284abfd2bc4"
-                    },
-                    {
-                        "name": "Europe",
-                        "parentId": "301e1b69-7e13-11e8-8060-e284abfd2bc4",
-                        "zoneId": "301e2106-7e13-11e8-8060-e284abfd2bc4"
-                    },
-                    {
-                        "name": "France",
-                        "parentId": "301e2106-7e13-11e8-8060-e284abfd2bc4",
-                        "zoneId": "301f6188-7e13-11e8-8060-e284abfd2bc4"
-                    },
-                    {
-                        "name": "Provence-Alpes-Côte d'Azur",
-                        "parentId": "301f6188-7e13-11e8-8060-e284abfd2bc4",
-                        "zoneId": "301ff0a1-7e13-11e8-8060-e284abfd2bc4"
-                    },
-                    {
-                        "name": "Var",
-                        "parentId": "301ff0a1-7e13-11e8-8060-e284abfd2bc4",
-                        "zoneId": "301ff3c1-7e13-11e8-8060-e284abfd2bc4"
-                    }
-                ],
-                "name": "exalty.link"
             },
             "wrs": 2
         },
@@ -14246,40 +14250,6 @@
                     }
                 ],
                 "name": "CarlJr."
-            },
-            "wrs": 1
-        },
-        {
-            "user": {
-                "id": "5d4509d8-7fa9-4a91-9520-6fa6c720fef4",
-                "zone": [
-                    {
-                        "name": "World",
-                        "parentId": null,
-                        "zoneId": "301e1b69-7e13-11e8-8060-e284abfd2bc4"
-                    },
-                    {
-                        "name": "Europe",
-                        "parentId": "301e1b69-7e13-11e8-8060-e284abfd2bc4",
-                        "zoneId": "301e2106-7e13-11e8-8060-e284abfd2bc4"
-                    },
-                    {
-                        "name": "France",
-                        "parentId": "301e2106-7e13-11e8-8060-e284abfd2bc4",
-                        "zoneId": "301f6188-7e13-11e8-8060-e284abfd2bc4"
-                    },
-                    {
-                        "name": "Île-de-France",
-                        "parentId": "301f6188-7e13-11e8-8060-e284abfd2bc4",
-                        "zoneId": "301fab89-7e13-11e8-8060-e284abfd2bc4"
-                    },
-                    {
-                        "name": "Yvelines",
-                        "parentId": "301fab89-7e13-11e8-8060-e284abfd2bc4",
-                        "zoneId": "301fb040-7e13-11e8-8060-e284abfd2bc4"
-                    }
-                ],
-                "name": "Charlemagne8378"
             },
             "wrs": 1
         }
