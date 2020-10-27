@@ -2098,7 +2098,7 @@
                     "delta": 151,
                     "date": "2020-10-06T18:11:31+00:00",
                     "replay": "e76e3bbe-e41e-4e47-aad0-9dbcc87cbded",
-                    "duration": 20
+                    "duration": 21
                 }
             ],
             "isOfficial": false,
@@ -2280,7 +2280,7 @@
                     "delta": 151,
                     "date": "2020-10-06T18:11:31+00:00",
                     "replay": "e76e3bbe-e41e-4e47-aad0-9dbcc87cbded",
-                    "duration": 20,
+                    "duration": 21,
                     "durationMs": 1738113598
                 }
             ],
@@ -9584,10 +9584,10 @@
                         ],
                         "name": "Marius.89"
                     },
-                    "score": 44282,
-                    "delta": 3,
-                    "date": "2020-10-27T18:55:26+00:00",
-                    "replay": "570b7182-6a86-429a-ba0b-7296001eb389",
+                    "score": 44228,
+                    "delta": 54,
+                    "date": "2020-10-27T19:03:41+00:00",
+                    "replay": "b00da086-7b16-47ad-a8bc-1105dc6bd324",
                     "duration": 0
                 }
             ],
@@ -9739,13 +9739,51 @@
                     "date": "2020-10-27T18:55:26+00:00",
                     "replay": "570b7182-6a86-429a-ba0b-7296001eb389",
                     "duration": 0
+                },
+                {
+                    "user": {
+                        "id": "794a286c-44d9-4276-83ce-431cba7bab74",
+                        "zone": [
+                            {
+                                "name": "World",
+                                "parentId": null,
+                                "zoneId": "301e1b69-7e13-11e8-8060-e284abfd2bc4"
+                            },
+                            {
+                                "name": "Europe",
+                                "parentId": "301e1b69-7e13-11e8-8060-e284abfd2bc4",
+                                "zoneId": "301e2106-7e13-11e8-8060-e284abfd2bc4"
+                            },
+                            {
+                                "name": "Germany",
+                                "parentId": "301e2106-7e13-11e8-8060-e284abfd2bc4",
+                                "zoneId": "301ff622-7e13-11e8-8060-e284abfd2bc4"
+                            },
+                            {
+                                "name": "Nordrhein-Westfalen",
+                                "parentId": "301ff622-7e13-11e8-8060-e284abfd2bc4",
+                                "zoneId": "30200d6a-7e13-11e8-8060-e284abfd2bc4"
+                            },
+                            {
+                                "name": "Duisburg",
+                                "parentId": "30200d6a-7e13-11e8-8060-e284abfd2bc4",
+                                "zoneId": "302012a4-7e13-11e8-8060-e284abfd2bc4"
+                            }
+                        ],
+                        "name": "Marius.89"
+                    },
+                    "score": 44228,
+                    "delta": 54,
+                    "date": "2020-10-27T19:03:41+00:00",
+                    "replay": "b00da086-7b16-47ad-a8bc-1105dc6bd324",
+                    "duration": 0
                 }
             ],
             "thumbnail": "9149c14b-2b5b-48f6-8819-602cfd032969"
         }
     ],
     "stats": {
-        "totalTime": 1133784
+        "totalTime": 1133730
     },
     "leaderboard": [
         {
@@ -9776,7 +9814,7 @@
                 "name": "PokeR.4W"
             },
             "wrs": 9,
-            "duration": 98
+            "duration": 99
         },
         {
             "user": {
@@ -10290,7 +10328,7 @@
                 "name": "PokeR.4W"
             },
             "wrs": 25,
-            "duration": 98
+            "duration": 99
         },
         {
             "user": {
@@ -10354,6 +10392,41 @@
         },
         {
             "user": {
+                "id": "794a286c-44d9-4276-83ce-431cba7bab74",
+                "zone": [
+                    {
+                        "name": "World",
+                        "parentId": null,
+                        "zoneId": "301e1b69-7e13-11e8-8060-e284abfd2bc4"
+                    },
+                    {
+                        "name": "Europe",
+                        "parentId": "301e1b69-7e13-11e8-8060-e284abfd2bc4",
+                        "zoneId": "301e2106-7e13-11e8-8060-e284abfd2bc4"
+                    },
+                    {
+                        "name": "Germany",
+                        "parentId": "301e2106-7e13-11e8-8060-e284abfd2bc4",
+                        "zoneId": "301ff622-7e13-11e8-8060-e284abfd2bc4"
+                    },
+                    {
+                        "name": "Nordrhein-Westfalen",
+                        "parentId": "301ff622-7e13-11e8-8060-e284abfd2bc4",
+                        "zoneId": "30200d6a-7e13-11e8-8060-e284abfd2bc4"
+                    },
+                    {
+                        "name": "Duisburg",
+                        "parentId": "30200d6a-7e13-11e8-8060-e284abfd2bc4",
+                        "zoneId": "302012a4-7e13-11e8-8060-e284abfd2bc4"
+                    }
+                ],
+                "name": "Marius.89"
+            },
+            "wrs": 14,
+            "duration": 15
+        },
+        {
+            "user": {
                 "id": "f40e1f49-5948-45dc-9778-2f80a44a476a",
                 "zone": [
                     {
@@ -10386,41 +10459,6 @@
             },
             "wrs": 13,
             "duration": 8
-        },
-        {
-            "user": {
-                "id": "794a286c-44d9-4276-83ce-431cba7bab74",
-                "zone": [
-                    {
-                        "name": "World",
-                        "parentId": null,
-                        "zoneId": "301e1b69-7e13-11e8-8060-e284abfd2bc4"
-                    },
-                    {
-                        "name": "Europe",
-                        "parentId": "301e1b69-7e13-11e8-8060-e284abfd2bc4",
-                        "zoneId": "301e2106-7e13-11e8-8060-e284abfd2bc4"
-                    },
-                    {
-                        "name": "Germany",
-                        "parentId": "301e2106-7e13-11e8-8060-e284abfd2bc4",
-                        "zoneId": "301ff622-7e13-11e8-8060-e284abfd2bc4"
-                    },
-                    {
-                        "name": "Nordrhein-Westfalen",
-                        "parentId": "301ff622-7e13-11e8-8060-e284abfd2bc4",
-                        "zoneId": "30200d6a-7e13-11e8-8060-e284abfd2bc4"
-                    },
-                    {
-                        "name": "Duisburg",
-                        "parentId": "30200d6a-7e13-11e8-8060-e284abfd2bc4",
-                        "zoneId": "302012a4-7e13-11e8-8060-e284abfd2bc4"
-                    }
-                ],
-                "name": "Marius.89"
-            },
-            "wrs": 13,
-            "duration": 15
         },
         {
             "user": {
@@ -12222,7 +12260,7 @@
                     "zoneId": "301ff622-7e13-11e8-8060-e284abfd2bc4"
                 }
             ],
-            "wrs": 46
+            "wrs": 47
         },
         {
             "zone": [
