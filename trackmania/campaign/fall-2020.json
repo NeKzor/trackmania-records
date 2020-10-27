@@ -13524,7 +13524,7 @@
             "wrs": [
                 {
                     "user": {
-                        "id": "b09527f2-b61d-4d9a-8cdc-73484590f81f",
+                        "id": "2ed0997d-62bc-4a53-8c09-ffb793382ea2",
                         "zone": [
                             {
                                 "name": "World",
@@ -13532,23 +13532,33 @@
                                 "zoneId": "301e1b69-7e13-11e8-8060-e284abfd2bc4"
                             },
                             {
-                                "name": "Africa",
+                                "name": "Europe",
                                 "parentId": "301e1b69-7e13-11e8-8060-e284abfd2bc4",
-                                "zoneId": "301e1f9b-7e13-11e8-8060-e284abfd2bc4"
+                                "zoneId": "301e2106-7e13-11e8-8060-e284abfd2bc4"
                             },
                             {
-                                "name": "Uganda",
-                                "parentId": "301e1f9b-7e13-11e8-8060-e284abfd2bc4",
-                                "zoneId": "30229fdb-7e13-11e8-8060-e284abfd2bc4"
+                                "name": "Germany",
+                                "parentId": "301e2106-7e13-11e8-8060-e284abfd2bc4",
+                                "zoneId": "301ff622-7e13-11e8-8060-e284abfd2bc4"
+                            },
+                            {
+                                "name": "Nordrhein-Westfalen",
+                                "parentId": "301ff622-7e13-11e8-8060-e284abfd2bc4",
+                                "zoneId": "30200d6a-7e13-11e8-8060-e284abfd2bc4"
+                            },
+                            {
+                                "name": "Dortmund",
+                                "parentId": "30200d6a-7e13-11e8-8060-e284abfd2bc4",
+                                "zoneId": "30201200-7e13-11e8-8060-e284abfd2bc4"
                             }
                         ],
-                        "name": "Gerard.Filoche"
+                        "name": "riolu-tm"
                     },
-                    "score": 45656,
-                    "delta": 119,
-                    "date": "2020-10-07T19:54:02+00:00",
-                    "replay": "b8683692-d8ac-4395-846d-e0c2b88ab9c2",
-                    "duration": 20
+                    "score": 45620,
+                    "delta": 36,
+                    "date": "2020-10-27T21:29:09+00:00",
+                    "replay": "06537965-9151-45eb-b9be-0200d7efc87f",
+                    "duration": 0
                 }
             ],
             "isOfficial": true,
@@ -14019,6 +14029,44 @@
                     "replay": "b8683692-d8ac-4395-846d-e0c2b88ab9c2",
                     "duration": 20,
                     "durationMs": 1645559038
+                },
+                {
+                    "user": {
+                        "id": "2ed0997d-62bc-4a53-8c09-ffb793382ea2",
+                        "zone": [
+                            {
+                                "name": "World",
+                                "parentId": null,
+                                "zoneId": "301e1b69-7e13-11e8-8060-e284abfd2bc4"
+                            },
+                            {
+                                "name": "Europe",
+                                "parentId": "301e1b69-7e13-11e8-8060-e284abfd2bc4",
+                                "zoneId": "301e2106-7e13-11e8-8060-e284abfd2bc4"
+                            },
+                            {
+                                "name": "Germany",
+                                "parentId": "301e2106-7e13-11e8-8060-e284abfd2bc4",
+                                "zoneId": "301ff622-7e13-11e8-8060-e284abfd2bc4"
+                            },
+                            {
+                                "name": "Nordrhein-Westfalen",
+                                "parentId": "301ff622-7e13-11e8-8060-e284abfd2bc4",
+                                "zoneId": "30200d6a-7e13-11e8-8060-e284abfd2bc4"
+                            },
+                            {
+                                "name": "Dortmund",
+                                "parentId": "30200d6a-7e13-11e8-8060-e284abfd2bc4",
+                                "zoneId": "30201200-7e13-11e8-8060-e284abfd2bc4"
+                            }
+                        ],
+                        "name": "riolu-tm"
+                    },
+                    "score": 45620,
+                    "delta": 36,
+                    "date": "2020-10-27T21:29:09+00:00",
+                    "replay": "06537965-9151-45eb-b9be-0200d7efc87f",
+                    "duration": 0
                 }
             ],
             "thumbnail": "e0dd403f-d5ee-4957-8b71-6a86a0013240"
@@ -15126,7 +15174,7 @@
         }
     ],
     "stats": {
-        "totalTime": 927142
+        "totalTime": 927106
     },
     "leaderboard": [
         {
@@ -15161,7 +15209,7 @@
                 ],
                 "name": "riolu-tm"
             },
-            "wrs": 4,
+            "wrs": 5,
             "duration": 41
         },
         {
@@ -15481,31 +15529,6 @@
         },
         {
             "user": {
-                "id": "b09527f2-b61d-4d9a-8cdc-73484590f81f",
-                "zone": [
-                    {
-                        "name": "World",
-                        "parentId": null,
-                        "zoneId": "301e1b69-7e13-11e8-8060-e284abfd2bc4"
-                    },
-                    {
-                        "name": "Africa",
-                        "parentId": "301e1b69-7e13-11e8-8060-e284abfd2bc4",
-                        "zoneId": "301e1f9b-7e13-11e8-8060-e284abfd2bc4"
-                    },
-                    {
-                        "name": "Uganda",
-                        "parentId": "301e1f9b-7e13-11e8-8060-e284abfd2bc4",
-                        "zoneId": "30229fdb-7e13-11e8-8060-e284abfd2bc4"
-                    }
-                ],
-                "name": "Gerard.Filoche"
-            },
-            "wrs": 1,
-            "duration": 20
-        },
-        {
-            "user": {
                 "id": "e57e6195-4845-44a9-9d30-48436d4abb75",
                 "zone": [
                     {
@@ -15594,7 +15617,7 @@
                     "zoneId": "301ff622-7e13-11e8-8060-e284abfd2bc4"
                 }
             ],
-            "wrs": 8
+            "wrs": 9
         },
         {
             "zone": [
@@ -15712,26 +15735,6 @@
                     "name": "Netherlands",
                     "parentId": "301e2106-7e13-11e8-8060-e284abfd2bc4",
                     "zoneId": "302094fd-7e13-11e8-8060-e284abfd2bc4"
-                }
-            ],
-            "wrs": 1
-        },
-        {
-            "zone": [
-                {
-                    "name": "World",
-                    "parentId": null,
-                    "zoneId": "301e1b69-7e13-11e8-8060-e284abfd2bc4"
-                },
-                {
-                    "name": "Africa",
-                    "parentId": "301e1b69-7e13-11e8-8060-e284abfd2bc4",
-                    "zoneId": "301e1f9b-7e13-11e8-8060-e284abfd2bc4"
-                },
-                {
-                    "name": "Uganda",
-                    "parentId": "301e1f9b-7e13-11e8-8060-e284abfd2bc4",
-                    "zoneId": "30229fdb-7e13-11e8-8060-e284abfd2bc4"
                 }
             ],
             "wrs": 1
@@ -15885,7 +15888,7 @@
                 ],
                 "name": "riolu-tm"
             },
-            "wrs": 18,
+            "wrs": 19,
             "duration": 65
         },
         {
@@ -18953,7 +18956,7 @@
                     "zoneId": "301ff622-7e13-11e8-8060-e284abfd2bc4"
                 }
             ],
-            "wrs": 60
+            "wrs": 61
         },
         {
             "zone": [
@@ -19489,7 +19492,7 @@
                 ],
                 "name": "riolu-tm"
             },
-            "wrs": 9
+            "wrs": 10
         },
         {
             "user": {
@@ -22451,7 +22454,7 @@
                     "zoneId": "301ff622-7e13-11e8-8060-e284abfd2bc4"
                 }
             ],
-            "wrs": 33
+            "wrs": 34
         },
         {
             "zone": [
