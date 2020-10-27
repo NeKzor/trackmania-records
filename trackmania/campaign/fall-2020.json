@@ -9730,11 +9730,11 @@
                         ],
                         "name": "Dog.."
                     },
-                    "score": 41175,
-                    "delta": 30,
-                    "date": "2020-10-23T00:45:15+00:00",
-                    "replay": "2e4086be-ce1f-433a-b18f-4299bc00c2d2",
-                    "duration": 3
+                    "score": 40935,
+                    "delta": 240,
+                    "date": "2020-10-27T01:28:57+00:00",
+                    "replay": "85defaf7-4e48-475a-ac83-269f40ebcda7",
+                    "duration": 0
                 }
             ],
             "isOfficial": true,
@@ -10338,6 +10338,44 @@
                     "replay": "2e4086be-ce1f-433a-b18f-4299bc00c2d2",
                     "duration": 3,
                     "durationMs": 332085985
+                },
+                {
+                    "user": {
+                        "id": "961d1145-8c7b-48c3-9191-0d1d91e44a4a",
+                        "zone": [
+                            {
+                                "name": "World",
+                                "parentId": null,
+                                "zoneId": "301e1b69-7e13-11e8-8060-e284abfd2bc4"
+                            },
+                            {
+                                "name": "Europe",
+                                "parentId": "301e1b69-7e13-11e8-8060-e284abfd2bc4",
+                                "zoneId": "301e2106-7e13-11e8-8060-e284abfd2bc4"
+                            },
+                            {
+                                "name": "Germany",
+                                "parentId": "301e2106-7e13-11e8-8060-e284abfd2bc4",
+                                "zoneId": "301ff622-7e13-11e8-8060-e284abfd2bc4"
+                            },
+                            {
+                                "name": "Niedersachsen",
+                                "parentId": "301ff622-7e13-11e8-8060-e284abfd2bc4",
+                                "zoneId": "30200a18-7e13-11e8-8060-e284abfd2bc4"
+                            },
+                            {
+                                "name": "Oldenburg",
+                                "parentId": "30200a18-7e13-11e8-8060-e284abfd2bc4",
+                                "zoneId": "30200bd1-7e13-11e8-8060-e284abfd2bc4"
+                            }
+                        ],
+                        "name": "Dog.."
+                    },
+                    "score": 40935,
+                    "delta": 240,
+                    "date": "2020-10-27T01:28:57+00:00",
+                    "replay": "85defaf7-4e48-475a-ac83-269f40ebcda7",
+                    "duration": 0
                 }
             ],
             "thumbnail": "211c41a4-1e30-42cf-91a0-45afaa45ee34"
@@ -15088,7 +15126,7 @@
         }
     ],
     "stats": {
-        "totalTime": 927382
+        "totalTime": 927142
     },
     "leaderboard": [
         {
@@ -15439,7 +15477,7 @@
                 "name": "Dog.."
             },
             "wrs": 1,
-            "duration": 3
+            "duration": 0
         },
         {
             "user": {
@@ -16197,6 +16235,41 @@
         },
         {
             "user": {
+                "id": "961d1145-8c7b-48c3-9191-0d1d91e44a4a",
+                "zone": [
+                    {
+                        "name": "World",
+                        "parentId": null,
+                        "zoneId": "301e1b69-7e13-11e8-8060-e284abfd2bc4"
+                    },
+                    {
+                        "name": "Europe",
+                        "parentId": "301e1b69-7e13-11e8-8060-e284abfd2bc4",
+                        "zoneId": "301e2106-7e13-11e8-8060-e284abfd2bc4"
+                    },
+                    {
+                        "name": "Germany",
+                        "parentId": "301e2106-7e13-11e8-8060-e284abfd2bc4",
+                        "zoneId": "301ff622-7e13-11e8-8060-e284abfd2bc4"
+                    },
+                    {
+                        "name": "Niedersachsen",
+                        "parentId": "301ff622-7e13-11e8-8060-e284abfd2bc4",
+                        "zoneId": "30200a18-7e13-11e8-8060-e284abfd2bc4"
+                    },
+                    {
+                        "name": "Oldenburg",
+                        "parentId": "30200a18-7e13-11e8-8060-e284abfd2bc4",
+                        "zoneId": "30200bd1-7e13-11e8-8060-e284abfd2bc4"
+                    }
+                ],
+                "name": "Dog.."
+            },
+            "wrs": 6,
+            "duration": 7
+        },
+        {
+            "user": {
                 "id": "c2afe633-bdea-4147-8cc9-40d363b75ade",
                 "zone": [
                     {
@@ -16399,41 +16472,6 @@
             },
             "wrs": 5,
             "duration": 0
-        },
-        {
-            "user": {
-                "id": "961d1145-8c7b-48c3-9191-0d1d91e44a4a",
-                "zone": [
-                    {
-                        "name": "World",
-                        "parentId": null,
-                        "zoneId": "301e1b69-7e13-11e8-8060-e284abfd2bc4"
-                    },
-                    {
-                        "name": "Europe",
-                        "parentId": "301e1b69-7e13-11e8-8060-e284abfd2bc4",
-                        "zoneId": "301e2106-7e13-11e8-8060-e284abfd2bc4"
-                    },
-                    {
-                        "name": "Germany",
-                        "parentId": "301e2106-7e13-11e8-8060-e284abfd2bc4",
-                        "zoneId": "301ff622-7e13-11e8-8060-e284abfd2bc4"
-                    },
-                    {
-                        "name": "Niedersachsen",
-                        "parentId": "301ff622-7e13-11e8-8060-e284abfd2bc4",
-                        "zoneId": "30200a18-7e13-11e8-8060-e284abfd2bc4"
-                    },
-                    {
-                        "name": "Oldenburg",
-                        "parentId": "30200a18-7e13-11e8-8060-e284abfd2bc4",
-                        "zoneId": "30200bd1-7e13-11e8-8060-e284abfd2bc4"
-                    }
-                ],
-                "name": "Dog.."
-            },
-            "wrs": 5,
-            "duration": 7
         },
         {
             "user": {
@@ -18915,7 +18953,7 @@
                     "zoneId": "301ff622-7e13-11e8-8060-e284abfd2bc4"
                 }
             ],
-            "wrs": 59
+            "wrs": 60
         },
         {
             "zone": [
