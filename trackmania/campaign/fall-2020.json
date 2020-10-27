@@ -9077,7 +9077,7 @@
                     "delta": 27,
                     "date": "2020-10-19T19:03:46+00:00",
                     "replay": "cc2e480f-6435-488c-9366-31a608441719",
-                    "duration": 7
+                    "duration": 8
                 }
             ],
             "isOfficial": true,
@@ -9687,7 +9687,7 @@
                     "delta": 27,
                     "date": "2020-10-19T19:03:46+00:00",
                     "replay": "cc2e480f-6435-488c-9366-31a608441719",
-                    "duration": 7,
+                    "duration": 8,
                     "durationMs": 611774983
                 }
             ],
@@ -15442,7 +15442,7 @@
                 "name": "Spaghett37"
             },
             "wrs": 1,
-            "duration": 7
+            "duration": 8
         },
         {
             "user": {
@@ -15976,7 +15976,7 @@
                 "name": "Spaghett37"
             },
             "wrs": 11,
-            "duration": 18
+            "duration": 19
         },
         {
             "user": {
