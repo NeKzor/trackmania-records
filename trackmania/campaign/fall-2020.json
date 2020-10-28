@@ -943,7 +943,7 @@
                     "delta": 2,
                     "date": "2020-10-22T03:32:04+00:00",
                     "replay": "2d21e8ef-5c75-4050-ba39-e8174f393298",
-                    "duration": 5
+                    "duration": 6
                 }
             ],
             "isOfficial": true,
@@ -1451,7 +1451,7 @@
                     "delta": 2,
                     "date": "2020-10-22T03:32:04+00:00",
                     "replay": "2d21e8ef-5c75-4050-ba39-e8174f393298",
-                    "duration": 5,
+                    "duration": 6,
                     "durationMs": 408476846
                 }
             ],
@@ -15413,7 +15413,7 @@
                 "name": "maxmad-46"
             },
             "wrs": 1,
-            "duration": 5
+            "duration": 6
         },
         {
             "user": {
@@ -17127,7 +17127,7 @@
                 "name": "maxmad-46"
             },
             "wrs": 2,
-            "duration": 5
+            "duration": 6
         },
         {
             "user": {
