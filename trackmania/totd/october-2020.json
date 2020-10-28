@@ -2626,7 +2626,7 @@
                     "delta": 21,
                     "date": "2020-10-08T17:59:38+00:00",
                     "replay": "75b0083f-1e1a-4841-878a-22e4282240ea",
-                    "duration": 19
+                    "duration": 20
                 }
             ],
             "isOfficial": false,
@@ -2769,7 +2769,7 @@
                     "delta": 21,
                     "date": "2020-10-08T17:59:38+00:00",
                     "replay": "75b0083f-1e1a-4841-878a-22e4282240ea",
-                    "duration": 19,
+                    "duration": 20,
                     "durationMs": 1566026610
                 }
             ],
@@ -9994,10 +9994,10 @@
                         ],
                         "name": "YannexTM"
                     },
-                    "score": 35924,
-                    "delta": 64,
-                    "date": "2020-10-28T18:39:42+00:00",
-                    "replay": "beab7f58-5ceb-4d6b-8a01-19c21a277a53",
+                    "score": 35832,
+                    "delta": 92,
+                    "date": "2020-10-28T18:58:43+00:00",
+                    "replay": "4ef2fd43-aa0b-40b1-9ff4-62b5cab63d18",
                     "duration": 0
                 }
             ],
@@ -10101,13 +10101,46 @@
                     "date": "2020-10-28T18:39:42+00:00",
                     "replay": "beab7f58-5ceb-4d6b-8a01-19c21a277a53",
                     "duration": 0
+                },
+                {
+                    "user": {
+                        "id": "a98c34ef-5896-417b-bdfe-35c8ed25c4bc",
+                        "zone": [
+                            {
+                                "name": "World",
+                                "parentId": null,
+                                "zoneId": "301e1b69-7e13-11e8-8060-e284abfd2bc4"
+                            },
+                            {
+                                "name": "Europe",
+                                "parentId": "301e1b69-7e13-11e8-8060-e284abfd2bc4",
+                                "zoneId": "301e2106-7e13-11e8-8060-e284abfd2bc4"
+                            },
+                            {
+                                "name": "Switzerland",
+                                "parentId": "301e2106-7e13-11e8-8060-e284abfd2bc4",
+                                "zoneId": "30228733-7e13-11e8-8060-e284abfd2bc4"
+                            },
+                            {
+                                "name": "Fribourg",
+                                "parentId": "30228733-7e13-11e8-8060-e284abfd2bc4",
+                                "zoneId": "30228b49-7e13-11e8-8060-e284abfd2bc4"
+                            }
+                        ],
+                        "name": "YannexTM"
+                    },
+                    "score": 35832,
+                    "delta": 92,
+                    "date": "2020-10-28T18:58:43+00:00",
+                    "replay": "4ef2fd43-aa0b-40b1-9ff4-62b5cab63d18",
+                    "duration": 0
                 }
             ],
             "thumbnail": "75db6c48-5e1a-4581-94e5-ade37d1a474c"
         }
     ],
     "stats": {
-        "totalTime": 1169397
+        "totalTime": 1169305
     },
     "leaderboard": [
         {
@@ -10138,7 +10171,7 @@
                 "name": "PokeR.4W"
             },
             "wrs": 9,
-            "duration": 106
+            "duration": 107
         },
         {
             "user": {
@@ -10732,7 +10765,7 @@
                 "name": "PokeR.4W"
             },
             "wrs": 25,
-            "duration": 106
+            "duration": 107
         },
         {
             "user": {
@@ -10891,6 +10924,36 @@
         },
         {
             "user": {
+                "id": "a98c34ef-5896-417b-bdfe-35c8ed25c4bc",
+                "zone": [
+                    {
+                        "name": "World",
+                        "parentId": null,
+                        "zoneId": "301e1b69-7e13-11e8-8060-e284abfd2bc4"
+                    },
+                    {
+                        "name": "Europe",
+                        "parentId": "301e1b69-7e13-11e8-8060-e284abfd2bc4",
+                        "zoneId": "301e2106-7e13-11e8-8060-e284abfd2bc4"
+                    },
+                    {
+                        "name": "Switzerland",
+                        "parentId": "301e2106-7e13-11e8-8060-e284abfd2bc4",
+                        "zoneId": "30228733-7e13-11e8-8060-e284abfd2bc4"
+                    },
+                    {
+                        "name": "Fribourg",
+                        "parentId": "30228733-7e13-11e8-8060-e284abfd2bc4",
+                        "zoneId": "30228b49-7e13-11e8-8060-e284abfd2bc4"
+                    }
+                ],
+                "name": "YannexTM"
+            },
+            "wrs": 6,
+            "duration": 0
+        },
+        {
+            "user": {
                 "id": "dc9f18ad-d746-4cca-8b9a-7f068c123dbd",
                 "zone": [
                     {
@@ -10953,36 +11016,6 @@
             },
             "wrs": 6,
             "duration": 15
-        },
-        {
-            "user": {
-                "id": "a98c34ef-5896-417b-bdfe-35c8ed25c4bc",
-                "zone": [
-                    {
-                        "name": "World",
-                        "parentId": null,
-                        "zoneId": "301e1b69-7e13-11e8-8060-e284abfd2bc4"
-                    },
-                    {
-                        "name": "Europe",
-                        "parentId": "301e1b69-7e13-11e8-8060-e284abfd2bc4",
-                        "zoneId": "301e2106-7e13-11e8-8060-e284abfd2bc4"
-                    },
-                    {
-                        "name": "Switzerland",
-                        "parentId": "301e2106-7e13-11e8-8060-e284abfd2bc4",
-                        "zoneId": "30228733-7e13-11e8-8060-e284abfd2bc4"
-                    },
-                    {
-                        "name": "Fribourg",
-                        "parentId": "30228733-7e13-11e8-8060-e284abfd2bc4",
-                        "zoneId": "30228b49-7e13-11e8-8060-e284abfd2bc4"
-                    }
-                ],
-                "name": "YannexTM"
-            },
-            "wrs": 5,
-            "duration": 0
         },
         {
             "user": {
@@ -12794,7 +12827,7 @@
                     "zoneId": "30228733-7e13-11e8-8060-e284abfd2bc4"
                 }
             ],
-            "wrs": 5
+            "wrs": 6
         },
         {
             "zone": [
