@@ -33,7 +33,7 @@
                 "name": "riolu-tm"
             },
             "wrs": 21,
-            "duration": 170
+            "duration": 171
         },
         {
             "user": {
@@ -223,7 +223,7 @@
                 "name": "MTP.hugo220"
             },
             "wrs": 7,
-            "duration": 100
+            "duration": 101
         },
         {
             "user": {
@@ -3277,7 +3277,7 @@
                 "name": "riolu-tm"
             },
             "wrs": 52,
-            "duration": 71
+            "duration": 72
         },
         {
             "user": {
@@ -3467,7 +3467,7 @@
                 "name": "MTP.hugo220"
             },
             "wrs": 26,
-            "duration": 63
+            "duration": 64
         },
         {
             "user": {
