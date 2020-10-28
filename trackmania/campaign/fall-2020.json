@@ -43,7 +43,7 @@
                     "delta": 21,
                     "date": "2020-10-09T13:00:05+00:00",
                     "replay": "85de4a7d-63e4-40cd-86f5-daabacd30781",
-                    "duration": 18
+                    "duration": 19
                 }
             ],
             "isOfficial": true,
@@ -14130,7 +14130,7 @@
                     "delta": 173,
                     "date": "2020-10-21T12:58:00+00:00",
                     "replay": "ec419526-2a01-4efa-a0aa-e008d3542d52",
-                    "duration": 6
+                    "duration": 7
                 }
             ],
             "isOfficial": true,
@@ -14692,7 +14692,7 @@
                     "delta": 173,
                     "date": "2020-10-21T12:58:00+00:00",
                     "replay": "ec419526-2a01-4efa-a0aa-e008d3542d52",
-                    "duration": 6,
+                    "duration": 7,
                     "durationMs": 460921046
                 }
             ],
@@ -15266,7 +15266,7 @@
                 "name": "riolu-tm"
             },
             "wrs": 5,
-            "duration": 44
+            "duration": 45
         },
         {
             "user": {
@@ -15581,7 +15581,7 @@
                 "name": "DrimisbacK46"
             },
             "wrs": 1,
-            "duration": 6
+            "duration": 7
         },
         {
             "user": {
@@ -18935,7 +18935,7 @@
                 "name": "DrimisbacK46"
             },
             "wrs": 1,
-            "duration": 6
+            "duration": 7
         }
     ],
     "historyCountryLeaderboard": [
