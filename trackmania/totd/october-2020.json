@@ -3261,7 +3261,7 @@
                     "delta": 43,
                     "date": "2020-10-11T16:00:42+00:00",
                     "replay": "4d60b0d2-11b7-4d70-a288-381d874ea940",
-                    "duration": 16
+                    "duration": 17
                 }
             ],
             "isOfficial": false,
@@ -3613,7 +3613,7 @@
                     "delta": 43,
                     "date": "2020-10-11T16:00:42+00:00",
                     "replay": "4d60b0d2-11b7-4d70-a288-381d874ea940",
-                    "duration": 16,
+                    "duration": 17,
                     "durationMs": 1313962615
                 }
             ],
@@ -5027,7 +5027,7 @@
                     "delta": 68,
                     "date": "2020-10-16T16:05:27+00:00",
                     "replay": "93a277ef-8e89-4185-8fa7-85992b46fa19",
-                    "duration": 11
+                    "duration": 12
                 }
             ],
             "isOfficial": false,
@@ -5452,7 +5452,7 @@
                     "delta": 68,
                     "date": "2020-10-16T16:05:27+00:00",
                     "replay": "93a277ef-8e89-4185-8fa7-85992b46fa19",
-                    "duration": 11,
+                    "duration": 12,
                     "durationMs": 881677637
                 }
             ],
@@ -10024,7 +10024,7 @@
                 "name": "mime.."
             },
             "wrs": 7,
-            "duration": 101
+            "duration": 102
         },
         {
             "user": {
@@ -10054,7 +10054,7 @@
                 "name": "eLconn21"
             },
             "wrs": 2,
-            "duration": 24
+            "duration": 25
         },
         {
             "user": {
@@ -10508,7 +10508,7 @@
                 "name": "mime.."
             },
             "wrs": 54,
-            "duration": 101
+            "duration": 102
         },
         {
             "user": {
@@ -10858,7 +10858,7 @@
                 "name": "eLconn21"
             },
             "wrs": 4,
-            "duration": 16
+            "duration": 17
         },
         {
             "user": {
