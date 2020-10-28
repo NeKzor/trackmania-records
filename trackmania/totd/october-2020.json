@@ -9994,10 +9994,10 @@
                         ],
                         "name": "YannexTM"
                     },
-                    "score": 35988,
-                    "delta": 59,
-                    "date": "2020-10-28T18:16:37+00:00",
-                    "replay": "63915693-aba7-466c-b51d-e3caf1d2fd67",
+                    "score": 35924,
+                    "delta": 64,
+                    "date": "2020-10-28T18:39:42+00:00",
+                    "replay": "beab7f58-5ceb-4d6b-8a01-19c21a277a53",
                     "duration": 0
                 }
             ],
@@ -10068,13 +10068,46 @@
                     "date": "2020-10-28T18:16:37+00:00",
                     "replay": "63915693-aba7-466c-b51d-e3caf1d2fd67",
                     "duration": 0
+                },
+                {
+                    "user": {
+                        "id": "a98c34ef-5896-417b-bdfe-35c8ed25c4bc",
+                        "zone": [
+                            {
+                                "name": "World",
+                                "parentId": null,
+                                "zoneId": "301e1b69-7e13-11e8-8060-e284abfd2bc4"
+                            },
+                            {
+                                "name": "Europe",
+                                "parentId": "301e1b69-7e13-11e8-8060-e284abfd2bc4",
+                                "zoneId": "301e2106-7e13-11e8-8060-e284abfd2bc4"
+                            },
+                            {
+                                "name": "Switzerland",
+                                "parentId": "301e2106-7e13-11e8-8060-e284abfd2bc4",
+                                "zoneId": "30228733-7e13-11e8-8060-e284abfd2bc4"
+                            },
+                            {
+                                "name": "Fribourg",
+                                "parentId": "30228733-7e13-11e8-8060-e284abfd2bc4",
+                                "zoneId": "30228b49-7e13-11e8-8060-e284abfd2bc4"
+                            }
+                        ],
+                        "name": "YannexTM"
+                    },
+                    "score": 35924,
+                    "delta": 64,
+                    "date": "2020-10-28T18:39:42+00:00",
+                    "replay": "beab7f58-5ceb-4d6b-8a01-19c21a277a53",
+                    "duration": 0
                 }
             ],
             "thumbnail": "75db6c48-5e1a-4581-94e5-ade37d1a474c"
         }
     ],
     "stats": {
-        "totalTime": 1169461
+        "totalTime": 1169397
     },
     "leaderboard": [
         {
@@ -10948,7 +10981,7 @@
                 ],
                 "name": "YannexTM"
             },
-            "wrs": 4,
+            "wrs": 5,
             "duration": 0
         },
         {
@@ -12756,6 +12789,26 @@
                     "zoneId": "301e2106-7e13-11e8-8060-e284abfd2bc4"
                 },
                 {
+                    "name": "Switzerland",
+                    "parentId": "301e2106-7e13-11e8-8060-e284abfd2bc4",
+                    "zoneId": "30228733-7e13-11e8-8060-e284abfd2bc4"
+                }
+            ],
+            "wrs": 5
+        },
+        {
+            "zone": [
+                {
+                    "name": "World",
+                    "parentId": null,
+                    "zoneId": "301e1b69-7e13-11e8-8060-e284abfd2bc4"
+                },
+                {
+                    "name": "Europe",
+                    "parentId": "301e1b69-7e13-11e8-8060-e284abfd2bc4",
+                    "zoneId": "301e2106-7e13-11e8-8060-e284abfd2bc4"
+                },
+                {
                     "name": "Norway",
                     "parentId": "301e2106-7e13-11e8-8060-e284abfd2bc4",
                     "zoneId": "3020a27d-7e13-11e8-8060-e284abfd2bc4"
@@ -12782,26 +12835,6 @@
                 }
             ],
             "wrs": 5
-        },
-        {
-            "zone": [
-                {
-                    "name": "World",
-                    "parentId": null,
-                    "zoneId": "301e1b69-7e13-11e8-8060-e284abfd2bc4"
-                },
-                {
-                    "name": "Europe",
-                    "parentId": "301e1b69-7e13-11e8-8060-e284abfd2bc4",
-                    "zoneId": "301e2106-7e13-11e8-8060-e284abfd2bc4"
-                },
-                {
-                    "name": "Switzerland",
-                    "parentId": "301e2106-7e13-11e8-8060-e284abfd2bc4",
-                    "zoneId": "30228733-7e13-11e8-8060-e284abfd2bc4"
-                }
-            ],
-            "wrs": 4
         },
         {
             "zone": [
