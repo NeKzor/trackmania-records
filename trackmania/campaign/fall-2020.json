@@ -13093,7 +13093,7 @@
                     "delta": 77,
                     "date": "2020-10-27T01:03:32+00:00",
                     "replay": "0f51af55-70a8-45ab-8093-384e72dc2684",
-                    "duration": 0
+                    "duration": 1
                 }
             ],
             "isOfficial": true,
@@ -13530,7 +13530,7 @@
                     "delta": 77,
                     "date": "2020-10-27T01:03:32+00:00",
                     "replay": "0f51af55-70a8-45ab-8093-384e72dc2684",
-                    "duration": 0
+                    "duration": 1
                 }
             ],
             "thumbnail": "576c525c-9be4-44a5-aad0-6648e6f68140"
@@ -15253,7 +15253,7 @@
                 "name": "Erizel"
             },
             "wrs": 4,
-            "duration": 23
+            "duration": 24
         },
         {
             "user": {
@@ -15747,7 +15747,7 @@
                 "name": "Erizel"
             },
             "wrs": 29,
-            "duration": 66
+            "duration": 67
         },
         {
             "user": {

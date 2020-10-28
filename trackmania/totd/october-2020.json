@@ -3661,7 +3661,7 @@
                     "delta": 82,
                     "date": "2020-10-12T00:00:14+00:00",
                     "replay": "7f702ce5-d32d-4941-ae0f-9e9e4103d50a",
-                    "duration": 15
+                    "duration": 16
                 }
             ],
             "isOfficial": false,
@@ -3925,7 +3925,7 @@
                     "delta": 82,
                     "date": "2020-10-12T00:00:14+00:00",
                     "replay": "7f702ce5-d32d-4941-ae0f-9e9e4103d50a",
-                    "duration": 15,
+                    "duration": 16,
                     "durationMs": 1285190616
                 }
             ],
@@ -10156,7 +10156,7 @@
                 "name": "Marius.89"
             },
             "wrs": 1,
-            "duration": 15
+            "duration": 16
         },
         {
             "user": {
@@ -10550,7 +10550,7 @@
                 "name": "Marius.89"
             },
             "wrs": 15,
-            "duration": 15
+            "duration": 16
         },
         {
             "user": {
