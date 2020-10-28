@@ -3899,7 +3899,7 @@
                     "delta": 58,
                     "date": "2020-10-21T22:57:16+00:00",
                     "replay": "e0e45e5e-351c-4ef8-b8b6-967d1cae483e",
-                    "duration": 5
+                    "duration": 6
                 }
             ],
             "isOfficial": true,
@@ -4416,7 +4416,7 @@
                     "delta": 58,
                     "date": "2020-10-21T22:57:16+00:00",
                     "replay": "e0e45e5e-351c-4ef8-b8b6-967d1cae483e",
-                    "duration": 5,
+                    "duration": 6,
                     "durationMs": 424964902
                 }
             ],
@@ -15210,7 +15210,7 @@
                 "name": "riolu-tm"
             },
             "wrs": 5,
-            "duration": 43
+            "duration": 44
         },
         {
             "user": {
@@ -15889,7 +15889,7 @@
                 "name": "riolu-tm"
             },
             "wrs": 19,
-            "duration": 67
+            "duration": 68
         },
         {
             "user": {
