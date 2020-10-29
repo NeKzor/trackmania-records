@@ -10313,10 +10313,10 @@
                         ],
                         "name": "CarlJr."
                     },
-                    "score": 33293,
-                    "delta": 372,
-                    "date": "2020-10-29T18:27:21+00:00",
-                    "replay": "df22ccb1-0207-4329-8d45-598a596fa0c7",
+                    "score": 33128,
+                    "delta": 165,
+                    "date": "2020-10-29T18:37:55+00:00",
+                    "replay": "c05e9e74-55e9-4f42-9fe4-eb475e1abe21",
                     "duration": 0
                 }
             ],
@@ -10382,13 +10382,46 @@
                     "date": "2020-10-29T18:27:21+00:00",
                     "replay": "df22ccb1-0207-4329-8d45-598a596fa0c7",
                     "duration": 0
+                },
+                {
+                    "user": {
+                        "id": "0c857beb-fd95-4449-a669-21fb310cacae",
+                        "zone": [
+                            {
+                                "name": "World",
+                                "parentId": null,
+                                "zoneId": "301e1b69-7e13-11e8-8060-e284abfd2bc4"
+                            },
+                            {
+                                "name": "North America",
+                                "parentId": "301e1b69-7e13-11e8-8060-e284abfd2bc4",
+                                "zoneId": "301e2274-7e13-11e8-8060-e284abfd2bc4"
+                            },
+                            {
+                                "name": "Canada",
+                                "parentId": "301e2274-7e13-11e8-8060-e284abfd2bc4",
+                                "zoneId": "301e6dd7-7e13-11e8-8060-e284abfd2bc4"
+                            },
+                            {
+                                "name": "Quebec",
+                                "parentId": "301e6dd7-7e13-11e8-8060-e284abfd2bc4",
+                                "zoneId": "301e73a7-7e13-11e8-8060-e284abfd2bc4"
+                            }
+                        ],
+                        "name": "CarlJr."
+                    },
+                    "score": 33128,
+                    "delta": 165,
+                    "date": "2020-10-29T18:37:55+00:00",
+                    "replay": "c05e9e74-55e9-4f42-9fe4-eb475e1abe21",
+                    "duration": 0
                 }
             ],
             "thumbnail": "0c618ebe-c49a-4ebe-9f88-b71cd3677516"
         }
     ],
     "stats": {
-        "totalTime": 1202479
+        "totalTime": 1202314
     },
     "leaderboard": [
         {
@@ -11472,6 +11505,36 @@
         },
         {
             "user": {
+                "id": "0c857beb-fd95-4449-a669-21fb310cacae",
+                "zone": [
+                    {
+                        "name": "World",
+                        "parentId": null,
+                        "zoneId": "301e1b69-7e13-11e8-8060-e284abfd2bc4"
+                    },
+                    {
+                        "name": "North America",
+                        "parentId": "301e1b69-7e13-11e8-8060-e284abfd2bc4",
+                        "zoneId": "301e2274-7e13-11e8-8060-e284abfd2bc4"
+                    },
+                    {
+                        "name": "Canada",
+                        "parentId": "301e2274-7e13-11e8-8060-e284abfd2bc4",
+                        "zoneId": "301e6dd7-7e13-11e8-8060-e284abfd2bc4"
+                    },
+                    {
+                        "name": "Quebec",
+                        "parentId": "301e6dd7-7e13-11e8-8060-e284abfd2bc4",
+                        "zoneId": "301e73a7-7e13-11e8-8060-e284abfd2bc4"
+                    }
+                ],
+                "name": "CarlJr."
+            },
+            "wrs": 4,
+            "duration": 0
+        },
+        {
+            "user": {
                 "id": "1addcb03-37e7-4463-82ae-65d64e144015",
                 "zone": [
                     {
@@ -11706,36 +11769,6 @@
                     }
                 ],
                 "name": "habichuelotm"
-            },
-            "wrs": 3,
-            "duration": 0
-        },
-        {
-            "user": {
-                "id": "0c857beb-fd95-4449-a669-21fb310cacae",
-                "zone": [
-                    {
-                        "name": "World",
-                        "parentId": null,
-                        "zoneId": "301e1b69-7e13-11e8-8060-e284abfd2bc4"
-                    },
-                    {
-                        "name": "North America",
-                        "parentId": "301e1b69-7e13-11e8-8060-e284abfd2bc4",
-                        "zoneId": "301e2274-7e13-11e8-8060-e284abfd2bc4"
-                    },
-                    {
-                        "name": "Canada",
-                        "parentId": "301e2274-7e13-11e8-8060-e284abfd2bc4",
-                        "zoneId": "301e6dd7-7e13-11e8-8060-e284abfd2bc4"
-                    },
-                    {
-                        "name": "Quebec",
-                        "parentId": "301e6dd7-7e13-11e8-8060-e284abfd2bc4",
-                        "zoneId": "301e73a7-7e13-11e8-8060-e284abfd2bc4"
-                    }
-                ],
-                "name": "CarlJr."
             },
             "wrs": 3,
             "duration": 0
@@ -13250,7 +13283,7 @@
                     "zoneId": "301e6dd7-7e13-11e8-8060-e284abfd2bc4"
                 }
             ],
-            "wrs": 4
+            "wrs": 5
         },
         {
             "zone": [
