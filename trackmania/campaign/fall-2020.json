@@ -14777,7 +14777,7 @@
                     "delta": 40,
                     "date": "2020-10-28T09:52:50+00:00",
                     "replay": "f243a3a1-d9f1-4c5f-a3ce-6d657d0b38af",
-                    "duration": 0
+                    "duration": 1
                 }
             ],
             "isOfficial": true,
@@ -15261,7 +15261,7 @@
                     "delta": 40,
                     "date": "2020-10-28T09:52:50+00:00",
                     "replay": "f243a3a1-d9f1-4c5f-a3ce-6d657d0b38af",
-                    "duration": 0
+                    "duration": 1
                 }
             ],
             "thumbnail": "cf656560-e29c-4f29-bfc6-eed15a19b2e8"
@@ -15619,7 +15619,7 @@
                 "name": "Dog.."
             },
             "wrs": 1,
-            "duration": 0
+            "duration": 1
         }
     ],
     "countryLeaderboard": [
@@ -16168,7 +16168,7 @@
                 "name": "Dog.."
             },
             "wrs": 7,
-            "duration": 7
+            "duration": 8
         },
         {
             "user": {
