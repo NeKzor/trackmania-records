@@ -818,7 +818,7 @@
                     "delta": 1,
                     "date": "2020-10-28T23:32:39+00:00",
                     "replay": "e1b3cf59-4426-4b90-9b41-adde861684f6",
-                    "duration": 0
+                    "duration": 1
                 }
             ],
             "isOfficial": true,
@@ -935,7 +935,7 @@
                     "delta": 1,
                     "date": "2020-10-28T23:32:39+00:00",
                     "replay": "e1b3cf59-4426-4b90-9b41-adde861684f6",
-                    "duration": 0
+                    "duration": 1
                 }
             ],
             "thumbnail": "ed69fddd-2140-4913-bd8f-59220cad1993"
@@ -2039,7 +2039,7 @@
                 "name": "Kerberos.4W"
             },
             "wrs": 1,
-            "duration": 0
+            "duration": 1
         },
         {
             "user": {
@@ -3068,7 +3068,7 @@
                 "name": "Kerberos.4W"
             },
             "wrs": 1,
-            "duration": 0
+            "duration": 1
         },
         {
             "user": {
