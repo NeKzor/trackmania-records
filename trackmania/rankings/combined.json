@@ -93,7 +93,7 @@
                 "name": "PokeR.4W"
             },
             "wrs": 10,
-            "duration": 128
+            "duration": 129
         },
         {
             "user": {
@@ -3302,7 +3302,7 @@
                 "name": "PokeR.4W"
             },
             "wrs": 47,
-            "duration": 116
+            "duration": 117
         },
         {
             "user": {
@@ -3816,31 +3816,6 @@
         },
         {
             "user": {
-                "id": "a198e640-779a-47c0-97b5-9d38a351e7fa",
-                "zone": [
-                    {
-                        "name": "World",
-                        "parentId": null,
-                        "zoneId": "301e1b69-7e13-11e8-8060-e284abfd2bc4"
-                    },
-                    {
-                        "name": "Europe",
-                        "parentId": "301e1b69-7e13-11e8-8060-e284abfd2bc4",
-                        "zoneId": "301e2106-7e13-11e8-8060-e284abfd2bc4"
-                    },
-                    {
-                        "name": "Croatia",
-                        "parentId": "301e2106-7e13-11e8-8060-e284abfd2bc4",
-                        "zoneId": "301f40ae-7e13-11e8-8060-e284abfd2bc4"
-                    }
-                ],
-                "name": "tekky_TM"
-            },
-            "wrs": 12,
-            "duration": 12
-        },
-        {
-            "user": {
                 "id": "0c857beb-fd95-4449-a669-21fb310cacae",
                 "zone": [
                     {
@@ -3866,8 +3841,33 @@
                 ],
                 "name": "CarlJr."
             },
-            "wrs": 12,
+            "wrs": 13,
             "duration": 0
+        },
+        {
+            "user": {
+                "id": "a198e640-779a-47c0-97b5-9d38a351e7fa",
+                "zone": [
+                    {
+                        "name": "World",
+                        "parentId": null,
+                        "zoneId": "301e1b69-7e13-11e8-8060-e284abfd2bc4"
+                    },
+                    {
+                        "name": "Europe",
+                        "parentId": "301e1b69-7e13-11e8-8060-e284abfd2bc4",
+                        "zoneId": "301e2106-7e13-11e8-8060-e284abfd2bc4"
+                    },
+                    {
+                        "name": "Croatia",
+                        "parentId": "301e2106-7e13-11e8-8060-e284abfd2bc4",
+                        "zoneId": "301f40ae-7e13-11e8-8060-e284abfd2bc4"
+                    }
+                ],
+                "name": "tekky_TM"
+            },
+            "wrs": 12,
+            "duration": 12
         },
         {
             "user": {
@@ -10784,6 +10784,26 @@
                     "zoneId": "301e1b69-7e13-11e8-8060-e284abfd2bc4"
                 },
                 {
+                    "name": "North America",
+                    "parentId": "301e1b69-7e13-11e8-8060-e284abfd2bc4",
+                    "zoneId": "301e2274-7e13-11e8-8060-e284abfd2bc4"
+                },
+                {
+                    "name": "Canada",
+                    "parentId": "301e2274-7e13-11e8-8060-e284abfd2bc4",
+                    "zoneId": "301e6dd7-7e13-11e8-8060-e284abfd2bc4"
+                }
+            ],
+            "wrs": 24
+        },
+        {
+            "zone": [
+                {
+                    "name": "World",
+                    "parentId": null,
+                    "zoneId": "301e1b69-7e13-11e8-8060-e284abfd2bc4"
+                },
+                {
                     "name": "Africa",
                     "parentId": "301e1b69-7e13-11e8-8060-e284abfd2bc4",
                     "zoneId": "301e1f9b-7e13-11e8-8060-e284abfd2bc4"
@@ -10815,26 +10835,6 @@
                 }
             ],
             "wrs": 24
-        },
-        {
-            "zone": [
-                {
-                    "name": "World",
-                    "parentId": null,
-                    "zoneId": "301e1b69-7e13-11e8-8060-e284abfd2bc4"
-                },
-                {
-                    "name": "North America",
-                    "parentId": "301e1b69-7e13-11e8-8060-e284abfd2bc4",
-                    "zoneId": "301e2274-7e13-11e8-8060-e284abfd2bc4"
-                },
-                {
-                    "name": "Canada",
-                    "parentId": "301e2274-7e13-11e8-8060-e284abfd2bc4",
-                    "zoneId": "301e6dd7-7e13-11e8-8060-e284abfd2bc4"
-                }
-            ],
-            "wrs": 23
         },
         {
             "zone": [

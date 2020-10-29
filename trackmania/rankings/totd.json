@@ -93,7 +93,7 @@
                 "name": "PokeR.4W"
             },
             "wrs": 10,
-            "duration": 128
+            "duration": 129
         },
         {
             "user": {
@@ -2052,7 +2052,7 @@
                 "name": "PokeR.4W"
             },
             "wrs": 46,
-            "duration": 116
+            "duration": 117
         },
         {
             "user": {
@@ -2501,7 +2501,7 @@
                 ],
                 "name": "CarlJr."
             },
-            "wrs": 11,
+            "wrs": 12,
             "duration": 0
         },
         {
@@ -6584,17 +6584,17 @@
                     "zoneId": "301e1b69-7e13-11e8-8060-e284abfd2bc4"
                 },
                 {
-                    "name": "Europe",
+                    "name": "North America",
                     "parentId": "301e1b69-7e13-11e8-8060-e284abfd2bc4",
-                    "zoneId": "301e2106-7e13-11e8-8060-e284abfd2bc4"
+                    "zoneId": "301e2274-7e13-11e8-8060-e284abfd2bc4"
                 },
                 {
-                    "name": "Switzerland",
-                    "parentId": "301e2106-7e13-11e8-8060-e284abfd2bc4",
-                    "zoneId": "30228733-7e13-11e8-8060-e284abfd2bc4"
+                    "name": "Canada",
+                    "parentId": "301e2274-7e13-11e8-8060-e284abfd2bc4",
+                    "zoneId": "301e6dd7-7e13-11e8-8060-e284abfd2bc4"
                 }
             ],
-            "wrs": 13
+            "wrs": 14
         },
         {
             "zone": [
@@ -6604,14 +6604,14 @@
                     "zoneId": "301e1b69-7e13-11e8-8060-e284abfd2bc4"
                 },
                 {
-                    "name": "North America",
+                    "name": "Europe",
                     "parentId": "301e1b69-7e13-11e8-8060-e284abfd2bc4",
-                    "zoneId": "301e2274-7e13-11e8-8060-e284abfd2bc4"
+                    "zoneId": "301e2106-7e13-11e8-8060-e284abfd2bc4"
                 },
                 {
-                    "name": "Canada",
-                    "parentId": "301e2274-7e13-11e8-8060-e284abfd2bc4",
-                    "zoneId": "301e6dd7-7e13-11e8-8060-e284abfd2bc4"
+                    "name": "Switzerland",
+                    "parentId": "301e2106-7e13-11e8-8060-e284abfd2bc4",
+                    "zoneId": "30228733-7e13-11e8-8060-e284abfd2bc4"
                 }
             ],
             "wrs": 13

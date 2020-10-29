@@ -2098,7 +2098,7 @@
                     "delta": 151,
                     "date": "2020-10-06T18:11:31+00:00",
                     "replay": "e76e3bbe-e41e-4e47-aad0-9dbcc87cbded",
-                    "duration": 22
+                    "duration": 23
                 }
             ],
             "isOfficial": false,
@@ -2280,7 +2280,7 @@
                     "delta": 151,
                     "date": "2020-10-06T18:11:31+00:00",
                     "replay": "e76e3bbe-e41e-4e47-aad0-9dbcc87cbded",
-                    "duration": 22,
+                    "duration": 23,
                     "durationMs": 1738113598
                 }
             ],
@@ -10313,10 +10313,10 @@
                         ],
                         "name": "CarlJr."
                     },
-                    "score": 33128,
-                    "delta": 165,
-                    "date": "2020-10-29T18:37:55+00:00",
-                    "replay": "c05e9e74-55e9-4f42-9fe4-eb475e1abe21",
+                    "score": 33040,
+                    "delta": 88,
+                    "date": "2020-10-29T19:09:56+00:00",
+                    "replay": "c78d5108-e617-4a99-a78d-77f096240a88",
                     "duration": 0
                 }
             ],
@@ -10415,13 +10415,46 @@
                     "date": "2020-10-29T18:37:55+00:00",
                     "replay": "c05e9e74-55e9-4f42-9fe4-eb475e1abe21",
                     "duration": 0
+                },
+                {
+                    "user": {
+                        "id": "0c857beb-fd95-4449-a669-21fb310cacae",
+                        "zone": [
+                            {
+                                "name": "World",
+                                "parentId": null,
+                                "zoneId": "301e1b69-7e13-11e8-8060-e284abfd2bc4"
+                            },
+                            {
+                                "name": "North America",
+                                "parentId": "301e1b69-7e13-11e8-8060-e284abfd2bc4",
+                                "zoneId": "301e2274-7e13-11e8-8060-e284abfd2bc4"
+                            },
+                            {
+                                "name": "Canada",
+                                "parentId": "301e2274-7e13-11e8-8060-e284abfd2bc4",
+                                "zoneId": "301e6dd7-7e13-11e8-8060-e284abfd2bc4"
+                            },
+                            {
+                                "name": "Quebec",
+                                "parentId": "301e6dd7-7e13-11e8-8060-e284abfd2bc4",
+                                "zoneId": "301e73a7-7e13-11e8-8060-e284abfd2bc4"
+                            }
+                        ],
+                        "name": "CarlJr."
+                    },
+                    "score": 33040,
+                    "delta": 88,
+                    "date": "2020-10-29T19:09:56+00:00",
+                    "replay": "c78d5108-e617-4a99-a78d-77f096240a88",
+                    "duration": 0
                 }
             ],
             "thumbnail": "0c618ebe-c49a-4ebe-9f88-b71cd3677516"
         }
     ],
     "stats": {
-        "totalTime": 1202314
+        "totalTime": 1202226
     },
     "leaderboard": [
         {
@@ -10452,7 +10485,7 @@
                 "name": "PokeR.4W"
             },
             "wrs": 9,
-            "duration": 116
+            "duration": 117
         },
         {
             "user": {
@@ -11101,7 +11134,7 @@
                 "name": "PokeR.4W"
             },
             "wrs": 25,
-            "duration": 116
+            "duration": 117
         },
         {
             "user": {
@@ -11355,6 +11388,36 @@
         },
         {
             "user": {
+                "id": "0c857beb-fd95-4449-a669-21fb310cacae",
+                "zone": [
+                    {
+                        "name": "World",
+                        "parentId": null,
+                        "zoneId": "301e1b69-7e13-11e8-8060-e284abfd2bc4"
+                    },
+                    {
+                        "name": "North America",
+                        "parentId": "301e1b69-7e13-11e8-8060-e284abfd2bc4",
+                        "zoneId": "301e2274-7e13-11e8-8060-e284abfd2bc4"
+                    },
+                    {
+                        "name": "Canada",
+                        "parentId": "301e2274-7e13-11e8-8060-e284abfd2bc4",
+                        "zoneId": "301e6dd7-7e13-11e8-8060-e284abfd2bc4"
+                    },
+                    {
+                        "name": "Quebec",
+                        "parentId": "301e6dd7-7e13-11e8-8060-e284abfd2bc4",
+                        "zoneId": "301e73a7-7e13-11e8-8060-e284abfd2bc4"
+                    }
+                ],
+                "name": "CarlJr."
+            },
+            "wrs": 5,
+            "duration": 0
+        },
+        {
+            "user": {
                 "id": "65341b56-1625-4df2-8fb4-ad7145c03c34",
                 "zone": [
                     {
@@ -11499,36 +11562,6 @@
                     }
                 ],
                 "name": "AR_Madzen"
-            },
-            "wrs": 4,
-            "duration": 0
-        },
-        {
-            "user": {
-                "id": "0c857beb-fd95-4449-a669-21fb310cacae",
-                "zone": [
-                    {
-                        "name": "World",
-                        "parentId": null,
-                        "zoneId": "301e1b69-7e13-11e8-8060-e284abfd2bc4"
-                    },
-                    {
-                        "name": "North America",
-                        "parentId": "301e1b69-7e13-11e8-8060-e284abfd2bc4",
-                        "zoneId": "301e2274-7e13-11e8-8060-e284abfd2bc4"
-                    },
-                    {
-                        "name": "Canada",
-                        "parentId": "301e2274-7e13-11e8-8060-e284abfd2bc4",
-                        "zoneId": "301e6dd7-7e13-11e8-8060-e284abfd2bc4"
-                    },
-                    {
-                        "name": "Quebec",
-                        "parentId": "301e6dd7-7e13-11e8-8060-e284abfd2bc4",
-                        "zoneId": "301e73a7-7e13-11e8-8060-e284abfd2bc4"
-                    }
-                ],
-                "name": "CarlJr."
             },
             "wrs": 4,
             "duration": 0
@@ -13233,6 +13266,26 @@
                     "zoneId": "301e1b69-7e13-11e8-8060-e284abfd2bc4"
                 },
                 {
+                    "name": "North America",
+                    "parentId": "301e1b69-7e13-11e8-8060-e284abfd2bc4",
+                    "zoneId": "301e2274-7e13-11e8-8060-e284abfd2bc4"
+                },
+                {
+                    "name": "Canada",
+                    "parentId": "301e2274-7e13-11e8-8060-e284abfd2bc4",
+                    "zoneId": "301e6dd7-7e13-11e8-8060-e284abfd2bc4"
+                }
+            ],
+            "wrs": 6
+        },
+        {
+            "zone": [
+                {
+                    "name": "World",
+                    "parentId": null,
+                    "zoneId": "301e1b69-7e13-11e8-8060-e284abfd2bc4"
+                },
+                {
                     "name": "Europe",
                     "parentId": "301e1b69-7e13-11e8-8060-e284abfd2bc4",
                     "zoneId": "301e2106-7e13-11e8-8060-e284abfd2bc4"
@@ -13261,26 +13314,6 @@
                     "name": "Norway",
                     "parentId": "301e2106-7e13-11e8-8060-e284abfd2bc4",
                     "zoneId": "3020a27d-7e13-11e8-8060-e284abfd2bc4"
-                }
-            ],
-            "wrs": 5
-        },
-        {
-            "zone": [
-                {
-                    "name": "World",
-                    "parentId": null,
-                    "zoneId": "301e1b69-7e13-11e8-8060-e284abfd2bc4"
-                },
-                {
-                    "name": "North America",
-                    "parentId": "301e1b69-7e13-11e8-8060-e284abfd2bc4",
-                    "zoneId": "301e2274-7e13-11e8-8060-e284abfd2bc4"
-                },
-                {
-                    "name": "Canada",
-                    "parentId": "301e2274-7e13-11e8-8060-e284abfd2bc4",
-                    "zoneId": "301e6dd7-7e13-11e8-8060-e284abfd2bc4"
                 }
             ],
             "wrs": 5
