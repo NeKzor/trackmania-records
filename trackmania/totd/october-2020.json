@@ -6825,7 +6825,7 @@
                     "delta": 90,
                     "date": "2020-10-20T12:27:12+00:00",
                     "replay": "d72e2e62-1d17-4173-a581-a85ba11f1ea6",
-                    "duration": 8
+                    "duration": 9
                 }
             ],
             "isOfficial": false,
@@ -7221,7 +7221,7 @@
                     "delta": 90,
                     "date": "2020-10-20T12:27:12+00:00",
                     "replay": "d72e2e62-1d17-4173-a581-a85ba11f1ea6",
-                    "duration": 8,
+                    "duration": 9,
                     "durationMs": 549172650
                 }
             ],
@@ -8822,7 +8822,7 @@
                     "delta": 157,
                     "date": "2020-10-25T13:18:25+00:00",
                     "replay": "fedea062-8290-4c74-8cb8-688f7af49e78",
-                    "duration": 3
+                    "duration": 4
                 }
             ],
             "isOfficial": false,
@@ -9179,7 +9179,7 @@
                     "delta": 157,
                     "date": "2020-10-25T13:18:25+00:00",
                     "replay": "fedea062-8290-4c74-8cb8-688f7af49e78",
-                    "duration": 3,
+                    "duration": 4,
                     "durationMs": 114099663
                 }
             ],
@@ -10313,7 +10313,7 @@
                 "name": "PokeR.4W"
             },
             "wrs": 9,
-            "duration": 110
+            "duration": 111
         },
         {
             "user": {
@@ -10343,7 +10343,7 @@
                 "name": "mime.."
             },
             "wrs": 7,
-            "duration": 105
+            "duration": 106
         },
         {
             "user": {
@@ -10882,7 +10882,7 @@
                 "name": "mime.."
             },
             "wrs": 54,
-            "duration": 105
+            "duration": 106
         },
         {
             "user": {
@@ -10912,7 +10912,7 @@
                 "name": "PokeR.4W"
             },
             "wrs": 25,
-            "duration": 110
+            "duration": 111
         },
         {
             "user": {
