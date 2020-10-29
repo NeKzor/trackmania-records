@@ -9724,7 +9724,7 @@
                     "delta": 320,
                     "date": "2020-10-28T00:08:58+00:00",
                     "replay": "ceb793ea-6a82-41ac-83c4-df5cbdb97767",
-                    "duration": 0
+                    "duration": 1
                 }
             ],
             "isOfficial": true,
@@ -10393,7 +10393,7 @@
                     "delta": 320,
                     "date": "2020-10-28T00:08:58+00:00",
                     "replay": "ceb793ea-6a82-41ac-83c4-df5cbdb97767",
-                    "duration": 0
+                    "duration": 1
                 }
             ],
             "thumbnail": "211c41a4-1e30-42cf-91a0-45afaa45ee34"
@@ -14096,7 +14096,7 @@
             "wrs": [
                 {
                     "user": {
-                        "id": "e57e6195-4845-44a9-9d30-48436d4abb75",
+                        "id": "2ed0997d-62bc-4a53-8c09-ffb793382ea2",
                         "zone": [
                             {
                                 "name": "World",
@@ -14109,28 +14109,28 @@
                                 "zoneId": "301e2106-7e13-11e8-8060-e284abfd2bc4"
                             },
                             {
-                                "name": "France",
+                                "name": "Germany",
                                 "parentId": "301e2106-7e13-11e8-8060-e284abfd2bc4",
-                                "zoneId": "301f6188-7e13-11e8-8060-e284abfd2bc4"
+                                "zoneId": "301ff622-7e13-11e8-8060-e284abfd2bc4"
                             },
                             {
-                                "name": "Occitanie",
-                                "parentId": "301f6188-7e13-11e8-8060-e284abfd2bc4",
-                                "zoneId": "301fd300-7e13-11e8-8060-e284abfd2bc4"
+                                "name": "Nordrhein-Westfalen",
+                                "parentId": "301ff622-7e13-11e8-8060-e284abfd2bc4",
+                                "zoneId": "30200d6a-7e13-11e8-8060-e284abfd2bc4"
                             },
                             {
-                                "name": "Lot",
-                                "parentId": "301fd300-7e13-11e8-8060-e284abfd2bc4",
-                                "zoneId": "301fe365-7e13-11e8-8060-e284abfd2bc4"
+                                "name": "Dortmund",
+                                "parentId": "30200d6a-7e13-11e8-8060-e284abfd2bc4",
+                                "zoneId": "30201200-7e13-11e8-8060-e284abfd2bc4"
                             }
                         ],
-                        "name": "DrimisbacK46"
+                        "name": "riolu-tm"
                     },
-                    "score": 51751,
-                    "delta": 173,
-                    "date": "2020-10-21T12:58:00+00:00",
-                    "replay": "ec419526-2a01-4efa-a0aa-e008d3542d52",
-                    "duration": 7
+                    "score": 51741,
+                    "delta": 10,
+                    "date": "2020-10-29T00:04:37+00:00",
+                    "replay": "1c1ec944-df70-4456-8911-5efb8781f57c",
+                    "duration": 0
                 }
             ],
             "isOfficial": true,
@@ -14694,6 +14694,44 @@
                     "replay": "ec419526-2a01-4efa-a0aa-e008d3542d52",
                     "duration": 7,
                     "durationMs": 460921046
+                },
+                {
+                    "user": {
+                        "id": "2ed0997d-62bc-4a53-8c09-ffb793382ea2",
+                        "zone": [
+                            {
+                                "name": "World",
+                                "parentId": null,
+                                "zoneId": "301e1b69-7e13-11e8-8060-e284abfd2bc4"
+                            },
+                            {
+                                "name": "Europe",
+                                "parentId": "301e1b69-7e13-11e8-8060-e284abfd2bc4",
+                                "zoneId": "301e2106-7e13-11e8-8060-e284abfd2bc4"
+                            },
+                            {
+                                "name": "Germany",
+                                "parentId": "301e2106-7e13-11e8-8060-e284abfd2bc4",
+                                "zoneId": "301ff622-7e13-11e8-8060-e284abfd2bc4"
+                            },
+                            {
+                                "name": "Nordrhein-Westfalen",
+                                "parentId": "301ff622-7e13-11e8-8060-e284abfd2bc4",
+                                "zoneId": "30200d6a-7e13-11e8-8060-e284abfd2bc4"
+                            },
+                            {
+                                "name": "Dortmund",
+                                "parentId": "30200d6a-7e13-11e8-8060-e284abfd2bc4",
+                                "zoneId": "30201200-7e13-11e8-8060-e284abfd2bc4"
+                            }
+                        ],
+                        "name": "riolu-tm"
+                    },
+                    "score": 51741,
+                    "delta": 10,
+                    "date": "2020-10-29T00:04:37+00:00",
+                    "replay": "1c1ec944-df70-4456-8911-5efb8781f57c",
+                    "duration": 0
                 }
             ],
             "thumbnail": "9387fe0f-7db7-4105-a95e-522d6aadd558"
@@ -15230,7 +15268,7 @@
         }
     ],
     "stats": {
-        "totalTime": 926746
+        "totalTime": 926736
     },
     "leaderboard": [
         {
@@ -15265,7 +15303,7 @@
                 ],
                 "name": "riolu-tm"
             },
-            "wrs": 5,
+            "wrs": 6,
             "duration": 49
         },
         {
@@ -15291,7 +15329,7 @@
                 "name": "Erizel"
             },
             "wrs": 4,
-            "duration": 26
+            "duration": 27
         },
         {
             "user": {
@@ -15550,41 +15588,6 @@
         },
         {
             "user": {
-                "id": "e57e6195-4845-44a9-9d30-48436d4abb75",
-                "zone": [
-                    {
-                        "name": "World",
-                        "parentId": null,
-                        "zoneId": "301e1b69-7e13-11e8-8060-e284abfd2bc4"
-                    },
-                    {
-                        "name": "Europe",
-                        "parentId": "301e1b69-7e13-11e8-8060-e284abfd2bc4",
-                        "zoneId": "301e2106-7e13-11e8-8060-e284abfd2bc4"
-                    },
-                    {
-                        "name": "France",
-                        "parentId": "301e2106-7e13-11e8-8060-e284abfd2bc4",
-                        "zoneId": "301f6188-7e13-11e8-8060-e284abfd2bc4"
-                    },
-                    {
-                        "name": "Occitanie",
-                        "parentId": "301f6188-7e13-11e8-8060-e284abfd2bc4",
-                        "zoneId": "301fd300-7e13-11e8-8060-e284abfd2bc4"
-                    },
-                    {
-                        "name": "Lot",
-                        "parentId": "301fd300-7e13-11e8-8060-e284abfd2bc4",
-                        "zoneId": "301fe365-7e13-11e8-8060-e284abfd2bc4"
-                    }
-                ],
-                "name": "DrimisbacK46"
-            },
-            "wrs": 1,
-            "duration": 7
-        },
-        {
-            "user": {
                 "id": "961d1145-8c7b-48c3-9191-0d1d91e44a4a",
                 "zone": [
                     {
@@ -15638,27 +15641,7 @@
                     "zoneId": "301ff622-7e13-11e8-8060-e284abfd2bc4"
                 }
             ],
-            "wrs": 9
-        },
-        {
-            "zone": [
-                {
-                    "name": "World",
-                    "parentId": null,
-                    "zoneId": "301e1b69-7e13-11e8-8060-e284abfd2bc4"
-                },
-                {
-                    "name": "Europe",
-                    "parentId": "301e1b69-7e13-11e8-8060-e284abfd2bc4",
-                    "zoneId": "301e2106-7e13-11e8-8060-e284abfd2bc4"
-                },
-                {
-                    "name": "France",
-                    "parentId": "301e2106-7e13-11e8-8060-e284abfd2bc4",
-                    "zoneId": "301f6188-7e13-11e8-8060-e284abfd2bc4"
-                }
-            ],
-            "wrs": 5
+            "wrs": 10
         },
         {
             "zone": [
@@ -15676,6 +15659,26 @@
                     "name": "Norway",
                     "parentId": "301e2106-7e13-11e8-8060-e284abfd2bc4",
                     "zoneId": "3020a27d-7e13-11e8-8060-e284abfd2bc4"
+                }
+            ],
+            "wrs": 4
+        },
+        {
+            "zone": [
+                {
+                    "name": "World",
+                    "parentId": null,
+                    "zoneId": "301e1b69-7e13-11e8-8060-e284abfd2bc4"
+                },
+                {
+                    "name": "Europe",
+                    "parentId": "301e1b69-7e13-11e8-8060-e284abfd2bc4",
+                    "zoneId": "301e2106-7e13-11e8-8060-e284abfd2bc4"
+                },
+                {
+                    "name": "France",
+                    "parentId": "301e2106-7e13-11e8-8060-e284abfd2bc4",
+                    "zoneId": "301f6188-7e13-11e8-8060-e284abfd2bc4"
                 }
             ],
             "wrs": 4
@@ -15785,7 +15788,7 @@
                 "name": "Erizel"
             },
             "wrs": 29,
-            "duration": 69
+            "duration": 70
         },
         {
             "user": {
@@ -15849,36 +15852,6 @@
         },
         {
             "user": {
-                "id": "6c26b761-bd62-42b5-8190-e3e732c2b937",
-                "zone": [
-                    {
-                        "name": "World",
-                        "parentId": null,
-                        "zoneId": "301e1b69-7e13-11e8-8060-e284abfd2bc4"
-                    },
-                    {
-                        "name": "South America",
-                        "parentId": "301e1b69-7e13-11e8-8060-e284abfd2bc4",
-                        "zoneId": "301e243e-7e13-11e8-8060-e284abfd2bc4"
-                    },
-                    {
-                        "name": "Brazil",
-                        "parentId": "301e243e-7e13-11e8-8060-e284abfd2bc4",
-                        "zoneId": "301e6521-7e13-11e8-8060-e284abfd2bc4"
-                    },
-                    {
-                        "name": "São Paulo",
-                        "parentId": "301e6521-7e13-11e8-8060-e284abfd2bc4",
-                        "zoneId": "825a3452-6a36-4fe1-94b5-637986936ef7"
-                    }
-                ],
-                "name": "GNR-HASKELL"
-            },
-            "wrs": 20,
-            "duration": 52
-        },
-        {
-            "user": {
                 "id": "2ed0997d-62bc-4a53-8c09-ffb793382ea2",
                 "zone": [
                     {
@@ -15909,8 +15882,38 @@
                 ],
                 "name": "riolu-tm"
             },
-            "wrs": 19,
+            "wrs": 20,
             "duration": 73
+        },
+        {
+            "user": {
+                "id": "6c26b761-bd62-42b5-8190-e3e732c2b937",
+                "zone": [
+                    {
+                        "name": "World",
+                        "parentId": null,
+                        "zoneId": "301e1b69-7e13-11e8-8060-e284abfd2bc4"
+                    },
+                    {
+                        "name": "South America",
+                        "parentId": "301e1b69-7e13-11e8-8060-e284abfd2bc4",
+                        "zoneId": "301e243e-7e13-11e8-8060-e284abfd2bc4"
+                    },
+                    {
+                        "name": "Brazil",
+                        "parentId": "301e243e-7e13-11e8-8060-e284abfd2bc4",
+                        "zoneId": "301e6521-7e13-11e8-8060-e284abfd2bc4"
+                    },
+                    {
+                        "name": "São Paulo",
+                        "parentId": "301e6521-7e13-11e8-8060-e284abfd2bc4",
+                        "zoneId": "825a3452-6a36-4fe1-94b5-637986936ef7"
+                    }
+                ],
+                "name": "GNR-HASKELL"
+            },
+            "wrs": 20,
+            "duration": 52
         },
         {
             "user": {
@@ -18977,7 +18980,7 @@
                     "zoneId": "301ff622-7e13-11e8-8060-e284abfd2bc4"
                 }
             ],
-            "wrs": 62
+            "wrs": 63
         },
         {
             "zone": [
@@ -19513,7 +19516,7 @@
                 ],
                 "name": "riolu-tm"
             },
-            "wrs": 10
+            "wrs": 11
         },
         {
             "user": {
@@ -22475,7 +22478,7 @@
                     "zoneId": "301ff622-7e13-11e8-8060-e284abfd2bc4"
                 }
             ],
-            "wrs": 35
+            "wrs": 36
         },
         {
             "zone": [
