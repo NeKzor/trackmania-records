@@ -33,7 +33,7 @@
                 "name": "riolu-tm"
             },
             "wrs": 8,
-            "duration": 122
+            "duration": 123
         },
         {
             "user": {
@@ -143,7 +143,7 @@
                 "name": "MTP.hugo220"
             },
             "wrs": 4,
-            "duration": 103
+            "duration": 104
         },
         {
             "user": {
@@ -733,7 +733,7 @@
                 "name": "LogicxTM"
             },
             "wrs": 1,
-            "duration": 102
+            "duration": 103
         },
         {
             "user": {
@@ -1747,7 +1747,7 @@
                 "name": "MTP.hugo220"
             },
             "wrs": 25,
-            "duration": 110
+            "duration": 111
         },
         {
             "user": {
@@ -1837,7 +1837,7 @@
                 "name": "riolu-tm"
             },
             "wrs": 21,
-            "duration": 76
+            "duration": 77
         },
         {
             "user": {
@@ -5172,7 +5172,7 @@
                 "name": "LogicxTM"
             },
             "wrs": 1,
-            "duration": 102
+            "duration": 103
         },
         {
             "user": {
