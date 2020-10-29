@@ -10288,7 +10288,7 @@
             "wrs": [
                 {
                     "user": {
-                        "id": "7cd60a75-609a-4e64-b286-16f329878249",
+                        "id": "0495eaf9-610d-4fda-b568-948704cb3c7c",
                         "zone": [
                             {
                                 "name": "World",
@@ -10301,37 +10301,56 @@
                                 "zoneId": "301e2106-7e13-11e8-8060-e284abfd2bc4"
                             },
                             {
-                                "name": "France",
+                                "name": "Denmark",
                                 "parentId": "301e2106-7e13-11e8-8060-e284abfd2bc4",
-                                "zoneId": "301f6188-7e13-11e8-8060-e284abfd2bc4"
-                            },
-                            {
-                                "name": "Île-de-France",
-                                "parentId": "301f6188-7e13-11e8-8060-e284abfd2bc4",
-                                "zoneId": "301fab89-7e13-11e8-8060-e284abfd2bc4"
-                            },
-                            {
-                                "name": "Paris",
-                                "parentId": "301fab89-7e13-11e8-8060-e284abfd2bc4",
-                                "zoneId": "301fad4a-7e13-11e8-8060-e284abfd2bc4"
+                                "zoneId": "301f5723-7e13-11e8-8060-e284abfd2bc4"
                             }
                         ],
-                        "name": "Tona."
+                        "name": "Mr_Birne"
                     },
-                    "score": 34667,
-                    "delta": 0,
-                    "date": "2020-10-27T09:34:47+00:00",
-                    "replay": "aa4a1091-77e1-4c08-b070-fc920610ff61",
-                    "duration": 2
+                    "score": 33665,
+                    "delta": 1002,
+                    "date": "2020-10-29T18:12:41+00:00",
+                    "replay": "7432e39e-cb70-4dc4-9323-d72804d3ed05",
+                    "duration": 0
                 }
             ],
             "isOfficial": false,
-            "history": [],
+            "history": [
+                {
+                    "user": {
+                        "id": "0495eaf9-610d-4fda-b568-948704cb3c7c",
+                        "zone": [
+                            {
+                                "name": "World",
+                                "parentId": null,
+                                "zoneId": "301e1b69-7e13-11e8-8060-e284abfd2bc4"
+                            },
+                            {
+                                "name": "Europe",
+                                "parentId": "301e1b69-7e13-11e8-8060-e284abfd2bc4",
+                                "zoneId": "301e2106-7e13-11e8-8060-e284abfd2bc4"
+                            },
+                            {
+                                "name": "Denmark",
+                                "parentId": "301e2106-7e13-11e8-8060-e284abfd2bc4",
+                                "zoneId": "301f5723-7e13-11e8-8060-e284abfd2bc4"
+                            }
+                        ],
+                        "name": "Mr_Birne"
+                    },
+                    "score": 33665,
+                    "delta": 1002,
+                    "date": "2020-10-29T18:12:41+00:00",
+                    "replay": "7432e39e-cb70-4dc4-9323-d72804d3ed05",
+                    "duration": 0
+                }
+            ],
             "thumbnail": "0c618ebe-c49a-4ebe-9f88-b71cd3677516"
         }
     ],
     "stats": {
-        "totalTime": 1203853
+        "totalTime": 1202851
     },
     "leaderboard": [
         {
@@ -10701,7 +10720,7 @@
         },
         {
             "user": {
-                "id": "7cd60a75-609a-4e64-b286-16f329878249",
+                "id": "0495eaf9-610d-4fda-b568-948704cb3c7c",
                 "zone": [
                     {
                         "name": "World",
@@ -10714,25 +10733,15 @@
                         "zoneId": "301e2106-7e13-11e8-8060-e284abfd2bc4"
                     },
                     {
-                        "name": "France",
+                        "name": "Denmark",
                         "parentId": "301e2106-7e13-11e8-8060-e284abfd2bc4",
-                        "zoneId": "301f6188-7e13-11e8-8060-e284abfd2bc4"
-                    },
-                    {
-                        "name": "Île-de-France",
-                        "parentId": "301f6188-7e13-11e8-8060-e284abfd2bc4",
-                        "zoneId": "301fab89-7e13-11e8-8060-e284abfd2bc4"
-                    },
-                    {
-                        "name": "Paris",
-                        "parentId": "301fab89-7e13-11e8-8060-e284abfd2bc4",
-                        "zoneId": "301fad4a-7e13-11e8-8060-e284abfd2bc4"
+                        "zoneId": "301f5723-7e13-11e8-8060-e284abfd2bc4"
                     }
                 ],
-                "name": "Tona."
+                "name": "Mr_Birne"
             },
             "wrs": 1,
-            "duration": 2
+            "duration": 0
         }
     ],
     "countryLeaderboard": [
@@ -10789,26 +10798,6 @@
                     "zoneId": "301e2106-7e13-11e8-8060-e284abfd2bc4"
                 },
                 {
-                    "name": "France",
-                    "parentId": "301e2106-7e13-11e8-8060-e284abfd2bc4",
-                    "zoneId": "301f6188-7e13-11e8-8060-e284abfd2bc4"
-                }
-            ],
-            "wrs": 3
-        },
-        {
-            "zone": [
-                {
-                    "name": "World",
-                    "parentId": null,
-                    "zoneId": "301e1b69-7e13-11e8-8060-e284abfd2bc4"
-                },
-                {
-                    "name": "Europe",
-                    "parentId": "301e1b69-7e13-11e8-8060-e284abfd2bc4",
-                    "zoneId": "301e2106-7e13-11e8-8060-e284abfd2bc4"
-                },
-                {
                     "name": "Germany",
                     "parentId": "301e2106-7e13-11e8-8060-e284abfd2bc4",
                     "zoneId": "301ff622-7e13-11e8-8060-e284abfd2bc4"
@@ -10844,17 +10833,17 @@
                     "zoneId": "301e1b69-7e13-11e8-8060-e284abfd2bc4"
                 },
                 {
-                    "name": "Africa",
+                    "name": "Europe",
                     "parentId": "301e1b69-7e13-11e8-8060-e284abfd2bc4",
-                    "zoneId": "301e1f9b-7e13-11e8-8060-e284abfd2bc4"
+                    "zoneId": "301e2106-7e13-11e8-8060-e284abfd2bc4"
                 },
                 {
-                    "name": "Uganda",
-                    "parentId": "301e1f9b-7e13-11e8-8060-e284abfd2bc4",
-                    "zoneId": "30229fdb-7e13-11e8-8060-e284abfd2bc4"
+                    "name": "Denmark",
+                    "parentId": "301e2106-7e13-11e8-8060-e284abfd2bc4",
+                    "zoneId": "301f5723-7e13-11e8-8060-e284abfd2bc4"
                 }
             ],
-            "wrs": 1
+            "wrs": 2
         },
         {
             "zone": [
@@ -10869,9 +10858,29 @@
                     "zoneId": "301e2106-7e13-11e8-8060-e284abfd2bc4"
                 },
                 {
-                    "name": "Denmark",
+                    "name": "France",
                     "parentId": "301e2106-7e13-11e8-8060-e284abfd2bc4",
-                    "zoneId": "301f5723-7e13-11e8-8060-e284abfd2bc4"
+                    "zoneId": "301f6188-7e13-11e8-8060-e284abfd2bc4"
+                }
+            ],
+            "wrs": 2
+        },
+        {
+            "zone": [
+                {
+                    "name": "World",
+                    "parentId": null,
+                    "zoneId": "301e1b69-7e13-11e8-8060-e284abfd2bc4"
+                },
+                {
+                    "name": "Africa",
+                    "parentId": "301e1b69-7e13-11e8-8060-e284abfd2bc4",
+                    "zoneId": "301e1f9b-7e13-11e8-8060-e284abfd2bc4"
+                },
+                {
+                    "name": "Uganda",
+                    "parentId": "301e1f9b-7e13-11e8-8060-e284abfd2bc4",
+                    "zoneId": "30229fdb-7e13-11e8-8060-e284abfd2bc4"
                 }
             ],
             "wrs": 1
@@ -12935,7 +12944,7 @@
         },
         {
             "user": {
-                "id": "7cd60a75-609a-4e64-b286-16f329878249",
+                "id": "0495eaf9-610d-4fda-b568-948704cb3c7c",
                 "zone": [
                     {
                         "name": "World",
@@ -12948,48 +12957,18 @@
                         "zoneId": "301e2106-7e13-11e8-8060-e284abfd2bc4"
                     },
                     {
-                        "name": "France",
+                        "name": "Denmark",
                         "parentId": "301e2106-7e13-11e8-8060-e284abfd2bc4",
-                        "zoneId": "301f6188-7e13-11e8-8060-e284abfd2bc4"
-                    },
-                    {
-                        "name": "Île-de-France",
-                        "parentId": "301f6188-7e13-11e8-8060-e284abfd2bc4",
-                        "zoneId": "301fab89-7e13-11e8-8060-e284abfd2bc4"
-                    },
-                    {
-                        "name": "Paris",
-                        "parentId": "301fab89-7e13-11e8-8060-e284abfd2bc4",
-                        "zoneId": "301fad4a-7e13-11e8-8060-e284abfd2bc4"
+                        "zoneId": "301f5723-7e13-11e8-8060-e284abfd2bc4"
                     }
                 ],
-                "name": "Tona."
+                "name": "Mr_Birne"
             },
             "wrs": 1,
-            "duration": 2
+            "duration": 0
         }
     ],
     "historyCountryLeaderboard": [
-        {
-            "zone": [
-                {
-                    "name": "World",
-                    "parentId": null,
-                    "zoneId": "301e1b69-7e13-11e8-8060-e284abfd2bc4"
-                },
-                {
-                    "name": "Europe",
-                    "parentId": "301e1b69-7e13-11e8-8060-e284abfd2bc4",
-                    "zoneId": "301e2106-7e13-11e8-8060-e284abfd2bc4"
-                },
-                {
-                    "name": "France",
-                    "parentId": "301e2106-7e13-11e8-8060-e284abfd2bc4",
-                    "zoneId": "301f6188-7e13-11e8-8060-e284abfd2bc4"
-                }
-            ],
-            "wrs": 56
-        },
         {
             "zone": [
                 {
@@ -13009,6 +12988,26 @@
                 }
             ],
             "wrs": 56
+        },
+        {
+            "zone": [
+                {
+                    "name": "World",
+                    "parentId": null,
+                    "zoneId": "301e1b69-7e13-11e8-8060-e284abfd2bc4"
+                },
+                {
+                    "name": "Europe",
+                    "parentId": "301e1b69-7e13-11e8-8060-e284abfd2bc4",
+                    "zoneId": "301e2106-7e13-11e8-8060-e284abfd2bc4"
+                },
+                {
+                    "name": "France",
+                    "parentId": "301e2106-7e13-11e8-8060-e284abfd2bc4",
+                    "zoneId": "301f6188-7e13-11e8-8060-e284abfd2bc4"
+                }
+            ],
+            "wrs": 55
         },
         {
             "zone": [
@@ -13143,12 +13142,12 @@
                     "zoneId": "301e2106-7e13-11e8-8060-e284abfd2bc4"
                 },
                 {
-                    "name": "Norway",
+                    "name": "Denmark",
                     "parentId": "301e2106-7e13-11e8-8060-e284abfd2bc4",
-                    "zoneId": "3020a27d-7e13-11e8-8060-e284abfd2bc4"
+                    "zoneId": "301f5723-7e13-11e8-8060-e284abfd2bc4"
                 }
             ],
-            "wrs": 5
+            "wrs": 6
         },
         {
             "zone": [
@@ -13163,9 +13162,9 @@
                     "zoneId": "301e2106-7e13-11e8-8060-e284abfd2bc4"
                 },
                 {
-                    "name": "Denmark",
+                    "name": "Norway",
                     "parentId": "301e2106-7e13-11e8-8060-e284abfd2bc4",
-                    "zoneId": "301f5723-7e13-11e8-8060-e284abfd2bc4"
+                    "zoneId": "3020a27d-7e13-11e8-8060-e284abfd2bc4"
                 }
             ],
             "wrs": 5
@@ -15267,7 +15266,7 @@
         },
         {
             "user": {
-                "id": "7cd60a75-609a-4e64-b286-16f329878249",
+                "id": "0495eaf9-610d-4fda-b568-948704cb3c7c",
                 "zone": [
                     {
                         "name": "World",
@@ -15280,22 +15279,12 @@
                         "zoneId": "301e2106-7e13-11e8-8060-e284abfd2bc4"
                     },
                     {
-                        "name": "France",
+                        "name": "Denmark",
                         "parentId": "301e2106-7e13-11e8-8060-e284abfd2bc4",
-                        "zoneId": "301f6188-7e13-11e8-8060-e284abfd2bc4"
-                    },
-                    {
-                        "name": "Île-de-France",
-                        "parentId": "301f6188-7e13-11e8-8060-e284abfd2bc4",
-                        "zoneId": "301fab89-7e13-11e8-8060-e284abfd2bc4"
-                    },
-                    {
-                        "name": "Paris",
-                        "parentId": "301fab89-7e13-11e8-8060-e284abfd2bc4",
-                        "zoneId": "301fad4a-7e13-11e8-8060-e284abfd2bc4"
+                        "zoneId": "301f5723-7e13-11e8-8060-e284abfd2bc4"
                     }
                 ],
-                "name": "Tona."
+                "name": "Mr_Birne"
             },
             "wrs": 1
         }
@@ -15319,7 +15308,7 @@
                     "zoneId": "301f6188-7e13-11e8-8060-e284abfd2bc4"
                 }
             ],
-            "wrs": 33
+            "wrs": 32
         },
         {
             "zone": [
@@ -15409,6 +15398,26 @@
                     "zoneId": "301e1b69-7e13-11e8-8060-e284abfd2bc4"
                 },
                 {
+                    "name": "Europe",
+                    "parentId": "301e1b69-7e13-11e8-8060-e284abfd2bc4",
+                    "zoneId": "301e2106-7e13-11e8-8060-e284abfd2bc4"
+                },
+                {
+                    "name": "Denmark",
+                    "parentId": "301e2106-7e13-11e8-8060-e284abfd2bc4",
+                    "zoneId": "301f5723-7e13-11e8-8060-e284abfd2bc4"
+                }
+            ],
+            "wrs": 5
+        },
+        {
+            "zone": [
+                {
+                    "name": "World",
+                    "parentId": null,
+                    "zoneId": "301e1b69-7e13-11e8-8060-e284abfd2bc4"
+                },
+                {
                     "name": "Oceania",
                     "parentId": "301e1b69-7e13-11e8-8060-e284abfd2bc4",
                     "zoneId": "301e237a-7e13-11e8-8060-e284abfd2bc4"
@@ -15437,26 +15446,6 @@
                     "name": "Switzerland",
                     "parentId": "301e2106-7e13-11e8-8060-e284abfd2bc4",
                     "zoneId": "30228733-7e13-11e8-8060-e284abfd2bc4"
-                }
-            ],
-            "wrs": 4
-        },
-        {
-            "zone": [
-                {
-                    "name": "World",
-                    "parentId": null,
-                    "zoneId": "301e1b69-7e13-11e8-8060-e284abfd2bc4"
-                },
-                {
-                    "name": "Europe",
-                    "parentId": "301e1b69-7e13-11e8-8060-e284abfd2bc4",
-                    "zoneId": "301e2106-7e13-11e8-8060-e284abfd2bc4"
-                },
-                {
-                    "name": "Denmark",
-                    "parentId": "301e2106-7e13-11e8-8060-e284abfd2bc4",
-                    "zoneId": "301f5723-7e13-11e8-8060-e284abfd2bc4"
                 }
             ],
             "wrs": 4
