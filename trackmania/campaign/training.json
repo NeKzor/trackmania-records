@@ -42,7 +42,8 @@
                     "score": 7430,
                     "delta": 0,
                     "date": "2020-07-11T21:16:48+00:00",
-                    "replay": "579307f5-28e0-416c-894d-262b914fcd9c"
+                    "replay": "579307f5-28e0-416c-894d-262b914fcd9c",
+                    "duration": 109
                 },
                 {
                     "user": {
@@ -69,7 +70,8 @@
                     "score": 7430,
                     "delta": 0,
                     "date": "2020-07-13T17:15:11+00:00",
-                    "replay": "4dd7f97d-91af-4272-bfc6-68ebd484785c"
+                    "replay": "4dd7f97d-91af-4272-bfc6-68ebd484785c",
+                    "duration": 108
                 }
             ],
             "isOfficial": true,
@@ -111,7 +113,8 @@
                     "score": 7015,
                     "delta": 0,
                     "date": "2020-08-23T21:19:14+00:00",
-                    "replay": "7062a35b-4a16-48fe-8a9b-d05e368cfdd2"
+                    "replay": "7062a35b-4a16-48fe-8a9b-d05e368cfdd2",
+                    "duration": 66
                 },
                 {
                     "user": {
@@ -148,7 +151,8 @@
                     "score": 7015,
                     "delta": 0,
                     "date": "2020-08-25T17:32:10+00:00",
-                    "replay": "b17b476f-e42e-4eca-ad9b-199a3cd4b255"
+                    "replay": "b17b476f-e42e-4eca-ad9b-199a3cd4b255",
+                    "duration": 65
                 }
             ],
             "isOfficial": true,
@@ -195,7 +199,8 @@
                     "score": 7995,
                     "delta": 0,
                     "date": "2020-07-28T23:49:11+00:00",
-                    "replay": "9fd60c57-d814-4c40-b737-efc7b5f94c6d"
+                    "replay": "9fd60c57-d814-4c40-b737-efc7b5f94c6d",
+                    "duration": 92
                 }
             ],
             "isOfficial": true,
@@ -242,7 +247,8 @@
                     "score": 7315,
                     "delta": 0,
                     "date": "2020-08-27T21:36:28+00:00",
-                    "replay": "4eca20db-e66b-4c4f-b5fa-ed387b359121"
+                    "replay": "4eca20db-e66b-4c4f-b5fa-ed387b359121",
+                    "duration": 62
                 }
             ],
             "isOfficial": true,
@@ -289,7 +295,8 @@
                     "score": 10488,
                     "delta": 0,
                     "date": "2020-08-23T12:41:43+00:00",
-                    "replay": "611511a3-26fa-4a6a-afc2-075270e7ccf5"
+                    "replay": "611511a3-26fa-4a6a-afc2-075270e7ccf5",
+                    "duration": 67
                 }
             ],
             "isOfficial": true,
@@ -336,7 +343,8 @@
                     "score": 10806,
                     "delta": 0,
                     "date": "2020-07-11T14:03:56+00:00",
-                    "replay": "91ce6bb7-ffc8-4914-bd40-f6a11d5752b9"
+                    "replay": "91ce6bb7-ffc8-4914-bd40-f6a11d5752b9",
+                    "duration": 110
                 }
             ],
             "isOfficial": true,
@@ -378,7 +386,8 @@
                     "score": 8118,
                     "delta": 0,
                     "date": "2020-07-04T11:58:41+00:00",
-                    "replay": "7b6aed1f-a32b-4f28-b4e2-9ea566a09a65"
+                    "replay": "7b6aed1f-a32b-4f28-b4e2-9ea566a09a65",
+                    "duration": 117
                 }
             ],
             "isOfficial": true,
@@ -425,7 +434,8 @@
                     "score": 11762,
                     "delta": 0,
                     "date": "2020-08-23T17:14:53+00:00",
-                    "replay": "94da1d3d-d1fb-40ff-b9a3-440c90d07a74"
+                    "replay": "94da1d3d-d1fb-40ff-b9a3-440c90d07a74",
+                    "duration": 67
                 }
             ],
             "isOfficial": true,
@@ -472,7 +482,8 @@
                     "score": 12082,
                     "delta": 0,
                     "date": "2020-07-18T22:18:13+00:00",
-                    "replay": "1813ee2b-7ef3-4469-bb8a-265be0b4621e"
+                    "replay": "1813ee2b-7ef3-4469-bb8a-265be0b4621e",
+                    "duration": 102
                 }
             ],
             "isOfficial": true,
@@ -514,7 +525,8 @@
                     "score": 11721,
                     "delta": 0,
                     "date": "2020-09-02T11:12:01+00:00",
-                    "replay": "f1f2809a-9a3f-4922-a336-1f76bcac2dca"
+                    "replay": "f1f2809a-9a3f-4922-a336-1f76bcac2dca",
+                    "duration": 57
                 }
             ],
             "isOfficial": true,
@@ -551,7 +563,8 @@
                     "score": 5024,
                     "delta": 0,
                     "date": "2020-07-28T00:19:03+00:00",
-                    "replay": "8f4bcc12-0138-4efe-a461-93e44526bf27"
+                    "replay": "8f4bcc12-0138-4efe-a461-93e44526bf27",
+                    "duration": 93
                 }
             ],
             "isOfficial": true,
@@ -593,7 +606,8 @@
                     "score": 10951,
                     "delta": 17,
                     "date": "2020-09-14T14:12:55+00:00",
-                    "replay": "8c8511b4-aebf-4dc9-8bdf-4738a0b29011"
+                    "replay": "8c8511b4-aebf-4dc9-8bdf-4738a0b29011",
+                    "duration": 45
                 }
             ],
             "isOfficial": true,
@@ -628,7 +642,8 @@
                     "score": 10951,
                     "delta": 17,
                     "date": "2020-09-14T14:12:55+00:00",
-                    "replay": "8c8511b4-aebf-4dc9-8bdf-4738a0b29011"
+                    "replay": "8c8511b4-aebf-4dc9-8bdf-4738a0b29011",
+                    "duration": 45
                 }
             ],
             "thumbnail": "9ef5dcd5-3c2e-4d2e-9a2c-33c790c00df6"
@@ -668,7 +683,8 @@
                     "score": 11153,
                     "delta": 0,
                     "date": "2020-09-13T12:20:58+00:00",
-                    "replay": "b17405fe-894a-405f-b1e9-b0f9cd4aa193"
+                    "replay": "b17405fe-894a-405f-b1e9-b0f9cd4aa193",
+                    "duration": 46
                 }
             ],
             "isOfficial": true,
@@ -710,7 +726,8 @@
                     "score": 10724,
                     "delta": 0,
                     "date": "2020-07-25T00:35:08+00:00",
-                    "replay": "5bb24c39-3a40-47f2-9aa7-cb6e0f6f9819"
+                    "replay": "5bb24c39-3a40-47f2-9aa7-cb6e0f6f9819",
+                    "duration": 96
                 }
             ],
             "isOfficial": true,
@@ -752,7 +769,8 @@
                     "score": 12967,
                     "delta": 0,
                     "date": "2020-07-01T15:30:34+00:00",
-                    "replay": "3c28b440-feec-472e-badc-9d1ef19151ca"
+                    "replay": "3c28b440-feec-472e-badc-9d1ef19151ca",
+                    "duration": 120
                 }
             ],
             "isOfficial": true,
@@ -766,7 +784,7 @@
             "wrs": [
                 {
                     "user": {
-                        "id": "f781e6ad-8a11-4093-a297-e48638d5fa1a",
+                        "id": "91cad389-9897-41f7-bf37-65155151b012",
                         "zone": [
                             {
                                 "name": "World",
@@ -784,22 +802,23 @@
                                 "zoneId": "301f6188-7e13-11e8-8060-e284abfd2bc4"
                             },
                             {
-                                "name": "Grand Est",
+                                "name": "Occitanie",
                                 "parentId": "301f6188-7e13-11e8-8060-e284abfd2bc4",
-                                "zoneId": "301fa0c0-7e13-11e8-8060-e284abfd2bc4"
+                                "zoneId": "301fd300-7e13-11e8-8060-e284abfd2bc4"
                             },
                             {
-                                "name": "Bas-Rhin",
-                                "parentId": "301fa0c0-7e13-11e8-8060-e284abfd2bc4",
-                                "zoneId": "301fa363-7e13-11e8-8060-e284abfd2bc4"
+                                "name": "Tarn",
+                                "parentId": "301fd300-7e13-11e8-8060-e284abfd2bc4",
+                                "zoneId": "301fe53d-7e13-11e8-8060-e284abfd2bc4"
                             }
                         ],
-                        "name": "MTP.hugo220"
+                        "name": "Kerberos.4W"
                     },
-                    "score": 14995,
-                    "delta": 2,
-                    "date": "2020-09-14T19:59:11+00:00",
-                    "replay": "e39b8f2b-2175-4a1d-8eb7-2f44682a3637"
+                    "score": 14994,
+                    "delta": 1,
+                    "date": "2020-10-28T23:32:39+00:00",
+                    "replay": "e1b3cf59-4426-4b90-9b41-adde861684f6",
+                    "duration": 0
                 }
             ],
             "isOfficial": true,
@@ -839,7 +858,8 @@
                     "score": 14997,
                     "delta": 20,
                     "date": "2020-09-14T14:39:30+00:00",
-                    "replay": "76960bb2-6054-4c2b-b0da-9f5cd3ae1548"
+                    "replay": "76960bb2-6054-4c2b-b0da-9f5cd3ae1548",
+                    "duration": 0
                 },
                 {
                     "user": {
@@ -876,7 +896,46 @@
                     "score": 14995,
                     "delta": 2,
                     "date": "2020-09-14T19:59:11+00:00",
-                    "replay": "e39b8f2b-2175-4a1d-8eb7-2f44682a3637"
+                    "replay": "e39b8f2b-2175-4a1d-8eb7-2f44682a3637",
+                    "duration": 45
+                },
+                {
+                    "user": {
+                        "id": "91cad389-9897-41f7-bf37-65155151b012",
+                        "zone": [
+                            {
+                                "name": "World",
+                                "parentId": null,
+                                "zoneId": "301e1b69-7e13-11e8-8060-e284abfd2bc4"
+                            },
+                            {
+                                "name": "Europe",
+                                "parentId": "301e1b69-7e13-11e8-8060-e284abfd2bc4",
+                                "zoneId": "301e2106-7e13-11e8-8060-e284abfd2bc4"
+                            },
+                            {
+                                "name": "France",
+                                "parentId": "301e2106-7e13-11e8-8060-e284abfd2bc4",
+                                "zoneId": "301f6188-7e13-11e8-8060-e284abfd2bc4"
+                            },
+                            {
+                                "name": "Occitanie",
+                                "parentId": "301f6188-7e13-11e8-8060-e284abfd2bc4",
+                                "zoneId": "301fd300-7e13-11e8-8060-e284abfd2bc4"
+                            },
+                            {
+                                "name": "Tarn",
+                                "parentId": "301fd300-7e13-11e8-8060-e284abfd2bc4",
+                                "zoneId": "301fe53d-7e13-11e8-8060-e284abfd2bc4"
+                            }
+                        ],
+                        "name": "Kerberos.4W"
+                    },
+                    "score": 14994,
+                    "delta": 1,
+                    "date": "2020-10-28T23:32:39+00:00",
+                    "replay": "e1b3cf59-4426-4b90-9b41-adde861684f6",
+                    "duration": 0
                 }
             ],
             "thumbnail": "ed69fddd-2140-4913-bd8f-59220cad1993"
@@ -916,7 +975,8 @@
                     "score": 17743,
                     "delta": 0,
                     "date": "2020-07-23T10:20:09+00:00",
-                    "replay": "e389c330-c115-4d0f-a069-942ecde1db67"
+                    "replay": "e389c330-c115-4d0f-a069-942ecde1db67",
+                    "duration": 98
                 }
             ],
             "isOfficial": true,
@@ -963,7 +1023,8 @@
                     "score": 14974,
                     "delta": 0,
                     "date": "2020-07-29T18:33:36+00:00",
-                    "replay": "aa1087c9-d0e8-4f12-ac0a-3df83bdd83b1"
+                    "replay": "aa1087c9-d0e8-4f12-ac0a-3df83bdd83b1",
+                    "duration": 92
                 }
             ],
             "isOfficial": true,
@@ -1010,7 +1071,8 @@
                     "score": 15036,
                     "delta": 25,
                     "date": "2020-09-29T17:28:07+00:00",
-                    "replay": "10fd386b-ebbe-405d-98c1-fbb7bc3d349a"
+                    "replay": "10fd386b-ebbe-405d-98c1-fbb7bc3d349a",
+                    "duration": 30
                 }
             ],
             "isOfficial": true,
@@ -1050,7 +1112,8 @@
                     "score": 15036,
                     "delta": 25,
                     "date": "2020-09-29T17:28:07+00:00",
-                    "replay": "10fd386b-ebbe-405d-98c1-fbb7bc3d349a"
+                    "replay": "10fd386b-ebbe-405d-98c1-fbb7bc3d349a",
+                    "duration": 30
                 }
             ],
             "thumbnail": "3eb21c84-f3b3-473d-9f01-d689b42039a5"
@@ -1095,7 +1158,8 @@
                     "score": 24460,
                     "delta": 0,
                     "date": "2020-08-27T20:41:21+00:00",
-                    "replay": "80d0cb02-0b21-4689-9efc-a501585647c8"
+                    "replay": "80d0cb02-0b21-4689-9efc-a501585647c8",
+                    "duration": 63
                 }
             ],
             "isOfficial": true,
@@ -1142,7 +1206,8 @@
                     "score": 15517,
                     "delta": 27,
                     "date": "2020-09-20T21:23:07+00:00",
-                    "replay": "809401bf-bdd5-4817-bbc9-3a334ab55483"
+                    "replay": "809401bf-bdd5-4817-bbc9-3a334ab55483",
+                    "duration": 38
                 }
             ],
             "isOfficial": true,
@@ -1182,7 +1247,8 @@
                     "score": 15517,
                     "delta": 27,
                     "date": "2020-09-20T21:23:07+00:00",
-                    "replay": "809401bf-bdd5-4817-bbc9-3a334ab55483"
+                    "replay": "809401bf-bdd5-4817-bbc9-3a334ab55483",
+                    "duration": 38
                 }
             ],
             "thumbnail": "4a350d43-65ff-4534-b293-0b2bb7bd8482"
@@ -1222,7 +1288,8 @@
                     "score": 16718,
                     "delta": 17,
                     "date": "2020-09-27T15:51:58+00:00",
-                    "replay": "4dd466c7-cf72-49dc-b794-1083b359c9c5"
+                    "replay": "4dd466c7-cf72-49dc-b794-1083b359c9c5",
+                    "duration": 32
                 }
             ],
             "isOfficial": true,
@@ -1262,7 +1329,8 @@
                     "score": 16735,
                     "delta": 30,
                     "date": "2020-09-22T16:14:46+00:00",
-                    "replay": "04767e23-94b2-431e-8f55-528ff03b61e4"
+                    "replay": "04767e23-94b2-431e-8f55-528ff03b61e4",
+                    "duration": 4
                 },
                 {
                     "user": {
@@ -1294,7 +1362,8 @@
                     "score": 16718,
                     "delta": 17,
                     "date": "2020-09-27T15:51:58+00:00",
-                    "replay": "4dd466c7-cf72-49dc-b794-1083b359c9c5"
+                    "replay": "4dd466c7-cf72-49dc-b794-1083b359c9c5",
+                    "duration": 32
                 }
             ],
             "thumbnail": "6fd6e4cd-4aba-40e8-8c63-6f358a3190b9"
@@ -1334,7 +1403,8 @@
                     "score": 20355,
                     "delta": 0,
                     "date": "2020-08-27T17:43:13+00:00",
-                    "replay": "41622fa3-af0e-4d4c-bdd6-d5505d21fafc"
+                    "replay": "41622fa3-af0e-4d4c-bdd6-d5505d21fafc",
+                    "duration": 63
                 }
             ],
             "isOfficial": true,
@@ -1376,7 +1446,8 @@
                     "score": 17630,
                     "delta": 167,
                     "date": "2020-09-16T17:39:50+00:00",
-                    "replay": "4ebfe626-9aaa-484e-8220-2ec9048af8e6"
+                    "replay": "4ebfe626-9aaa-484e-8220-2ec9048af8e6",
+                    "duration": 43
                 }
             ],
             "isOfficial": true,
@@ -1411,7 +1482,8 @@
                     "score": 17630,
                     "delta": 167,
                     "date": "2020-09-16T17:39:50+00:00",
-                    "replay": "4ebfe626-9aaa-484e-8220-2ec9048af8e6"
+                    "replay": "4ebfe626-9aaa-484e-8220-2ec9048af8e6",
+                    "duration": 43
                 }
             ],
             "thumbnail": "c29463dc-cea1-48dd-bc7b-fbea9a7cd4a4"
@@ -1451,7 +1523,8 @@
                     "score": 31931,
                     "delta": 0,
                     "date": "2020-07-16T19:46:14+00:00",
-                    "replay": "a2832a21-9494-48bf-9308-7a50f1b7398e"
+                    "replay": "a2832a21-9494-48bf-9308-7a50f1b7398e",
+                    "duration": 105
                 }
             ],
             "isOfficial": true,
@@ -1460,7 +1533,7 @@
         }
     ],
     "stats": {
-        "totalTime": 334910
+        "totalTime": 334909
     },
     "leaderboard": [
         {
@@ -1496,7 +1569,7 @@
                 "name": "CamionTM"
             },
             "wrs": 3,
-            "duration": 0
+            "duration": 219
         },
         {
             "user": {
@@ -1526,7 +1599,7 @@
                 "name": "AffiTM"
             },
             "wrs": 2,
-            "duration": 0
+            "duration": 98
         },
         {
             "user": {
@@ -1561,7 +1634,7 @@
                 "name": "Flechetas"
             },
             "wrs": 2,
-            "duration": 0
+            "duration": 105
         },
         {
             "user": {
@@ -1596,7 +1669,7 @@
                 "name": "trabadia"
             },
             "wrs": 1,
-            "duration": 0
+            "duration": 109
         },
         {
             "user": {
@@ -1621,7 +1694,7 @@
                 "name": "ASdaS-BLR"
             },
             "wrs": 1,
-            "duration": 0
+            "duration": 108
         },
         {
             "user": {
@@ -1656,7 +1729,7 @@
                 "name": "FonkyWindho"
             },
             "wrs": 1,
-            "duration": 0
+            "duration": 110
         },
         {
             "user": {
@@ -1686,7 +1759,7 @@
                 "name": "BODIVOD"
             },
             "wrs": 1,
-            "duration": 0
+            "duration": 117
         },
         {
             "user": {
@@ -1721,7 +1794,7 @@
                 "name": "Nodd_"
             },
             "wrs": 1,
-            "duration": 0
+            "duration": 67
         },
         {
             "user": {
@@ -1756,7 +1829,7 @@
                 "name": "LogicxTM"
             },
             "wrs": 1,
-            "duration": 0
+            "duration": 102
         },
         {
             "user": {
@@ -1786,7 +1859,7 @@
                 "name": "AR_bcp"
             },
             "wrs": 1,
-            "duration": 0
+            "duration": 57
         },
         {
             "user": {
@@ -1811,7 +1884,7 @@
                 "name": "ADM1R0"
             },
             "wrs": 1,
-            "duration": 0
+            "duration": 93
         },
         {
             "user": {
@@ -1841,7 +1914,7 @@
                 "name": "TronTM"
             },
             "wrs": 1,
-            "duration": 0
+            "duration": 45
         },
         {
             "user": {
@@ -1871,7 +1944,7 @@
                 "name": "lilpoker96"
             },
             "wrs": 1,
-            "duration": 0
+            "duration": 46
         },
         {
             "user": {
@@ -1901,7 +1974,7 @@
                 "name": "CMC_Aru"
             },
             "wrs": 1,
-            "duration": 0
+            "duration": 96
         },
         {
             "user": {
@@ -1931,11 +2004,11 @@
                 "name": "sancirigo"
             },
             "wrs": 1,
-            "duration": 0
+            "duration": 120
         },
         {
             "user": {
-                "id": "f781e6ad-8a11-4093-a297-e48638d5fa1a",
+                "id": "91cad389-9897-41f7-bf37-65155151b012",
                 "zone": [
                     {
                         "name": "World",
@@ -1953,17 +2026,17 @@
                         "zoneId": "301f6188-7e13-11e8-8060-e284abfd2bc4"
                     },
                     {
-                        "name": "Grand Est",
+                        "name": "Occitanie",
                         "parentId": "301f6188-7e13-11e8-8060-e284abfd2bc4",
-                        "zoneId": "301fa0c0-7e13-11e8-8060-e284abfd2bc4"
+                        "zoneId": "301fd300-7e13-11e8-8060-e284abfd2bc4"
                     },
                     {
-                        "name": "Bas-Rhin",
-                        "parentId": "301fa0c0-7e13-11e8-8060-e284abfd2bc4",
-                        "zoneId": "301fa363-7e13-11e8-8060-e284abfd2bc4"
+                        "name": "Tarn",
+                        "parentId": "301fd300-7e13-11e8-8060-e284abfd2bc4",
+                        "zoneId": "301fe53d-7e13-11e8-8060-e284abfd2bc4"
                     }
                 ],
-                "name": "MTP.hugo220"
+                "name": "Kerberos.4W"
             },
             "wrs": 1,
             "duration": 0
@@ -1996,7 +2069,7 @@
                 "name": "RotakeR.9D"
             },
             "wrs": 1,
-            "duration": 0
+            "duration": 98
         },
         {
             "user": {
@@ -2031,7 +2104,7 @@
                 "name": "Ice-TM"
             },
             "wrs": 1,
-            "duration": 0
+            "duration": 92
         },
         {
             "user": {
@@ -2066,7 +2139,7 @@
                 "name": "esu-LX"
             },
             "wrs": 1,
-            "duration": 0
+            "duration": 30
         },
         {
             "user": {
@@ -2101,7 +2174,7 @@
                 "name": "LulZTM"
             },
             "wrs": 1,
-            "duration": 0
+            "duration": 63
         },
         {
             "user": {
@@ -2131,7 +2204,7 @@
                 "name": "xTigershark777"
             },
             "wrs": 1,
-            "duration": 0
+            "duration": 63
         },
         {
             "user": {
@@ -2161,7 +2234,7 @@
                 "name": "Nersons"
             },
             "wrs": 1,
-            "duration": 0
+            "duration": 43
         },
         {
             "user": {
@@ -2191,7 +2264,7 @@
                 "name": "theinsan3"
             },
             "wrs": 1,
-            "duration": 0
+            "duration": 105
         }
     ],
     "countryLeaderboard": [
@@ -2490,7 +2563,7 @@
                 "name": "CamionTM"
             },
             "wrs": 3,
-            "duration": 0
+            "duration": 219
         },
         {
             "user": {
@@ -2525,7 +2598,7 @@
                 "name": "Flechetas"
             },
             "wrs": 3,
-            "duration": 0
+            "duration": 109
         },
         {
             "user": {
@@ -2555,7 +2628,7 @@
                 "name": "AffiTM"
             },
             "wrs": 2,
-            "duration": 0
+            "duration": 98
         },
         {
             "user": {
@@ -2590,7 +2663,7 @@
                 "name": "MTP.hugo220"
             },
             "wrs": 2,
-            "duration": 0
+            "duration": 45
         },
         {
             "user": {
@@ -2625,7 +2698,7 @@
                 "name": "trabadia"
             },
             "wrs": 1,
-            "duration": 0
+            "duration": 109
         },
         {
             "user": {
@@ -2650,7 +2723,7 @@
                 "name": "ASdaS-BLR"
             },
             "wrs": 1,
-            "duration": 0
+            "duration": 108
         },
         {
             "user": {
@@ -2685,7 +2758,7 @@
                 "name": "FonkyWindho"
             },
             "wrs": 1,
-            "duration": 0
+            "duration": 110
         },
         {
             "user": {
@@ -2715,7 +2788,7 @@
                 "name": "BODIVOD"
             },
             "wrs": 1,
-            "duration": 0
+            "duration": 117
         },
         {
             "user": {
@@ -2750,7 +2823,7 @@
                 "name": "Nodd_"
             },
             "wrs": 1,
-            "duration": 0
+            "duration": 67
         },
         {
             "user": {
@@ -2785,7 +2858,7 @@
                 "name": "LogicxTM"
             },
             "wrs": 1,
-            "duration": 0
+            "duration": 102
         },
         {
             "user": {
@@ -2815,7 +2888,7 @@
                 "name": "AR_bcp"
             },
             "wrs": 1,
-            "duration": 0
+            "duration": 57
         },
         {
             "user": {
@@ -2840,7 +2913,7 @@
                 "name": "ADM1R0"
             },
             "wrs": 1,
-            "duration": 0
+            "duration": 93
         },
         {
             "user": {
@@ -2870,7 +2943,7 @@
                 "name": "TronTM"
             },
             "wrs": 1,
-            "duration": 0
+            "duration": 45
         },
         {
             "user": {
@@ -2900,7 +2973,7 @@
                 "name": "lilpoker96"
             },
             "wrs": 1,
-            "duration": 0
+            "duration": 46
         },
         {
             "user": {
@@ -2930,7 +3003,7 @@
                 "name": "CMC_Aru"
             },
             "wrs": 1,
-            "duration": 0
+            "duration": 96
         },
         {
             "user": {
@@ -2958,6 +3031,41 @@
                     }
                 ],
                 "name": "sancirigo"
+            },
+            "wrs": 1,
+            "duration": 120
+        },
+        {
+            "user": {
+                "id": "91cad389-9897-41f7-bf37-65155151b012",
+                "zone": [
+                    {
+                        "name": "World",
+                        "parentId": null,
+                        "zoneId": "301e1b69-7e13-11e8-8060-e284abfd2bc4"
+                    },
+                    {
+                        "name": "Europe",
+                        "parentId": "301e1b69-7e13-11e8-8060-e284abfd2bc4",
+                        "zoneId": "301e2106-7e13-11e8-8060-e284abfd2bc4"
+                    },
+                    {
+                        "name": "France",
+                        "parentId": "301e2106-7e13-11e8-8060-e284abfd2bc4",
+                        "zoneId": "301f6188-7e13-11e8-8060-e284abfd2bc4"
+                    },
+                    {
+                        "name": "Occitanie",
+                        "parentId": "301f6188-7e13-11e8-8060-e284abfd2bc4",
+                        "zoneId": "301fd300-7e13-11e8-8060-e284abfd2bc4"
+                    },
+                    {
+                        "name": "Tarn",
+                        "parentId": "301fd300-7e13-11e8-8060-e284abfd2bc4",
+                        "zoneId": "301fe53d-7e13-11e8-8060-e284abfd2bc4"
+                    }
+                ],
+                "name": "Kerberos.4W"
             },
             "wrs": 1,
             "duration": 0
@@ -2990,7 +3098,7 @@
                 "name": "RotakeR.9D"
             },
             "wrs": 1,
-            "duration": 0
+            "duration": 98
         },
         {
             "user": {
@@ -3025,7 +3133,7 @@
                 "name": "Ice-TM"
             },
             "wrs": 1,
-            "duration": 0
+            "duration": 92
         },
         {
             "user": {
@@ -3060,7 +3168,7 @@
                 "name": "esu-LX"
             },
             "wrs": 1,
-            "duration": 0
+            "duration": 30
         },
         {
             "user": {
@@ -3095,7 +3203,7 @@
                 "name": "LulZTM"
             },
             "wrs": 1,
-            "duration": 0
+            "duration": 63
         },
         {
             "user": {
@@ -3125,7 +3233,7 @@
                 "name": "xTigershark777"
             },
             "wrs": 1,
-            "duration": 0
+            "duration": 63
         },
         {
             "user": {
@@ -3155,7 +3263,7 @@
                 "name": "Nersons"
             },
             "wrs": 1,
-            "duration": 0
+            "duration": 43
         },
         {
             "user": {
@@ -3185,7 +3293,7 @@
                 "name": "theinsan3"
             },
             "wrs": 1,
-            "duration": 0
+            "duration": 105
         }
     ],
     "historyCountryLeaderboard": [
@@ -3207,7 +3315,7 @@
                     "zoneId": "301f6188-7e13-11e8-8060-e284abfd2bc4"
                 }
             ],
-            "wrs": 13
+            "wrs": 14
         },
         {
             "zone": [
@@ -3942,6 +4050,40 @@
         },
         {
             "user": {
+                "id": "91cad389-9897-41f7-bf37-65155151b012",
+                "zone": [
+                    {
+                        "name": "World",
+                        "parentId": null,
+                        "zoneId": "301e1b69-7e13-11e8-8060-e284abfd2bc4"
+                    },
+                    {
+                        "name": "Europe",
+                        "parentId": "301e1b69-7e13-11e8-8060-e284abfd2bc4",
+                        "zoneId": "301e2106-7e13-11e8-8060-e284abfd2bc4"
+                    },
+                    {
+                        "name": "France",
+                        "parentId": "301e2106-7e13-11e8-8060-e284abfd2bc4",
+                        "zoneId": "301f6188-7e13-11e8-8060-e284abfd2bc4"
+                    },
+                    {
+                        "name": "Occitanie",
+                        "parentId": "301f6188-7e13-11e8-8060-e284abfd2bc4",
+                        "zoneId": "301fd300-7e13-11e8-8060-e284abfd2bc4"
+                    },
+                    {
+                        "name": "Tarn",
+                        "parentId": "301fd300-7e13-11e8-8060-e284abfd2bc4",
+                        "zoneId": "301fe53d-7e13-11e8-8060-e284abfd2bc4"
+                    }
+                ],
+                "name": "Kerberos.4W"
+            },
+            "wrs": 1
+        },
+        {
+            "user": {
                 "id": "a5af97bc-d185-404f-a7d1-5c4e48d05db6",
                 "zone": [
                     {
@@ -4178,7 +4320,7 @@
                     "zoneId": "301f6188-7e13-11e8-8060-e284abfd2bc4"
                 }
             ],
-            "wrs": 12
+            "wrs": 13
         },
         {
             "zone": [
