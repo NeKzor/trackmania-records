@@ -200,6 +200,7 @@ const main = async (outputDir, snapshot = true) => {
 
 const dumpOfficialCampaign = async (outputDir) => {
     const campaigns = (await trackmania.campaigns(Campaigns.Official)).collect();
+    campaigns.push(gameInfo.training);
 
     for (const { seasonUid, name, playlist } of campaigns) {
         const latestCampaign = importLatest(
