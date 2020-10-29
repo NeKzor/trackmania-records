@@ -11244,7 +11244,7 @@
                     "delta": 8,
                     "date": "2020-10-25T20:16:37+00:00",
                     "replay": "e1dac10c-03e6-4b22-9132-27ff8725f46e",
-                    "duration": 3
+                    "duration": 4
                 }
             ],
             "isOfficial": true,
@@ -11927,7 +11927,7 @@
                     "delta": 8,
                     "date": "2020-10-25T20:16:37+00:00",
                     "replay": "e1dac10c-03e6-4b22-9132-27ff8725f46e",
-                    "duration": 3,
+                    "duration": 4,
                     "durationMs": 89004022
                 }
             ],
@@ -15454,7 +15454,7 @@
                 "name": "WHENSTARTINK"
             },
             "wrs": 2,
-            "duration": 7
+            "duration": 8
         },
         {
             "user": {
@@ -17543,7 +17543,7 @@
                 "name": "WHENSTARTINK"
             },
             "wrs": 2,
-            "duration": 7
+            "duration": 8
         },
         {
             "user": {
