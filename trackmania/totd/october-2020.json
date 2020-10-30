@@ -6782,7 +6782,7 @@
                     "delta": 2,
                     "date": "2020-10-19T16:42:41+00:00",
                     "replay": "275e4549-2cdb-483e-a205-8b3bf6b200b3",
-                    "duration": 10,
+                    "duration": 11,
                     "durationMs": 620243649
                 }
             ],
@@ -11282,7 +11282,7 @@
                 "name": "solo23101"
             },
             "wrs": 13,
-            "duration": 10
+            "duration": 11
         },
         {
             "user": {
