@@ -7586,7 +7586,7 @@
                     "delta": 61,
                     "date": "2020-10-25T22:14:15+00:00",
                     "replay": "c3f74a24-f87f-4214-9af3-d8507c4e3fed",
-                    "duration": 4
+                    "duration": 5
                 }
             ],
             "isOfficial": true,
@@ -8210,7 +8210,7 @@
                     "delta": 61,
                     "date": "2020-10-25T22:14:15+00:00",
                     "replay": "c3f74a24-f87f-4214-9af3-d8507c4e3fed",
-                    "duration": 4,
+                    "duration": 5,
                     "durationMs": 81945946
                 }
             ],
@@ -14999,7 +14999,7 @@
             "wrs": [
                 {
                     "user": {
-                        "id": "b05db0f8-d845-47d2-b0e5-795717038ac6",
+                        "id": "2ed0997d-62bc-4a53-8c09-ffb793382ea2",
                         "zone": [
                             {
                                 "name": "World",
@@ -15017,22 +15017,22 @@
                                 "zoneId": "301ff622-7e13-11e8-8060-e284abfd2bc4"
                             },
                             {
-                                "name": "Bayern",
+                                "name": "Nordrhein-Westfalen",
                                 "parentId": "301ff622-7e13-11e8-8060-e284abfd2bc4",
-                                "zoneId": "301ff9a2-7e13-11e8-8060-e284abfd2bc4"
+                                "zoneId": "30200d6a-7e13-11e8-8060-e284abfd2bc4"
                             },
                             {
-                                "name": "Nürnberg",
-                                "parentId": "301ff9a2-7e13-11e8-8060-e284abfd2bc4",
-                                "zoneId": "301ffccb-7e13-11e8-8060-e284abfd2bc4"
+                                "name": "Dortmund",
+                                "parentId": "30200d6a-7e13-11e8-8060-e284abfd2bc4",
+                                "zoneId": "30201200-7e13-11e8-8060-e284abfd2bc4"
                             }
                         ],
-                        "name": "WHENSTARTINK"
+                        "name": "riolu-tm"
                     },
-                    "score": 68663,
-                    "delta": 43,
-                    "date": "2020-10-30T20:43:14+00:00",
-                    "replay": "fb898620-12b7-44d4-b319-5d5aeb41ceed",
+                    "score": 68611,
+                    "delta": 52,
+                    "date": "2020-10-30T22:01:21+00:00",
+                    "replay": "455693e6-e062-4ca1-846e-7c0216eb0ab6",
                     "duration": 0
                 }
             ],
@@ -15594,13 +15594,51 @@
                     "date": "2020-10-30T20:43:14+00:00",
                     "replay": "fb898620-12b7-44d4-b319-5d5aeb41ceed",
                     "duration": 0
+                },
+                {
+                    "user": {
+                        "id": "2ed0997d-62bc-4a53-8c09-ffb793382ea2",
+                        "zone": [
+                            {
+                                "name": "World",
+                                "parentId": null,
+                                "zoneId": "301e1b69-7e13-11e8-8060-e284abfd2bc4"
+                            },
+                            {
+                                "name": "Europe",
+                                "parentId": "301e1b69-7e13-11e8-8060-e284abfd2bc4",
+                                "zoneId": "301e2106-7e13-11e8-8060-e284abfd2bc4"
+                            },
+                            {
+                                "name": "Germany",
+                                "parentId": "301e2106-7e13-11e8-8060-e284abfd2bc4",
+                                "zoneId": "301ff622-7e13-11e8-8060-e284abfd2bc4"
+                            },
+                            {
+                                "name": "Nordrhein-Westfalen",
+                                "parentId": "301ff622-7e13-11e8-8060-e284abfd2bc4",
+                                "zoneId": "30200d6a-7e13-11e8-8060-e284abfd2bc4"
+                            },
+                            {
+                                "name": "Dortmund",
+                                "parentId": "30200d6a-7e13-11e8-8060-e284abfd2bc4",
+                                "zoneId": "30201200-7e13-11e8-8060-e284abfd2bc4"
+                            }
+                        ],
+                        "name": "riolu-tm"
+                    },
+                    "score": 68611,
+                    "delta": 52,
+                    "date": "2020-10-30T22:01:21+00:00",
+                    "replay": "455693e6-e062-4ca1-846e-7c0216eb0ab6",
+                    "duration": 0
                 }
             ],
             "thumbnail": "cf656560-e29c-4f29-bfc6-eed15a19b2e8"
         }
     ],
     "stats": {
-        "totalTime": 926468
+        "totalTime": 926416
     },
     "leaderboard": [
         {
@@ -15635,7 +15673,7 @@
                 ],
                 "name": "riolu-tm"
             },
-            "wrs": 5,
+            "wrs": 6,
             "duration": 57
         },
         {
@@ -15661,7 +15699,7 @@
                 "name": "Erizel"
             },
             "wrs": 4,
-            "duration": 32
+            "duration": 33
         },
         {
             "user": {
@@ -15697,41 +15735,6 @@
             },
             "wrs": 4,
             "duration": 37
-        },
-        {
-            "user": {
-                "id": "b05db0f8-d845-47d2-b0e5-795717038ac6",
-                "zone": [
-                    {
-                        "name": "World",
-                        "parentId": null,
-                        "zoneId": "301e1b69-7e13-11e8-8060-e284abfd2bc4"
-                    },
-                    {
-                        "name": "Europe",
-                        "parentId": "301e1b69-7e13-11e8-8060-e284abfd2bc4",
-                        "zoneId": "301e2106-7e13-11e8-8060-e284abfd2bc4"
-                    },
-                    {
-                        "name": "Germany",
-                        "parentId": "301e2106-7e13-11e8-8060-e284abfd2bc4",
-                        "zoneId": "301ff622-7e13-11e8-8060-e284abfd2bc4"
-                    },
-                    {
-                        "name": "Bayern",
-                        "parentId": "301ff622-7e13-11e8-8060-e284abfd2bc4",
-                        "zoneId": "301ff9a2-7e13-11e8-8060-e284abfd2bc4"
-                    },
-                    {
-                        "name": "Nürnberg",
-                        "parentId": "301ff9a2-7e13-11e8-8060-e284abfd2bc4",
-                        "zoneId": "301ffccb-7e13-11e8-8060-e284abfd2bc4"
-                    }
-                ],
-                "name": "WHENSTARTINK"
-            },
-            "wrs": 3,
-            "duration": 10
         },
         {
             "user": {
@@ -15787,6 +15790,41 @@
             },
             "wrs": 2,
             "duration": 45
+        },
+        {
+            "user": {
+                "id": "b05db0f8-d845-47d2-b0e5-795717038ac6",
+                "zone": [
+                    {
+                        "name": "World",
+                        "parentId": null,
+                        "zoneId": "301e1b69-7e13-11e8-8060-e284abfd2bc4"
+                    },
+                    {
+                        "name": "Europe",
+                        "parentId": "301e1b69-7e13-11e8-8060-e284abfd2bc4",
+                        "zoneId": "301e2106-7e13-11e8-8060-e284abfd2bc4"
+                    },
+                    {
+                        "name": "Germany",
+                        "parentId": "301e2106-7e13-11e8-8060-e284abfd2bc4",
+                        "zoneId": "301ff622-7e13-11e8-8060-e284abfd2bc4"
+                    },
+                    {
+                        "name": "Bayern",
+                        "parentId": "301ff622-7e13-11e8-8060-e284abfd2bc4",
+                        "zoneId": "301ff9a2-7e13-11e8-8060-e284abfd2bc4"
+                    },
+                    {
+                        "name": "Nürnberg",
+                        "parentId": "301ff9a2-7e13-11e8-8060-e284abfd2bc4",
+                        "zoneId": "301ffccb-7e13-11e8-8060-e284abfd2bc4"
+                    }
+                ],
+                "name": "WHENSTARTINK"
+            },
+            "wrs": 2,
+            "duration": 10
         },
         {
             "user": {
@@ -16135,7 +16173,7 @@
                 "name": "Erizel"
             },
             "wrs": 29,
-            "duration": 75
+            "duration": 76
         },
         {
             "user": {
@@ -16229,7 +16267,7 @@
                 ],
                 "name": "riolu-tm"
             },
-            "wrs": 20,
+            "wrs": 21,
             "duration": 82
         },
         {
@@ -19357,7 +19395,7 @@
                     "zoneId": "301ff622-7e13-11e8-8060-e284abfd2bc4"
                 }
             ],
-            "wrs": 65
+            "wrs": 66
         },
         {
             "zone": [
@@ -19913,7 +19951,7 @@
                 ],
                 "name": "riolu-tm"
             },
-            "wrs": 11
+            "wrs": 12
         },
         {
             "user": {
@@ -22904,7 +22942,7 @@
                     "zoneId": "301ff622-7e13-11e8-8060-e284abfd2bc4"
                 }
             ],
-            "wrs": 37
+            "wrs": 38
         },
         {
             "zone": [

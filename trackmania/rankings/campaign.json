@@ -32,7 +32,7 @@
                 ],
                 "name": "riolu-tm"
             },
-            "wrs": 7,
+            "wrs": 8,
             "duration": 127
         },
         {
@@ -118,7 +118,7 @@
                 "name": "Erizel"
             },
             "wrs": 4,
-            "duration": 32
+            "duration": 33
         },
         {
             "user": {
@@ -242,41 +242,6 @@
         },
         {
             "user": {
-                "id": "b05db0f8-d845-47d2-b0e5-795717038ac6",
-                "zone": [
-                    {
-                        "name": "World",
-                        "parentId": null,
-                        "zoneId": "301e1b69-7e13-11e8-8060-e284abfd2bc4"
-                    },
-                    {
-                        "name": "Europe",
-                        "parentId": "301e1b69-7e13-11e8-8060-e284abfd2bc4",
-                        "zoneId": "301e2106-7e13-11e8-8060-e284abfd2bc4"
-                    },
-                    {
-                        "name": "Germany",
-                        "parentId": "301e2106-7e13-11e8-8060-e284abfd2bc4",
-                        "zoneId": "301ff622-7e13-11e8-8060-e284abfd2bc4"
-                    },
-                    {
-                        "name": "Bayern",
-                        "parentId": "301ff622-7e13-11e8-8060-e284abfd2bc4",
-                        "zoneId": "301ff9a2-7e13-11e8-8060-e284abfd2bc4"
-                    },
-                    {
-                        "name": "Nürnberg",
-                        "parentId": "301ff9a2-7e13-11e8-8060-e284abfd2bc4",
-                        "zoneId": "301ffccb-7e13-11e8-8060-e284abfd2bc4"
-                    }
-                ],
-                "name": "WHENSTARTINK"
-            },
-            "wrs": 3,
-            "duration": 10
-        },
-        {
-            "user": {
                 "id": "49965c7b-d71c-467d-99c7-ff4092daf0ca",
                 "zone": [
                     {
@@ -309,6 +274,41 @@
             },
             "wrs": 3,
             "duration": 222
+        },
+        {
+            "user": {
+                "id": "b05db0f8-d845-47d2-b0e5-795717038ac6",
+                "zone": [
+                    {
+                        "name": "World",
+                        "parentId": null,
+                        "zoneId": "301e1b69-7e13-11e8-8060-e284abfd2bc4"
+                    },
+                    {
+                        "name": "Europe",
+                        "parentId": "301e1b69-7e13-11e8-8060-e284abfd2bc4",
+                        "zoneId": "301e2106-7e13-11e8-8060-e284abfd2bc4"
+                    },
+                    {
+                        "name": "Germany",
+                        "parentId": "301e2106-7e13-11e8-8060-e284abfd2bc4",
+                        "zoneId": "301ff622-7e13-11e8-8060-e284abfd2bc4"
+                    },
+                    {
+                        "name": "Bayern",
+                        "parentId": "301ff622-7e13-11e8-8060-e284abfd2bc4",
+                        "zoneId": "301ff9a2-7e13-11e8-8060-e284abfd2bc4"
+                    },
+                    {
+                        "name": "Nürnberg",
+                        "parentId": "301ff9a2-7e13-11e8-8060-e284abfd2bc4",
+                        "zoneId": "301ffccb-7e13-11e8-8060-e284abfd2bc4"
+                    }
+                ],
+                "name": "WHENSTARTINK"
+            },
+            "wrs": 2,
+            "duration": 10
         },
         {
             "user": {
@@ -1727,7 +1727,7 @@
                 "name": "Erizel"
             },
             "wrs": 29,
-            "duration": 75
+            "duration": 76
         },
         {
             "user": {
@@ -1851,7 +1851,7 @@
                 ],
                 "name": "riolu-tm"
             },
-            "wrs": 21,
+            "wrs": 22,
             "duration": 82
         },
         {
@@ -5994,7 +5994,7 @@
                     "zoneId": "301ff622-7e13-11e8-8060-e284abfd2bc4"
                 }
             ],
-            "wrs": 76
+            "wrs": 77
         },
         {
             "zone": [
@@ -6630,7 +6630,7 @@
                 ],
                 "name": "riolu-tm"
             },
-            "wrs": 12
+            "wrs": 13
         },
         {
             "user": {
@@ -10608,7 +10608,7 @@
                     "zoneId": "301ff622-7e13-11e8-8060-e284abfd2bc4"
                 }
             ],
-            "wrs": 44
+            "wrs": 45
         },
         {
             "zone": [
