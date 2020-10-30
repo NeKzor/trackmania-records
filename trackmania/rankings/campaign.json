@@ -32,7 +32,7 @@
                 ],
                 "name": "riolu-tm"
             },
-            "wrs": 8,
+            "wrs": 9,
             "duration": 127
         },
         {
@@ -118,7 +118,7 @@
                 "name": "Erizel"
             },
             "wrs": 4,
-            "duration": 33
+            "duration": 34
         },
         {
             "user": {
@@ -203,7 +203,7 @@
                 "name": "AffiTM"
             },
             "wrs": 4,
-            "duration": 260
+            "duration": 261
         },
         {
             "user": {
@@ -343,7 +343,7 @@
                 "name": "Flechetas"
             },
             "wrs": 2,
-            "duration": 107
+            "duration": 108
         },
         {
             "user": {
@@ -507,36 +507,6 @@
         },
         {
             "user": {
-                "id": "934543d0-dbcc-432f-8959-ca789f7c904e",
-                "zone": [
-                    {
-                        "name": "World",
-                        "parentId": null,
-                        "zoneId": "301e1b69-7e13-11e8-8060-e284abfd2bc4"
-                    },
-                    {
-                        "name": "Europe",
-                        "parentId": "301e1b69-7e13-11e8-8060-e284abfd2bc4",
-                        "zoneId": "301e2106-7e13-11e8-8060-e284abfd2bc4"
-                    },
-                    {
-                        "name": "Spain",
-                        "parentId": "301e2106-7e13-11e8-8060-e284abfd2bc4",
-                        "zoneId": "30225b07-7e13-11e8-8060-e284abfd2bc4"
-                    },
-                    {
-                        "name": "Andalucía",
-                        "parentId": "30225b07-7e13-11e8-8060-e284abfd2bc4",
-                        "zoneId": "30225cbf-7e13-11e8-8060-e284abfd2bc4"
-                    }
-                ],
-                "name": "Joltysonic."
-            },
-            "wrs": 1,
-            "duration": 0
-        },
-        {
-            "user": {
                 "id": "30377a82-ef34-4bbf-a4e6-4b12200ed19b",
                 "zone": [
                     {
@@ -568,7 +538,7 @@
                 "name": "trabadia"
             },
             "wrs": 1,
-            "duration": 110
+            "duration": 111
         },
         {
             "user": {
@@ -1340,7 +1310,7 @@
                     "zoneId": "301ff622-7e13-11e8-8060-e284abfd2bc4"
                 }
             ],
-            "wrs": 16
+            "wrs": 17
         },
         {
             "zone": [
@@ -1535,26 +1505,6 @@
                     "zoneId": "301e2106-7e13-11e8-8060-e284abfd2bc4"
                 },
                 {
-                    "name": "Spain",
-                    "parentId": "301e2106-7e13-11e8-8060-e284abfd2bc4",
-                    "zoneId": "30225b07-7e13-11e8-8060-e284abfd2bc4"
-                }
-            ],
-            "wrs": 1
-        },
-        {
-            "zone": [
-                {
-                    "name": "World",
-                    "parentId": null,
-                    "zoneId": "301e1b69-7e13-11e8-8060-e284abfd2bc4"
-                },
-                {
-                    "name": "Europe",
-                    "parentId": "301e1b69-7e13-11e8-8060-e284abfd2bc4",
-                    "zoneId": "301e2106-7e13-11e8-8060-e284abfd2bc4"
-                },
-                {
                     "name": "Belarus",
                     "parentId": "301e2106-7e13-11e8-8060-e284abfd2bc4",
                     "zoneId": "301e5b40-7e13-11e8-8060-e284abfd2bc4"
@@ -1727,7 +1677,7 @@
                 "name": "Erizel"
             },
             "wrs": 29,
-            "duration": 76
+            "duration": 77
         },
         {
             "user": {
@@ -1791,36 +1741,6 @@
         },
         {
             "user": {
-                "id": "6c26b761-bd62-42b5-8190-e3e732c2b937",
-                "zone": [
-                    {
-                        "name": "World",
-                        "parentId": null,
-                        "zoneId": "301e1b69-7e13-11e8-8060-e284abfd2bc4"
-                    },
-                    {
-                        "name": "South America",
-                        "parentId": "301e1b69-7e13-11e8-8060-e284abfd2bc4",
-                        "zoneId": "301e243e-7e13-11e8-8060-e284abfd2bc4"
-                    },
-                    {
-                        "name": "Brazil",
-                        "parentId": "301e243e-7e13-11e8-8060-e284abfd2bc4",
-                        "zoneId": "301e6521-7e13-11e8-8060-e284abfd2bc4"
-                    },
-                    {
-                        "name": "São Paulo",
-                        "parentId": "301e6521-7e13-11e8-8060-e284abfd2bc4",
-                        "zoneId": "825a3452-6a36-4fe1-94b5-637986936ef7"
-                    }
-                ],
-                "name": "GNR-HASKELL"
-            },
-            "wrs": 23,
-            "duration": 56
-        },
-        {
-            "user": {
                 "id": "2ed0997d-62bc-4a53-8c09-ffb793382ea2",
                 "zone": [
                     {
@@ -1851,8 +1771,38 @@
                 ],
                 "name": "riolu-tm"
             },
-            "wrs": 22,
+            "wrs": 23,
             "duration": 82
+        },
+        {
+            "user": {
+                "id": "6c26b761-bd62-42b5-8190-e3e732c2b937",
+                "zone": [
+                    {
+                        "name": "World",
+                        "parentId": null,
+                        "zoneId": "301e1b69-7e13-11e8-8060-e284abfd2bc4"
+                    },
+                    {
+                        "name": "South America",
+                        "parentId": "301e1b69-7e13-11e8-8060-e284abfd2bc4",
+                        "zoneId": "301e243e-7e13-11e8-8060-e284abfd2bc4"
+                    },
+                    {
+                        "name": "Brazil",
+                        "parentId": "301e243e-7e13-11e8-8060-e284abfd2bc4",
+                        "zoneId": "301e6521-7e13-11e8-8060-e284abfd2bc4"
+                    },
+                    {
+                        "name": "São Paulo",
+                        "parentId": "301e6521-7e13-11e8-8060-e284abfd2bc4",
+                        "zoneId": "825a3452-6a36-4fe1-94b5-637986936ef7"
+                    }
+                ],
+                "name": "GNR-HASKELL"
+            },
+            "wrs": 23,
+            "duration": 56
         },
         {
             "user": {
@@ -2662,7 +2612,7 @@
                 "name": "Flechetas"
             },
             "wrs": 4,
-            "duration": 111
+            "duration": 112
         },
         {
             "user": {
@@ -2852,7 +2802,7 @@
                 "name": "AffiTM"
             },
             "wrs": 4,
-            "duration": 100
+            "duration": 101
         },
         {
             "user": {
@@ -5092,7 +5042,7 @@
                 "name": "trabadia"
             },
             "wrs": 1,
-            "duration": 110
+            "duration": 111
         },
         {
             "user": {
@@ -5994,7 +5944,7 @@
                     "zoneId": "301ff622-7e13-11e8-8060-e284abfd2bc4"
                 }
             ],
-            "wrs": 77
+            "wrs": 78
         },
         {
             "zone": [

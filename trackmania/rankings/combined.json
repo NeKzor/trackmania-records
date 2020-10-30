@@ -32,7 +32,7 @@
                 ],
                 "name": "riolu-tm"
             },
-            "wrs": 22,
+            "wrs": 23,
             "duration": 180
         },
         {
@@ -188,7 +188,7 @@
                 "name": "Erizel"
             },
             "wrs": 7,
-            "duration": 35
+            "duration": 36
         },
         {
             "user": {
@@ -308,7 +308,7 @@
                 "name": "AffiTM"
             },
             "wrs": 5,
-            "duration": 260
+            "duration": 261
         },
         {
             "user": {
@@ -688,7 +688,7 @@
                 "name": "Flechetas"
             },
             "wrs": 2,
-            "duration": 107
+            "duration": 108
         },
         {
             "user": {
@@ -1017,36 +1017,6 @@
         },
         {
             "user": {
-                "id": "934543d0-dbcc-432f-8959-ca789f7c904e",
-                "zone": [
-                    {
-                        "name": "World",
-                        "parentId": null,
-                        "zoneId": "301e1b69-7e13-11e8-8060-e284abfd2bc4"
-                    },
-                    {
-                        "name": "Europe",
-                        "parentId": "301e1b69-7e13-11e8-8060-e284abfd2bc4",
-                        "zoneId": "301e2106-7e13-11e8-8060-e284abfd2bc4"
-                    },
-                    {
-                        "name": "Spain",
-                        "parentId": "301e2106-7e13-11e8-8060-e284abfd2bc4",
-                        "zoneId": "30225b07-7e13-11e8-8060-e284abfd2bc4"
-                    },
-                    {
-                        "name": "Andalucía",
-                        "parentId": "30225b07-7e13-11e8-8060-e284abfd2bc4",
-                        "zoneId": "30225cbf-7e13-11e8-8060-e284abfd2bc4"
-                    }
-                ],
-                "name": "Joltysonic."
-            },
-            "wrs": 1,
-            "duration": 0
-        },
-        {
-            "user": {
                 "id": "30377a82-ef34-4bbf-a4e6-4b12200ed19b",
                 "zone": [
                     {
@@ -1078,7 +1048,7 @@
                 "name": "trabadia"
             },
             "wrs": 1,
-            "duration": 110
+            "duration": 111
         },
         {
             "user": {
@@ -2765,7 +2735,7 @@
                     "zoneId": "301ff622-7e13-11e8-8060-e284abfd2bc4"
                 }
             ],
-            "wrs": 50
+            "wrs": 51
         },
         {
             "zone": [
@@ -3100,26 +3070,6 @@
                     "zoneId": "301e2106-7e13-11e8-8060-e284abfd2bc4"
                 },
                 {
-                    "name": "Spain",
-                    "parentId": "301e2106-7e13-11e8-8060-e284abfd2bc4",
-                    "zoneId": "30225b07-7e13-11e8-8060-e284abfd2bc4"
-                }
-            ],
-            "wrs": 1
-        },
-        {
-            "zone": [
-                {
-                    "name": "World",
-                    "parentId": null,
-                    "zoneId": "301e1b69-7e13-11e8-8060-e284abfd2bc4"
-                },
-                {
-                    "name": "Europe",
-                    "parentId": "301e1b69-7e13-11e8-8060-e284abfd2bc4",
-                    "zoneId": "301e2106-7e13-11e8-8060-e284abfd2bc4"
-                },
-                {
                     "name": "Belarus",
                     "parentId": "301e2106-7e13-11e8-8060-e284abfd2bc4",
                     "zoneId": "301e5b40-7e13-11e8-8060-e284abfd2bc4"
@@ -3321,7 +3271,7 @@
                 ],
                 "name": "riolu-tm"
             },
-            "wrs": 54,
+            "wrs": 55,
             "duration": 82
         },
         {
@@ -3377,7 +3327,7 @@
                 "name": "Erizel"
             },
             "wrs": 50,
-            "duration": 76
+            "duration": 77
         },
         {
             "user": {
@@ -5007,7 +4957,7 @@
                 "name": "AffiTM"
             },
             "wrs": 5,
-            "duration": 100
+            "duration": 101
         },
         {
             "user": {
@@ -5137,7 +5087,7 @@
                 "name": "Flechetas"
             },
             "wrs": 4,
-            "duration": 111
+            "duration": 112
         },
         {
             "user": {
@@ -8337,7 +8287,7 @@
                 "name": "trabadia"
             },
             "wrs": 1,
-            "duration": 110
+            "duration": 111
         },
         {
             "user": {
@@ -10779,7 +10729,7 @@
                     "zoneId": "301ff622-7e13-11e8-8060-e284abfd2bc4"
                 }
             ],
-            "wrs": 267
+            "wrs": 268
         },
         {
             "zone": [
