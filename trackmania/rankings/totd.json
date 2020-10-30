@@ -352,6 +352,41 @@
         },
         {
             "user": {
+                "id": "f40d3c02-135a-4c84-ad99-5e96f2431c41",
+                "zone": [
+                    {
+                        "name": "World",
+                        "parentId": null,
+                        "zoneId": "301e1b69-7e13-11e8-8060-e284abfd2bc4"
+                    },
+                    {
+                        "name": "Europe",
+                        "parentId": "301e1b69-7e13-11e8-8060-e284abfd2bc4",
+                        "zoneId": "301e2106-7e13-11e8-8060-e284abfd2bc4"
+                    },
+                    {
+                        "name": "France",
+                        "parentId": "301e2106-7e13-11e8-8060-e284abfd2bc4",
+                        "zoneId": "301f6188-7e13-11e8-8060-e284abfd2bc4"
+                    },
+                    {
+                        "name": "Centre-Val de Loire",
+                        "parentId": "301f6188-7e13-11e8-8060-e284abfd2bc4",
+                        "zoneId": "301f9809-7e13-11e8-8060-e284abfd2bc4"
+                    },
+                    {
+                        "name": "Indre-et-Loire",
+                        "parentId": "301f9809-7e13-11e8-8060-e284abfd2bc4",
+                        "zoneId": "301f9a60-7e13-11e8-8060-e284abfd2bc4"
+                    }
+                ],
+                "name": "NeqzoTM"
+            },
+            "wrs": 3,
+            "duration": 6
+        },
+        {
+            "user": {
                 "id": "e975fb83-c2b4-4830-9ec6-d8253f315865",
                 "zone": [
                     {
@@ -564,41 +599,6 @@
             },
             "wrs": 2,
             "duration": 0
-        },
-        {
-            "user": {
-                "id": "f40d3c02-135a-4c84-ad99-5e96f2431c41",
-                "zone": [
-                    {
-                        "name": "World",
-                        "parentId": null,
-                        "zoneId": "301e1b69-7e13-11e8-8060-e284abfd2bc4"
-                    },
-                    {
-                        "name": "Europe",
-                        "parentId": "301e1b69-7e13-11e8-8060-e284abfd2bc4",
-                        "zoneId": "301e2106-7e13-11e8-8060-e284abfd2bc4"
-                    },
-                    {
-                        "name": "France",
-                        "parentId": "301e2106-7e13-11e8-8060-e284abfd2bc4",
-                        "zoneId": "301f6188-7e13-11e8-8060-e284abfd2bc4"
-                    },
-                    {
-                        "name": "Centre-Val de Loire",
-                        "parentId": "301f6188-7e13-11e8-8060-e284abfd2bc4",
-                        "zoneId": "301f9809-7e13-11e8-8060-e284abfd2bc4"
-                    },
-                    {
-                        "name": "Indre-et-Loire",
-                        "parentId": "301f9809-7e13-11e8-8060-e284abfd2bc4",
-                        "zoneId": "301f9a60-7e13-11e8-8060-e284abfd2bc4"
-                    }
-                ],
-                "name": "NeqzoTM"
-            },
-            "wrs": 2,
-            "duration": 6
         },
         {
             "user": {
@@ -849,41 +849,6 @@
             },
             "wrs": 1,
             "duration": 0
-        },
-        {
-            "user": {
-                "id": "7cd60a75-609a-4e64-b286-16f329878249",
-                "zone": [
-                    {
-                        "name": "World",
-                        "parentId": null,
-                        "zoneId": "301e1b69-7e13-11e8-8060-e284abfd2bc4"
-                    },
-                    {
-                        "name": "Europe",
-                        "parentId": "301e1b69-7e13-11e8-8060-e284abfd2bc4",
-                        "zoneId": "301e2106-7e13-11e8-8060-e284abfd2bc4"
-                    },
-                    {
-                        "name": "France",
-                        "parentId": "301e2106-7e13-11e8-8060-e284abfd2bc4",
-                        "zoneId": "301f6188-7e13-11e8-8060-e284abfd2bc4"
-                    },
-                    {
-                        "name": "Île-de-France",
-                        "parentId": "301f6188-7e13-11e8-8060-e284abfd2bc4",
-                        "zoneId": "301fab89-7e13-11e8-8060-e284abfd2bc4"
-                    },
-                    {
-                        "name": "Paris",
-                        "parentId": "301fab89-7e13-11e8-8060-e284abfd2bc4",
-                        "zoneId": "301fad4a-7e13-11e8-8060-e284abfd2bc4"
-                    }
-                ],
-                "name": "Tona."
-            },
-            "wrs": 1,
-            "duration": 3
         },
         {
             "user": {
@@ -2276,6 +2241,41 @@
         },
         {
             "user": {
+                "id": "f40d3c02-135a-4c84-ad99-5e96f2431c41",
+                "zone": [
+                    {
+                        "name": "World",
+                        "parentId": null,
+                        "zoneId": "301e1b69-7e13-11e8-8060-e284abfd2bc4"
+                    },
+                    {
+                        "name": "Europe",
+                        "parentId": "301e1b69-7e13-11e8-8060-e284abfd2bc4",
+                        "zoneId": "301e2106-7e13-11e8-8060-e284abfd2bc4"
+                    },
+                    {
+                        "name": "France",
+                        "parentId": "301e2106-7e13-11e8-8060-e284abfd2bc4",
+                        "zoneId": "301f6188-7e13-11e8-8060-e284abfd2bc4"
+                    },
+                    {
+                        "name": "Centre-Val de Loire",
+                        "parentId": "301f6188-7e13-11e8-8060-e284abfd2bc4",
+                        "zoneId": "301f9809-7e13-11e8-8060-e284abfd2bc4"
+                    },
+                    {
+                        "name": "Indre-et-Loire",
+                        "parentId": "301f9809-7e13-11e8-8060-e284abfd2bc4",
+                        "zoneId": "301f9a60-7e13-11e8-8060-e284abfd2bc4"
+                    }
+                ],
+                "name": "NeqzoTM"
+            },
+            "wrs": 21,
+            "duration": 0
+        },
+        {
+            "user": {
                 "id": "f40e1f49-5948-45dc-9778-2f80a44a476a",
                 "zone": [
                     {
@@ -2338,41 +2338,6 @@
             },
             "wrs": 20,
             "duration": 17
-        },
-        {
-            "user": {
-                "id": "f40d3c02-135a-4c84-ad99-5e96f2431c41",
-                "zone": [
-                    {
-                        "name": "World",
-                        "parentId": null,
-                        "zoneId": "301e1b69-7e13-11e8-8060-e284abfd2bc4"
-                    },
-                    {
-                        "name": "Europe",
-                        "parentId": "301e1b69-7e13-11e8-8060-e284abfd2bc4",
-                        "zoneId": "301e2106-7e13-11e8-8060-e284abfd2bc4"
-                    },
-                    {
-                        "name": "France",
-                        "parentId": "301e2106-7e13-11e8-8060-e284abfd2bc4",
-                        "zoneId": "301f6188-7e13-11e8-8060-e284abfd2bc4"
-                    },
-                    {
-                        "name": "Centre-Val de Loire",
-                        "parentId": "301f6188-7e13-11e8-8060-e284abfd2bc4",
-                        "zoneId": "301f9809-7e13-11e8-8060-e284abfd2bc4"
-                    },
-                    {
-                        "name": "Indre-et-Loire",
-                        "parentId": "301f9809-7e13-11e8-8060-e284abfd2bc4",
-                        "zoneId": "301f9a60-7e13-11e8-8060-e284abfd2bc4"
-                    }
-                ],
-                "name": "NeqzoTM"
-            },
-            "wrs": 20,
-            "duration": 0
         },
         {
             "user": {
@@ -3071,41 +3036,6 @@
         },
         {
             "user": {
-                "id": "7cd60a75-609a-4e64-b286-16f329878249",
-                "zone": [
-                    {
-                        "name": "World",
-                        "parentId": null,
-                        "zoneId": "301e1b69-7e13-11e8-8060-e284abfd2bc4"
-                    },
-                    {
-                        "name": "Europe",
-                        "parentId": "301e1b69-7e13-11e8-8060-e284abfd2bc4",
-                        "zoneId": "301e2106-7e13-11e8-8060-e284abfd2bc4"
-                    },
-                    {
-                        "name": "France",
-                        "parentId": "301e2106-7e13-11e8-8060-e284abfd2bc4",
-                        "zoneId": "301f6188-7e13-11e8-8060-e284abfd2bc4"
-                    },
-                    {
-                        "name": "Île-de-France",
-                        "parentId": "301f6188-7e13-11e8-8060-e284abfd2bc4",
-                        "zoneId": "301fab89-7e13-11e8-8060-e284abfd2bc4"
-                    },
-                    {
-                        "name": "Paris",
-                        "parentId": "301fab89-7e13-11e8-8060-e284abfd2bc4",
-                        "zoneId": "301fad4a-7e13-11e8-8060-e284abfd2bc4"
-                    }
-                ],
-                "name": "Tona."
-            },
-            "wrs": 5,
-            "duration": 3
-        },
-        {
-            "user": {
                 "id": "8977a4a0-3458-4e00-a1f4-864e4d1d4dbe",
                 "zone": [
                     {
@@ -3515,6 +3445,41 @@
                     }
                 ],
                 "name": "cmcsand"
+            },
+            "wrs": 4,
+            "duration": 0
+        },
+        {
+            "user": {
+                "id": "7cd60a75-609a-4e64-b286-16f329878249",
+                "zone": [
+                    {
+                        "name": "World",
+                        "parentId": null,
+                        "zoneId": "301e1b69-7e13-11e8-8060-e284abfd2bc4"
+                    },
+                    {
+                        "name": "Europe",
+                        "parentId": "301e1b69-7e13-11e8-8060-e284abfd2bc4",
+                        "zoneId": "301e2106-7e13-11e8-8060-e284abfd2bc4"
+                    },
+                    {
+                        "name": "France",
+                        "parentId": "301e2106-7e13-11e8-8060-e284abfd2bc4",
+                        "zoneId": "301f6188-7e13-11e8-8060-e284abfd2bc4"
+                    },
+                    {
+                        "name": "Île-de-France",
+                        "parentId": "301f6188-7e13-11e8-8060-e284abfd2bc4",
+                        "zoneId": "301fab89-7e13-11e8-8060-e284abfd2bc4"
+                    },
+                    {
+                        "name": "Paris",
+                        "parentId": "301fab89-7e13-11e8-8060-e284abfd2bc4",
+                        "zoneId": "301fad4a-7e13-11e8-8060-e284abfd2bc4"
+                    }
+                ],
+                "name": "Tona."
             },
             "wrs": 4,
             "duration": 0
@@ -7603,6 +7568,40 @@
         },
         {
             "user": {
+                "id": "f40d3c02-135a-4c84-ad99-5e96f2431c41",
+                "zone": [
+                    {
+                        "name": "World",
+                        "parentId": null,
+                        "zoneId": "301e1b69-7e13-11e8-8060-e284abfd2bc4"
+                    },
+                    {
+                        "name": "Europe",
+                        "parentId": "301e1b69-7e13-11e8-8060-e284abfd2bc4",
+                        "zoneId": "301e2106-7e13-11e8-8060-e284abfd2bc4"
+                    },
+                    {
+                        "name": "France",
+                        "parentId": "301e2106-7e13-11e8-8060-e284abfd2bc4",
+                        "zoneId": "301f6188-7e13-11e8-8060-e284abfd2bc4"
+                    },
+                    {
+                        "name": "Centre-Val de Loire",
+                        "parentId": "301f6188-7e13-11e8-8060-e284abfd2bc4",
+                        "zoneId": "301f9809-7e13-11e8-8060-e284abfd2bc4"
+                    },
+                    {
+                        "name": "Indre-et-Loire",
+                        "parentId": "301f9809-7e13-11e8-8060-e284abfd2bc4",
+                        "zoneId": "301f9a60-7e13-11e8-8060-e284abfd2bc4"
+                    }
+                ],
+                "name": "NeqzoTM"
+            },
+            "wrs": 6
+        },
+        {
+            "user": {
                 "id": "a390b00c-96cd-4ddb-bfe0-373aeffae0db",
                 "zone": [
                     {
@@ -7656,74 +7655,6 @@
                     }
                 ],
                 "name": "tekky_TM"
-            },
-            "wrs": 5
-        },
-        {
-            "user": {
-                "id": "7cd60a75-609a-4e64-b286-16f329878249",
-                "zone": [
-                    {
-                        "name": "World",
-                        "parentId": null,
-                        "zoneId": "301e1b69-7e13-11e8-8060-e284abfd2bc4"
-                    },
-                    {
-                        "name": "Europe",
-                        "parentId": "301e1b69-7e13-11e8-8060-e284abfd2bc4",
-                        "zoneId": "301e2106-7e13-11e8-8060-e284abfd2bc4"
-                    },
-                    {
-                        "name": "France",
-                        "parentId": "301e2106-7e13-11e8-8060-e284abfd2bc4",
-                        "zoneId": "301f6188-7e13-11e8-8060-e284abfd2bc4"
-                    },
-                    {
-                        "name": "Île-de-France",
-                        "parentId": "301f6188-7e13-11e8-8060-e284abfd2bc4",
-                        "zoneId": "301fab89-7e13-11e8-8060-e284abfd2bc4"
-                    },
-                    {
-                        "name": "Paris",
-                        "parentId": "301fab89-7e13-11e8-8060-e284abfd2bc4",
-                        "zoneId": "301fad4a-7e13-11e8-8060-e284abfd2bc4"
-                    }
-                ],
-                "name": "Tona."
-            },
-            "wrs": 5
-        },
-        {
-            "user": {
-                "id": "f40d3c02-135a-4c84-ad99-5e96f2431c41",
-                "zone": [
-                    {
-                        "name": "World",
-                        "parentId": null,
-                        "zoneId": "301e1b69-7e13-11e8-8060-e284abfd2bc4"
-                    },
-                    {
-                        "name": "Europe",
-                        "parentId": "301e1b69-7e13-11e8-8060-e284abfd2bc4",
-                        "zoneId": "301e2106-7e13-11e8-8060-e284abfd2bc4"
-                    },
-                    {
-                        "name": "France",
-                        "parentId": "301e2106-7e13-11e8-8060-e284abfd2bc4",
-                        "zoneId": "301f6188-7e13-11e8-8060-e284abfd2bc4"
-                    },
-                    {
-                        "name": "Centre-Val de Loire",
-                        "parentId": "301f6188-7e13-11e8-8060-e284abfd2bc4",
-                        "zoneId": "301f9809-7e13-11e8-8060-e284abfd2bc4"
-                    },
-                    {
-                        "name": "Indre-et-Loire",
-                        "parentId": "301f9809-7e13-11e8-8060-e284abfd2bc4",
-                        "zoneId": "301f9a60-7e13-11e8-8060-e284abfd2bc4"
-                    }
-                ],
-                "name": "NeqzoTM"
             },
             "wrs": 5
         },
@@ -7923,6 +7854,40 @@
                     }
                 ],
                 "name": "Spammiej"
+            },
+            "wrs": 4
+        },
+        {
+            "user": {
+                "id": "7cd60a75-609a-4e64-b286-16f329878249",
+                "zone": [
+                    {
+                        "name": "World",
+                        "parentId": null,
+                        "zoneId": "301e1b69-7e13-11e8-8060-e284abfd2bc4"
+                    },
+                    {
+                        "name": "Europe",
+                        "parentId": "301e1b69-7e13-11e8-8060-e284abfd2bc4",
+                        "zoneId": "301e2106-7e13-11e8-8060-e284abfd2bc4"
+                    },
+                    {
+                        "name": "France",
+                        "parentId": "301e2106-7e13-11e8-8060-e284abfd2bc4",
+                        "zoneId": "301f6188-7e13-11e8-8060-e284abfd2bc4"
+                    },
+                    {
+                        "name": "Île-de-France",
+                        "parentId": "301f6188-7e13-11e8-8060-e284abfd2bc4",
+                        "zoneId": "301fab89-7e13-11e8-8060-e284abfd2bc4"
+                    },
+                    {
+                        "name": "Paris",
+                        "parentId": "301fab89-7e13-11e8-8060-e284abfd2bc4",
+                        "zoneId": "301fad4a-7e13-11e8-8060-e284abfd2bc4"
+                    }
+                ],
+                "name": "Tona."
             },
             "wrs": 4
         },
