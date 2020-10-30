@@ -10508,10 +10508,10 @@
                         ],
                         "name": "Flyer36"
                     },
-                    "score": 24386,
-                    "delta": 19,
-                    "date": "2020-10-30T19:37:55+00:00",
-                    "replay": "38a9609a-04eb-41d7-8fcd-a899546b5135",
+                    "score": 24368,
+                    "delta": 18,
+                    "date": "2020-10-30T19:47:40+00:00",
+                    "replay": "96ae2687-e584-4ce3-97ce-9db5e673505b",
                     "duration": 0
                 }
             ],
@@ -10696,13 +10696,46 @@
                     "date": "2020-10-30T19:37:55+00:00",
                     "replay": "38a9609a-04eb-41d7-8fcd-a899546b5135",
                     "duration": 0
+                },
+                {
+                    "user": {
+                        "id": "4b5253cd-2931-4ca5-845a-c81691d5a8c6",
+                        "zone": [
+                            {
+                                "name": "World",
+                                "parentId": null,
+                                "zoneId": "301e1b69-7e13-11e8-8060-e284abfd2bc4"
+                            },
+                            {
+                                "name": "Europe",
+                                "parentId": "301e1b69-7e13-11e8-8060-e284abfd2bc4",
+                                "zoneId": "301e2106-7e13-11e8-8060-e284abfd2bc4"
+                            },
+                            {
+                                "name": "Czechia",
+                                "parentId": "301e2106-7e13-11e8-8060-e284abfd2bc4",
+                                "zoneId": "301f45cd-7e13-11e8-8060-e284abfd2bc4"
+                            },
+                            {
+                                "name": "Moravskoslezský kraj",
+                                "parentId": "301f45cd-7e13-11e8-8060-e284abfd2bc4",
+                                "zoneId": "301f4dd4-7e13-11e8-8060-e284abfd2bc4"
+                            }
+                        ],
+                        "name": "Flyer36"
+                    },
+                    "score": 24368,
+                    "delta": 18,
+                    "date": "2020-10-30T19:47:40+00:00",
+                    "replay": "96ae2687-e584-4ce3-97ce-9db5e673505b",
+                    "duration": 0
                 }
             ],
             "thumbnail": "26a7ebb5-1a32-406c-8c80-e7d4f3b74ccb"
         }
     ],
     "stats": {
-        "totalTime": 1226567
+        "totalTime": 1226549
     },
     "leaderboard": [
         {
@@ -12116,6 +12149,36 @@
         },
         {
             "user": {
+                "id": "4b5253cd-2931-4ca5-845a-c81691d5a8c6",
+                "zone": [
+                    {
+                        "name": "World",
+                        "parentId": null,
+                        "zoneId": "301e1b69-7e13-11e8-8060-e284abfd2bc4"
+                    },
+                    {
+                        "name": "Europe",
+                        "parentId": "301e1b69-7e13-11e8-8060-e284abfd2bc4",
+                        "zoneId": "301e2106-7e13-11e8-8060-e284abfd2bc4"
+                    },
+                    {
+                        "name": "Czechia",
+                        "parentId": "301e2106-7e13-11e8-8060-e284abfd2bc4",
+                        "zoneId": "301f45cd-7e13-11e8-8060-e284abfd2bc4"
+                    },
+                    {
+                        "name": "Moravskoslezský kraj",
+                        "parentId": "301f45cd-7e13-11e8-8060-e284abfd2bc4",
+                        "zoneId": "301f4dd4-7e13-11e8-8060-e284abfd2bc4"
+                    }
+                ],
+                "name": "Flyer36"
+            },
+            "wrs": 3,
+            "duration": 0
+        },
+        {
+            "user": {
                 "id": "eaa871eb-732f-4678-b694-37247e05aabd",
                 "zone": [
                     {
@@ -12448,36 +12511,6 @@
             },
             "wrs": 2,
             "duration": 1
-        },
-        {
-            "user": {
-                "id": "4b5253cd-2931-4ca5-845a-c81691d5a8c6",
-                "zone": [
-                    {
-                        "name": "World",
-                        "parentId": null,
-                        "zoneId": "301e1b69-7e13-11e8-8060-e284abfd2bc4"
-                    },
-                    {
-                        "name": "Europe",
-                        "parentId": "301e1b69-7e13-11e8-8060-e284abfd2bc4",
-                        "zoneId": "301e2106-7e13-11e8-8060-e284abfd2bc4"
-                    },
-                    {
-                        "name": "Czechia",
-                        "parentId": "301e2106-7e13-11e8-8060-e284abfd2bc4",
-                        "zoneId": "301f45cd-7e13-11e8-8060-e284abfd2bc4"
-                    },
-                    {
-                        "name": "Moravskoslezský kraj",
-                        "parentId": "301f45cd-7e13-11e8-8060-e284abfd2bc4",
-                        "zoneId": "301f4dd4-7e13-11e8-8060-e284abfd2bc4"
-                    }
-                ],
-                "name": "Flyer36"
-            },
-            "wrs": 2,
-            "duration": 0
         },
         {
             "user": {
@@ -13589,6 +13622,26 @@
                     "zoneId": "301e2106-7e13-11e8-8060-e284abfd2bc4"
                 },
                 {
+                    "name": "Czechia",
+                    "parentId": "301e2106-7e13-11e8-8060-e284abfd2bc4",
+                    "zoneId": "301f45cd-7e13-11e8-8060-e284abfd2bc4"
+                }
+            ],
+            "wrs": 7
+        },
+        {
+            "zone": [
+                {
+                    "name": "World",
+                    "parentId": null,
+                    "zoneId": "301e1b69-7e13-11e8-8060-e284abfd2bc4"
+                },
+                {
+                    "name": "Europe",
+                    "parentId": "301e1b69-7e13-11e8-8060-e284abfd2bc4",
+                    "zoneId": "301e2106-7e13-11e8-8060-e284abfd2bc4"
+                },
+                {
                     "name": "Croatia",
                     "parentId": "301e2106-7e13-11e8-8060-e284abfd2bc4",
                     "zoneId": "301f40ae-7e13-11e8-8060-e284abfd2bc4"
@@ -13632,26 +13685,6 @@
                     "name": "Canada",
                     "parentId": "301e2274-7e13-11e8-8060-e284abfd2bc4",
                     "zoneId": "301e6dd7-7e13-11e8-8060-e284abfd2bc4"
-                }
-            ],
-            "wrs": 6
-        },
-        {
-            "zone": [
-                {
-                    "name": "World",
-                    "parentId": null,
-                    "zoneId": "301e1b69-7e13-11e8-8060-e284abfd2bc4"
-                },
-                {
-                    "name": "Europe",
-                    "parentId": "301e1b69-7e13-11e8-8060-e284abfd2bc4",
-                    "zoneId": "301e2106-7e13-11e8-8060-e284abfd2bc4"
-                },
-                {
-                    "name": "Czechia",
-                    "parentId": "301e2106-7e13-11e8-8060-e284abfd2bc4",
-                    "zoneId": "301f45cd-7e13-11e8-8060-e284abfd2bc4"
                 }
             ],
             "wrs": 6
