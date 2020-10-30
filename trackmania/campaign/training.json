@@ -296,7 +296,7 @@
                     "delta": 0,
                     "date": "2020-08-23T12:41:43+00:00",
                     "replay": "611511a3-26fa-4a6a-afc2-075270e7ccf5",
-                    "duration": 67
+                    "duration": 68
                 }
             ],
             "isOfficial": true,
@@ -1634,7 +1634,7 @@
                 "name": "Flechetas"
             },
             "wrs": 2,
-            "duration": 106
+            "duration": 107
         },
         {
             "user": {
@@ -2598,7 +2598,7 @@
                 "name": "Flechetas"
             },
             "wrs": 3,
-            "duration": 110
+            "duration": 111
         },
         {
             "user": {
