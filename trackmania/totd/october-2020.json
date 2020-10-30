@@ -2098,7 +2098,7 @@
                     "delta": 151,
                     "date": "2020-10-06T18:11:31+00:00",
                     "replay": "e76e3bbe-e41e-4e47-aad0-9dbcc87cbded",
-                    "duration": 23
+                    "duration": 24
                 }
             ],
             "isOfficial": false,
@@ -2280,7 +2280,7 @@
                     "delta": 151,
                     "date": "2020-10-06T18:11:31+00:00",
                     "replay": "e76e3bbe-e41e-4e47-aad0-9dbcc87cbded",
-                    "duration": 23,
+                    "duration": 24,
                     "durationMs": 1738113598
                 }
             ],
@@ -10483,7 +10483,7 @@
             "wrs": [
                 {
                     "user": {
-                        "id": "f40d3c02-135a-4c84-ad99-5e96f2431c41",
+                        "id": "4b5253cd-2931-4ca5-845a-c81691d5a8c6",
                         "zone": [
                             {
                                 "name": "World",
@@ -10496,27 +10496,22 @@
                                 "zoneId": "301e2106-7e13-11e8-8060-e284abfd2bc4"
                             },
                             {
-                                "name": "France",
+                                "name": "Czechia",
                                 "parentId": "301e2106-7e13-11e8-8060-e284abfd2bc4",
-                                "zoneId": "301f6188-7e13-11e8-8060-e284abfd2bc4"
+                                "zoneId": "301f45cd-7e13-11e8-8060-e284abfd2bc4"
                             },
                             {
-                                "name": "Centre-Val de Loire",
-                                "parentId": "301f6188-7e13-11e8-8060-e284abfd2bc4",
-                                "zoneId": "301f9809-7e13-11e8-8060-e284abfd2bc4"
-                            },
-                            {
-                                "name": "Indre-et-Loire",
-                                "parentId": "301f9809-7e13-11e8-8060-e284abfd2bc4",
-                                "zoneId": "301f9a60-7e13-11e8-8060-e284abfd2bc4"
+                                "name": "Moravskoslezský kraj",
+                                "parentId": "301f45cd-7e13-11e8-8060-e284abfd2bc4",
+                                "zoneId": "301f4dd4-7e13-11e8-8060-e284abfd2bc4"
                             }
                         ],
-                        "name": "NeqzoTM"
+                        "name": "Flyer36"
                     },
-                    "score": 24476,
-                    "delta": 22,
-                    "date": "2020-10-30T18:58:11+00:00",
-                    "replay": "98aa8bb8-4209-406c-8115-48377ae4ca85",
+                    "score": 24405,
+                    "delta": 71,
+                    "date": "2020-10-30T19:12:48+00:00",
+                    "replay": "c9be86bc-6fc6-4acd-9fcf-98f80eeb597a",
                     "duration": 0
                 }
             ],
@@ -10635,13 +10630,46 @@
                     "date": "2020-10-30T18:58:11+00:00",
                     "replay": "98aa8bb8-4209-406c-8115-48377ae4ca85",
                     "duration": 0
+                },
+                {
+                    "user": {
+                        "id": "4b5253cd-2931-4ca5-845a-c81691d5a8c6",
+                        "zone": [
+                            {
+                                "name": "World",
+                                "parentId": null,
+                                "zoneId": "301e1b69-7e13-11e8-8060-e284abfd2bc4"
+                            },
+                            {
+                                "name": "Europe",
+                                "parentId": "301e1b69-7e13-11e8-8060-e284abfd2bc4",
+                                "zoneId": "301e2106-7e13-11e8-8060-e284abfd2bc4"
+                            },
+                            {
+                                "name": "Czechia",
+                                "parentId": "301e2106-7e13-11e8-8060-e284abfd2bc4",
+                                "zoneId": "301f45cd-7e13-11e8-8060-e284abfd2bc4"
+                            },
+                            {
+                                "name": "Moravskoslezský kraj",
+                                "parentId": "301f45cd-7e13-11e8-8060-e284abfd2bc4",
+                                "zoneId": "301f4dd4-7e13-11e8-8060-e284abfd2bc4"
+                            }
+                        ],
+                        "name": "Flyer36"
+                    },
+                    "score": 24405,
+                    "delta": 71,
+                    "date": "2020-10-30T19:12:48+00:00",
+                    "replay": "c9be86bc-6fc6-4acd-9fcf-98f80eeb597a",
+                    "duration": 0
                 }
             ],
             "thumbnail": "26a7ebb5-1a32-406c-8c80-e7d4f3b74ccb"
         }
     ],
     "stats": {
-        "totalTime": 1226657
+        "totalTime": 1226586
     },
     "leaderboard": [
         {
@@ -10672,7 +10700,7 @@
                 "name": "PokeR.4W"
             },
             "wrs": 9,
-            "duration": 125
+            "duration": 126
         },
         {
             "user": {
@@ -11036,7 +11064,7 @@
         },
         {
             "user": {
-                "id": "f40d3c02-135a-4c84-ad99-5e96f2431c41",
+                "id": "4b5253cd-2931-4ca5-845a-c81691d5a8c6",
                 "zone": [
                     {
                         "name": "World",
@@ -11049,22 +11077,17 @@
                         "zoneId": "301e2106-7e13-11e8-8060-e284abfd2bc4"
                     },
                     {
-                        "name": "France",
+                        "name": "Czechia",
                         "parentId": "301e2106-7e13-11e8-8060-e284abfd2bc4",
-                        "zoneId": "301f6188-7e13-11e8-8060-e284abfd2bc4"
+                        "zoneId": "301f45cd-7e13-11e8-8060-e284abfd2bc4"
                     },
                     {
-                        "name": "Centre-Val de Loire",
-                        "parentId": "301f6188-7e13-11e8-8060-e284abfd2bc4",
-                        "zoneId": "301f9809-7e13-11e8-8060-e284abfd2bc4"
-                    },
-                    {
-                        "name": "Indre-et-Loire",
-                        "parentId": "301f9809-7e13-11e8-8060-e284abfd2bc4",
-                        "zoneId": "301f9a60-7e13-11e8-8060-e284abfd2bc4"
+                        "name": "Moravskoslezský kraj",
+                        "parentId": "301f45cd-7e13-11e8-8060-e284abfd2bc4",
+                        "zoneId": "301f4dd4-7e13-11e8-8060-e284abfd2bc4"
                     }
                 ],
-                "name": "NeqzoTM"
+                "name": "Flyer36"
             },
             "wrs": 1,
             "duration": 0
@@ -11124,9 +11147,9 @@
                     "zoneId": "301e2106-7e13-11e8-8060-e284abfd2bc4"
                 },
                 {
-                    "name": "France",
+                    "name": "Czechia",
                     "parentId": "301e2106-7e13-11e8-8060-e284abfd2bc4",
-                    "zoneId": "301f6188-7e13-11e8-8060-e284abfd2bc4"
+                    "zoneId": "301f45cd-7e13-11e8-8060-e284abfd2bc4"
                 }
             ],
             "wrs": 3
@@ -11164,9 +11187,9 @@
                     "zoneId": "301e2106-7e13-11e8-8060-e284abfd2bc4"
                 },
                 {
-                    "name": "Czechia",
+                    "name": "France",
                     "parentId": "301e2106-7e13-11e8-8060-e284abfd2bc4",
-                    "zoneId": "301f45cd-7e13-11e8-8060-e284abfd2bc4"
+                    "zoneId": "301f6188-7e13-11e8-8060-e284abfd2bc4"
                 }
             ],
             "wrs": 2
@@ -11351,7 +11374,7 @@
                 "name": "PokeR.4W"
             },
             "wrs": 25,
-            "duration": 125
+            "duration": 126
         },
         {
             "user": {
@@ -13347,6 +13370,36 @@
             },
             "wrs": 1,
             "duration": 0
+        },
+        {
+            "user": {
+                "id": "4b5253cd-2931-4ca5-845a-c81691d5a8c6",
+                "zone": [
+                    {
+                        "name": "World",
+                        "parentId": null,
+                        "zoneId": "301e1b69-7e13-11e8-8060-e284abfd2bc4"
+                    },
+                    {
+                        "name": "Europe",
+                        "parentId": "301e1b69-7e13-11e8-8060-e284abfd2bc4",
+                        "zoneId": "301e2106-7e13-11e8-8060-e284abfd2bc4"
+                    },
+                    {
+                        "name": "Czechia",
+                        "parentId": "301e2106-7e13-11e8-8060-e284abfd2bc4",
+                        "zoneId": "301f45cd-7e13-11e8-8060-e284abfd2bc4"
+                    },
+                    {
+                        "name": "Moravskoslezský kraj",
+                        "parentId": "301f45cd-7e13-11e8-8060-e284abfd2bc4",
+                        "zoneId": "301f4dd4-7e13-11e8-8060-e284abfd2bc4"
+                    }
+                ],
+                "name": "Flyer36"
+            },
+            "wrs": 1,
+            "duration": 0
         }
     ],
     "historyCountryLeaderboard": [
@@ -13588,7 +13641,7 @@
                     "zoneId": "301f45cd-7e13-11e8-8060-e284abfd2bc4"
                 }
             ],
-            "wrs": 4
+            "wrs": 5
         },
         {
             "zone": [
@@ -15702,6 +15755,35 @@
                 "name": "NeqzoTM"
             },
             "wrs": 1
+        },
+        {
+            "user": {
+                "id": "4b5253cd-2931-4ca5-845a-c81691d5a8c6",
+                "zone": [
+                    {
+                        "name": "World",
+                        "parentId": null,
+                        "zoneId": "301e1b69-7e13-11e8-8060-e284abfd2bc4"
+                    },
+                    {
+                        "name": "Europe",
+                        "parentId": "301e1b69-7e13-11e8-8060-e284abfd2bc4",
+                        "zoneId": "301e2106-7e13-11e8-8060-e284abfd2bc4"
+                    },
+                    {
+                        "name": "Czechia",
+                        "parentId": "301e2106-7e13-11e8-8060-e284abfd2bc4",
+                        "zoneId": "301f45cd-7e13-11e8-8060-e284abfd2bc4"
+                    },
+                    {
+                        "name": "Moravskoslezský kraj",
+                        "parentId": "301f45cd-7e13-11e8-8060-e284abfd2bc4",
+                        "zoneId": "301f4dd4-7e13-11e8-8060-e284abfd2bc4"
+                    }
+                ],
+                "name": "Flyer36"
+            },
+            "wrs": 1
         }
     ],
     "uniqueCountryLeaderboard": [
@@ -15918,6 +16000,26 @@
                     "zoneId": "301e2106-7e13-11e8-8060-e284abfd2bc4"
                 },
                 {
+                    "name": "Czechia",
+                    "parentId": "301e2106-7e13-11e8-8060-e284abfd2bc4",
+                    "zoneId": "301f45cd-7e13-11e8-8060-e284abfd2bc4"
+                }
+            ],
+            "wrs": 3
+        },
+        {
+            "zone": [
+                {
+                    "name": "World",
+                    "parentId": null,
+                    "zoneId": "301e1b69-7e13-11e8-8060-e284abfd2bc4"
+                },
+                {
+                    "name": "Europe",
+                    "parentId": "301e1b69-7e13-11e8-8060-e284abfd2bc4",
+                    "zoneId": "301e2106-7e13-11e8-8060-e284abfd2bc4"
+                },
+                {
                     "name": "Russia",
                     "parentId": "301e2106-7e13-11e8-8060-e284abfd2bc4",
                     "zoneId": "3022427b-7e13-11e8-8060-e284abfd2bc4"
@@ -15941,26 +16043,6 @@
                     "name": "Belgium",
                     "parentId": "301e2106-7e13-11e8-8060-e284abfd2bc4",
                     "zoneId": "301e5bc8-7e13-11e8-8060-e284abfd2bc4"
-                }
-            ],
-            "wrs": 2
-        },
-        {
-            "zone": [
-                {
-                    "name": "World",
-                    "parentId": null,
-                    "zoneId": "301e1b69-7e13-11e8-8060-e284abfd2bc4"
-                },
-                {
-                    "name": "Europe",
-                    "parentId": "301e1b69-7e13-11e8-8060-e284abfd2bc4",
-                    "zoneId": "301e2106-7e13-11e8-8060-e284abfd2bc4"
-                },
-                {
-                    "name": "Czechia",
-                    "parentId": "301e2106-7e13-11e8-8060-e284abfd2bc4",
-                    "zoneId": "301f45cd-7e13-11e8-8060-e284abfd2bc4"
                 }
             ],
             "wrs": 2
