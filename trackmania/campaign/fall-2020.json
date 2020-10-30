@@ -9724,7 +9724,7 @@
                     "delta": 320,
                     "date": "2020-10-28T00:08:58+00:00",
                     "replay": "ceb793ea-6a82-41ac-83c4-df5cbdb97767",
-                    "duration": 1
+                    "duration": 2
                 }
             ],
             "isOfficial": true,
@@ -10393,7 +10393,7 @@
                     "delta": 320,
                     "date": "2020-10-28T00:08:58+00:00",
                     "replay": "ceb793ea-6a82-41ac-83c4-df5cbdb97767",
-                    "duration": 1
+                    "duration": 2
                 }
             ],
             "thumbnail": "211c41a4-1e30-42cf-91a0-45afaa45ee34"
@@ -14096,7 +14096,7 @@
             "wrs": [
                 {
                     "user": {
-                        "id": "2ed0997d-62bc-4a53-8c09-ffb793382ea2",
+                        "id": "934543d0-dbcc-432f-8959-ca789f7c904e",
                         "zone": [
                             {
                                 "name": "World",
@@ -14109,27 +14109,22 @@
                                 "zoneId": "301e2106-7e13-11e8-8060-e284abfd2bc4"
                             },
                             {
-                                "name": "Germany",
+                                "name": "Spain",
                                 "parentId": "301e2106-7e13-11e8-8060-e284abfd2bc4",
-                                "zoneId": "301ff622-7e13-11e8-8060-e284abfd2bc4"
+                                "zoneId": "30225b07-7e13-11e8-8060-e284abfd2bc4"
                             },
                             {
-                                "name": "Nordrhein-Westfalen",
-                                "parentId": "301ff622-7e13-11e8-8060-e284abfd2bc4",
-                                "zoneId": "30200d6a-7e13-11e8-8060-e284abfd2bc4"
-                            },
-                            {
-                                "name": "Dortmund",
-                                "parentId": "30200d6a-7e13-11e8-8060-e284abfd2bc4",
-                                "zoneId": "30201200-7e13-11e8-8060-e284abfd2bc4"
+                                "name": "Andalucía",
+                                "parentId": "30225b07-7e13-11e8-8060-e284abfd2bc4",
+                                "zoneId": "30225cbf-7e13-11e8-8060-e284abfd2bc4"
                             }
                         ],
-                        "name": "riolu-tm"
+                        "name": "Joltysonic."
                     },
-                    "score": 51741,
-                    "delta": 10,
-                    "date": "2020-10-29T00:04:37+00:00",
-                    "replay": "1c1ec944-df70-4456-8911-5efb8781f57c",
+                    "score": 51696,
+                    "delta": 45,
+                    "date": "2020-10-30T00:06:00+00:00",
+                    "replay": "4b8b8581-3c21-4a44-808e-d0062c893ad7",
                     "duration": 0
                 }
             ],
@@ -14731,6 +14726,39 @@
                     "delta": 10,
                     "date": "2020-10-29T00:04:37+00:00",
                     "replay": "1c1ec944-df70-4456-8911-5efb8781f57c",
+                    "duration": 1
+                },
+                {
+                    "user": {
+                        "id": "934543d0-dbcc-432f-8959-ca789f7c904e",
+                        "zone": [
+                            {
+                                "name": "World",
+                                "parentId": null,
+                                "zoneId": "301e1b69-7e13-11e8-8060-e284abfd2bc4"
+                            },
+                            {
+                                "name": "Europe",
+                                "parentId": "301e1b69-7e13-11e8-8060-e284abfd2bc4",
+                                "zoneId": "301e2106-7e13-11e8-8060-e284abfd2bc4"
+                            },
+                            {
+                                "name": "Spain",
+                                "parentId": "301e2106-7e13-11e8-8060-e284abfd2bc4",
+                                "zoneId": "30225b07-7e13-11e8-8060-e284abfd2bc4"
+                            },
+                            {
+                                "name": "Andalucía",
+                                "parentId": "30225b07-7e13-11e8-8060-e284abfd2bc4",
+                                "zoneId": "30225cbf-7e13-11e8-8060-e284abfd2bc4"
+                            }
+                        ],
+                        "name": "Joltysonic."
+                    },
+                    "score": 51696,
+                    "delta": 45,
+                    "date": "2020-10-30T00:06:00+00:00",
+                    "replay": "4b8b8581-3c21-4a44-808e-d0062c893ad7",
                     "duration": 0
                 }
             ],
@@ -15268,7 +15296,7 @@
         }
     ],
     "stats": {
-        "totalTime": 926736
+        "totalTime": 926691
     },
     "leaderboard": [
         {
@@ -15303,7 +15331,7 @@
                 ],
                 "name": "riolu-tm"
             },
-            "wrs": 6,
+            "wrs": 5,
             "duration": 54
         },
         {
@@ -15329,7 +15357,7 @@
                 "name": "Erizel"
             },
             "wrs": 4,
-            "duration": 30
+            "duration": 31
         },
         {
             "user": {
@@ -15588,6 +15616,36 @@
         },
         {
             "user": {
+                "id": "934543d0-dbcc-432f-8959-ca789f7c904e",
+                "zone": [
+                    {
+                        "name": "World",
+                        "parentId": null,
+                        "zoneId": "301e1b69-7e13-11e8-8060-e284abfd2bc4"
+                    },
+                    {
+                        "name": "Europe",
+                        "parentId": "301e1b69-7e13-11e8-8060-e284abfd2bc4",
+                        "zoneId": "301e2106-7e13-11e8-8060-e284abfd2bc4"
+                    },
+                    {
+                        "name": "Spain",
+                        "parentId": "301e2106-7e13-11e8-8060-e284abfd2bc4",
+                        "zoneId": "30225b07-7e13-11e8-8060-e284abfd2bc4"
+                    },
+                    {
+                        "name": "Andalucía",
+                        "parentId": "30225b07-7e13-11e8-8060-e284abfd2bc4",
+                        "zoneId": "30225cbf-7e13-11e8-8060-e284abfd2bc4"
+                    }
+                ],
+                "name": "Joltysonic."
+            },
+            "wrs": 1,
+            "duration": 0
+        },
+        {
+            "user": {
                 "id": "961d1145-8c7b-48c3-9191-0d1d91e44a4a",
                 "zone": [
                     {
@@ -15641,7 +15699,7 @@
                     "zoneId": "301ff622-7e13-11e8-8060-e284abfd2bc4"
                 }
             ],
-            "wrs": 10
+            "wrs": 9
         },
         {
             "zone": [
@@ -15762,6 +15820,26 @@
                 }
             ],
             "wrs": 1
+        },
+        {
+            "zone": [
+                {
+                    "name": "World",
+                    "parentId": null,
+                    "zoneId": "301e1b69-7e13-11e8-8060-e284abfd2bc4"
+                },
+                {
+                    "name": "Europe",
+                    "parentId": "301e1b69-7e13-11e8-8060-e284abfd2bc4",
+                    "zoneId": "301e2106-7e13-11e8-8060-e284abfd2bc4"
+                },
+                {
+                    "name": "Spain",
+                    "parentId": "301e2106-7e13-11e8-8060-e284abfd2bc4",
+                    "zoneId": "30225b07-7e13-11e8-8060-e284abfd2bc4"
+                }
+            ],
+            "wrs": 1
         }
     ],
     "historyLeaderboard": [
@@ -15788,7 +15866,7 @@
                 "name": "Erizel"
             },
             "wrs": 29,
-            "duration": 73
+            "duration": 74
         },
         {
             "user": {
@@ -15883,7 +15961,7 @@
                 "name": "riolu-tm"
             },
             "wrs": 20,
-            "duration": 78
+            "duration": 79
         },
         {
             "user": {
@@ -18939,6 +19017,36 @@
             },
             "wrs": 1,
             "duration": 7
+        },
+        {
+            "user": {
+                "id": "934543d0-dbcc-432f-8959-ca789f7c904e",
+                "zone": [
+                    {
+                        "name": "World",
+                        "parentId": null,
+                        "zoneId": "301e1b69-7e13-11e8-8060-e284abfd2bc4"
+                    },
+                    {
+                        "name": "Europe",
+                        "parentId": "301e1b69-7e13-11e8-8060-e284abfd2bc4",
+                        "zoneId": "301e2106-7e13-11e8-8060-e284abfd2bc4"
+                    },
+                    {
+                        "name": "Spain",
+                        "parentId": "301e2106-7e13-11e8-8060-e284abfd2bc4",
+                        "zoneId": "30225b07-7e13-11e8-8060-e284abfd2bc4"
+                    },
+                    {
+                        "name": "Andalucía",
+                        "parentId": "30225b07-7e13-11e8-8060-e284abfd2bc4",
+                        "zoneId": "30225cbf-7e13-11e8-8060-e284abfd2bc4"
+                    }
+                ],
+                "name": "Joltysonic."
+            },
+            "wrs": 1,
+            "duration": 0
         }
     ],
     "historyCountryLeaderboard": [
@@ -19478,6 +19586,26 @@
                     "name": "Japan",
                     "parentId": "301e2069-7e13-11e8-8060-e284abfd2bc4",
                     "zoneId": "30207cd0-7e13-11e8-8060-e284abfd2bc4"
+                }
+            ],
+            "wrs": 1
+        },
+        {
+            "zone": [
+                {
+                    "name": "World",
+                    "parentId": null,
+                    "zoneId": "301e1b69-7e13-11e8-8060-e284abfd2bc4"
+                },
+                {
+                    "name": "Europe",
+                    "parentId": "301e1b69-7e13-11e8-8060-e284abfd2bc4",
+                    "zoneId": "301e2106-7e13-11e8-8060-e284abfd2bc4"
+                },
+                {
+                    "name": "Spain",
+                    "parentId": "301e2106-7e13-11e8-8060-e284abfd2bc4",
+                    "zoneId": "30225b07-7e13-11e8-8060-e284abfd2bc4"
                 }
             ],
             "wrs": 1
@@ -22372,6 +22500,35 @@
         },
         {
             "user": {
+                "id": "934543d0-dbcc-432f-8959-ca789f7c904e",
+                "zone": [
+                    {
+                        "name": "World",
+                        "parentId": null,
+                        "zoneId": "301e1b69-7e13-11e8-8060-e284abfd2bc4"
+                    },
+                    {
+                        "name": "Europe",
+                        "parentId": "301e1b69-7e13-11e8-8060-e284abfd2bc4",
+                        "zoneId": "301e2106-7e13-11e8-8060-e284abfd2bc4"
+                    },
+                    {
+                        "name": "Spain",
+                        "parentId": "301e2106-7e13-11e8-8060-e284abfd2bc4",
+                        "zoneId": "30225b07-7e13-11e8-8060-e284abfd2bc4"
+                    },
+                    {
+                        "name": "Andalucía",
+                        "parentId": "30225b07-7e13-11e8-8060-e284abfd2bc4",
+                        "zoneId": "30225cbf-7e13-11e8-8060-e284abfd2bc4"
+                    }
+                ],
+                "name": "Joltysonic."
+            },
+            "wrs": 1
+        },
+        {
+            "user": {
                 "id": "2517d060-4c15-4949-9f2e-31bd2f8adaa1",
                 "zone": [
                     {
@@ -22976,6 +23133,26 @@
                     "name": "Sweden",
                     "parentId": "301e2106-7e13-11e8-8060-e284abfd2bc4",
                     "zoneId": "30228671-7e13-11e8-8060-e284abfd2bc4"
+                }
+            ],
+            "wrs": 1
+        },
+        {
+            "zone": [
+                {
+                    "name": "World",
+                    "parentId": null,
+                    "zoneId": "301e1b69-7e13-11e8-8060-e284abfd2bc4"
+                },
+                {
+                    "name": "Europe",
+                    "parentId": "301e1b69-7e13-11e8-8060-e284abfd2bc4",
+                    "zoneId": "301e2106-7e13-11e8-8060-e284abfd2bc4"
+                },
+                {
+                    "name": "Spain",
+                    "parentId": "301e2106-7e13-11e8-8060-e284abfd2bc4",
+                    "zoneId": "30225b07-7e13-11e8-8060-e284abfd2bc4"
                 }
             ],
             "wrs": 1
