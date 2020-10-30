@@ -93,7 +93,7 @@
                 "name": "PokeR.4W"
             },
             "wrs": 10,
-            "duration": 136
+            "duration": 137
         },
         {
             "user": {
@@ -278,7 +278,7 @@
                 "name": "RacetalTM"
             },
             "wrs": 5,
-            "duration": 69
+            "duration": 70
         },
         {
             "user": {
@@ -3412,7 +3412,7 @@
                 "name": "PokeR.4W"
             },
             "wrs": 47,
-            "duration": 124
+            "duration": 125
         },
         {
             "user": {
@@ -3546,7 +3546,7 @@
                 ],
                 "name": "NeqzoTM"
             },
-            "wrs": 28,
+            "wrs": 29,
             "duration": 10
         },
         {
@@ -3607,7 +3607,7 @@
                 "name": "RacetalTM"
             },
             "wrs": 24,
-            "duration": 70
+            "duration": 71
         },
         {
             "user": {
@@ -10734,7 +10734,7 @@
                     "zoneId": "301f6188-7e13-11e8-8060-e284abfd2bc4"
                 }
             ],
-            "wrs": 297
+            "wrs": 298
         },
         {
             "zone": [
