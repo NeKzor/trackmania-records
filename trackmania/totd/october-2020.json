@@ -1142,7 +1142,7 @@
                     "delta": 124,
                     "date": "2020-10-05T15:32:15+00:00",
                     "replay": "8e574dfb-f97d-4400-b226-969cfa62b358",
-                    "duration": 24
+                    "duration": 25
                 }
             ],
             "isOfficial": false,
@@ -1616,7 +1616,7 @@
                     "delta": 124,
                     "date": "2020-10-05T15:32:15+00:00",
                     "replay": "8e574dfb-f97d-4400-b226-969cfa62b358",
-                    "duration": 24,
+                    "duration": 25,
                     "durationMs": 1834069592
                 }
             ],
@@ -4198,7 +4198,7 @@
                     "delta": 86,
                     "date": "2020-10-13T15:33:48+00:00",
                     "replay": "ac52558f-8cce-4cb1-98aa-f5ca7f9ad3df",
-                    "duration": 16,
+                    "duration": 17,
                     "durationMs": 1142776626
                 }
             ],
@@ -7572,7 +7572,7 @@
                     "delta": 39,
                     "date": "2020-10-22T15:31:51+00:00",
                     "replay": "f7435240-cbd9-4ba3-b193-5942f89c9c18",
-                    "duration": 7
+                    "duration": 8
                 }
             ],
             "isOfficial": false,
@@ -7978,7 +7978,7 @@
                     "delta": 39,
                     "date": "2020-10-22T15:31:51+00:00",
                     "replay": "f7435240-cbd9-4ba3-b193-5942f89c9c18",
-                    "duration": 7,
+                    "duration": 8,
                     "durationMs": 365293659
                 }
             ],
@@ -10538,7 +10538,7 @@
                 "name": "mime.."
             },
             "wrs": 7,
-            "duration": 113
+            "duration": 114
         },
         {
             "user": {
@@ -10603,7 +10603,7 @@
                 "name": "Shadow_Crancer"
             },
             "wrs": 2,
-            "duration": 18
+            "duration": 19
         },
         {
             "user": {
@@ -11122,7 +11122,7 @@
                 "name": "mime.."
             },
             "wrs": 54,
-            "duration": 113
+            "duration": 114
         },
         {
             "user": {
@@ -11247,7 +11247,7 @@
                 "name": "Shadow_Crancer"
             },
             "wrs": 14,
-            "duration": 18
+            "duration": 19
         },
         {
             "user": {
@@ -11402,7 +11402,7 @@
                 "name": "AR_Mudda"
             },
             "wrs": 6,
-            "duration": 16
+            "duration": 17
         },
         {
             "user": {

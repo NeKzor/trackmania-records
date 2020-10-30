@@ -63,7 +63,7 @@
                 "name": "mime.."
             },
             "wrs": 11,
-            "duration": 129
+            "duration": 130
         },
         {
             "user": {
@@ -588,7 +588,7 @@
                 "name": "Shadow_Crancer"
             },
             "wrs": 3,
-            "duration": 28
+            "duration": 29
         },
         {
             "user": {
@@ -1448,7 +1448,7 @@
                 "name": "sancirigo"
             },
             "wrs": 1,
-            "duration": 120
+            "duration": 121
         },
         {
             "user": {
@@ -3322,7 +3322,7 @@
                 "name": "mime.."
             },
             "wrs": 54,
-            "duration": 113
+            "duration": 114
         },
         {
             "user": {
@@ -3477,7 +3477,7 @@
                 "name": "AR_Mudda"
             },
             "wrs": 30,
-            "duration": 34
+            "duration": 35
         },
         {
             "user": {
@@ -3807,7 +3807,7 @@
                 "name": "Shadow_Crancer"
             },
             "wrs": 18,
-            "duration": 18
+            "duration": 19
         },
         {
             "user": {
@@ -3926,6 +3926,36 @@
         },
         {
             "user": {
+                "id": "8dff1055-c9bd-401f-b852-90978dffd134",
+                "zone": [
+                    {
+                        "name": "World",
+                        "parentId": null,
+                        "zoneId": "301e1b69-7e13-11e8-8060-e284abfd2bc4"
+                    },
+                    {
+                        "name": "Europe",
+                        "parentId": "301e1b69-7e13-11e8-8060-e284abfd2bc4",
+                        "zoneId": "301e2106-7e13-11e8-8060-e284abfd2bc4"
+                    },
+                    {
+                        "name": "Netherlands",
+                        "parentId": "301e2106-7e13-11e8-8060-e284abfd2bc4",
+                        "zoneId": "302094fd-7e13-11e8-8060-e284abfd2bc4"
+                    },
+                    {
+                        "name": "Overijssel",
+                        "parentId": "302094fd-7e13-11e8-8060-e284abfd2bc4",
+                        "zoneId": "30209c86-7e13-11e8-8060-e284abfd2bc4"
+                    }
+                ],
+                "name": "Spaghett37"
+            },
+            "wrs": 13,
+            "duration": 21
+        },
+        {
+            "user": {
                 "id": "0c857beb-fd95-4449-a669-21fb310cacae",
                 "zone": [
                     {
@@ -3978,36 +4008,6 @@
             },
             "wrs": 12,
             "duration": 13
-        },
-        {
-            "user": {
-                "id": "8dff1055-c9bd-401f-b852-90978dffd134",
-                "zone": [
-                    {
-                        "name": "World",
-                        "parentId": null,
-                        "zoneId": "301e1b69-7e13-11e8-8060-e284abfd2bc4"
-                    },
-                    {
-                        "name": "Europe",
-                        "parentId": "301e1b69-7e13-11e8-8060-e284abfd2bc4",
-                        "zoneId": "301e2106-7e13-11e8-8060-e284abfd2bc4"
-                    },
-                    {
-                        "name": "Netherlands",
-                        "parentId": "301e2106-7e13-11e8-8060-e284abfd2bc4",
-                        "zoneId": "302094fd-7e13-11e8-8060-e284abfd2bc4"
-                    },
-                    {
-                        "name": "Overijssel",
-                        "parentId": "302094fd-7e13-11e8-8060-e284abfd2bc4",
-                        "zoneId": "30209c86-7e13-11e8-8060-e284abfd2bc4"
-                    }
-                ],
-                "name": "Spaghett37"
-            },
-            "wrs": 12,
-            "duration": 21
         },
         {
             "user": {
@@ -8612,7 +8612,7 @@
                 "name": "sancirigo"
             },
             "wrs": 1,
-            "duration": 120
+            "duration": 121
         },
         {
             "user": {
@@ -10874,7 +10874,7 @@
                     "zoneId": "302094fd-7e13-11e8-8060-e284abfd2bc4"
                 }
             ],
-            "wrs": 29
+            "wrs": 30
         },
         {
             "zone": [
