@@ -2037,7 +2037,7 @@
                     "delta": 57,
                     "date": "2020-10-09T18:20:04+00:00",
                     "replay": "153c3526-c047-4c76-8b91-b77abc1f0cb4",
-                    "duration": 20
+                    "duration": 21
                 }
             ],
             "isOfficial": true,
@@ -2520,7 +2520,7 @@
                     "delta": 57,
                     "date": "2020-10-09T18:20:04+00:00",
                     "replay": "153c3526-c047-4c76-8b91-b77abc1f0cb4",
-                    "duration": 20,
+                    "duration": 21,
                     "durationMs": 1478396852
                 }
             ],
@@ -15683,7 +15683,7 @@
                 "name": "RacetalTM"
             },
             "wrs": 2,
-            "duration": 35
+            "duration": 36
         },
         {
             "user": {
@@ -16192,7 +16192,7 @@
                 "name": "RacetalTM"
             },
             "wrs": 21,
-            "duration": 71
+            "duration": 72
         },
         {
             "user": {
