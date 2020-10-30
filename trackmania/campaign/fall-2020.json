@@ -13093,7 +13093,7 @@
                     "delta": 77,
                     "date": "2020-10-27T01:03:32+00:00",
                     "replay": "0f51af55-70a8-45ab-8093-384e72dc2684",
-                    "duration": 2
+                    "duration": 3
                 }
             ],
             "isOfficial": true,
@@ -13530,7 +13530,7 @@
                     "delta": 77,
                     "date": "2020-10-27T01:03:32+00:00",
                     "replay": "0f51af55-70a8-45ab-8093-384e72dc2684",
-                    "duration": 2
+                    "duration": 3
                 }
             ],
             "thumbnail": "576c525c-9be4-44a5-aad0-6648e6f68140"
@@ -14771,7 +14771,7 @@
             "wrs": [
                 {
                     "user": {
-                        "id": "961d1145-8c7b-48c3-9191-0d1d91e44a4a",
+                        "id": "2517d060-4c15-4949-9f2e-31bd2f8adaa1",
                         "zone": [
                             {
                                 "name": "World",
@@ -14789,23 +14789,23 @@
                                 "zoneId": "301ff622-7e13-11e8-8060-e284abfd2bc4"
                             },
                             {
-                                "name": "Niedersachsen",
+                                "name": "Mecklenburg-Vorpommern",
                                 "parentId": "301ff622-7e13-11e8-8060-e284abfd2bc4",
-                                "zoneId": "30200a18-7e13-11e8-8060-e284abfd2bc4"
+                                "zoneId": "30200848-7e13-11e8-8060-e284abfd2bc4"
                             },
                             {
-                                "name": "Oldenburg",
-                                "parentId": "30200a18-7e13-11e8-8060-e284abfd2bc4",
-                                "zoneId": "30200bd1-7e13-11e8-8060-e284abfd2bc4"
+                                "name": "Rostock",
+                                "parentId": "30200848-7e13-11e8-8060-e284abfd2bc4",
+                                "zoneId": "302008de-7e13-11e8-8060-e284abfd2bc4"
                             }
                         ],
-                        "name": "Dog.."
+                        "name": "chillhase."
                     },
-                    "score": 68726,
-                    "delta": 40,
-                    "date": "2020-10-28T09:52:50+00:00",
-                    "replay": "f243a3a1-d9f1-4c5f-a3ce-6d657d0b38af",
-                    "duration": 1
+                    "score": 68706,
+                    "delta": 20,
+                    "date": "2020-10-30T01:08:11+00:00",
+                    "replay": "d7e55f23-7edd-4074-8688-3e2c1689dafa",
+                    "duration": 0
                 }
             ],
             "isOfficial": true,
@@ -15290,13 +15290,51 @@
                     "date": "2020-10-28T09:52:50+00:00",
                     "replay": "f243a3a1-d9f1-4c5f-a3ce-6d657d0b38af",
                     "duration": 1
+                },
+                {
+                    "user": {
+                        "id": "2517d060-4c15-4949-9f2e-31bd2f8adaa1",
+                        "zone": [
+                            {
+                                "name": "World",
+                                "parentId": null,
+                                "zoneId": "301e1b69-7e13-11e8-8060-e284abfd2bc4"
+                            },
+                            {
+                                "name": "Europe",
+                                "parentId": "301e1b69-7e13-11e8-8060-e284abfd2bc4",
+                                "zoneId": "301e2106-7e13-11e8-8060-e284abfd2bc4"
+                            },
+                            {
+                                "name": "Germany",
+                                "parentId": "301e2106-7e13-11e8-8060-e284abfd2bc4",
+                                "zoneId": "301ff622-7e13-11e8-8060-e284abfd2bc4"
+                            },
+                            {
+                                "name": "Mecklenburg-Vorpommern",
+                                "parentId": "301ff622-7e13-11e8-8060-e284abfd2bc4",
+                                "zoneId": "30200848-7e13-11e8-8060-e284abfd2bc4"
+                            },
+                            {
+                                "name": "Rostock",
+                                "parentId": "30200848-7e13-11e8-8060-e284abfd2bc4",
+                                "zoneId": "302008de-7e13-11e8-8060-e284abfd2bc4"
+                            }
+                        ],
+                        "name": "chillhase."
+                    },
+                    "score": 68706,
+                    "delta": 20,
+                    "date": "2020-10-30T01:08:11+00:00",
+                    "replay": "d7e55f23-7edd-4074-8688-3e2c1689dafa",
+                    "duration": 0
                 }
             ],
             "thumbnail": "cf656560-e29c-4f29-bfc6-eed15a19b2e8"
         }
     ],
     "stats": {
-        "totalTime": 926691
+        "totalTime": 926671
     },
     "leaderboard": [
         {
@@ -15357,7 +15395,7 @@
                 "name": "Erizel"
             },
             "wrs": 4,
-            "duration": 31
+            "duration": 32
         },
         {
             "user": {
@@ -15646,7 +15684,7 @@
         },
         {
             "user": {
-                "id": "961d1145-8c7b-48c3-9191-0d1d91e44a4a",
+                "id": "2517d060-4c15-4949-9f2e-31bd2f8adaa1",
                 "zone": [
                     {
                         "name": "World",
@@ -15664,20 +15702,20 @@
                         "zoneId": "301ff622-7e13-11e8-8060-e284abfd2bc4"
                     },
                     {
-                        "name": "Niedersachsen",
+                        "name": "Mecklenburg-Vorpommern",
                         "parentId": "301ff622-7e13-11e8-8060-e284abfd2bc4",
-                        "zoneId": "30200a18-7e13-11e8-8060-e284abfd2bc4"
+                        "zoneId": "30200848-7e13-11e8-8060-e284abfd2bc4"
                     },
                     {
-                        "name": "Oldenburg",
-                        "parentId": "30200a18-7e13-11e8-8060-e284abfd2bc4",
-                        "zoneId": "30200bd1-7e13-11e8-8060-e284abfd2bc4"
+                        "name": "Rostock",
+                        "parentId": "30200848-7e13-11e8-8060-e284abfd2bc4",
+                        "zoneId": "302008de-7e13-11e8-8060-e284abfd2bc4"
                     }
                 ],
-                "name": "Dog.."
+                "name": "chillhase."
             },
             "wrs": 1,
-            "duration": 1
+            "duration": 0
         }
     ],
     "countryLeaderboard": [
@@ -15866,7 +15904,7 @@
                 "name": "Erizel"
             },
             "wrs": 29,
-            "duration": 74
+            "duration": 75
         },
         {
             "user": {
@@ -17145,6 +17183,41 @@
         },
         {
             "user": {
+                "id": "2517d060-4c15-4949-9f2e-31bd2f8adaa1",
+                "zone": [
+                    {
+                        "name": "World",
+                        "parentId": null,
+                        "zoneId": "301e1b69-7e13-11e8-8060-e284abfd2bc4"
+                    },
+                    {
+                        "name": "Europe",
+                        "parentId": "301e1b69-7e13-11e8-8060-e284abfd2bc4",
+                        "zoneId": "301e2106-7e13-11e8-8060-e284abfd2bc4"
+                    },
+                    {
+                        "name": "Germany",
+                        "parentId": "301e2106-7e13-11e8-8060-e284abfd2bc4",
+                        "zoneId": "301ff622-7e13-11e8-8060-e284abfd2bc4"
+                    },
+                    {
+                        "name": "Mecklenburg-Vorpommern",
+                        "parentId": "301ff622-7e13-11e8-8060-e284abfd2bc4",
+                        "zoneId": "30200848-7e13-11e8-8060-e284abfd2bc4"
+                    },
+                    {
+                        "name": "Rostock",
+                        "parentId": "30200848-7e13-11e8-8060-e284abfd2bc4",
+                        "zoneId": "302008de-7e13-11e8-8060-e284abfd2bc4"
+                    }
+                ],
+                "name": "chillhase."
+            },
+            "wrs": 3,
+            "duration": 0
+        },
+        {
+            "user": {
                 "id": "946f394c-ce3e-4160-b8a2-70ad54bcb4e9",
                 "zone": [
                     {
@@ -17674,41 +17747,6 @@
                     }
                 ],
                 "name": "ImFluct"
-            },
-            "wrs": 2,
-            "duration": 0
-        },
-        {
-            "user": {
-                "id": "2517d060-4c15-4949-9f2e-31bd2f8adaa1",
-                "zone": [
-                    {
-                        "name": "World",
-                        "parentId": null,
-                        "zoneId": "301e1b69-7e13-11e8-8060-e284abfd2bc4"
-                    },
-                    {
-                        "name": "Europe",
-                        "parentId": "301e1b69-7e13-11e8-8060-e284abfd2bc4",
-                        "zoneId": "301e2106-7e13-11e8-8060-e284abfd2bc4"
-                    },
-                    {
-                        "name": "Germany",
-                        "parentId": "301e2106-7e13-11e8-8060-e284abfd2bc4",
-                        "zoneId": "301ff622-7e13-11e8-8060-e284abfd2bc4"
-                    },
-                    {
-                        "name": "Mecklenburg-Vorpommern",
-                        "parentId": "301ff622-7e13-11e8-8060-e284abfd2bc4",
-                        "zoneId": "30200848-7e13-11e8-8060-e284abfd2bc4"
-                    },
-                    {
-                        "name": "Rostock",
-                        "parentId": "30200848-7e13-11e8-8060-e284abfd2bc4",
-                        "zoneId": "302008de-7e13-11e8-8060-e284abfd2bc4"
-                    }
-                ],
-                "name": "chillhase."
             },
             "wrs": 2,
             "duration": 0
@@ -19088,7 +19126,7 @@
                     "zoneId": "301ff622-7e13-11e8-8060-e284abfd2bc4"
                 }
             ],
-            "wrs": 63
+            "wrs": 64
         },
         {
             "zone": [
