@@ -63,7 +63,7 @@
                 "name": "mime.."
             },
             "wrs": 11,
-            "duration": 127
+            "duration": 128
         },
         {
             "user": {
@@ -1273,7 +1273,7 @@
                 "name": "AR_bcp"
             },
             "wrs": 1,
-            "duration": 57
+            "duration": 58
         },
         {
             "user": {
@@ -3292,7 +3292,7 @@
                 "name": "mime.."
             },
             "wrs": 54,
-            "duration": 111
+            "duration": 112
         },
         {
             "user": {
@@ -8437,7 +8437,7 @@
                 "name": "AR_bcp"
             },
             "wrs": 1,
-            "duration": 57
+            "duration": 58
         },
         {
             "user": {
