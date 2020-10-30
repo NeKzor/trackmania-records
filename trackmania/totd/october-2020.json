@@ -9583,7 +9583,7 @@
                     "delta": 96,
                     "date": "2020-10-28T04:10:08+00:00",
                     "replay": "510f8a7d-b27e-4b6c-8bad-4144d0cff2fe",
-                    "duration": 1
+                    "duration": 2
                 }
             ],
             "isOfficial": false,
@@ -9956,7 +9956,7 @@
                     "delta": 96,
                     "date": "2020-10-28T04:10:08+00:00",
                     "replay": "510f8a7d-b27e-4b6c-8bad-4144d0cff2fe",
-                    "duration": 1
+                    "duration": 2
                 }
             ],
             "thumbnail": "9149c14b-2b5b-48f6-8819-602cfd032969"
@@ -10808,7 +10808,7 @@
                 "name": "EvonTM"
             },
             "wrs": 1,
-            "duration": 1
+            "duration": 2
         },
         {
             "user": {
@@ -12122,7 +12122,7 @@
                 "name": "EvonTM"
             },
             "wrs": 2,
-            "duration": 1
+            "duration": 2
         },
         {
             "user": {
