@@ -6825,7 +6825,7 @@
                     "delta": 90,
                     "date": "2020-10-20T12:27:12+00:00",
                     "replay": "d72e2e62-1d17-4173-a581-a85ba11f1ea6",
-                    "duration": 9
+                    "duration": 10
                 }
             ],
             "isOfficial": false,
@@ -7221,7 +7221,7 @@
                     "delta": 90,
                     "date": "2020-10-20T12:27:12+00:00",
                     "replay": "d72e2e62-1d17-4173-a581-a85ba11f1ea6",
-                    "duration": 9,
+                    "duration": 10,
                     "durationMs": 549172650
                 }
             ],
@@ -8822,7 +8822,7 @@
                     "delta": 157,
                     "date": "2020-10-25T13:18:25+00:00",
                     "replay": "fedea062-8290-4c74-8cb8-688f7af49e78",
-                    "duration": 4
+                    "duration": 5
                 }
             ],
             "isOfficial": false,
@@ -9179,7 +9179,7 @@
                     "delta": 157,
                     "date": "2020-10-25T13:18:25+00:00",
                     "replay": "fedea062-8290-4c74-8cb8-688f7af49e78",
-                    "duration": 4,
+                    "duration": 5,
                     "durationMs": 114099663
                 }
             ],
@@ -10508,7 +10508,7 @@
                 "name": "PokeR.4W"
             },
             "wrs": 9,
-            "duration": 119
+            "duration": 120
         },
         {
             "user": {
@@ -10538,7 +10538,7 @@
                 "name": "mime.."
             },
             "wrs": 7,
-            "duration": 112
+            "duration": 113
         },
         {
             "user": {
@@ -11122,7 +11122,7 @@
                 "name": "mime.."
             },
             "wrs": 54,
-            "duration": 112
+            "duration": 113
         },
         {
             "user": {
@@ -11152,7 +11152,7 @@
                 "name": "PokeR.4W"
             },
             "wrs": 25,
-            "duration": 119
+            "duration": 120
         },
         {
             "user": {
