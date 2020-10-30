@@ -3480,7 +3480,7 @@
                     "delta": 41,
                     "date": "2020-10-26T15:25:13+00:00",
                     "replay": "64f21e43-17cb-43ea-a738-beaf4daa8f1c",
-                    "duration": 3
+                    "duration": 4
                 }
             ],
             "isOfficial": true,
@@ -3900,7 +3900,7 @@
                     "delta": 41,
                     "date": "2020-10-26T15:25:13+00:00",
                     "replay": "64f21e43-17cb-43ea-a738-beaf4daa8f1c",
-                    "duration": 3,
+                    "duration": 4,
                     "durationMs": 20087880
                 }
             ],
@@ -9096,7 +9096,7 @@
             "wrs": [
                 {
                     "user": {
-                        "id": "f781e6ad-8a11-4093-a297-e48638d5fa1a",
+                        "id": "8dff1055-c9bd-401f-b852-90978dffd134",
                         "zone": [
                             {
                                 "name": "World",
@@ -9109,27 +9109,22 @@
                                 "zoneId": "301e2106-7e13-11e8-8060-e284abfd2bc4"
                             },
                             {
-                                "name": "France",
+                                "name": "Netherlands",
                                 "parentId": "301e2106-7e13-11e8-8060-e284abfd2bc4",
-                                "zoneId": "301f6188-7e13-11e8-8060-e284abfd2bc4"
+                                "zoneId": "302094fd-7e13-11e8-8060-e284abfd2bc4"
                             },
                             {
-                                "name": "Grand Est",
-                                "parentId": "301f6188-7e13-11e8-8060-e284abfd2bc4",
-                                "zoneId": "301fa0c0-7e13-11e8-8060-e284abfd2bc4"
-                            },
-                            {
-                                "name": "Bas-Rhin",
-                                "parentId": "301fa0c0-7e13-11e8-8060-e284abfd2bc4",
-                                "zoneId": "301fa363-7e13-11e8-8060-e284abfd2bc4"
+                                "name": "Overijssel",
+                                "parentId": "302094fd-7e13-11e8-8060-e284abfd2bc4",
+                                "zoneId": "30209c86-7e13-11e8-8060-e284abfd2bc4"
                             }
                         ],
-                        "name": "MTP.hugo220"
+                        "name": "Spaghett37"
                     },
-                    "score": 44238,
-                    "delta": 42,
-                    "date": "2020-10-30T09:38:36+00:00",
-                    "replay": "2d86aa68-acec-4b13-9c1d-0e4340b2485a",
+                    "score": 44188,
+                    "delta": 50,
+                    "date": "2020-10-30T15:20:42+00:00",
+                    "replay": "7e328518-8312-402c-bd9d-751a786106e6",
                     "duration": 0
                 }
             ],
@@ -9817,6 +9812,39 @@
                     "delta": 42,
                     "date": "2020-10-30T09:38:36+00:00",
                     "replay": "2d86aa68-acec-4b13-9c1d-0e4340b2485a",
+                    "duration": 0
+                },
+                {
+                    "user": {
+                        "id": "8dff1055-c9bd-401f-b852-90978dffd134",
+                        "zone": [
+                            {
+                                "name": "World",
+                                "parentId": null,
+                                "zoneId": "301e1b69-7e13-11e8-8060-e284abfd2bc4"
+                            },
+                            {
+                                "name": "Europe",
+                                "parentId": "301e1b69-7e13-11e8-8060-e284abfd2bc4",
+                                "zoneId": "301e2106-7e13-11e8-8060-e284abfd2bc4"
+                            },
+                            {
+                                "name": "Netherlands",
+                                "parentId": "301e2106-7e13-11e8-8060-e284abfd2bc4",
+                                "zoneId": "302094fd-7e13-11e8-8060-e284abfd2bc4"
+                            },
+                            {
+                                "name": "Overijssel",
+                                "parentId": "302094fd-7e13-11e8-8060-e284abfd2bc4",
+                                "zoneId": "30209c86-7e13-11e8-8060-e284abfd2bc4"
+                            }
+                        ],
+                        "name": "Spaghett37"
+                    },
+                    "score": 44188,
+                    "delta": 50,
+                    "date": "2020-10-30T15:20:42+00:00",
+                    "replay": "7e328518-8312-402c-bd9d-751a786106e6",
                     "duration": 0
                 }
             ],
@@ -15463,7 +15491,7 @@
         }
     ],
     "stats": {
-        "totalTime": 926608
+        "totalTime": 926558
     },
     "leaderboard": [
         {
@@ -15503,6 +15531,31 @@
         },
         {
             "user": {
+                "id": "e975fb83-c2b4-4830-9ec6-d8253f315865",
+                "zone": [
+                    {
+                        "name": "World",
+                        "parentId": null,
+                        "zoneId": "301e1b69-7e13-11e8-8060-e284abfd2bc4"
+                    },
+                    {
+                        "name": "Europe",
+                        "parentId": "301e1b69-7e13-11e8-8060-e284abfd2bc4",
+                        "zoneId": "301e2106-7e13-11e8-8060-e284abfd2bc4"
+                    },
+                    {
+                        "name": "Norway",
+                        "parentId": "301e2106-7e13-11e8-8060-e284abfd2bc4",
+                        "zoneId": "3020a27d-7e13-11e8-8060-e284abfd2bc4"
+                    }
+                ],
+                "name": "Erizel"
+            },
+            "wrs": 4,
+            "duration": 32
+        },
+        {
+            "user": {
                 "id": "f781e6ad-8a11-4093-a297-e48638d5fa1a",
                 "zone": [
                     {
@@ -15533,33 +15586,8 @@
                 ],
                 "name": "MTP.hugo220"
             },
-            "wrs": 5,
-            "duration": 40
-        },
-        {
-            "user": {
-                "id": "e975fb83-c2b4-4830-9ec6-d8253f315865",
-                "zone": [
-                    {
-                        "name": "World",
-                        "parentId": null,
-                        "zoneId": "301e1b69-7e13-11e8-8060-e284abfd2bc4"
-                    },
-                    {
-                        "name": "Europe",
-                        "parentId": "301e1b69-7e13-11e8-8060-e284abfd2bc4",
-                        "zoneId": "301e2106-7e13-11e8-8060-e284abfd2bc4"
-                    },
-                    {
-                        "name": "Norway",
-                        "parentId": "301e2106-7e13-11e8-8060-e284abfd2bc4",
-                        "zoneId": "3020a27d-7e13-11e8-8060-e284abfd2bc4"
-                    }
-                ],
-                "name": "Erizel"
-            },
             "wrs": 4,
-            "duration": 32
+            "duration": 41
         },
         {
             "user": {
@@ -15753,6 +15781,36 @@
         },
         {
             "user": {
+                "id": "8dff1055-c9bd-401f-b852-90978dffd134",
+                "zone": [
+                    {
+                        "name": "World",
+                        "parentId": null,
+                        "zoneId": "301e1b69-7e13-11e8-8060-e284abfd2bc4"
+                    },
+                    {
+                        "name": "Europe",
+                        "parentId": "301e1b69-7e13-11e8-8060-e284abfd2bc4",
+                        "zoneId": "301e2106-7e13-11e8-8060-e284abfd2bc4"
+                    },
+                    {
+                        "name": "Netherlands",
+                        "parentId": "301e2106-7e13-11e8-8060-e284abfd2bc4",
+                        "zoneId": "302094fd-7e13-11e8-8060-e284abfd2bc4"
+                    },
+                    {
+                        "name": "Overijssel",
+                        "parentId": "302094fd-7e13-11e8-8060-e284abfd2bc4",
+                        "zoneId": "30209c86-7e13-11e8-8060-e284abfd2bc4"
+                    }
+                ],
+                "name": "Spaghett37"
+            },
+            "wrs": 1,
+            "duration": 0
+        },
+        {
+            "user": {
                 "id": "934543d0-dbcc-432f-8959-ca789f7c904e",
                 "zone": [
                     {
@@ -15856,7 +15914,7 @@
                     "zoneId": "301f6188-7e13-11e8-8060-e284abfd2bc4"
                 }
             ],
-            "wrs": 6
+            "wrs": 5
         },
         {
             "zone": [
@@ -15951,6 +16009,26 @@
                     "zoneId": "301e2106-7e13-11e8-8060-e284abfd2bc4"
                 },
                 {
+                    "name": "Netherlands",
+                    "parentId": "301e2106-7e13-11e8-8060-e284abfd2bc4",
+                    "zoneId": "302094fd-7e13-11e8-8060-e284abfd2bc4"
+                }
+            ],
+            "wrs": 1
+        },
+        {
+            "zone": [
+                {
+                    "name": "World",
+                    "parentId": null,
+                    "zoneId": "301e1b69-7e13-11e8-8060-e284abfd2bc4"
+                },
+                {
+                    "name": "Europe",
+                    "parentId": "301e1b69-7e13-11e8-8060-e284abfd2bc4",
+                    "zoneId": "301e2106-7e13-11e8-8060-e284abfd2bc4"
+                },
+                {
                     "name": "Spain",
                     "parentId": "301e2106-7e13-11e8-8060-e284abfd2bc4",
                     "zoneId": "30225b07-7e13-11e8-8060-e284abfd2bc4"
@@ -16018,7 +16096,7 @@
                 "name": "MTP.hugo220"
             },
             "wrs": 26,
-            "duration": 67
+            "duration": 68
         },
         {
             "user": {
@@ -16137,6 +16215,36 @@
         },
         {
             "user": {
+                "id": "8dff1055-c9bd-401f-b852-90978dffd134",
+                "zone": [
+                    {
+                        "name": "World",
+                        "parentId": null,
+                        "zoneId": "301e1b69-7e13-11e8-8060-e284abfd2bc4"
+                    },
+                    {
+                        "name": "Europe",
+                        "parentId": "301e1b69-7e13-11e8-8060-e284abfd2bc4",
+                        "zoneId": "301e2106-7e13-11e8-8060-e284abfd2bc4"
+                    },
+                    {
+                        "name": "Netherlands",
+                        "parentId": "301e2106-7e13-11e8-8060-e284abfd2bc4",
+                        "zoneId": "302094fd-7e13-11e8-8060-e284abfd2bc4"
+                    },
+                    {
+                        "name": "Overijssel",
+                        "parentId": "302094fd-7e13-11e8-8060-e284abfd2bc4",
+                        "zoneId": "30209c86-7e13-11e8-8060-e284abfd2bc4"
+                    }
+                ],
+                "name": "Spaghett37"
+            },
+            "wrs": 12,
+            "duration": 21
+        },
+        {
+            "user": {
                 "id": "65341b56-1625-4df2-8fb4-ad7145c03c34",
                 "zone": [
                     {
@@ -16169,36 +16277,6 @@
             },
             "wrs": 11,
             "duration": 2
-        },
-        {
-            "user": {
-                "id": "8dff1055-c9bd-401f-b852-90978dffd134",
-                "zone": [
-                    {
-                        "name": "World",
-                        "parentId": null,
-                        "zoneId": "301e1b69-7e13-11e8-8060-e284abfd2bc4"
-                    },
-                    {
-                        "name": "Europe",
-                        "parentId": "301e1b69-7e13-11e8-8060-e284abfd2bc4",
-                        "zoneId": "301e2106-7e13-11e8-8060-e284abfd2bc4"
-                    },
-                    {
-                        "name": "Netherlands",
-                        "parentId": "301e2106-7e13-11e8-8060-e284abfd2bc4",
-                        "zoneId": "302094fd-7e13-11e8-8060-e284abfd2bc4"
-                    },
-                    {
-                        "name": "Overijssel",
-                        "parentId": "302094fd-7e13-11e8-8060-e284abfd2bc4",
-                        "zoneId": "30209c86-7e13-11e8-8060-e284abfd2bc4"
-                    }
-                ],
-                "name": "Spaghett37"
-            },
-            "wrs": 11,
-            "duration": 21
         },
         {
             "user": {
@@ -19305,7 +19383,7 @@
                     "zoneId": "302094fd-7e13-11e8-8060-e284abfd2bc4"
                 }
             ],
-            "wrs": 14
+            "wrs": 15
         },
         {
             "zone": [
