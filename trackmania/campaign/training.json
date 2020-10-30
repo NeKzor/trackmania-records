@@ -1072,7 +1072,7 @@
                     "delta": 25,
                     "date": "2020-09-29T17:28:07+00:00",
                     "replay": "10fd386b-ebbe-405d-98c1-fbb7bc3d349a",
-                    "duration": 30
+                    "duration": 31
                 }
             ],
             "isOfficial": true,
@@ -1113,7 +1113,7 @@
                     "delta": 25,
                     "date": "2020-09-29T17:28:07+00:00",
                     "replay": "10fd386b-ebbe-405d-98c1-fbb7bc3d349a",
-                    "duration": 30
+                    "duration": 31
                 }
             ],
             "thumbnail": "3eb21c84-f3b3-473d-9f01-d689b42039a5"
@@ -2139,7 +2139,7 @@
                 "name": "esu-LX"
             },
             "wrs": 1,
-            "duration": 30
+            "duration": 31
         },
         {
             "user": {
@@ -3168,7 +3168,7 @@
                 "name": "esu-LX"
             },
             "wrs": 1,
-            "duration": 30
+            "duration": 31
         },
         {
             "user": {
