@@ -823,7 +823,7 @@
                 "name": "SabreAMW"
             },
             "wrs": 1,
-            "duration": 0
+            "duration": 1
         },
         {
             "user": {
@@ -3362,7 +3362,7 @@
                 "name": "SabreAMW"
             },
             "wrs": 4,
-            "duration": 0
+            "duration": 1
         },
         {
             "user": {

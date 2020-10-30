@@ -363,7 +363,7 @@
                 "name": "GNR-HASKELL"
             },
             "wrs": 4,
-            "duration": 64
+            "duration": 65
         },
         {
             "user": {
@@ -2033,7 +2033,7 @@
                 "name": "SabreAMW"
             },
             "wrs": 1,
-            "duration": 0
+            "duration": 1
         },
         {
             "user": {
@@ -3637,7 +3637,7 @@
                 "name": "GNR-HASKELL"
             },
             "wrs": 23,
-            "duration": 54
+            "duration": 55
         },
         {
             "user": {
@@ -5542,7 +5542,7 @@
                 "name": "SabreAMW"
             },
             "wrs": 4,
-            "duration": 0
+            "duration": 1
         },
         {
             "user": {
