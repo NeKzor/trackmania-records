@@ -3476,11 +3476,11 @@
                         ],
                         "name": "MTP.hugo220"
                     },
-                    "score": 30465,
-                    "delta": 41,
-                    "date": "2020-10-26T15:25:13+00:00",
-                    "replay": "64f21e43-17cb-43ea-a738-beaf4daa8f1c",
-                    "duration": 4
+                    "score": 30448,
+                    "delta": 17,
+                    "date": "2020-10-30T15:41:04+00:00",
+                    "replay": "975211c1-1d31-401f-8c94-2fef68fd82f3",
+                    "duration": 0
                 }
             ],
             "isOfficial": true,
@@ -3902,6 +3902,44 @@
                     "replay": "64f21e43-17cb-43ea-a738-beaf4daa8f1c",
                     "duration": 4,
                     "durationMs": 20087880
+                },
+                {
+                    "user": {
+                        "id": "f781e6ad-8a11-4093-a297-e48638d5fa1a",
+                        "zone": [
+                            {
+                                "name": "World",
+                                "parentId": null,
+                                "zoneId": "301e1b69-7e13-11e8-8060-e284abfd2bc4"
+                            },
+                            {
+                                "name": "Europe",
+                                "parentId": "301e1b69-7e13-11e8-8060-e284abfd2bc4",
+                                "zoneId": "301e2106-7e13-11e8-8060-e284abfd2bc4"
+                            },
+                            {
+                                "name": "France",
+                                "parentId": "301e2106-7e13-11e8-8060-e284abfd2bc4",
+                                "zoneId": "301f6188-7e13-11e8-8060-e284abfd2bc4"
+                            },
+                            {
+                                "name": "Grand Est",
+                                "parentId": "301f6188-7e13-11e8-8060-e284abfd2bc4",
+                                "zoneId": "301fa0c0-7e13-11e8-8060-e284abfd2bc4"
+                            },
+                            {
+                                "name": "Bas-Rhin",
+                                "parentId": "301fa0c0-7e13-11e8-8060-e284abfd2bc4",
+                                "zoneId": "301fa363-7e13-11e8-8060-e284abfd2bc4"
+                            }
+                        ],
+                        "name": "MTP.hugo220"
+                    },
+                    "score": 30448,
+                    "delta": 17,
+                    "date": "2020-10-30T15:41:04+00:00",
+                    "replay": "975211c1-1d31-401f-8c94-2fef68fd82f3",
+                    "duration": 0
                 }
             ],
             "thumbnail": "330c886f-02c9-4f6c-9e41-a6a395de2387"
@@ -15491,7 +15529,7 @@
         }
     ],
     "stats": {
-        "totalTime": 926558
+        "totalTime": 926541
     },
     "leaderboard": [
         {
@@ -15587,7 +15625,7 @@
                 "name": "MTP.hugo220"
             },
             "wrs": 4,
-            "duration": 41
+            "duration": 37
         },
         {
             "user": {
@@ -16095,7 +16133,7 @@
                 ],
                 "name": "MTP.hugo220"
             },
-            "wrs": 26,
+            "wrs": 27,
             "duration": 68
         },
         {
@@ -19263,7 +19301,7 @@
                     "zoneId": "301f6188-7e13-11e8-8060-e284abfd2bc4"
                 }
             ],
-            "wrs": 115
+            "wrs": 116
         },
         {
             "zone": [
