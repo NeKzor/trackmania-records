@@ -2975,7 +2975,7 @@
             "wrs": [
                 {
                     "user": {
-                        "id": "445a6375-a8aa-4b56-b3b5-18d4bff53351",
+                        "id": "f781e6ad-8a11-4093-a297-e48638d5fa1a",
                         "zone": [
                             {
                                 "name": "World",
@@ -2983,23 +2983,33 @@
                                 "zoneId": "301e1b69-7e13-11e8-8060-e284abfd2bc4"
                             },
                             {
-                                "name": "Middle East",
+                                "name": "Europe",
                                 "parentId": "301e1b69-7e13-11e8-8060-e284abfd2bc4",
-                                "zoneId": "301e2195-7e13-11e8-8060-e284abfd2bc4"
+                                "zoneId": "301e2106-7e13-11e8-8060-e284abfd2bc4"
                             },
                             {
-                                "name": "Israel",
-                                "parentId": "301e2195-7e13-11e8-8060-e284abfd2bc4",
-                                "zoneId": "30205c20-7e13-11e8-8060-e284abfd2bc4"
+                                "name": "France",
+                                "parentId": "301e2106-7e13-11e8-8060-e284abfd2bc4",
+                                "zoneId": "301f6188-7e13-11e8-8060-e284abfd2bc4"
+                            },
+                            {
+                                "name": "Grand Est",
+                                "parentId": "301f6188-7e13-11e8-8060-e284abfd2bc4",
+                                "zoneId": "301fa0c0-7e13-11e8-8060-e284abfd2bc4"
+                            },
+                            {
+                                "name": "Bas-Rhin",
+                                "parentId": "301fa0c0-7e13-11e8-8060-e284abfd2bc4",
+                                "zoneId": "301fa363-7e13-11e8-8060-e284abfd2bc4"
                             }
                         ],
-                        "name": "RacetalTM"
+                        "name": "MTP.hugo220"
                     },
-                    "score": 28351,
-                    "delta": 2,
-                    "date": "2020-10-16T17:41:31+00:00",
-                    "replay": "8e5e5a06-1ecf-486b-9db0-0cc400bd1b2d",
-                    "duration": 13
+                    "score": 28336,
+                    "delta": 15,
+                    "date": "2020-10-30T09:58:50+00:00",
+                    "replay": "f4cc5e82-b4df-4520-8dbb-3db21eaa9b83",
+                    "duration": 0
                 }
             ],
             "isOfficial": true,
@@ -3387,6 +3397,44 @@
                     "replay": "8e5e5a06-1ecf-486b-9db0-0cc400bd1b2d",
                     "duration": 13,
                     "durationMs": 875909878
+                },
+                {
+                    "user": {
+                        "id": "f781e6ad-8a11-4093-a297-e48638d5fa1a",
+                        "zone": [
+                            {
+                                "name": "World",
+                                "parentId": null,
+                                "zoneId": "301e1b69-7e13-11e8-8060-e284abfd2bc4"
+                            },
+                            {
+                                "name": "Europe",
+                                "parentId": "301e1b69-7e13-11e8-8060-e284abfd2bc4",
+                                "zoneId": "301e2106-7e13-11e8-8060-e284abfd2bc4"
+                            },
+                            {
+                                "name": "France",
+                                "parentId": "301e2106-7e13-11e8-8060-e284abfd2bc4",
+                                "zoneId": "301f6188-7e13-11e8-8060-e284abfd2bc4"
+                            },
+                            {
+                                "name": "Grand Est",
+                                "parentId": "301f6188-7e13-11e8-8060-e284abfd2bc4",
+                                "zoneId": "301fa0c0-7e13-11e8-8060-e284abfd2bc4"
+                            },
+                            {
+                                "name": "Bas-Rhin",
+                                "parentId": "301fa0c0-7e13-11e8-8060-e284abfd2bc4",
+                                "zoneId": "301fa363-7e13-11e8-8060-e284abfd2bc4"
+                            }
+                        ],
+                        "name": "MTP.hugo220"
+                    },
+                    "score": 28336,
+                    "delta": 15,
+                    "date": "2020-10-30T09:58:50+00:00",
+                    "replay": "f4cc5e82-b4df-4520-8dbb-3db21eaa9b83",
+                    "duration": 0
                 }
             ],
             "thumbnail": "6f499088-149a-4ae2-8c57-8e4367e15533"
@@ -15415,7 +15463,7 @@
         }
     ],
     "stats": {
-        "totalTime": 926623
+        "totalTime": 926608
     },
     "leaderboard": [
         {
@@ -15455,31 +15503,6 @@
         },
         {
             "user": {
-                "id": "e975fb83-c2b4-4830-9ec6-d8253f315865",
-                "zone": [
-                    {
-                        "name": "World",
-                        "parentId": null,
-                        "zoneId": "301e1b69-7e13-11e8-8060-e284abfd2bc4"
-                    },
-                    {
-                        "name": "Europe",
-                        "parentId": "301e1b69-7e13-11e8-8060-e284abfd2bc4",
-                        "zoneId": "301e2106-7e13-11e8-8060-e284abfd2bc4"
-                    },
-                    {
-                        "name": "Norway",
-                        "parentId": "301e2106-7e13-11e8-8060-e284abfd2bc4",
-                        "zoneId": "3020a27d-7e13-11e8-8060-e284abfd2bc4"
-                    }
-                ],
-                "name": "Erizel"
-            },
-            "wrs": 4,
-            "duration": 32
-        },
-        {
-            "user": {
                 "id": "f781e6ad-8a11-4093-a297-e48638d5fa1a",
                 "zone": [
                     {
@@ -15510,8 +15533,33 @@
                 ],
                 "name": "MTP.hugo220"
             },
-            "wrs": 4,
+            "wrs": 5,
             "duration": 40
+        },
+        {
+            "user": {
+                "id": "e975fb83-c2b4-4830-9ec6-d8253f315865",
+                "zone": [
+                    {
+                        "name": "World",
+                        "parentId": null,
+                        "zoneId": "301e1b69-7e13-11e8-8060-e284abfd2bc4"
+                    },
+                    {
+                        "name": "Europe",
+                        "parentId": "301e1b69-7e13-11e8-8060-e284abfd2bc4",
+                        "zoneId": "301e2106-7e13-11e8-8060-e284abfd2bc4"
+                    },
+                    {
+                        "name": "Norway",
+                        "parentId": "301e2106-7e13-11e8-8060-e284abfd2bc4",
+                        "zoneId": "3020a27d-7e13-11e8-8060-e284abfd2bc4"
+                    }
+                ],
+                "name": "Erizel"
+            },
+            "wrs": 4,
+            "duration": 32
         },
         {
             "user": {
@@ -15535,8 +15583,8 @@
                 ],
                 "name": "RacetalTM"
             },
-            "wrs": 3,
-            "duration": 47
+            "wrs": 2,
+            "duration": 34
         },
         {
             "user": {
@@ -15808,7 +15856,7 @@
                     "zoneId": "301f6188-7e13-11e8-8060-e284abfd2bc4"
                 }
             ],
-            "wrs": 5
+            "wrs": 6
         },
         {
             "zone": [
@@ -15848,7 +15896,7 @@
                     "zoneId": "30205c20-7e13-11e8-8060-e284abfd2bc4"
                 }
             ],
-            "wrs": 3
+            "wrs": 2
         },
         {
             "zone": [
@@ -15969,7 +16017,7 @@
                 ],
                 "name": "MTP.hugo220"
             },
-            "wrs": 25,
+            "wrs": 26,
             "duration": 67
         },
         {
@@ -19137,7 +19185,7 @@
                     "zoneId": "301f6188-7e13-11e8-8060-e284abfd2bc4"
                 }
             ],
-            "wrs": 114
+            "wrs": 115
         },
         {
             "zone": [
