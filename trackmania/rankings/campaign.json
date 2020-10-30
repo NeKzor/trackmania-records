@@ -33,7 +33,7 @@
                 "name": "riolu-tm"
             },
             "wrs": 10,
-            "duration": 127
+            "duration": 128
         },
         {
             "user": {
@@ -68,7 +68,7 @@
                 "name": "MTP.hugo220"
             },
             "wrs": 5,
-            "duration": 102
+            "duration": 103
         },
         {
             "user": {
@@ -412,41 +412,6 @@
         },
         {
             "user": {
-                "id": "cd5e5278-bf0e-47d4-911b-2a62c9f37a45",
-                "zone": [
-                    {
-                        "name": "World",
-                        "parentId": null,
-                        "zoneId": "301e1b69-7e13-11e8-8060-e284abfd2bc4"
-                    },
-                    {
-                        "name": "Europe",
-                        "parentId": "301e1b69-7e13-11e8-8060-e284abfd2bc4",
-                        "zoneId": "301e2106-7e13-11e8-8060-e284abfd2bc4"
-                    },
-                    {
-                        "name": "Germany",
-                        "parentId": "301e2106-7e13-11e8-8060-e284abfd2bc4",
-                        "zoneId": "301ff622-7e13-11e8-8060-e284abfd2bc4"
-                    },
-                    {
-                        "name": "Bayern",
-                        "parentId": "301ff622-7e13-11e8-8060-e284abfd2bc4",
-                        "zoneId": "301ff9a2-7e13-11e8-8060-e284abfd2bc4"
-                    },
-                    {
-                        "name": "München",
-                        "parentId": "301ff9a2-7e13-11e8-8060-e284abfd2bc4",
-                        "zoneId": "301ffc28-7e13-11e8-8060-e284abfd2bc4"
-                    }
-                ],
-                "name": "maxmad-46"
-            },
-            "wrs": 1,
-            "duration": 8
-        },
-        {
-            "user": {
                 "id": "aca96daf-0fda-4496-9887-22e616d8a481",
                 "zone": [
                     {
@@ -698,7 +663,7 @@
                 "name": "LogicxTM"
             },
             "wrs": 1,
-            "duration": 103
+            "duration": 104
         },
         {
             "user": {
@@ -1310,7 +1275,7 @@
                     "zoneId": "301ff622-7e13-11e8-8060-e284abfd2bc4"
                 }
             ],
-            "wrs": 18
+            "wrs": 17
         },
         {
             "zone": [
@@ -1712,7 +1677,7 @@
                 "name": "MTP.hugo220"
             },
             "wrs": 29,
-            "duration": 113
+            "duration": 114
         },
         {
             "user": {
@@ -1746,8 +1711,8 @@
                 ],
                 "name": "riolu-tm"
             },
-            "wrs": 24,
-            "duration": 82
+            "wrs": 25,
+            "duration": 83
         },
         {
             "user": {
@@ -5167,7 +5132,7 @@
                 "name": "LogicxTM"
             },
             "wrs": 1,
-            "duration": 103
+            "duration": 104
         },
         {
             "user": {
@@ -5944,7 +5909,7 @@
                     "zoneId": "301ff622-7e13-11e8-8060-e284abfd2bc4"
                 }
             ],
-            "wrs": 79
+            "wrs": 80
         },
         {
             "zone": [
