@@ -254,7 +254,7 @@
                     "delta": 0,
                     "date": "2020-08-27T21:36:28+00:00",
                     "replay": "4eca20db-e66b-4c4f-b5fa-ed387b359121",
-                    "duration": 64
+                    "duration": 65
                 }
             ],
             "isOfficial": true,
@@ -1610,7 +1610,7 @@
                 "name": "CamionTM"
             },
             "wrs": 2,
-            "duration": 158
+            "duration": 159
         },
         {
             "user": {
@@ -2604,7 +2604,7 @@
                 "name": "CamionTM"
             },
             "wrs": 2,
-            "duration": 158
+            "duration": 159
         },
         {
             "user": {
