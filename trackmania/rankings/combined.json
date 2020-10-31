@@ -32,7 +32,7 @@
                 ],
                 "name": "riolu-tm"
             },
-            "wrs": 24,
+            "wrs": 23,
             "duration": 183
         },
         {
@@ -63,7 +63,7 @@
                 "name": "mime.."
             },
             "wrs": 11,
-            "duration": 138
+            "duration": 139
         },
         {
             "user": {
@@ -222,7 +222,7 @@
                 ],
                 "name": "Erizel"
             },
-            "wrs": 6,
+            "wrs": 7,
             "duration": 34
         },
         {
@@ -528,7 +528,7 @@
                 "name": "eLconn21"
             },
             "wrs": 3,
-            "duration": 30
+            "duration": 31
         },
         {
             "user": {
@@ -2640,7 +2640,7 @@
                     "zoneId": "301ff622-7e13-11e8-8060-e284abfd2bc4"
                 }
             ],
-            "wrs": 51
+            "wrs": 50
         },
         {
             "zone": [
@@ -2720,7 +2720,7 @@
                     "zoneId": "3020a27d-7e13-11e8-8060-e284abfd2bc4"
                 }
             ],
-            "wrs": 9
+            "wrs": 10
         },
         {
             "zone": [
@@ -3207,7 +3207,7 @@
                 "name": "mime.."
             },
             "wrs": 54,
-            "duration": 122
+            "duration": 123
         },
         {
             "user": {
@@ -3231,7 +3231,7 @@
                 ],
                 "name": "Erizel"
             },
-            "wrs": 50,
+            "wrs": 51,
             "duration": 79
         },
         {
@@ -4042,7 +4042,7 @@
                 "name": "eLconn21"
             },
             "wrs": 10,
-            "duration": 35
+            "duration": 36
         },
         {
             "user": {
@@ -10674,7 +10674,7 @@
                     "zoneId": "3020a27d-7e13-11e8-8060-e284abfd2bc4"
                 }
             ],
-            "wrs": 76
+            "wrs": 77
         },
         {
             "zone": [
@@ -11432,7 +11432,7 @@
                 ],
                 "name": "Erizel"
             },
-            "wrs": 19
+            "wrs": 20
         },
         {
             "user": {
@@ -18372,7 +18372,7 @@
                     "zoneId": "3020a27d-7e13-11e8-8060-e284abfd2bc4"
                 }
             ],
-            "wrs": 30
+            "wrs": 31
         },
         {
             "zone": [
