@@ -4583,7 +4583,7 @@
                     "delta": 33,
                     "date": "2020-10-15T15:45:46+00:00",
                     "replay": "e1633159-e917-44cc-869f-75b3f4db02b7",
-                    "duration": 15
+                    "duration": 16
                 }
             ],
             "isOfficial": false,
@@ -4984,7 +4984,7 @@
                     "delta": 33,
                     "date": "2020-10-15T15:45:46+00:00",
                     "replay": "e1633159-e917-44cc-869f-75b3f4db02b7",
-                    "duration": 15,
+                    "duration": 16,
                     "durationMs": 969258635
                 }
             ],
@@ -5831,7 +5831,7 @@
                     "delta": 187,
                     "date": "2020-10-18T15:59:46+00:00",
                     "replay": "d9a0ad16-82e5-4135-b2c5-dd516d5b144d",
-                    "duration": 12
+                    "duration": 13
                 }
             ],
             "isOfficial": false,
@@ -6212,7 +6212,7 @@
                     "delta": 187,
                     "date": "2020-10-18T15:59:46+00:00",
                     "replay": "d9a0ad16-82e5-4135-b2c5-dd516d5b144d",
-                    "duration": 12,
+                    "duration": 13,
                     "durationMs": 709218647
                 }
             ],
@@ -9408,7 +9408,7 @@
                     "delta": 58,
                     "date": "2020-10-27T16:49:00+00:00",
                     "replay": "027cafdc-2175-4ff6-b60d-17a3b67c0943",
-                    "duration": 3
+                    "duration": 4
                 }
             ],
             "isOfficial": false,
@@ -9541,7 +9541,7 @@
                     "delta": 58,
                     "date": "2020-10-27T16:49:00+00:00",
                     "replay": "027cafdc-2175-4ff6-b60d-17a3b67c0943",
-                    "duration": 3
+                    "duration": 4
                 }
             ],
             "thumbnail": "df87bf24-9889-4308-afc4-ce9521439f5e"
@@ -10809,7 +10809,7 @@
                 "name": "PokeR.4W"
             },
             "wrs": 9,
-            "duration": 131
+            "duration": 132
         },
         {
             "user": {
@@ -10839,7 +10839,7 @@
                 "name": "mime.."
             },
             "wrs": 7,
-            "duration": 121
+            "duration": 122
         },
         {
             "user": {
@@ -10904,7 +10904,7 @@
                 "name": "Shadow_Crancer"
             },
             "wrs": 2,
-            "duration": 21
+            "duration": 22
         },
         {
             "user": {
@@ -11458,7 +11458,7 @@
                 "name": "mime.."
             },
             "wrs": 54,
-            "duration": 121
+            "duration": 122
         },
         {
             "user": {
@@ -11488,7 +11488,7 @@
                 "name": "PokeR.4W"
             },
             "wrs": 25,
-            "duration": 131
+            "duration": 132
         },
         {
             "user": {
@@ -11583,7 +11583,7 @@
                 "name": "Shadow_Crancer"
             },
             "wrs": 14,
-            "duration": 21
+            "duration": 22
         },
         {
             "user": {
