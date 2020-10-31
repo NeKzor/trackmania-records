@@ -10809,10 +10809,10 @@
                         ],
                         "name": "EvonTM"
                     },
-                    "score": 33123,
-                    "delta": 4199,
-                    "date": "2020-10-31T18:11:07+00:00",
-                    "replay": "59ff4359-79c1-40cd-857c-6337fbe8876e",
+                    "score": 33055,
+                    "delta": 68,
+                    "date": "2020-10-31T18:29:04+00:00",
+                    "replay": "805b28e4-ce8e-4bf9-897b-d18f95cd881d",
                     "duration": 0
                 }
             ],
@@ -10850,13 +10850,46 @@
                     "date": "2020-10-31T18:11:07+00:00",
                     "replay": "59ff4359-79c1-40cd-857c-6337fbe8876e",
                     "duration": 0
+                },
+                {
+                    "user": {
+                        "id": "af22b9e7-9210-4b2d-81ff-2b230ced955b",
+                        "zone": [
+                            {
+                                "name": "World",
+                                "parentId": null,
+                                "zoneId": "301e1b69-7e13-11e8-8060-e284abfd2bc4"
+                            },
+                            {
+                                "name": "Europe",
+                                "parentId": "301e1b69-7e13-11e8-8060-e284abfd2bc4",
+                                "zoneId": "301e2106-7e13-11e8-8060-e284abfd2bc4"
+                            },
+                            {
+                                "name": "Poland",
+                                "parentId": "301e2106-7e13-11e8-8060-e284abfd2bc4",
+                                "zoneId": "3020aa8e-7e13-11e8-8060-e284abfd2bc4"
+                            },
+                            {
+                                "name": "Małopolskie",
+                                "parentId": "3020aa8e-7e13-11e8-8060-e284abfd2bc4",
+                                "zoneId": "3020aff6-7e13-11e8-8060-e284abfd2bc4"
+                            }
+                        ],
+                        "name": "EvonTM"
+                    },
+                    "score": 33055,
+                    "delta": 68,
+                    "date": "2020-10-31T18:29:04+00:00",
+                    "replay": "805b28e4-ce8e-4bf9-897b-d18f95cd881d",
+                    "duration": 0
                 }
             ],
             "thumbnail": "d5f81f7c-b472-4e08-8f55-ac202a3a9404"
         }
     ],
     "stats": {
-        "totalTime": 1259657
+        "totalTime": 1259589
     },
     "leaderboard": [
         {
@@ -12035,6 +12068,36 @@
         },
         {
             "user": {
+                "id": "af22b9e7-9210-4b2d-81ff-2b230ced955b",
+                "zone": [
+                    {
+                        "name": "World",
+                        "parentId": null,
+                        "zoneId": "301e1b69-7e13-11e8-8060-e284abfd2bc4"
+                    },
+                    {
+                        "name": "Europe",
+                        "parentId": "301e1b69-7e13-11e8-8060-e284abfd2bc4",
+                        "zoneId": "301e2106-7e13-11e8-8060-e284abfd2bc4"
+                    },
+                    {
+                        "name": "Poland",
+                        "parentId": "301e2106-7e13-11e8-8060-e284abfd2bc4",
+                        "zoneId": "3020aa8e-7e13-11e8-8060-e284abfd2bc4"
+                    },
+                    {
+                        "name": "Małopolskie",
+                        "parentId": "3020aa8e-7e13-11e8-8060-e284abfd2bc4",
+                        "zoneId": "3020aff6-7e13-11e8-8060-e284abfd2bc4"
+                    }
+                ],
+                "name": "EvonTM"
+            },
+            "wrs": 4,
+            "duration": 3
+        },
+        {
+            "user": {
                 "id": "f40d3c02-135a-4c84-ad99-5e96f2431c41",
                 "zone": [
                     {
@@ -12272,36 +12335,6 @@
             },
             "wrs": 3,
             "duration": 0
-        },
-        {
-            "user": {
-                "id": "af22b9e7-9210-4b2d-81ff-2b230ced955b",
-                "zone": [
-                    {
-                        "name": "World",
-                        "parentId": null,
-                        "zoneId": "301e1b69-7e13-11e8-8060-e284abfd2bc4"
-                    },
-                    {
-                        "name": "Europe",
-                        "parentId": "301e1b69-7e13-11e8-8060-e284abfd2bc4",
-                        "zoneId": "301e2106-7e13-11e8-8060-e284abfd2bc4"
-                    },
-                    {
-                        "name": "Poland",
-                        "parentId": "301e2106-7e13-11e8-8060-e284abfd2bc4",
-                        "zoneId": "3020aa8e-7e13-11e8-8060-e284abfd2bc4"
-                    },
-                    {
-                        "name": "Małopolskie",
-                        "parentId": "3020aa8e-7e13-11e8-8060-e284abfd2bc4",
-                        "zoneId": "3020aff6-7e13-11e8-8060-e284abfd2bc4"
-                    }
-                ],
-                "name": "EvonTM"
-            },
-            "wrs": 3,
-            "duration": 3
         },
         {
             "user": {
@@ -13633,7 +13666,7 @@
                     "zoneId": "3020aa8e-7e13-11e8-8060-e284abfd2bc4"
                 }
             ],
-            "wrs": 57
+            "wrs": 58
         },
         {
             "zone": [

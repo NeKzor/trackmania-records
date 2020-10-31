@@ -758,7 +758,7 @@
                 "name": "esu-LX"
             },
             "wrs": 2,
-            "duration": 42
+            "duration": 43
         },
         {
             "user": {
@@ -4662,7 +4662,7 @@
                 "name": "esu-LX"
             },
             "wrs": 6,
-            "duration": 31
+            "duration": 32
         },
         {
             "user": {
@@ -5388,6 +5388,36 @@
             },
             "wrs": 4,
             "duration": 0
+        },
+        {
+            "user": {
+                "id": "af22b9e7-9210-4b2d-81ff-2b230ced955b",
+                "zone": [
+                    {
+                        "name": "World",
+                        "parentId": null,
+                        "zoneId": "301e1b69-7e13-11e8-8060-e284abfd2bc4"
+                    },
+                    {
+                        "name": "Europe",
+                        "parentId": "301e1b69-7e13-11e8-8060-e284abfd2bc4",
+                        "zoneId": "301e2106-7e13-11e8-8060-e284abfd2bc4"
+                    },
+                    {
+                        "name": "Poland",
+                        "parentId": "301e2106-7e13-11e8-8060-e284abfd2bc4",
+                        "zoneId": "3020aa8e-7e13-11e8-8060-e284abfd2bc4"
+                    },
+                    {
+                        "name": "Małopolskie",
+                        "parentId": "3020aa8e-7e13-11e8-8060-e284abfd2bc4",
+                        "zoneId": "3020aff6-7e13-11e8-8060-e284abfd2bc4"
+                    }
+                ],
+                "name": "EvonTM"
+            },
+            "wrs": 4,
+            "duration": 3
         },
         {
             "user": {
@@ -6163,36 +6193,6 @@
             },
             "wrs": 3,
             "duration": 0
-        },
-        {
-            "user": {
-                "id": "af22b9e7-9210-4b2d-81ff-2b230ced955b",
-                "zone": [
-                    {
-                        "name": "World",
-                        "parentId": null,
-                        "zoneId": "301e1b69-7e13-11e8-8060-e284abfd2bc4"
-                    },
-                    {
-                        "name": "Europe",
-                        "parentId": "301e1b69-7e13-11e8-8060-e284abfd2bc4",
-                        "zoneId": "301e2106-7e13-11e8-8060-e284abfd2bc4"
-                    },
-                    {
-                        "name": "Poland",
-                        "parentId": "301e2106-7e13-11e8-8060-e284abfd2bc4",
-                        "zoneId": "3020aa8e-7e13-11e8-8060-e284abfd2bc4"
-                    },
-                    {
-                        "name": "Małopolskie",
-                        "parentId": "3020aa8e-7e13-11e8-8060-e284abfd2bc4",
-                        "zoneId": "3020aff6-7e13-11e8-8060-e284abfd2bc4"
-                    }
-                ],
-                "name": "EvonTM"
-            },
-            "wrs": 3,
-            "duration": 3
         },
         {
             "user": {
@@ -10684,7 +10684,7 @@
                     "zoneId": "3020aa8e-7e13-11e8-8060-e284abfd2bc4"
                 }
             ],
-            "wrs": 116
+            "wrs": 117
         },
         {
             "zone": [
