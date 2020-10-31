@@ -33,7 +33,7 @@
                 "name": "riolu-tm"
             },
             "wrs": 10,
-            "duration": 128
+            "duration": 129
         },
         {
             "user": {
@@ -1712,7 +1712,7 @@
                 "name": "riolu-tm"
             },
             "wrs": 25,
-            "duration": 83
+            "duration": 84
         },
         {
             "user": {
