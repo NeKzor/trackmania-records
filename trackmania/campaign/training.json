@@ -532,7 +532,7 @@
                     "delta": 0,
                     "date": "2020-09-02T11:12:01+00:00",
                     "replay": "f1f2809a-9a3f-4922-a336-1f76bcac2dca",
-                    "duration": 58
+                    "duration": 59
                 }
             ],
             "isOfficial": true,
@@ -1835,7 +1835,7 @@
                 "name": "AR_bcp"
             },
             "wrs": 1,
-            "duration": 58
+            "duration": 59
         },
         {
             "user": {
@@ -2864,7 +2864,7 @@
                 "name": "AR_bcp"
             },
             "wrs": 1,
-            "duration": 58
+            "duration": 59
         },
         {
             "user": {
