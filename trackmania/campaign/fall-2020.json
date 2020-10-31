@@ -943,7 +943,7 @@
                     "delta": 3,
                     "date": "2020-10-30T23:19:15+00:00",
                     "replay": "0b6264c6-52dd-4f2b-ab1b-a1baf5a5450d",
-                    "duration": 0
+                    "duration": 1
                 }
             ],
             "isOfficial": true,
@@ -1528,7 +1528,7 @@
                     "delta": 3,
                     "date": "2020-10-30T23:19:15+00:00",
                     "replay": "0b6264c6-52dd-4f2b-ab1b-a1baf5a5450d",
-                    "duration": 0
+                    "duration": 1
                 }
             ],
             "thumbnail": "5233e729-1810-4e89-bf0d-b9d832562680"
@@ -5481,7 +5481,7 @@
                     "delta": 20,
                     "date": "2020-10-20T22:18:20+00:00",
                     "replay": "641f6b9e-2b1a-48ed-a6af-acdcc8fa4e9d",
-                    "duration": 10
+                    "duration": 11
                 }
             ],
             "isOfficial": true,
@@ -6051,7 +6051,7 @@
                     "delta": 20,
                     "date": "2020-10-20T22:18:20+00:00",
                     "replay": "641f6b9e-2b1a-48ed-a6af-acdcc8fa4e9d",
-                    "duration": 10,
+                    "duration": 11,
                     "durationMs": 513700929
                 }
             ],
@@ -12904,7 +12904,7 @@
                     "delta": 201,
                     "date": "2020-10-11T22:27:16+00:00",
                     "replay": "8da59401-e698-4727-8f66-d7544ee60ebe",
-                    "duration": 19
+                    "duration": 20
                 }
             ],
             "isOfficial": true,
@@ -13431,7 +13431,7 @@
                     "delta": 201,
                     "date": "2020-10-11T22:27:16+00:00",
                     "replay": "8da59401-e698-4727-8f66-d7544ee60ebe",
-                    "duration": 19,
+                    "duration": 20,
                     "durationMs": 1290765034
                 }
             ],
@@ -15930,7 +15930,7 @@
                 "name": "riolu-tm"
             },
             "wrs": 7,
-            "duration": 63
+            "duration": 65
         },
         {
             "user": {
@@ -15965,7 +15965,7 @@
                 "name": "MTP.hugo220"
             },
             "wrs": 5,
-            "duration": 42
+            "duration": 43
         },
         {
             "user": {
@@ -16379,7 +16379,7 @@
                 "name": "MTP.hugo220"
             },
             "wrs": 29,
-            "duration": 73
+            "duration": 74
         },
         {
             "user": {
@@ -16414,7 +16414,7 @@
                 "name": "riolu-tm"
             },
             "wrs": 24,
-            "duration": 88
+            "duration": 90
         },
         {
             "user": {
