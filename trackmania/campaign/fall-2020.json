@@ -13373,7 +13373,7 @@
             "wrs": [
                 {
                     "user": {
-                        "id": "e975fb83-c2b4-4830-9ec6-d8253f315865",
+                        "id": "f781e6ad-8a11-4093-a297-e48638d5fa1a",
                         "zone": [
                             {
                                 "name": "World",
@@ -13386,18 +13386,28 @@
                                 "zoneId": "301e2106-7e13-11e8-8060-e284abfd2bc4"
                             },
                             {
-                                "name": "Norway",
+                                "name": "France",
                                 "parentId": "301e2106-7e13-11e8-8060-e284abfd2bc4",
-                                "zoneId": "3020a27d-7e13-11e8-8060-e284abfd2bc4"
+                                "zoneId": "301f6188-7e13-11e8-8060-e284abfd2bc4"
+                            },
+                            {
+                                "name": "Grand Est",
+                                "parentId": "301f6188-7e13-11e8-8060-e284abfd2bc4",
+                                "zoneId": "301fa0c0-7e13-11e8-8060-e284abfd2bc4"
+                            },
+                            {
+                                "name": "Bas-Rhin",
+                                "parentId": "301fa0c0-7e13-11e8-8060-e284abfd2bc4",
+                                "zoneId": "301fa363-7e13-11e8-8060-e284abfd2bc4"
                             }
                         ],
-                        "name": "Erizel"
+                        "name": "MTP.hugo220"
                     },
-                    "score": 52678,
-                    "delta": 77,
-                    "date": "2020-10-27T01:03:32+00:00",
-                    "replay": "0f51af55-70a8-45ab-8093-384e72dc2684",
-                    "duration": 4
+                    "score": 52648,
+                    "delta": 30,
+                    "date": "2020-10-31T10:58:46+00:00",
+                    "replay": "6a00b675-7270-43d0-b6e0-cd1113cf43fe",
+                    "duration": 0
                 }
             ],
             "isOfficial": true,
@@ -13835,6 +13845,44 @@
                     "date": "2020-10-27T01:03:32+00:00",
                     "replay": "0f51af55-70a8-45ab-8093-384e72dc2684",
                     "duration": 4
+                },
+                {
+                    "user": {
+                        "id": "f781e6ad-8a11-4093-a297-e48638d5fa1a",
+                        "zone": [
+                            {
+                                "name": "World",
+                                "parentId": null,
+                                "zoneId": "301e1b69-7e13-11e8-8060-e284abfd2bc4"
+                            },
+                            {
+                                "name": "Europe",
+                                "parentId": "301e1b69-7e13-11e8-8060-e284abfd2bc4",
+                                "zoneId": "301e2106-7e13-11e8-8060-e284abfd2bc4"
+                            },
+                            {
+                                "name": "France",
+                                "parentId": "301e2106-7e13-11e8-8060-e284abfd2bc4",
+                                "zoneId": "301f6188-7e13-11e8-8060-e284abfd2bc4"
+                            },
+                            {
+                                "name": "Grand Est",
+                                "parentId": "301f6188-7e13-11e8-8060-e284abfd2bc4",
+                                "zoneId": "301fa0c0-7e13-11e8-8060-e284abfd2bc4"
+                            },
+                            {
+                                "name": "Bas-Rhin",
+                                "parentId": "301fa0c0-7e13-11e8-8060-e284abfd2bc4",
+                                "zoneId": "301fa363-7e13-11e8-8060-e284abfd2bc4"
+                            }
+                        ],
+                        "name": "MTP.hugo220"
+                    },
+                    "score": 52648,
+                    "delta": 30,
+                    "date": "2020-10-31T10:58:46+00:00",
+                    "replay": "6a00b675-7270-43d0-b6e0-cd1113cf43fe",
+                    "duration": 0
                 }
             ],
             "thumbnail": "576c525c-9be4-44a5-aad0-6648e6f68140"
@@ -15757,7 +15805,7 @@
         }
     ],
     "stats": {
-        "totalTime": 926360
+        "totalTime": 926330
     },
     "leaderboard": [
         {
@@ -15797,31 +15845,6 @@
         },
         {
             "user": {
-                "id": "e975fb83-c2b4-4830-9ec6-d8253f315865",
-                "zone": [
-                    {
-                        "name": "World",
-                        "parentId": null,
-                        "zoneId": "301e1b69-7e13-11e8-8060-e284abfd2bc4"
-                    },
-                    {
-                        "name": "Europe",
-                        "parentId": "301e1b69-7e13-11e8-8060-e284abfd2bc4",
-                        "zoneId": "301e2106-7e13-11e8-8060-e284abfd2bc4"
-                    },
-                    {
-                        "name": "Norway",
-                        "parentId": "301e2106-7e13-11e8-8060-e284abfd2bc4",
-                        "zoneId": "3020a27d-7e13-11e8-8060-e284abfd2bc4"
-                    }
-                ],
-                "name": "Erizel"
-            },
-            "wrs": 4,
-            "duration": 36
-        },
-        {
-            "user": {
                 "id": "f781e6ad-8a11-4093-a297-e48638d5fa1a",
                 "zone": [
                     {
@@ -15852,8 +15875,33 @@
                 ],
                 "name": "MTP.hugo220"
             },
-            "wrs": 4,
+            "wrs": 5,
             "duration": 40
+        },
+        {
+            "user": {
+                "id": "e975fb83-c2b4-4830-9ec6-d8253f315865",
+                "zone": [
+                    {
+                        "name": "World",
+                        "parentId": null,
+                        "zoneId": "301e1b69-7e13-11e8-8060-e284abfd2bc4"
+                    },
+                    {
+                        "name": "Europe",
+                        "parentId": "301e1b69-7e13-11e8-8060-e284abfd2bc4",
+                        "zoneId": "301e2106-7e13-11e8-8060-e284abfd2bc4"
+                    },
+                    {
+                        "name": "Norway",
+                        "parentId": "301e2106-7e13-11e8-8060-e284abfd2bc4",
+                        "zoneId": "3020a27d-7e13-11e8-8060-e284abfd2bc4"
+                    }
+                ],
+                "name": "Erizel"
+            },
+            "wrs": 3,
+            "duration": 32
         },
         {
             "user": {
@@ -16080,7 +16128,7 @@
                     "zoneId": "301f6188-7e13-11e8-8060-e284abfd2bc4"
                 }
             ],
-            "wrs": 5
+            "wrs": 6
         },
         {
             "zone": [
@@ -16100,7 +16148,7 @@
                     "zoneId": "3020a27d-7e13-11e8-8060-e284abfd2bc4"
                 }
             ],
-            "wrs": 4
+            "wrs": 3
         },
         {
             "zone": [
@@ -16241,7 +16289,7 @@
                 ],
                 "name": "MTP.hugo220"
             },
-            "wrs": 27,
+            "wrs": 28,
             "duration": 71
         },
         {
@@ -19409,7 +19457,7 @@
                     "zoneId": "301f6188-7e13-11e8-8060-e284abfd2bc4"
                 }
             ],
-            "wrs": 116
+            "wrs": 117
         },
         {
             "zone": [
@@ -20037,35 +20085,6 @@
         },
         {
             "user": {
-                "id": "6c26b761-bd62-42b5-8190-e3e732c2b937",
-                "zone": [
-                    {
-                        "name": "World",
-                        "parentId": null,
-                        "zoneId": "301e1b69-7e13-11e8-8060-e284abfd2bc4"
-                    },
-                    {
-                        "name": "South America",
-                        "parentId": "301e1b69-7e13-11e8-8060-e284abfd2bc4",
-                        "zoneId": "301e243e-7e13-11e8-8060-e284abfd2bc4"
-                    },
-                    {
-                        "name": "Brazil",
-                        "parentId": "301e243e-7e13-11e8-8060-e284abfd2bc4",
-                        "zoneId": "301e6521-7e13-11e8-8060-e284abfd2bc4"
-                    },
-                    {
-                        "name": "São Paulo",
-                        "parentId": "301e6521-7e13-11e8-8060-e284abfd2bc4",
-                        "zoneId": "825a3452-6a36-4fe1-94b5-637986936ef7"
-                    }
-                ],
-                "name": "GNR-HASKELL"
-            },
-            "wrs": 7
-        },
-        {
-            "user": {
                 "id": "f781e6ad-8a11-4093-a297-e48638d5fa1a",
                 "zone": [
                     {
@@ -20096,7 +20115,36 @@
                 ],
                 "name": "MTP.hugo220"
             },
-            "wrs": 6
+            "wrs": 7
+        },
+        {
+            "user": {
+                "id": "6c26b761-bd62-42b5-8190-e3e732c2b937",
+                "zone": [
+                    {
+                        "name": "World",
+                        "parentId": null,
+                        "zoneId": "301e1b69-7e13-11e8-8060-e284abfd2bc4"
+                    },
+                    {
+                        "name": "South America",
+                        "parentId": "301e1b69-7e13-11e8-8060-e284abfd2bc4",
+                        "zoneId": "301e243e-7e13-11e8-8060-e284abfd2bc4"
+                    },
+                    {
+                        "name": "Brazil",
+                        "parentId": "301e243e-7e13-11e8-8060-e284abfd2bc4",
+                        "zoneId": "301e6521-7e13-11e8-8060-e284abfd2bc4"
+                    },
+                    {
+                        "name": "São Paulo",
+                        "parentId": "301e6521-7e13-11e8-8060-e284abfd2bc4",
+                        "zoneId": "825a3452-6a36-4fe1-94b5-637986936ef7"
+                    }
+                ],
+                "name": "GNR-HASKELL"
+            },
+            "wrs": 7
         },
         {
             "user": {
@@ -22956,7 +23004,7 @@
                     "zoneId": "301f6188-7e13-11e8-8060-e284abfd2bc4"
                 }
             ],
-            "wrs": 60
+            "wrs": 61
         },
         {
             "zone": [
