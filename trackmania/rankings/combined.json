@@ -333,7 +333,7 @@
                 "name": "GNR-HASKELL"
             },
             "wrs": 4,
-            "duration": 66
+            "duration": 67
         },
         {
             "user": {
@@ -3547,7 +3547,7 @@
                 "name": "GNR-HASKELL"
             },
             "wrs": 23,
-            "duration": 56
+            "duration": 57
         },
         {
             "user": {
