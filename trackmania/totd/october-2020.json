@@ -10784,7 +10784,7 @@
             "wrs": [
                 {
                     "user": {
-                        "id": "f40d3c02-135a-4c84-ad99-5e96f2431c41",
+                        "id": "5db172fc-21e4-4618-8039-fba4b2d421b9",
                         "zone": [
                             {
                                 "name": "World",
@@ -10802,22 +10802,22 @@
                                 "zoneId": "301f6188-7e13-11e8-8060-e284abfd2bc4"
                             },
                             {
-                                "name": "Centre-Val de Loire",
+                                "name": "Île-de-France",
                                 "parentId": "301f6188-7e13-11e8-8060-e284abfd2bc4",
-                                "zoneId": "301f9809-7e13-11e8-8060-e284abfd2bc4"
+                                "zoneId": "301fab89-7e13-11e8-8060-e284abfd2bc4"
                             },
                             {
-                                "name": "Indre-et-Loire",
-                                "parentId": "301f9809-7e13-11e8-8060-e284abfd2bc4",
-                                "zoneId": "301f9a60-7e13-11e8-8060-e284abfd2bc4"
+                                "name": "Paris",
+                                "parentId": "301fab89-7e13-11e8-8060-e284abfd2bc4",
+                                "zoneId": "301fad4a-7e13-11e8-8060-e284abfd2bc4"
                             }
                         ],
-                        "name": "NeqzoTM"
+                        "name": "JurixTM"
                     },
-                    "score": 32891,
-                    "delta": 32,
-                    "date": "2020-10-31T18:55:04+00:00",
-                    "replay": "32400080-90b3-4988-ba3b-120412e506b8",
+                    "score": 32827,
+                    "delta": 64,
+                    "date": "2020-10-31T19:22:34+00:00",
+                    "replay": "d8757cae-127d-48e4-8a08-b9c0e2bbcffd",
                     "duration": 0
                 }
             ],
@@ -10964,13 +10964,51 @@
                     "date": "2020-10-31T18:55:04+00:00",
                     "replay": "32400080-90b3-4988-ba3b-120412e506b8",
                     "duration": 0
+                },
+                {
+                    "user": {
+                        "id": "5db172fc-21e4-4618-8039-fba4b2d421b9",
+                        "zone": [
+                            {
+                                "name": "World",
+                                "parentId": null,
+                                "zoneId": "301e1b69-7e13-11e8-8060-e284abfd2bc4"
+                            },
+                            {
+                                "name": "Europe",
+                                "parentId": "301e1b69-7e13-11e8-8060-e284abfd2bc4",
+                                "zoneId": "301e2106-7e13-11e8-8060-e284abfd2bc4"
+                            },
+                            {
+                                "name": "France",
+                                "parentId": "301e2106-7e13-11e8-8060-e284abfd2bc4",
+                                "zoneId": "301f6188-7e13-11e8-8060-e284abfd2bc4"
+                            },
+                            {
+                                "name": "Île-de-France",
+                                "parentId": "301f6188-7e13-11e8-8060-e284abfd2bc4",
+                                "zoneId": "301fab89-7e13-11e8-8060-e284abfd2bc4"
+                            },
+                            {
+                                "name": "Paris",
+                                "parentId": "301fab89-7e13-11e8-8060-e284abfd2bc4",
+                                "zoneId": "301fad4a-7e13-11e8-8060-e284abfd2bc4"
+                            }
+                        ],
+                        "name": "JurixTM"
+                    },
+                    "score": 32827,
+                    "delta": 64,
+                    "date": "2020-10-31T19:22:34+00:00",
+                    "replay": "d8757cae-127d-48e4-8a08-b9c0e2bbcffd",
+                    "duration": 0
                 }
             ],
             "thumbnail": "d5f81f7c-b472-4e08-8f55-ac202a3a9404"
         }
     ],
     "stats": {
-        "totalTime": 1259425
+        "totalTime": 1259361
     },
     "leaderboard": [
         {
@@ -11097,41 +11135,6 @@
             },
             "wrs": 2,
             "duration": 22
-        },
-        {
-            "user": {
-                "id": "f40d3c02-135a-4c84-ad99-5e96f2431c41",
-                "zone": [
-                    {
-                        "name": "World",
-                        "parentId": null,
-                        "zoneId": "301e1b69-7e13-11e8-8060-e284abfd2bc4"
-                    },
-                    {
-                        "name": "Europe",
-                        "parentId": "301e1b69-7e13-11e8-8060-e284abfd2bc4",
-                        "zoneId": "301e2106-7e13-11e8-8060-e284abfd2bc4"
-                    },
-                    {
-                        "name": "France",
-                        "parentId": "301e2106-7e13-11e8-8060-e284abfd2bc4",
-                        "zoneId": "301f6188-7e13-11e8-8060-e284abfd2bc4"
-                    },
-                    {
-                        "name": "Centre-Val de Loire",
-                        "parentId": "301f6188-7e13-11e8-8060-e284abfd2bc4",
-                        "zoneId": "301f9809-7e13-11e8-8060-e284abfd2bc4"
-                    },
-                    {
-                        "name": "Indre-et-Loire",
-                        "parentId": "301f9809-7e13-11e8-8060-e284abfd2bc4",
-                        "zoneId": "301f9a60-7e13-11e8-8060-e284abfd2bc4"
-                    }
-                ],
-                "name": "NeqzoTM"
-            },
-            "wrs": 2,
-            "duration": 0
         },
         {
             "user": {
@@ -11397,6 +11400,76 @@
             },
             "wrs": 1,
             "duration": 1
+        },
+        {
+            "user": {
+                "id": "f40d3c02-135a-4c84-ad99-5e96f2431c41",
+                "zone": [
+                    {
+                        "name": "World",
+                        "parentId": null,
+                        "zoneId": "301e1b69-7e13-11e8-8060-e284abfd2bc4"
+                    },
+                    {
+                        "name": "Europe",
+                        "parentId": "301e1b69-7e13-11e8-8060-e284abfd2bc4",
+                        "zoneId": "301e2106-7e13-11e8-8060-e284abfd2bc4"
+                    },
+                    {
+                        "name": "France",
+                        "parentId": "301e2106-7e13-11e8-8060-e284abfd2bc4",
+                        "zoneId": "301f6188-7e13-11e8-8060-e284abfd2bc4"
+                    },
+                    {
+                        "name": "Centre-Val de Loire",
+                        "parentId": "301f6188-7e13-11e8-8060-e284abfd2bc4",
+                        "zoneId": "301f9809-7e13-11e8-8060-e284abfd2bc4"
+                    },
+                    {
+                        "name": "Indre-et-Loire",
+                        "parentId": "301f9809-7e13-11e8-8060-e284abfd2bc4",
+                        "zoneId": "301f9a60-7e13-11e8-8060-e284abfd2bc4"
+                    }
+                ],
+                "name": "NeqzoTM"
+            },
+            "wrs": 1,
+            "duration": 0
+        },
+        {
+            "user": {
+                "id": "5db172fc-21e4-4618-8039-fba4b2d421b9",
+                "zone": [
+                    {
+                        "name": "World",
+                        "parentId": null,
+                        "zoneId": "301e1b69-7e13-11e8-8060-e284abfd2bc4"
+                    },
+                    {
+                        "name": "Europe",
+                        "parentId": "301e1b69-7e13-11e8-8060-e284abfd2bc4",
+                        "zoneId": "301e2106-7e13-11e8-8060-e284abfd2bc4"
+                    },
+                    {
+                        "name": "France",
+                        "parentId": "301e2106-7e13-11e8-8060-e284abfd2bc4",
+                        "zoneId": "301f6188-7e13-11e8-8060-e284abfd2bc4"
+                    },
+                    {
+                        "name": "Île-de-France",
+                        "parentId": "301f6188-7e13-11e8-8060-e284abfd2bc4",
+                        "zoneId": "301fab89-7e13-11e8-8060-e284abfd2bc4"
+                    },
+                    {
+                        "name": "Paris",
+                        "parentId": "301fab89-7e13-11e8-8060-e284abfd2bc4",
+                        "zoneId": "301fad4a-7e13-11e8-8060-e284abfd2bc4"
+                    }
+                ],
+                "name": "JurixTM"
+            },
+            "wrs": 1,
+            "duration": 0
         }
     ],
     "countryLeaderboard": [
@@ -12584,6 +12657,41 @@
         },
         {
             "user": {
+                "id": "5db172fc-21e4-4618-8039-fba4b2d421b9",
+                "zone": [
+                    {
+                        "name": "World",
+                        "parentId": null,
+                        "zoneId": "301e1b69-7e13-11e8-8060-e284abfd2bc4"
+                    },
+                    {
+                        "name": "Europe",
+                        "parentId": "301e1b69-7e13-11e8-8060-e284abfd2bc4",
+                        "zoneId": "301e2106-7e13-11e8-8060-e284abfd2bc4"
+                    },
+                    {
+                        "name": "France",
+                        "parentId": "301e2106-7e13-11e8-8060-e284abfd2bc4",
+                        "zoneId": "301f6188-7e13-11e8-8060-e284abfd2bc4"
+                    },
+                    {
+                        "name": "Île-de-France",
+                        "parentId": "301f6188-7e13-11e8-8060-e284abfd2bc4",
+                        "zoneId": "301fab89-7e13-11e8-8060-e284abfd2bc4"
+                    },
+                    {
+                        "name": "Paris",
+                        "parentId": "301fab89-7e13-11e8-8060-e284abfd2bc4",
+                        "zoneId": "301fad4a-7e13-11e8-8060-e284abfd2bc4"
+                    }
+                ],
+                "name": "JurixTM"
+            },
+            "wrs": 2,
+            "duration": 0
+        },
+        {
+            "user": {
                 "id": "7cbba52b-bfa1-4d4f-8208-f9e0a0440f58",
                 "zone": [
                     {
@@ -13384,41 +13492,6 @@
         },
         {
             "user": {
-                "id": "5db172fc-21e4-4618-8039-fba4b2d421b9",
-                "zone": [
-                    {
-                        "name": "World",
-                        "parentId": null,
-                        "zoneId": "301e1b69-7e13-11e8-8060-e284abfd2bc4"
-                    },
-                    {
-                        "name": "Europe",
-                        "parentId": "301e1b69-7e13-11e8-8060-e284abfd2bc4",
-                        "zoneId": "301e2106-7e13-11e8-8060-e284abfd2bc4"
-                    },
-                    {
-                        "name": "France",
-                        "parentId": "301e2106-7e13-11e8-8060-e284abfd2bc4",
-                        "zoneId": "301f6188-7e13-11e8-8060-e284abfd2bc4"
-                    },
-                    {
-                        "name": "Île-de-France",
-                        "parentId": "301f6188-7e13-11e8-8060-e284abfd2bc4",
-                        "zoneId": "301fab89-7e13-11e8-8060-e284abfd2bc4"
-                    },
-                    {
-                        "name": "Paris",
-                        "parentId": "301fab89-7e13-11e8-8060-e284abfd2bc4",
-                        "zoneId": "301fad4a-7e13-11e8-8060-e284abfd2bc4"
-                    }
-                ],
-                "name": "JurixTM"
-            },
-            "wrs": 1,
-            "duration": 0
-        },
-        {
-            "user": {
                 "id": "a96c4fa2-d71c-42f8-9114-797c88e931d9",
                 "zone": [
                     {
@@ -13762,7 +13835,7 @@
                     "zoneId": "301f6188-7e13-11e8-8060-e284abfd2bc4"
                 }
             ],
-            "wrs": 61
+            "wrs": 62
         },
         {
             "zone": [
@@ -14786,6 +14859,40 @@
         },
         {
             "user": {
+                "id": "5db172fc-21e4-4618-8039-fba4b2d421b9",
+                "zone": [
+                    {
+                        "name": "World",
+                        "parentId": null,
+                        "zoneId": "301e1b69-7e13-11e8-8060-e284abfd2bc4"
+                    },
+                    {
+                        "name": "Europe",
+                        "parentId": "301e1b69-7e13-11e8-8060-e284abfd2bc4",
+                        "zoneId": "301e2106-7e13-11e8-8060-e284abfd2bc4"
+                    },
+                    {
+                        "name": "France",
+                        "parentId": "301e2106-7e13-11e8-8060-e284abfd2bc4",
+                        "zoneId": "301f6188-7e13-11e8-8060-e284abfd2bc4"
+                    },
+                    {
+                        "name": "Île-de-France",
+                        "parentId": "301f6188-7e13-11e8-8060-e284abfd2bc4",
+                        "zoneId": "301fab89-7e13-11e8-8060-e284abfd2bc4"
+                    },
+                    {
+                        "name": "Paris",
+                        "parentId": "301fab89-7e13-11e8-8060-e284abfd2bc4",
+                        "zoneId": "301fad4a-7e13-11e8-8060-e284abfd2bc4"
+                    }
+                ],
+                "name": "JurixTM"
+            },
+            "wrs": 2
+        },
+        {
+            "user": {
                 "id": "0c857beb-fd95-4449-a669-21fb310cacae",
                 "zone": [
                     {
@@ -15556,40 +15663,6 @@
         },
         {
             "user": {
-                "id": "5db172fc-21e4-4618-8039-fba4b2d421b9",
-                "zone": [
-                    {
-                        "name": "World",
-                        "parentId": null,
-                        "zoneId": "301e1b69-7e13-11e8-8060-e284abfd2bc4"
-                    },
-                    {
-                        "name": "Europe",
-                        "parentId": "301e1b69-7e13-11e8-8060-e284abfd2bc4",
-                        "zoneId": "301e2106-7e13-11e8-8060-e284abfd2bc4"
-                    },
-                    {
-                        "name": "France",
-                        "parentId": "301e2106-7e13-11e8-8060-e284abfd2bc4",
-                        "zoneId": "301f6188-7e13-11e8-8060-e284abfd2bc4"
-                    },
-                    {
-                        "name": "Île-de-France",
-                        "parentId": "301f6188-7e13-11e8-8060-e284abfd2bc4",
-                        "zoneId": "301fab89-7e13-11e8-8060-e284abfd2bc4"
-                    },
-                    {
-                        "name": "Paris",
-                        "parentId": "301fab89-7e13-11e8-8060-e284abfd2bc4",
-                        "zoneId": "301fad4a-7e13-11e8-8060-e284abfd2bc4"
-                    }
-                ],
-                "name": "JurixTM"
-            },
-            "wrs": 1
-        },
-        {
-            "user": {
                 "id": "a96c4fa2-d71c-42f8-9114-797c88e931d9",
                 "zone": [
                     {
@@ -16180,7 +16253,7 @@
                     "zoneId": "301f6188-7e13-11e8-8060-e284abfd2bc4"
                 }
             ],
-            "wrs": 35
+            "wrs": 36
         },
         {
             "zone": [
