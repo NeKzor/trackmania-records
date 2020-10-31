@@ -3963,7 +3963,7 @@
                     "delta": 42,
                     "date": "2020-10-13T16:57:30+00:00",
                     "replay": "ba6ed54d-ab8f-4108-aa92-b38c156721b1",
-                    "duration": 17
+                    "duration": 18
                 }
             ],
             "isOfficial": false,
@@ -6255,7 +6255,7 @@
                     "delta": 78,
                     "date": "2020-10-19T16:53:53+00:00",
                     "replay": "b591824d-0ff7-4108-8c48-de259c55a8f4",
-                    "duration": 11
+                    "duration": 12
                 }
             ],
             "isOfficial": false,
@@ -10775,10 +10775,59 @@
                 }
             ],
             "thumbnail": "26a7ebb5-1a32-406c-8c80-e7d4f3b74ccb"
+        },
+        {
+            "id": "aaFw8y42hjwB1Curp2ribv6FKKa",
+            "_id": "4e44319b-7130-4de6-a21b-608e81fb1e92",
+            "name": "TuplaJ Desert Mountain",
+            "monthDay": 31,
+            "wrs": [
+                {
+                    "user": {
+                        "id": "7cd60a75-609a-4e64-b286-16f329878249",
+                        "zone": [
+                            {
+                                "name": "World",
+                                "parentId": null,
+                                "zoneId": "301e1b69-7e13-11e8-8060-e284abfd2bc4"
+                            },
+                            {
+                                "name": "Europe",
+                                "parentId": "301e1b69-7e13-11e8-8060-e284abfd2bc4",
+                                "zoneId": "301e2106-7e13-11e8-8060-e284abfd2bc4"
+                            },
+                            {
+                                "name": "France",
+                                "parentId": "301e2106-7e13-11e8-8060-e284abfd2bc4",
+                                "zoneId": "301f6188-7e13-11e8-8060-e284abfd2bc4"
+                            },
+                            {
+                                "name": "Île-de-France",
+                                "parentId": "301f6188-7e13-11e8-8060-e284abfd2bc4",
+                                "zoneId": "301fab89-7e13-11e8-8060-e284abfd2bc4"
+                            },
+                            {
+                                "name": "Paris",
+                                "parentId": "301fab89-7e13-11e8-8060-e284abfd2bc4",
+                                "zoneId": "301fad4a-7e13-11e8-8060-e284abfd2bc4"
+                            }
+                        ],
+                        "name": "Tona."
+                    },
+                    "score": 37322,
+                    "delta": 0,
+                    "date": "2020-10-27T09:40:33+00:00",
+                    "replay": "b230531c-843a-4857-92e1-ea756ce4ebe7",
+                    "duration": 4
+                }
+            ],
+            "isOfficial": false,
+            "history": [],
+            "thumbnail": "d5f81f7c-b472-4e08-8f55-ac202a3a9404"
         }
     ],
     "stats": {
-        "totalTime": 1226534
+        "totalTime": 1263856
     },
     "leaderboard": [
         {
@@ -10869,7 +10918,7 @@
                 "name": "eLconn21"
             },
             "wrs": 2,
-            "duration": 31
+            "duration": 32
         },
         {
             "user": {
@@ -11024,7 +11073,7 @@
                 "name": "AR_Madzen"
             },
             "wrs": 1,
-            "duration": 17
+            "duration": 18
         },
         {
             "user": {
@@ -11205,6 +11254,41 @@
             },
             "wrs": 1,
             "duration": 0
+        },
+        {
+            "user": {
+                "id": "7cd60a75-609a-4e64-b286-16f329878249",
+                "zone": [
+                    {
+                        "name": "World",
+                        "parentId": null,
+                        "zoneId": "301e1b69-7e13-11e8-8060-e284abfd2bc4"
+                    },
+                    {
+                        "name": "Europe",
+                        "parentId": "301e1b69-7e13-11e8-8060-e284abfd2bc4",
+                        "zoneId": "301e2106-7e13-11e8-8060-e284abfd2bc4"
+                    },
+                    {
+                        "name": "France",
+                        "parentId": "301e2106-7e13-11e8-8060-e284abfd2bc4",
+                        "zoneId": "301f6188-7e13-11e8-8060-e284abfd2bc4"
+                    },
+                    {
+                        "name": "Île-de-France",
+                        "parentId": "301f6188-7e13-11e8-8060-e284abfd2bc4",
+                        "zoneId": "301fab89-7e13-11e8-8060-e284abfd2bc4"
+                    },
+                    {
+                        "name": "Paris",
+                        "parentId": "301fab89-7e13-11e8-8060-e284abfd2bc4",
+                        "zoneId": "301fad4a-7e13-11e8-8060-e284abfd2bc4"
+                    }
+                ],
+                "name": "Tona."
+            },
+            "wrs": 1,
+            "duration": 4
         }
     ],
     "countryLeaderboard": [
@@ -11266,7 +11350,7 @@
                     "zoneId": "301f6188-7e13-11e8-8060-e284abfd2bc4"
                 }
             ],
-            "wrs": 3
+            "wrs": 4
         },
         {
             "zone": [
@@ -13514,6 +13598,41 @@
             },
             "wrs": 1,
             "duration": 0
+        },
+        {
+            "user": {
+                "id": "7cd60a75-609a-4e64-b286-16f329878249",
+                "zone": [
+                    {
+                        "name": "World",
+                        "parentId": null,
+                        "zoneId": "301e1b69-7e13-11e8-8060-e284abfd2bc4"
+                    },
+                    {
+                        "name": "Europe",
+                        "parentId": "301e1b69-7e13-11e8-8060-e284abfd2bc4",
+                        "zoneId": "301e2106-7e13-11e8-8060-e284abfd2bc4"
+                    },
+                    {
+                        "name": "France",
+                        "parentId": "301e2106-7e13-11e8-8060-e284abfd2bc4",
+                        "zoneId": "301f6188-7e13-11e8-8060-e284abfd2bc4"
+                    },
+                    {
+                        "name": "Île-de-France",
+                        "parentId": "301f6188-7e13-11e8-8060-e284abfd2bc4",
+                        "zoneId": "301fab89-7e13-11e8-8060-e284abfd2bc4"
+                    },
+                    {
+                        "name": "Paris",
+                        "parentId": "301fab89-7e13-11e8-8060-e284abfd2bc4",
+                        "zoneId": "301fad4a-7e13-11e8-8060-e284abfd2bc4"
+                    }
+                ],
+                "name": "Tona."
+            },
+            "wrs": 1,
+            "duration": 4
         }
     ],
     "historyCountryLeaderboard": [
@@ -13535,7 +13654,7 @@
                     "zoneId": "301f6188-7e13-11e8-8060-e284abfd2bc4"
                 }
             ],
-            "wrs": 59
+            "wrs": 60
         },
         {
             "zone": [
@@ -15898,6 +16017,40 @@
                 "name": "Flyer36"
             },
             "wrs": 1
+        },
+        {
+            "user": {
+                "id": "7cd60a75-609a-4e64-b286-16f329878249",
+                "zone": [
+                    {
+                        "name": "World",
+                        "parentId": null,
+                        "zoneId": "301e1b69-7e13-11e8-8060-e284abfd2bc4"
+                    },
+                    {
+                        "name": "Europe",
+                        "parentId": "301e1b69-7e13-11e8-8060-e284abfd2bc4",
+                        "zoneId": "301e2106-7e13-11e8-8060-e284abfd2bc4"
+                    },
+                    {
+                        "name": "France",
+                        "parentId": "301e2106-7e13-11e8-8060-e284abfd2bc4",
+                        "zoneId": "301f6188-7e13-11e8-8060-e284abfd2bc4"
+                    },
+                    {
+                        "name": "Île-de-France",
+                        "parentId": "301f6188-7e13-11e8-8060-e284abfd2bc4",
+                        "zoneId": "301fab89-7e13-11e8-8060-e284abfd2bc4"
+                    },
+                    {
+                        "name": "Paris",
+                        "parentId": "301fab89-7e13-11e8-8060-e284abfd2bc4",
+                        "zoneId": "301fad4a-7e13-11e8-8060-e284abfd2bc4"
+                    }
+                ],
+                "name": "Tona."
+            },
+            "wrs": 1
         }
     ],
     "uniqueCountryLeaderboard": [
@@ -15919,7 +16072,7 @@
                     "zoneId": "301f6188-7e13-11e8-8060-e284abfd2bc4"
                 }
             ],
-            "wrs": 33
+            "wrs": 34
         },
         {
             "zone": [
