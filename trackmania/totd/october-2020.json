@@ -1659,7 +1659,7 @@
                     "delta": 16,
                     "date": "2020-10-06T12:45:29+00:00",
                     "replay": "7790a3f4-8b71-44a4-a78b-3e34448cabf3",
-                    "duration": 24
+                    "duration": 25
                 }
             ],
             "isOfficial": false,
@@ -2055,7 +2055,7 @@
                     "delta": 16,
                     "date": "2020-10-06T12:45:29+00:00",
                     "replay": "7790a3f4-8b71-44a4-a78b-3e34448cabf3",
-                    "duration": 24,
+                    "duration": 25,
                     "durationMs": 1757675597
                 }
             ],
@@ -10809,7 +10809,7 @@
                 "name": "PokeR.4W"
             },
             "wrs": 9,
-            "duration": 129
+            "duration": 130
         },
         {
             "user": {
@@ -11488,7 +11488,7 @@
                 "name": "PokeR.4W"
             },
             "wrs": 25,
-            "duration": 129
+            "duration": 130
         },
         {
             "user": {
