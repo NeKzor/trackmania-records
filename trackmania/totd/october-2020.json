@@ -2626,7 +2626,7 @@
                     "delta": 21,
                     "date": "2020-10-08T17:59:38+00:00",
                     "replay": "75b0083f-1e1a-4841-878a-22e4282240ea",
-                    "duration": 22
+                    "duration": 23
                 }
             ],
             "isOfficial": false,
@@ -2769,7 +2769,7 @@
                     "delta": 21,
                     "date": "2020-10-08T17:59:38+00:00",
                     "replay": "75b0083f-1e1a-4841-878a-22e4282240ea",
-                    "duration": 22,
+                    "duration": 23,
                     "durationMs": 1566026610
                 }
             ],
@@ -10784,7 +10784,7 @@
             "wrs": [
                 {
                     "user": {
-                        "id": "f12812ec-aa58-41e3-aeb3-6ba2b4ba57f4",
+                        "id": "f40d3c02-135a-4c84-ad99-5e96f2431c41",
                         "zone": [
                             {
                                 "name": "World",
@@ -10802,22 +10802,22 @@
                                 "zoneId": "301f6188-7e13-11e8-8060-e284abfd2bc4"
                             },
                             {
-                                "name": "Grand Est",
+                                "name": "Centre-Val de Loire",
                                 "parentId": "301f6188-7e13-11e8-8060-e284abfd2bc4",
-                                "zoneId": "301fa0c0-7e13-11e8-8060-e284abfd2bc4"
+                                "zoneId": "301f9809-7e13-11e8-8060-e284abfd2bc4"
                             },
                             {
-                                "name": "Meurthe-et-Moselle",
-                                "parentId": "301fa0c0-7e13-11e8-8060-e284abfd2bc4",
-                                "zoneId": "301fa5bd-7e13-11e8-8060-e284abfd2bc4"
+                                "name": "Indre-et-Loire",
+                                "parentId": "301f9809-7e13-11e8-8060-e284abfd2bc4",
+                                "zoneId": "301f9a60-7e13-11e8-8060-e284abfd2bc4"
                             }
                         ],
-                        "name": "Skayame"
+                        "name": "NeqzoTM"
                     },
-                    "score": 32923,
-                    "delta": 132,
-                    "date": "2020-10-31T18:40:00+00:00",
-                    "replay": "e54f09dd-cb75-4c05-ac0e-f109235ae324",
+                    "score": 32891,
+                    "delta": 32,
+                    "date": "2020-10-31T18:55:04+00:00",
+                    "replay": "32400080-90b3-4988-ba3b-120412e506b8",
                     "duration": 0
                 }
             ],
@@ -10926,13 +10926,51 @@
                     "date": "2020-10-31T18:40:00+00:00",
                     "replay": "e54f09dd-cb75-4c05-ac0e-f109235ae324",
                     "duration": 0
+                },
+                {
+                    "user": {
+                        "id": "f40d3c02-135a-4c84-ad99-5e96f2431c41",
+                        "zone": [
+                            {
+                                "name": "World",
+                                "parentId": null,
+                                "zoneId": "301e1b69-7e13-11e8-8060-e284abfd2bc4"
+                            },
+                            {
+                                "name": "Europe",
+                                "parentId": "301e1b69-7e13-11e8-8060-e284abfd2bc4",
+                                "zoneId": "301e2106-7e13-11e8-8060-e284abfd2bc4"
+                            },
+                            {
+                                "name": "France",
+                                "parentId": "301e2106-7e13-11e8-8060-e284abfd2bc4",
+                                "zoneId": "301f6188-7e13-11e8-8060-e284abfd2bc4"
+                            },
+                            {
+                                "name": "Centre-Val de Loire",
+                                "parentId": "301f6188-7e13-11e8-8060-e284abfd2bc4",
+                                "zoneId": "301f9809-7e13-11e8-8060-e284abfd2bc4"
+                            },
+                            {
+                                "name": "Indre-et-Loire",
+                                "parentId": "301f9809-7e13-11e8-8060-e284abfd2bc4",
+                                "zoneId": "301f9a60-7e13-11e8-8060-e284abfd2bc4"
+                            }
+                        ],
+                        "name": "NeqzoTM"
+                    },
+                    "score": 32891,
+                    "delta": 32,
+                    "date": "2020-10-31T18:55:04+00:00",
+                    "replay": "32400080-90b3-4988-ba3b-120412e506b8",
+                    "duration": 0
                 }
             ],
             "thumbnail": "d5f81f7c-b472-4e08-8f55-ac202a3a9404"
         }
     ],
     "stats": {
-        "totalTime": 1259457
+        "totalTime": 1259425
     },
     "leaderboard": [
         {
@@ -10963,7 +11001,7 @@
                 "name": "PokeR.4W"
             },
             "wrs": 9,
-            "duration": 133
+            "duration": 134
         },
         {
             "user": {
@@ -11059,6 +11097,41 @@
             },
             "wrs": 2,
             "duration": 22
+        },
+        {
+            "user": {
+                "id": "f40d3c02-135a-4c84-ad99-5e96f2431c41",
+                "zone": [
+                    {
+                        "name": "World",
+                        "parentId": null,
+                        "zoneId": "301e1b69-7e13-11e8-8060-e284abfd2bc4"
+                    },
+                    {
+                        "name": "Europe",
+                        "parentId": "301e1b69-7e13-11e8-8060-e284abfd2bc4",
+                        "zoneId": "301e2106-7e13-11e8-8060-e284abfd2bc4"
+                    },
+                    {
+                        "name": "France",
+                        "parentId": "301e2106-7e13-11e8-8060-e284abfd2bc4",
+                        "zoneId": "301f6188-7e13-11e8-8060-e284abfd2bc4"
+                    },
+                    {
+                        "name": "Centre-Val de Loire",
+                        "parentId": "301f6188-7e13-11e8-8060-e284abfd2bc4",
+                        "zoneId": "301f9809-7e13-11e8-8060-e284abfd2bc4"
+                    },
+                    {
+                        "name": "Indre-et-Loire",
+                        "parentId": "301f9809-7e13-11e8-8060-e284abfd2bc4",
+                        "zoneId": "301f9a60-7e13-11e8-8060-e284abfd2bc4"
+                    }
+                ],
+                "name": "NeqzoTM"
+            },
+            "wrs": 2,
+            "duration": 0
         },
         {
             "user": {
@@ -11324,76 +11397,6 @@
             },
             "wrs": 1,
             "duration": 1
-        },
-        {
-            "user": {
-                "id": "f40d3c02-135a-4c84-ad99-5e96f2431c41",
-                "zone": [
-                    {
-                        "name": "World",
-                        "parentId": null,
-                        "zoneId": "301e1b69-7e13-11e8-8060-e284abfd2bc4"
-                    },
-                    {
-                        "name": "Europe",
-                        "parentId": "301e1b69-7e13-11e8-8060-e284abfd2bc4",
-                        "zoneId": "301e2106-7e13-11e8-8060-e284abfd2bc4"
-                    },
-                    {
-                        "name": "France",
-                        "parentId": "301e2106-7e13-11e8-8060-e284abfd2bc4",
-                        "zoneId": "301f6188-7e13-11e8-8060-e284abfd2bc4"
-                    },
-                    {
-                        "name": "Centre-Val de Loire",
-                        "parentId": "301f6188-7e13-11e8-8060-e284abfd2bc4",
-                        "zoneId": "301f9809-7e13-11e8-8060-e284abfd2bc4"
-                    },
-                    {
-                        "name": "Indre-et-Loire",
-                        "parentId": "301f9809-7e13-11e8-8060-e284abfd2bc4",
-                        "zoneId": "301f9a60-7e13-11e8-8060-e284abfd2bc4"
-                    }
-                ],
-                "name": "NeqzoTM"
-            },
-            "wrs": 1,
-            "duration": 0
-        },
-        {
-            "user": {
-                "id": "f12812ec-aa58-41e3-aeb3-6ba2b4ba57f4",
-                "zone": [
-                    {
-                        "name": "World",
-                        "parentId": null,
-                        "zoneId": "301e1b69-7e13-11e8-8060-e284abfd2bc4"
-                    },
-                    {
-                        "name": "Europe",
-                        "parentId": "301e1b69-7e13-11e8-8060-e284abfd2bc4",
-                        "zoneId": "301e2106-7e13-11e8-8060-e284abfd2bc4"
-                    },
-                    {
-                        "name": "France",
-                        "parentId": "301e2106-7e13-11e8-8060-e284abfd2bc4",
-                        "zoneId": "301f6188-7e13-11e8-8060-e284abfd2bc4"
-                    },
-                    {
-                        "name": "Grand Est",
-                        "parentId": "301f6188-7e13-11e8-8060-e284abfd2bc4",
-                        "zoneId": "301fa0c0-7e13-11e8-8060-e284abfd2bc4"
-                    },
-                    {
-                        "name": "Meurthe-et-Moselle",
-                        "parentId": "301fa0c0-7e13-11e8-8060-e284abfd2bc4",
-                        "zoneId": "301fa5bd-7e13-11e8-8060-e284abfd2bc4"
-                    }
-                ],
-                "name": "Skayame"
-            },
-            "wrs": 1,
-            "duration": 0
         }
     ],
     "countryLeaderboard": [
@@ -11677,7 +11680,7 @@
                 "name": "PokeR.4W"
             },
             "wrs": 25,
-            "duration": 133
+            "duration": 134
         },
         {
             "user": {
@@ -11986,6 +11989,41 @@
         },
         {
             "user": {
+                "id": "f40d3c02-135a-4c84-ad99-5e96f2431c41",
+                "zone": [
+                    {
+                        "name": "World",
+                        "parentId": null,
+                        "zoneId": "301e1b69-7e13-11e8-8060-e284abfd2bc4"
+                    },
+                    {
+                        "name": "Europe",
+                        "parentId": "301e1b69-7e13-11e8-8060-e284abfd2bc4",
+                        "zoneId": "301e2106-7e13-11e8-8060-e284abfd2bc4"
+                    },
+                    {
+                        "name": "France",
+                        "parentId": "301e2106-7e13-11e8-8060-e284abfd2bc4",
+                        "zoneId": "301f6188-7e13-11e8-8060-e284abfd2bc4"
+                    },
+                    {
+                        "name": "Centre-Val de Loire",
+                        "parentId": "301f6188-7e13-11e8-8060-e284abfd2bc4",
+                        "zoneId": "301f9809-7e13-11e8-8060-e284abfd2bc4"
+                    },
+                    {
+                        "name": "Indre-et-Loire",
+                        "parentId": "301f9809-7e13-11e8-8060-e284abfd2bc4",
+                        "zoneId": "301f9a60-7e13-11e8-8060-e284abfd2bc4"
+                    }
+                ],
+                "name": "NeqzoTM"
+            },
+            "wrs": 5,
+            "duration": 0
+        },
+        {
+            "user": {
                 "id": "65341b56-1625-4df2-8fb4-ad7145c03c34",
                 "zone": [
                     {
@@ -12173,41 +12211,6 @@
             },
             "wrs": 4,
             "duration": 3
-        },
-        {
-            "user": {
-                "id": "f40d3c02-135a-4c84-ad99-5e96f2431c41",
-                "zone": [
-                    {
-                        "name": "World",
-                        "parentId": null,
-                        "zoneId": "301e1b69-7e13-11e8-8060-e284abfd2bc4"
-                    },
-                    {
-                        "name": "Europe",
-                        "parentId": "301e1b69-7e13-11e8-8060-e284abfd2bc4",
-                        "zoneId": "301e2106-7e13-11e8-8060-e284abfd2bc4"
-                    },
-                    {
-                        "name": "France",
-                        "parentId": "301e2106-7e13-11e8-8060-e284abfd2bc4",
-                        "zoneId": "301f6188-7e13-11e8-8060-e284abfd2bc4"
-                    },
-                    {
-                        "name": "Centre-Val de Loire",
-                        "parentId": "301f6188-7e13-11e8-8060-e284abfd2bc4",
-                        "zoneId": "301f9809-7e13-11e8-8060-e284abfd2bc4"
-                    },
-                    {
-                        "name": "Indre-et-Loire",
-                        "parentId": "301f9809-7e13-11e8-8060-e284abfd2bc4",
-                        "zoneId": "301f9a60-7e13-11e8-8060-e284abfd2bc4"
-                    }
-                ],
-                "name": "NeqzoTM"
-            },
-            "wrs": 4,
-            "duration": 0
         },
         {
             "user": {
@@ -13759,7 +13762,7 @@
                     "zoneId": "301f6188-7e13-11e8-8060-e284abfd2bc4"
                 }
             ],
-            "wrs": 60
+            "wrs": 61
         },
         {
             "zone": [
@@ -14807,6 +14810,40 @@
                     }
                 ],
                 "name": "CarlJr."
+            },
+            "wrs": 2
+        },
+        {
+            "user": {
+                "id": "f40d3c02-135a-4c84-ad99-5e96f2431c41",
+                "zone": [
+                    {
+                        "name": "World",
+                        "parentId": null,
+                        "zoneId": "301e1b69-7e13-11e8-8060-e284abfd2bc4"
+                    },
+                    {
+                        "name": "Europe",
+                        "parentId": "301e1b69-7e13-11e8-8060-e284abfd2bc4",
+                        "zoneId": "301e2106-7e13-11e8-8060-e284abfd2bc4"
+                    },
+                    {
+                        "name": "France",
+                        "parentId": "301e2106-7e13-11e8-8060-e284abfd2bc4",
+                        "zoneId": "301f6188-7e13-11e8-8060-e284abfd2bc4"
+                    },
+                    {
+                        "name": "Centre-Val de Loire",
+                        "parentId": "301f6188-7e13-11e8-8060-e284abfd2bc4",
+                        "zoneId": "301f9809-7e13-11e8-8060-e284abfd2bc4"
+                    },
+                    {
+                        "name": "Indre-et-Loire",
+                        "parentId": "301f9809-7e13-11e8-8060-e284abfd2bc4",
+                        "zoneId": "301f9a60-7e13-11e8-8060-e284abfd2bc4"
+                    }
+                ],
+                "name": "NeqzoTM"
             },
             "wrs": 2
         },
@@ -16062,40 +16099,6 @@
         },
         {
             "user": {
-                "id": "f40d3c02-135a-4c84-ad99-5e96f2431c41",
-                "zone": [
-                    {
-                        "name": "World",
-                        "parentId": null,
-                        "zoneId": "301e1b69-7e13-11e8-8060-e284abfd2bc4"
-                    },
-                    {
-                        "name": "Europe",
-                        "parentId": "301e1b69-7e13-11e8-8060-e284abfd2bc4",
-                        "zoneId": "301e2106-7e13-11e8-8060-e284abfd2bc4"
-                    },
-                    {
-                        "name": "France",
-                        "parentId": "301e2106-7e13-11e8-8060-e284abfd2bc4",
-                        "zoneId": "301f6188-7e13-11e8-8060-e284abfd2bc4"
-                    },
-                    {
-                        "name": "Centre-Val de Loire",
-                        "parentId": "301f6188-7e13-11e8-8060-e284abfd2bc4",
-                        "zoneId": "301f9809-7e13-11e8-8060-e284abfd2bc4"
-                    },
-                    {
-                        "name": "Indre-et-Loire",
-                        "parentId": "301f9809-7e13-11e8-8060-e284abfd2bc4",
-                        "zoneId": "301f9a60-7e13-11e8-8060-e284abfd2bc4"
-                    }
-                ],
-                "name": "NeqzoTM"
-            },
-            "wrs": 1
-        },
-        {
-            "user": {
                 "id": "4b5253cd-2931-4ca5-845a-c81691d5a8c6",
                 "zone": [
                     {
@@ -16177,7 +16180,7 @@
                     "zoneId": "301f6188-7e13-11e8-8060-e284abfd2bc4"
                 }
             ],
-            "wrs": 34
+            "wrs": 35
         },
         {
             "zone": [
