@@ -602,7 +602,7 @@
                     "delta": 275,
                     "date": "2020-10-04T11:17:36+00:00",
                     "replay": "616e4a9c-f2b9-4100-a334-b6874a298c1e",
-                    "duration": 27
+                    "duration": 28
                 }
             ],
             "isOfficial": false,
@@ -1099,7 +1099,7 @@
                     "delta": 275,
                     "date": "2020-10-04T11:17:36+00:00",
                     "replay": "616e4a9c-f2b9-4100-a334-b6874a298c1e",
-                    "duration": 27,
+                    "duration": 28,
                     "durationMs": 1935748590
                 }
             ],
@@ -5490,7 +5490,7 @@
                     "delta": 125,
                     "date": "2020-10-17T11:28:45+00:00",
                     "replay": "05b456da-8d0b-43b1-9d0b-dfc1b5b02ad0",
-                    "duration": 14
+                    "duration": 15
                 }
             ],
             "isOfficial": false,
@@ -5783,7 +5783,7 @@
                     "delta": 125,
                     "date": "2020-10-17T11:28:45+00:00",
                     "replay": "05b456da-8d0b-43b1-9d0b-dfc1b5b02ad0",
-                    "duration": 14,
+                    "duration": 15,
                     "durationMs": 811879638
                 }
             ],
@@ -9222,7 +9222,7 @@
                     "delta": 88,
                     "date": "2020-10-26T12:24:44+00:00",
                     "replay": "12f4f42b-9687-460c-a6ed-0475eddf1b27",
-                    "duration": 5
+                    "duration": 6
                 }
             ],
             "isOfficial": false,
@@ -9365,7 +9365,7 @@
                     "delta": 88,
                     "date": "2020-10-26T12:24:44+00:00",
                     "replay": "12f4f42b-9687-460c-a6ed-0475eddf1b27",
-                    "duration": 5,
+                    "duration": 6,
                     "durationMs": 30920664
                 }
             ],
@@ -11247,7 +11247,7 @@
                 "name": "PokeR.4W"
             },
             "wrs": 9,
-            "duration": 136
+            "duration": 137
         },
         {
             "user": {
@@ -11367,7 +11367,7 @@
                 "name": "BIG_MAN_TAXON"
             },
             "wrs": 1,
-            "duration": 27
+            "duration": 28
         },
         {
             "user": {
@@ -11517,7 +11517,7 @@
                 "name": "tekky_TM"
             },
             "wrs": 1,
-            "duration": 14
+            "duration": 15
         },
         {
             "user": {
@@ -11926,7 +11926,7 @@
                 "name": "PokeR.4W"
             },
             "wrs": 25,
-            "duration": 136
+            "duration": 137
         },
         {
             "user": {
@@ -11951,7 +11951,7 @@
                 "name": "BIG_MAN_TAXON"
             },
             "wrs": 15,
-            "duration": 27
+            "duration": 28
         },
         {
             "user": {
@@ -12111,7 +12111,7 @@
                 "name": "tekky_TM"
             },
             "wrs": 7,
-            "duration": 14
+            "duration": 15
         },
         {
             "user": {
