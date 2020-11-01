@@ -43,7 +43,7 @@
                     "delta": 0,
                     "date": "2020-07-11T21:16:48+00:00",
                     "replay": "579307f5-28e0-416c-894d-262b914fcd9c",
-                    "duration": 112
+                    "duration": 113
                 },
                 {
                     "user": {
@@ -1213,7 +1213,7 @@
                     "delta": 27,
                     "date": "2020-09-20T21:23:07+00:00",
                     "replay": "809401bf-bdd5-4817-bbc9-3a334ab55483",
-                    "duration": 41
+                    "duration": 42
                 }
             ],
             "isOfficial": true,
@@ -1254,7 +1254,7 @@
                     "delta": 27,
                     "date": "2020-09-20T21:23:07+00:00",
                     "replay": "809401bf-bdd5-4817-bbc9-3a334ab55483",
-                    "duration": 41
+                    "duration": 42
                 }
             ],
             "thumbnail": "4a350d43-65ff-4534-b293-0b2bb7bd8482"
@@ -1575,7 +1575,7 @@
                 "name": "Flechetas"
             },
             "wrs": 3,
-            "duration": 112
+            "duration": 113
         },
         {
             "user": {
@@ -1645,7 +1645,7 @@
                 "name": "trabadia"
             },
             "wrs": 1,
-            "duration": 112
+            "duration": 113
         },
         {
             "user": {
@@ -2569,7 +2569,7 @@
                 "name": "Flechetas"
             },
             "wrs": 4,
-            "duration": 116
+            "duration": 117
         },
         {
             "user": {
@@ -2674,7 +2674,7 @@
                 "name": "trabadia"
             },
             "wrs": 1,
-            "duration": 112
+            "duration": 113
         },
         {
             "user": {
