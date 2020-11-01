@@ -71,7 +71,7 @@
                     "delta": 0,
                     "date": "2020-07-13T17:15:11+00:00",
                     "replay": "4dd7f97d-91af-4272-bfc6-68ebd484785c",
-                    "duration": 110
+                    "duration": 111
                 }
             ],
             "isOfficial": true,
@@ -1078,7 +1078,7 @@
                     "delta": 25,
                     "date": "2020-09-29T17:28:07+00:00",
                     "replay": "10fd386b-ebbe-405d-98c1-fbb7bc3d349a",
-                    "duration": 32
+                    "duration": 33
                 }
             ],
             "isOfficial": true,
@@ -1119,7 +1119,7 @@
                     "delta": 25,
                     "date": "2020-09-29T17:28:07+00:00",
                     "replay": "10fd386b-ebbe-405d-98c1-fbb7bc3d349a",
-                    "duration": 32
+                    "duration": 33
                 }
             ],
             "thumbnail": "3eb21c84-f3b3-473d-9f01-d689b42039a5"
@@ -1670,7 +1670,7 @@
                 "name": "ASdaS-BLR"
             },
             "wrs": 1,
-            "duration": 110
+            "duration": 111
         },
         {
             "user": {
@@ -2115,7 +2115,7 @@
                 "name": "esu-LX"
             },
             "wrs": 1,
-            "duration": 32
+            "duration": 33
         },
         {
             "user": {
@@ -2699,7 +2699,7 @@
                 "name": "ASdaS-BLR"
             },
             "wrs": 1,
-            "duration": 110
+            "duration": 111
         },
         {
             "user": {
@@ -3144,7 +3144,7 @@
                 "name": "esu-LX"
             },
             "wrs": 1,
-            "duration": 32
+            "duration": 33
         },
         {
             "user": {

@@ -758,7 +758,7 @@
                 "name": "esu-LX"
             },
             "wrs": 2,
-            "duration": 43
+            "duration": 44
         },
         {
             "user": {
@@ -1073,7 +1073,7 @@
                 "name": "ASdaS-BLR"
             },
             "wrs": 1,
-            "duration": 110
+            "duration": 111
         },
         {
             "user": {
@@ -3491,36 +3491,6 @@
         },
         {
             "user": {
-                "id": "6c26b761-bd62-42b5-8190-e3e732c2b937",
-                "zone": [
-                    {
-                        "name": "World",
-                        "parentId": null,
-                        "zoneId": "301e1b69-7e13-11e8-8060-e284abfd2bc4"
-                    },
-                    {
-                        "name": "South America",
-                        "parentId": "301e1b69-7e13-11e8-8060-e284abfd2bc4",
-                        "zoneId": "301e243e-7e13-11e8-8060-e284abfd2bc4"
-                    },
-                    {
-                        "name": "Brazil",
-                        "parentId": "301e243e-7e13-11e8-8060-e284abfd2bc4",
-                        "zoneId": "301e6521-7e13-11e8-8060-e284abfd2bc4"
-                    },
-                    {
-                        "name": "São Paulo",
-                        "parentId": "301e6521-7e13-11e8-8060-e284abfd2bc4",
-                        "zoneId": "825a3452-6a36-4fe1-94b5-637986936ef7"
-                    }
-                ],
-                "name": "GNR-HASKELL"
-            },
-            "wrs": 23,
-            "duration": 60
-        },
-        {
-            "user": {
                 "id": "794a286c-44d9-4276-83ce-431cba7bab74",
                 "zone": [
                     {
@@ -3551,8 +3521,38 @@
                 ],
                 "name": "Marius.89"
             },
-            "wrs": 23,
+            "wrs": 24,
             "duration": 20
+        },
+        {
+            "user": {
+                "id": "6c26b761-bd62-42b5-8190-e3e732c2b937",
+                "zone": [
+                    {
+                        "name": "World",
+                        "parentId": null,
+                        "zoneId": "301e1b69-7e13-11e8-8060-e284abfd2bc4"
+                    },
+                    {
+                        "name": "South America",
+                        "parentId": "301e1b69-7e13-11e8-8060-e284abfd2bc4",
+                        "zoneId": "301e243e-7e13-11e8-8060-e284abfd2bc4"
+                    },
+                    {
+                        "name": "Brazil",
+                        "parentId": "301e243e-7e13-11e8-8060-e284abfd2bc4",
+                        "zoneId": "301e6521-7e13-11e8-8060-e284abfd2bc4"
+                    },
+                    {
+                        "name": "São Paulo",
+                        "parentId": "301e6521-7e13-11e8-8060-e284abfd2bc4",
+                        "zoneId": "825a3452-6a36-4fe1-94b5-637986936ef7"
+                    }
+                ],
+                "name": "GNR-HASKELL"
+            },
+            "wrs": 23,
+            "duration": 60
         },
         {
             "user": {
@@ -4697,7 +4697,7 @@
                 "name": "esu-LX"
             },
             "wrs": 6,
-            "duration": 32
+            "duration": 33
         },
         {
             "user": {
@@ -8277,7 +8277,7 @@
                 "name": "ASdaS-BLR"
             },
             "wrs": 1,
-            "duration": 110
+            "duration": 111
         },
         {
             "user": {
@@ -10699,7 +10699,7 @@
                     "zoneId": "301ff622-7e13-11e8-8060-e284abfd2bc4"
                 }
             ],
-            "wrs": 272
+            "wrs": 273
         },
         {
             "zone": [
