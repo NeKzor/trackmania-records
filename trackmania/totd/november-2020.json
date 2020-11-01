@@ -12,7 +12,7 @@
             "wrs": [
                 {
                     "user": {
-                        "id": "aba576af-219f-44a2-99f6-0fa8c28add03",
+                        "id": "e65f09bc-3057-45e8-8034-176f92f62c78",
                         "zone": [
                             {
                                 "name": "World",
@@ -25,22 +25,27 @@
                                 "zoneId": "301e2106-7e13-11e8-8060-e284abfd2bc4"
                             },
                             {
-                                "name": "Belgium",
+                                "name": "Germany",
                                 "parentId": "301e2106-7e13-11e8-8060-e284abfd2bc4",
-                                "zoneId": "301e5bc8-7e13-11e8-8060-e284abfd2bc4"
+                                "zoneId": "301ff622-7e13-11e8-8060-e284abfd2bc4"
                             },
                             {
-                                "name": "Liège",
-                                "parentId": "301e5bc8-7e13-11e8-8060-e284abfd2bc4",
-                                "zoneId": "301e5e63-7e13-11e8-8060-e284abfd2bc4"
+                                "name": "Niedersachsen",
+                                "parentId": "301ff622-7e13-11e8-8060-e284abfd2bc4",
+                                "zoneId": "30200a18-7e13-11e8-8060-e284abfd2bc4"
+                            },
+                            {
+                                "name": "Hannover",
+                                "parentId": "30200a18-7e13-11e8-8060-e284abfd2bc4",
+                                "zoneId": "30200b48-7e13-11e8-8060-e284abfd2bc4"
                             }
                         ],
-                        "name": "ferkel_"
+                        "name": "DasIKeAReGaLv2"
                     },
-                    "score": 38521,
-                    "delta": 65,
-                    "date": "2020-11-01T18:53:21+00:00",
-                    "replay": "8f72c867-7992-477b-bc3a-9feb99f8132e",
+                    "score": 38438,
+                    "delta": 83,
+                    "date": "2020-11-01T20:12:43+00:00",
+                    "replay": "b6a4f35a-cc95-4a04-94f2-e03b71bd5e7c",
                     "duration": 0
                 }
             ],
@@ -154,18 +159,56 @@
                     "date": "2020-11-01T18:53:21+00:00",
                     "replay": "8f72c867-7992-477b-bc3a-9feb99f8132e",
                     "duration": 0
+                },
+                {
+                    "user": {
+                        "id": "e65f09bc-3057-45e8-8034-176f92f62c78",
+                        "zone": [
+                            {
+                                "name": "World",
+                                "parentId": null,
+                                "zoneId": "301e1b69-7e13-11e8-8060-e284abfd2bc4"
+                            },
+                            {
+                                "name": "Europe",
+                                "parentId": "301e1b69-7e13-11e8-8060-e284abfd2bc4",
+                                "zoneId": "301e2106-7e13-11e8-8060-e284abfd2bc4"
+                            },
+                            {
+                                "name": "Germany",
+                                "parentId": "301e2106-7e13-11e8-8060-e284abfd2bc4",
+                                "zoneId": "301ff622-7e13-11e8-8060-e284abfd2bc4"
+                            },
+                            {
+                                "name": "Niedersachsen",
+                                "parentId": "301ff622-7e13-11e8-8060-e284abfd2bc4",
+                                "zoneId": "30200a18-7e13-11e8-8060-e284abfd2bc4"
+                            },
+                            {
+                                "name": "Hannover",
+                                "parentId": "30200a18-7e13-11e8-8060-e284abfd2bc4",
+                                "zoneId": "30200b48-7e13-11e8-8060-e284abfd2bc4"
+                            }
+                        ],
+                        "name": "DasIKeAReGaLv2"
+                    },
+                    "score": 38438,
+                    "delta": 83,
+                    "date": "2020-11-01T20:12:43+00:00",
+                    "replay": "b6a4f35a-cc95-4a04-94f2-e03b71bd5e7c",
+                    "duration": 0
                 }
             ],
             "thumbnail": "b153a5ec-cbd0-421a-9d03-e00d307fdbc6"
         }
     ],
     "stats": {
-        "totalTime": 38521
+        "totalTime": 38438
     },
     "leaderboard": [
         {
             "user": {
-                "id": "aba576af-219f-44a2-99f6-0fa8c28add03",
+                "id": "e65f09bc-3057-45e8-8034-176f92f62c78",
                 "zone": [
                     {
                         "name": "World",
@@ -178,17 +221,22 @@
                         "zoneId": "301e2106-7e13-11e8-8060-e284abfd2bc4"
                     },
                     {
-                        "name": "Belgium",
+                        "name": "Germany",
                         "parentId": "301e2106-7e13-11e8-8060-e284abfd2bc4",
-                        "zoneId": "301e5bc8-7e13-11e8-8060-e284abfd2bc4"
+                        "zoneId": "301ff622-7e13-11e8-8060-e284abfd2bc4"
                     },
                     {
-                        "name": "Liège",
-                        "parentId": "301e5bc8-7e13-11e8-8060-e284abfd2bc4",
-                        "zoneId": "301e5e63-7e13-11e8-8060-e284abfd2bc4"
+                        "name": "Niedersachsen",
+                        "parentId": "301ff622-7e13-11e8-8060-e284abfd2bc4",
+                        "zoneId": "30200a18-7e13-11e8-8060-e284abfd2bc4"
+                    },
+                    {
+                        "name": "Hannover",
+                        "parentId": "30200a18-7e13-11e8-8060-e284abfd2bc4",
+                        "zoneId": "30200b48-7e13-11e8-8060-e284abfd2bc4"
                     }
                 ],
-                "name": "ferkel_"
+                "name": "DasIKeAReGaLv2"
             },
             "wrs": 1,
             "duration": 0
@@ -208,9 +256,9 @@
                     "zoneId": "301e2106-7e13-11e8-8060-e284abfd2bc4"
                 },
                 {
-                    "name": "Belgium",
+                    "name": "Germany",
                     "parentId": "301e2106-7e13-11e8-8060-e284abfd2bc4",
-                    "zoneId": "301e5bc8-7e13-11e8-8060-e284abfd2bc4"
+                    "zoneId": "301ff622-7e13-11e8-8060-e284abfd2bc4"
                 }
             ],
             "wrs": 1
@@ -281,6 +329,41 @@
             },
             "wrs": 1,
             "duration": 0
+        },
+        {
+            "user": {
+                "id": "e65f09bc-3057-45e8-8034-176f92f62c78",
+                "zone": [
+                    {
+                        "name": "World",
+                        "parentId": null,
+                        "zoneId": "301e1b69-7e13-11e8-8060-e284abfd2bc4"
+                    },
+                    {
+                        "name": "Europe",
+                        "parentId": "301e1b69-7e13-11e8-8060-e284abfd2bc4",
+                        "zoneId": "301e2106-7e13-11e8-8060-e284abfd2bc4"
+                    },
+                    {
+                        "name": "Germany",
+                        "parentId": "301e2106-7e13-11e8-8060-e284abfd2bc4",
+                        "zoneId": "301ff622-7e13-11e8-8060-e284abfd2bc4"
+                    },
+                    {
+                        "name": "Niedersachsen",
+                        "parentId": "301ff622-7e13-11e8-8060-e284abfd2bc4",
+                        "zoneId": "30200a18-7e13-11e8-8060-e284abfd2bc4"
+                    },
+                    {
+                        "name": "Hannover",
+                        "parentId": "30200a18-7e13-11e8-8060-e284abfd2bc4",
+                        "zoneId": "30200b48-7e13-11e8-8060-e284abfd2bc4"
+                    }
+                ],
+                "name": "DasIKeAReGaLv2"
+            },
+            "wrs": 1,
+            "duration": 0
         }
     ],
     "historyCountryLeaderboard": [
@@ -302,7 +385,7 @@
                     "zoneId": "301ff622-7e13-11e8-8060-e284abfd2bc4"
                 }
             ],
-            "wrs": 2
+            "wrs": 3
         },
         {
             "zone": [
@@ -388,6 +471,40 @@
                 "name": "ferkel_"
             },
             "wrs": 1
+        },
+        {
+            "user": {
+                "id": "e65f09bc-3057-45e8-8034-176f92f62c78",
+                "zone": [
+                    {
+                        "name": "World",
+                        "parentId": null,
+                        "zoneId": "301e1b69-7e13-11e8-8060-e284abfd2bc4"
+                    },
+                    {
+                        "name": "Europe",
+                        "parentId": "301e1b69-7e13-11e8-8060-e284abfd2bc4",
+                        "zoneId": "301e2106-7e13-11e8-8060-e284abfd2bc4"
+                    },
+                    {
+                        "name": "Germany",
+                        "parentId": "301e2106-7e13-11e8-8060-e284abfd2bc4",
+                        "zoneId": "301ff622-7e13-11e8-8060-e284abfd2bc4"
+                    },
+                    {
+                        "name": "Niedersachsen",
+                        "parentId": "301ff622-7e13-11e8-8060-e284abfd2bc4",
+                        "zoneId": "30200a18-7e13-11e8-8060-e284abfd2bc4"
+                    },
+                    {
+                        "name": "Hannover",
+                        "parentId": "30200a18-7e13-11e8-8060-e284abfd2bc4",
+                        "zoneId": "30200b48-7e13-11e8-8060-e284abfd2bc4"
+                    }
+                ],
+                "name": "DasIKeAReGaLv2"
+            },
+            "wrs": 1
         }
     ],
     "uniqueCountryLeaderboard": [
@@ -409,7 +526,7 @@
                     "zoneId": "301ff622-7e13-11e8-8060-e284abfd2bc4"
                 }
             ],
-            "wrs": 1
+            "wrs": 2
         },
         {
             "zone": [
