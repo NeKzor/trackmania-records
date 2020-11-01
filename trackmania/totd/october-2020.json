@@ -10517,7 +10517,7 @@
                     "delta": 15,
                     "date": "2020-10-31T10:08:04+00:00",
                     "replay": "4f9e80e4-b3e5-4efb-a6a5-a9dc88869ddf",
-                    "duration": 0
+                    "duration": 1
                 }
             ],
             "isOfficial": false,
@@ -10771,7 +10771,7 @@
                     "delta": 15,
                     "date": "2020-10-31T10:08:04+00:00",
                     "replay": "4f9e80e4-b3e5-4efb-a6a5-a9dc88869ddf",
-                    "duration": 0
+                    "duration": 1
                 }
             ],
             "thumbnail": "26a7ebb5-1a32-406c-8c80-e7d4f3b74ccb"
@@ -11349,7 +11349,7 @@
                 "name": "NeqzoTM"
             },
             "wrs": 2,
-            "duration": 0
+            "duration": 1
         },
         {
             "user": {
@@ -12183,7 +12183,7 @@
                 "name": "NeqzoTM"
             },
             "wrs": 6,
-            "duration": 0
+            "duration": 1
         },
         {
             "user": {
