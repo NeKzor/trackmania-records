@@ -10003,7 +10003,7 @@
                     "delta": 12,
                     "date": "2020-10-29T06:57:52+00:00",
                     "replay": "8c93c866-f634-4125-9870-138b3f602783",
-                    "duration": 2
+                    "duration": 3
                 }
             ],
             "isOfficial": false,
@@ -10275,7 +10275,7 @@
                     "delta": 12,
                     "date": "2020-10-29T06:57:52+00:00",
                     "replay": "8c93c866-f634-4125-9870-138b3f602783",
-                    "duration": 2
+                    "duration": 3
                 }
             ],
             "thumbnail": "75db6c48-5e1a-4581-94e5-ade37d1a474c"
@@ -11589,7 +11589,7 @@
                 "name": "SabreAMW"
             },
             "wrs": 1,
-            "duration": 2
+            "duration": 3
         },
         {
             "user": {
@@ -13033,7 +13033,7 @@
                 "name": "SabreAMW"
             },
             "wrs": 2,
-            "duration": 2
+            "duration": 3
         },
         {
             "user": {
