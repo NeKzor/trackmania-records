@@ -873,7 +873,7 @@
                 "name": "Kerberos.4W"
             },
             "wrs": 1,
-            "duration": 3
+            "duration": 4
         },
         {
             "user": {
@@ -5342,7 +5342,7 @@
                 "name": "Kerberos.4W"
             },
             "wrs": 1,
-            "duration": 3
+            "duration": 4
         },
         {
             "user": {
