@@ -12,7 +12,7 @@
             "wrs": [
                 {
                     "user": {
-                        "id": "e65f09bc-3057-45e8-8034-176f92f62c78",
+                        "id": "889a054a-b992-467b-b97f-621e401ed59d",
                         "zone": [
                             {
                                 "name": "World",
@@ -25,27 +25,22 @@
                                 "zoneId": "301e2106-7e13-11e8-8060-e284abfd2bc4"
                             },
                             {
-                                "name": "Germany",
+                                "name": "Austria",
                                 "parentId": "301e2106-7e13-11e8-8060-e284abfd2bc4",
-                                "zoneId": "301ff622-7e13-11e8-8060-e284abfd2bc4"
+                                "zoneId": "301e41fc-7e13-11e8-8060-e284abfd2bc4"
                             },
                             {
-                                "name": "Niedersachsen",
-                                "parentId": "301ff622-7e13-11e8-8060-e284abfd2bc4",
-                                "zoneId": "30200a18-7e13-11e8-8060-e284abfd2bc4"
-                            },
-                            {
-                                "name": "Hannover",
-                                "parentId": "30200a18-7e13-11e8-8060-e284abfd2bc4",
-                                "zoneId": "30200b48-7e13-11e8-8060-e284abfd2bc4"
+                                "name": "Upper Austria",
+                                "parentId": "301e41fc-7e13-11e8-8060-e284abfd2bc4",
+                                "zoneId": "301e55f4-7e13-11e8-8060-e284abfd2bc4"
                             }
                         ],
-                        "name": "DasIKeAReGaLv2"
+                        "name": "Mani.aR_"
                     },
-                    "score": 38438,
-                    "delta": 83,
-                    "date": "2020-11-01T20:12:43+00:00",
-                    "replay": "b6a4f35a-cc95-4a04-94f2-e03b71bd5e7c",
+                    "score": 38434,
+                    "delta": 4,
+                    "date": "2020-11-01T20:32:30+00:00",
+                    "replay": "32af0c6a-ed41-4d8a-9eda-7b672785e3ff",
                     "duration": 0
                 }
             ],
@@ -197,18 +192,51 @@
                     "date": "2020-11-01T20:12:43+00:00",
                     "replay": "b6a4f35a-cc95-4a04-94f2-e03b71bd5e7c",
                     "duration": 0
+                },
+                {
+                    "user": {
+                        "id": "889a054a-b992-467b-b97f-621e401ed59d",
+                        "zone": [
+                            {
+                                "name": "World",
+                                "parentId": null,
+                                "zoneId": "301e1b69-7e13-11e8-8060-e284abfd2bc4"
+                            },
+                            {
+                                "name": "Europe",
+                                "parentId": "301e1b69-7e13-11e8-8060-e284abfd2bc4",
+                                "zoneId": "301e2106-7e13-11e8-8060-e284abfd2bc4"
+                            },
+                            {
+                                "name": "Austria",
+                                "parentId": "301e2106-7e13-11e8-8060-e284abfd2bc4",
+                                "zoneId": "301e41fc-7e13-11e8-8060-e284abfd2bc4"
+                            },
+                            {
+                                "name": "Upper Austria",
+                                "parentId": "301e41fc-7e13-11e8-8060-e284abfd2bc4",
+                                "zoneId": "301e55f4-7e13-11e8-8060-e284abfd2bc4"
+                            }
+                        ],
+                        "name": "Mani.aR_"
+                    },
+                    "score": 38434,
+                    "delta": 4,
+                    "date": "2020-11-01T20:32:30+00:00",
+                    "replay": "32af0c6a-ed41-4d8a-9eda-7b672785e3ff",
+                    "duration": 0
                 }
             ],
             "thumbnail": "b153a5ec-cbd0-421a-9d03-e00d307fdbc6"
         }
     ],
     "stats": {
-        "totalTime": 38438
+        "totalTime": 38434
     },
     "leaderboard": [
         {
             "user": {
-                "id": "e65f09bc-3057-45e8-8034-176f92f62c78",
+                "id": "889a054a-b992-467b-b97f-621e401ed59d",
                 "zone": [
                     {
                         "name": "World",
@@ -221,22 +249,17 @@
                         "zoneId": "301e2106-7e13-11e8-8060-e284abfd2bc4"
                     },
                     {
-                        "name": "Germany",
+                        "name": "Austria",
                         "parentId": "301e2106-7e13-11e8-8060-e284abfd2bc4",
-                        "zoneId": "301ff622-7e13-11e8-8060-e284abfd2bc4"
+                        "zoneId": "301e41fc-7e13-11e8-8060-e284abfd2bc4"
                     },
                     {
-                        "name": "Niedersachsen",
-                        "parentId": "301ff622-7e13-11e8-8060-e284abfd2bc4",
-                        "zoneId": "30200a18-7e13-11e8-8060-e284abfd2bc4"
-                    },
-                    {
-                        "name": "Hannover",
-                        "parentId": "30200a18-7e13-11e8-8060-e284abfd2bc4",
-                        "zoneId": "30200b48-7e13-11e8-8060-e284abfd2bc4"
+                        "name": "Upper Austria",
+                        "parentId": "301e41fc-7e13-11e8-8060-e284abfd2bc4",
+                        "zoneId": "301e55f4-7e13-11e8-8060-e284abfd2bc4"
                     }
                 ],
-                "name": "DasIKeAReGaLv2"
+                "name": "Mani.aR_"
             },
             "wrs": 1,
             "duration": 0
@@ -256,9 +279,9 @@
                     "zoneId": "301e2106-7e13-11e8-8060-e284abfd2bc4"
                 },
                 {
-                    "name": "Germany",
+                    "name": "Austria",
                     "parentId": "301e2106-7e13-11e8-8060-e284abfd2bc4",
-                    "zoneId": "301ff622-7e13-11e8-8060-e284abfd2bc4"
+                    "zoneId": "301e41fc-7e13-11e8-8060-e284abfd2bc4"
                 }
             ],
             "wrs": 1
@@ -364,6 +387,36 @@
             },
             "wrs": 1,
             "duration": 0
+        },
+        {
+            "user": {
+                "id": "889a054a-b992-467b-b97f-621e401ed59d",
+                "zone": [
+                    {
+                        "name": "World",
+                        "parentId": null,
+                        "zoneId": "301e1b69-7e13-11e8-8060-e284abfd2bc4"
+                    },
+                    {
+                        "name": "Europe",
+                        "parentId": "301e1b69-7e13-11e8-8060-e284abfd2bc4",
+                        "zoneId": "301e2106-7e13-11e8-8060-e284abfd2bc4"
+                    },
+                    {
+                        "name": "Austria",
+                        "parentId": "301e2106-7e13-11e8-8060-e284abfd2bc4",
+                        "zoneId": "301e41fc-7e13-11e8-8060-e284abfd2bc4"
+                    },
+                    {
+                        "name": "Upper Austria",
+                        "parentId": "301e41fc-7e13-11e8-8060-e284abfd2bc4",
+                        "zoneId": "301e55f4-7e13-11e8-8060-e284abfd2bc4"
+                    }
+                ],
+                "name": "Mani.aR_"
+            },
+            "wrs": 1,
+            "duration": 0
         }
     ],
     "historyCountryLeaderboard": [
@@ -403,6 +456,26 @@
                     "name": "Belgium",
                     "parentId": "301e2106-7e13-11e8-8060-e284abfd2bc4",
                     "zoneId": "301e5bc8-7e13-11e8-8060-e284abfd2bc4"
+                }
+            ],
+            "wrs": 1
+        },
+        {
+            "zone": [
+                {
+                    "name": "World",
+                    "parentId": null,
+                    "zoneId": "301e1b69-7e13-11e8-8060-e284abfd2bc4"
+                },
+                {
+                    "name": "Europe",
+                    "parentId": "301e1b69-7e13-11e8-8060-e284abfd2bc4",
+                    "zoneId": "301e2106-7e13-11e8-8060-e284abfd2bc4"
+                },
+                {
+                    "name": "Austria",
+                    "parentId": "301e2106-7e13-11e8-8060-e284abfd2bc4",
+                    "zoneId": "301e41fc-7e13-11e8-8060-e284abfd2bc4"
                 }
             ],
             "wrs": 1
@@ -505,6 +578,35 @@
                 "name": "DasIKeAReGaLv2"
             },
             "wrs": 1
+        },
+        {
+            "user": {
+                "id": "889a054a-b992-467b-b97f-621e401ed59d",
+                "zone": [
+                    {
+                        "name": "World",
+                        "parentId": null,
+                        "zoneId": "301e1b69-7e13-11e8-8060-e284abfd2bc4"
+                    },
+                    {
+                        "name": "Europe",
+                        "parentId": "301e1b69-7e13-11e8-8060-e284abfd2bc4",
+                        "zoneId": "301e2106-7e13-11e8-8060-e284abfd2bc4"
+                    },
+                    {
+                        "name": "Austria",
+                        "parentId": "301e2106-7e13-11e8-8060-e284abfd2bc4",
+                        "zoneId": "301e41fc-7e13-11e8-8060-e284abfd2bc4"
+                    },
+                    {
+                        "name": "Upper Austria",
+                        "parentId": "301e41fc-7e13-11e8-8060-e284abfd2bc4",
+                        "zoneId": "301e55f4-7e13-11e8-8060-e284abfd2bc4"
+                    }
+                ],
+                "name": "Mani.aR_"
+            },
+            "wrs": 1
         }
     ],
     "uniqueCountryLeaderboard": [
@@ -544,6 +646,26 @@
                     "name": "Belgium",
                     "parentId": "301e2106-7e13-11e8-8060-e284abfd2bc4",
                     "zoneId": "301e5bc8-7e13-11e8-8060-e284abfd2bc4"
+                }
+            ],
+            "wrs": 1
+        },
+        {
+            "zone": [
+                {
+                    "name": "World",
+                    "parentId": null,
+                    "zoneId": "301e1b69-7e13-11e8-8060-e284abfd2bc4"
+                },
+                {
+                    "name": "Europe",
+                    "parentId": "301e1b69-7e13-11e8-8060-e284abfd2bc4",
+                    "zoneId": "301e2106-7e13-11e8-8060-e284abfd2bc4"
+                },
+                {
+                    "name": "Austria",
+                    "parentId": "301e2106-7e13-11e8-8060-e284abfd2bc4",
+                    "zoneId": "301e41fc-7e13-11e8-8060-e284abfd2bc4"
                 }
             ],
             "wrs": 1
