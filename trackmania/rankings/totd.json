@@ -63,7 +63,7 @@
                 "name": "mime.."
             },
             "wrs": 11,
-            "duration": 145
+            "duration": 146
         },
         {
             "user": {
@@ -193,7 +193,7 @@
                 "name": "eLconn21"
             },
             "wrs": 4,
-            "duration": 32
+            "duration": 33
         },
         {
             "user": {
@@ -2047,7 +2047,7 @@
                 "name": "mime.."
             },
             "wrs": 54,
-            "duration": 129
+            "duration": 130
         },
         {
             "user": {
@@ -2807,7 +2807,7 @@
                 "name": "eLconn21"
             },
             "wrs": 6,
-            "duration": 20
+            "duration": 21
         },
         {
             "user": {
