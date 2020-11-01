@@ -8021,7 +8021,7 @@
                     "delta": 40,
                     "date": "2020-10-23T16:18:37+00:00",
                     "replay": "ccf6a979-f2d0-48fa-bfd9-15fa62a6fba3",
-                    "duration": 8
+                    "duration": 9
                 }
             ],
             "isOfficial": false,
@@ -8354,7 +8354,7 @@
                     "delta": 40,
                     "date": "2020-10-23T16:18:37+00:00",
                     "replay": "ccf6a979-f2d0-48fa-bfd9-15fa62a6fba3",
-                    "duration": 8,
+                    "duration": 9,
                     "durationMs": 276087660
                 }
             ],
@@ -8397,7 +8397,7 @@
                     "delta": 53,
                     "date": "2020-10-24T16:29:02+00:00",
                     "replay": "f4765bca-2806-4118-9c97-e6906012c083",
-                    "duration": 7
+                    "duration": 8
                 }
             ],
             "isOfficial": false,
@@ -8779,7 +8779,7 @@
                     "delta": 53,
                     "date": "2020-10-24T16:29:02+00:00",
                     "replay": "f4765bca-2806-4118-9c97-e6906012c083",
-                    "duration": 7,
+                    "duration": 8,
                     "durationMs": 189062662
                 }
             ],
@@ -11247,7 +11247,7 @@
                 "name": "PokeR.4W"
             },
             "wrs": 9,
-            "duration": 141
+            "duration": 142
         },
         {
             "user": {
@@ -11277,7 +11277,7 @@
                 "name": "mime.."
             },
             "wrs": 7,
-            "duration": 130
+            "duration": 131
         },
         {
             "user": {
@@ -11896,7 +11896,7 @@
                 "name": "mime.."
             },
             "wrs": 54,
-            "duration": 130
+            "duration": 131
         },
         {
             "user": {
@@ -11926,7 +11926,7 @@
                 "name": "PokeR.4W"
             },
             "wrs": 25,
-            "duration": 141
+            "duration": 142
         },
         {
             "user": {
