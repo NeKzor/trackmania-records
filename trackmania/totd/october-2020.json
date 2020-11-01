@@ -10814,10 +10814,10 @@
                         ],
                         "name": "JurixTM"
                     },
-                    "score": 32301,
-                    "delta": 50,
-                    "date": "2020-10-31T21:38:44+00:00",
-                    "replay": "dd9de5d6-9dd6-4a2f-8451-52db56a6e91a",
+                    "score": 32258,
+                    "delta": 43,
+                    "date": "2020-11-01T01:49:05+00:00",
+                    "replay": "dcd9c8a3-33f9-419e-bc15-469ca74c43d3",
                     "duration": 0
                 }
             ],
@@ -11106,13 +11106,51 @@
                     "date": "2020-10-31T21:38:44+00:00",
                     "replay": "dd9de5d6-9dd6-4a2f-8451-52db56a6e91a",
                     "duration": 0
+                },
+                {
+                    "user": {
+                        "id": "5db172fc-21e4-4618-8039-fba4b2d421b9",
+                        "zone": [
+                            {
+                                "name": "World",
+                                "parentId": null,
+                                "zoneId": "301e1b69-7e13-11e8-8060-e284abfd2bc4"
+                            },
+                            {
+                                "name": "Europe",
+                                "parentId": "301e1b69-7e13-11e8-8060-e284abfd2bc4",
+                                "zoneId": "301e2106-7e13-11e8-8060-e284abfd2bc4"
+                            },
+                            {
+                                "name": "France",
+                                "parentId": "301e2106-7e13-11e8-8060-e284abfd2bc4",
+                                "zoneId": "301f6188-7e13-11e8-8060-e284abfd2bc4"
+                            },
+                            {
+                                "name": "Île-de-France",
+                                "parentId": "301f6188-7e13-11e8-8060-e284abfd2bc4",
+                                "zoneId": "301fab89-7e13-11e8-8060-e284abfd2bc4"
+                            },
+                            {
+                                "name": "Paris",
+                                "parentId": "301fab89-7e13-11e8-8060-e284abfd2bc4",
+                                "zoneId": "301fad4a-7e13-11e8-8060-e284abfd2bc4"
+                            }
+                        ],
+                        "name": "JurixTM"
+                    },
+                    "score": 32258,
+                    "delta": 43,
+                    "date": "2020-11-01T01:49:05+00:00",
+                    "replay": "dcd9c8a3-33f9-419e-bc15-469ca74c43d3",
+                    "duration": 0
                 }
             ],
             "thumbnail": "d5f81f7c-b472-4e08-8f55-ac202a3a9404"
         }
     ],
     "stats": {
-        "totalTime": 1258835
+        "totalTime": 1258792
     },
     "leaderboard": [
         {
@@ -12356,6 +12394,41 @@
         },
         {
             "user": {
+                "id": "5db172fc-21e4-4618-8039-fba4b2d421b9",
+                "zone": [
+                    {
+                        "name": "World",
+                        "parentId": null,
+                        "zoneId": "301e1b69-7e13-11e8-8060-e284abfd2bc4"
+                    },
+                    {
+                        "name": "Europe",
+                        "parentId": "301e1b69-7e13-11e8-8060-e284abfd2bc4",
+                        "zoneId": "301e2106-7e13-11e8-8060-e284abfd2bc4"
+                    },
+                    {
+                        "name": "France",
+                        "parentId": "301e2106-7e13-11e8-8060-e284abfd2bc4",
+                        "zoneId": "301f6188-7e13-11e8-8060-e284abfd2bc4"
+                    },
+                    {
+                        "name": "Île-de-France",
+                        "parentId": "301f6188-7e13-11e8-8060-e284abfd2bc4",
+                        "zoneId": "301fab89-7e13-11e8-8060-e284abfd2bc4"
+                    },
+                    {
+                        "name": "Paris",
+                        "parentId": "301fab89-7e13-11e8-8060-e284abfd2bc4",
+                        "zoneId": "301fad4a-7e13-11e8-8060-e284abfd2bc4"
+                    }
+                ],
+                "name": "JurixTM"
+            },
+            "wrs": 4,
+            "duration": 0
+        },
+        {
+            "user": {
                 "id": "1addcb03-37e7-4463-82ae-65d64e144015",
                 "zone": [
                     {
@@ -12560,41 +12633,6 @@
                     }
                 ],
                 "name": "AreogonTM"
-            },
-            "wrs": 3,
-            "duration": 0
-        },
-        {
-            "user": {
-                "id": "5db172fc-21e4-4618-8039-fba4b2d421b9",
-                "zone": [
-                    {
-                        "name": "World",
-                        "parentId": null,
-                        "zoneId": "301e1b69-7e13-11e8-8060-e284abfd2bc4"
-                    },
-                    {
-                        "name": "Europe",
-                        "parentId": "301e1b69-7e13-11e8-8060-e284abfd2bc4",
-                        "zoneId": "301e2106-7e13-11e8-8060-e284abfd2bc4"
-                    },
-                    {
-                        "name": "France",
-                        "parentId": "301e2106-7e13-11e8-8060-e284abfd2bc4",
-                        "zoneId": "301f6188-7e13-11e8-8060-e284abfd2bc4"
-                    },
-                    {
-                        "name": "Île-de-France",
-                        "parentId": "301f6188-7e13-11e8-8060-e284abfd2bc4",
-                        "zoneId": "301fab89-7e13-11e8-8060-e284abfd2bc4"
-                    },
-                    {
-                        "name": "Paris",
-                        "parentId": "301fab89-7e13-11e8-8060-e284abfd2bc4",
-                        "zoneId": "301fad4a-7e13-11e8-8060-e284abfd2bc4"
-                    }
-                ],
-                "name": "JurixTM"
             },
             "wrs": 3,
             "duration": 0
@@ -13939,7 +13977,7 @@
                     "zoneId": "301f6188-7e13-11e8-8060-e284abfd2bc4"
                 }
             ],
-            "wrs": 63
+            "wrs": 64
         },
         {
             "zone": [
