@@ -896,7 +896,7 @@
                     "delta": 21,
                     "date": "2020-10-09T13:00:05+00:00",
                     "replay": "85de4a7d-63e4-40cd-86f5-daabacd30781",
-                    "duration": 22,
+                    "duration": 23,
                     "durationMs": 1497595837
                 }
             ],
@@ -16462,7 +16462,7 @@
                 "name": "riolu-tm"
             },
             "wrs": 25,
-            "duration": 91
+            "duration": 92
         },
         {
             "user": {
