@@ -4241,7 +4241,7 @@
                     "delta": 915,
                     "date": "2020-10-14T14:29:14+00:00",
                     "replay": "ed0ca528-3e0a-46e2-b2b5-b3008a18cc0f",
-                    "duration": 17
+                    "duration": 18
                 }
             ],
             "isOfficial": false,
@@ -4540,7 +4540,7 @@
                     "delta": 915,
                     "date": "2020-10-14T14:29:14+00:00",
                     "replay": "ed0ca528-3e0a-46e2-b2b5-b3008a18cc0f",
-                    "duration": 17,
+                    "duration": 18,
                     "durationMs": 1060250628
                 }
             ],
@@ -11492,7 +11492,7 @@
                 "name": "sightorld"
             },
             "wrs": 1,
-            "duration": 17
+            "duration": 18
         },
         {
             "user": {
@@ -12826,7 +12826,7 @@
                 "name": "sightorld"
             },
             "wrs": 2,
-            "duration": 17
+            "duration": 18
         },
         {
             "user": {
