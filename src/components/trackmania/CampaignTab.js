@@ -43,7 +43,7 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-const CampaignTab = ({ campaign, onChangeCampaign, useLiveDuration, isOfficial }) => {
+const CampaignTab = ({ campaign, onChangeCampaign, isOfficial }) => {
     const isMounted = useIsMounted();
 
     const [game, setGame] = React.useState(undefined);
@@ -65,7 +65,6 @@ const CampaignTab = ({ campaign, onChangeCampaign, useLiveDuration, isOfficial }
                 for (const track of campaign.tracks) {
                     for (const wr of track.wrs) {
                         const wrDate = moment(wr.date);
-                        const duration = useLiveDuration ? moment().diff(wrDate, 'd') : wr.duration;
                         const releasedAt = !campaign.isOfficial
                             ? moment([campaign.year, campaign.month]).utc().set({
                                   date: track.monthDay,
@@ -100,7 +99,6 @@ const CampaignTab = ({ campaign, onChangeCampaign, useLiveDuration, isOfficial }
                             },
                             ...wr,
                             zone: (wr.user.zone[2] ? wr.user.zone[2] : wr.user.zone[0]).name,
-                            duration,
                             setAfter,
                         });
                     }
@@ -119,7 +117,7 @@ const CampaignTab = ({ campaign, onChangeCampaign, useLiveDuration, isOfficial }
                     setGame(null);
                 }
             });
-    }, [isMounted, useLiveDuration, campaign]);
+    }, [isMounted, campaign]);
 
     const rankingsCountryType = rankingsType
         .replace('Leaderboard', 'CountryLeaderboard')
@@ -145,7 +143,6 @@ const CampaignTab = ({ campaign, onChangeCampaign, useLiveDuration, isOfficial }
                                 data={game.tracks}
                                 stats={game.stats}
                                 official={game.isOfficial}
-                                useLiveDuration={useLiveDuration}
                             />
                         </Grid>
                         <Grid item xs={12} className={classes.padTop}>

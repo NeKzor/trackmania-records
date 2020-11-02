@@ -16,8 +16,6 @@ const TrackmaniaView = ({ match }) => {
     const [campaign, setCampaign] = React.useState((tab === 0 ? seasonMenu : totdMenu)[0].props.value);
 
     const page = match.params[0];
-    const date = match.params.date;
-    const useLiveDuration = date === undefined || date === 'latest';
 
     React.useEffect(() => {
         setTab(0);
@@ -56,7 +54,6 @@ const TrackmaniaView = ({ match }) => {
                             <CampaignTab
                                 campaign={campaign}
                                 onChangeCampaign={onChangeCampaign}
-                                useLiveDuration={useLiveDuration}
                                 isOfficial={tab === 0}
                             />
                         )}

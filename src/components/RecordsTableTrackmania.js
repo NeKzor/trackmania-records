@@ -117,7 +117,7 @@ const RecordsHistoryRow = ({ wr, official }) => {
         <TableRow tabIndex={-1}>
             {official && (
                 <MinTableCell align="left">
-                    <Tooltip title={<Moment fromNow>{wr.date}</Moment>} placement="bottom-end" enterDelay={300}>
+                    <Tooltip title={<Moment format="HH:mm">{wr.date}</Moment>} placement="bottom-end" enterDelay={300}>
                         <Moment style={{ color: getDateDifferenceColor(wr.date), ...noWrap }} format="YYYY-MM-DD">
                             {wr.date}
                         </Moment>

@@ -43,10 +43,10 @@ const GameView = ({ match }) => {
 
     React.useEffect(() => {
         (async () => {
-            let game = await Api.request(page, date);
+            const game = await Api.request(page, date);
 
             if (game[0] && game[0].tracks[0].wrs) {
-                for (let campaign of game) {
+                for (const campaign of game) {
                     if (campaign.stats.totalPoints === undefined) {
                         campaign.stats.totalTime = campaign.tracks
                             .filter((t) => t.type !== 'Stunts')
@@ -58,10 +58,10 @@ const GameView = ({ match }) => {
                             .reduce((a, b) => a + b, 0);
                     }
 
-                    let rows = [];
-                    for (let track of campaign.tracks) {
-                        for (let wr of track.wrs) {
-                            let duration = useLiveDuration ? moment().diff(moment(wr.date), 'd') : wr.duration;
+                    const rows = [];
+                    for (const track of campaign.tracks) {
+                        for (const wr of track.wrs) {
+                            const duration = useLiveDuration ? moment().diff(moment(wr.date), 'd') : wr.duration;
                             rows.push({
                                 track: {
                                     id: track.id,
