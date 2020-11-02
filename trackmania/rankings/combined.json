@@ -33,7 +33,7 @@
                 "name": "riolu-tm"
             },
             "wrs": 25,
-            "duration": 195
+            "duration": 196
         },
         {
             "user": {
@@ -3207,7 +3207,7 @@
                 "name": "riolu-tm"
             },
             "wrs": 59,
-            "duration": 97
+            "duration": 98
         },
         {
             "user": {
@@ -3496,7 +3496,7 @@
                 ],
                 "name": "Marius.89"
             },
-            "wrs": 25,
+            "wrs": 26,
             "duration": 20
         },
         {
@@ -10794,7 +10794,7 @@
                     "zoneId": "301ff622-7e13-11e8-8060-e284abfd2bc4"
                 }
             ],
-            "wrs": 277
+            "wrs": 278
         },
         {
             "zone": [

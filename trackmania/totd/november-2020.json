@@ -42,10 +42,10 @@
                         ],
                         "name": "Marius.89"
                     },
-                    "score": 38318,
-                    "delta": 40,
-                    "date": "2020-11-01T23:30:51+00:00",
-                    "replay": "bf60b700-e477-429e-b594-678587abfa97",
+                    "score": 38268,
+                    "delta": 50,
+                    "date": "2020-11-01T23:49:34+00:00",
+                    "replay": "014ea544-0644-4d57-8fc4-eb68b777c6da",
                     "duration": 0
                 }
             ],
@@ -339,13 +339,51 @@
                     "date": "2020-11-01T23:30:51+00:00",
                     "replay": "bf60b700-e477-429e-b594-678587abfa97",
                     "duration": 0
+                },
+                {
+                    "user": {
+                        "id": "794a286c-44d9-4276-83ce-431cba7bab74",
+                        "zone": [
+                            {
+                                "name": "World",
+                                "parentId": null,
+                                "zoneId": "301e1b69-7e13-11e8-8060-e284abfd2bc4"
+                            },
+                            {
+                                "name": "Europe",
+                                "parentId": "301e1b69-7e13-11e8-8060-e284abfd2bc4",
+                                "zoneId": "301e2106-7e13-11e8-8060-e284abfd2bc4"
+                            },
+                            {
+                                "name": "Germany",
+                                "parentId": "301e2106-7e13-11e8-8060-e284abfd2bc4",
+                                "zoneId": "301ff622-7e13-11e8-8060-e284abfd2bc4"
+                            },
+                            {
+                                "name": "Nordrhein-Westfalen",
+                                "parentId": "301ff622-7e13-11e8-8060-e284abfd2bc4",
+                                "zoneId": "30200d6a-7e13-11e8-8060-e284abfd2bc4"
+                            },
+                            {
+                                "name": "Duisburg",
+                                "parentId": "30200d6a-7e13-11e8-8060-e284abfd2bc4",
+                                "zoneId": "302012a4-7e13-11e8-8060-e284abfd2bc4"
+                            }
+                        ],
+                        "name": "Marius.89"
+                    },
+                    "score": 38268,
+                    "delta": 50,
+                    "date": "2020-11-01T23:49:34+00:00",
+                    "replay": "014ea544-0644-4d57-8fc4-eb68b777c6da",
+                    "duration": 0
                 }
             ],
             "thumbnail": "b153a5ec-cbd0-421a-9d03-e00d307fdbc6"
         }
     ],
     "stats": {
-        "totalTime": 38318
+        "totalTime": 38268
     },
     "leaderboard": [
         {
@@ -439,7 +477,7 @@
                 ],
                 "name": "Marius.89"
             },
-            "wrs": 3,
+            "wrs": 4,
             "duration": 0
         },
         {
@@ -557,7 +595,7 @@
                     "zoneId": "301ff622-7e13-11e8-8060-e284abfd2bc4"
                 }
             ],
-            "wrs": 5
+            "wrs": 6
         },
         {
             "zone": [
