@@ -10895,7 +10895,7 @@
                     "delta": 143,
                     "date": "2020-10-08T07:53:29+00:00",
                     "replay": "2f4829ea-7101-4e79-a122-48789ec96be1",
-                    "duration": 24
+                    "duration": 25
                 }
             ],
             "isOfficial": true,
@@ -11658,7 +11658,7 @@
                     "delta": 143,
                     "date": "2020-10-08T07:53:29+00:00",
                     "replay": "2f4829ea-7101-4e79-a122-48789ec96be1",
-                    "duration": 24,
+                    "duration": 25,
                     "durationMs": 1602391998
                 }
             ],
@@ -16154,7 +16154,7 @@
                 "name": "GNR-HASKELL"
             },
             "wrs": 2,
-            "duration": 50
+            "duration": 51
         },
         {
             "user": {
@@ -16638,7 +16638,7 @@
                 "name": "GNR-HASKELL"
             },
             "wrs": 20,
-            "duration": 61
+            "duration": 62
         },
         {
             "user": {
