@@ -570,7 +570,7 @@
                     "delta": 0,
                     "date": "2020-07-28T00:19:03+00:00",
                     "replay": "8f4bcc12-0138-4efe-a461-93e44526bf27",
-                    "duration": 96
+                    "duration": 97
                 }
             ],
             "isOfficial": true,
@@ -1860,7 +1860,7 @@
                 "name": "ADM1R0"
             },
             "wrs": 1,
-            "duration": 96
+            "duration": 97
         },
         {
             "user": {
@@ -2889,7 +2889,7 @@
                 "name": "ADM1R0"
             },
             "wrs": 1,
-            "duration": 96
+            "duration": 97
         },
         {
             "user": {
