@@ -82,11 +82,13 @@ const importLatest = (file) => {
                 return false;
             });
 
-            track.history.forEach((wr, idx, items) => {
-                const thisWr = moment(wr.date);
-                const nextWr = moment(items[idx + 1] ? items[idx + 1].date : undefined);
-                wr.duration = nextWr.diff(thisWr, 'days');
-            });
+            if (latest.isOfficial) {
+                track.history.forEach((wr, idx, items) => {
+                    const thisWr = moment(wr.date);
+                    const nextWr = moment(items[idx + 1] ? items[idx + 1].date : undefined);
+                    wr.duration = nextWr.diff(thisWr, 'days');
+                });
+            }
         });
     }
 
@@ -271,6 +273,7 @@ const dumpOfficialCampaign = async (outputDir) => {
         game.push({
             isOfficial: true,
             name,
+            id: seasonUid,
             tracks,
             stats: {
                 totalTime,
@@ -344,6 +347,7 @@ const dumpTrackOfTheDay = async (outputDir) => {
             tracks.push({
                 id: mapUid,
                 _id: mapId,
+                season: seasonUid,
                 name,
                 monthDay,
                 wrs,
