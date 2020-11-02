@@ -99,6 +99,7 @@ const twitter = new TwitterIntegration(
     process.env.TWITTER_ACCESS_TOKEN,
     process.env.TWITTER_ACCESS_TOKEN_SECRET,
 );
+twitter.enabled = process.argv.some((arg) => arg === '--twitter');
 
 const main = async (outputDir, snapshot = true) => {
     tryMakeDir(outputDir);
@@ -127,6 +128,7 @@ const main = async (outputDir, snapshot = true) => {
 
     gameInfo = importJson(gameFile);
     discord = new DiscordIntegration(process.env.WEBHOOK_ID, process.env.WEBHOOK_TOKEN);
+    discord.enabled = process.argv.some((arg) => arg === '--discord');
 
     try {
         await dumpOfficialCampaign(outputDir);
@@ -420,11 +422,10 @@ const resolveGame = async (snapshot) => {
                 });
 
                 if (wr.isNew && !inHistory && (track.isOfficial || !snapshot)) {
-                    //track.history = track.history.filter((formerWr) => formerWr.score >= wr.score);
                     track.history.push(wr);
 
                     const data = { wr, track };
-                    for (const integration of [discord,  twitter]) {
+                    for (const integration of [discord, twitter]) {
                         integration.send(data);
                     }
                 }
@@ -437,33 +438,48 @@ const resolveGame = async (snapshot) => {
 
 const generateRankings = (tracks) => {
     const createLeaderboard = (key) => {
-        const wrs = tracks
-            .map((t) => (t[key].length > 0 ? t[key] : t.wrs).filter(validRecords))
-            .flat();
+        const wrs = tracks.map((t) => (t[key].length > 0 ? t[key] : t.wrs).filter(validRecords)).flat();
         const users = tracks
-            .map((t) => (t[key].length > 0 ? t[key] : t.wrs).filter(validRecords).map((r) => r.user))
+            .map((t) =>
+                (t[key].length > 0 ? t[key] : t.wrs).filter(validRecords).map(({ user, date }) => ({ ...user, date })),
+            )
             .flat();
 
         const frequency = users.reduce((count, user) => {
-            count[user.name] = (count[user.name] || 0) + 1;
+            count[user.id] = (count[user.id] || 0) + 1;
             return count;
         }, {});
 
         return [
             Object.keys(frequency)
                 .sort((a, b) => frequency[b] - frequency[a])
-                .map((key) => ({
-                    user: users.find((u) => u.name === key),
-                    wrs: frequency[key],
-                    duration: wrs
-                        .filter((r) => r.user.name === key && r.duration)
-                        .map((r) => r.duration)
-                        .reduce((a, b) => a + b, 0),
-                })),
-            [...new Set(users.map((user) => user.zone[Zones.Country].zoneId))]
+                .map((key) => {
+                    const user = users.filter((u) => u.id === key).sort((a, b) => b.date.localeCompare(a.date))[0];
+                    delete user.date;
+
+                    return {
+                        user,
+                        wrs: frequency[key],
+                        duration: wrs
+                            .filter((r) => r.user.id === key && r.duration)
+                            .map((r) => r.duration)
+                            .reduce((a, b) => a + b, 0),
+                    };
+                }),
+            [
+                ...new Set(
+                    users.map((user) =>
+                        user.zone[Zones.Country] ? user.zone[Zones.Country].zoneId : user.zone[Zones.World].zoneId,
+                    ),
+                ),
+            ]
                 .map((zoneId) => ({
                     zone: zones.search(zoneId).slice(0, 3),
-                    wrs: users.filter((user) => user.zone[Zones.Country].zoneId === zoneId).length,
+                    wrs: users.filter((user) =>
+                        user.zone[Zones.Country]
+                            ? user.zone[Zones.Country].zoneId
+                            : user.zone[Zones.World].zoneId === zoneId,
+                    ).length,
                 }))
                 .sort((a, b) => {
                     const v1 = a.wrs;
@@ -478,7 +494,9 @@ const generateRankings = (tracks) => {
 
     const users = tracks
         .map((t) => {
-            const all = (t.history.length > 0 ? t.history : t.wrs).filter(validRecords).map((r) => r.user);
+            const all = (t.history.length > 0 ? t.history : t.wrs)
+                .filter(validRecords)
+                .map(({ user, date }) => ({ ...user, date }));
             const ids = [...new Set(all.map((user) => user.id))];
             return ids.map((id) => all.find((user) => user.id === id));
         })
@@ -490,14 +508,26 @@ const generateRankings = (tracks) => {
 
     const uniqueLeaderboard = Object.keys(frequency)
         .sort((a, b) => frequency[b] - frequency[a])
-        .map((key) => ({
-            user: users.find((u) => u.id === key),
-            wrs: frequency[key],
-        }));
-    const uniqueCountryLeaderboard = [...new Set(users.map((user) => user.zone[Zones.Country].zoneId))]
+        .map((key) => {
+            const user = users.filter((u) => u.id === key).sort((a, b) => b.date.localeCompare(a.date))[0];
+            delete user.date;
+            return {
+                user,
+                wrs: frequency[key],
+            };
+        });
+    const uniqueCountryLeaderboard = [
+        ...new Set(
+            users.map((user) =>
+                user.zone[Zones.Country] ? user.zone[Zones.Country].zoneId : user.zone[Zones.World].zoneId,
+            ),
+        ),
+    ]
         .map((zoneId) => ({
             zone: zones.search(zoneId).slice(0, 3),
-            wrs: users.filter((user) => user.zone[Zones.Country].zoneId === zoneId).length,
+            wrs: users.filter((user) =>
+                user.zone[Zones.Country] ? user.zone[Zones.Country].zoneId : user.zone[Zones.World].zoneId === zoneId,
+            ).length,
         }))
         .sort((a, b) => {
             const v1 = a.wrs;
@@ -536,7 +566,7 @@ const updateTwitterBot = () => {
 
 const inspect = (obj) => console.dir(obj, { depth: 6 });
 
-if (process.argv[2] === '--test') {
+if (process.argv.some((arg) => arg === '--test')) {
     main(path.join(__dirname, '../api/'), false).catch(inspect);
 }
 

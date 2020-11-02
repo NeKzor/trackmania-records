@@ -3,7 +3,7 @@ api/
 .login
 trackmania_stats.js
 games/trackmania-zones.json
-scripts/dump/
+dump/
 
 node_modules/
 coverage/

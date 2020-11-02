@@ -5,8 +5,13 @@ class DiscordIntegration {
     constructor(id, token) {
         this.client = new Discord.WebhookClient(id, token);
         this.username = 'Trackmania';
+        this.enabled = true;
     }
     send(data) {
+        if (!this.enabled) {
+            return;
+        }
+
         return this.client
             .send('', { embeds: [this.buildEmbed(data)] })
             .then(console.log)
@@ -16,31 +21,22 @@ class DiscordIntegration {
         return {
             title: 'New World Record',
             url: 'https://nekz.me/trackmania-records/trackmania',
-            /* url: track.isOfficial
-                ? 'https://nekz.me/trackmania/#/summer2020/' + parseInt(track.name.split(' - ')[1], 10)
-                : undefined, */
             color: 44871,
             timestamp: (new Date(wr.date)).toISOString(),
-            /* footer: {
-                text: 'nekz.me/trackmania-records',
-            }, */
-            /* image: {
-                url: `https://raw.githubusercontent.com/NeKzor/nekzor.github.io/master/trackmania/images/summer2020/${mapId}.webp`,
-            }, */
             fields: [
                 {
                     name: 'Track',
-                    value: track.name.replace(/(\$[0-9a-fA-F]{3}|\$[WNOITSGZBEMwnoitsgzbem]{1})/g, ''),
+                    value: DiscordIntegration.sanitiseText(track.name.replace(/(\$[0-9a-fA-F]{3}|\$[WNOITSGZBEMwnoitsgzbem]{1})/g, '')),
                     inline: true,
                 },
                 {
                     name: 'Time',
-                    value: formatScore(wr.score, 'tm2'),
+                    value: formatScore(wr.score),
                     inline: true,
                 },
                 {
                     name: 'Timesave',
-                    value: '-' + formatScore(wr.delta, 'tm2'),
+                    value: '-' + formatScore(wr.delta),
                     inline: true,
                 },
                 {
@@ -50,7 +46,7 @@ class DiscordIntegration {
                 },
                 {
                     name: 'Country',
-                    value: wr.user.zone[2].name,
+                    value: wr.user.zone[2] ? wr.user.zone[2].name : wr.user.zone[0].name,
                     inline: true,
                 },
                 {

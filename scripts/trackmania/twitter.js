@@ -21,8 +21,13 @@ class TwitterIntegration {
         });
 
         this.lastBioOptions = defaultBioOptions;
+        this.enabled = true;
     }
     send(data) {
+        if (!this.enabled) {
+            return;
+        }
+
         const status = this.buildStatus(data).trim();
 
         log.info(status);
@@ -38,6 +43,10 @@ ${formatScore(wr.score)} (-${formatScore(wr.delta)})
 ${wr.user.name}`;
     }
     updateBio(options) {
+        if (!this.enabled) {
+            return;
+        }
+
         const { status, wrsThisWeek } = {
             ...this.lastBioOptions,
             ...options,

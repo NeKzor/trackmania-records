@@ -24,7 +24,7 @@ const rowsOfficial = [
     { id: 'track.name', sortable: true, label: 'Track', align: 'left' },
     { id: 'score', sortable: true, label: 'Record', align: 'left' },
     { id: 'user.name', sortable: true, label: 'Player', align: 'left' },
-    { id: 'user.zone', sortable: true, label: 'Zone', align: 'left' },
+    { id: 'zone', sortable: true, label: 'Zone', align: 'left' },
     { id: 'date', sortable: true, label: 'Date', align: 'left' },
     { id: 'duration', sortable: true, label: 'Duration', align: 'left' },
 ];
@@ -34,7 +34,7 @@ const rowsTOTD = [
     { id: 'track.name', sortable: true, label: 'Track', align: 'left' },
     { id: 'score', sortable: true, label: 'Record', align: 'left' },
     { id: 'user.name', sortable: true, label: 'Player', align: 'left' },
-    { id: 'user.zone', sortable: true, label: 'Zone', align: 'left' },
+    { id: 'zone', sortable: true, label: 'Zone', align: 'left' },
 ];
 
 const RecordsTableHead = ({ order, orderBy, onRequestSort, official }) => {
@@ -177,21 +177,18 @@ const RecordsRow = ({ wr, official, orderBy, useLiveDuration, history, onClickHi
     const classes = useRowStyles();
 
     const open = history === wr.track.id;
+    const defaultSort = orderBy === 'track.monthDay' || orderBy === 'track.name';
 
     return (
         <>
             <TableRow tabIndex={-1}>
-                {!official && (wr.track.isFirst || orderBy !== 'track.monthDay') && (
-                    <MinTableCell align="left" rowSpan={orderBy !== 'track.monthDay' ? 1 : wr.track.records}>
+                {!official && (wr.track.isFirst || !defaultSort) && (
+                    <MinTableCell align="left" rowSpan={defaultSort ? wr.track.records : 1}>
                         {wr.track.monthDay}
                     </MinTableCell>
                 )}
-                {(wr.track.isFirst || orderBy !== 'track.monthDay') && (
-                    <MinTableCell
-                        style={noWrap}
-                        rowSpan={orderBy !== 'track.monthDay' ? 1 : wr.track.records}
-                        align="left"
-                    >
+                {(wr.track.isFirst || !defaultSort) && (
+                    <MinTableCell style={noWrap} rowSpan={defaultSort ? wr.track.records : 1} align="left">
                         <Link
                             color="inherit"
                             href={linkToExchange(wr.track, official)}
@@ -205,26 +202,10 @@ const RecordsRow = ({ wr, official, orderBy, useLiveDuration, history, onClickHi
                 <MinTableCell align="left">
                     {official && delta && (
                         <Tooltip title={<span>-{delta} to former record</span>} placement="bottom" enterDelay={300}>
-                            <Link
-                                color="inherit"
-                                href={linkToLeaderboard(wr.track, official)}
-                                rel="noreferrer"
-                                target="_blank"
-                            >
-                                <span>{score}</span>
-                            </Link>
+                            <span>{score}</span>
                         </Tooltip>
                     )}
-                    {official && !delta && (
-                        <Link
-                            color="inherit"
-                            href={linkToLeaderboard(wr.track, official)}
-                            rel="noreferrer"
-                            target="_blank"
-                        >
-                            <span>{score}</span>
-                        </Link>
-                    )}
+                    {official && !delta && <span>{score}</span>}
                     {!official && delta && (
                         <Tooltip title={<span>-{delta} to former record</span>} placement="bottom" enterDelay={300}>
                             <span>{score}</span>

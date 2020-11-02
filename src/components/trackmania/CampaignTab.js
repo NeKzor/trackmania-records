@@ -61,10 +61,6 @@ const CampaignTab = ({ campaign, onChangeCampaign, useLiveDuration, isOfficial }
 
         Api.request('trackmania', campaign)
             .then((campaign) => {
-                if (campaign.stats.totalPoints === undefined) {
-                    campaign.stats.totalTime = campaign.tracks.map((t) => t.wrs[0].score).reduce((a, b) => a + b, 0);
-                }
-
                 const rows = [];
                 for (const track of campaign.tracks) {
                     for (const wr of track.wrs) {
@@ -103,6 +99,7 @@ const CampaignTab = ({ campaign, onChangeCampaign, useLiveDuration, isOfficial }
                                 history,
                             },
                             ...wr,
+                            zone: (wr.user.zone[2] ? wr.user.zone[2] : wr.user.zone[0]).name,
                             duration,
                             setAfter,
                         });
@@ -110,15 +107,6 @@ const CampaignTab = ({ campaign, onChangeCampaign, useLiveDuration, isOfficial }
                 }
 
                 campaign.tracks = rows;
-
-                if (useLiveDuration) {
-                    campaign.leaderboard.forEach((entry, idx) => {
-                        campaign.leaderboard[idx].duration = campaign.tracks
-                            .filter((r) => r.user.id === entry.user.id)
-                            .map((r) => r.duration)
-                            .reduce((a, b) => a + b, 0);
-                    });
-                }
 
                 if (isMounted.current) {
                     setGame(campaign);
