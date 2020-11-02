@@ -119,7 +119,7 @@
                     "delta": 2,
                     "date": "2020-10-31T01:50:13+00:00",
                     "replay": "0d492010-338a-4ee4-af0f-603941680942",
-                    "duration": 1
+                    "duration": 2
                 }
             ],
             "isOfficial": true,
@@ -160,7 +160,7 @@
                     "delta": 2,
                     "date": "2020-10-31T01:50:13+00:00",
                     "replay": "0d492010-338a-4ee4-af0f-603941680942",
-                    "duration": 1
+                    "duration": 2
                 }
             ],
             "thumbnail": "40d0ebfb-4082-4a04-b7eb-ffebdd7fba30"
@@ -1575,7 +1575,7 @@
                 "name": "Flechetas"
             },
             "wrs": 3,
-            "duration": 113
+            "duration": 114
         },
         {
             "user": {
@@ -2569,7 +2569,7 @@
                 "name": "Flechetas"
             },
             "wrs": 4,
-            "duration": 117
+            "duration": 118
         },
         {
             "user": {
