@@ -10147,7 +10147,7 @@
                     "delta": 320,
                     "date": "2020-10-28T00:08:58+00:00",
                     "replay": "ceb793ea-6a82-41ac-83c4-df5cbdb97767",
-                    "duration": 4
+                    "duration": 5
                 }
             ],
             "isOfficial": true,
@@ -10816,7 +10816,7 @@
                     "delta": 320,
                     "date": "2020-10-28T00:08:58+00:00",
                     "replay": "ceb793ea-6a82-41ac-83c4-df5cbdb97767",
-                    "duration": 4
+                    "duration": 5
                 }
             ],
             "thumbnail": "211c41a4-1e30-42cf-91a0-45afaa45ee34"
@@ -15319,7 +15319,7 @@
                     "delta": 38,
                     "date": "2020-11-01T00:03:19+00:00",
                     "replay": "d966f17b-6c4a-4e47-8da7-58199b09caf3",
-                    "duration": 0
+                    "duration": 1
                 }
             ],
             "isOfficial": true,
@@ -15983,7 +15983,7 @@
                     "delta": 38,
                     "date": "2020-11-01T00:03:19+00:00",
                     "replay": "d966f17b-6c4a-4e47-8da7-58199b09caf3",
-                    "duration": 0
+                    "duration": 1
                 }
             ],
             "thumbnail": "cf656560-e29c-4f29-bfc6-eed15a19b2e8"
@@ -16026,7 +16026,7 @@
                 "name": "riolu-tm"
             },
             "wrs": 9,
-            "duration": 73
+            "duration": 74
         },
         {
             "user": {
@@ -16086,7 +16086,7 @@
                 "name": "Erizel"
             },
             "wrs": 3,
-            "duration": 37
+            "duration": 38
         },
         {
             "user": {
@@ -16440,7 +16440,7 @@
                 "name": "Erizel"
             },
             "wrs": 30,
-            "duration": 84
+            "duration": 85
         },
         {
             "user": {
@@ -16510,7 +16510,7 @@
                 "name": "riolu-tm"
             },
             "wrs": 26,
-            "duration": 98
+            "duration": 99
         },
         {
             "user": {
