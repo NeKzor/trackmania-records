@@ -733,7 +733,7 @@
                     "delta": 0,
                     "date": "2020-07-25T00:35:08+00:00",
                     "replay": "5bb24c39-3a40-47f2-9aa7-cb6e0f6f9819",
-                    "duration": 99
+                    "duration": 100
                 }
             ],
             "isOfficial": true,
@@ -1950,7 +1950,7 @@
                 "name": "CMC_Aru"
             },
             "wrs": 1,
-            "duration": 99
+            "duration": 100
         },
         {
             "user": {
@@ -2979,7 +2979,7 @@
                 "name": "CMC_Aru"
             },
             "wrs": 1,
-            "duration": 99
+            "duration": 100
         },
         {
             "user": {
