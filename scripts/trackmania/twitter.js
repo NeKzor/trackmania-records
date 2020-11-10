@@ -25,7 +25,7 @@ class TwitterIntegration {
     }
     send(data) {
         if (!this.enabled) {
-            return;
+            return Promise.resolve();
         }
 
         const status = this.buildStatus(data).trim();
@@ -44,7 +44,7 @@ ${wr.user.name}`;
     }
     updateBio(options) {
         if (!this.enabled) {
-            return;
+            return Promise.resolve();
         }
 
         const { status, wrsThisWeek } = {

@@ -9,7 +9,7 @@ class DiscordIntegration {
     }
     send(data) {
         if (!this.enabled) {
-            return;
+            return Promise.resolve();
         }
 
         return this.client
