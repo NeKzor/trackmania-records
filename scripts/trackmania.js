@@ -473,16 +473,16 @@ const generateRankings = (tracks) => {
             [
                 ...new Set(
                     users.map((user) =>
-                        user.zone[Zones.Country] ? user.zone[Zones.Country].zoneId : user.zone[Zones.World].zoneId,
+                        (user.zone[Zones.Country] ? user.zone[Zones.Country] : user.zone[Zones.World]).zoneId,
                     ),
                 ),
             ]
                 .map((zoneId) => ({
                     zone: zones.search(zoneId).slice(0, 3),
                     wrs: users.filter((user) =>
-                        user.zone[Zones.Country]
-                            ? user.zone[Zones.Country].zoneId
-                            : user.zone[Zones.World].zoneId === zoneId,
+                        (user.zone[Zones.Country]
+                            ? user.zone[Zones.Country]
+                            : user.zone[Zones.World]).zoneId === zoneId,
                     ).length,
                 }))
                 .sort((a, b) => {
@@ -523,14 +523,14 @@ const generateRankings = (tracks) => {
     const uniqueCountryLeaderboard = [
         ...new Set(
             users.map((user) =>
-                user.zone[Zones.Country] ? user.zone[Zones.Country].zoneId : user.zone[Zones.World].zoneId,
+                (user.zone[Zones.Country] ? user.zone[Zones.Country] : user.zone[Zones.World]).zoneId,
             ),
         ),
     ]
         .map((zoneId) => ({
             zone: zones.search(zoneId).slice(0, 3),
             wrs: users.filter((user) =>
-                user.zone[Zones.Country] ? user.zone[Zones.Country].zoneId : user.zone[Zones.World].zoneId === zoneId,
+                (user.zone[Zones.Country] ? user.zone[Zones.Country] : user.zone[Zones.World]).zoneId === zoneId,
             ).length,
         }))
         .sort((a, b) => {
