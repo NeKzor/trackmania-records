@@ -1,5 +1,5 @@
 import React from 'react';
-import moment from 'moment';
+import moment from 'moment-timezone';
 import InputLabel from '@material-ui/core/InputLabel';
 import Grid from '@material-ui/core/Grid';
 import LinearProgress from '@material-ui/core/LinearProgress';
@@ -66,12 +66,14 @@ const CampaignTab = ({ campaign, onChangeCampaign, isOfficial }) => {
                     for (const wr of track.wrs) {
                         const wrDate = moment(wr.date);
                         const releasedAt = !campaign.isOfficial
-                            ? moment([campaign.year, campaign.month]).utc().set({
+                            ? moment().tz('Europe/Paris').set({
+                                  year: campaign.year,
+                                  month: campaign.month - 1,
                                   date: track.monthDay,
-                                  hour: 17,
+                                  hour: 19,
                                   minute: 0,
                                   second: 0,
-                              })
+                              }).utc()
                             : undefined;
 
                         const setAfter = !campaign.isOfficial ? calculateSetAfter(releasedAt, wrDate) : undefined;
@@ -139,11 +141,7 @@ const CampaignTab = ({ campaign, onChangeCampaign, isOfficial }) => {
                 {game !== undefined && game !== null && (
                     <>
                         <Grid item xs={12}>
-                            <RecordsTable
-                                data={game.tracks}
-                                stats={game.stats}
-                                official={game.isOfficial}
-                            />
+                            <RecordsTable data={game.tracks} stats={game.stats} official={game.isOfficial} />
                         </Grid>
                         <Grid item xs={12} className={classes.padTop}>
                             <FormControl className={classes.formControl}>
