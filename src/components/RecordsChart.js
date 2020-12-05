@@ -9,13 +9,14 @@ const RecordsChart = ({ labels, series, title, theme, rest = true }) => {
 
     if (rest) {
         const max = 30;
-        const rest = series.slice(max).reduce((acc, val) => acc += val, 0);
-        
-        series = series.slice(0, max);
-        labels = labels.slice(0, max);
-        
-        series.push(rest);
-        labels.push('Rest');
+        const rest = series.slice(max).reduce((acc, val) => (acc += val), 0);
+        if (rest.length > 0) {
+            series = series.slice(0, max);
+            labels = labels.slice(0, max);
+
+            series.push(rest);
+            labels.push('Rest');
+        }
     }
 
     const colors = new Array(series.length).fill(0).map(() => randomColor());
