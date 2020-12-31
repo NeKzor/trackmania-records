@@ -4,19 +4,19 @@ import { withTheme } from '@material-ui/styles';
 
 const randomColor = () => '#' + ((Math.random() * 0xffffff) << 0).toString(16).padStart(6, '0');
 
+const MAX_DATAPOINTS = 30;
+
 const RecordsChart = ({ labels, series, title, theme, rest = true }) => {
     const isDarkTheme = theme.palette.type === 'dark';
 
-    if (rest) {
-        const max = 30;
-        const rest = series.slice(max).reduce((acc, val) => (acc += val), 0);
-        if (rest.length > 0) {
-            series = series.slice(0, max);
-            labels = labels.slice(0, max);
+    if (rest && series.length > MAX_DATAPOINTS) {
+        const rest = series.slice(MAX_DATAPOINTS).reduce((acc, val) => (acc += val), 0);
 
-            series.push(rest);
-            labels.push('Rest');
-        }
+        series = series.slice(0, MAX_DATAPOINTS);
+        labels = labels.slice(0, MAX_DATAPOINTS);
+
+        series.push(rest);
+        labels.push('Rest');
     }
 
     const colors = new Array(series.length).fill(0).map(() => randomColor());
