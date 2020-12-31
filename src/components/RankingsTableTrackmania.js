@@ -87,6 +87,10 @@ const RecordsTable = ({ data, hasDuration }) => {
         }));
     };
 
+    React.useEffect(() => {
+        setState((s) => ({ ...s, orderBy: 'wrs', thenBy: 'wrs' }));
+    }, [data, hasDuration]);
+
     const classes = useStyles();
 
     return (

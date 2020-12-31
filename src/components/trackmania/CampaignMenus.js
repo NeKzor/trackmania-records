@@ -50,7 +50,4 @@ seasonMenu.push(
     </MenuItem>,
 );
 
-export {
-    seasonMenu,
-    totdMenu,
-};
+export { seasonMenu, totdMenu };
