@@ -2,8 +2,12 @@ api/
 .env
 .login
 trackmania_stats.js
+trackmania_test.js
+migrate.js
 games/trackmania-zones.json
 dump/
+.vscode
+replays/
 
 node_modules/
 coverage/

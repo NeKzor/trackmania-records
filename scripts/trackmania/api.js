@@ -102,13 +102,13 @@ class TrackmaniaClient {
                 'Content-Type': 'application/json',
                 'Authorization': 'nadeo_v1 t=' + this.loginData.refreshToken,
             },
-       });
+        });
 
-       if (res.status !== 200) {
-           throw new ResponseError(res);
-       }
+        if (res.status !== 200) {
+            throw new ResponseError(res);
+        }
 
-       return this;
+        return this;
     }
     async get(route, nadeo) {
         if (!nadeo && !this.loginData) {
@@ -129,6 +129,8 @@ class TrackmaniaClient {
                 'Authorization': 'nadeo_v1 t=' + accessToken,
             },
         });
+
+        console.log(`[API CALL] GET -> ${baseUrl + route} : ${res.status} `);
 
         if (res.status !== 200) {
             throw new ResponseError(res);
@@ -214,7 +216,7 @@ class Zones extends Entity {
                 result.push(zone);
             }
         }
-    
+
         return result;
     }
 }
@@ -345,17 +347,17 @@ class Leaderboard extends Entity {
             throw new Error('group or season id required');
         }
 
-        if (!this.mapId) {
+        /* if (!this.mapId) {
             throw new Error('map id required');
-        }
+        } */
 
-        if (this.end - this.start > 50) {
+        /* if (this.end - this.start > 50) {
             throw new Error('cannot fetch more than 50 entries');
-        }
+        } */
 
         this.data = await this.client.get(
             //`/leaderboard/group/${this.groupId}/map/${this.mapId}/surround/${this.start}/${this.end}`,
-            `/leaderboard/group/${this.groupId}/map/${this.mapId}/top`,
+            `/leaderboard/group/${this.groupId}` + (this.mapId ? `/map/${this.mapId}` : '') + '/top?position=11',
             true,
         );
 
@@ -365,6 +367,37 @@ class Leaderboard extends Entity {
         for (const top of this.data.tops) {
             yield top;
         }
+    }
+}
+
+class MapRecord {
+    accountId = null;
+    filename = null;
+    gameMode = null;
+    gameModeCustomData = null;
+    mapId = null;
+    medal = null;
+    recordScore = { respawnCount: null, score: null, time: null };
+    removed = null;
+    scopeId = null;
+    scopeType = null;
+    timestamp = null;
+    url = null;
+    respawnCount = null;
+    score = null;
+    time = null;
+
+    constructor(data) {
+        Object.assign(this, data);
+    }
+    async downloadReplay() {
+        const res = await fetch(this.url);
+
+        if (res.status !== 200) {
+            throw new ResponseError(res);
+        }
+
+        return await res.buffer();
     }
 }
 
@@ -389,7 +422,7 @@ class MapRecords extends Entity {
     }
     *[Symbol.iterator]() {
         for (const mapRecord of this.data) {
-            yield mapRecord;
+            yield new MapRecord(mapRecord);
         }
     }
 }

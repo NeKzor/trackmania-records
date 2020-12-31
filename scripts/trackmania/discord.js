@@ -22,11 +22,13 @@ class DiscordIntegration {
             title: 'New World Record',
             url: 'https://nekz.me/trackmania-records/trackmania',
             color: 44871,
-            timestamp: (new Date(wr.date)).toISOString(),
+            timestamp: new Date(wr.date).toISOString(),
             fields: [
                 {
                     name: 'Track',
-                    value: DiscordIntegration.sanitiseText(track.name.replace(/(\$[0-9a-fA-F]{3}|\$[WNOITSGZBEMwnoitsgzbem]{1})/g, '')),
+                    value: DiscordIntegration.sanitiseText(
+                        track.name.replace(/(\$[0-9a-fA-F]{3}|\$[WNOITSGZBEMwnoitsgzbem]{1})/g, ''),
+                    ),
                     inline: true,
                 },
                 {

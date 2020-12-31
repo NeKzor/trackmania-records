@@ -28,7 +28,9 @@ const importJson = (file) => {
 
 const log = {
     info: (...msg) =>
-        console.log(chalk`{bold.white [${moment().format('YYYY-MM-DD')}] [${moment().format('HH:mm:ss')}]} ${msg.join(' ')}`),
+        console.log(
+            chalk`{bold.white [${moment().format('YYYY-MM-DD')}] [${moment().format('HH:mm:ss')}]} ${msg.join(' ')}`,
+        ),
     success: (...msg) =>
         console.log(
             chalk`{bold.white [${moment().format('YYYY-MM-DD')}] [${moment().format(
@@ -44,7 +46,9 @@ const log = {
     error: (...msg) => {
         msg.forEach(console.error);
         console.log(
-            chalk`{bold.white [${moment().format('YYYY-MM-DD')}] [${moment().format('HH:mm:ss')}]} {redBright ${msg.join(' ')}}`,
+            chalk`{bold.white [${moment().format('YYYY-MM-DD')}] [${moment().format(
+                'HH:mm:ss',
+            )}]} {redBright ${msg.join(' ')}}`,
         );
     },
 };

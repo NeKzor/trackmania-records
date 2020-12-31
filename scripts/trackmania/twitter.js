@@ -32,7 +32,8 @@ class TwitterIntegration {
 
         log.info(status);
 
-        return this.client.post('statuses/update', { status })
+        return this.client
+            .post('statuses/update', { status })
             .then(() => log.info('[twitter] status updated'))
             .catch(log.error);
     }

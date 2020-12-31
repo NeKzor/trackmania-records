@@ -10,6 +10,7 @@ require('dotenv').config();
 
 const sessionFile = path.join(__dirname, '/../.login');
 const gameFile = path.join(__dirname, '../games/trackmania.json');
+const replayFolder = path.join(__dirname, '../replays');
 
 const loadSession = (client) => {
     try {
@@ -109,6 +110,7 @@ const main = async (outputDir, snapshot = true) => {
     tryMakeDir(path.join(outputDir, '/trackmania/campaign'));
     tryMakeDir(path.join(outputDir, '/trackmania/totd'));
     tryMakeDir(path.join(outputDir, '/trackmania/rankings'));
+    tryMakeDir(path.join(replayFolder));
 
     const ubisoft = new UbisoftClient(process.env.UBI_EMAIL, process.env.UBI_PW);
 
@@ -134,8 +136,7 @@ const main = async (outputDir, snapshot = true) => {
 
     try {
         await dumpOfficialCampaign(outputDir);
-        await dumpTrackOfTheDay(outputDir);
-        await resolveGame(snapshot);
+        //await dumpTrackOfTheDay(outputDir, snapshot);
 
         const toImport = [];
 
@@ -212,7 +213,7 @@ const dumpOfficialCampaign = async (outputDir) => {
         );
 
         const isTraining = name === 'Training';
-        //log.info(name, seasonUid);
+        log.info(name, seasonUid);
 
         const maps = await trackmania.maps(playlist.map((map) => map.mapUid));
         const mapList = maps.collect();
@@ -221,41 +222,9 @@ const dumpOfficialCampaign = async (outputDir) => {
 
         for (const { mapUid } of playlist) {
             const { name, mapId, thumbnailUrl } = mapList.find((map) => map.mapUid === mapUid);
-            //log.info(name, mapUid);
+            log.info(name, mapUid);
 
-            const leaderboard = await trackmania.leaderboard(seasonUid, mapUid, 0, 5);
-            const rankings = leaderboard.collect()[0].top;
-
-            let wrs = [];
-            let wr = undefined;
-
-            const latestTrack = latestCampaign ? latestCampaign.tracks.find((track) => track.id === mapUid) : undefined;
-
-            for (const { accountId, zoneId, score } of rankings) {
-                if (autoban(accountId, score, isTraining)) {
-                    continue;
-                }
-
-                if (wr === undefined || wr === score) {
-                    const zone = zones.search(zoneId);
-
-                    const latestScore = latestTrack && latestTrack.wrs[0] ? latestTrack.wrs[0].score : undefined;
-                    const latestWr = latestTrack
-                        ? latestTrack.wrs.find((wr) => wr.user.id === accountId && wr.score === score)
-                        : undefined;
-
-                    wrs.push({
-                        user: {
-                            id: accountId,
-                            zone,
-                        },
-                        score: (wr = score),
-                        delta: Math.abs(latestWr ? latestWr.delta : latestScore ? score - latestScore : 0),
-                        isNew: !latestWr && latestScore ? true : false,
-                    });
-                    continue;
-                }
-            }
+            const [wrs, history] = await resolveRecords(seasonUid, mapUid, mapId, latestCampaign, isTraining, name);
 
             tracks.push({
                 id: mapUid,
@@ -263,12 +232,15 @@ const dumpOfficialCampaign = async (outputDir) => {
                 name,
                 wrs,
                 isOfficial: true,
-                history: latestTrack && latestTrack.history ? latestTrack.history : [],
+                history,
                 thumbnail: thumbnailUrl.slice(thumbnailUrl.lastIndexOf('/') + 1, -4),
             });
         }
 
-        const totalTime = tracks.map((t) => t.wrs[0].score).reduce((a, b) => a + b, 0);
+        const totalTime = tracks
+            .filter((t) => t.wrs[0])
+            .map((t) => t.wrs[0].score)
+            .reduce((a, b) => a + b, 0);
 
         game.push({
             isOfficial: true,
@@ -282,7 +254,7 @@ const dumpOfficialCampaign = async (outputDir) => {
     }
 };
 
-const dumpTrackOfTheDay = async (outputDir) => {
+const dumpTrackOfTheDay = async (outputDir, snapshot) => {
     const campaigns = await trackmania.campaigns(Campaigns.TrackOfTheDay, 0, 1);
 
     for (const { year, month, days } of campaigns) {
@@ -310,39 +282,7 @@ const dumpTrackOfTheDay = async (outputDir) => {
             const { name, mapId, thumbnailUrl } = mapList.find((map) => map.mapUid === mapUid);
             log.info(name, seasonUid, mapUid);
 
-            const leaderboard = await trackmania.leaderboard(seasonUid, mapUid, 0, 5);
-            const rankings = leaderboard.collect()[0].top;
-
-            let wrs = [];
-            let wr = undefined;
-
-            const latestTrack = latestCampaign ? latestCampaign.tracks.find((track) => track.id === mapUid) : undefined;
-
-            for (const { accountId, zoneId, score } of rankings) {
-                if (autoban(accountId, score)) {
-                    continue;
-                }
-
-                if (wr === undefined || wr === score) {
-                    const zone = zones.search(zoneId);
-
-                    const latestScore = latestTrack && latestTrack.wrs[0] ? latestTrack.wrs[0].score : undefined;
-                    const latestWr = latestTrack
-                        ? latestTrack.wrs.find((wr) => wr.user.id === accountId && wr.score === score)
-                        : undefined;
-
-                    wrs.push({
-                        user: {
-                            id: accountId,
-                            zone,
-                        },
-                        score: (wr = score),
-                        delta: Math.abs(latestWr ? latestWr.delta : latestScore ? score - latestScore : 0),
-                        isNew: !latestWr && latestScore ? true : false,
-                    });
-                    continue;
-                }
-            }
+            const [wrs, history] = await resolveRecords(seasonUid, mapUid, mapId, latestCampaign, false, name);
 
             tracks.push({
                 id: mapUid,
@@ -352,12 +292,15 @@ const dumpTrackOfTheDay = async (outputDir) => {
                 monthDay,
                 wrs,
                 isOfficial: false,
-                history: latestTrack && latestTrack.history ? latestTrack.history : [],
+                history,
                 thumbnail: thumbnailUrl.slice(thumbnailUrl.lastIndexOf('/') + 1, -4),
             });
         }
 
-        const totalTime = tracks.map((t) => t.wrs[0].score).reduce((a, b) => a + b, 0);
+        const totalTime = tracks
+            .filter((t) => t.wrs[0])
+            .map((t) => t.wrs[0].score)
+            .reduce((a, b) => a + b, 0);
 
         game.push({
             isOfficial: false,
@@ -386,58 +329,78 @@ const autoban = (accountId, score, isTraining = false) => {
     return false;
 };
 
-const resolveGame = async (snapshot) => {
-    const users = new Map();
+const resolveRecords = async (seasonUid, mapUid, mapId, latestCampaign, isTraining, trackName) => {
+    const [leaderboard] = (await trackmania.leaderboard(seasonUid, mapUid, 0, 5)).collect();
 
-    game.map(({ tracks }) => tracks)
-        .flat()
-        .forEach(({ wrs, ...track }) => {
-            wrs.forEach((wr) => {
-                const user = users.get(wr.user.id);
-                if (user) {
-                    user.push({ track, wr });
-                } else {
-                    users.set(wr.user.id, [{ track, wr }]);
-                }
-            });
-        });
+    const wrs = [];
+    const latestTrack = latestCampaign ? latestCampaign.tracks.find((track) => track.id === mapUid) : undefined;
+    const history = latestTrack && latestTrack.history ? latestTrack.history : [];
 
-    for (const userIds of [...users.keys()].chunk(10)) {
-        const accounts = (await trackmania.accounts(userIds)).collect();
+    let wrScore = undefined;
 
-        for (const userId of userIds) {
-            const user = users.get(userId);
-            const { displayName } = accounts.find((account) => account.accountId === userId);
+    for (const { accountId, zoneId, score } of leaderboard.top) {
+        if (autoban(accountId, score, isTraining)) {
+            continue;
+        }
 
-            /* chunk this if Hefest or one of the totd hunters gets more wrs... maybe */
-            const mapIds = user.map(({ track }) => track._id);
-            const records = await trackmania.mapRecords([userId], mapIds);
+        if (wrScore === undefined || wrScore === score) {
+            wrScore = score;
 
-            for (const { mapId, timestamp, url } of records) {
-                const { wr, track } = user.find(({ track }) => track._id === mapId);
+            const latestWr = latestTrack
+                ? latestTrack.wrs.find((wr) => wr.user.id === accountId && wr.score === score)
+                : undefined;
 
-                wr.user.name = displayName;
-                wr.date = timestamp;
-                wr.replay = url.slice(url.lastIndexOf('/') + 1);
-                wr.duration = moment().diff(moment(timestamp), 'd');
-
-                const inHistory = track.history.filter(validRecords).find((formerWr) => {
-                    return formerWr.score === wr.score && formerWr.user.id === wr.user.id;
-                });
-
-                if (wr.isNew && !inHistory && (track.isOfficial || !snapshot)) {
-                    track.history.push(wr);
-
-                    const data = { wr, track };
-                    for (const integration of [discord, twitter]) {
-                        integration.send(data);
-                    }
-                }
-
-                delete wr.isNew;
+            if (latestWr) {
+                wrs.push({ ...latestWr });
+                continue;
             }
+
+            const [account] = (await trackmania.accounts([accountId])).collect();
+            const [record] = (await trackmania.mapRecords([accountId], [mapId])).collect();
+
+            const latestScore = latestTrack && latestTrack.wrs[0] ? latestTrack.wrs[0].score : undefined;
+
+            const wr = {
+                user: {
+                    id: accountId,
+                    zone: zones.search(zoneId),
+                    name: account ? account.displayName : '',
+                },
+                date: record ? record.timestamp : '',
+                replay: record ? record.url.slice(record.url.lastIndexOf('/') + 1) : '',
+                duration: record ? moment().diff(moment(record.timestamp), 'd') : 0,
+                score,
+                delta: Math.abs(latestWr ? latestWr.delta : latestScore ? score - latestScore : 0),
+            };
+
+            const inHistory = history
+                .filter(validRecords)
+                .find((formerWr) => formerWr.score === wr.score && formerWr.user.id === wr.user.id);
+
+            if (!inHistory) {
+                history.push(wr);
+                log.info('NEW RECORD', wr.user.name, wr.score);
+
+                const data = { wr, track: { name: trackName } };
+                for (const integration of [discord, twitter]) {
+                    integration.send(data);
+                }
+
+                fs.writeFileSync(
+                    path.join(
+                        replayFolder,
+                        `/${trackName.replace(/ /g, '_')}_${record.recordScore.time}_${wr.user.name}.replay.gbx`
+                    ),
+                    await record.downloadReplay(),
+                );
+            }
+
+            wrs.push(wr);
+            continue;
         }
     }
+
+    return [wrs, history];
 };
 
 const generateRankings = (tracks) => {
@@ -472,17 +435,17 @@ const generateRankings = (tracks) => {
                 }),
             [
                 ...new Set(
-                    users.map((user) =>
-                        (user.zone[Zones.Country] ? user.zone[Zones.Country] : user.zone[Zones.World]).zoneId,
+                    users.map(
+                        (user) => (user.zone[Zones.Country] ? user.zone[Zones.Country] : user.zone[Zones.World]).zoneId,
                     ),
                 ),
             ]
                 .map((zoneId) => ({
                     zone: zones.search(zoneId).slice(0, 3),
-                    wrs: users.filter((user) =>
-                        (user.zone[Zones.Country]
-                            ? user.zone[Zones.Country]
-                            : user.zone[Zones.World]).zoneId === zoneId,
+                    wrs: users.filter(
+                        (user) =>
+                            (user.zone[Zones.Country] ? user.zone[Zones.Country] : user.zone[Zones.World]).zoneId ===
+                            zoneId,
                     ).length,
                 }))
                 .sort((a, b) => {
@@ -522,15 +485,14 @@ const generateRankings = (tracks) => {
         });
     const uniqueCountryLeaderboard = [
         ...new Set(
-            users.map((user) =>
-                (user.zone[Zones.Country] ? user.zone[Zones.Country] : user.zone[Zones.World]).zoneId,
-            ),
+            users.map((user) => (user.zone[Zones.Country] ? user.zone[Zones.Country] : user.zone[Zones.World]).zoneId),
         ),
     ]
         .map((zoneId) => ({
             zone: zones.search(zoneId).slice(0, 3),
-            wrs: users.filter((user) =>
-                (user.zone[Zones.Country] ? user.zone[Zones.Country] : user.zone[Zones.World]).zoneId === zoneId,
+            wrs: users.filter(
+                (user) =>
+                    (user.zone[Zones.Country] ? user.zone[Zones.Country] : user.zone[Zones.World]).zoneId === zoneId,
             ).length,
         }))
         .sort((a, b) => {
