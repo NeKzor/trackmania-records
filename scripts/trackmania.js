@@ -136,7 +136,7 @@ const main = async (outputDir, snapshot = true) => {
 
     try {
         await dumpOfficialCampaign(outputDir);
-        //await dumpTrackOfTheDay(outputDir, snapshot);
+        await dumpTrackOfTheDay(outputDir, snapshot);
 
         const toImport = [];
 
