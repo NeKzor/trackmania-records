@@ -14,7 +14,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import MenuItem from '@material-ui/core/MenuItem';
 import Api from '../../Api';
 import { useIsMounted } from '../../Hooks';
-import { seasonMenu, totdMenu } from './CampaignMenus';
+import { seasonMenu, yearMenu, getTotdMenu } from './CampaignMenus';
 
 const s = (value) => (value === 1 ? '' : 's');
 
@@ -43,7 +43,7 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-const CampaignTab = ({ campaign, onChangeCampaign, isOfficial }) => {
+const CampaignTab = ({ campaign, onChangeCampaign, onChangeYear, isOfficial, year }) => {
     const isMounted = useIsMounted();
 
     const [game, setGame] = React.useState(undefined);
@@ -66,14 +66,17 @@ const CampaignTab = ({ campaign, onChangeCampaign, isOfficial }) => {
                     for (const wr of track.wrs) {
                         const wrDate = moment(wr.date);
                         const releasedAt = !campaign.isOfficial
-                            ? moment().tz('Europe/Paris').set({
-                                  year: campaign.year,
-                                  month: campaign.month - 1,
-                                  date: track.monthDay,
-                                  hour: 19,
-                                  minute: 0,
-                                  second: 0,
-                              }).utc()
+                            ? moment()
+                                  .tz('Europe/Paris')
+                                  .set({
+                                      year: campaign.year,
+                                      month: campaign.month - 1,
+                                      date: track.monthDay,
+                                      hour: 19,
+                                      minute: 0,
+                                      second: 0,
+                                  })
+                                  .utc()
                             : undefined;
 
                         const setAfter = !campaign.isOfficial ? calculateSetAfter(releasedAt, wrDate) : undefined;
@@ -129,12 +132,29 @@ const CampaignTab = ({ campaign, onChangeCampaign, isOfficial }) => {
 
     return (
         <>
-            <FormControl className={classes.formControl}>
-                <InputLabel>Campaign</InputLabel>
-                <Select value={campaign} onChange={onChangeCampaign}>
-                    {isOfficial ? seasonMenu : totdMenu}
-                </Select>
-            </FormControl>
+            {isOfficial ? (
+                <FormControl className={classes.formControl}>
+                    <InputLabel>Campaign</InputLabel>
+                    <Select value={campaign} onChange={onChangeCampaign}>
+                        {seasonMenu}
+                    </Select>
+                </FormControl>
+            ) : (
+                <>
+                    <FormControl className={classes.formControl}>
+                        <InputLabel>Year</InputLabel>
+                        <Select value={year} onChange={onChangeYear}>
+                            {yearMenu}
+                        </Select>
+                    </FormControl>
+                    <FormControl className={classes.formControl}>
+                        <InputLabel>Month</InputLabel>
+                        <Select value={campaign} onChange={onChangeCampaign}>
+                            {getTotdMenu(year)}
+                        </Select>
+                    </FormControl>
+                </>
+            )}
             {game === null && <SimpleTitle data="No data." />}
             {game === undefined && <LinearProgress />}
             <Grid container direction="column" justify="center">

@@ -1,4 +1,5 @@
 import React from 'react';
+import moment from 'moment';
 import { withRouter } from 'react-router';
 import Box from '@material-ui/core/Box';
 import Paper from '@material-ui/core/Paper';
@@ -9,11 +10,12 @@ import FloatingActionButton from '../components/FloatingActionButton';
 import ViewContent from './ViewContent';
 import CampaignTab from '../components/trackmania/CampaignTab';
 import RankingsTab from '../components/trackmania/RankingsTab';
-import { seasonMenu, totdMenu } from '../components/trackmania/CampaignMenus';
+import { getInitialValue } from '../components/trackmania/CampaignMenus';
 
 const TrackmaniaView = ({ match }) => {
     const [tab, setTab] = React.useState(0);
-    const [campaign, setCampaign] = React.useState((tab === 0 ? seasonMenu : totdMenu)[0].props.value);
+    const [campaign, setCampaign] = React.useState(getInitialValue(tab === 0));
+    const [year, setYear] = React.useState(moment().year());
 
     const page = match.params[0];
 
@@ -23,8 +25,16 @@ const TrackmaniaView = ({ match }) => {
 
     const handleTab = (_, newValue) => {
         setTab(newValue);
-        setCampaign((newValue === 0 ? seasonMenu : totdMenu)[0].props.value);
+        setCampaign(getInitialValue(newValue === 0, year));
     };
+
+    const onChangeYear = React.useCallback(
+        (event) => {
+            setYear(event.target.value);
+            setCampaign(getInitialValue(false, event.target.value));
+        },
+        [setYear],
+    );
 
     const onChangeCampaign = React.useCallback(
         (event) => {
@@ -54,7 +64,9 @@ const TrackmaniaView = ({ match }) => {
                             <CampaignTab
                                 campaign={campaign}
                                 onChangeCampaign={onChangeCampaign}
+                                onChangeYear={onChangeYear}
                                 isOfficial={tab === 0}
+                                year={year}
                             />
                         )}
                         {tab === 2 && <RankingsTab />}
