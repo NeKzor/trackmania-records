@@ -84,10 +84,16 @@ const importLatest = (file) => {
             });
 
             if (latest.isOfficial) {
-                track.history.forEach((wr, idx, items) => {
-                    const thisWr = moment(wr.date);
-                    const nextWr = moment(items[idx + 1] ? items[idx + 1].date : undefined);
-                    wr.duration = nextWr.diff(thisWr, 'days');
+                track.history.forEach((wr, idx, wrs) => {
+
+                });
+
+                track.history.forEach((wr, idx, wrs) => {
+                    const nextWr =  wrs
+                        .slice(idx + 1)
+                        .find((nextWR) => nextWR.score < wr.score);
+
+                    wr.duration = moment(nextWr ? nextWr.date : undefined).diff(moment(wr.date), 'days');
                 });
             }
         });
@@ -351,7 +357,9 @@ const resolveRecords = async (seasonUid, mapUid, mapId, latestCampaign, isTraini
                 : undefined;
 
             if (latestWr) {
-                wrs.push({ ...latestWr });
+                const wr = { ...latestWr };
+                wr.duration = moment().diff(moment(wr.date), 'd');
+                wrs.push(wr);
                 continue;
             }
 
