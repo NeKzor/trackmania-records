@@ -213,8 +213,8 @@ const RecordsRow = ({ wr, official, orderBy, useLiveDuration, history, onClickHi
                     )}
                     {!official && !delta && <span>{score}</span>}
                 </MinTableCell>
-                <MinTableCell align="left">{wr.user.name}</MinTableCell>
-                <MinTableCell align="left">
+                <MinTableCell style={noWrap} align="left">{wr.user.name}</MinTableCell>
+                <MinTableCell style={noWrap} align="left">
                     <Tooltip
                         title={wr.user.zone.map((zone) => zone.name).join(' | ')}
                         placement="bottom"
@@ -246,7 +246,7 @@ const RecordsRow = ({ wr, official, orderBy, useLiveDuration, history, onClickHi
                         </MinTableCell>
                     </>
                 )}
-                <MinTableCell align="left">
+                <MinTableCell style={noWrap} align="left">
                     <Tooltip title="Download Ghost" placement="bottom" enterDelay={300}>
                         <IconButton
                             size="small"
