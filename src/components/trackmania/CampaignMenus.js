@@ -11,14 +11,14 @@ const releaseDate = moment('2020-07-01');
 const currentMonth = releaseDate.clone();
 
 const seasons = {
-    7: 'Summer',
-    10: 'Fall',
-    1: 'Winter',
-    4: 'Spring',
+    0: 'Winter',
+    1: 'Spring',
+    2: 'Summer',
+    3: 'Fall',
 };
 
 while (currentMonth.diff(now) < 0) {
-    const season = seasons[currentMonth.month() + 1];
+    const season = seasons[Math.floor(currentMonth.month() / 3)];
     const year = currentMonth.format('YYYY');
 
     if (yearMenu.indexOf(year) === -1) {
@@ -80,7 +80,7 @@ const getInitialValue = (official, year = undefined) => {
     const month = (isFirstYear ? releaseDate : now).clone();
 
     return (official
-        ? `campaign/${seasons[now.month() + 1]}-${now.year()}`
+        ? `campaign/${seasons[Math.floor(now.month() / 3)]}-${now.year()}`
         : `totd/${month.format('MMMM')}-${year ? year : now.year()}`
     ).toLowerCase();
 };
