@@ -18,6 +18,7 @@ import SaveAltIcon from '@material-ui/icons/SaveAlt';
 import HistoryIcon from '@material-ui/icons/History';
 import WarningIcon from '@material-ui/icons/Warning';
 import { stableSort } from '../utils/stableSort';
+import { useLocalStorage, useRenders } from '../Hooks';
 import { formatScore, getDateDifferenceColor, getDateTimeDifferenceColor } from '../utils/tools';
 
 const rowsOfficial = [
@@ -305,24 +306,36 @@ const RecordsRow = ({ wr, official, orderBy, useLiveDuration, history, onClickHi
 };
 
 const RecordsTable = ({ data, stats, official, useLiveDuration }) => {
+    const [storage, setStorage] = useLocalStorage('tm2020', {
+        official: { order: 'asc', orderBy: 'track.name' },
+        totd: { order: 'asc', orderBy: 'track.monthDay' },
+    });
+
     const [{ order, rowsPerPage, page, ...state }, setState] = React.useState(defaultState);
     const [history, setHistory] = React.useState(null);
 
     let { orderBy } = state;
+    orderBy = official ? storage.official.orderBy : storage.totd.orderBy;
     orderBy = official && orderBy === 'track.monthDay' ? 'track.name' : orderBy;
 
     const handleRequestSort = (_, property) => {
-        const newOrderBy = property;
-        setState((s) => ({
-            ...s,
-            order: s.orderBy === newOrderBy && s.order === 'desc' ? 'asc' : 'desc',
-            orderBy: newOrderBy,
-        }));
+        const orderBy = property;
+        setState((state) => {
+            const order = state.orderBy === orderBy && state.order === 'desc' ? 'asc' : 'desc';
+            setStorage({ ...storage, [official ? 'official' : 'totd']: { order, orderBy } });
+
+            return {
+                ...state,
+                order,
+                orderBy,
+            };
+        });
     };
 
     React.useEffect(() => {
-        setState((s) => ({ ...s, orderBy: official ? 'track.name' : 'track.monthDay' }));
-    }, [data, official]);
+        const savedState = storage[official ? 'official' : 'totd'];
+        setState((state) => ({ ...state, order: savedState.order, orderBy: savedState.orderBy }));
+    }, [data]);
 
     const onClickHistory = React.useCallback(
         (id) => {

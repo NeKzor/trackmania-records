@@ -41,3 +41,25 @@ export const useScroll = () => {
 
     return state;
 };
+
+export const useLocalStorage = (key, initialStorage) => {
+    const [storage, internalSetStorage] = React.useState(() => {
+        const storage = localStorage.getItem(key);
+        if (storage) {
+            try {
+                return JSON.parse(storage);
+            } catch {
+            }
+        }
+
+        localStorage.setItem(key, JSON.stringify(initialStorage));
+        return initialStorage;
+    });
+
+    const setStorage = React.useCallback((newStorage) => {
+        internalSetStorage(newStorage);
+        localStorage.setItem(key, JSON.stringify(newStorage));
+    }, [internalSetStorage]);
+
+    return [storage, setStorage];
+};
