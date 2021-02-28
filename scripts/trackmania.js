@@ -4,7 +4,6 @@ const moment = require('moment');
 const { UbisoftClient, TrackmaniaClient, Audiences, Campaigns, Zones } = require('./trackmania/api');
 const { log, tryExportJson, tryMakeDir, importJson } = require('./utils');
 const DiscordIntegration = require('./trackmania/discord');
-const TwitterIntegration = require('./trackmania/twitter');
 
 require('dotenv').config();
 
@@ -85,10 +84,6 @@ const importLatest = (file) => {
 
             if (latest.isOfficial) {
                 track.history.forEach((wr, idx, wrs) => {
-
-                });
-
-                track.history.forEach((wr, idx, wrs) => {
                     const nextWr =  wrs
                         .slice(idx + 1)
                         .find((nextWR) => nextWR.score < wr.score);
@@ -102,19 +97,10 @@ const importLatest = (file) => {
     return latest;
 };
 
-const twitter = new TwitterIntegration(
-    process.env.TWITTER_API_KEY,
-    process.env.TWITTER_API_SECRET_KEY,
-    process.env.TWITTER_ACCESS_TOKEN,
-    process.env.TWITTER_ACCESS_TOKEN_SECRET,
-);
-twitter.enabled = process.argv.some((arg) => arg === '--twitter');
-
-const main = async (outputDir, snapshot = true) => {
+const main = async (outputDir) => {
     tryMakeDir(outputDir);
     tryMakeDir(path.join(outputDir, '/trackmania'));
     tryMakeDir(path.join(outputDir, '/trackmania/campaign'));
-    tryMakeDir(path.join(outputDir, '/trackmania/totd'));
     tryMakeDir(path.join(outputDir, '/trackmania/rankings'));
     tryMakeDir(path.join(replayFolder));
 
@@ -141,8 +127,10 @@ const main = async (outputDir, snapshot = true) => {
     discord.enabled = process.argv.some((arg) => arg === '--discord');
 
     try {
-        await dumpOfficialCampaign(outputDir);
-        await dumpTrackOfTheDay(outputDir, snapshot);
+        /* Bad Ideas Zone */
+        const clubId = 9507;
+
+        await dumpOfficialCampaign(clubId, outputDir);
 
         const toImport = [];
 
@@ -152,37 +140,18 @@ const main = async (outputDir, snapshot = true) => {
             }
         }
 
-        for (const importFile of fs.readdirSync(`${outputDir}/trackmania/totd`)) {
-            if (!imported.some((file) => file.endsWith(importFile))) {
-                toImport.push(`${outputDir}/trackmania/totd/${importFile}`);
-            }
-        }
-
         toImport.forEach((importFile) => {
             game.push(importJson(importFile));
         });
 
-        updateTwitterBot();
-
         const overallOfficial = game
             .filter((campaign) => campaign.isOfficial)
-            .map((campaign) => campaign.tracks)
-            .flat();
-        const overallTotd = game
-            .filter((campaign) => !campaign.isOfficial)
             .map((campaign) => campaign.tracks)
             .flat();
 
         game.forEach((campaign) => Object.assign(campaign, generateRankings(campaign.tracks)));
 
         tryExportJson(`${outputDir}/trackmania/rankings/campaign.json`, generateRankings(overallOfficial), true, true);
-        tryExportJson(`${outputDir}/trackmania/rankings/totd.json`, generateRankings(overallTotd), true, true);
-        tryExportJson(
-            `${outputDir}/trackmania/rankings/combined.json`,
-            generateRankings([...overallOfficial, ...overallTotd]),
-            true,
-            true,
-        );
     } catch (error) {
         discord.client.destroy();
         cleanup();
@@ -195,9 +164,8 @@ const main = async (outputDir, snapshot = true) => {
     }
 
     game.forEach((campaign) => {
-        const path = campaign.isOfficial ? 'campaign' : 'totd';
         tryExportJson(
-            `${outputDir}/trackmania/${path}/${campaign.name.replace(/ /, '-').toLowerCase()}.json`,
+            `${outputDir}/trackmania/campaign/${campaign.name.replace(/ /g, '-').toLowerCase()}.json`,
             campaign,
             true,
             true,
@@ -209,28 +177,58 @@ const main = async (outputDir, snapshot = true) => {
     cleanup();
 };
 
-const dumpOfficialCampaign = async (outputDir) => {
-    const campaigns = (await trackmania.campaigns(Campaigns.Official)).collect();
-    campaigns.push(gameInfo.training);
+const dumpOfficialCampaign = async (clubId, outputDir) => {
+    // TODO: Get campaign data with API?
+    //const campaigns = (await trackmania.campaigns(Campaigns.Official)).collect();
 
-    for (const { seasonUid, name, playlist } of campaigns) {
+    const campaigns = [
+        [
+            'NLS-FUTEaZrF29SC13q9jn89NCuhbZpqXzRggqU',
+            'Winter 2021 Reverse',
+            [
+                'E9bzrlGziuWe3rKxf1SCjr0lI_f',
+                'M4IAV8L37NbGUgWF7Fo8QeGVw0e',
+                'WkZxHNj6osov3PPWYmxpV1kdLI2',
+                'YKC_pnhWqUxB8daQrr3jZhOuvcm',
+                'RiTRCaDmHghYbpI9MEsLm9xN_d1',
+                'pVoUf_JNvJN6MyLElfH6MtdjgXe',
+                'AevIUTj6NHUORhh64AExTeHnN2j',
+                'GbbUlWD9XwvlZrM4qgAB2erHEse',
+                '_1HDKc1voVL5gJdVuaLbHQ4zq11',
+                '2spTPTl4dmmrX3F53NKUP8fK4A7',
+                'yAKWCv4y_6Mc80Yb12sM_MoRRL1',
+                '0uB3YudIaRRNYPneP3Xijw0qrXh',
+                '_zKS84zaKEZQR0ZtQWBJXixr7qi',
+                'rU46rfRVUsCPj9K6Lg78W0glwV3',
+                'pKhCYqoRY9bgzZZkODzBLsgUE7a',
+                'Z2FS25Ni432KOfNrVn6y_Fkvvud',
+                'v86Ne3aRdBfUKAkf1iSnGzOKBff',
+                '_sq5PihWkcmQJVIZv6YdD_9XyBb',
+                'dtdcO0dDyVSesQRf9IY9Ko7r9Xb',
+                'RqddNGwNQf_trqUWAgxIowioVF1',
+                'sCGL5O9bbMBFyND0usTP7zXdf86',
+              ],
+        ],
+    ];
+
+    for (const [seasonUid, name, playlist] of campaigns) {
         const latestCampaign = importLatest(
-            `${outputDir}/trackmania/campaign/${name.replace(/ /, '-').toLowerCase()}.json`,
+            `${outputDir}/trackmania/campaign/${name.replace(/ /g, '-').toLowerCase()}.json`,
         );
 
         const isTraining = name === 'Training';
         log.info(name, seasonUid);
 
-        const maps = await trackmania.maps(playlist.map((map) => map.mapUid));
+        const maps = await trackmania.maps(playlist);
         const mapList = maps.collect();
 
         const tracks = [];
 
-        for (const { mapUid } of playlist) {
+        for (const mapUid of playlist) {
             const { name, mapId, thumbnailUrl } = mapList.find((map) => map.mapUid === mapUid);
             log.info(name, mapUid);
 
-            const [wrs, history] = await resolveRecords(seasonUid, mapUid, mapId, latestCampaign, isTraining, name);
+            const [wrs, history] = await resolveRecords(clubId, seasonUid, mapUid, mapId, latestCampaign, isTraining, name);
 
             tracks.push({
                 id: mapUid,
@@ -260,67 +258,6 @@ const dumpOfficialCampaign = async (outputDir) => {
     }
 };
 
-const dumpTrackOfTheDay = async (outputDir, snapshot) => {
-    const campaigns = await trackmania.campaigns(Campaigns.TrackOfTheDay, 0, 1);
-
-    for (const { year, month, days } of campaigns) {
-        const name = `${moment()
-            .set('month', month - 1)
-            .format('MMMM')} ${year}`;
-
-        log.info(name);
-        const latestCampaign = importLatest(
-            `${outputDir}/trackmania/totd/${name.replace(/ /, '-').toLowerCase()}.json`,
-        );
-
-        const playable = days.filter((day) => day.mapUid !== '');
-
-        const trackDays = latestCampaign
-            ? playable.filter((day) => !latestCampaign.tracks.slice(0, -1).find((track) => track.id === day.mapUid))
-            : playable;
-
-        const tracks = latestCampaign ? latestCampaign.tracks.slice(0, -1) : [];
-
-        const maps = await trackmania.maps(trackDays.map((map) => map.mapUid));
-        const mapList = maps.collect();
-
-        for (const { mapUid, seasonUid, monthDay } of trackDays) {
-            const { name, mapId, thumbnailUrl } = mapList.find((map) => map.mapUid === mapUid);
-            log.info(name, seasonUid, mapUid);
-
-            const [wrs, history] = await resolveRecords(seasonUid, mapUid, mapId, latestCampaign, false, name);
-
-            tracks.push({
-                id: mapUid,
-                _id: mapId,
-                season: seasonUid,
-                name,
-                monthDay,
-                wrs,
-                isOfficial: false,
-                history,
-                thumbnail: thumbnailUrl.slice(thumbnailUrl.lastIndexOf('/') + 1, -4),
-            });
-        }
-
-        const totalTime = tracks
-            .filter((t) => t.wrs[0])
-            .map((t) => t.wrs[0].score)
-            .reduce((a, b) => a + b, 0);
-
-        game.push({
-            isOfficial: false,
-            year,
-            month,
-            name,
-            tracks,
-            stats: {
-                totalTime,
-            },
-        });
-    }
-};
-
 const autoban = (accountId, score, isTraining = false) => {
     if (gameInfo.cheaters.find((cheater) => cheater === accountId)) {
         return true;
@@ -335,8 +272,8 @@ const autoban = (accountId, score, isTraining = false) => {
     return false;
 };
 
-const resolveRecords = async (seasonUid, mapUid, mapId, latestCampaign, isTraining, trackName) => {
-    const [leaderboard] = (await trackmania.leaderboard(seasonUid, mapUid, 0, 5)).collect();
+const resolveRecords = async (clubId, seasonUid, mapUid, mapId, latestCampaign, isTraining, trackName) => {
+    const leaderboard = (await trackmania.clubLeaderboard(seasonUid, mapUid, clubId)).collect();
 
     const wrs = [];
     const latestTrack = latestCampaign ? latestCampaign.tracks.find((track) => track.id === mapUid) : undefined;
@@ -344,7 +281,7 @@ const resolveRecords = async (seasonUid, mapUid, mapId, latestCampaign, isTraini
 
     let wrScore = undefined;
 
-    for (const { accountId, zoneId, score } of leaderboard.top) {
+    for (const { accountId, zoneId, score } of leaderboard) {
         if (autoban(accountId, score, isTraining)) {
             continue;
         }
@@ -390,7 +327,7 @@ const resolveRecords = async (seasonUid, mapUid, mapId, latestCampaign, isTraini
                 log.info('NEW RECORD', wr.user.name, wr.score);
 
                 const data = { wr, track: { name: trackName } };
-                for (const integration of [discord, twitter]) {
+                for (const integration of [discord]) {
                     integration.send(data);
                 }
 
@@ -519,33 +456,10 @@ const generateRankings = (tracks) => {
     };
 };
 
-const updateTwitterBot = () => {
-    const monday = moment().weekday(1).hour(0).minute(0).second(0);
-    const sunday = moment().weekday(7).hour(23).minute(59).second(59);
-
-    let wrsThisWeek = 0;
-
-    game.map((c) => c.tracks)
-        .flat()
-        .map((t) => t.history.filter(validRecords))
-        .flat()
-        .forEach((wr) => {
-            if (moment(wr.date).isBetween(monday, sunday)) {
-                ++wrsThisWeek;
-            }
-        });
-
-    twitter.updateBio({ wrsThisWeek });
-};
-
 const inspect = (obj) => console.dir(obj, { depth: 6 });
 
 if (process.argv.some((arg) => arg === '--test')) {
     main(path.join(__dirname, '../api/'), false).catch(inspect);
 }
-
-process.on('SIGINT', () => {
-    twitter.updateBio({ status: '#OFFLINE' }).finally(() => process.exit());
-});
 
 module.exports = main;

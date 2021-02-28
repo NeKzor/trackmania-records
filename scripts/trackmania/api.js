@@ -156,6 +156,9 @@ class TrackmaniaClient {
     async leaderboard(groupOrSeasonid, mapId, start, end) {
         return await Leaderboard.default(this).update(groupOrSeasonid, mapId, start, end);
     }
+    async clubLeaderboard(groupId, mapId, clubId) {
+        return await ClubLeaderboard.default(this).update(groupId, mapId, clubId);
+    }
     async mapRecords(accountIdList, mapIdList) {
         return await MapRecords.default(this).update(accountIdList, mapIdList);
     }
@@ -365,6 +368,38 @@ class Leaderboard extends Entity {
     }
     *[Symbol.iterator]() {
         for (const top of this.data.tops) {
+            yield top;
+        }
+    }
+}
+
+class ClubLeaderboard extends Entity {
+    async update(groupId, mapId, clubId) {
+        if (groupId !== undefined) this.groupId = groupId;
+        if (mapId !== undefined) this.mapId = mapId;
+        if (clubId !== undefined) this.clubId = clubId;
+
+        if (!this.groupId) {
+            throw new Error('group or season id required');
+        }
+
+        if (!this.mapId) {
+            throw new Error('map id required');
+        }
+
+        if (!this.clubId) {
+            throw new Error('club id required');
+        }
+
+        this.data = await this.client.get(
+            `/leaderboard/group/${this.groupId}/map/${this.mapId}/club/${this.clubId}/top`,
+            true,
+        );
+
+        return this;
+    }
+    *[Symbol.iterator]() {
+        for (const top of this.data.top) {
             yield top;
         }
     }
