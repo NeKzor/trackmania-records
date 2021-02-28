@@ -9,7 +9,6 @@ const main = async () => {
     try {
         log.info('scraping trackmania');
         await trackmania(output);
-        publish();
     } catch (err) {
         log.error(err);
     }
