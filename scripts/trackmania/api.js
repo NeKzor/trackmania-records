@@ -315,9 +315,13 @@ class Campaigns extends Entity {
 
         const api = ['/campaign/' + this.campaign];
 
-        const parameters = [];
-        if (this.offset !== undefined) parameters.push(`offset=${this.offset}`);
-        if (this.length !== undefined) parameters.push(`length=${this.length}`);
+        if (this.offset === undefined) this.offset = 0;
+        if (this.length === undefined) this.length = 1;
+
+        const parameters = [
+            `offset=${this.offset}`,
+            `length=${this.length}`,
+        ];
 
         if (parameters.length > 0) {
             api.push(parameters.join('&'));
