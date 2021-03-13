@@ -200,13 +200,15 @@ const dumpOfficialCampaign = async (clubId, outputDir) => {
                 '0uB3YudIaRRNYPneP3Xijw0qrXh',
                 '_zKS84zaKEZQR0ZtQWBJXixr7qi',
                 'rU46rfRVUsCPj9K6Lg78W0glwV3',
+                '1HKaq4iMYbZV4CjIEqwPa6I9fmk',
                 'pKhCYqoRY9bgzZZkODzBLsgUE7a',
                 'Z2FS25Ni432KOfNrVn6y_Fkvvud',
                 'v86Ne3aRdBfUKAkf1iSnGzOKBff',
+                '23AnrbLFNlAZ6x0_ndSM1_Y5bxg',
                 '_sq5PihWkcmQJVIZv6YdD_9XyBb',
                 'dtdcO0dDyVSesQRf9IY9Ko7r9Xb',
                 'RqddNGwNQf_trqUWAgxIowioVF1',
-                'sCGL5O9bbMBFyND0usTP7zXdf86',
+                'sCGL5O9bbMBFyND0usTP7zXdf86'
               ],
         ],
     ];
