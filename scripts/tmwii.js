@@ -112,5 +112,3 @@ const main = async (output, maxFetch = undefined) => {
 };
 
 module.exports = main;
-
-main(__dirname + '/../api/');
