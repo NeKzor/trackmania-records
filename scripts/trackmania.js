@@ -85,13 +85,7 @@ const importLatest = (file) => {
 
             if (latest.isOfficial) {
                 track.history.forEach((wr, idx, wrs) => {
-
-                });
-
-                track.history.forEach((wr, idx, wrs) => {
-                    const nextWr =  wrs
-                        .slice(idx + 1)
-                        .find((nextWR) => nextWR.score < wr.score);
+                    const nextWr = wrs.slice(idx + 1).find((nextWR) => nextWR.score < wr.score);
 
                     wr.duration = moment(nextWr ? nextWr.date : undefined).diff(moment(wr.date), 'days');
                 });
@@ -397,7 +391,7 @@ const resolveRecords = async (seasonUid, mapUid, mapId, latestCampaign, isTraini
                 fs.writeFileSync(
                     path.join(
                         replayFolder,
-                        `/${trackName.replace(/ /g, '_')}_${record.recordScore.time}_${wr.user.name}.replay.gbx`
+                        `/${trackName.replace(/ /g, '_')}_${record.recordScore.time}_${wr.user.name}.replay.gbx`,
                     ),
                     await record.downloadReplay(),
                 );
@@ -412,7 +406,48 @@ const resolveRecords = async (seasonUid, mapUid, mapId, latestCampaign, isTraini
 };
 
 const generateRankings = (tracks) => {
+    const mapWrs = tracks
+        .map((track) => {
+            return track.history.map((wr) => {
+                const beatenBy = track.history.find((item) => item.score < wr.score);
+                return {
+                    ...wr,
+                    beatenBy: beatenBy
+                        ? [
+                              {
+                                  id: beatenBy.id,
+                                  date: beatenBy.date,
+                                  user: { ...beatenBy.user },
+                                  score: beatenBy.score,
+                              },
+                          ]
+                        : [],
+                };
+            });
+        })
+        .flat();
+
+    const getNextWr = (wr) => {
+        if (
+            wr.beatenBy.length > 0 &&
+            !wr.beatenBy.some(({ id }) => id === wr.id) &&
+            wr.beatenBy.some(({ user }) => user.id === wr.user.id)
+        ) {
+            const ids = wr.beatenBy.map(({ id }) => id);
+            const newWrs = mapWrs.filter((wr) => ids.some((id) => wr.id === id));
+            const newWr = newWrs.find(({ user }) => user.id === wr.user.id);
+
+            if (newWr) {
+                return getNextWr(newWr);
+            }
+        }
+
+        return wr;
+    };
+
     const createLeaderboard = (key) => {
+        const calculateExactDuration = key === 'history';
+
         const wrs = tracks.map((t) => (t[key].length > 0 ? t[key] : t.wrs).filter(validRecords)).flat();
         const users = tracks
             .map((t) =>
@@ -432,13 +467,23 @@ const generateRankings = (tracks) => {
                     const user = users.filter((u) => u.id === key).sort((a, b) => b.date.localeCompare(a.date))[0];
                     delete user.date;
 
+                    const durationExact = wrs
+                        .filter((r) => r.user.id === key && r.duration)
+                        .map((r) => {
+                            if (!calculateExactDuration) {
+                                return r.duration;
+                            }
+
+                            const reignWr = getNextWr(r);
+                            const [beatenBy] = reignWr.beatenBy;
+                            return moment(beatenBy ? beatenBy.date : undefined).diff(moment(r.date), 'd');
+                        })
+                        .reduce((a, b) => a + b, 0);
+
                     return {
                         user,
                         wrs: frequency[key],
-                        duration: wrs
-                            .filter((r) => r.user.id === key && r.duration)
-                            .map((r) => r.duration)
-                            .reduce((a, b) => a + b, 0),
+                        duration: durationExact,
                     };
                 }),
             [
