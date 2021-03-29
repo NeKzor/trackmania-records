@@ -36,10 +36,7 @@ module.exports = async (gameName, output, maxFetch = undefined) => {
             const url = apiRoute('trackreplayshow', id);
             const res = await fetch(url, config);
 
-            //const text = require('fs').readFileSync('yes.html', 'utf-8');
-            //require('fs').writeFileSync('yes.html', await res.text(), { encoding: 'utf-8' });
-
-            log.info(`${url} : ${res.status} (${name})`);
+            log.info(`[API CALL] GET -> ${url} : ${res.status} (${name})`);
 
             const text = await res.text();
 

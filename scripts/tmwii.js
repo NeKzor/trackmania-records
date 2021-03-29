@@ -1,6 +1,6 @@
 const moment = require('moment');
 const fetch = require('node-fetch');
-const { importJson, tryExportJson, tryMakeDir } = require('./utils');
+const { delay, importJson, log, tryExportJson, tryMakeDir } = require('./utils');
 
 const config = { headers: { 'User-Agent': 'trackmania-records-v1' } };
 
@@ -47,7 +47,24 @@ const main = async (output, maxFetch = undefined) => {
                 break;
             }
 
-            const res = await fetch(`${baseApi}/leaderboards/${tmwii}/level/${level.id}/${category.id}`, config);
+            const url = `${baseApi}/leaderboards/${tmwii}/level/${level.id}/${category.id}`;
+            let res = await fetch(url, config);
+            log.info('[API CALL] GET -> ' + url + ' : ' + res.status);
+
+            if (!res.ok) {
+                log.info('retry in 10 seconds...');
+                await delay(10000);
+
+                res = await fetch(url, config);
+                log.info('[API CALL] GET -> ' + url + ' : ' + res.status);
+    
+                if (!res.ok) {
+                    log.warn('fetch failed');
+                    await delay(500);
+                    continue;
+                }
+            }
+
             const leaderboard = (await res.json()).data;
 
             const wrs = [];
@@ -71,6 +88,7 @@ const main = async (output, maxFetch = undefined) => {
 
             ++count;
             if (maxFetch !== undefined && count === maxFetch) break;
+            await delay(500);
         }
 
         const totalTime = tracks.map((t) => (t.wrs.length ? t.wrs[0].score : 0)).reduce((a, b) => a + b, 0);
