@@ -15,7 +15,7 @@ const main = async () => {
     for (const game of ['tmnforever', 'united']) {
         try {
             log.info(`scraping ${game} history...`);
-            await tmx(game, output);
+            await tmxHistory(game, output);
         } catch (err) {
             log.error(err);
         }
