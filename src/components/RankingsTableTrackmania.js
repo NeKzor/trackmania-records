@@ -121,7 +121,11 @@ const RecordsTable = ({ data, hasDuration }) => {
                                 </Link>
                             </MinTableCell>
                             <MinTableCell align="left">{row.wrs}</MinTableCell>
-                            {hasDuration && <MinTableCell align="left">{row.duration}</MinTableCell>}
+                            {hasDuration && (
+                                <MinTableCell align="left">
+                                    {row.duration} day{row.duration === 1 ? '' : 's'}
+                                </MinTableCell>
+                            )}
                         </TableRow>
                     ))}
                 </TableBody>
