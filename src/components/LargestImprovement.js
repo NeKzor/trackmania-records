@@ -15,13 +15,13 @@ import tmx from '../utils/tmx';
 
 const rows = [
     { id: 'track.name', sortable: false, label: 'Map', align: 'left' },
-    { id: 'score', sortable: false, label: 'Time', align: 'left' },
+    { id: 'score', sortable: false, label: 'Time', label2: 'Score', align: 'left' },
     { id: 'user.name', sortable: false, label: 'Player', align: 'left' },
     { id: 'delta', sortable: false, label: 'Improvement', align: 'left' },
     { id: 'date', sortable: false, label: 'Date', align: 'left' },
 ];
 
-const LargestImprovementHead = ({ order, orderBy, onRequestSort }) => {
+const LargestImprovementHead = ({ order, orderBy, onRequestSort, scoreType }) => {
     const createSortHandler = (prop1, prop2) => (event) => {
         onRequestSort(event, prop1, prop2);
     };
@@ -43,7 +43,7 @@ const LargestImprovementHead = ({ order, orderBy, onRequestSort }) => {
                                     direction={order}
                                     onClick={createSortHandler(row.id, row.id2)}
                                 >
-                                    {row.label}
+                                    {scoreType === 'Stunts' && row.label2 ? rowl.label2 : row.label}
                                 </TableSortLabel>
                             </Tooltip>
                         )}
@@ -73,7 +73,7 @@ const noWrap = { whiteSpace: 'nowrap' };
 const minifiedStyle = { padding: '7px 0px 7px 16px' };
 const MinTableCell = (props) => <TableCell style={minifiedStyle} {...props} />;
 
-const RecordsTable = ({ game, data }) => {
+const RecordsTable = ({ game, data, scoreType }) => {
     const [{ order, orderBy, thenBy }, setState] = React.useState({ ...defaultState });
 
     const handleRequestSort = (_, prop1, prop2) => {
@@ -95,14 +95,16 @@ const RecordsTable = ({ game, data }) => {
     return (
         <div className={classes.root}>
             <Table size="small">
-                <LargestImprovementHead order={order} orderBy={orderBy} onRequestSort={handleRequestSort} />
+                <LargestImprovementHead
+                    order={order}
+                    orderBy={orderBy}
+                    onRequestSort={handleRequestSort}
+                    scoreType={scoreType}
+                />
                 <TableBody>
                     {stableSortSort(data, order, orderBy, thenBy).map((row) => (
                         <TableRow tabIndex={-1} key={row.replay}>
-                            <MinTableCell
-                                style={noWrap}
-                                align="left"
-                            >
+                            <MinTableCell style={noWrap} align="left">
                                 <Link
                                     color="inherit"
                                     href={tmxGame.trackUrl(row.track.id)}
@@ -112,7 +114,7 @@ const RecordsTable = ({ game, data }) => {
                                     {row.track.name}
                                 </Link>
                             </MinTableCell>
-                            <MinTableCell align="left">{formatScore(row.score)}</MinTableCell>
+                            <MinTableCell align="left">{formatScore(row.score, game, row.track.type)}</MinTableCell>
                             <MinTableCell style={noWrap} align="left">
                                 <Link
                                     color="inherit"
@@ -124,7 +126,10 @@ const RecordsTable = ({ game, data }) => {
                                 </Link>
                             </MinTableCell>
                             <MinTableCell align="left">
-                                <span>-{formatScore(row.delta)}</span>
+                                <span>
+                                    {row.track.type === 'Stunts' ? '+' : '-'}
+                                    {formatScore(row.delta, game, row.track.type)}
+                                </span>
                             </MinTableCell>
                             <MinTableCell align="left">
                                 <Tooltip

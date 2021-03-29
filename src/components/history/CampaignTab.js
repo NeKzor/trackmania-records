@@ -67,6 +67,7 @@ const CampaignTab = ({ gameName }) => {
                                     isLast,
                                     records: track.wrs.length,
                                     history,
+                                    type: track.type,
                                 },
                                 ...wr,
                             });
@@ -124,14 +125,14 @@ const CampaignTab = ({ gameName }) => {
                             />
                         </Grid>
                         <Grid item xs={12} className={classes.padTop}>
-                            <FormControl className={classes.formControl}>
+                            {/* <FormControl className={classes.formControl}>
                                 <InputLabel>Rankings Type</InputLabel>
                                 <Select value={rankingsType} onChange={onChangeRankingsType}>
                                     <MenuItem value={'leaderboard'}>Live</MenuItem>
                                     <MenuItem value={'uniqueLeaderboard'}>Unique</MenuItem>
                                     <MenuItem value={'historyLeaderboard'}>Total</MenuItem>
                                 </Select>
-                            </FormControl>
+                            </FormControl> */}
                             <Grid container direction="row" justify="center" alignContent="center">
                                 <Grid item xs={12} md={6}>
                                     <RankingsTable

@@ -15,7 +15,7 @@ import tmx from '../utils/tmx';
 
 const rows = [
     { id: 'track.name', sortable: false, label: 'Map', align: 'left' },
-    { id: 'score', sortable: false, label: 'Time', align: 'left' },
+    { id: 'score', sortable: false, label: 'Time', label2: 'Score', align: 'left' },
     { id: 'user.name', sortable: false, label: 'Player', align: 'left' },
     { id: 'duration', sortable: false, label: 'Duration', align: 'left' },
     { id: 'date', sortable: false, label: 'Start', align: 'left' },
@@ -23,7 +23,7 @@ const rows = [
     { id: 'beatenBy.user.name', sortable: false, label: 'Beaten By', align: 'left' },
 ];
 
-const LongestLastingHead = ({ order, orderBy, onRequestSort }) => {
+const LongestLastingHead = ({ order, orderBy, onRequestSort, scoreType }) => {
     const createSortHandler = (prop1, prop2) => (event) => {
         onRequestSort(event, prop1, prop2);
     };
@@ -45,7 +45,7 @@ const LongestLastingHead = ({ order, orderBy, onRequestSort }) => {
                                     direction={order}
                                     onClick={createSortHandler(row.id, row.id2)}
                                 >
-                                    {row.label}
+                                    {scoreType === 'Stunts' && row.label2 ? row.label2 : row.label}
                                 </TableSortLabel>
                             </Tooltip>
                         )}
@@ -75,7 +75,7 @@ const noWrap = { whiteSpace: 'nowrap' };
 const minifiedStyle = { padding: '7px 0px 7px 16px' };
 const MinTableCell = (props) => <TableCell style={minifiedStyle} {...props} />;
 
-const RecordsTable = ({ game, data, useLiveDuration }) => {
+const RecordsTable = ({ game, data, scoreType }) => {
     const [{ order, orderBy, thenBy }, setState] = React.useState({ ...defaultState });
 
     const handleRequestSort = (_, prop1, prop2) => {
@@ -97,26 +97,27 @@ const RecordsTable = ({ game, data, useLiveDuration }) => {
     return (
         <div className={classes.root}>
             <Table size="small">
-                <LongestLastingHead order={order} orderBy={orderBy} onRequestSort={handleRequestSort} />
+                <LongestLastingHead
+                    order={order}
+                    orderBy={orderBy}
+                    onRequestSort={handleRequestSort}
+                    scoreType={scoreType}
+                />
                 <TableBody>
-                    {stableSortSort(data, order, orderBy, thenBy)
-                        .map((row) => (
-                            <TableRow tabIndex={-1} key={row.replay}>
-                                <MinTableCell
-                                    style={noWrap}
-                                    align="left"
+                    {stableSortSort(data, order, orderBy, thenBy).map((row) => (
+                        <TableRow tabIndex={-1} key={row.replay}>
+                            <MinTableCell style={noWrap} align="left">
+                                <Link
+                                    color="inherit"
+                                    href={tmxGame.trackUrl(row.track.id)}
+                                    rel="noreferrer"
+                                    target="_blank"
                                 >
-                                    <Link
-                                        color="inherit"
-                                        href={tmxGame.trackUrl(row.track.id)}
-                                        rel="noreferrer"
-                                        target="_blank"
-                                    >
-                                        {row.track.name}
-                                    </Link>
-                                </MinTableCell>
-                                <MinTableCell align="left">{formatScore(row.score)}</MinTableCell>
-                                <MinTableCell style={noWrap} align="left">
+                                    {row.track.name}
+                                </Link>
+                            </MinTableCell>
+                            <MinTableCell align="left">{formatScore(row.score, game, row.track.type)}</MinTableCell>
+                            <MinTableCell style={noWrap} align="left">
                                 <Link
                                     color="inherit"
                                     href={tmxGame.userUrl(row.user.id)}
@@ -126,63 +127,59 @@ const RecordsTable = ({ game, data, useLiveDuration }) => {
                                     {row.user.name}
                                 </Link>
                             </MinTableCell>
-                                <MinTableCell align="left">
-                                    <Tooltip title="in days" placement="bottom-end" enterDelay={300}>
-                                        {useLiveDuration && row.beatenBy.id === null ? (
-                                            <Moment style={noWrap} diff={row.date} unit="days"></Moment>
-                                        ) : (
-                                            <span>{row.duration}</span>
-                                        )}
-                                    </Tooltip>
-                                </MinTableCell>
-                                <MinTableCell align="left">
+                            <MinTableCell align="left">
+                                <Tooltip title="in days" placement="bottom-end" enterDelay={300}>
+                                    <span>{row.duration}</span>
+                                </Tooltip>
+                            </MinTableCell>
+                            <MinTableCell align="left">
+                                <Tooltip
+                                    title={<Moment fromNow>{row.date}</Moment>}
+                                    placement="bottom-end"
+                                    enterDelay={300}
+                                >
+                                    <Moment
+                                        style={{ color: getDateDifferenceColor(row.date), ...noWrap }}
+                                        format="YYYY-MM-DD"
+                                    >
+                                        {row.date}
+                                    </Moment>
+                                </Tooltip>
+                            </MinTableCell>
+                            <MinTableCell align="left">
+                                {row.beatenBy.length > 0 ? (
                                     <Tooltip
-                                        title={<Moment fromNow>{row.date}</Moment>}
+                                        title={<Moment fromNow>{row.beatenBy[0].date}</Moment>}
                                         placement="bottom-end"
                                         enterDelay={300}
                                     >
                                         <Moment
-                                            style={{ color: getDateDifferenceColor(row.date), ...noWrap }}
+                                            style={{ color: getDateDifferenceColor(row.beatenBy[0].date), ...noWrap }}
                                             format="YYYY-MM-DD"
                                         >
-                                            {row.date}
+                                            {row.beatenBy[0].date}
                                         </Moment>
                                     </Tooltip>
-                                </MinTableCell>
-                                <MinTableCell align="left">
-                                    {row.beatenBy.length > 0 ? (
-                                        <Tooltip
-                                            title={<Moment fromNow>{row.beatenBy[0].date}</Moment>}
-                                            placement="bottom-end"
-                                            enterDelay={300}
-                                        >
-                                            <Moment
-                                                style={{ color: getDateDifferenceColor(row.beatenBy[0].date), ...noWrap }}
-                                                format="YYYY-MM-DD"
-                                            >
-                                                {row.beatenBy[0].date}
-                                            </Moment>
-                                        </Tooltip>
-                                    ) : (
-                                        <span>ongoing</span>
-                                    )}
-                                </MinTableCell>
-                                <MinTableCell style={noWrap} align="left">
-                                    {row.beatenBy.length > 0 ? (
-                                        <Link
-                                            color="inherit"
-                                            href={tmxGame.userUrl(row.beatenBy[0].user.id)}
-                                            rel="noreferrer"
-                                            target="_blank"
-                                        >
-                                            {row.beatenBy[0].user.name}
-                                        </Link>
-                                    ) : (
-                                        <span>unbeaten</span>
-                                    )}
-                                </MinTableCell>
-                            </TableRow>
-                        ))}
+                                ) : (
+                                    <span>ongoing</span>
+                                )}
+                            </MinTableCell>
+                            <MinTableCell style={noWrap} align="left">
+                                {row.beatenBy.length > 0 ? (
+                                    <Link
+                                        color="inherit"
+                                        href={tmxGame.userUrl(row.beatenBy[0].user.id)}
+                                        rel="noreferrer"
+                                        target="_blank"
+                                    >
+                                        {row.beatenBy[0].user.name}
+                                    </Link>
+                                ) : (
+                                    <span>unbeaten</span>
+                                )}
+                            </MinTableCell>
+                        </TableRow>
+                    ))}
                 </TableBody>
             </Table>
         </div>

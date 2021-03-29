@@ -14,7 +14,7 @@ import LargestImprovement from '../LargestImprovement';
 import RankingsTable from '../RankingsTableTrackmania';
 import SimpleTitle from '../SimpleTitle';
 import Api from '../../Api';
-import { useIsMounted } from '../../Hooks';
+import { useIsMounted, useRenders } from '../../Hooks';
 
 const useStyles = makeStyles((theme) => ({
     padTop: {
@@ -31,8 +31,8 @@ const StatisticsTab = ({ gameName }) => {
 
     const [game, setGame] = React.useState(undefined);
     const [campaignName, setCampaign] = React.useState(undefined);
-    const [rankingsType, setRankingsType] = React.useState('leaderboard');
     const [type, setType] = React.useState('longestLasting');
+    const [trackType, setTrackType] = React.useState('Race');
 
     const onChangeType = React.useCallback(
         (event) => {
@@ -40,17 +40,20 @@ const StatisticsTab = ({ gameName }) => {
         },
         [setType],
     );
+    const onChangeTrackType = React.useCallback(
+        (event) => {
+            setTrackType(event.target.value);
+        },
+        [setTrackType],
+    );
     const onChangeCampaign = React.useCallback(
         (event) => {
             setCampaign(event.target.value);
+            setTrackType(
+                game ? game.find((campaign) => campaign.name === event.target.value)[type][0].track.type : 'Race',
+            );
         },
-        [setCampaign],
-    );
-    const onChangeRankingsType = React.useCallback(
-        (event) => {
-            setRankingsType(event.target.value);
-        },
-        [setRankingsType],
+        [game, setCampaign, setTrackType],
     );
 
     React.useEffect(() => {
@@ -61,6 +64,7 @@ const StatisticsTab = ({ gameName }) => {
                 if (isMounted.current) {
                     setGame(game);
                     setCampaign(game[0].name);
+                    setTrackType(game[0][type][0].track.type);
                 }
             })
             .catch((error) => {
@@ -69,7 +73,7 @@ const StatisticsTab = ({ gameName }) => {
                     setGame(null);
                 }
             });
-    }, [setGame, isMounted]);
+    }, [setGame, setCampaign, setTrackType, isMounted]);
 
     const StatsComponent = (() => {
         switch (type) {
@@ -90,7 +94,7 @@ const StatisticsTab = ({ gameName }) => {
 
     return (
         <>
-            {(campaignName && game && game.length > 1) && (
+            {campaignName && game && game.length > 1 && (
                 <FormControl className={classes.formControl}>
                     <InputLabel>Campaign</InputLabel>
                     <Select value={campaignName} onChange={onChangeCampaign}>
@@ -112,17 +116,34 @@ const StatisticsTab = ({ gameName }) => {
                     <MenuItem value={'largestImprovement'}>Largest Improvement</MenuItem>
                 </Select>
             </FormControl>
-            <Grid container direction="column" justify="center">
-                <Grid item xs={12}>
-                    <Grid container direction="row" justify="center" alignContent="center">
-                        <Grid item xs={12}>
-                            {currentCampaign && currentCampaign[type] && (
-                                <StatsComponent game={gameName} data={currentCampaign[type]} />
-                            )}
+            {currentCampaign && new Set(currentCampaign[type].map(({ track }) => track.type)).size > 1 && (
+                <FormControl className={classes.formControl}>
+                    <InputLabel>Track Type</InputLabel>
+                    <Select value={trackType} onChange={onChangeTrackType}>
+                        <MenuItem value={'Race'}>Race</MenuItem>
+                        <MenuItem value={'Stunts'}>Stunts</MenuItem>
+                    </Select>
+                </FormControl>
+            )}
+            {currentCampaign === null && <SimpleTitle data="No data." />}
+            {currentCampaign === undefined && <LinearProgress />}
+            {currentCampaign !== null && currentCampaign !== undefined && (
+                <Grid container direction="column" justify="center">
+                    <Grid item xs={12}>
+                        <Grid container direction="row" justify="center" alignContent="center">
+                            <Grid item xs={12}>
+                                {currentCampaign && currentCampaign[type] && (
+                                    <StatsComponent
+                                        game={gameName}
+                                        data={currentCampaign[type].filter(({ track }) => track.type === trackType)}
+                                        trackType={trackType}
+                                    />
+                                )}
+                            </Grid>
                         </Grid>
                     </Grid>
                 </Grid>
-            </Grid>
+            )}
         </>
     );
 };

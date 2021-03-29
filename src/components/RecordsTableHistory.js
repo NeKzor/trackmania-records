@@ -94,9 +94,10 @@ const useRowStyles = makeStyles({
     },
 });
 
-const RecordsHistoryRow = ({ game, wr }) => {
-    const score = formatScore(wr.score);
-    const delta = wr.delta !== 0 ? formatScore(wr.delta) : null;
+const RecordsHistoryRow = ({ game, wr, trackType }) => {
+    const score = formatScore(wr.score, game, trackType);
+    const delta = wr.delta !== 0 ? formatScore(wr.delta, game, trackType) : null;
+    const deltaSign = trackType === 'Stunts' ? '+' : '-';
 
     const tmxGame = tmx(game);
 
@@ -112,7 +113,7 @@ const RecordsHistoryRow = ({ game, wr }) => {
             <MinTableCell align="left">
                 {score}
             </MinTableCell>
-            <MinTableCell align="left">{delta ? '-' + delta : ''}</MinTableCell>
+            <MinTableCell align="left">{delta ? deltaSign + delta : ''}</MinTableCell>
             <MinTableCell align="left">
                 <Link
                     style={noWrap}
@@ -143,8 +144,9 @@ const RecordsHistoryRow = ({ game, wr }) => {
 };
 
 const RecordsRow = ({ game, wr, orderBy, useLiveDuration, history, onClickHistory }) => {
-    const score = formatScore(wr.score);
-    const delta = wr.delta !== 0 ? formatScore(wr.delta) : null;
+    const score = formatScore(wr.score, game, wr.track.type);
+    const delta = wr.delta !== 0 ? formatScore(wr.delta, game, wr.track.type) : null;
+    const deltaSign = wr.track.type === 'Stunts' ? '+' : '-';
 
     const classes = useRowStyles();
 
@@ -169,7 +171,7 @@ const RecordsRow = ({ game, wr, orderBy, useLiveDuration, history, onClickHistor
                 )}
                 <MinTableCell align="left">
                     {delta && (
-                        <Tooltip title={<span>-{delta} to former record</span>} placement="bottom" enterDelay={300}>
+                        <Tooltip title={<span>{deltaSign}{delta} to former record</span>} placement="bottom" enterDelay={300}>
                             <span>{score}</span>
                         </Tooltip>
                     )}
@@ -242,13 +244,20 @@ const RecordsRow = ({ game, wr, orderBy, useLiveDuration, history, onClickHistor
                                         <TableRow>
                                             <MinTableCell>Date</MinTableCell>
                                             <MinTableCell>Record</MinTableCell>
-                                            <MinTableCell>Timesave</MinTableCell>
+                                            <MinTableCell>
+                                                {wr.track.type === 'Stunts' ? 'Improvement' : 'Timesave'}
+                                            </MinTableCell>
                                             <MinTableCell colSpan={2}>Player</MinTableCell>
                                         </TableRow>
                                     </TableHead>
                                     <TableBody>
                                         {wr.track.history.map((historyWr, idx) => {
-                                            return <RecordsHistoryRow game={game} wr={historyWr} key={idx} />;
+                                            return <RecordsHistoryRow
+                                                game={game}
+                                                wr={historyWr}
+                                                trackType={wr.track.type}
+                                                key={idx}
+                                            />;
                                         })}
                                     </TableBody>
                                 </Table>
@@ -261,8 +270,8 @@ const RecordsRow = ({ game, wr, orderBy, useLiveDuration, history, onClickHistor
     );
 };
 
-const RecordsTable = ({ game, data, stats, useLiveDuration, storeKey }) => {
-    const [storage, setStorage] = useLocalStorage(storeKey, {
+const RecordsTable = ({ game, data, stats, useLiveDuration }) => {
+    const [storage, setStorage] = useLocalStorage(game, {
         order: 'asc', orderBy: 'track.name',
     });
 
@@ -341,6 +350,15 @@ const RecordsTable = ({ game, data, stats, useLiveDuration, storeKey }) => {
                                 </Tooltip>
                             </MinTableCell>
                             <MinTableCell colSpan={5}></MinTableCell>
+                        </TableRow>
+                    )}
+                    {stats.totalPoints > 0 && (
+                        <TableRow>
+                            <MinTableCell align="right">Total Points</MinTableCell>
+                            <MinTableCell>
+                                <span>{formatScore(stats.totalPoints, game, 'Stunts')}</span>
+                            </MinTableCell>
+                            <MinTableCell colSpan={3}></MinTableCell>
                         </TableRow>
                     )}
                 </TableBody>

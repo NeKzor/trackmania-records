@@ -15,8 +15,8 @@ import tmx from '../utils/tmx';
 
 const rows = [
     { id: 'track.name', sortable: false, label: 'Map', align: 'left' },
-    { id: 'score', sortable: false, label: 'Times', align: 'left' },
-    { id: 'delta', sortable: false, label: 'Timesave', align: 'left' },
+    { id: 'score', sortable: false, label: 'Times', label2: 'Scores', align: 'left' },
+    { id: 'delta', sortable: false, label: 'Timesave', label2: 'Improvement', align: 'left' },
     { id: 'user.name', sortable: false, label: 'Player', align: 'left' },
     { id: 'duration', sortable: false, label: 'Duration', align: 'left' },
     { id: 'date', sortable: false, label: 'Start', align: 'left' },
@@ -24,7 +24,7 @@ const rows = [
     { id: 'beatenBy.user.name', sortable: false, label: 'Beaten By', align: 'left' },
 ];
 
-const LongestDominationHead = ({ order, orderBy, onRequestSort }) => {
+const LongestDominationHead = ({ order, orderBy, onRequestSort, scoreType }) => {
     const createSortHandler = (prop1, prop2) => (event) => {
         onRequestSort(event, prop1, prop2);
     };
@@ -46,7 +46,7 @@ const LongestDominationHead = ({ order, orderBy, onRequestSort }) => {
                                     direction={order}
                                     onClick={createSortHandler(row.id, row.id2)}
                                 >
-                                    {row.label}
+                                    {scoreType === 'Stunts' && row.label2 ? row.label2 : row.label}
                                 </TableSortLabel>
                             </Tooltip>
                         )}
@@ -76,7 +76,7 @@ const noWrap = { whiteSpace: 'nowrap' };
 const minifiedStyle = { padding: '7px 0px 7px 16px' };
 const MinTableCell = (props) => <TableCell style={minifiedStyle} {...props} />;
 
-const RecordsTable = ({ game, data, useLiveDuration }) => {
+const RecordsTable = ({ game, data, scoreType }) => {
     const [{ order, orderBy, thenBy }, setState] = React.useState({ ...defaultState });
 
     const handleRequestSort = (_, prop1, prop2) => {
@@ -98,14 +98,16 @@ const RecordsTable = ({ game, data, useLiveDuration }) => {
     return (
         <div className={classes.root}>
             <Table size="small">
-                <LongestDominationHead order={order} orderBy={orderBy} onRequestSort={handleRequestSort} />
+                <LongestDominationHead
+                    order={order}
+                    orderBy={orderBy}
+                    onRequestSort={handleRequestSort}
+                    scoreType={scoreType}
+                />
                 <TableBody>
                     {stableSortSort(data, order, orderBy, thenBy).map((row) => (
                         <TableRow tabIndex={-1} key={row.replay}>
-                            <MinTableCell
-                                style={noWrap}
-                                align="left"
-                            >
+                            <MinTableCell style={noWrap} align="left">
                                 <Link
                                     color="inherit"
                                     href={tmxGame.trackUrl(row.track.id)}
@@ -116,10 +118,12 @@ const RecordsTable = ({ game, data, useLiveDuration }) => {
                                 </Link>
                             </MinTableCell>
                             <MinTableCell align="left" style={noWrap}>
-                                {formatScore(row.score)} → {formatScore(row.lastScore)}
+                                {formatScore(row.score, game, row.track.type)} →{' '}
+                                {formatScore(row.lastScore, game, row.track.type)}
                             </MinTableCell>
                             <MinTableCell align="left">
-                                -{formatScore(Math.abs(row.lastScore - row.score))}
+                                {row.track.type === 'Stunts' ? '+' : '-'}
+                                {formatScore(Math.abs(row.lastScore - row.score), game, row.track.type)}
                             </MinTableCell>
                             <MinTableCell style={noWrap} align="left">
                                 <Link
@@ -133,11 +137,7 @@ const RecordsTable = ({ game, data, useLiveDuration }) => {
                             </MinTableCell>
                             <MinTableCell align="left">
                                 <Tooltip title="in days" placement="bottom-end" enterDelay={300}>
-                                    {useLiveDuration && row.beatenBy.length === 0 ? (
-                                        <Moment style={noWrap} diff={row.date} unit="days"></Moment>
-                                    ) : (
-                                        <span>{row.duration}</span>
-                                    )}
+                                    <span>{row.duration}</span>
                                 </Tooltip>
                             </MinTableCell>
                             <MinTableCell align="left">

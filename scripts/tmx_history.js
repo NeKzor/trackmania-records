@@ -18,9 +18,7 @@ const tryParseJson = (text) => {
     return [];
 };
 
-module.exports = async (gameArgs, output, maxFetch = undefined) => {
-    const [gameName, supportsReplayHistory] = gameArgs;
-
+module.exports = async (gameName, output, maxFetch = undefined) => {
     if (!tmx.find((x) => x === gameName)) {
         throw new Error('Invalid game name.');
     }
@@ -30,7 +28,9 @@ module.exports = async (gameArgs, output, maxFetch = undefined) => {
     const apiRoute = (action, id) => `http://${gameName}.tm-exchange.com/apiget.aspx?action=${action}&id=${id}`;
 
     const game = [];
-    for (const campaign of importJson(__dirname + '/../games/' + gameName + '.json')) {
+    const gameCampaign = importJson(__dirname + '/../games/' + gameName + '.json');
+
+    for (const campaign of [gameCampaign[0], gameCampaign[gameCampaign.length - 1]]) {
         const tracks = [];
 
         let count = 0;
@@ -45,7 +45,7 @@ module.exports = async (gameArgs, output, maxFetch = undefined) => {
 
             const text = await res.text();
 
-            const document = (new JSDOM(text)).window.document;
+            const document = new JSDOM(text).window.document;
             const input = document.querySelector('#ctl00_ReplayData') || document.querySelector('#_ctl0_ReplayData');
 
             if (!input) {
@@ -60,10 +60,15 @@ module.exports = async (gameArgs, output, maxFetch = undefined) => {
             const wrs = [];
             let wr = undefined;
 
+            const isStunts = type === 'Stunts';
+            const wrCheck = isStunts ? (score, wr) => score >= wr : (score, wr) => score <= wr;
+
             for (const record of records) {
-                const score = record.ReplayTime;
-                if (wr === undefined || score <= wr) {
+                const score = isStunts ? record.ReplayScore : record.ReplayTime;
+
+                if (wr === undefined || wrCheck(score, wr)) {
                     wrs.push({
+                        id: record.ReplayId,
                         user: {
                             id: record.UserId,
                             name: record.LoginId,
@@ -86,7 +91,7 @@ module.exports = async (gameArgs, output, maxFetch = undefined) => {
                 id,
                 name,
                 type,
-                wrs: wrs.filter(x => x.score === wr),
+                wrs: wrs.filter((x) => x.score === wr),
                 history: wrs,
             });
 
@@ -97,11 +102,11 @@ module.exports = async (gameArgs, output, maxFetch = undefined) => {
 
         const totalTime = tracks
             .filter((t) => t.type !== 'Stunts')
-            .map((t) => t.wrs[0] ? t.wrs[0].score : 0)
+            .map((t) => (t.wrs[0] ? t.wrs[0].score : 0))
             .reduce((a, b) => a + b, 0);
         const totalPoints = tracks
             .filter((t) => t.type === 'Stunts')
-            .map((t) => t.wrs[0] ? t.wrs[0].score : 0)
+            .map((t) => (t.wrs[0] ? t.wrs[0].score : 0))
             .reduce((a, b) => a + b, 0);
 
         const users = tracks.map((t) => t.wrs.map((r) => r.user)).reduce((acc, val) => acc.concat(val), []);
@@ -140,18 +145,78 @@ module.exports = async (gameArgs, output, maxFetch = undefined) => {
     const ranks = ({ name, leaderboard, tracks }) => ({ name, leaderboard, ...generateRankings(tracks) });
     const stats = ({ name, tracks }) => ({ name, ...generateStats(tracks) });
 
+    //const game = JSON.parse(require('fs').readFileSync(`${output}/${gameName}/latest.json`, { encoding: 'utf-8' }));
+
     tryExportJson(`${output}/${gameName}/latest.json`, game, true, true);
+
+    if (game.length > 1) {
+        game.unshift({
+            name: 'Overall',
+            tracks: game.map((campaign) => campaign.tracks).flat(),
+        });
+    }
+
     tryExportJson(`${output}/${gameName}/ranks.json`, game.map(ranks), true, true);
     tryExportJson(`${output}/${gameName}/stats.json`, game.map(stats), true, true);
 };
 
 const generateRankings = (tracks) => {
+    const mapWrs = tracks
+        .map((track) => {
+            const beatenByWr =
+                track.type === 'Stunts'
+                    ? (wr) => (item) => item.score > wr.score
+                    : (wr) => (item) => item.score < wr.score;
+
+            track.history.forEach((wr) => (wr.id = wr.replay));
+            track.history.forEach((wr) => {
+                const beatenBy = track.history.find(beatenByWr);
+                wr.track = {
+                    ...track,
+                    wrs: undefined,
+                    history: undefined,
+                };
+                wr.beatenBy = beatenBy
+                    ? [
+                          {
+                              id: beatenBy.replay,
+                              date: beatenBy.date,
+                              user: { ...beatenBy.user },
+                              score: beatenBy.score,
+                          },
+                      ]
+                    : [];
+            });
+
+            return track.history;
+        })
+        .flat();
+
+    const getNextWr = (wr) => {
+        if (
+            wr.beatenBy.length > 0 &&
+            !wr.beatenBy.some(({ id }) => id === wr.id) &&
+            wr.beatenBy.some(({ user }) => user.id === wr.user.id)
+        ) {
+            const ids = wr.beatenBy.map(({ id }) => id);
+            const newWrs = mapWrs.filter((wr) => ids.some((id) => wr.id === id));
+            const newWr = newWrs.find(({ user }) => user.id === wr.user.id);
+
+            if (newWr) {
+                return getNextWr(newWr);
+            }
+        }
+
+        return wr;
+    };
+
     const createLeaderboard = (key) => {
+        const calculateExactDuration = key === 'history';
+
         const wrs = tracks.map((t) => (t[key].length > 0 ? t[key] : t.wrs)).flat();
+
         const users = tracks
-            .map((t) =>
-                (t[key].length > 0 ? t[key] : t.wrs).map(({ user, date }) => ({ ...user, date })),
-            )
+            .map((t) => (t[key].length > 0 ? t[key] : t.wrs).map(({ user, date }) => ({ ...user, date })))
             .flat();
 
         const frequency = users.reduce((count, user) => {
@@ -162,16 +227,28 @@ const generateRankings = (tracks) => {
         return Object.keys(frequency)
             .sort((a, b) => frequency[b] - frequency[a])
             .map((key) => {
-                const user = users.filter((u) => u.id.toString() === key).sort((a, b) => b.date.localeCompare(a.date))[0];
+                const user = users
+                    .filter((u) => u.id.toString() === key)
+                    .sort((a, b) => b.date.localeCompare(a.date))[0];
                 delete user.date;
+
+                const durationExact = wrs
+                    .filter((r) => r.user.id.toString() === key && r.duration)
+                    .map((r) => {
+                        if (!calculateExactDuration) {
+                            return r.duration;
+                        }
+
+                        const reignWr = getNextWr(r);
+                        const [beatenBy] = reignWr.beatenBy;
+                        return moment(beatenBy ? beatenBy.date : undefined).diff(moment(r.date), 'd');
+                    })
+                    .reduce((a, b) => a + b, 0);
 
                 return {
                     user,
                     wrs: frequency[key],
-                    duration: wrs
-                        .filter((r) => r.user.id.toString() === key && r.duration)
-                        .map((r) => r.duration)
-                        .reduce((a, b) => a + b, 0),
+                    duration: durationExact,
                 };
             });
     };
@@ -181,8 +258,7 @@ const generateRankings = (tracks) => {
 
     const users = tracks
         .map((t) => {
-            const all = (t.history.length > 0 ? t.history : t.wrs)
-                .map(({ user, date }) => ({ ...user, date }));
+            const all = (t.history.length > 0 ? t.history : t.wrs).map(({ user, date }) => ({ ...user, date }));
             const ids = [...new Set(all.map((user) => user.id))];
             return ids.map((id) => all.find((user) => user.id === id));
         })
@@ -213,6 +289,7 @@ const generateRankings = (tracks) => {
 const generateStats = (tracks) => {
     const mapWrs = tracks
         .map((track) => {
+            track.history.forEach((wr) => (wr.id = wr.replay));
             track.history.forEach((wr) => {
                 const beatenBy = track.history.find((item) => item.score < wr.score);
                 wr.track = {
@@ -220,14 +297,23 @@ const generateStats = (tracks) => {
                     wrs: undefined,
                     history: undefined,
                 };
-                wr.beatenBy = beatenBy ? [{ date: beatenBy.date, user: { ...beatenBy.user } }] : [];
+                wr.beatenBy = beatenBy
+                    ? [
+                          {
+                              id: beatenBy.replay,
+                              date: beatenBy.date,
+                              user: { ...beatenBy.user },
+                              score: beatenBy.score,
+                          },
+                      ]
+                    : [];
             });
 
             return track.history;
         })
         .flat();
 
-    const getNextDuration = (wr) => {
+    const getNextWr = (wr) => {
         if (
             wr.beatenBy.length > 0 &&
             !wr.beatenBy.some(({ id }) => id === wr.id) &&
@@ -239,43 +325,33 @@ const generateStats = (tracks) => {
 
             if (newWr) {
                 newWrs.forEach((newWr) => (newWr.excludeReign = true));
-                const [nextDuration, lastWr] = getNextDuration(newWr);
-                return [wr.duration + nextDuration, lastWr];
+                return getNextWr(newWr);
             }
         }
-
-        return [wr.duration, wr];
-    };
-
-    const regignDuration = (wr) => {
-        const [duration, lastWr] = getNextDuration(wr);
-
-        wr.reign = {
-            duration,
-            lastWr: {
-                ...lastWr,
-            },
-        };
 
         return wr;
     };
 
     const maxRows = 100;
+    const byTrackType = (trackType) => ({ track }) => track.type === trackType;
 
-    const largestImprovement = mapWrs
-        .sort((a, b) => (a.delta === b.delta ? 0 : a.delta < b.delta ? 1 : -1))
-        .slice(0, maxRows);
-    const longestLasting = mapWrs
-        .sort((a, b) => (a.duration === b.duration ? 0 : a.duration < b.duration ? 1 : -1))
-        .slice(0, maxRows);
+    const largestImprovement = mapWrs.sort((a, b) => (a.delta === b.delta ? 0 : a.delta < b.delta ? 1 : -1));
+    const longestLasting = mapWrs.sort((a, b) => (a.duration === b.duration ? 0 : a.duration < b.duration ? 1 : -1))
     const longestDomination = mapWrs
-        .map(regignDuration)
         .map((wr) => {
-            reignWr =
+            wr.reign = {
+                lastWr: {
+                    ...getNextWr(wr),
+                },
+            };
+
+            return wr;
+        })
+        .map((wr) => {
+            const reignWr =
                 !wr.excludeReign && wr.reign.lastWr
                     ? {
                           ...wr,
-                          duration: wr.reign.duration,
                           beatenBy: wr.reign.lastWr.beatenBy,
                           lastScore: wr.reign.lastWr.score,
                           excludeReign: undefined,
@@ -283,17 +359,34 @@ const generateStats = (tracks) => {
                       }
                     : null;
 
+            if (reignWr) {
+                const [beatenBy] = reignWr.beatenBy;
+                reignWr.duration = moment(beatenBy ? beatenBy.date : undefined).diff(moment(reignWr.date), 'd');
+            }
+
             delete wr.reign;
             delete wr.excludeReign;
 
             return reignWr;
         })
         .filter((wr) => wr)
-        .sort((a, b) => (a.duration === b.duration ? 0 : a.duration < b.duration ? 1 : -1))
-        .slice(0, maxRows);
+        .sort((a, b) => (a.duration === b.duration ? 0 : a.duration < b.duration ? 1 : -1));
 
-    return { largestImprovement, longestLasting, longestDomination };
+    return {
+        largestImprovement: [
+            ...largestImprovement.filter(byTrackType('Race')).slice(0, maxRows),
+            ...largestImprovement.filter(byTrackType('Stunts')).slice(0, maxRows),
+        ],
+        longestLasting: [
+            ...longestLasting.filter(byTrackType('Race')).slice(0, maxRows),
+            ...longestLasting.filter(byTrackType('Stunts')).slice(0, maxRows),
+        ],
+        longestDomination: [
+            ...longestDomination.filter(byTrackType('Race')).slice(0, maxRows),
+            ...longestDomination.filter(byTrackType('Stunts')).slice(0, maxRows),
+        ],
+    };
 };
 
-
-module.exports(['united'], require('path').join(__dirname, '/../api/'));
+//module.exports('tmnforever', require('path').join(__dirname, '/../api/'));
+//module.exports('united', require('path').join(__dirname, '/../api/'));
