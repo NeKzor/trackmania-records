@@ -23,14 +23,12 @@ module.exports = async (gameName, output, maxFetch = undefined) => {
         throw new Error('Invalid game name.');
     }
 
-    const day = moment().format('YYYY-MM-DD');
-
     const apiRoute = (action, id) => `http://${gameName}.tm-exchange.com/apiget.aspx?action=${action}&id=${id}`;
 
     const game = [];
     const gameCampaign = importJson(__dirname + '/../games/' + gameName + '.json');
 
-    for (const campaign of [gameCampaign[0], gameCampaign[gameCampaign.length - 1]]) {
+    for (const campaign of gameCampaign) {
         const tracks = [];
 
         let count = 0;
@@ -387,6 +385,3 @@ const generateStats = (tracks) => {
         ],
     };
 };
-
-//module.exports('tmnforever', require('path').join(__dirname, '/../api/'));
-//module.exports('united', require('path').join(__dirname, '/../api/'));
