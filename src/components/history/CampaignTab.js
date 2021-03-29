@@ -5,7 +5,7 @@ import Grid from '@material-ui/core/Grid';
 import LinearProgress from '@material-ui/core/LinearProgress';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
-import RankingsTable from '../RankingsTableTrackmania';
+import RankingsTable from '../RankingsTable';
 import RecordsTable from '../RecordsTableHistory';
 import RecordsChart from '../RecordsChart';
 import SimpleTitle from '../SimpleTitle';
