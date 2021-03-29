@@ -12,6 +12,7 @@ import ReplayView from './views/ReplayView';
 import NotFoundView from './views/NotFoundView';
 import AppState, { AppReducer } from './AppState';
 import TrackmaniaView from './views/TrackmaniaView';
+import TrackmaniaHistoryView from './views/TrackmaniaHistoryView';
 
 const useStyles = makeStyles((theme) => ({
     views: {
@@ -62,9 +63,11 @@ const App = () => {
                             <Redirect exact from="/tms" to="/sunrise" />
                             <Redirect exact from="/tmnf" to="/tmnforever" />
                             <Route exact path="/trackmania" component={TrackmaniaView} />
+                            <Route exact path="/tmnforever" component={TrackmaniaHistoryView} />
+                            <Route exact path="/united" component={TrackmaniaHistoryView} />
                             <Route
                                 exact
-                                path="/(nations|original|sunrise|tm2|tmnforever|tmwii|united)/:date?"
+                                path="/(nations|original|sunrise|tm2|tmwii)/:date?"
                                 component={GameView}
                             />
                             <Route exact path="/about" component={AboutView} />

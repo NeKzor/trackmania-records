@@ -19,31 +19,21 @@ import HistoryIcon from '@material-ui/icons/History';
 import WarningIcon from '@material-ui/icons/Warning';
 import { stableSort } from '../utils/stableSort';
 import { useLocalStorage, useRenders } from '../Hooks';
+import tmx from '../utils/tmx';
 import { formatScore, getDateDifferenceColor, getDateTimeDifferenceColor } from '../utils/tools';
 
-const rowsOfficial = [
+const rows = [
     { id: 'track.name', sortable: true, label: 'Track', align: 'left' },
     { id: 'score', sortable: true, label: 'Record', align: 'left' },
     { id: 'user.name', sortable: true, label: 'Player', align: 'left' },
-    { id: 'zone', sortable: true, label: 'Zone', align: 'left' },
     { id: 'date', sortable: true, label: 'Date', align: 'left' },
     { id: 'duration', sortable: true, label: 'Duration', align: 'left' },
 ];
 
-const rowsTOTD = [
-    { id: 'track.monthDay', sortable: true, label: 'Day', align: 'left' },
-    { id: 'track.name', sortable: true, label: 'Track', align: 'left' },
-    { id: 'score', sortable: true, label: 'Record', align: 'left' },
-    { id: 'user.name', sortable: true, label: 'Player', align: 'left' },
-    { id: 'zone', sortable: true, label: 'Zone', align: 'left' },
-];
-
-const RecordsTableHead = ({ order, orderBy, onRequestSort, official }) => {
+const RecordsTableHead = ({ order, orderBy, onRequestSort }) => {
     const createSortHandler = (property) => (event) => {
         onRequestSort(event, property);
     };
-
-    const rows = official ? rowsOfficial : rowsTOTD;
 
     return (
         <TableHead>
@@ -92,12 +82,8 @@ const noWrap = { whiteSpace: 'nowrap' };
 const minifiedStyle = { padding: '7px 0px 7px 16px' };
 const MinTableCell = (props) => <TableCell style={minifiedStyle} {...props} />;
 
-const linkToTrackmaniaIoLeaderboard = (track) => {
-    return `https://trackmania.io/#/leaderboard/${encodeURIComponent(track.id)}`;
-};
-
-const linkToTrackmaniaIoProfile = (user) => {
-    return `https://trackmania.io/#/player/${encodeURIComponent(user.id)}`;
+const linkToExchange = (trac) => {
+    return '';
 };
 
 const useRowStyles = makeStyles({
@@ -108,60 +94,44 @@ const useRowStyles = makeStyles({
     },
 });
 
-const RecordsHistoryRow = ({ wr, official }) => {
-    const score = formatScore(wr.score, 'tm2');
-    const delta = wr.delta !== 0 ? formatScore(wr.delta, 'tm2') : null;
+const RecordsHistoryRow = ({ game, wr, trackType }) => {
+    const score = formatScore(wr.score, game, trackType);
+    const delta = wr.delta !== 0 ? formatScore(wr.delta, game, trackType) : null;
+    const deltaSign = trackType === 'Stunts' ? '+' : '-';
+
+    const tmxGame = tmx(game);
 
     return (
         <TableRow tabIndex={-1}>
-            {official && (
-                <MinTableCell align="left">
-                    <Tooltip title={<Moment format="HH:mm">{wr.date}</Moment>} placement="bottom-end" enterDelay={300}>
-                        <Moment style={{ color: getDateDifferenceColor(wr.date), ...noWrap }} format="YYYY-MM-DD">
-                            {wr.date}
-                        </Moment>
-                    </Tooltip>
-                </MinTableCell>
-            )}
-            {!official && (
-                <MinTableCell align="left">
-                    <Tooltip title={wr.setAfter} placement="bottom-end" enterDelay={300}>
-                        <Moment style={{ color: getDateTimeDifferenceColor(wr.pastMinutes), ...noWrap }} format="HH:mm">
-                            {wr.date}
-                        </Moment>
-                    </Tooltip>
-                </MinTableCell>
-            )}
+            <MinTableCell align="left">
+                <Tooltip title={<Moment format="HH:mm">{wr.date}</Moment>} placement="bottom-end" enterDelay={300}>
+                    <Moment style={{ color: getDateDifferenceColor(wr.date), ...noWrap }} format="YYYY-MM-DD">
+                        {wr.date}
+                    </Moment>
+                </Tooltip>
+            </MinTableCell>
             <MinTableCell align="left">
                 {score}
-                {wr.note && (
-                    <Tooltip title={wr.note} placement="bottom-end" enterDelay={300}>
-                        <span>
-                            <IconButton size="small" disabled>
-                                <WarningIcon fontSize="inherit" />
-                            </IconButton>
-                        </span>
-                    </Tooltip>
-                )}
             </MinTableCell>
-            <MinTableCell align="left">{delta ? '-' + delta : ''}</MinTableCell>
+            <MinTableCell align="left">{delta ? deltaSign + delta : ''}</MinTableCell>
             <MinTableCell align="left">
-                <Link color="inherit" href={linkToTrackmaniaIoProfile(wr.user)} rel="noreferrer" target="_blank">
+                <Link
+                    style={noWrap}
+                    color="inherit"
+                    href={tmxGame.userUrl(wr.user.id)}
+                    rel="noreferrer"
+                    target="_blank"
+                >
                     {wr.user.name}
                 </Link>
             </MinTableCell>
             <MinTableCell align="left">
-                <Tooltip title={wr.user.zone.map((zone) => zone.name).join(' | ')} placement="bottom" enterDelay={300}>
-                    <span>{wr.user.zone[2].name}</span>
-                </Tooltip>
-            </MinTableCell>
-            <MinTableCell align="left">
-                <Tooltip title="Download Ghost" placement="bottom" enterDelay={300}>
+                <Tooltip title="Download Replay" placement="bottom" enterDelay={300}>
                     <IconButton
                         size="small"
                         style={noWrap}
                         color="inherit"
-                        href={'https://prod.trackmania.core.nadeo.online/storageObjects/' + wr.replay}
+                        href={tmxGame.replayUrl(wr.replay)}
                         rel="noreferrer"
                         target="_blank"
                     >
@@ -173,28 +143,25 @@ const RecordsHistoryRow = ({ wr, official }) => {
     );
 };
 
-const RecordsRow = ({ wr, official, orderBy, useLiveDuration, history, onClickHistory }) => {
-    const score = formatScore(wr.score, 'tm2');
-    const delta = wr.delta !== 0 ? formatScore(wr.delta, 'tm2') : null;
+const RecordsRow = ({ game, wr, orderBy, useLiveDuration, history, onClickHistory }) => {
+    const score = formatScore(wr.score, game, wr.track.type);
+    const delta = wr.delta !== 0 ? formatScore(wr.delta, game, wr.track.type) : null;
+    const deltaSign = wr.track.type === 'Stunts' ? '+' : '-';
 
     const classes = useRowStyles();
 
     const open = history === wr.track.id;
-    const defaultSort = orderBy === 'track.monthDay' || orderBy === 'track.name';
+    const defaultSort = orderBy === 'track.name';
+    const tmxGame = tmx(game);
 
     return (
         <>
             <TableRow tabIndex={-1}>
-                {!official && (wr.track.isFirst || !defaultSort) && (
-                    <MinTableCell align="left" rowSpan={defaultSort ? wr.track.records : 1}>
-                        {wr.track.monthDay}
-                    </MinTableCell>
-                )}
                 {(wr.track.isFirst || !defaultSort) && (
                     <MinTableCell style={noWrap} rowSpan={defaultSort ? wr.track.records : 1} align="left">
                         <Link
                             color="inherit"
-                            href={linkToTrackmaniaIoLeaderboard(wr.track)}
+                            href={tmxGame.trackUrl(wr.track.id)}
                             rel="noreferrer"
                             target="_blank"
                         >
@@ -203,63 +170,49 @@ const RecordsRow = ({ wr, official, orderBy, useLiveDuration, history, onClickHi
                     </MinTableCell>
                 )}
                 <MinTableCell align="left">
-                    {official && delta && (
-                        <Tooltip title={<span>-{delta} to former record</span>} placement="bottom" enterDelay={300}>
+                    {delta && (
+                        <Tooltip title={<span>{deltaSign}{delta} to former record</span>} placement="bottom" enterDelay={300}>
                             <span>{score}</span>
                         </Tooltip>
                     )}
-                    {official && !delta && <span>{score}</span>}
-                    {!official && delta && (
-                        <Tooltip title={<span>-{delta} to former record</span>} placement="bottom" enterDelay={300}>
-                            <span>{score}</span>
-                        </Tooltip>
-                    )}
-                    {!official && !delta && <span>{score}</span>}
+                    {!delta && <span>{score}</span>}
                 </MinTableCell>
                 <MinTableCell style={noWrap} align="left">
-                    <Link color="inherit" href={linkToTrackmaniaIoProfile(wr.user)} rel="noreferrer" target="_blank">
+                    <Link
+                        color="inherit"
+                        href={tmxGame.userUrl(wr.user.id)}
+                        rel="noreferrer"
+                        target="_blank"
+                    >
                         {wr.user.name}
                     </Link>
                 </MinTableCell>
-                <MinTableCell style={noWrap} align="left">
-                    <Tooltip
-                        title={wr.user.zone.map((zone) => zone.name).join(' | ')}
-                        placement="bottom"
-                        enterDelay={300}
-                    >
-                        <span>{wr.user.zone[2].name}</span>
+                <MinTableCell align="left">
+                    <Tooltip title={<Moment fromNow>{wr.date}</Moment>} placement="bottom-end" enterDelay={300}>
+                        <Moment
+                            style={{ color: getDateDifferenceColor(wr.date), ...noWrap }}
+                            format="YYYY-MM-DD"
+                        >
+                            {wr.date}
+                        </Moment>
                     </Tooltip>
                 </MinTableCell>
-                {official && (
-                    <>
-                        <MinTableCell align="left">
-                            <Tooltip title={<Moment fromNow>{wr.date}</Moment>} placement="bottom-end" enterDelay={300}>
-                                <Moment
-                                    style={{ color: getDateDifferenceColor(wr.date), ...noWrap }}
-                                    format="YYYY-MM-DD"
-                                >
-                                    {wr.date}
-                                </Moment>
-                            </Tooltip>
-                        </MinTableCell>
-                        <MinTableCell align="left">
-                            <Tooltip title="in days" placement="bottom-end" enterDelay={300}>
-                                {useLiveDuration ? (
-                                    <Moment style={noWrap} diff={wr.date} unit="days"></Moment>
-                                ) : (
-                                    <span>{wr.duration}</span>
-                                )}
-                            </Tooltip>
-                        </MinTableCell>
-                    </>
-                )}
+                <MinTableCell align="left">
+                    <Tooltip title="in days" placement="bottom-end" enterDelay={300}>
+                        {useLiveDuration ? (
+                            <Moment style={noWrap} diff={wr.date} unit="days"></Moment>
+                        ) : (
+                            <span>{wr.duration}</span>
+                        )}
+                    </Tooltip>
+                </MinTableCell>
                 <MinTableCell style={noWrap} align="left">
-                    <Tooltip title="Download Ghost" placement="bottom" enterDelay={300}>
+                    <Tooltip title="Download Replay" placement="bottom" enterDelay={300}>
                         <IconButton
                             size="small"
                             style={noWrap}
                             color="inherit"
-                            href={'https://prod.trackmania.core.nadeo.online/storageObjects/' + wr.replay}
+                            href={tmxGame.replayUrl(wr.replay)}
                             rel="noreferrer"
                             target="_blank"
                         >
@@ -289,16 +242,22 @@ const RecordsRow = ({ wr, official, orderBy, useLiveDuration, history, onClickHi
                                 <Table size="small" aria-label="purchases">
                                     <TableHead>
                                         <TableRow>
-                                            <MinTableCell>{official ? 'Date' : 'Time'}</MinTableCell>
+                                            <MinTableCell>Date</MinTableCell>
                                             <MinTableCell>Record</MinTableCell>
-                                            <MinTableCell>Timesave</MinTableCell>
-                                            <MinTableCell>Player</MinTableCell>
-                                            <MinTableCell colSpan={2}>Zone</MinTableCell>
+                                            <MinTableCell>
+                                                {wr.track.type === 'Stunts' ? 'Improvement' : 'Timesave'}
+                                            </MinTableCell>
+                                            <MinTableCell colSpan={2}>Player</MinTableCell>
                                         </TableRow>
                                     </TableHead>
                                     <TableBody>
                                         {wr.track.history.map((historyWr, idx) => {
-                                            return <RecordsHistoryRow wr={historyWr} official={official} key={idx} />;
+                                            return <RecordsHistoryRow
+                                                game={game}
+                                                wr={historyWr}
+                                                trackType={wr.track.type}
+                                                key={idx}
+                                            />;
                                         })}
                                     </TableBody>
                                 </Table>
@@ -311,24 +270,19 @@ const RecordsRow = ({ wr, official, orderBy, useLiveDuration, history, onClickHi
     );
 };
 
-const RecordsTable = ({ data, stats, official, useLiveDuration }) => {
-    const [storage, setStorage] = useLocalStorage('tm2020', {
-        official: { order: 'asc', orderBy: 'track.name' },
-        totd: { order: 'asc', orderBy: 'track.monthDay' },
+const RecordsTable = ({ game, data, stats, useLiveDuration }) => {
+    const [storage, setStorage] = useLocalStorage(game, {
+        order: 'asc', orderBy: 'track.name',
     });
 
-    const [{ order, rowsPerPage, page, ...state }, setState] = React.useState(defaultState);
+    const [{ order, rowsPerPage, page, orderBy }, setState] = React.useState(defaultState);
     const [history, setHistory] = React.useState(null);
-
-    let { orderBy } = state;
-    orderBy = official ? storage.official.orderBy : storage.totd.orderBy;
-    orderBy = official && orderBy === 'track.monthDay' ? 'track.name' : orderBy;
 
     const handleRequestSort = (_, property) => {
         const orderBy = property;
         setState((state) => {
             const order = state.orderBy === orderBy && state.order === 'desc' ? 'asc' : 'desc';
-            setStorage({ ...storage, [official ? 'official' : 'totd']: { order, orderBy } });
+            setStorage({ ...storage, order, orderBy });
 
             return {
                 ...state,
@@ -339,8 +293,7 @@ const RecordsTable = ({ data, stats, official, useLiveDuration }) => {
     };
 
     React.useEffect(() => {
-        const savedState = storage[official ? 'official' : 'totd'];
-        setState((state) => ({ ...state, order: savedState.order, orderBy: savedState.orderBy }));
+        setState((state) => ({ ...state, order: storage.order, orderBy: storage.orderBy }));
     }, [data]);
 
     const onClickHistory = React.useCallback(
@@ -363,7 +316,6 @@ const RecordsTable = ({ data, stats, official, useLiveDuration }) => {
                     order={order}
                     orderBy={orderBy}
                     onRequestSort={handleRequestSort}
-                    official={official}
                 />
                 <TableBody>
                     {stableSort(data, order, orderBy)
@@ -371,8 +323,8 @@ const RecordsTable = ({ data, stats, official, useLiveDuration }) => {
                         .map((wr, idx) => {
                             return (
                                 <RecordsRow
+                                    game={game}
                                     wr={wr}
-                                    official={official}
                                     orderBy={orderBy}
                                     useLiveDuration={useLiveDuration}
                                     history={history}
@@ -385,7 +337,7 @@ const RecordsTable = ({ data, stats, official, useLiveDuration }) => {
                 <TableBody>
                     {stats.totalTime > 0 && (
                         <TableRow>
-                            <MinTableCell align="right" colSpan={official ? 1 : 2}>
+                            <MinTableCell align="right">
                                 Total Time
                             </MinTableCell>
                             <MinTableCell>
@@ -394,10 +346,19 @@ const RecordsTable = ({ data, stats, official, useLiveDuration }) => {
                                     placement="bottom-end"
                                     enterDelay={300}
                                 >
-                                    <span>{formatScore(stats.totalTime, 'tm2')}</span>
+                                    <span>{formatScore(stats.totalTime)}</span>
                                 </Tooltip>
                             </MinTableCell>
-                            <MinTableCell colSpan={official ? 5 : 3}></MinTableCell>
+                            <MinTableCell colSpan={5}></MinTableCell>
+                        </TableRow>
+                    )}
+                    {stats.totalPoints > 0 && (
+                        <TableRow>
+                            <MinTableCell align="right">Total Points</MinTableCell>
+                            <MinTableCell>
+                                <span>{formatScore(stats.totalPoints, game, 'Stunts')}</span>
+                            </MinTableCell>
+                            <MinTableCell colSpan={3}></MinTableCell>
                         </TableRow>
                     )}
                 </TableBody>

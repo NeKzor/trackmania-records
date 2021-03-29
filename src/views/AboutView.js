@@ -114,12 +114,10 @@ const AboutView = () => {
                 </Typography>
                 <br />
                 <Typography variant="body1">
-                    This web app mirrors campaign world records of many Trackmania games. Data is mainly provided by
-                    Trackmania Exchange but also by speedrun.com.
+                    The largest mirror for campaign world records of many Trackmania games
                 </Typography>
                 <Typography variant="body1">
-                    Additionally it ranks players based on how many world records they hold and how long their records
-                    have been lasting.
+                    We list, rank and compare players who set the fastest and best runs.
                 </Typography>
 
                 <Padding />
@@ -127,6 +125,9 @@ const AboutView = () => {
                 <Typography variant="h5">Next Update</Typography>
                 <br />
                 {nextUpdate}
+                <br />
+                <br />
+                For Trackmania we update every 15 minutes, for everything else once in 24 hours.
 
                 <Padding />
 
@@ -216,9 +217,9 @@ const AboutView = () => {
 
                 <Padding />
 
-                <Typography variant="h5">Credits</Typography>
+                <Typography variant="h5">Sources</Typography>
                 <br />
-                <Link rel="noopener" href="http://www.tm-exchange.com">
+                <Link rel="noopener" href="https://www.tm-exchange.com">
                     tm-exchange.com
                 </Link>
                 <br />
@@ -230,9 +231,8 @@ const AboutView = () => {
                     speedrun.com/tmwii
                 </Link>
                 <br />
-                <Link rel="noopener" href="https://github.com/jonese1234/Trackmania-Leaderboard">
-                    jonese1234/Trackmania-Leaderboard
-                </Link>
+                live-services.trackmania.nadeo.live
+
             </Paper>
         </ViewContent>
     );

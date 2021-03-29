@@ -7,8 +7,6 @@ const config = { headers: { 'User-Agent': 'trackmania-records-v1' } };
 const baseApi = 'https://api.mania-exchange.com';
 
 module.exports = async (output, maxFetch = undefined) => {
-    const day = moment().format('YYYY-MM-DD');
-
     let game = [];
     for (let campaign of importJson(__dirname + '/../games/tm2.json')) {
         let tracks = [];
@@ -93,6 +91,5 @@ module.exports = async (output, maxFetch = undefined) => {
     tryMakeDir(output);
     tryMakeDir(output + '/tm2');
 
-    tryExportJson(`${output}/tm2/${day}.json`, game);
     tryExportJson(`${output}/tm2/latest.json`, game, true);
 };

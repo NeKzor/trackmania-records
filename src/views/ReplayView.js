@@ -28,6 +28,7 @@ const defaultReplay = {
 const ReplayView = () => {
     const isMounted = useIsMounted();
     const theme = useTheme();
+    const file = React.useRef(null);
 
     const [replay, setReplay] = React.useState(defaultReplay);
     const [parseGhost, setParseGhost] = React.useState(true);
@@ -120,13 +121,13 @@ const ReplayView = () => {
     };
 
     React.useEffect(() => {
-        document.querySelector('#file').addEventListener('change', handleChange);
-        return () => document.querySelector('#file').removeEventListener('change', handleChange);
-    }, [handleChange]);
+        file.current && file.current.addEventListener('change', handleChange);
+        return () => file.current && file.current.removeEventListener('change', handleChange);
+    }, [file, handleChange]);
 
-    const openFile = () => {
-        document.querySelector('#file').click();
-    };
+    const openFile = React.useCallback(() => {
+        file.current.click();
+    }, [file]);
 
     return (
         <ViewContent>
@@ -134,7 +135,7 @@ const ReplayView = () => {
                 <Button variant="contained" color="primary" disableElevation onClick={openFile}>
                     Open file
                 </Button>
-                <input type="file" id="file" style={{ display: 'none' }} />
+                <input type="file" ref={file} style={{ display: 'none' }} />
                 <FormControlLabel
                     style={{ marginLeft: '20px' }}
                     control={<Checkbox color="primary" checked={parseGhost} onChange={handleParseGhost} />}
