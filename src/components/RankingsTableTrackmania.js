@@ -1,5 +1,6 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
+import Link from '@material-ui/core/Link';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
@@ -73,6 +74,10 @@ const defaultState = {
 const minifiedStyle = { padding: '7px 0px 7px 16px' };
 const MinTableCell = (props) => <TableCell style={minifiedStyle} {...props} />;
 
+const linkToTrackmaniaIoProfile = (user) => {
+    return `https://trackmania.io/#/player/${encodeURIComponent(user.id)}`;
+};
+
 const RecordsTable = ({ data, hasDuration }) => {
     const [{ order, orderBy, thenBy }, setState] = React.useState(defaultState);
 
@@ -103,16 +108,22 @@ const RecordsTable = ({ data, hasDuration }) => {
                     hasDuration={hasDuration}
                 />
                 <TableBody>
-                    {(hasDuration ? stableSortSort : stableSort)(data, order, orderBy, thenBy)
-                        .map((row) => (
-                            <TableRow tabIndex={-1} key={row.user.name}>
-                                <MinTableCell align="left">{row.user.name}</MinTableCell>
-                                <MinTableCell align="left">{row.wrs}</MinTableCell>
-                                {hasDuration && (
-                                    <MinTableCell align="left">{row.duration}</MinTableCell>
-                                )}
-                            </TableRow>
-                        ))}
+                    {(hasDuration ? stableSortSort : stableSort)(data, order, orderBy, thenBy).map((row) => (
+                        <TableRow tabIndex={-1} key={row.user.name}>
+                            <MinTableCell align="left">
+                                <Link
+                                    color="inherit"
+                                    href={linkToTrackmaniaIoProfile(row.user)}
+                                    rel="noreferrer"
+                                    target="_blank"
+                                >
+                                    {row.user.name}
+                                </Link>
+                            </MinTableCell>
+                            <MinTableCell align="left">{row.wrs}</MinTableCell>
+                            {hasDuration && <MinTableCell align="left">{row.duration}</MinTableCell>}
+                        </TableRow>
+                    ))}
                 </TableBody>
             </Table>
         </div>

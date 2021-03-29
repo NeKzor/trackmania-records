@@ -17,7 +17,7 @@ const TrackmaniaView = ({ match }) => {
     const [campaign, setCampaign] = React.useState(getInitialValue(tab === 0));
     const [year, setYear] = React.useState(moment().year());
 
-    const page = match.params[0];
+    const page = match.path;
 
     React.useEffect(() => {
         setTab(0);

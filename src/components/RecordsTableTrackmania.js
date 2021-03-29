@@ -92,14 +92,12 @@ const noWrap = { whiteSpace: 'nowrap' };
 const minifiedStyle = { padding: '7px 0px 7px 16px' };
 const MinTableCell = (props) => <TableCell style={minifiedStyle} {...props} />;
 
-const linkToExchange = (track, isOfficial) => {
-    const ubisoftNadeo = isOfficial ? '&authorId=21' : '';
-    return `https://trackmania.exchange/mapsearch2?trackname=${encodeURIComponent(track.name)}${ubisoftNadeo}`;
+const linkToTrackmaniaIoLeaderboard = (track) => {
+    return `https://trackmania.io/#/leaderboard/${encodeURIComponent(track.id)}`;
 };
 
-const linkToLeaderboard = (trackName) => {
-    const [season, track] = trackName.name.split(' - ');
-    return `https://nekz.me/trackmania/#/${season.replace(' ', '').toLowerCase()}/${parseInt(track, 10)}`;
+const linkToTrackmaniaIoProfile = (user) => {
+    return `https://trackmania.io/#/player/${encodeURIComponent(user.id)}`;
 };
 
 const useRowStyles = makeStyles({
@@ -147,7 +145,11 @@ const RecordsHistoryRow = ({ wr, official }) => {
                 )}
             </MinTableCell>
             <MinTableCell align="left">{delta ? '-' + delta : ''}</MinTableCell>
-            <MinTableCell align="left">{wr.user.name}</MinTableCell>
+            <MinTableCell align="left">
+                <Link color="inherit" href={linkToTrackmaniaIoProfile(wr.user)} rel="noreferrer" target="_blank">
+                    {wr.user.name}
+                </Link>
+            </MinTableCell>
             <MinTableCell align="left">
                 <Tooltip title={wr.user.zone.map((zone) => zone.name).join(' | ')} placement="bottom" enterDelay={300}>
                     <span>{wr.user.zone[2].name}</span>
@@ -192,7 +194,7 @@ const RecordsRow = ({ wr, official, orderBy, useLiveDuration, history, onClickHi
                     <MinTableCell style={noWrap} rowSpan={defaultSort ? wr.track.records : 1} align="left">
                         <Link
                             color="inherit"
-                            href={linkToExchange(wr.track, official)}
+                            href={linkToTrackmaniaIoLeaderboard(wr.track)}
                             rel="noreferrer"
                             target="_blank"
                         >
@@ -214,7 +216,11 @@ const RecordsRow = ({ wr, official, orderBy, useLiveDuration, history, onClickHi
                     )}
                     {!official && !delta && <span>{score}</span>}
                 </MinTableCell>
-                <MinTableCell style={noWrap} align="left">{wr.user.name}</MinTableCell>
+                <MinTableCell style={noWrap} align="left">
+                    <Link color="inherit" href={linkToTrackmaniaIoProfile(wr.user)} rel="noreferrer" target="_blank">
+                        {wr.user.name}
+                    </Link>
+                </MinTableCell>
                 <MinTableCell style={noWrap} align="left">
                     <Tooltip
                         title={wr.user.zone.map((zone) => zone.name).join(' | ')}
