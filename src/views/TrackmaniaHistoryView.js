@@ -15,7 +15,7 @@ import StatisticsTab from '../components/history/StatisticsTab';
 const TrackmaniaHistoryView = ({ match }) => {
     const [tab, setTab] = React.useState(0);
 
-    const page = match.params[0];
+    const page = match.path;
 
     React.useEffect(() => {
         setTab(0);

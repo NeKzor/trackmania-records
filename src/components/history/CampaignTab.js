@@ -30,14 +30,7 @@ const CampaignTab = ({ gameName }) => {
 
     const [game, setGame] = React.useState(undefined);
     const [campaignName, setCampaign] = React.useState(undefined);
-    const [rankingsType, setRankingsType] = React.useState('leaderboard');
-
-    const onChangeRankingsType = React.useCallback(
-        (event) => {
-            setRankingsType(event.target.value);
-        },
-        [setRankingsType],
-    );
+    const [rankingsType] = React.useState('leaderboard');
 
     const onChangeCampaign = React.useCallback(
         (event) => {
@@ -90,7 +83,7 @@ const CampaignTab = ({ gameName }) => {
                     setGame(null);
                 }
             });
-    }, [isMounted, setCampaign, setGame]);
+    }, [isMounted, gameName, setCampaign, setGame]);
 
     const classes = useStyles();
 
@@ -125,14 +118,6 @@ const CampaignTab = ({ gameName }) => {
                             />
                         </Grid>
                         <Grid item xs={12} className={classes.padTop}>
-                            {/* <FormControl className={classes.formControl}>
-                                <InputLabel>Rankings Type</InputLabel>
-                                <Select value={rankingsType} onChange={onChangeRankingsType}>
-                                    <MenuItem value={'leaderboard'}>Live</MenuItem>
-                                    <MenuItem value={'uniqueLeaderboard'}>Unique</MenuItem>
-                                    <MenuItem value={'historyLeaderboard'}>Total</MenuItem>
-                                </Select>
-                            </FormControl> */}
                             <Grid container direction="row" justify="center" alignContent="center">
                                 <Grid item xs={12} md={6}>
                                     <RankingsTable
