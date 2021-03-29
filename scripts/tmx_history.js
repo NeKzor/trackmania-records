@@ -1,7 +1,7 @@
 const { JSDOM } = require('jsdom');
 const moment = require('moment');
 const fetch = require('node-fetch');
-const { delay, importJson, log, tryExportJson, tryMakeDir } = require('./utils');
+const { importJson, log, tryExportJson, tryMakeDir } = require('./utils');
 
 const tmx = ['tmnforever', 'united', 'nations', 'sunrise', 'original'];
 
@@ -91,8 +91,6 @@ module.exports = async (gameName, output, maxFetch = undefined) => {
             });
 
             if (maxFetch !== undefined && count === maxFetch) break;
-
-            //await delay(1000);
         }
 
         const totalTime = tracks
@@ -139,8 +137,6 @@ module.exports = async (gameName, output, maxFetch = undefined) => {
 
     const ranks = ({ name, leaderboard, tracks }) => ({ name, leaderboard, ...generateRankings(tracks) });
     const stats = ({ name, tracks }) => ({ name, ...generateStats(tracks) });
-
-    //const game = JSON.parse(require('fs').readFileSync(`${output}/${gameName}/latest.json`, { encoding: 'utf-8' }));
 
     tryExportJson(`${output}/${gameName}/latest.json`, game, true, true);
 

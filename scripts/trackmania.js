@@ -181,7 +181,7 @@ const main = async (outputDir, snapshot = true) => {
         discord.client.destroy();
         cleanup();
 
-        throw error;
+        log.error(error);
     } finally {
         if (discord) {
             discord.client.destroy();
@@ -382,6 +382,7 @@ const resolveRecords = async (seasonUid, mapUid, mapId, latestCampaign, isTraini
             if (!inHistory) {
                 history.push(wr);
                 log.info('NEW RECORD', wr.user.name, wr.score);
+                console.dir(wr, { depth: 6 });
 
                 const data = { wr, track: { name: trackName } };
                 for (const integration of [discord, twitter]) {
@@ -467,7 +468,7 @@ const generateRankings = (tracks) => {
                     const user = users.filter((u) => u.id === key).sort((a, b) => b.date.localeCompare(a.date))[0];
                     delete user.date;
 
-                    const durationExact = wrs
+                    const durationExact = mapWrs
                         .filter((r) => r.user.id === key && r.duration)
                         .map((r) => {
                             if (!calculateExactDuration) {
