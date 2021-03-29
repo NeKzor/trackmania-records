@@ -164,10 +164,24 @@ const RecordsHistoryRow = ({ wr, official }) => {
                         href={'https://prod.trackmania.core.nadeo.online/storageObjects/' + wr.replay}
                         rel="noreferrer"
                         target="_blank"
+                        disabled={!wr.replay}
                     >
                         <SaveAltIcon fontSize="inherit" />
                     </IconButton>
                 </Tooltip>
+                {/* {wr.internal_note && (
+                    <Tooltip
+                        title={wr.internal_note}
+                        placement="bottom-end"
+                        enterDelay={300}
+                    >
+                        <span>
+                            <IconButton size="small" disabled>
+                                <WarningIcon fontSize="inherit" />
+                            </IconButton>
+                        </span>
+                    </Tooltip>
+                )} */}
             </MinTableCell>
         </TableRow>
     );
