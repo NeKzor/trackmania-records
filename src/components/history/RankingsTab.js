@@ -8,7 +8,7 @@ import MenuItem from '@material-ui/core/MenuItem';
 import { makeStyles } from '@material-ui/core/styles';
 import RecordsChart from '../RecordsChart';
 import UniqueRecordsChart from '../UniqueRecordsChart';
-import RankingsTable from '../RankingsTable';
+import RankingsTable from '../RankingsTableTrackmania';
 import SimpleTitle from '../SimpleTitle';
 import Api from '../../Api';
 import { useIsMounted } from '../../Hooks';
