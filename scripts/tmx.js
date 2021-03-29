@@ -11,8 +11,6 @@ module.exports = async (gameName, output, maxFetch = undefined) => {
         throw new Error('Invalid game name.');
     }
 
-    const day = moment().format('YYYY-MM-DD');
-
     const apiRoute = (action, id) => `http://${gameName}.tm-exchange.com/apiget.aspx?action=${action}&id=${id}`;
 
     let game = [];
@@ -99,6 +97,5 @@ module.exports = async (gameName, output, maxFetch = undefined) => {
     tryMakeDir(output);
     tryMakeDir(`${output}/${gameName}`);
 
-    tryExportJson(`${output}/${gameName}/${day}.json`, game);
     tryExportJson(`${output}/${gameName}/latest.json`, game, true);
 };

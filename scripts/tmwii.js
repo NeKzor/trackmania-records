@@ -33,8 +33,6 @@ const resolveUser = async (id) => {
 };
 
 const main = async (output, maxFetch = undefined) => {
-    const day = moment().format('YYYY-MM-DD');
-
     const { categories, levels } = importJson(__dirname + '/../games/tmwii.json');
 
     const game = [];
@@ -110,7 +108,6 @@ const main = async (output, maxFetch = undefined) => {
     tryMakeDir(output);
     tryMakeDir(output + '/tmwii');
 
-    tryExportJson(`${output}/tmwii/${day}.json`, game);
     tryExportJson(`${output}/tmwii/latest.json`, game, true);
 };
 
