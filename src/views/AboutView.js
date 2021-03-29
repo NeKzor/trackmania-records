@@ -114,7 +114,7 @@ const AboutView = () => {
                 </Typography>
                 <br />
                 <Typography variant="body1">
-                    The largest mirror for campaign world records of many Trackmania games
+                    The largest mirror for campaign world records of many Trackmania games.
                 </Typography>
                 <Typography variant="body1">
                     We list, rank and compare players who set the fastest and best runs.
@@ -127,7 +127,7 @@ const AboutView = () => {
                 {nextUpdate}
                 <br />
                 <br />
-                For Trackmania we update every 15 minutes, for everything else once in 24 hours.
+                For Trackmania we scan every 15 minutes, for everything else every 24 hours.
 
                 <Padding />
 
