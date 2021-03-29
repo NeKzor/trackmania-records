@@ -58,7 +58,7 @@ const main = async (output, maxFetch = undefined) => {
 
                 wrs.push({
                     user: await resolveUser(run.players[0].id),
-                    score: Math.round(run.times.ingame_t * 1000),
+                    score: Math.round(run.times.primary_t * 1000),
                     date: run.status['verify-date'],
                     duration: moment().diff(run.status['verify-date'], 'd'),
                     media: run.videos.links[0].uri,
@@ -115,3 +115,5 @@ const main = async (output, maxFetch = undefined) => {
 };
 
 module.exports = main;
+
+main(__dirname + '/../api/');
