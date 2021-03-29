@@ -154,32 +154,35 @@ module.exports = async (gameName, output, maxFetch = undefined) => {
 const generateRankings = (tracks) => {
     const mapWrs = tracks
         .map((track) => {
-            const beatenByWr =
-                track.type === 'Stunts'
-                    ? (wr) => (item) => item.score > wr.score
-                    : (wr) => (item) => item.score < wr.score;
+            const isStuntTrack = track.type === 'Stunts';
 
-            track.history.forEach((wr) => (wr.id = wr.replay));
-            track.history.forEach((wr) => {
-                const beatenBy = track.history.find(beatenByWr);
-                wr.track = {
-                    ...track,
-                    wrs: undefined,
-                    history: undefined,
+            const beatenByWr = isStuntTrack
+                ? (wr) => (item) => item.score > wr.score
+                : (wr) => (item) => item.score < wr.score;
+
+            return track.history.map((wr) => {
+                const beatenBy = track.history.find(beatenByWr(wr));
+
+                return {
+                    ...wr,
+                    id: wr.replay,
+                    track: {
+                        ...track,
+                        wrs: undefined,
+                        history: undefined,
+                    },
+                    beatenBy: beatenBy
+                        ? [
+                              {
+                                  id: beatenBy.replay,
+                                  date: beatenBy.date,
+                                  user: { ...beatenBy.user },
+                                  score: beatenBy.score,
+                              },
+                          ]
+                        : [],
                 };
-                wr.beatenBy = beatenBy
-                    ? [
-                          {
-                              id: beatenBy.replay,
-                              date: beatenBy.date,
-                              user: { ...beatenBy.user },
-                              score: beatenBy.score,
-                          },
-                      ]
-                    : [];
             });
-
-            return track.history;
         })
         .flat();
 
@@ -223,7 +226,7 @@ const generateRankings = (tracks) => {
                     .sort((a, b) => b.date.localeCompare(a.date))[0];
                 delete user.date;
 
-                const durationExact = wrs
+                const durationExact = mapWrs
                     .filter((r) => r.user.id.toString() === key && r.duration)
                     .map((r) => {
                         if (!calculateExactDuration) {
@@ -280,27 +283,35 @@ const generateRankings = (tracks) => {
 const generateStats = (tracks) => {
     const mapWrs = tracks
         .map((track) => {
-            track.history.forEach((wr) => (wr.id = wr.replay));
-            track.history.forEach((wr) => {
-                const beatenBy = track.history.find((item) => item.score < wr.score);
-                wr.track = {
-                    ...track,
-                    wrs: undefined,
-                    history: undefined,
-                };
-                wr.beatenBy = beatenBy
-                    ? [
-                          {
-                              id: beatenBy.replay,
-                              date: beatenBy.date,
-                              user: { ...beatenBy.user },
-                              score: beatenBy.score,
-                          },
-                      ]
-                    : [];
-            });
+            const isStuntTrack = track.type === 'Stunts';
 
-            return track.history;
+            const beatenByWr = isStuntTrack
+                ? (wr) => (item) => item.score > wr.score
+                : (wr) => (item) => item.score < wr.score;
+
+            return track.history.map((wr) => {
+                const beatenBy = track.history.find(beatenByWr(wr));
+
+                return {
+                    ...wr,
+                    id: wr.replay,
+                    track: {
+                        ...track,
+                        wrs: undefined,
+                        history: undefined,
+                    },
+                    beatenBy: beatenBy
+                        ? [
+                              {
+                                  id: beatenBy.replay,
+                                  date: beatenBy.date,
+                                  user: { ...beatenBy.user },
+                                  score: beatenBy.score,
+                              },
+                          ]
+                        : [],
+                };
+            });
         })
         .flat();
 
@@ -326,8 +337,10 @@ const generateStats = (tracks) => {
     const maxRows = 100;
     const byTrackType = (trackType) => ({ track }) => track.type === trackType;
 
-    const largestImprovement = mapWrs.sort((a, b) => (a.delta === b.delta ? 0 : a.delta < b.delta ? 1 : -1));
-    const longestLasting = mapWrs.sort((a, b) => (a.duration === b.duration ? 0 : a.duration < b.duration ? 1 : -1))
+    const largestImprovement = [...mapWrs.sort((a, b) => (a.delta === b.delta ? 0 : a.delta < b.delta ? 1 : -1))];
+    const longestLasting = [
+        ...mapWrs.sort((a, b) => (a.duration === b.duration ? 0 : a.duration < b.duration ? 1 : -1)),
+    ];
     const longestDomination = mapWrs
         .map((wr) => {
             wr.reign = {
