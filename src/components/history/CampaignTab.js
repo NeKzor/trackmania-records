@@ -5,7 +5,7 @@ import Grid from '@material-ui/core/Grid';
 import LinearProgress from '@material-ui/core/LinearProgress';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
-import RankingsTable from '../RankingsTableTrackmania';
+import RankingsTable from '../RankingsTable';
 import RecordsTable from '../RecordsTableHistory';
 import RecordsChart from '../RecordsChart';
 import SimpleTitle from '../SimpleTitle';
@@ -121,6 +121,7 @@ const CampaignTab = ({ gameName }) => {
                             <Grid container direction="row" justify="center" alignContent="center">
                                 <Grid item xs={12} md={6}>
                                     <RankingsTable
+                                        game={gameName}
                                         data={currentCampaign[rankingsType]}
                                         hasDuration={rankingsType !== 'uniqueLeaderboard'}
                                     />

@@ -8,7 +8,7 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import TableSortLabel from '@material-ui/core/TableSortLabel';
 import Tooltip from '@material-ui/core/Tooltip';
-import { stableSortSort } from '../utils/stableSort';
+import { stableSort, stableSortSort } from '../utils/stableSort';
 import tmx from '../utils/tmx';
 
 const rows = [
@@ -17,7 +17,7 @@ const rows = [
     { id: 'duration', id2: 'wrs', sortable: true, label: 'Total Duration', align: 'left' },
 ];
 
-const RankingsTableHead = ({ order, orderBy, onRequestSort }) => {
+const RankingsTableHead = ({ order, orderBy, onRequestSort, hasDuration }) => {
     const createSortHandler = (prop1, prop2) => (event) => {
         onRequestSort(event, prop1, prop2);
     };
@@ -25,7 +25,7 @@ const RankingsTableHead = ({ order, orderBy, onRequestSort }) => {
     return (
         <TableHead>
             <TableRow>
-                {rows.map((row) => (
+                {(hasDuration ? rows : rows.slice(0, -1)).map((row) => (
                     <TableCell
                         key={row.id}
                         align={row.align}
@@ -69,7 +69,7 @@ const noWrap = { whiteSpace: 'nowrap' };
 const minifiedStyle = { padding: '7px 0px 7px 16px' };
 const MinTableCell = (props) => <TableCell style={minifiedStyle} {...props} />;
 
-const RecordsTable = ({ data, game }) => {
+const RecordsTable = ({ data, game, hasDuration }) => {
     const [{ order, orderBy, thenBy, rowsPerPage, page }, setState] = React.useState(defaultState);
 
     const handleRequestSort = (_, prop1, prop2) => {
@@ -88,9 +88,9 @@ const RecordsTable = ({ data, game }) => {
     return (
         <div className={classes.root}>
             <Table size="small">
-                <RankingsTableHead order={order} orderBy={orderBy} onRequestSort={handleRequestSort} />
+                <RankingsTableHead order={order} orderBy={orderBy} onRequestSort={handleRequestSort} hasDuration={hasDuration} />
                 <TableBody>
-                    {stableSortSort(data, order, orderBy, thenBy)
+                    {(hasDuration ? stableSortSort : stableSort)(data, order, orderBy, thenBy)
                         .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
                         .map((row) => (
                             <TableRow tabIndex={-1} key={row.user.id}>
@@ -106,9 +106,11 @@ const RecordsTable = ({ data, game }) => {
                                     </Link>
                                 </MinTableCell>
                                 <MinTableCell align="left">{row.wrs}</MinTableCell>
-                                <MinTableCell align="left">
-                                    {row.duration} day{row.duration === 1 ? '' : 's'}
-                                </MinTableCell>
+                                {hasDuration && (
+                                    <MinTableCell align="left">
+                                        {row.duration} day{row.duration === 1 ? '' : 's'}
+                                    </MinTableCell>
+                                )}
                             </TableRow>
                         ))}
                 </TableBody>

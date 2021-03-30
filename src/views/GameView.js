@@ -141,7 +141,11 @@ const GameView = ({ match }) => {
                                     <Grid item xs={12} className={classes.padTop}>
                                         <Grid container direction="row" justify="center" alignContent="center">
                                             <Grid item xs={12} md={6}>
-                                                <RankingsTable data={game[tab].leaderboard} game={page} />
+                                                <RankingsTable
+                                                    data={game[tab].leaderboard}
+                                                    game={page}
+                                                    hasDuration={true}
+                                                />
                                             </Grid>
                                             <Grid item xs={12} md={6} className={classes.padTop}>
                                                 <Grid container direction="column" justify="center">

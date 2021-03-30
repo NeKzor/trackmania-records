@@ -8,7 +8,7 @@ import MenuItem from '@material-ui/core/MenuItem';
 import { makeStyles } from '@material-ui/core/styles';
 import RecordsChart from '../RecordsChart';
 import UniqueRecordsChart from '../UniqueRecordsChart';
-import RankingsTable from '../RankingsTableTrackmania';
+import RankingsTable from '../RankingsTable';
 import SimpleTitle from '../SimpleTitle';
 import Api from '../../Api';
 import { useIsMounted } from '../../Hooks';
@@ -95,6 +95,7 @@ const RankingsTab = ({ gameName }) => {
                 <Grid container direction="row" justify="center" alignContent="center">
                     <Grid item xs={12} md={6}>
                         <RankingsTable
+                            game={gameName}
                             data={currentCampaign[rankingsType]}
                             hasDuration={rankingsType !== 'uniqueLeaderboard'}
                         />
