@@ -351,17 +351,9 @@ class Leaderboard extends Entity {
             throw new Error('group or season id required');
         }
 
-        /* if (!this.mapId) {
-            throw new Error('map id required');
-        } */
-
-        /* if (this.end - this.start > 50) {
-            throw new Error('cannot fetch more than 50 entries');
-        } */
-
         this.data = await this.client.get(
             //`/leaderboard/group/${this.groupId}/map/${this.mapId}/surround/${this.start}/${this.end}`,
-            `/leaderboard/group/${this.groupId}` + (this.mapId ? `/map/${this.mapId}` : '') + '/top?position=11',
+            `/leaderboard/group/${this.groupId}` + (this.mapId ? `/map/${this.mapId}` : '') + '/top',
             true,
         );
 

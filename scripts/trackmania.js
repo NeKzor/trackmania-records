@@ -178,12 +178,9 @@ const main = async (outputDir, snapshot = true) => {
             true,
         );
     } catch (error) {
-        discord.client.destroy();
-        cleanup();
-
         log.error(error);
     } finally {
-        if (discord) {
+        if (discord && discord.client) {
             discord.client.destroy();
         }
     }
@@ -224,7 +221,7 @@ const dumpOfficialCampaign = async (outputDir) => {
             const { name, mapId, thumbnailUrl } = mapList.find((map) => map.mapUid === mapUid);
             log.info(name, mapUid);
 
-            const [wrs, history] = await resolveRecords(seasonUid, mapUid, mapId, latestCampaign, isTraining, name);
+            const [wrs, history] = await resolveRecords(seasonUid, mapUid, mapId, latestCampaign, isTraining, name, true);
 
             tracks.push({
                 id: mapUid,
@@ -320,7 +317,7 @@ const autoban = (accountId, score, isTraining = false) => {
         return true;
     }
 
-    if (score !== undefined && score <= (isTraining ? 4000 : 13000)) {
+    if (score !== undefined && score <= (isTraining ? 4000 : 9000)) {
         log.warn('banned: ' + accountId);
         gameInfo.cheaters.push(accountId);
         return true;
@@ -329,8 +326,8 @@ const autoban = (accountId, score, isTraining = false) => {
     return false;
 };
 
-const resolveRecords = async (seasonUid, mapUid, mapId, latestCampaign, isTraining, trackName) => {
-    const [leaderboard] = (await trackmania.leaderboard(seasonUid, mapUid, 0, 5)).collect();
+const resolveRecords = async (seasonUid, mapUid, mapId, latestCampaign, isTraining, trackName, isOfficial = false) => {
+    const [leaderboard] = (await trackmania.leaderboard(isOfficial ? 'Personal_Best' : seasonUid, mapUid, 0, 5)).collect();
 
     const wrs = [];
     const latestTrack = latestCampaign ? latestCampaign.tracks.find((track) => track.id === mapUid) : undefined;
@@ -385,7 +382,7 @@ const resolveRecords = async (seasonUid, mapUid, mapId, latestCampaign, isTraini
                 console.dir(wr, { depth: 6 });
 
                 const data = { wr, track: { name: trackName } };
-                for (const integration of [discord, twitter]) {
+                for (const integration of isOfficial ? [twitter, discord] : [discord]) {
                     integration.send(data);
                 }
 

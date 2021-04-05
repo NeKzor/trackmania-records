@@ -11,7 +11,14 @@ const output = require('path').join(__dirname, '/../api');
 const now = process.argv.some((arg) => arg === '-n' || arg === '--now');
 const nowTrackmania = process.argv.some((arg) => arg === '-ntm' || arg === '--now-trackmania');
 
-const main = async () => {
+const main = async () => {    
+    try {
+        log.info('scraping trackmania');
+        await trackmania(output);
+    } catch (err) {
+        log.error(err);
+    }
+
     for (const game of ['tmnforever', 'united']) {
         try {
             log.info(`scraping ${game} history...`);
@@ -40,13 +47,6 @@ const main = async () => {
     try {
         log.info('scraping tmwii');
         await tmwii(output);
-    } catch (err) {
-        log.error(err);
-    }
-
-    try {
-        log.info('scraping trackmania');
-        await trackmania(output);
     } catch (err) {
         log.error(err);
     }
@@ -90,6 +90,5 @@ if (nowTrackmania) {
 }
 
 cron.schedule('0 19 * * *', main);
-cron.schedule('0,15,30,45 0-18,20-23 * * *', trackmaniaOnly);
-cron.schedule('15,30,45 19 * * *', trackmaniaOnly);
-//cron.schedule('5,10,15,20,25,30,35,45,50,55 19 * * *', trackmaniaOnly);
+cron.schedule('5,10,15,20,25,30,35,45,50,55 19 * * *', trackmaniaOnly);
+cron.schedule('0,5,10,15,20,25,30,35,45,50,55 0-18,20-23 * * *', trackmaniaOnly);
