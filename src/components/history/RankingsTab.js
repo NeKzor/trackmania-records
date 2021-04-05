@@ -95,6 +95,7 @@ const RankingsTab = ({ gameName }) => {
                 <Grid container direction="row" justify="center" alignContent="center">
                     <Grid item xs={12} md={6}>
                         <RankingsTable
+                            game={gameName}
                             data={currentCampaign[rankingsType]}
                             hasDuration={rankingsType !== 'uniqueLeaderboard'}
                         />

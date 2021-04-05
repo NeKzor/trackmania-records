@@ -117,7 +117,7 @@ const AboutView = () => {
                     The largest mirror for campaign world records of many Trackmania games.
                 </Typography>
                 <Typography variant="body1">
-                    We list, rank and compare players who set the fastest and best runs.
+                    We list, rank and compare players who set the fastest runs.
                 </Typography>
 
                 <Padding />
