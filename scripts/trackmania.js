@@ -44,6 +44,7 @@ let game = [];
 let gameInfo = { cheaters: [], training: { groupId: null, maps: [] } };
 let discord = null;
 let imported = [];
+let isUpdating = false;
 
 const cleanup = () => {
     trackmania = null;
@@ -52,6 +53,10 @@ const cleanup = () => {
     gameInfo = { cheaters: [], training: { groupId: null, maps: [] } };
     discord = null;
     imported = [];
+    isUpdating = false;
+    if (discord && discord.client) {
+        discord.client.destroy();
+    }
 };
 
 const validRecords = (record) => record.note === undefined;
@@ -135,6 +140,13 @@ const main = async (outputDir, snapshot = true) => {
     discord.enabled = process.argv.some((arg) => arg === '--discord');
 
     try {
+        if (isUpdating) {
+            log.warn('ignoring update');
+            return;
+        }
+
+        isUpdating = true;
+
         await dumpOfficialCampaign(outputDir);
         await dumpTrackOfTheDay(outputDir, snapshot);
 
@@ -177,25 +189,21 @@ const main = async (outputDir, snapshot = true) => {
             true,
             true,
         );
+
+        game.forEach((campaign) => {
+            const path = campaign.isOfficial ? 'campaign' : 'totd';
+            tryExportJson(
+                `${outputDir}/trackmania/${path}/${campaign.name.replace(/ /, '-').toLowerCase()}.json`,
+                campaign,
+                true,
+                true,
+            );
+        });
+    
+        tryExportJson(gameFile, gameInfo, true, true);
     } catch (error) {
         log.error(error);
-    } finally {
-        if (discord && discord.client) {
-            discord.client.destroy();
-        }
     }
-
-    game.forEach((campaign) => {
-        const path = campaign.isOfficial ? 'campaign' : 'totd';
-        tryExportJson(
-            `${outputDir}/trackmania/${path}/${campaign.name.replace(/ /, '-').toLowerCase()}.json`,
-            campaign,
-            true,
-            true,
-        );
-    });
-
-    tryExportJson(gameFile, gameInfo, true, true);
 
     cleanup();
 };
@@ -570,6 +578,7 @@ const updateTwitterBot = () => {
 
     game.map((c) => c.tracks)
         .flat()
+        .filter(t => t.isOfficial)
         .map((t) => t.history.filter(validRecords))
         .flat()
         .forEach((wr) => {
