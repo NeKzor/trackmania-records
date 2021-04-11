@@ -178,38 +178,42 @@ const main = async (outputDir) => {
 };
 
 const dumpOfficialCampaign = async (clubId, outputDir) => {
-    // TODO: Get campaign data with API?
+    // TODO: Get campaign data with API
+    // In the meantime: Thanks trackmania.io :^)
+
     //const campaigns = (await trackmania.campaigns(Campaigns.Official)).collect();
 
     const campaigns = [
         [
             'NLS-FUTEaZrF29SC13q9jn89NCuhbZpqXzRggqU',
-            'Winter 2021 Reverse',
+            'Spring 2021 Cpless',
             [
-                'E9bzrlGziuWe3rKxf1SCjr0lI_f',
-                'M4IAV8L37NbGUgWF7Fo8QeGVw0e',
-                'WkZxHNj6osov3PPWYmxpV1kdLI2',
-                'YKC_pnhWqUxB8daQrr3jZhOuvcm',
-                'RiTRCaDmHghYbpI9MEsLm9xN_d1',
-                'pVoUf_JNvJN6MyLElfH6MtdjgXe',
-                'AevIUTj6NHUORhh64AExTeHnN2j',
-                'GbbUlWD9XwvlZrM4qgAB2erHEse',
-                '_1HDKc1voVL5gJdVuaLbHQ4zq11',
-                '2spTPTl4dmmrX3F53NKUP8fK4A7',
-                'yAKWCv4y_6Mc80Yb12sM_MoRRL1',
-                '0uB3YudIaRRNYPneP3Xijw0qrXh',
-                '_zKS84zaKEZQR0ZtQWBJXixr7qi',
-                'rU46rfRVUsCPj9K6Lg78W0glwV3',
-                '1HKaq4iMYbZV4CjIEqwPa6I9fmk',
-                'pKhCYqoRY9bgzZZkODzBLsgUE7a',
-                'Z2FS25Ni432KOfNrVn6y_Fkvvud',
-                'v86Ne3aRdBfUKAkf1iSnGzOKBff',
-                '23AnrbLFNlAZ6x0_ndSM1_Y5bxg',
-                '_sq5PihWkcmQJVIZv6YdD_9XyBb',
-                'dtdcO0dDyVSesQRf9IY9Ko7r9Xb',
-                'RqddNGwNQf_trqUWAgxIowioVF1',
-                'sCGL5O9bbMBFyND0usTP7zXdf86'
-              ],
+                'FkYbAxDDQmzqOuowO98dZTUQvt3',
+                'MzU2k4uAzTshj5gUcZlp43aSBS9',
+                's8IJ7bsKCpqMmWKjykxvQNNqcYj',
+                'x1Xlkk4h2FRyCJoBjyLjNqSV6c7',
+                'Ur0bOnjV7920BX3uDQRIUz_iH56',
+                'UXqs1UgJfmIcjC_PO92FQFpLif1',
+                'Qcpx8XxuPeQGYf5N6Y_B1_ethTk',
+                'uy0TIwWW_ujJ5Mus0mZtypJ1YJe',
+                'SCxRqr75WsGL3lAaOIsEGHiFX66',
+                'Vutm6oqKyGxgozbLrQAck0tGFca',
+                'ndKWYwn2Gcu9bGFDMx1ErdUzRBi',
+                'LCNOyTGaBqanwyJKRsIGe4JY0e9',
+                'UReWWpcIQzfhiuJSVgzLVS5uZo6',
+                'li1V8ej1oCIrkB5i_hLt4992_c5',
+                'eeWCFVvfKcXx1Z76tRqiCHiPwYb',
+                'c78rFK7PCbu3czrsTXbQtzsWto9',
+                'DVigoqgDAY2YJugm044A9kJ4U7h',
+                '0PVXRMGfhUZWk3wtveUOBP8jrlh',
+                'j2dHnnAAObTDhdlIWLfx3Eme_zk',
+                'r5ljNmXLbAQbChW2Le5aM8emi7f',
+                'JNJ650lnSLfmL65PTcctMjWufJj',
+                'VXakwPgpyQdF7c97Py54d84A1Bc',
+                'zCKGkJNoUu_I1slkhwm_DqaUB8h',
+                '64II1XFdfcZyK5rIizdaE9abWv2',
+                'ElJ98Z8wGNVaf9my09fJ1VMrhJd',
+            ],
         ],
     ];
 
