@@ -360,7 +360,7 @@ class Leaderboard extends Entity {
 
         this.data = await this.client.get(
             //`/leaderboard/group/${this.groupId}/map/${this.mapId}/surround/${this.start}/${this.end}`,
-            `/leaderboard/group/${this.groupId}` + (this.mapId ? `/map/${this.mapId}` : '') + '/top?position=11',
+            `/leaderboard/group/${this.groupId}` + (this.mapId ? `/map/${this.mapId}` : '') + '/top',
             true,
         );
 

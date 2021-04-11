@@ -185,7 +185,7 @@ const dumpOfficialCampaign = async (clubId, outputDir) => {
 
     const campaigns = [
         [
-            'NLS-FUTEaZrF29SC13q9jn89NCuhbZpqXzRggqU',
+            'NLS-dqEWWnTKDRAilDLVnUfOFm31G06I4N8M2z0',
             'Spring 2021 Cpless',
             [
                 'FkYbAxDDQmzqOuowO98dZTUQvt3',
@@ -279,7 +279,7 @@ const autoban = (accountId, score, isTraining = false) => {
 };
 
 const resolveRecords = async (clubId, seasonUid, mapUid, mapId, latestCampaign, isTraining, trackName) => {
-    const leaderboard = (await trackmania.clubLeaderboard(seasonUid, mapUid, clubId)).collect();
+    const [worldLeaderboard] = (await trackmania.leaderboard(seasonUid, mapUid, clubId)).collect();
 
     const wrs = [];
     const latestTrack = latestCampaign ? latestCampaign.tracks.find((track) => track.id === mapUid) : undefined;
@@ -287,7 +287,7 @@ const resolveRecords = async (clubId, seasonUid, mapUid, mapId, latestCampaign, 
 
     let wrScore = undefined;
 
-    for (const { accountId, zoneId, score } of leaderboard) {
+    for (const { accountId, zoneId, score } of worldLeaderboard.top) {
         if (autoban(accountId, score, isTraining)) {
             continue;
         }
