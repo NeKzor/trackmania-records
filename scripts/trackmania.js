@@ -269,11 +269,11 @@ const autoban = (accountId, score, isTraining = false) => {
         return true;
     }
 
-    if (score !== undefined && score <= (isTraining ? 4000 : 13000)) {
+    /* if (score !== undefined && score <= (isTraining ? 4000 : 13000)) {
         log.warn('banned: ' + accountId);
         gameInfo.cheaters.push(accountId);
         return true;
-    }
+    } */
 
     return false;
 };
