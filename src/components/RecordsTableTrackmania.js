@@ -152,7 +152,7 @@ const RecordsHistoryRow = ({ wr, official }) => {
             </MinTableCell>
             <MinTableCell align="left">
                 <Tooltip title={wr.user.zone.map((zone) => zone.name).join(' | ')} placement="bottom" enterDelay={300}>
-                    <span>{wr.user.zone[2].name}</span>
+                    <span>{(wr.user.zone[2] ? wr.user.zone[2] : wr.user.zone[0]).name}</span>
                 </Tooltip>
             </MinTableCell>
             <MinTableCell align="left">
@@ -241,7 +241,7 @@ const RecordsRow = ({ wr, official, orderBy, useLiveDuration, history, onClickHi
                         placement="bottom"
                         enterDelay={300}
                     >
-                        <span>{wr.user.zone[2].name}</span>
+                        <span>{(wr.user.zone[2] ? wr.user.zone[2] : wr.user.zone[0]).name}</span>
                     </Tooltip>
                 </MinTableCell>
                 {official && (
