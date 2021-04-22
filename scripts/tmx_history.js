@@ -77,7 +77,7 @@ module.exports = async (gameName, output, maxFetch = undefined) => {
 
             wrs.forEach((wr, idx, items) => {
                 const prev = items[idx - 1];
-                const next = items[idx + 1];
+                const next = wrs.slice(idx + 1).find((nextWr) => nextWr.score < wr.score);
                 wr.duration = moment(next ? next.date : undefined).diff(moment(wr.date), 'd');
                 wr.delta = Math.abs(prev ? prev.score - wr.score : 0);
             });
