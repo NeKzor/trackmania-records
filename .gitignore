@@ -8,6 +8,9 @@ games/trackmania-zones.json
 dump/
 .vscode
 replays/
+scripts/backup.json
+edge/
+cps/
 
 node_modules/
 coverage/
