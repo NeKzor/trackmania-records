@@ -10,6 +10,7 @@ require('dotenv').config();
 const sessionFile = path.join(__dirname, '/../.login');
 const gameFile = path.join(__dirname, '../games/trackmania.json');
 const replayFolder = path.join(__dirname, '../replays');
+const sendInitialRankings = process.argv.some((arg) => arg === '--rankings');
 
 const loadSession = (client) => {
     try {
@@ -42,7 +43,9 @@ let zones = null;
 let game = [];
 let gameInfo = { cheaters: [], training: { groupId: null, maps: [] } };
 let discord = null;
+let discord2 = null;
 let imported = [];
+let isUpdating = false;
 
 const cleanup = () => {
     trackmania = null;
@@ -50,7 +53,16 @@ const cleanup = () => {
     game = [];
     gameInfo = { cheaters: [], training: { groupId: null, maps: [] } };
     discord = null;
+    discord2 = null;
     imported = [];
+    isUpdating = false;
+
+    if (discord && discord.client) {
+        discord.client.destroy();
+    }
+    if (discord2 && discord2.client) {
+        discord2.client.destroy();
+    }
 };
 
 const validRecords = (record) => record.note === undefined;
@@ -126,13 +138,23 @@ const main = async (outputDir) => {
     discord = new DiscordIntegration(process.env.WEBHOOK_ID, process.env.WEBHOOK_TOKEN);
     discord.enabled = process.argv.some((arg) => arg === '--discord');
 
+    discord2 = new DiscordIntegration(process.env.WEBHOOK_ID_LEADERBOARD, process.env.WEBHOOK_TOKEN_LEADERBOARD);
+    discord2.enabled = process.argv.some((arg) => arg === '--discord');
+
     try {
+        if (isUpdating) {
+            log.warn('ignoring update');
+            return;
+        }
+
+        isUpdating = true;
+
         /* Bad Ideas Zone */
         const clubId = 9507;
 
-        await dumpOfficialCampaign(clubId, outputDir);
+        const sendCampaignRankings = await dumpOfficialCampaign(clubId, outputDir);
 
-        const toImport = [];
+        /* const toImport = [];
 
         for (const importFile of fs.readdirSync(`${outputDir}/trackmania/campaign`)) {
             if (!imported.some((file) => file.endsWith(importFile))) {
@@ -147,32 +169,35 @@ const main = async (outputDir) => {
         const overallOfficial = game
             .filter((campaign) => campaign.isOfficial)
             .map((campaign) => campaign.tracks)
-            .flat();
+            .flat(); */
 
         game.forEach((campaign) => Object.assign(campaign, generateRankings(campaign.tracks)));
 
-        tryExportJson(`${outputDir}/trackmania/rankings/campaign.json`, generateRankings(overallOfficial), true, true);
-    } catch (error) {
-        discord.client.destroy();
-        cleanup();
+        const [campaign] = game;
 
-        throw error;
-    } finally {
-        if (discord) {
-            discord.client.destroy();
+        if (sendInitialRankings) {
+            const message = discord.createRankingsMessage(campaign);
+            discord2.sendRankingsMessage(message);
+        } else if (sendCampaignRankings) {
+            const message = discord.createRankingsMessage(campaign);
+            discord2.editRankingsMessage(process.env.WEBHOOK_MESSAGE_ID_LEADERBOARD, message);
         }
+
+        /* tryExportJson(`${outputDir}/trackmania/rankings/campaign.json`, generateRankings(overallOfficial), true, true); */
+
+        game.forEach((campaign) => {
+            tryExportJson(
+                `${outputDir}/trackmania/campaign/${campaign.name.replace(/ /g, '-').toLowerCase()}.json`,
+                campaign,
+                true,
+                true,
+            );
+        });
+    
+        tryExportJson(gameFile, gameInfo, true, true);
+    } catch (error) {
+        log.error(error);
     }
-
-    game.forEach((campaign) => {
-        tryExportJson(
-            `${outputDir}/trackmania/campaign/${campaign.name.replace(/ /g, '-').toLowerCase()}.json`,
-            campaign,
-            true,
-            true,
-        );
-    });
-
-    tryExportJson(gameFile, gameInfo, true, true);
 
     cleanup();
 };
@@ -217,6 +242,8 @@ const dumpOfficialCampaign = async (clubId, outputDir) => {
         ],
     ];
 
+    let sendCampaignRankings = false;
+
     for (const [seasonUid, name, playlist] of campaigns) {
         const latestCampaign = importLatest(
             `${outputDir}/trackmania/campaign/${name.replace(/ /g, '-').toLowerCase()}.json`,
@@ -234,7 +261,9 @@ const dumpOfficialCampaign = async (clubId, outputDir) => {
             const { name, mapId, thumbnailUrl } = mapList.find((map) => map.mapUid === mapUid);
             log.info(name, mapUid);
 
-            const [wrs, history] = await resolveRecords(clubId, seasonUid, mapUid, mapId, latestCampaign, isTraining, name);
+            const [wrs, history, newRecords] = await resolveRecords(clubId, seasonUid, mapUid, mapId, latestCampaign, isTraining, name, mapUid);
+
+            sendCampaignRankings = sendCampaignRankings || newRecords;
 
             tracks.push({
                 id: mapUid,
@@ -262,6 +291,8 @@ const dumpOfficialCampaign = async (clubId, outputDir) => {
             },
         });
     }
+
+    return sendCampaignRankings;
 };
 
 const autoban = (accountId, score, isTraining = false) => {
@@ -278,12 +309,14 @@ const autoban = (accountId, score, isTraining = false) => {
     return false;
 };
 
-const resolveRecords = async (clubId, seasonUid, mapUid, mapId, latestCampaign, isTraining, trackName) => {
+const resolveRecords = async (clubId, seasonUid, mapUid, mapId, latestCampaign, isTraining, trackName, trackId) => {
     const [worldLeaderboard] = (await trackmania.leaderboard(seasonUid, mapUid, clubId)).collect();
 
     const wrs = [];
     const latestTrack = latestCampaign ? latestCampaign.tracks.find((track) => track.id === mapUid) : undefined;
     const history = latestTrack && latestTrack.history ? latestTrack.history : [];
+
+    const historyCount = history.length;
 
     let wrScore = undefined;
 
@@ -332,7 +365,7 @@ const resolveRecords = async (clubId, seasonUid, mapUid, mapId, latestCampaign, 
                 history.push(wr);
                 log.info('NEW RECORD', wr.user.name, wr.score);
 
-                const data = { wr, track: { name: trackName } };
+                const data = { wr, track: { name: trackName, id: trackId } };
                 for (const integration of [discord]) {
                     integration.send(data);
                 }
@@ -351,7 +384,7 @@ const resolveRecords = async (clubId, seasonUid, mapUid, mapId, latestCampaign, 
         }
     }
 
-    return [wrs, history];
+    return [wrs, history, historyCount !== history.length];
 };
 
 const generateRankings = (tracks) => {

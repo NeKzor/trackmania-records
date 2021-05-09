@@ -1,5 +1,6 @@
+const flags = require('country-flag-emoji');
 const Discord = require('discord.js');
-const { formatScore } = require('../utils');
+const { formatScore, log } = require('../utils');
 
 class DiscordIntegration {
     constructor(id, token) {
@@ -18,46 +19,72 @@ class DiscordIntegration {
             .catch(console.error);
     }
     buildEmbed({ wr, track }) {
+        const country = wr.user.zone[2] ? wr.user.zone[2].name : null;
+        const countryFlag = country ? flags.list.find((flag) => flag.name === country) : null;
+
         return {
-            title: 'New World Record',
-            url: 'https://nekz.me/trackmania-records/trackmania',
+            title: track.name.replace(/(\$[0-9a-fA-F]{3}|\$[WNOITSGZBEMwnoitsgzbem]{1})/g, ''),
+            url: 'https://trackmania.io/#/leaderboard/' + track.id,
             color: 44871,
-            timestamp: new Date(wr.date).toISOString(),
             fields: [
                 {
-                    name: 'Track',
-                    value: DiscordIntegration.sanitiseText(
-                        track.name.replace(/(\$[0-9a-fA-F]{3}|\$[WNOITSGZBEMwnoitsgzbem]{1})/g, ''),
-                    ),
+                    name: 'WR',
+                    value: `${formatScore(wr.score)} (-${formatScore(wr.delta)})`,
                     inline: true,
                 },
                 {
-                    name: 'Time',
-                    value: formatScore(wr.score),
-                    inline: true,
-                },
-                {
-                    name: 'Timesave',
-                    value: '-' + formatScore(wr.delta),
-                    inline: true,
-                },
-                {
-                    name: 'Player',
-                    value: DiscordIntegration.sanitiseText(wr.user.name),
-                    inline: true,
-                },
-                {
-                    name: 'Country',
-                    value: wr.user.zone[2] ? wr.user.zone[2].name : wr.user.zone[0].name,
-                    inline: true,
-                },
-                {
-                    name: 'Ghost File',
-                    value: `[Download](https://prod.trackmania.core.nadeo.online/storageObjects/${wr.replay})`,
+                    name: 'By',
+                    value: Discord.Util.escapeUnderline(wr.user.name) + (countryFlag ? ' ' + countryFlag.emoji : ''),
                     inline: true,
                 },
             ],
         };
+    }
+    createRankingsMessage(campaign) {
+        const getScore = (wr) => {
+            return formatScore(wr.score);
+        };
+        
+        const getEmojiFlag = (user) => {
+            const country = user.zone[2] ? user.zone[2].name : null;
+            const flag = country ? flags.list.find((flag) => flag.name === country) : null;
+            return flag ? ' ' + flag.emoji : '';
+        };
+
+        const wrs = campaign.tracks
+            .map((track) =>
+                track.wrs.length > 0
+                    ? track.wrs.map(
+                        (wr) =>
+                            `${track.name.split(' - ')[1]} | ${getScore(wr)} by ${Discord.Util.escapeUnderline(
+                                wr.user.name,
+                            )}${getEmojiFlag(wr.user)}`,
+                    )
+                    : null,
+            )
+            .filter((x) => x)
+            .flat();
+
+        const rankings = campaign.leaderboard.map(
+            ({ user, wrs }) => `${Discord.Util.escapeUnderline(user.name)}${getEmojiFlag(user)} (${wrs})`,
+        );
+
+        return `**${campaign.name} - World Records**\n${wrs.join('\n')}\n**${campaign.name
+            } - WR Rankings**\n${rankings.join('\n')}`;
+    }
+    sendRankingsMessage(message) {
+        this.client.send(message)
+            .then((message) => {
+                log.info('sent initial rankings message');
+                console.log(message);
+            });
+    }
+    editRankingsMessage(messageId, message) {
+        this.client.editMessage(messageId, message)
+            .then((message) => {
+                log.info('updated rankings message');
+                //console.log(message);
+            });
     }
     static getTestData() {
         return {
@@ -100,9 +127,6 @@ class DiscordIntegration {
                 },
             ],
         };
-    }
-    static sanitiseText(text) {
-        return text.replace('/(\\*|_|`|~)/miu', '\\\\$1');
     }
 }
 
