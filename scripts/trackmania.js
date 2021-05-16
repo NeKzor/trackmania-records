@@ -30,14 +30,6 @@ const saveSession = (client) => {
     fs.writeFileSync(sessionFile, JSON.stringify(client.loginData));
 };
 
-Array.prototype.chunk = function (size) {
-    return this.reduce((acc, val, idx) => {
-        const chunk = Math.floor(idx / size);
-        acc[chunk] = [].concat(acc[chunk] || [], val);
-        return acc;
-    }, []);
-};
-
 let trackmania = new TrackmaniaClient();
 let zones = null;
 let game = [];
@@ -59,6 +51,53 @@ const cleanup = () => {
     }
 };
 
+const fixHistory = (campaign) => {
+    const now = moment().unix();
+    const nowOrEndOfSeason = campaign.event && campaign.event.endsAt < now ? campaign.event.endsAt : now;
+    const nowOrStartOfSeason = campaign.event ? campaign.event.startsAt : null;
+
+    campaign.tracks.forEach((track) => {
+        const wrScore = (() => {
+            const [wr] = track.wrs;
+            return wr ? wr.score : null;
+        })();
+
+        const startOfEvent = track.isOfficial
+                ? nowOrStartOfSeason
+                : (track.event ? track.event.startsAt : null);
+
+            const endOfEvent = track.isOfficial
+                ? nowOrEndOfSeason
+                : track.event && track.event.endsAt < now ? track.event.endsAt : now;
+
+        track.history = track.history.filter((historyWr) => {
+            if (autoban(historyWr.user.id)) {
+                return false;
+            }
+
+            if (historyWr.note) {
+                return true;
+            }
+
+            const timestamp = moment(historyWr.date).unix();
+
+            if (startOfEvent && timestamp < startOfEvent) {
+                log.warn(`started before event (${track.name} -> ${timestamp} < ${startOfEvent})`);
+                inspect(historyWr);
+                return false;
+            }
+
+            return (wrScore && historyWr.score >= wrScore) || historyWr.note;
+        });
+
+        track.history.forEach((wr, idx, wrs) => {
+            const nextWr = wrs.slice(idx + 1).find((nextWR) => nextWR.score < wr.score);
+
+            wr.duration = moment(nextWr ? nextWr.date : endOfEvent).diff(moment(wr.date), 'days');            
+        });
+    });
+};
+
 const validRecords = (record) => record.note === undefined;
 
 const importLatest = (file) => {
@@ -73,29 +112,7 @@ const importLatest = (file) => {
     })();
 
     if (latest) {
-        latest.tracks.forEach((track) => {
-            const wr = track.wrs[0];
-
-            track.history = track.history.filter((historyWr) => {
-                if (autoban(historyWr.user.id)) {
-                    return false;
-                }
-
-                if ((wr && historyWr.score >= wr.score) || historyWr.note) {
-                    return true;
-                }
-
-                return false;
-            });
-
-            if (latest.isOfficial) {
-                track.history.forEach((wr, idx, wrs) => {
-                    const nextWr = wrs.slice(idx + 1).find((nextWR) => nextWR.score < wr.score);
-
-                    wr.duration = moment(nextWr ? nextWr.date : undefined).diff(moment(wr.date), 'days');
-                });
-            }
-        });
+        fixHistory(latest);
     }
 
     return latest;
@@ -165,27 +182,23 @@ const main = async (outputDir, snapshot = true) => {
         }
 
         toImport.forEach((importFile) => {
-            game.push(importJson(importFile));
+            const campaign = importJson(importFile);
+            fixHistory(campaign);
+            game.push(campaign);
         });
 
         updateTwitterBot();
 
-        const overallOfficial = game
-            .filter((campaign) => campaign.isOfficial)
-            .map((campaign) => campaign.tracks)
-            .flat();
-        const overallTotd = game
-            .filter((campaign) => !campaign.isOfficial)
-            .map((campaign) => campaign.tracks)
-            .flat();
+        const overallOfficial = game.filter((campaign) => campaign.isOfficial);
+        const overallTotd = game.filter((campaign) => !campaign.isOfficial);
 
-        game.forEach((campaign) => Object.assign(campaign, generateRankings(campaign.tracks)));
+        game.forEach((campaign) => Object.assign(campaign, generateRankings([campaign])));
 
         tryExportJson(`${outputDir}/trackmania/rankings/campaign.json`, generateRankings(overallOfficial), true, true);
         tryExportJson(`${outputDir}/trackmania/rankings/totd.json`, generateRankings(overallTotd), true, true);
         tryExportJson(
             `${outputDir}/trackmania/rankings/combined.json`,
-            generateRankings([...overallOfficial, ...overallTotd]),
+            generateRankings(game),
             true,
             true,
         );
@@ -199,7 +212,7 @@ const main = async (outputDir, snapshot = true) => {
                 true,
             );
         });
-    
+
         tryExportJson(gameFile, gameInfo, true, true);
     } catch (error) {
         log.error(error);
@@ -209,10 +222,20 @@ const main = async (outputDir, snapshot = true) => {
 };
 
 const dumpOfficialCampaign = async (outputDir) => {
-    const campaigns = (await trackmania.campaigns(Campaigns.Official)).collect();
+    const campaigns = (await trackmania.campaigns(Campaigns.Official, 0, 6)).collect();
     campaigns.push(gameInfo.training);
 
-    for (const { seasonUid, name, playlist } of campaigns) {
+    for (const { seasonUid, name, playlist, startTimestamp, endTimestamp } of campaigns) {
+        const currentCampaign = {
+            isOfficial: true,
+            name,
+            id: seasonUid,
+            event: {
+                startsAt: startTimestamp,
+                endsAt: endTimestamp,
+            },
+        };
+
         const latestCampaign = importLatest(
             `${outputDir}/trackmania/campaign/${name.replace(/ /, '-').toLowerCase()}.json`,
         );
@@ -229,45 +252,47 @@ const dumpOfficialCampaign = async (outputDir) => {
             const { name, mapId, thumbnailUrl } = mapList.find((map) => map.mapUid === mapUid);
             log.info(name, mapUid);
 
-            const [wrs, history] = await resolveRecords(seasonUid, mapUid, mapId, latestCampaign, isTraining, name, true);
-
-            tracks.push({
+            const track = {
                 id: mapUid,
                 _id: mapId,
                 name,
-                wrs,
                 isOfficial: true,
-                history,
                 thumbnail: thumbnailUrl.slice(thumbnailUrl.lastIndexOf('/') + 1, -4),
-            });
+            };
+
+            await resolveRecords(track, currentCampaign, latestCampaign, isTraining);
+
+            tracks.push(track);
         }
+
+        currentCampaign.tracks = tracks;
 
         const totalTime = tracks
             .filter((t) => t.wrs[0])
             .map((t) => t.wrs[0].score)
             .reduce((a, b) => a + b, 0);
 
-        game.push({
-            isOfficial: true,
-            name,
-            id: seasonUid,
-            tracks,
-            stats: {
-                totalTime,
-            },
-        });
+        currentCampaign.stats = { totalTime };
+
+        game.push(currentCampaign);
     }
 };
 
 const dumpTrackOfTheDay = async (outputDir, snapshot) => {
-    const campaigns = await trackmania.campaigns(Campaigns.TrackOfTheDay, 0, 1);
+    const campaigns = await trackmania.campaigns(Campaigns.TrackOfTheDay, 11);
 
     for (const { year, month, days } of campaigns) {
         const name = `${moment()
             .set('month', month - 1)
             .format('MMMM')} ${year}`;
 
-        log.info(name);
+        const currentCampaign = {
+            isOfficial: false,
+            year,
+            month,
+            name,
+        };
+
         const latestCampaign = importLatest(
             `${outputDir}/trackmania/totd/${name.replace(/ /, '-').toLowerCase()}.json`,
         );
@@ -283,40 +308,39 @@ const dumpTrackOfTheDay = async (outputDir, snapshot) => {
         const maps = await trackmania.maps(trackDays.map((map) => map.mapUid));
         const mapList = maps.collect();
 
-        for (const { mapUid, seasonUid, monthDay } of trackDays) {
+        for (const { mapUid, seasonUid, monthDay, startTimestamp, endTimestamp } of trackDays) {
             const { name, mapId, thumbnailUrl } = mapList.find((map) => map.mapUid === mapUid);
             log.info(name, seasonUid, mapUid);
 
-            const [wrs, history] = await resolveRecords(seasonUid, mapUid, mapId, latestCampaign, false, name);
-
-            tracks.push({
+            const track = {
                 id: mapUid,
                 _id: mapId,
                 season: seasonUid,
                 name,
                 monthDay,
-                wrs,
                 isOfficial: false,
-                history,
                 thumbnail: thumbnailUrl.slice(thumbnailUrl.lastIndexOf('/') + 1, -4),
-            });
+                event: {
+                    startsAt: startTimestamp,
+                    endsAt: endTimestamp,
+                },
+            };
+
+            await resolveRecords(track, currentCampaign, latestCampaign, false);
+
+            tracks.push(track);
         }
+
+        currentCampaign.tracks = tracks;
 
         const totalTime = tracks
             .filter((t) => t.wrs[0])
             .map((t) => t.wrs[0].score)
             .reduce((a, b) => a + b, 0);
 
-        game.push({
-            isOfficial: false,
-            year,
-            month,
-            name,
-            tracks,
-            stats: {
-                totalTime,
-            },
-        });
+        currentCampaign.stats = { totalTime };
+
+        game.push(currentCampaign);
     }
 };
 
@@ -334,11 +358,16 @@ const autoban = (accountId, score, isTraining = false) => {
     return false;
 };
 
-const resolveRecords = async (seasonUid, mapUid, mapId, latestCampaign, isTraining, trackName, isOfficial = false) => {
-    const [leaderboard] = (await trackmania.leaderboard(isOfficial ? 'Personal_Best' : seasonUid, mapUid, 0, 5)).collect();
+const resolveRecords = async (track, currentCampaign, latestCampaign, isTraining) => {
+    const eventStart = track.isOfficial ? currentCampaign.event.startsAt : track.event.startsAt;
+    const eventEnd = track.isOfficial ? currentCampaign.event.endsAt : track.event.endsAt;
+
+    const [leaderboard] = (
+        await trackmania.leaderboard(track.isOfficial ? 'Personal_Best' : track.season, track.id, 0, 5)
+    ).collect();
 
     const wrs = [];
-    const latestTrack = latestCampaign ? latestCampaign.tracks.find((track) => track.id === mapUid) : undefined;
+    const latestTrack = latestCampaign ? latestCampaign.tracks.find(({ id }) => id === track.id) : undefined;
     const history = latestTrack && latestTrack.history ? latestTrack.history : [];
 
     let wrScore = undefined;
@@ -363,7 +392,14 @@ const resolveRecords = async (seasonUid, mapUid, mapId, latestCampaign, isTraini
             }
 
             const [account] = (await trackmania.accounts([accountId])).collect();
-            const [record] = (await trackmania.mapRecords([accountId], [mapId])).collect();
+            const [record] = (await trackmania.mapRecords([accountId], [track._id])).collect();
+
+            const timestamp = moment(record.timestamp);
+
+            if (timestamp.unix() < eventStart || timestamp.unix() > eventEnd) {
+                log.warn(`ignored record: time was not driven during the event (${record.timestamp} -> ${eventStart} -> ${eventEnd})`);
+                continue;
+            }
 
             const latestScore = latestTrack && latestTrack.wrs[0] ? latestTrack.wrs[0].score : undefined;
 
@@ -375,7 +411,7 @@ const resolveRecords = async (seasonUid, mapUid, mapId, latestCampaign, isTraini
                 },
                 date: record ? record.timestamp : '',
                 replay: record ? record.url.slice(record.url.lastIndexOf('/') + 1) : '',
-                duration: record ? moment().diff(moment(record.timestamp), 'd') : 0,
+                duration: record ? moment().diff(timestamp, 'd') : 0,
                 score,
                 delta: Math.abs(latestWr ? latestWr.delta : latestScore ? score - latestScore : 0),
             };
@@ -387,17 +423,17 @@ const resolveRecords = async (seasonUid, mapUid, mapId, latestCampaign, isTraini
             if (!inHistory) {
                 history.push(wr);
                 log.info('NEW RECORD', wr.user.name, wr.score);
-                console.dir(wr, { depth: 6 });
+                inspect(wr);
 
-                const data = { wr, track: { name: trackName } };
-                for (const integration of isOfficial ? [twitter, discord] : [discord]) {
+                const data = { wr: { ...wr }, track: { ...track } };
+                for (const integration of track.isOfficial ? [twitter, discord] : [discord]) {
                     integration.send(data);
                 }
 
                 fs.writeFileSync(
                     path.join(
                         replayFolder,
-                        `/${trackName.replace(/ /g, '_')}_${record.recordScore.time}_${wr.user.name}.replay.gbx`,
+                        `/${track.name.replace(/ /g, '_')}_${record.recordScore.time}_${wr.user.name}.replay.gbx`,
                     ),
                     await record.downloadReplay(),
                 );
@@ -408,25 +444,38 @@ const resolveRecords = async (seasonUid, mapUid, mapId, latestCampaign, isTraini
         }
     }
 
-    return [wrs, history];
+    track.wrs = wrs;
+    track.history = history;
 };
 
-const generateRankings = (tracks) => {
+const generateRankings = (campaigns) => {
+    const now = moment().unix();
+
+    const tracks = campaigns
+        .map((campaign) => {
+            const nowOrEndOfEvent = campaign.event && campaign.event.endsAt < now ? campaign.event.endsAt : now;
+            return campaign.tracks.map((track) => ({ ...track, nowOrEndOfEvent }));
+        })
+        .flat();
+
     const mapWrs = tracks
         .map((track) => {
-            return track.history.map((wr) => {
-                const beatenBy = track.history.find((item) => item.score < wr.score);
+            const history = track.history.filter(validRecords);
+
+            return history.map((wr) => {
+                const beatenBy = history.find((item) => item.score < wr.score);
                 return {
                     ...wr,
+                    nowOrEndOfEvent: track.nowOrEndOfEvent,
                     beatenBy: beatenBy
                         ? [
-                              {
-                                  id: beatenBy.id,
-                                  date: beatenBy.date,
-                                  user: { ...beatenBy.user },
-                                  score: beatenBy.score,
-                              },
-                          ]
+                            {
+                                id: beatenBy.id,
+                                date: beatenBy.date,
+                                user: { ...beatenBy.user },
+                                score: beatenBy.score,
+                            },
+                        ]
                         : [],
                 };
             });
@@ -454,7 +503,6 @@ const generateRankings = (tracks) => {
     const createLeaderboard = (key) => {
         const calculateExactDuration = key === 'history';
 
-        const wrs = tracks.map((t) => (t[key].length > 0 ? t[key] : t.wrs).filter(validRecords)).flat();
         const users = tracks
             .map((t) =>
                 (t[key].length > 0 ? t[key] : t.wrs).filter(validRecords).map(({ user, date }) => ({ ...user, date })),
@@ -470,7 +518,7 @@ const generateRankings = (tracks) => {
             Object.keys(frequency)
                 .sort((a, b) => frequency[b] - frequency[a])
                 .map((key) => {
-                    const user = users.filter((u) => u.id === key).sort((a, b) => b.date.localeCompare(a.date))[0];
+                    const [user] = users.filter((u) => u.id === key).sort((a, b) => b.date.localeCompare(a.date));
                     delete user.date;
 
                     const durationExact = mapWrs
@@ -482,7 +530,9 @@ const generateRankings = (tracks) => {
 
                             const reignWr = getNextWr(r);
                             const [beatenBy] = reignWr.beatenBy;
-                            return moment(beatenBy ? beatenBy.date : undefined).diff(moment(r.date), 'd');
+                            return moment(
+                                beatenBy && beatenBy.date ? beatenBy.date : moment.unix(r.nowOrEndOfEvent),
+                            ).diff(moment(r.date), 'd');
                         })
                         .reduce((a, b) => a + b, 0);
 
@@ -535,7 +585,7 @@ const generateRankings = (tracks) => {
     const uniqueLeaderboard = Object.keys(frequency)
         .sort((a, b) => frequency[b] - frequency[a])
         .map((key) => {
-            const user = users.filter((u) => u.id === key).sort((a, b) => b.date.localeCompare(a.date))[0];
+            const [user] = users.filter((u) => u.id === key).sort((a, b) => b.date.localeCompare(a.date));
             delete user.date;
             return {
                 user,
@@ -571,21 +621,20 @@ const generateRankings = (tracks) => {
 };
 
 const updateTwitterBot = () => {
-    const monday = moment().weekday(1).hour(0).minute(0).second(0);
-    const sunday = moment().weekday(7).hour(23).minute(59).second(59);
+    const monday = moment().startOf('isoWeek').format('YYYY-MM-DD');
+    const sunday = moment().endOf('isoWeek').format('YYYY-MM-DD');
+    log.info(`week start -> end: ${monday} -> ${sunday}`);
 
-    let wrsThisWeek = 0;
-
-    game.map((c) => c.tracks)
+    const wrsThisWeek = game
+        .map((c) => c.tracks)
         .flat()
-        .filter(t => t.isOfficial)
+        .filter((t) => t.isOfficial)
         .map((t) => t.history.filter(validRecords))
         .flat()
-        .forEach((wr) => {
-            if (moment(wr.date).isBetween(monday, sunday)) {
-                ++wrsThisWeek;
-            }
-        });
+        .reduce((sum, wr) => {
+            const date = wr.date.slice(0, 10);
+            return date >= monday && date <= sunday ? sum + 1 : sum;
+        }, 0);
 
     twitter.updateBio({ wrsThisWeek });
 };
@@ -595,9 +644,5 @@ const inspect = (obj) => console.dir(obj, { depth: 6 });
 if (process.argv.some((arg) => arg === '--test')) {
     main(path.join(__dirname, '../api/'), false).catch(inspect);
 }
-
-process.on('SIGINT', () => {
-    twitter.updateBio({ status: '#OFFLINE' }).finally(() => process.exit());
-});
 
 module.exports = main;

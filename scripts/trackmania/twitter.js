@@ -3,11 +3,11 @@ const { formatScore, log } = require('../utils');
 
 require('dotenv').config();
 
-const locations = ['Limburg, Germany', 'A01'];
+const locations = ['Limburg, Germany', 'A01', 'Training - 01'];
 
 const rng = (max) => Math.floor(Math.random() * Math.floor(max));
 
-const defaultBioOptions = { status: '#ONLINE', wrsThisWeek: 0 };
+const defaultBioOptions = { wrsThisWeek: 0 };
 
 class TwitterIntegration {
     constructor(consumer_key, consumer_secret, access_token_key, access_token_secret) {
@@ -48,7 +48,7 @@ ${wr.user.name}`;
             return Promise.resolve();
         }
 
-        const { status, wrsThisWeek } = {
+        const { wrsThisWeek } = {
             ...this.lastBioOptions,
             ...options,
         };
@@ -58,7 +58,7 @@ ${wr.user.name}`;
         }
 
         const description = `
-Trackmania Campaign World Records ${status}
+Trackmania Campaign World Records
 Property of @nekznekz
 
 WRs set this week: ${wrsThisWeek}`.trim();
