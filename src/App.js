@@ -51,7 +51,7 @@ const App = () => {
         <ThemeProvider theme={theme}>
             <CssBaseline />
             <AppState.Provider value={context}>
-                <BrowserRouter basename={process.env.NODE_ENV === 'production' ? '/trackmania-records' : '/'}>
+                <BrowserRouter>
                     <AppBar />
                     <div className={classes.views}>
                         <Switch>
