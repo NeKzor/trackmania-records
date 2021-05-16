@@ -53,7 +53,7 @@ const cleanup = () => {
 
 const fixHistory = (campaign) => {
     const now = moment().unix();
-    const nowOrEndOfSeason = campaign.event && campaign.event.endsAt < now ? campaign.event.endsAt : now;
+    const nowOrEndOfSeason = moment.unix(campaign.event && campaign.event.endsAt < now ? campaign.event.endsAt : now);
     const nowOrStartOfSeason = campaign.event ? campaign.event.startsAt : null;
 
     campaign.tracks.forEach((track) => {
@@ -63,12 +63,12 @@ const fixHistory = (campaign) => {
         })();
 
         const startOfEvent = track.isOfficial
-                ? nowOrStartOfSeason
-                : (track.event ? track.event.startsAt : null);
+            ? nowOrStartOfSeason
+            : (track.event ? track.event.startsAt : null);
 
-            const endOfEvent = track.isOfficial
-                ? nowOrEndOfSeason
-                : track.event && track.event.endsAt < now ? track.event.endsAt : now;
+        const endOfEvent = track.isOfficial
+            ? nowOrEndOfSeason
+            : moment.unix(track.event && track.event.endsAt < now ? track.event.endsAt : now);
 
         track.history = track.history.filter((historyWr) => {
             if (autoban(historyWr.user.id)) {
@@ -93,8 +93,17 @@ const fixHistory = (campaign) => {
         track.history.forEach((wr, idx, wrs) => {
             const nextWr = wrs.slice(idx + 1).find((nextWR) => nextWR.score < wr.score);
 
-            wr.duration = moment(nextWr ? nextWr.date : endOfEvent).diff(moment(wr.date), 'days');            
+            wr.duration = moment(nextWr ? nextWr.date : endOfEvent).diff(moment(wr.date), 'days');
+
+            if (wr.duration < 0) {
+                log.warn(`negative duration for ${wr.user.name} -> ${wr.score} -> ${wr.date} -> ${track.name}`);
+            }
         });
+
+        const [firstWr] = track.history;
+        if (firstWr) {
+            firstWr.delta = 0;
+        }
     });
 };
 
