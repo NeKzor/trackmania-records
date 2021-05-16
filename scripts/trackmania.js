@@ -222,7 +222,7 @@ const main = async (outputDir, snapshot = true) => {
 };
 
 const dumpOfficialCampaign = async (outputDir) => {
-    const campaigns = (await trackmania.campaigns(Campaigns.Official, 0, 6)).collect();
+    const campaigns = (await trackmania.campaigns(Campaigns.Official)).collect();
     campaigns.push(gameInfo.training);
 
     for (const { seasonUid, name, playlist, startTimestamp, endTimestamp } of campaigns) {
@@ -279,7 +279,7 @@ const dumpOfficialCampaign = async (outputDir) => {
 };
 
 const dumpTrackOfTheDay = async (outputDir, snapshot) => {
-    const campaigns = await trackmania.campaigns(Campaigns.TrackOfTheDay, 11);
+    const campaigns = await trackmania.campaigns(Campaigns.TrackOfTheDay);
 
     for (const { year, month, days } of campaigns) {
         const name = `${moment()
