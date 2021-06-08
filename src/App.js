@@ -8,8 +8,8 @@ import { createMuiTheme } from '@material-ui/core/styles';
 import AppBar from './components/AppBar';
 import AboutView from './views/AboutView';
 import GameView from './views/GameView';
-import ReplayView from './views/ReplayView';
 import NotFoundView from './views/NotFoundView';
+import ReplayView from './views/ReplayView';
 import AppState, { AppReducer } from './AppState';
 import TrackmaniaView from './views/TrackmaniaView';
 import TrackmaniaHistoryView from './views/TrackmaniaHistoryView';
@@ -51,7 +51,7 @@ const App = () => {
         <ThemeProvider theme={theme}>
             <CssBaseline />
             <AppState.Provider value={context}>
-                <BrowserRouter basename={process.env.NODE_ENV === 'production' ? '/trackmania-records' : '/'}>
+                <BrowserRouter>
                     <AppBar />
                     <div className={classes.views}>
                         <Switch>
