@@ -353,12 +353,12 @@ const dumpTrackOfTheDay = async (outputDir, snapshot) => {
     }
 };
 
-const autoban = (accountId, score, isTraining = false) => {
+const autoban = (accountId, score, isTraining = false, isOfficial = true) => {
     if (gameInfo.cheaters.find((cheater) => cheater === accountId)) {
         return true;
     }
 
-    if (score !== undefined && score <= (isTraining ? 4000 : 9000)) {
+    if (score !== undefined && score <= (isTraining ? 4000 : (isOfficial ? 9000 : 5000))) {
         log.warn('banned: ' + accountId);
         gameInfo.cheaters.push(accountId);
         return true;
@@ -382,7 +382,7 @@ const resolveRecords = async (track, currentCampaign, latestCampaign, isTraining
     let wrScore = undefined;
 
     for (const { accountId, zoneId, score } of leaderboard.top) {
-        if (autoban(accountId, score, isTraining)) {
+        if (autoban(accountId, score, isTraining, track.isOfficial)) {
             continue;
         }
 
