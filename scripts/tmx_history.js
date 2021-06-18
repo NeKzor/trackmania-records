@@ -23,7 +23,7 @@ module.exports = async (gameName, output, maxFetch = undefined) => {
         throw new Error('Invalid game name.');
     }
 
-    const apiRoute = (action, id) => `http://${gameName}.tm-exchange.com/apiget.aspx?action=${action}&id=${id}`;
+    const apiRoute = (action, id) => `https://${gameName}.tm-exchange.com/main.aspx?action=${action}&id=${id}`;
 
     const game = [];
     const gameCampaign = importJson(__dirname + '/../games/' + gameName + '.json');
@@ -41,7 +41,7 @@ module.exports = async (gameName, output, maxFetch = undefined) => {
             const text = await res.text();
 
             const document = new JSDOM(text).window.document;
-            const input = document.querySelector('#ctl00_ReplayData') || document.querySelector('#_ctl0_ReplayData');
+            const input = document.querySelector(`[id$='ReplayData']`);
 
             if (!input) {
                 log.warn('input element not found');
