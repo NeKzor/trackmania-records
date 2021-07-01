@@ -1,4 +1,3 @@
-const { JSDOM } = require('jsdom');
 const moment = require('moment');
 const fetch = require('node-fetch');
 const { importJson, log, tryExportJson, tryMakeDir } = require('./utils');
@@ -7,23 +6,14 @@ const tmx = ['tmnforever', 'united', 'nations', 'sunrise', 'original'];
 
 const config = { headers: { 'User-Agent': 'trackmania-records-v1' } };
 
-const tryParseJson = (text) => {
-    try {
-        return JSON.parse(text);
-    } catch (err) {
-        log.warn(err);
-        console.log(text);
-    }
-
-    return [];
-};
+const byDate = (a, b) => a.ReplayAt.localeCompare(b.ReplayAt);
 
 module.exports = async (gameName, output, maxFetch = undefined) => {
     if (!tmx.find((x) => x === gameName)) {
         throw new Error('Invalid game name.');
     }
 
-    const apiRoute = (action, id) => `https://${gameName}.tm-exchange.com/main.aspx?action=${action}&id=${id}`;
+    const apiRoute = (route, trackid) => `https://${gameName}.tm-exchange.com${route}?trackid=${trackid}&count=1000`;
 
     const game = [];
     const gameCampaign = importJson(__dirname + '/../games/' + gameName + '.json');
@@ -33,24 +23,13 @@ module.exports = async (gameName, output, maxFetch = undefined) => {
 
         let count = 0;
         for (const { id, name, type } of campaign.tracks) {
-            const url = apiRoute('trackreplayshow', id);
+            const url = apiRoute('/api/replays', id);
             const res = await fetch(url, config);
 
             log.info(`[API CALL] GET -> ${url} : ${res.status} (${name})`);
 
-            const text = await res.text();
-
-            const document = new JSDOM(text).window.document;
-            const input = document.querySelector(`[id$='ReplayData']`);
-
-            if (!input) {
-                log.warn('input element not found');
-                continue;
-            }
-
-            const byDate = (a, b) => a.ReplayAt.localeCompare(b.ReplayAt);
-            const inputValue = input.getAttribute('value');
-            const records = tryParseJson(inputValue).sort(byDate);
+            const json = await res.json();
+            const records = json.Results.sort(byDate);
 
             const wrs = [];
             let wr = undefined;
@@ -69,7 +48,7 @@ module.exports = async (gameName, output, maxFetch = undefined) => {
                             name: record.LoginId,
                         },
                         score: (wr = score),
-                        date: record.ReplayAt,
+                        date: moment(record.ReplayAt, 'YYYY-MM-DDTHH:mm:ss').toISOString(),
                         replay: record.ReplayId,
                     });
                 }
