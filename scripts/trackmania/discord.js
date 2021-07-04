@@ -7,28 +7,26 @@ class DiscordIntegration {
         this.username = 'Trackmania';
         this.enabled = true;
     }
-    send(data) {
+    send(data, isBan = false) {
         if (!this.enabled) {
             return Promise.resolve();
         }
 
         return this.client
-            .send('', { embeds: [this.buildEmbed(data)] })
+            .send('', { embeds: [(isBan ? this.buildBanEmbed : this.buildEmbed)(data)] })
             .then(console.log)
             .catch(console.error);
     }
     buildEmbed({ wr, track }) {
         return {
             title: 'New World Record',
-            url: 'https://nekz.me/trackmania-records/trackmania',
+            url: 'https://trackmania.nekz.me/trackmania',
             color: 44871,
             timestamp: new Date(wr.date).toISOString(),
             fields: [
                 {
                     name: 'Track',
-                    value: DiscordIntegration.sanitiseText(
-                        track.name.replace(/(\$[0-9a-fA-F]{3}|\$[WNOITSGZBEMwnoitsgzbem]{1})/g, ''),
-                    ),
+                    value: track.name.replace(/(\$[0-9a-fA-F]{3}|\$[WNOITSGZBEMwnoitsgzbem]{1})/g, ''),
                     inline: true,
                 },
                 {
@@ -43,7 +41,7 @@ class DiscordIntegration {
                 },
                 {
                     name: 'Player',
-                    value: DiscordIntegration.sanitiseText(wr.user.name),
+                    value: Discord.Util.escapeUnderline(wr.user.name),
                     inline: true,
                 },
                 {
@@ -54,6 +52,30 @@ class DiscordIntegration {
                 {
                     name: 'Ghost File',
                     value: `[Download](https://prod.trackmania.core.nadeo.online/storageObjects/${wr.replay})`,
+                    inline: true,
+                },
+            ],
+        };
+    }
+    buildBanEmbed({ user, score, track }) {
+        return {
+            title: 'Automatic Ban',
+            url: 'https://trackmania.io/#/leaderboard/' + track._id,
+            color: 16663879,
+            fields: [
+                {
+                    name: 'Player',
+                    value: Discord.Util.escapeUnderline(user.name),
+                    inline: true,
+                },
+                {
+                    name: 'Track',
+                    value: track.name.replace(/(\$[0-9a-fA-F]{3}|\$[WNOITSGZBEMwnoitsgzbem]{1})/g, ''),
+                    inline: true,
+                },
+                {
+                    name: 'Time',
+                    value: formatScore(score),
                     inline: true,
                 },
             ],
@@ -100,9 +122,6 @@ class DiscordIntegration {
                 },
             ],
         };
-    }
-    static sanitiseText(text) {
-        return text.replace('/(\\*|_|`|~)/miu', '\\\\$1');
     }
 }
 

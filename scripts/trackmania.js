@@ -71,7 +71,7 @@ const fixHistory = (campaign) => {
             : moment.unix(track.event && track.event.endsAt < now ? track.event.endsAt : now);
 
         track.history = track.history.filter((historyWr) => {
-            if (autoban(historyWr.user.id)) {
+            if (gameInfo.cheaters.find((cheater) => cheater === historyWr.user.id)) {
                 return false;
             }
 
@@ -353,18 +353,55 @@ const dumpTrackOfTheDay = async (outputDir, snapshot) => {
     }
 };
 
-const autoban = (accountId, score, isTraining = false, isOfficial = true) => {
+const autoban = (accountId, score, track, isTraining = false) => {
     if (gameInfo.cheaters.find((cheater) => cheater === accountId)) {
         return true;
     }
 
-    if (score !== undefined && score <= (isTraining ? 4000 : (isOfficial ? 9000 : 5000))) {
-        log.warn('banned: ' + accountId);
-        gameInfo.cheaters.push(accountId);
+    if (score !== undefined && score <= (isTraining ? 4000 : (track.isOfficial ? 9000 : 5000))) {
+        ban(accountId, score, track);
         return true;
     }
 
     return false;
+};
+
+const ban = (account, score, track) => {
+    const accountId = typeof account === 'string' ? account : account.accountId;
+
+    log.warn('banned: ' + accountId);
+    gameInfo.cheaters.push(accountId);
+
+    try {
+        const sendBanAlert = (accountInfo) => {
+            discord.send({
+                user: {
+                    id: accountInfo.accountId,
+                    name: accountInfo.displayName,
+                    firstLoginAt: accountInfo.timestamp,
+                },
+                score,
+                track,
+            }, true);
+        };
+
+        if (typeof account !== 'string') {
+            sendBanAlert(account);
+        } else {
+            trackmania.accounts([accountId])
+            .then((account) => {
+                const [accountInfo] = account.collect();
+
+                console.log('accountInfo', accountId, accountInfo);
+
+                if (accountInfo) {
+                    sendBanAlert(accountInfo);
+                }
+            });
+        }
+    } catch (oops) {
+        log.error(oops);
+    }
 };
 
 const resolveRecords = async (track, currentCampaign, latestCampaign, isTraining) => {
@@ -380,9 +417,9 @@ const resolveRecords = async (track, currentCampaign, latestCampaign, isTraining
     const history = latestTrack && latestTrack.history ? latestTrack.history : [];
 
     let wrScore = undefined;
-
+    
     for (const { accountId, zoneId, score } of leaderboard.top) {
-        if (autoban(accountId, score, isTraining, track.isOfficial)) {
+        if (autoban(accountId, score, track, isTraining)) {
             continue;
         }
 
@@ -401,7 +438,17 @@ const resolveRecords = async (track, currentCampaign, latestCampaign, isTraining
             }
 
             const [account] = (await trackmania.accounts([accountId])).collect();
+
+            /* ban if account is too young */
+            if (track.isOfficial && moment().diff(moment(account.timestamp), 'hours') <= 24) {
+                ban(accountId, score, track);
+                continue;
+            }
+
             const [record] = (await trackmania.mapRecords([accountId], [track._id])).collect();
+            if (!record) {
+                continue;
+            }
 
             const timestamp = moment(record.timestamp);
 
@@ -435,7 +482,7 @@ const resolveRecords = async (track, currentCampaign, latestCampaign, isTraining
                 inspect(wr);
 
                 const data = { wr: { ...wr }, track: { ...track } };
-                for (const integration of track.isOfficial ? [twitter, discord] : [discord]) {
+                for (const integration of track.isOfficial ? [twitter] : []) {
                     integration.send(data);
                 }
 

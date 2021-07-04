@@ -10,15 +10,9 @@ const { log } = require('./utils');
 const output = require('path').join(__dirname, '/../api');
 const now = process.argv.some((arg) => arg === '-n' || arg === '--now');
 const nowTrackmania = process.argv.some((arg) => arg === '-ntm' || arg === '--now-trackmania');
+const nowHistory = process.argv.some((arg) => arg === '-htm' || arg === '--now-history');
 
 const main = async () => {    
-    try {
-        log.info('scraping trackmania');
-        await trackmania(output);
-    } catch (err) {
-        log.error(err);
-    }
-
     for (const game of ['tmnforever', 'united']) {
         try {
             log.info(`scraping ${game} history...`);
@@ -50,8 +44,6 @@ const main = async () => {
     } catch (err) {
         log.error(err);
     }
-
-    publish();
 };
 
 const publish = () => {
@@ -81,6 +73,17 @@ const trackmaniaOnly = async () => {
     }
 };
 
+const historyOnly = async () => {
+    for (const game of ['tmnforever', 'united']) {
+        try {
+            log.info(`scraping ${game} history...`);
+            await tmxHistory(game, output);
+        } catch (err) {
+            log.error(err);
+        }
+    }
+};
+
 if (now) {
     main();
 }
@@ -89,8 +92,13 @@ if (nowTrackmania) {
     trackmaniaOnly();
 }
 
+if (nowHistory) {
+    historyOnly();
+}
+
 cron.schedule('0 19 * * *', main);
+cron.schedule('*/60 * * * * *', trackmaniaOnly);
 //cron.schedule('5,10,15,20,25,30,35,45,50,55 19 * * *', trackmaniaOnly);
 //cron.schedule('0,5,10,15,20,25,30,35,45,50,55 0-18,20-23 * * *', trackmaniaOnly);
-cron.schedule('15,30,45 19 * * *', trackmaniaOnly);
-cron.schedule('0,15,30,45 0-18,20-23 * * *', trackmaniaOnly);
+//cron.schedule('15,30,45 19 * * *', trackmaniaOnly);
+//cron.schedule('0,15,30,45 0-18,20-23 * * *', trackmaniaOnly);
