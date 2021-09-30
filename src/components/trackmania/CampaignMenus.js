@@ -65,7 +65,7 @@ const getTotdMenu = (year) => {
 
         menu.push(
             <MenuItem value={`totd/${monthName}-${year}`.toLowerCase()} key={menu.length}>
-                {monthName} {year}
+                {monthName}
             </MenuItem>,
         );
 
