@@ -103,8 +103,9 @@ const RecordsRow = ({ wr, official, orderBy, useLiveDuration, history, onClickHi
 
     const defaultSort = orderBy === 'name' || orderBy === 'name';
 
-    const doubleWin = wr.round.qualifier?.winner?.accountId === wr.round.match?.winner?.accountId
-        && wr.round.qualifier?.winner?.accountId;
+    const doubleWin =
+        wr.round.qualifier?.winner?.accountId === wr.round.match?.winner?.accountId &&
+        wr.round.qualifier?.winner?.accountId;
 
     return (
         <>
@@ -114,13 +115,20 @@ const RecordsRow = ({ wr, official, orderBy, useLiveDuration, history, onClickHi
                         {wr.name}
                     </Link>
                 </MinTableCell>
-                <MinTableCell align="left">
-                    {wr.nb_players}
-                </MinTableCell>
+                <MinTableCell align="left">{wr.nb_players}</MinTableCell>
                 <MinTableCell style={noWrap} align="left">
                     {wr.round.qualifier && (
-                        <Tooltip title={<span>{wr.round.qualifier.winner.zone}</span>} placement="bottom" enterDelay={300}>
-                            <Link color={doubleWin ? 'secondary' : 'inherit'} href={linkToTrackmaniaIoProfile(wr.round.qualifier.winner)} rel="noreferrer" target="_blank">
+                        <Tooltip
+                            title={<span>{wr.round.qualifier.winner.zone}</span>}
+                            placement="bottom"
+                            enterDelay={300}
+                        >
+                            <Link
+                                color={doubleWin ? 'secondary' : 'inherit'}
+                                href={linkToTrackmaniaIoProfile(wr.round.qualifier.winner)}
+                                rel="noreferrer"
+                                target="_blank"
+                            >
                                 {wr.round.qualifier.winner.displayName}
                             </Link>
                         </Tooltip>
@@ -129,7 +137,12 @@ const RecordsRow = ({ wr, official, orderBy, useLiveDuration, history, onClickHi
                 <MinTableCell style={noWrap} align="left">
                     {wr.round.match && (
                         <Tooltip title={<span>{wr.round.match.winner.zone}</span>} placement="bottom" enterDelay={300}>
-                            <Link color={doubleWin ? 'secondary' : 'inherit'} href={linkToTrackmaniaIoProfile(wr.round.match.winner)} rel="noreferrer" target="_blank">
+                            <Link
+                                color={doubleWin ? 'secondary' : 'inherit'}
+                                href={linkToTrackmaniaIoProfile(wr.round.match.winner)}
+                                rel="noreferrer"
+                                target="_blank"
+                            >
                                 {wr.round.match.winner.displayName}
                             </Link>
                         </Tooltip>

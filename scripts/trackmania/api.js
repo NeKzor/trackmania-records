@@ -47,7 +47,7 @@ class UbisoftClient {
 }
 
 const ApiEndpoint = {
-    Prod: 'https://prod.trackmania.core.nadeo.online', 
+    Prod: 'https://prod.trackmania.core.nadeo.online',
     LiveServices: 'https://live-services.trackmania.nadeo.live/api/token',
     Competition: 'https://competition.trackmania.nadeo.club/api',
 };
@@ -250,7 +250,7 @@ class Zones extends Entity {
         if (cachedZone) {
             return cachedZone;
         }
-        
+
         const result = [];
         const zoneNames = zonePath.split('|');
 
@@ -370,10 +370,7 @@ class Campaigns extends Entity {
         if (this.offset === undefined) this.offset = 0;
         if (this.length === undefined) this.length = 1;
 
-        const parameters = [
-            `offset=${this.offset}`,
-            `length=${this.length}`,
-        ];
+        const parameters = [`offset=${this.offset}`, `length=${this.length}`];
 
         if (parameters.length > 0) {
             api.push(parameters.join('&'));
@@ -454,7 +451,7 @@ class CompetitionRound {
     training_challenge_id = null;
     id = null;
     position = 0;
-    name = ''
+    name = '';
     start_date = 0;
     end_date = 0;
     lock_date = null;

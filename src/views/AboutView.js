@@ -116,24 +116,17 @@ const AboutView = () => {
                 <Typography variant="body1">
                     The largest mirror for campaign world records of many Trackmania games.
                 </Typography>
-                <Typography variant="body1">
-                    We list, rank and compare players who set the fastest runs.
-                </Typography>
-
+                <Typography variant="body1">We list, rank and compare players who set the fastest runs.</Typography>
                 <Padding />
-
                 <Typography variant="h5">Next Update</Typography>
                 <br />
                 {nextUpdate}
                 <br />
                 <br />
                 For Trackmania we scan every 15 minutes, for everything else every 24 hours.
-
                 <Padding />
-
                 <Typography variant="h5">Changelog</Typography>
                 <br />
-
                 {gitHub === undefined ? (
                     <Typography variant="body1">Unable to fetch status from GitHub.</Typography>
                 ) : gitHub.length === 0 ? (
@@ -203,9 +196,7 @@ const AboutView = () => {
                         </Table>
                     </div>
                 )}
-
                 <Padding />
-
                 <Typography variant="h5">Theme Settings</Typography>
                 <br />
                 <FormGroup row>
@@ -214,9 +205,7 @@ const AboutView = () => {
                         label="Dark Mode"
                     />
                 </FormGroup>
-
                 <Padding />
-
                 <Typography variant="h5">Sources</Typography>
                 <br />
                 <Link rel="noopener" href="https://www.tm-exchange.com">
@@ -232,7 +221,6 @@ const AboutView = () => {
                 </Link>
                 <br />
                 live-services.trackmania.nadeo.live
-
             </Paper>
         </ViewContent>
     );

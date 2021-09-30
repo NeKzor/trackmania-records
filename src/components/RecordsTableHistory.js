@@ -110,9 +110,7 @@ const RecordsHistoryRow = ({ game, wr, trackType }) => {
                     </Moment>
                 </Tooltip>
             </MinTableCell>
-            <MinTableCell align="left">
-                {score}
-            </MinTableCell>
+            <MinTableCell align="left">{score}</MinTableCell>
             <MinTableCell align="left">{delta ? deltaSign + delta : ''}</MinTableCell>
             <MinTableCell align="left">
                 <Link
@@ -159,40 +157,36 @@ const RecordsRow = ({ game, wr, orderBy, useLiveDuration, history, onClickHistor
             <TableRow tabIndex={-1}>
                 {(wr.track.isFirst || !defaultSort) && (
                     <MinTableCell style={noWrap} rowSpan={defaultSort ? wr.track.records : 1} align="left">
-                        <Link
-                            color="inherit"
-                            href={tmxGame.trackUrl(wr.track.id)}
-                            rel="noreferrer"
-                            target="_blank"
-                        >
+                        <Link color="inherit" href={tmxGame.trackUrl(wr.track.id)} rel="noreferrer" target="_blank">
                             {wr.track.name}
                         </Link>
                     </MinTableCell>
                 )}
                 <MinTableCell align="left">
                     {delta && (
-                        <Tooltip title={<span>{deltaSign}{delta} to former record</span>} placement="bottom" enterDelay={300}>
+                        <Tooltip
+                            title={
+                                <span>
+                                    {deltaSign}
+                                    {delta} to former record
+                                </span>
+                            }
+                            placement="bottom"
+                            enterDelay={300}
+                        >
                             <span>{score}</span>
                         </Tooltip>
                     )}
                     {!delta && <span>{score}</span>}
                 </MinTableCell>
                 <MinTableCell style={noWrap} align="left">
-                    <Link
-                        color="inherit"
-                        href={tmxGame.userUrl(wr.user.id)}
-                        rel="noreferrer"
-                        target="_blank"
-                    >
+                    <Link color="inherit" href={tmxGame.userUrl(wr.user.id)} rel="noreferrer" target="_blank">
                         {wr.user.name}
                     </Link>
                 </MinTableCell>
                 <MinTableCell align="left">
                     <Tooltip title={<Moment fromNow>{wr.date}</Moment>} placement="bottom-end" enterDelay={300}>
-                        <Moment
-                            style={{ color: getDateDifferenceColor(wr.date), ...noWrap }}
-                            format="YYYY-MM-DD"
-                        >
+                        <Moment style={{ color: getDateDifferenceColor(wr.date), ...noWrap }} format="YYYY-MM-DD">
                             {wr.date}
                         </Moment>
                     </Tooltip>
@@ -252,12 +246,14 @@ const RecordsRow = ({ game, wr, orderBy, useLiveDuration, history, onClickHistor
                                     </TableHead>
                                     <TableBody>
                                         {wr.track.history.map((historyWr, idx) => {
-                                            return <RecordsHistoryRow
-                                                game={game}
-                                                wr={historyWr}
-                                                trackType={wr.track.type}
-                                                key={idx}
-                                            />;
+                                            return (
+                                                <RecordsHistoryRow
+                                                    game={game}
+                                                    wr={historyWr}
+                                                    trackType={wr.track.type}
+                                                    key={idx}
+                                                />
+                                            );
                                         })}
                                     </TableBody>
                                 </Table>
@@ -272,7 +268,8 @@ const RecordsRow = ({ game, wr, orderBy, useLiveDuration, history, onClickHistor
 
 const RecordsTable = ({ game, data, stats, useLiveDuration }) => {
     const [storage, setStorage] = useLocalStorage(game, {
-        order: 'asc', orderBy: 'track.name',
+        order: 'asc',
+        orderBy: 'track.name',
     });
 
     const [{ order, rowsPerPage, page, orderBy }, setState] = React.useState(defaultState);
@@ -312,11 +309,7 @@ const RecordsTable = ({ game, data, stats, useLiveDuration }) => {
     return (
         <div className={classes.root}>
             <Table size="small">
-                <RecordsTableHead
-                    order={order}
-                    orderBy={orderBy}
-                    onRequestSort={handleRequestSort}
-                />
+                <RecordsTableHead order={order} orderBy={orderBy} onRequestSort={handleRequestSort} />
                 <TableBody>
                     {stableSort(data, order, orderBy)
                         .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
@@ -337,9 +330,7 @@ const RecordsTable = ({ game, data, stats, useLiveDuration }) => {
                 <TableBody>
                     {stats.totalTime > 0 && (
                         <TableRow>
-                            <MinTableCell align="right">
-                                Total Time
-                            </MinTableCell>
+                            <MinTableCell align="right">Total Time</MinTableCell>
                             <MinTableCell>
                                 <Tooltip
                                     title={moment.duration(stats.totalTime, 'ms').humanize()}

@@ -88,7 +88,12 @@ const RecordsTable = ({ data, game, hasDuration }) => {
     return (
         <div className={classes.root}>
             <Table size="small">
-                <RankingsTableHead order={order} orderBy={orderBy} onRequestSort={handleRequestSort} hasDuration={hasDuration} />
+                <RankingsTableHead
+                    order={order}
+                    orderBy={orderBy}
+                    onRequestSort={handleRequestSort}
+                    hasDuration={hasDuration}
+                />
                 <TableBody>
                     {(hasDuration ? stableSortSort : stableSort)(data, order, orderBy, thenBy)
                         .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)

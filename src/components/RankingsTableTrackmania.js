@@ -31,7 +31,13 @@ const rowsCotd = [
     { id: 'user.displayName', sortable: false, label: 'Player', align: 'left' },
     { id: 'wins.matches', sortable: true, label: 'Wins', align: 'left', tooltip: 'Amount of match wins.' },
     { id: 'wins.qualifiers', sortable: true, label: 'Qualifiers', align: 'left', tooltip: 'Amount of qualifier wins.' },
-    { id: 'wins.hattricks', sortable: true, label: 'Hat-Tricks', align: 'left', tooltip: 'A hat-trick can be achieved by winning the qualifier, the match and Track of the Day.' },
+    {
+        id: 'wins.hattricks',
+        sortable: true,
+        label: 'Hat-Tricks',
+        align: 'left',
+        tooltip: 'A hat-trick can be achieved by winning the qualifier, the match and Track of the Day.',
+    },
 ];
 
 const RankingsTableHead = ({ order, orderBy, onRequestSort, hasDuration, cotd, hattricks }) => {
@@ -39,7 +45,7 @@ const RankingsTableHead = ({ order, orderBy, onRequestSort, hasDuration, cotd, h
         onRequestSort(event, prop1, prop2);
     };
 
-    const rows = hasDuration ? rowsOficial : cotd ? hattricks ? rowsCotd : rowsCompetition : rowsTotd;
+    const rows = hasDuration ? rowsOficial : cotd ? (hattricks ? rowsCotd : rowsCompetition) : rowsTotd;
 
     return (
         <TableHead>
@@ -52,7 +58,11 @@ const RankingsTableHead = ({ order, orderBy, onRequestSort, hasDuration, cotd, h
                         sortDirection={orderBy === row.id ? order : false}
                     >
                         {row.sortable === true && (
-                            <Tooltip title={row.tooltip ?? 'Sort by ' + row.label} placement="bottom-start" enterDelay={300}>
+                            <Tooltip
+                                title={row.tooltip ?? 'Sort by ' + row.label}
+                                placement="bottom-start"
+                                enterDelay={300}
+                            >
                                 <TableSortLabel
                                     active={orderBy === row.id}
                                     direction={order}
@@ -140,9 +150,7 @@ const RecordsTable = ({ data, hasDuration, cotd, hattricks }) => {
                                     </Link>
                                 </MinTableCell>
                             )}
-                            {!cotd && (
-                                <MinTableCell align="left">{row.wrs}</MinTableCell>
-                            )}
+                            {!cotd && <MinTableCell align="left">{row.wrs}</MinTableCell>}
                             {hasDuration && (
                                 <MinTableCell align="left">
                                     {row.duration} day{row.duration === 1 ? '' : 's'}
@@ -164,9 +172,7 @@ const RecordsTable = ({ data, hasDuration, cotd, hattricks }) => {
                                 <>
                                     <MinTableCell align="left">{row.wins.matches}</MinTableCell>
                                     <MinTableCell align="left">{row.wins.qualifiers}</MinTableCell>
-                                    {hattricks && (
-                                        <MinTableCell align="left">{row.wins.hattricks}</MinTableCell>
-                                    )}
+                                    {hattricks && <MinTableCell align="left">{row.wins.hattricks}</MinTableCell>}
                                 </>
                             )}
                         </TableRow>
