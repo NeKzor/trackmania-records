@@ -18,6 +18,7 @@ class ResponseError extends Error {
 
 const Audiences = {
     NadeoLiveServices: 'NadeoLiveServices',
+    NadeoClubServices: 'NadeoClubServices',
 };
 
 class UbisoftClient {
@@ -45,17 +46,20 @@ class UbisoftClient {
     }
 }
 
+const ApiEndpoint = {
+    Prod: 'https://prod.trackmania.core.nadeo.online', 
+    LiveServices: 'https://live-services.trackmania.nadeo.live/api/token',
+    Competition: 'https://competition.trackmania.nadeo.club/api',
+};
+
 class TrackmaniaClient {
     constructor(ticket) {
-        this.baseUrl = 'https://prod.trackmania.core.nadeo.online';
-        this.baseUrlNadeo = 'https://live-services.trackmania.nadeo.live/api/token';
-
         createHiddenField(this, 'auth', ticket);
         createHiddenField(this, 'loginData', null);
         createHiddenField(this, 'loginDataNadeo', null);
     }
     async login() {
-        const res = await fetch(`${this.baseUrl}/v2/authentication/token/ubiservices`, {
+        const res = await fetch(`${ApiEndpoint.Prod}/v2/authentication/token/ubiservices`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -78,7 +82,7 @@ class TrackmaniaClient {
 
         audience = audience || Audiences.NadeoLiveServices;
 
-        const res = await fetch(`${this.baseUrl}/v2/authentication/token/nadeoservices`, {
+        const res = await fetch(`${ApiEndpoint.Prod}/v2/authentication/token/nadeoservices`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -96,7 +100,7 @@ class TrackmaniaClient {
         return this;
     }
     async refresh() {
-        const res = await fetch(`${this.baseUrl}/v2/authentication/token/refresh`, {
+        const res = await fetch(`${ApiEndpoint.Prod}/v2/authentication/token/refresh`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -110,7 +114,7 @@ class TrackmaniaClient {
 
         return this;
     }
-    async get(route, nadeo) {
+    async get(route, nadeo, nadeoEndpont = ApiEndpoint.LiveServices) {
         if (!nadeo && !this.loginData) {
             throw new Error('need to be logged in first');
         }
@@ -120,7 +124,7 @@ class TrackmaniaClient {
         }
 
         const accessToken = nadeo ? this.loginDataNadeo.accessToken : this.loginData.accessToken;
-        const baseUrl = nadeo ? this.baseUrlNadeo : this.baseUrl;
+        const baseUrl = nadeo ? nadeoEndpont : ApiEndpoint.Prod;
 
         const res = await fetch(baseUrl + route, {
             method: 'GET',
@@ -159,6 +163,27 @@ class TrackmaniaClient {
     async mapRecords(accountIdList, mapIdList) {
         return await MapRecords.default(this).update(accountIdList, mapIdList);
     }
+    async competitions(competitionId) {
+        return await Competitions.default(this).update(competitionId);
+    }
+    async competitionsRounds(competitionId) {
+        return await CompetitionsRounds.default(this).update(competitionId);
+    }
+    async rounds(roundId) {
+        return await Rounds.default(this).update(roundId);
+    }
+    async matches(matchId) {
+        return await Matches.default(this).update(matchId);
+    }
+    async matches(matchId) {
+        return await Matches.default(this).update(matchId);
+    }
+    async challenges(challengeId) {
+        return await Challenges.default(this).update(challengeId);
+    }
+    async challengesLeaderboard(matchId) {
+        return await ChallengesLeaderboard.default(this).update(matchId);
+    }
 }
 
 class Entity {
@@ -190,6 +215,7 @@ class Zones extends Entity {
     async update() {
         this.data = await this.client.get('/zones');
         this.cache = {};
+        this.cachePaths = {};
         return this;
     }
     *[Symbol.iterator]() {
@@ -218,6 +244,32 @@ class Zones extends Entity {
         }
 
         return result;
+    }
+    searchByNamePath(zonePath) {
+        const cachedZone = this.cachePaths[zonePath];
+        if (cachedZone) {
+            return cachedZone;
+        }
+        
+        const result = [];
+        const zoneNames = zonePath.split('|');
+
+        let lastParentId = null;
+
+        for (const zoneName of zoneNames) {
+            for (const zone of this.data) {
+                if (zone.name === zoneName && lastParentId === zone.parentId) {
+                    result.push(zone);
+                    lastParentId = zone.zoneId;
+                }
+            }
+        }
+
+        if (zonePath.length === 0) {
+            console.warn('zone by path not found:', zonePath);
+        }
+
+        return (this.cachePaths[zonePath] = result);
     }
 }
 
@@ -397,6 +449,47 @@ class MapRecord {
     }
 }
 
+class CompetitionRound {
+    qualifier_challenge_id = null;
+    training_challenge_id = null;
+    id = null;
+    position = 0;
+    name = ''
+    start_date = 0;
+    end_date = 0;
+    lock_date = null;
+    status = '';
+    is_locked = false;
+    auto_needs_matches = false;
+    match_score_direction = '';
+    leaderboard_compute_type = '';
+    team_leaderboard_compute_type = null;
+    deleted_on = null;
+    nb_matches = 0;
+
+    constructor(data) {
+        Object.assign(this, data);
+    }
+}
+
+class RoundMatch {
+    constructor(data) {
+        Object.assign(this, data);
+    }
+}
+
+class Match {
+    constructor(data) {
+        Object.assign(this, data);
+    }
+}
+
+class LeaderboardChallenge {
+    constructor(data) {
+        Object.assign(this, data);
+    }
+}
+
 class MapRecords extends Entity {
     async update(accountIdList, mapIdList) {
         if (accountIdList !== undefined) this.accountIdList = accountIdList;
@@ -419,6 +512,120 @@ class MapRecords extends Entity {
     *[Symbol.iterator]() {
         for (const mapRecord of this.data) {
             yield new MapRecord(mapRecord);
+        }
+    }
+}
+
+class Competitions extends Entity {
+    async update(competitionId) {
+        this.competitionId = competitionId || this.competitionId;
+
+        if (!this.competitionId) {
+            throw new Error('competition id is required');
+        }
+
+        this.data = await this.client.get(`/competitions/${this.competitionId}`, true, ApiEndpoint.Competition);
+
+        return this;
+    }
+    *[Symbol.iterator]() {
+        for (const entry of Object.entries(this.data || {})) {
+            yield entry;
+        }
+    }
+}
+
+class CompetitionsRounds extends Entity {
+    async update(competitionId) {
+        this.competitionId = competitionId || this.competitionId;
+
+        if (!this.competitionId) {
+            throw new Error('competition id is required');
+        }
+
+        this.data = await this.client.get(`/competitions/${this.competitionId}/rounds`, true, ApiEndpoint.Competition);
+
+        return this;
+    }
+    *[Symbol.iterator]() {
+        for (const round of this.data) {
+            yield new CompetitionRound(round);
+        }
+    }
+}
+
+class Rounds extends Entity {
+    async update(roundId) {
+        this.roundId = roundId || this.roundId;
+
+        if (!this.roundId) {
+            throw new Error('round id is required');
+        }
+
+        this.data = await this.client.get(`/rounds/${this.roundId}/matches`, true, ApiEndpoint.Competition);
+
+        return this;
+    }
+    *[Symbol.iterator]() {
+        for (const round of this.data.matches) {
+            yield new RoundMatch(round);
+        }
+    }
+}
+
+class Matches extends Entity {
+    async update(matchId) {
+        this.matchId = matchId || this.matchId;
+
+        if (!this.matchId) {
+            throw new Error('match id is required');
+        }
+
+        this.data = await this.client.get(`/matches/${this.matchId}/results`, true, ApiEndpoint.Competition);
+
+        return this;
+    }
+    *[Symbol.iterator]() {
+        for (const match of this.data) {
+            yield new Match(match);
+        }
+    }
+}
+
+class Challenges extends Entity {
+    async update(challengeId) {
+        this.challengeId = challengeId || this.challengeId;
+
+        if (!this.challengeId) {
+            throw new Error('challenge id is required');
+        }
+
+        this.data = await this.client.get(`/challenges/${this.challengeId}`, true, ApiEndpoint.Competition);
+
+        return this;
+    }
+    *[Symbol.iterator]() {
+        for (const entry of Object.entries(this.data || {})) {
+            yield entry;
+        }
+    }
+}
+
+class ChallengesLeaderboard extends Entity {
+    async update(challengeId) {
+        this.challengeId = challengeId || this.challengeId;
+
+        if (!this.challengeId) {
+            throw new Error('challenge id is required');
+        }
+
+        this.data = await this.client.get(`/challenges/${this.challengeId}/leaderboard`, true, ApiEndpoint.Competition);
+
+        return this;
+    }
+    *[Symbol.iterator]() {
+        for (const leaderboard of this.data) {
+            yield new LeaderboardChallenge(leaderboard);
         }
     }
 }
