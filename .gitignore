@@ -11,6 +11,8 @@ replays/
 scripts/backup.json
 edge/
 cps/
+research/
+competitions.json
 
 node_modules/
 coverage/
