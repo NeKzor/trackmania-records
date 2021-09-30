@@ -16,17 +16,30 @@ const rowsOficial = [
     { id: 'duration', id2: 'wrs', sortable: true, label: 'Total Duration', align: 'left' },
 ];
 
-const rowsTOTD = [
+const rowsTotd = [
     { id: 'user.name', sortable: false, label: 'Player', align: 'left' },
     { id: 'wrs', sortable: true, label: 'World Records', align: 'left' },
 ];
 
-const RankingsTableHead = ({ order, orderBy, onRequestSort, hasDuration }) => {
+const rowsCompetition = [
+    { id: 'user.displayName', sortable: false, label: 'Player', align: 'left' },
+    { id: 'wins.matches', sortable: true, label: 'Wins', align: 'left', tooltip: 'Amount of match wins.' },
+    { id: 'wins.qualifiers', sortable: true, label: 'Qualifiers', align: 'left', tooltip: 'Amount of qualifier wins.' },
+];
+
+const rowsCotd = [
+    { id: 'user.displayName', sortable: false, label: 'Player', align: 'left' },
+    { id: 'wins.matches', sortable: true, label: 'Wins', align: 'left', tooltip: 'Amount of match wins.' },
+    { id: 'wins.qualifiers', sortable: true, label: 'Qualifiers', align: 'left', tooltip: 'Amount of qualifier wins.' },
+    { id: 'wins.hattricks', sortable: true, label: 'Hat-Tricks', align: 'left', tooltip: 'A hat-trick can be achieved by winning the qualifier, the match and Track of the Day.' },
+];
+
+const RankingsTableHead = ({ order, orderBy, onRequestSort, hasDuration, cotd, hattricks }) => {
     const createSortHandler = (prop1, prop2) => (event) => {
         onRequestSort(event, prop1, prop2);
     };
 
-    const rows = hasDuration ? rowsOficial : rowsTOTD;
+    const rows = hasDuration ? rowsOficial : cotd ? hattricks ? rowsCotd : rowsCompetition : rowsTotd;
 
     return (
         <TableHead>
@@ -39,7 +52,7 @@ const RankingsTableHead = ({ order, orderBy, onRequestSort, hasDuration }) => {
                         sortDirection={orderBy === row.id ? order : false}
                     >
                         {row.sortable === true && (
-                            <Tooltip title={'Sort by ' + row.label} placement="bottom-start" enterDelay={300}>
+                            <Tooltip title={row.tooltip ?? 'Sort by ' + row.label} placement="bottom-start" enterDelay={300}>
                                 <TableSortLabel
                                     active={orderBy === row.id}
                                     direction={order}
@@ -75,11 +88,14 @@ const minifiedStyle = { padding: '7px 0px 7px 16px' };
 const MinTableCell = (props) => <TableCell style={minifiedStyle} {...props} />;
 
 const linkToTrackmaniaIoProfile = (user) => {
-    return `https://trackmania.io/#/player/${encodeURIComponent(user.id)}`;
+    return `https://trackmania.io/#/player/${encodeURIComponent(user.id ?? user.accountId)}`;
 };
 
-const RecordsTable = ({ data, hasDuration }) => {
-    const [{ order, orderBy, thenBy }, setState] = React.useState(defaultState);
+const RecordsTable = ({ data, hasDuration, cotd, hattricks }) => {
+    const [{ order, orderBy, thenBy }, setState] = React.useState({
+        ...defaultState,
+        orderBy: cotd ? 'wins.matches' : 'wrs',
+    });
 
     const handleRequestSort = (_, prop1, prop2) => {
         const newOrderBy = prop1;
@@ -93,7 +109,7 @@ const RecordsTable = ({ data, hasDuration }) => {
     };
 
     React.useEffect(() => {
-        setState((s) => ({ ...s, orderBy: 'wrs', thenBy: 'wrs' }));
+        setState((s) => ({ ...s, orderBy: cotd ? 'wins.matches' : 'wrs', thenBy: cotd ? 'wins.matches' : 'wrs' }));
     }, [data, hasDuration]);
 
     const classes = useStyles();
@@ -106,25 +122,52 @@ const RecordsTable = ({ data, hasDuration }) => {
                     orderBy={orderBy}
                     onRequestSort={handleRequestSort}
                     hasDuration={hasDuration}
+                    cotd={cotd}
+                    hattricks={hattricks}
                 />
                 <TableBody>
                     {(hasDuration ? stableSortSort : stableSort)(data, order, orderBy, thenBy).map((row) => (
-                        <TableRow tabIndex={-1} key={row.user.name}>
-                            <MinTableCell align="left">
-                                <Link
-                                    color="inherit"
-                                    href={linkToTrackmaniaIoProfile(row.user)}
-                                    rel="noreferrer"
-                                    target="_blank"
-                                >
-                                    {row.user.name}
-                                </Link>
-                            </MinTableCell>
-                            <MinTableCell align="left">{row.wrs}</MinTableCell>
+                        <TableRow tabIndex={-1} key={row.user.id ?? row.user.accountId}>
+                            {!cotd && (
+                                <MinTableCell align="left">
+                                    <Link
+                                        color="inherit"
+                                        href={linkToTrackmaniaIoProfile(row.user)}
+                                        rel="noreferrer"
+                                        target="_blank"
+                                    >
+                                        {row.user.name}
+                                    </Link>
+                                </MinTableCell>
+                            )}
+                            {!cotd && (
+                                <MinTableCell align="left">{row.wrs}</MinTableCell>
+                            )}
                             {hasDuration && (
                                 <MinTableCell align="left">
                                     {row.duration} day{row.duration === 1 ? '' : 's'}
                                 </MinTableCell>
+                            )}
+                            {cotd && (
+                                <MinTableCell align="left">
+                                    <Link
+                                        color="inherit"
+                                        href={linkToTrackmaniaIoProfile(row.user)}
+                                        rel="noreferrer"
+                                        target="_blank"
+                                    >
+                                        {row.user.displayName}
+                                    </Link>
+                                </MinTableCell>
+                            )}
+                            {cotd && (
+                                <>
+                                    <MinTableCell align="left">{row.wins.matches}</MinTableCell>
+                                    <MinTableCell align="left">{row.wins.qualifiers}</MinTableCell>
+                                    {hattricks && (
+                                        <MinTableCell align="left">{row.wins.hattricks}</MinTableCell>
+                                    )}
+                                </>
                             )}
                         </TableRow>
                     ))}

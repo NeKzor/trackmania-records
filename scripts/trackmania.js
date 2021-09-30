@@ -5,6 +5,7 @@ const { UbisoftClient, TrackmaniaClient, Audiences, Campaigns, Zones } = require
 const { log, tryExportJson, tryMakeDir, importJson } = require('./utils');
 const DiscordIntegration = require('./trackmania/discord');
 const TwitterIntegration = require('./trackmania/twitter');
+const dumpCompetitions = require('./trackmania_competitions');
 
 require('dotenv').config();
 
@@ -171,6 +172,7 @@ const main = async (outputDir, snapshot = true) => {
             return;
         }
 
+        const isTimeToDumpCompetitions = moment().add(10, 'seconds').format('HH:mm') === '22:00';
         isUpdating = true;
 
         await dumpOfficialCampaign(outputDir);
@@ -223,6 +225,10 @@ const main = async (outputDir, snapshot = true) => {
         });
 
         tryExportJson(gameFile, gameInfo, true, true);
+
+        if (isTimeToDumpCompetitions) {
+            await dumpCompetitions(trackmania, zones);
+        }
     } catch (error) {
         log.error(error);
     }
