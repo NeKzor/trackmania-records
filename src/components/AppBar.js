@@ -134,7 +134,7 @@ const AppBar = ({ location }) => {
                     </Hidden>
                     <Typography variant="h6" color="inherit">
                         <Link component={RouterLink} to="/" color="inherit" underline="none">
-                            Trackmania Records
+                            {page.title}
                         </Link>
                     </Typography>
                 </Toolbar>
