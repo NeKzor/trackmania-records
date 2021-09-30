@@ -95,7 +95,7 @@ const CampaignTab = ({ campaign, onChangeCampaign, onChangeYear, isOfficial, yea
                         rows.push({
                             track: {
                                 id: track.id,
-                                name: track.name.replace(/(\$[0-9a-fA-F]{3}|\$[WNOITSGZBEMwnoitsgzbem]{1})/g, ''),
+                                name: track.name.replace(/(\$[0-9a-fA-F]{1,3}|\$[WNOITSGZBEMwnoitsgzbem]{1})/g, ''),
                                 monthDay: track.monthDay,
                                 isFirst: wr === track.wrs[0],
                                 isLast,
