@@ -34,7 +34,7 @@ const saveSession = (client) => {
 let trackmania = new TrackmaniaClient();
 let zones = null;
 let game = [];
-let gameInfo = { cheaters: [], training: { groupId: null, maps: [] } };
+let gameInfo = { cheaters: [], whitelist: [], training: { groupId: null, maps: [] } };
 let discord = null;
 let imported = [];
 let isUpdating = false;
@@ -43,7 +43,7 @@ const cleanup = () => {
     trackmania = null;
     zones = null;
     game = [];
-    gameInfo = { cheaters: [], training: { groupId: null, maps: [] } };
+    gameInfo = { cheaters: [], whitelist: [], training: { groupId: null, maps: [] } };
     discord = null;
     imported = [];
     isUpdating = false;
@@ -172,7 +172,9 @@ const main = async (outputDir, snapshot = true) => {
             return;
         }
 
-        const isTimeToDumpCompetitions = moment().add(10, 'seconds').format('HH:mm') === '22:00';
+        const isTimeToDumpCupOfTheDay = moment().add(10, 'seconds').format('HH:mm') === '21:15';
+        const isTimeToDumpA08Forever = moment().add(10, 'seconds').format('DD HH:mm') === '01 22:00';
+
         isUpdating = true;
 
         await dumpOfficialCampaign(outputDir);
@@ -226,9 +228,8 @@ const main = async (outputDir, snapshot = true) => {
 
         tryExportJson(gameFile, gameInfo, true, true);
 
-        if (isTimeToDumpCompetitions) {
-            await dumpCompetitions(trackmania, zones);
-        }
+        if (isTimeToDumpCupOfTheDay) await dumpCompetitions(trackmania, zones, false);
+        if (isTimeToDumpA08Forever) await dumpCompetitions(trackmania, zones, true);
     } catch (error) {
         log.error(error);
     }
@@ -360,11 +361,15 @@ const dumpTrackOfTheDay = async (outputDir, snapshot) => {
 };
 
 const autoban = (accountId, score, track, isTraining = false) => {
+    if (gameInfo.whitelist.find((whitelisted) => whitelisted === accountId)) {
+        return false;
+    }
+
     if (gameInfo.cheaters.find((cheater) => cheater === accountId)) {
         return true;
     }
 
-    if (score !== undefined && score <= (isTraining ? 4000 : (track.isOfficial ? 9000 : 5000))) {
+    if (score !== undefined && score <= (isTraining ? 4000 : (track.isOfficial ? 5000 : 5000))) {
         ban(accountId, score, track);
         return true;
     }
@@ -446,9 +451,11 @@ const resolveRecords = async (track, currentCampaign, latestCampaign, isTraining
             const [account] = (await trackmania.accounts([accountId])).collect();
 
             /* ban if account is too young */
-            if (track.isOfficial && moment().diff(moment(account.timestamp), 'hours') <= 24) {
-                ban(accountId, score, track);
-                continue;
+            if (track.isOfficial && moment().diff(moment(account.timestamp), 'hours') <= (24 * 7)) {
+                if (!gameInfo.whitelist.find((whitelistId) => whitelistId === accountId)) {
+                    ban(accountId, score, track);
+                    continue;
+                }
             }
 
             const [record] = (await trackmania.mapRecords([accountId], [track._id])).collect();
@@ -488,7 +495,7 @@ const resolveRecords = async (track, currentCampaign, latestCampaign, isTraining
                 inspect(wr);
 
                 const data = { wr: { ...wr }, track: { ...track } };
-                for (const integration of track.isOfficial ? [twitter] : []) {
+                for (const integration of track.isOfficial && !isTraining ? [twitter] : []) {
                     integration.send(data);
                 }
 

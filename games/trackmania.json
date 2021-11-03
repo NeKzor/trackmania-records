@@ -33,7 +33,12 @@
         "55d77be3-3dd0-4895-b963-39cb2bb6a967",
         "30377a82-ef34-4bbf-a4e6-4b12200ed19b",
         "8f405130-db6b-4a7f-b93b-be569aebfdf3",
-        "15c675a6-b6d9-494c-abf5-017d65e9bd00"
+        "15c675a6-b6d9-494c-abf5-017d65e9bd00",
+        "5681e7b5-1cc9-43f9-a103-49954eab3ef4",
+        "c20a28bf-d4ca-4e7e-ad51-115a5ffbc42a"
+    ],
+    "whitelist": [
+        "9a097636-26b4-4752-98bc-e266345b2cc4"
     ],
     "training": {
         "name": "Training",

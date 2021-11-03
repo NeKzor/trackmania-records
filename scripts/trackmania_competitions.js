@@ -4,13 +4,13 @@ const moment = require('moment');
 const { Audiences, Zones } = require('./trackmania/api');
 const { delay, log, importJson, tryMakeDir, tryExportJson } = require('./utils');
 
-const main = async (trackmania, zones) => {
-    log.info('dumping competitions');
+const main = async (trackmania, zones, isA08Forever) => {
+    log.info('dumping competitions', isA08Forever ? '(A08 Forever)' : '(COTD)');
 
     /* required for competitions */
     await trackmania.loginNadeo(Audiences.NadeoClubServices);
 
-    const fetchCompetitionData = async (competition, isA08Forever) => {
+    const fetchCompetitionData = async (competition) => {
         const rounds = (await trackmania.competitionsRounds(competition.id)).collect();
         if (!rounds.length) {
             log.info('no rounds');
@@ -99,46 +99,40 @@ const main = async (trackmania, zones) => {
 
     const competitions = await fetchCompetitions(trackmania);
 
-    const dumpCompetition = async (isA08Forever) => {
-        const compName = isA08Forever ? 'a08forever' : 'cotd';
+    const compName = isA08Forever ? 'a08forever' : 'cotd';
 
-        const latestComp = isA08Forever ? 'A08 forever' : `Cup of the Day ${moment().format('YYYY-MM-DD')} #1`;
-        const competitionsToDump = competitions.filter((comp) => comp.name.startsWith(latestComp)).slice(0, 1);
+    const latestComp = isA08Forever ? 'A08 forever' : `Cup of the Day ${moment().format('YYYY-MM-DD')} #1`;
+    const competitionsToDump = competitions.filter((comp) => comp.name.startsWith(latestComp)).slice(0, 1);
 
-        for (const compCompetition of competitionsToDump) {
-            const updatedComp = await trackmania.competitions(compCompetition.id);
-            compCompetition.nb_players = updatedComp.data.nb_players;
+    for (const compCompetition of competitionsToDump) {
+        const updatedComp = await trackmania.competitions(compCompetition.id);
+        compCompetition.nb_players = updatedComp.data.nb_players;
 
-            const comp = await fetchCompetitionData(compCompetition, isA08Forever);
+        const comp = await fetchCompetitionData(compCompetition, isA08Forever);
 
-            if (comp) {
-                const compFolder = path.join(__dirname, '/../api/trackmania/competitions/' + compName);
-                tryMakeDir(compFolder);
-    
-                const start = moment.unix(comp.start_date);
-                comp.monthDay = parseInt(start.format('D'), 10);
-    
-                const filename = path.join(compFolder, '/' + start.format(isA08Forever ? 'YYYY' : 'MMMM-YYYY').toLowerCase() + '.json');
-    
-                try {
-                    const data = importJson(filename);
-                    data.push(comp);
-                    tryExportJson(filename, data, true);
-                } catch {
-                    tryExportJson(filename, [comp]);
-                }
+        if (comp) {
+            const compFolder = path.join(__dirname, '/../api/trackmania/competitions/' + compName);
+            tryMakeDir(compFolder);
+
+            const start = moment.unix(comp.start_date);
+            comp.monthDay = parseInt(start.format('D'), 10);
+
+            const filename = path.join(compFolder, '/' + start.format(isA08Forever ? 'YYYY' : 'MMMM-YYYY').toLowerCase() + '.json');
+
+            try {
+                const data = importJson(filename);
+                data.push(comp);
+                tryExportJson(filename, data, true);
+            } catch {
+                tryExportJson(filename, [comp]);
             }
         }
+    }
 
-        const rankings = getCompdRankings(isA08Forever, zones);
-        const rankingsFile = path.join(__dirname, `/../api/trackmania/rankings/${compName}.json`);
+    const rankings = getCompdRankings(isA08Forever, zones);
+    const rankingsFile = path.join(__dirname, `/../api/trackmania/rankings/${compName}.json`);
 
-        tryExportJson(rankingsFile, rankings, true, true);
-    };
-
-    /* run this at around 8:15 PM UST */
-    await dumpCompetition(false);
-    await dumpCompetition(true);
+    tryExportJson(rankingsFile, rankings, true, true);
 };
 
 const getCompdRankings = (isA08Forever,  zones) => {
