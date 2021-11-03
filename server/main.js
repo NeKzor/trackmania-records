@@ -273,11 +273,10 @@ app
     })
     .use(cors({
         allowMethods: ['GET', 'POST', 'PATCH'],
-        origin: (ctx) => {
-            console.log('ctx.origin', ctx.origin);
+        origin: () => {
             return process.env.NODE_ENV !== 'production'
                 ? 'https://trackmania.dev.local:3000'
-                : 'https://api.nekz.me';
+                : 'https://trackmania.nekz.me';
         },
         credentials: true,
     }))
