@@ -12,8 +12,10 @@ import SimpleTitle from '../SimpleTitle';
 import UniqueRecordsChart from '../UniqueRecordsChart';
 import { makeStyles } from '@material-ui/core/styles';
 import MenuItem from '@material-ui/core/MenuItem';
-import Api from '../../Api';
+import Api, { api2 } from '../../Api';
 import { useIsMounted } from '../../Hooks';
+import AppState from '../../AppState';
+import { Permissions } from '../../models/Permissions';
 import { seasonMenu, yearMenu, getTotdMenu } from './CampaignMenus';
 
 const s = (value) => (value === 1 ? '' : 's');
@@ -44,6 +46,10 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const CampaignTab = ({ campaign, onChangeCampaign, onChangeYear, isOfficial, year }) => {
+    const {
+        state: { user },
+    } = React.useContext(AppState);
+
     const isMounted = useIsMounted();
 
     const [game, setGame] = React.useState(undefined);
@@ -103,6 +109,9 @@ const CampaignTab = ({ campaign, onChangeCampaign, onChangeYear, isOfficial, yea
                                 history,
                             },
                             ...wr,
+                            replayUrl: user.isLoggedIn() && user.hasPermission(Permissions.trackmania_DOWNLOAD_FILES)
+                                ? api2.replayUrl(wr.replay)
+                                : `https://prod.trackmania.core.nadeo.online/storageObjects/${wr.replay}`,
                             zone: (wr.user.zone[2] ? wr.user.zone[2] : wr.user.zone[0]).name,
                             setAfter,
                         });
@@ -122,7 +131,7 @@ const CampaignTab = ({ campaign, onChangeCampaign, onChangeYear, isOfficial, yea
                     setGame(null);
                 }
             });
-    }, [isMounted, campaign]);
+    }, [isMounted, campaign, user]);
 
     const rankingsCountryType = rankingsType
         .replace('Leaderboard', 'CountryLeaderboard')

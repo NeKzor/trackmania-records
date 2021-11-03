@@ -7,7 +7,13 @@ let yearMenu = [];
 const totdMenu = [];
 
 const now = moment();
-const releaseDate = moment('2020-07-01');
+const releaseDate = moment('2020-07-01')
+    .tz('Europe/Paris')
+    .set({
+        hour: 17,
+        minute: 0,
+        second: 0,
+    });
 const currentMonth = releaseDate.clone();
 
 const seasons = {

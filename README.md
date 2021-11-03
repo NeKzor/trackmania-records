@@ -2,7 +2,7 @@
 
 Inspired by the many many world records that people are setting every year.
 
-[![preview.png](preview.png)](https://nekz.me/trackmania-records)
+[![preview.png](preview.png)](https://trackmania.nekz.me)
 
 ## Date Sources
 
@@ -14,3 +14,14 @@ Inspired by the many many world records that people are setting every year.
 |Nations Forever|1/d|✓|[www.tm-exchange.com](https://www.tm-exchange.com)|
 |United|1/d|✓|[www.tm-exchange.com](https://www.tm-exchange.com)|
 |Nations ESWC|1/d||[www.tm-exchange.com](https://www.tm-exchange.com)|
+
+## TODO
+
+- ~~Trackmania/Maniaplanet Oauth Login~~
+- Replay migration
+- Public backup folder
+- Edit Users
+- Ratelimits
+- History migration
+- Add media
+- Trackmania² History

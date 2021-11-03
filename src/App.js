@@ -13,6 +13,9 @@ import ReplayView from './views/ReplayView';
 import AppState, { AppReducer } from './AppState';
 import TrackmaniaView from './views/TrackmaniaView';
 import TrackmaniaHistoryView from './views/TrackmaniaHistoryView';
+import LoginView from './views/LoginView';
+import ProfileView from './views/ProfileView';
+import UsersView from './views/UsersView';
 
 const useStyles = makeStyles((theme) => ({
     views: {
@@ -70,8 +73,11 @@ const App = () => {
                                 path="/(nations|original|sunrise|tm2|tmwii)/:date?"
                                 component={GameView}
                             />
-                            <Route exact path="/about" component={AboutView} />
                             <Route exact path="/replay" component={ReplayView} />
+                            <Route exact path="/about" component={AboutView} />
+                            <Route exact path="/login/:source(trackmania|maniaplanet)" component={LoginView} />
+                            <Route exact path="/me" component={ProfileView} />
+                            <Route exact path="/users" component={UsersView} />
                             <Route component={NotFoundView} />
                         </Switch>
                     </div>

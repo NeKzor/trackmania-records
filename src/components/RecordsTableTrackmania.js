@@ -18,7 +18,7 @@ import SaveAltIcon from '@material-ui/icons/SaveAlt';
 import HistoryIcon from '@material-ui/icons/History';
 import WarningIcon from '@material-ui/icons/Warning';
 import { stableSort } from '../utils/stableSort';
-import { useLocalStorage, useRenders } from '../Hooks';
+import { useLocalStorage } from '../Hooks';
 import { formatScore, getDateDifferenceColor, getDateTimeDifferenceColor } from '../utils/tools';
 
 const rowsOfficial = [
@@ -161,7 +161,7 @@ const RecordsHistoryRow = ({ wr, official }) => {
                         size="small"
                         style={noWrap}
                         color="inherit"
-                        href={'https://prod.trackmania.core.nadeo.online/storageObjects/' + wr.replay}
+                        href={wr.replayUrl}
                         rel="noreferrer"
                         target="_blank"
                         disabled={!wr.replay}
@@ -273,7 +273,7 @@ const RecordsRow = ({ wr, official, orderBy, useLiveDuration, history, onClickHi
                             size="small"
                             style={noWrap}
                             color="inherit"
-                            href={'https://prod.trackmania.core.nadeo.online/storageObjects/' + wr.replay}
+                            href={wr.replayUrl}
                             rel="noreferrer"
                             target="_blank"
                         >

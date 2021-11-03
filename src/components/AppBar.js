@@ -1,8 +1,9 @@
 import React from 'react';
-import { Link as RouterLink, withRouter } from 'react-router-dom';
+import { Link as RouterLink, withRouter, useHistory } from 'react-router-dom';
 import MaterialAppBar from '@material-ui/core/AppBar';
 import Divider from '@material-ui/core/Divider';
 import Drawer from '@material-ui/core/Drawer';
+import Fade from '@material-ui/core/Fade';
 import Hidden from '@material-ui/core/Hidden';
 import IconButton from '@material-ui/core/IconButton';
 import Link from '@material-ui/core/Link';
@@ -14,7 +15,12 @@ import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import MenuIcon from '@material-ui/icons/Menu';
+import ProfileButton from './ProfileButton';
 import { useTitle } from '../Hooks';
+import { api2 } from '../Api';
+import AppState from '../AppState';
+import LoginDialog from './LoginDialog';
+import { Permissions } from '../models/Permissions';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -53,12 +59,53 @@ const pageLinks = [
     { title: 'Nations ESWC', link: '/nations', inDrawer: true },
     /* { title: 'Sunrise', link: '/sunrise', inDrawer: true },
     { title: 'Original', link: '/original', inDrawer: true }, */
-    { title: 'Replay Inspection', link: '/replay', inDrawer: false },
-    { title: 'About', link: '/about', inDrawer: false },
+    { isDivider: true },
+    { title: 'Users', link: '/users', inDrawer: (user) => user.isLoggedIn() && (user.profile.permissions & Permissions.api_MANAGE_USERS) },
+    { title: 'Replay Inspection', link: '/replay', inDrawer: true },
+    { title: 'About', link: '/about', inDrawer: true },
+    { title: 'Login', link: '/login', inDrawer: false },
+    { title: 'Profile', link: '/me', inDrawer: false },
 ];
 
 const AppBar = ({ location }) => {
-    const [open, setOpen] = React.useState(false);
+    const {
+        state: { user },
+        dispatch,
+    } = React.useContext(AppState);
+
+    const history = useHistory();
+
+    const [drawerOpen, setDrawerOpen] = React.useState(false);
+    const [loginOpen, setLoginOpen] = React.useState(false);
+
+    const login = () => {
+        setLoginOpen(true);
+    };
+
+    const closeLogin = (source) => {
+        if (source) {
+            api2.loginStart(source);
+        } else {
+            setLoginOpen(false);
+        }
+    };
+
+    const logout = () => {
+        api2.logout()
+            .then(() => {
+                dispatch({ action: 'setProfile', data: null });
+                history.replace('/');
+            })
+            .catch(console.error);
+
+        setLoginOpen(false);
+    };
+
+    React.useEffect(() => {
+        api2.getMe()
+            .then((data) => dispatch({ action: 'setProfile', data }))
+            .catch(console.error);
+    }, []);
 
     const page = React.useMemo(
         () =>
@@ -71,7 +118,7 @@ const AppBar = ({ location }) => {
     useTitle(page.title);
 
     const showDrawer = (state) => () => {
-        setOpen(state);
+        setDrawerOpen(state);
     };
 
     const classes = useStyles();
@@ -86,39 +133,26 @@ const AppBar = ({ location }) => {
             <Divider />
             <List>
                 {pageLinks
-                    .filter((x) => x.inDrawer)
-                    .map((item, index) => (
-                        <ListItem
-                            button
-                            key={index}
-                            component={RouterLink}
-                            to={item.link}
-                            className={item.title === page.title ? classes.active : undefined}
-                        >
-                            <ListItemText primary={item.title} />
-                        </ListItem>
-                    ))}
-                <Divider />
-                <List>
-                    <ListItem
-                        button
-                        key={0}
-                        component={RouterLink}
-                        to={'/replay'}
-                        className={page.link === '/replay' ? classes.active : undefined}
-                    >
-                        <ListItemText primary={'Replay Inspection'} />
-                    </ListItem>
-                    <ListItem
-                        button
-                        key={1}
-                        component={RouterLink}
-                        to={'/about'}
-                        className={page.link === '/about' ? classes.active : undefined}
-                    >
-                        <ListItemText primary={'About'} />
-                    </ListItem>
-                </List>
+                    .filter((x) => typeof x.inDrawer === 'function' ? x.inDrawer(user) : x.inDrawer || x.isDivider)
+                    .map((item, index) => {
+                        if (item.isDivider) {
+                            return (
+                                <Divider key={index} />
+                            );
+                        }
+
+                        return (
+                            <ListItem
+                                button
+                                key={index}
+                                component={RouterLink}
+                                to={item.link}
+                                className={item.title === page.title ? classes.active : undefined}
+                            >
+                                <ListItemText primary={item.title} />
+                            </ListItem>
+                        );
+                    })}
             </List>
         </div>
     );
@@ -137,10 +171,14 @@ const AppBar = ({ location }) => {
                             {page.title}
                         </Link>
                     </Typography>
+                    <div className={classes.flex} />
+                    <Fade in={true} timeout={1000}>
+                        <ProfileButton user={user} onClickLogin={login} onClickLogout={logout} />
+                    </Fade>
                 </Toolbar>
             </MaterialAppBar>
             <Hidden lgUp implementation="css">
-                <SwipeableDrawer open={open} onClose={showDrawer(false)} onOpen={showDrawer(true)} variant="temporary">
+                <SwipeableDrawer open={drawerOpen} onClose={showDrawer(false)} onOpen={showDrawer(true)} variant="temporary">
                     <div tabIndex={0} role="button" onClick={showDrawer(false)} onKeyDown={showDrawer(false)}>
                         {list}
                     </div>
@@ -153,6 +191,7 @@ const AppBar = ({ location }) => {
                     </div>
                 </Drawer>
             </Hidden>
+            <LoginDialog onClose={closeLogin} open={loginOpen} />
         </div>
     );
 };

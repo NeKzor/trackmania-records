@@ -208,6 +208,12 @@ const AboutView = () => {
                 <Padding />
                 <Typography variant="h5">Sources</Typography>
                 <br />
+                prod.trackmania.core.nadeo.online
+                <br />
+                live-services.trackmania.nadeo.live
+                <br />
+                competition.trackmania.nadeo.club
+                <br />
                 <Link rel="noopener" href="https://www.tm-exchange.com">
                     tm-exchange.com
                 </Link>
@@ -219,8 +225,6 @@ const AboutView = () => {
                 <Link rel="noopener" href="https://www.speedrun.com/tmwii">
                     speedrun.com/tmwii
                 </Link>
-                <br />
-                live-services.trackmania.nadeo.live
             </Paper>
         </ViewContent>
     );

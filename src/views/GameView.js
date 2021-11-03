@@ -42,57 +42,57 @@ const GameView = ({ match }) => {
     }, [page]);
 
     React.useEffect(() => {
-        (async () => {
-            const game = await Api.request(page, date);
-
-            if (game[0] && game[0].tracks[0].wrs) {
-                for (const campaign of game) {
-                    if (campaign.stats.totalPoints === undefined) {
-                        campaign.stats.totalTime = campaign.tracks
-                            .filter((t) => t.type !== 'Stunts')
-                            .map((t) => t.wrs[0].score)
-                            .reduce((a, b) => a + b, 0);
-                        campaign.stats.totalPoints = campaign.tracks
-                            .filter((t) => t.type === 'Stunts')
-                            .map((t) => t.wrs[0].score)
-                            .reduce((a, b) => a + b, 0);
-                    }
-
-                    const rows = [];
-                    for (const track of campaign.tracks) {
-                        for (const wr of track.wrs) {
-                            const duration = useLiveDuration ? moment().diff(moment(wr.date), 'd') : wr.duration;
-                            rows.push({
-                                track: {
-                                    id: track.id,
-                                    name: track.name,
-                                    type: track.type,
-                                    isFirst: wr === track.wrs[0],
-                                    records: track.wrs.length,
-                                },
-                                ...wr,
-                                duration,
+        Api.request(page, date)
+            .then((game) => {
+                if (game[0] && game[0].tracks[0].wrs) {
+                    for (const campaign of game) {
+                        if (campaign.stats.totalPoints === undefined) {
+                            campaign.stats.totalTime = campaign.tracks
+                                .filter((t) => t.type !== 'Stunts')
+                                .map((t) => t.wrs[0].score)
+                                .reduce((a, b) => a + b, 0);
+                            campaign.stats.totalPoints = campaign.tracks
+                                .filter((t) => t.type === 'Stunts')
+                                .map((t) => t.wrs[0].score)
+                                .reduce((a, b) => a + b, 0);
+                        }
+    
+                        const rows = [];
+                        for (const track of campaign.tracks) {
+                            for (const wr of track.wrs) {
+                                const duration = useLiveDuration ? moment().diff(moment(wr.date), 'd') : wr.duration;
+                                rows.push({
+                                    track: {
+                                        id: track.id,
+                                        name: track.name,
+                                        type: track.type,
+                                        isFirst: wr === track.wrs[0],
+                                        records: track.wrs.length,
+                                    },
+                                    ...wr,
+                                    duration,
+                                });
+                            }
+                        }
+    
+                        campaign.tracks = rows;
+    
+                        if (useLiveDuration) {
+                            campaign.leaderboard.forEach((entry, idx) => {
+                                campaign.leaderboard[idx].duration = campaign.tracks
+                                    .filter((r) => r.user.id === entry.user.id)
+                                    .map((r) => r.duration)
+                                    .reduce((a, b) => a + b, 0);
                             });
                         }
                     }
-
-                    campaign.tracks = rows;
-
-                    if (useLiveDuration) {
-                        campaign.leaderboard.forEach((entry, idx) => {
-                            campaign.leaderboard[idx].duration = campaign.tracks
-                                .filter((r) => r.user.id === entry.user.id)
-                                .map((r) => r.duration)
-                                .reduce((a, b) => a + b, 0);
-                        });
-                    }
                 }
-            }
-
-            if (!isMounted.current) return;
-            setGameName(page);
-            setGame(game);
-        })();
+    
+                if (!isMounted.current) return;
+                setGameName(page);
+                setGame(game);
+            })
+            .catch(console.error);
     }, [isMounted, page, date, useLiveDuration]);
 
     const handleTab = (_, newValue) => {

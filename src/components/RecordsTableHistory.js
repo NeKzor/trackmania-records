@@ -16,11 +16,10 @@ import Tooltip from '@material-ui/core/Tooltip';
 import Typography from '@material-ui/core/Typography';
 import SaveAltIcon from '@material-ui/icons/SaveAlt';
 import HistoryIcon from '@material-ui/icons/History';
-import WarningIcon from '@material-ui/icons/Warning';
 import { stableSort } from '../utils/stableSort';
-import { useLocalStorage, useRenders } from '../Hooks';
+import { useLocalStorage } from '../Hooks';
 import tmx from '../utils/tmx';
-import { formatScore, getDateDifferenceColor, getDateTimeDifferenceColor } from '../utils/tools';
+import { formatScore, getDateDifferenceColor } from '../utils/tools';
 
 const rows = [
     { id: 'track.name', sortable: true, label: 'Track', align: 'left' },
