@@ -33,25 +33,7 @@ const branches = [
 const noWrap = { whiteSpace: 'nowrap' };
 const MinTableCell = (props) => <TableCell size="small" {...props} />;
 const Padding = () => <div style={{ paddingTop: '50px' }} />;
-
-const getUpdate = () => {
-    const now = moment.utc();
-    let updateIn = moment().utc().endOf('day').add(17, 'hours');
-
-    if (updateIn.isBefore(now)) {
-        updateIn = moment().utc().endOf('day').add(1, 'day').add(17, 'hours');
-    }
-
-    const duration = moment.duration({ from: now, to: updateIn });
-    const hours = duration.get('hours');
-    const minutes = duration.get('minutes');
-    const seconds = duration.get('seconds');
-
-    const g = (value) => (value === 1 ? '' : 's');
-    return `${hours} hour${g(hours)}, ${minutes} minute${g(minutes)}, ${seconds} second${g(seconds)}`;
-};
-
-let clockTimer = null;
+const SmallPadding = () => <div style={{ paddingTop: '25px' }} />;
 
 const AboutView = () => {
     const isMounted = useIsMounted();
@@ -62,15 +44,6 @@ const AboutView = () => {
     } = React.useContext(AppState);
 
     const [gitHub, setGitHub] = React.useState([]);
-    const [nextUpdate, setNextUpdate] = React.useState(getUpdate());
-
-    React.useEffect(() => {
-        clockTimer = setInterval(() => {
-            setNextUpdate(getUpdate());
-        }, 1000);
-
-        return () => clearInterval(clockTimer);
-    }, []);
 
     const toggleDarkMode = () => {
         dispatch({ action: 'toggleDarkMode' });
@@ -112,21 +85,29 @@ const AboutView = () => {
                 <Typography component="h2" variant="h5">
                     Trackmania Campaign Records & Statistics
                 </Typography>
-                <br />
+                <SmallPadding />
                 <Typography variant="body1">
                     The largest mirror for campaign world records of many Trackmania games.
                 </Typography>
                 <Typography variant="body1">We list, rank and compare players who set the fastest runs.</Typography>
                 <Padding />
-                <Typography variant="h5">Next Update</Typography>
-                <br />
-                {nextUpdate}
-                <br />
-                <br />
-                For Trackmania we scan every 15 minutes, for everything else every 24 hours.
+                <Typography variant="h5">News</Typography>
+                <div>
+                    <ul>
+                        <li>
+                            User Authentication via Ubisoft/Maniaplanet!!
+                            Right now it's probably useless for you since there are almost no benefits when logged in.
+                        </li>
+                        <li>
+                            Download button to public replays has been removed for older records because they might
+                            not be available anymore. Instead we provide backups from our servers. This service requires
+                            permission from us!
+                        </li>
+                    </ul>
+                </div>
                 <Padding />
                 <Typography variant="h5">Changelog</Typography>
-                <br />
+                <SmallPadding />
                 {gitHub === undefined ? (
                     <Typography variant="body1">Unable to fetch status from GitHub.</Typography>
                 ) : gitHub.length === 0 ? (
@@ -198,7 +179,7 @@ const AboutView = () => {
                 )}
                 <Padding />
                 <Typography variant="h5">Theme Settings</Typography>
-                <br />
+                <SmallPadding />
                 <FormGroup row>
                     <FormControlLabel
                         control={<Switch checked={darkMode.enabled} onChange={toggleDarkMode} color="primary" />}
@@ -207,24 +188,31 @@ const AboutView = () => {
                 </FormGroup>
                 <Padding />
                 <Typography variant="h5">Sources</Typography>
-                <br />
-                prod.trackmania.core.nadeo.online
-                <br />
-                live-services.trackmania.nadeo.live
-                <br />
-                competition.trackmania.nadeo.club
-                <br />
-                <Link rel="noopener" href="https://www.tm-exchange.com">
-                    tm-exchange.com
-                </Link>
-                <br />
-                <Link rel="noopener" href="https://tm.mania-exchange.com">
-                    tm.mania-exchange.com
-                </Link>
-                <br />
-                <Link rel="noopener" href="https://www.speedrun.com/tmwii">
-                    speedrun.com/tmwii
-                </Link>
+                <SmallPadding />
+                <div>
+                    prod.trackmania.core.nadeo.online
+                </div>
+                <div>
+                    live-services.trackmania.nadeo.live
+                </div>
+                <div>
+                    competition.trackmania.nadeo.club
+                </div>
+                <div>
+                    <Link rel="noopener" href="https://www.tm-exchange.com">
+                        tm-exchange.com
+                    </Link>
+                </div>
+                <div>
+                    <Link rel="noopener" href="https://tm.mania-exchange.com">
+                        tm.mania-exchange.com
+                    </Link>
+                </div>
+                <div>
+                    <Link rel="noopener" href="https://www.speedrun.com/tmwii">
+                        speedrun.com/tmwii
+                    </Link>
+                </div>
             </Paper>
         </ViewContent>
     );
