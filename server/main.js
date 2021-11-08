@@ -1,6 +1,7 @@
 require('dotenv').config()
 require('./db');
 const fs = require('fs');
+const path = require('path');
 const fetch = (...args) => import('node-fetch').then(({default: fetch}) => fetch(...args));
 const Koa = require('koa');
 const cors = require('@koa/cors');
@@ -245,7 +246,7 @@ apiV1Trackmania
     .get('/replays/:id', requiresPermission(Permissions.trackmania_DOWNLOAD_FILES), async (ctx) => {
         const replay = await Replay.findOne({ replay_id: String(ctx.params.id) });
         if (replay !== null) {
-            const filename = `${process.env.TRACKMANIA_REPLAYS_FOLDER}/${replay.filename}`;
+            const filename = path.join(process.env.TRACKMANIA_REPLAYS_FOLDER, replay.filename);
 
             if (fs.existsSync(filename)) {
                 ctx.body = fs.createReadStream(filename);
@@ -253,6 +254,23 @@ apiV1Trackmania
                 return;
             }
         }
+
+        ctx.body = `
+            <span>Replay not found :(</span>
+            <br>
+            <br>
+            <span>Note that replays before 2021 have not been saved.</span>
+            <br>
+            <span>
+                If you think this replay should be available, feel free to report this issue at:
+                <a href="https://github.com/NeKzor/trackmania-records/issues">trackmania-records/issues</a>
+            </span>
+            <br>
+            <span>
+                You could also try downloading it directly from Nadeo servers where it might still be available:
+                https://prod.trackmania.core.nadeo.online/storageObjects/ + ID
+            </span>
+        `;
 
         ctx.throw(400, JSON.stringify({ message: 'Replay not available.' }, null, 4));
     });

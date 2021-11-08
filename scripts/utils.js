@@ -1,6 +1,6 @@
 const fs = require('fs');
 const moment = require('moment');
-const chalk = require('chalk');
+const logger = require('./logger');
 
 const delay = (ms) => new Promise((res) => setTimeout(res, ms));
 
@@ -27,29 +27,12 @@ const importJson = (file) => {
 };
 
 const log = {
-    info: (...msg) =>
-        console.log(
-            chalk`{bold.white [${moment().format('YYYY-MM-DD')}] [${moment().format('HH:mm:ss')}]} ${msg.join(' ')}`,
-        ),
-    success: (...msg) =>
-        console.log(
-            chalk`{bold.white [${moment().format('YYYY-MM-DD')}] [${moment().format(
-                'HH:mm:ss',
-            )}]} {greenBright ${msg.join(' ')}}`,
-        ),
-    warn: (...msg) =>
-        console.log(
-            chalk`{bold.white [${moment().format('YYYY-MM-DD')}] [${moment().format(
-                'HH:mm:ss',
-            )}]} {yellowBright ${msg.join(' ')}}`,
-        ),
+    info: (...msg) => logger.info(msg.join(' ')),
+    success: (...msg) => logger.info(msg.join(' ')),
+    warn: (...msg) => logger.warn(msg.join(' ')),
     error: (...msg) => {
-        msg.forEach(console.error);
-        console.log(
-            chalk`{bold.white [${moment().format('YYYY-MM-DD')}] [${moment().format(
-                'HH:mm:ss',
-            )}]} {redBright ${msg.join(' ')}}`,
-        );
+        logger.error(msg.join(' '));
+        msg.forEach(logger.error);
     },
 };
 

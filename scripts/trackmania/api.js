@@ -1,4 +1,5 @@
 const fetch = require('node-fetch');
+const { log } = require('../utils');
 
 const createHiddenField = (obj, fieldName, value) => {
     Object.defineProperty(obj, fieldName, {
@@ -134,7 +135,7 @@ class TrackmaniaClient {
             },
         });
 
-        console.log(`[API CALL] GET -> ${baseUrl + route} : ${res.status} `);
+        log.info(`[API CALL] GET -> ${baseUrl + route} : ${res.status} `);
 
         if (res.status !== 200) {
             throw new ResponseError(res);
