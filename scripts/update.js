@@ -12,7 +12,7 @@ const now = process.argv.some((arg) => arg === '-n' || arg === '--now');
 const nowTrackmania = process.argv.some((arg) => arg === '-ntm' || arg === '--now-trackmania');
 const nowHistory = process.argv.some((arg) => arg === '-htm' || arg === '--now-history');
 
-const main = async () => {    
+const main = async () => {
     for (const game of ['tmnforever', 'united']) {
         try {
             log.info(`scraping ${game} history...`);

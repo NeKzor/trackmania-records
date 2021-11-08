@@ -1,17 +1,19 @@
+require('dotenv').config();
+require('./db');
+
 const fs = require('fs');
 const path = require('path');
 const moment = require('moment');
 const { UbisoftClient, TrackmaniaClient, Audiences, Campaigns, Zones } = require('./trackmania/api');
-const { log, tryExportJson, tryMakeDir, importJson } = require('./utils');
+const { delay, log, tryExportJson, tryMakeDir, importJson } = require('./utils');
 const DiscordIntegration = require('./trackmania/discord');
 const TwitterIntegration = require('./trackmania/twitter');
 const dumpCompetitions = require('./trackmania_competitions');
-
-require('dotenv').config();
+const { Replay } = require('./trackmania/models');
 
 const sessionFile = path.join(__dirname, '/../.login');
 const gameFile = path.join(__dirname, '../games/trackmania.json');
-const replayFolder = path.join(__dirname, '../replays');
+const replayFolder = process.env.TRACKMANIA_REPLAYS_FOLDER || path.join(__dirname, '../replays');
 
 const loadSession = (client) => {
     try {
@@ -403,7 +405,7 @@ const ban = (account, score, track) => {
             .then((account) => {
                 const [accountInfo] = account.collect();
 
-                console.log('accountInfo', accountId, accountInfo);
+                log.info('accountInfo', accountId, accountInfo);
 
                 if (accountInfo) {
                     sendBanAlert(accountInfo);
@@ -413,6 +415,48 @@ const ban = (account, score, track) => {
     } catch (oops) {
         log.error(oops);
     }
+};
+
+const saveReplay = async (record, wr, campaign, track, isTraining) => {
+    const subFolder = getReplayFolder(campaign, track, isTraining);
+    tryMakeDir(path.join(replayFolder, subFolder));
+
+    // TODO: Replace all invalid path characters for Windows
+    const filename = path.join(subFolder, `${track.name.replace(/ /g, '_')}_${wr.score}_${wr.user.name}.replay.gbx`);
+
+    fs.writeFileSync(
+        path.join(replayFolder, filename),
+        await record.downloadReplay(),
+    );
+
+    await Replay
+        .findOneAndUpdate({ replay_id: wr.replay }, { filename }, { upsert: true })
+        .then((doc) => log.info('inserted', doc._id))
+        .catch(log.error);
+};
+
+const getReplayFolder = (campaign, track, isTraining) => {
+    if (isTraining) {
+        const trackFolder = track.name.slice(track.name.indexOf(campaign.name) + campaign.name.length + 3);
+
+        return path.join('training', trackFolder);
+    }
+
+    if (campaign.isOfficial) {
+        const [season, year] = campaign.name.split(' ');
+        const yearFolder = year;
+        const seasonFolder = season.toLowerCase();
+        const trackFolder = track.name.slice(track.name.indexOf(campaign.name) + campaign.name.length + 3);
+
+        return path.join('campaign', yearFolder, seasonFolder, trackFolder);
+    }
+
+    const [month, year] = campaign.name.split(' ');    
+    const yearFolder = year;
+    const monthFolder = month.toLowerCase();
+    const dayFolder = track.monthDay.toString();
+
+    return path.join('totd', yearFolder, monthFolder, dayFolder);
 };
 
 const resolveRecords = async (track, currentCampaign, latestCampaign, isTraining) => {
@@ -499,13 +543,7 @@ const resolveRecords = async (track, currentCampaign, latestCampaign, isTraining
                     integration.send(data);
                 }
 
-                fs.writeFileSync(
-                    path.join(
-                        replayFolder,
-                        `/${track.name.replace(/ /g, '_')}_${record.recordScore.time}_${wr.user.name}.replay.gbx`,
-                    ),
-                    await record.downloadReplay(),
-                );
+                await saveReplay(record, wr, currentCampaign, track, isTraining);
             }
 
             wrs.push(wr);

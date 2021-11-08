@@ -1,5 +1,5 @@
 const Discord = require('discord.js');
-const { formatScore } = require('../utils');
+const { formatScore, log } = require('../utils');
 
 class DiscordIntegration {
     constructor(id, token) {
@@ -14,8 +14,8 @@ class DiscordIntegration {
 
         return this.client
             .send('', { embeds: [(isBan ? this.buildBanEmbed : this.buildEmbed)(data)] })
-            .then(console.log)
-            .catch(console.error);
+            .then(log.info)
+            .catch(log.error);
     }
     buildEmbed({ wr, track }) {
         return {
