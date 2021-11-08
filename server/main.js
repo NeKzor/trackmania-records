@@ -311,7 +311,7 @@ app
         renew: false,
         secure: true,
         sameSite: 'none',
-        domain: 'api.nekz.me',
+        domain: process.env.NODE_ENV !== 'production' ? 'trackmania.dev.local' : 'api.nekz.me',
     }, app))
     .use((ctx, next) => {
         ctx.cookies.secure = true;

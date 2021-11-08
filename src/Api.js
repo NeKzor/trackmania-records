@@ -2,7 +2,7 @@ class Api {
     constructor() {
         this.baseApi =
             process.env.NODE_ENV === 'development'
-                ? 'http://localhost:8080'
+                ? 'http://localhost:8081'
                 : 'https://raw.githubusercontent.com/NeKzBot/tmx-records/api';
     }
     async request(game, file) {
@@ -19,7 +19,9 @@ class Api {
 
 class ApiV2 {
     constructor() {
-        this.baseApi = 'https://api.nekz.me';
+        this.baseApi = process.env.NODE_ENV === 'development'
+            ? 'https://trackmania.dev.local:8080'
+            : 'https://api.nekz.me';
         this.options =  { credentials: 'include' };
     }
     loginStart(source) {

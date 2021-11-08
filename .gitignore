@@ -14,6 +14,7 @@ cps/
 research/
 competitions.json
 logs/
+*.pem
 
 node_modules/
 coverage/

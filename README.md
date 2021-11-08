@@ -18,10 +18,10 @@ Inspired by the many many world records that people are setting every year.
 ## TODO
 
 - ~~Trackmania/Maniaplanet Oauth Login~~
-- Replay migration
-- Public backup folder
-- Edit Users
-- Ratelimits
+- ~~Replay migration~~
 - History migration
+- Edit Users
 - Add media
+- Ratelimits
+- Public backup folder
 - Trackmania² History
