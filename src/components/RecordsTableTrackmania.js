@@ -108,7 +108,7 @@ const useRowStyles = makeStyles({
     },
 });
 
-const RecordsHistoryRow = ({ wr, official }) => {
+const RecordsHistoryRow = ({ wr, official, showDownloadButton }) => {
     const score = formatScore(wr.score, 'tm2');
     const delta = wr.delta !== 0 ? formatScore(wr.delta, 'tm2') : null;
 
@@ -155,7 +155,7 @@ const RecordsHistoryRow = ({ wr, official }) => {
                     <span>{(wr.user.zone[2] ? wr.user.zone[2] : wr.user.zone[0]).name}</span>
                 </Tooltip>
             </MinTableCell>
-            {wr.replayUrl && (
+            {showDownloadButton && (
                 <MinTableCell align="left">
                     <Tooltip title="Download Ghost" placement="bottom" enterDelay={300}>
                         <IconButton
@@ -189,7 +189,7 @@ const RecordsHistoryRow = ({ wr, official }) => {
     );
 };
 
-const RecordsRow = ({ wr, official, orderBy, useLiveDuration, history, onClickHistory }) => {
+const RecordsRow = ({ wr, official, orderBy, useLiveDuration, history, onClickHistory, showDownloadButton }) => {
     const score = formatScore(wr.score, 'tm2');
     const delta = wr.delta !== 0 ? formatScore(wr.delta, 'tm2') : null;
 
@@ -309,12 +309,12 @@ const RecordsRow = ({ wr, official, orderBy, useLiveDuration, history, onClickHi
                                             <MinTableCell>Record</MinTableCell>
                                             <MinTableCell>Timesave</MinTableCell>
                                             <MinTableCell>Player</MinTableCell>
-                                            <MinTableCell colSpan={wr.track.showDownloadButton ? 2 : 1}>Zone</MinTableCell>
+                                            <MinTableCell colSpan={showDownloadButton ? 2 : 1}>Zone</MinTableCell>
                                         </TableRow>
                                     </TableHead>
                                     <TableBody>
                                         {wr.track.history.map((historyWr, idx) => {
-                                            return <RecordsHistoryRow wr={historyWr} official={official} key={idx} />;
+                                            return <RecordsHistoryRow wr={historyWr} official={official} key={idx} showDownloadButton={showDownloadButton} />;
                                         })}
                                     </TableBody>
                                 </Table>
@@ -327,7 +327,7 @@ const RecordsRow = ({ wr, official, orderBy, useLiveDuration, history, onClickHi
     );
 };
 
-const RecordsTable = ({ data, stats, official, useLiveDuration }) => {
+const RecordsTable = ({ data, stats, official, useLiveDuration, showDownloadButton }) => {
     const [storage, setStorage] = useLocalStorage('tm2020', {
         official: { order: 'asc', orderBy: 'track.name' },
         totd: { order: 'asc', orderBy: 'track.monthDay' },
@@ -394,6 +394,7 @@ const RecordsTable = ({ data, stats, official, useLiveDuration }) => {
                                     history={history}
                                     onClickHistory={onClickHistory}
                                     key={idx}
+                                    showDownloadButton={showDownloadButton}
                                 />
                             );
                         })}

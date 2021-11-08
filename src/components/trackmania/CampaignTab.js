@@ -51,7 +51,6 @@ const CampaignTab = ({ campaign, onChangeCampaign, onChangeYear, isOfficial, yea
     } = React.useContext(AppState);
 
     const isMounted = useIsMounted();
-    const showDownloadButton = user.isLoggedIn() && user.hasPermission(Permissions.trackmania_DOWNLOAD_FILES);
 
     const [game, setGame] = React.useState(undefined);
     const [rankingsType, setRankingsType] = React.useState('leaderboard');
@@ -96,11 +95,11 @@ const CampaignTab = ({ campaign, onChangeCampaign, onChangeYear, isOfficial, yea
                                 const historyWrDate = moment(historyWr.date);
                                 historyWr.setAfter = calculateSetAfter(releasedAt, historyWrDate);
                                 historyWr.pastMinutes = historyWrDate.diff(releasedAt, 'minutes');
-                                historyWr.replayUrl = showDownloadButton ? api2.replayUrl(historyWr.replay) : null;
+                                historyWr.replayUrl = api2.replayUrl(historyWr.replay);
                             });
                         } else if (history) {
                             history.forEach((historyWr) => {
-                                historyWr.replayUrl = showDownloadButton ? api2.replayUrl(historyWr.replay) : null;
+                                historyWr.replayUrl = api2.replayUrl(historyWr.replay);
                             });
                         }
 
@@ -113,12 +112,10 @@ const CampaignTab = ({ campaign, onChangeCampaign, onChangeYear, isOfficial, yea
                                 isLast,
                                 records: track.wrs.length,
                                 history,
-                                showDownloadButton,
                             },
                             ...wr,
-                            replayUrl: showDownloadButton
-                                ? api2.replayUrl(wr.replay)
-                                : `https://prod.trackmania.core.nadeo.online/storageObjects/${wr.replay}`,
+                            replayUrl: api2.replayUrl(wr.replay),
+                            replayUrlPublic: `https://prod.trackmania.core.nadeo.online/storageObjects/${wr.replay}`,
                             zone: (wr.user.zone[2] ? wr.user.zone[2] : wr.user.zone[0]).name,
                             setAfter,
                         });
@@ -138,7 +135,12 @@ const CampaignTab = ({ campaign, onChangeCampaign, onChangeYear, isOfficial, yea
                     setGame(null);
                 }
             });
-    }, [isMounted, campaign, user]);
+    }, [isMounted, campaign]);
+
+    
+    const showDownloadButton = React.useMemo(() => {
+        return user.isLoggedIn() && user.hasPermission(Permissions.trackmania_DOWNLOAD_FILES);
+    }, [user.profile]);
 
     const rankingsCountryType = rankingsType
         .replace('Leaderboard', 'CountryLeaderboard')
@@ -177,7 +179,7 @@ const CampaignTab = ({ campaign, onChangeCampaign, onChangeYear, isOfficial, yea
                 {game !== undefined && game !== null && (
                     <>
                         <Grid item xs={12}>
-                            <RecordsTable data={game.tracks} stats={game.stats} official={game.isOfficial} />
+                            <RecordsTable data={game.tracks} stats={game.stats} official={game.isOfficial} showDownloadButton={showDownloadButton} />
                         </Grid>
                         <Grid item xs={12} className={classes.padTop}>
                             <FormControl className={classes.formControl}>
