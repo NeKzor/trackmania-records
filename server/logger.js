@@ -3,7 +3,10 @@ const path = require('path');
 
 const logger = winston.createLogger({
     level: 'info',
-    format: winston.format.simple(),
+    format: winston.format.combine(
+        winston.format.simple(),
+        winston.format.colorize(),
+    ),
     transports: [
         new winston.transports.File({ filename: path.join(__dirname, '/../logs/error.log'), level: 'error' }),
         new winston.transports.File({ filename: path.join(__dirname, '/../logs/access.log'), level: 'info' }),
@@ -11,7 +14,10 @@ const logger = winston.createLogger({
 });
 
 logger.add(new winston.transports.Console({
-    format: winston.format.simple(),
+    format: winston.format.combine(
+        winston.format.simple(),
+        winston.format.colorize(),
+    ),
 }));
 
 module.exports = logger;
