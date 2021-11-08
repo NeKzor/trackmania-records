@@ -431,7 +431,7 @@ const saveReplay = async (record, wr, campaign, track, isTraining) => {
 
     await Replay
         .findOneAndUpdate({ replay_id: wr.replay }, { filename }, { upsert: true })
-        .then((doc) => log.info('inserted', doc._id))
+        .then((doc) => log.info('inserted', doc))
         .catch(log.error);
 };
 
