@@ -155,34 +155,36 @@ const RecordsHistoryRow = ({ wr, official }) => {
                     <span>{(wr.user.zone[2] ? wr.user.zone[2] : wr.user.zone[0]).name}</span>
                 </Tooltip>
             </MinTableCell>
-            <MinTableCell align="left">
-                <Tooltip title="Download Ghost" placement="bottom" enterDelay={300}>
-                    <IconButton
-                        size="small"
-                        style={noWrap}
-                        color="inherit"
-                        href={wr.replayUrl}
-                        rel="noreferrer"
-                        target="_blank"
-                        disabled={!wr.replay}
-                    >
-                        <SaveAltIcon fontSize="inherit" />
-                    </IconButton>
-                </Tooltip>
-                {/* {wr.internal_note && (
-                    <Tooltip
-                        title={wr.internal_note}
-                        placement="bottom-end"
-                        enterDelay={300}
-                    >
-                        <span>
-                            <IconButton size="small" disabled>
-                                <WarningIcon fontSize="inherit" />
-                            </IconButton>
-                        </span>
+            {wr.replayUrl && (
+                <MinTableCell align="left">
+                    <Tooltip title="Download Ghost" placement="bottom" enterDelay={300}>
+                        <IconButton
+                            size="small"
+                            style={noWrap}
+                            color="inherit"
+                            href={wr.replayUrl}
+                            rel="noreferrer"
+                            target="_blank"
+                            disabled={!wr.replay}
+                        >
+                            <SaveAltIcon fontSize="inherit" />
+                        </IconButton>
                     </Tooltip>
-                )} */}
-            </MinTableCell>
+                    {/* {wr.internal_note && (
+                        <Tooltip
+                            title={wr.internal_note}
+                            placement="bottom-end"
+                            enterDelay={300}
+                        >
+                            <span>
+                                <IconButton size="small" disabled>
+                                    <WarningIcon fontSize="inherit" />
+                                </IconButton>
+                            </span>
+                        </Tooltip>
+                    )} */}
+                </MinTableCell>
+            )}
         </TableRow>
     );
 };
@@ -307,7 +309,7 @@ const RecordsRow = ({ wr, official, orderBy, useLiveDuration, history, onClickHi
                                             <MinTableCell>Record</MinTableCell>
                                             <MinTableCell>Timesave</MinTableCell>
                                             <MinTableCell>Player</MinTableCell>
-                                            <MinTableCell colSpan={2}>Zone</MinTableCell>
+                                            <MinTableCell colSpan={wr.track.showDownloadButton ? 2 : 1}>Zone</MinTableCell>
                                         </TableRow>
                                     </TableHead>
                                     <TableBody>

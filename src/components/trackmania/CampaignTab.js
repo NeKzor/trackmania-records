@@ -51,6 +51,7 @@ const CampaignTab = ({ campaign, onChangeCampaign, onChangeYear, isOfficial, yea
     } = React.useContext(AppState);
 
     const isMounted = useIsMounted();
+    const showDownloadButton = user.isLoggedIn() && user.hasPermission(Permissions.trackmania_DOWNLOAD_FILES);
 
     const [game, setGame] = React.useState(undefined);
     const [rankingsType, setRankingsType] = React.useState('leaderboard');
@@ -95,6 +96,11 @@ const CampaignTab = ({ campaign, onChangeCampaign, onChangeYear, isOfficial, yea
                                 const historyWrDate = moment(historyWr.date);
                                 historyWr.setAfter = calculateSetAfter(releasedAt, historyWrDate);
                                 historyWr.pastMinutes = historyWrDate.diff(releasedAt, 'minutes');
+                                historyWr.replayUrl = showDownloadButton ? api2.replayUrl(historyWr.replay) : null;
+                            });
+                        } else if (history) {
+                            history.forEach((historyWr) => {
+                                historyWr.replayUrl = showDownloadButton ? api2.replayUrl(historyWr.replay) : null;
                             });
                         }
 
@@ -107,9 +113,10 @@ const CampaignTab = ({ campaign, onChangeCampaign, onChangeYear, isOfficial, yea
                                 isLast,
                                 records: track.wrs.length,
                                 history,
+                                showDownloadButton,
                             },
                             ...wr,
-                            replayUrl: user.isLoggedIn() && user.hasPermission(Permissions.trackmania_DOWNLOAD_FILES)
+                            replayUrl: showDownloadButton
                                 ? api2.replayUrl(wr.replay)
                                 : `https://prod.trackmania.core.nadeo.online/storageObjects/${wr.replay}`,
                             zone: (wr.user.zone[2] ? wr.user.zone[2] : wr.user.zone[0]).name,
