@@ -272,7 +272,7 @@ apiV1Trackmania
             </span>
         `;
 
-        ctx.throw(400, JSON.stringify({ message: 'Replay not available.' }, null, 4));
+        //ctx.throw(400, JSON.stringify({ message: 'Replay not available.' }, null, 4));
     });
 
 publicRouter.use('', authentication.routes(), authentication.allowedMethods());
@@ -302,7 +302,7 @@ app
     .use(koaBody({ json: true }))
     .use(session({
         key: 'auth',
-        maxAge: 86400000,
+        maxAge: 31536000000,
         autoCommit: true,
         overwrite: true,
         httpOnly: true,
