@@ -162,7 +162,13 @@ const main = async (outputDir, snapshot = true) => {
     await trackmania.loginNadeo(Audiences.NadeoLiveServices);
 
     zones = await trackmania.zones();
-    zones.data.forEach((zone) => delete zone.icon);
+    zones.data.forEach((zone) => {
+        Object.keys(zone).forEach((key) => {
+            if (!['name', 'parentId', 'zoneId'].includes(key)) {
+                delete zone[key];
+            }
+        });
+    });
 
     gameInfo = importJson(gameFile);
     discord = new DiscordIntegration(process.env.WEBHOOK_ID, process.env.WEBHOOK_TOKEN);
