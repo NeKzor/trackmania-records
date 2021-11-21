@@ -259,16 +259,15 @@ apiV1Trackmania
             <span>Replay not found :(</span>
             <br>
             <br>
-            <span>Note that replays before 2021 have not been saved.</span>
+            <div style="max-width: 700px">
+                Note that older world record replays prior to 2021 have not been saved automtically by this system. They
+                also do not exist on Nadeo servers anymore since the game only stores a player's personal best, which
+                means their latest record would overwrite their previous one.
+            </div>
             <br>
             <span>
                 If you think this replay should be available, feel free to report this issue at:
                 <a href="https://github.com/NeKzor/trackmania-records/issues">trackmania-records/issues</a>
-            </span>
-            <br>
-            <span>
-                You could also try downloading it directly from Nadeo servers where it might still be available:
-                https://prod.trackmania.core.nadeo.online/storageObjects/ + ID
             </span>
         `;
 
