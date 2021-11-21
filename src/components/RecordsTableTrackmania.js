@@ -275,7 +275,7 @@ const RecordsRow = ({ wr, official, orderBy, useLiveDuration, history, onClickHi
                             size="small"
                             style={noWrap}
                             color="inherit"
-                            href={wr.replayUrl}
+                            href={showDownloadButton ? wr.replayUrl : wr.replayUrlPublic}
                             rel="noreferrer"
                             target="_blank"
                         >
