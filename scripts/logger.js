@@ -11,8 +11,16 @@ const logger = winston.createLogger({
         }),
     ),
     transports: [
-        new winston.transports.File({ filename: path.join(__dirname, '/../logs/error-scripts.log'), level: 'error' }),
-        new winston.transports.File({ filename: path.join(__dirname, '/../logs/info-scripts.log'), level: 'info' }),
+        new winston.transports.File({
+            filename: path.join(__dirname, '/../logs/error-scripts.log'),
+            level: 'error',
+            maxsize: 100 * 1000 * 1000,
+        }),
+        new winston.transports.File({
+            filename: path.join(__dirname, '/../logs/info-scripts.log'),
+            level: 'info',
+            maxsize: 100 * 1000 * 1000,
+        }),
     ],
 });
 
