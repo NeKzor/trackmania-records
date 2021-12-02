@@ -549,7 +549,11 @@ const resolveRecords = async (track, currentCampaign, latestCampaign, isTraining
                     integration.send(data);
                 }
 
-                await saveReplay(record, wr, currentCampaign, track, isTraining);
+                try {
+                    await saveReplay(record, wr, currentCampaign, track, isTraining);
+                } catch (error) {
+                    log.error(error);
+                }
             }
 
             wrs.push(wr);
@@ -752,7 +756,10 @@ const updateTwitterBot = () => {
     twitter.updateBio({ wrsThisWeek });
 };
 
-const inspect = (obj) => console.dir(obj, { depth: 6 });
+const inspect = (obj) => {
+    log.info(JSON.stringify(obj));
+    console.dir(obj, { depth: 6 });
+};
 
 if (process.argv.some((arg) => arg === '--test')) {
     main(path.join(__dirname, '../api/'), false).catch(inspect);

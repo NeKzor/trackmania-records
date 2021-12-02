@@ -18,7 +18,7 @@ const tryExportJson = (file, obj, overwrite = false, format = false) => {
 
 const tryMakeDir = (dir) => {
     try {
-        fs.mkdirSync(dir);
+        fs.mkdirSync(dir, { recursive: true });
     } catch (error) {}
 };
 
@@ -31,7 +31,7 @@ const log = {
     success: (...msg) => logger.info(msg.join(' ')),
     warn: (...msg) => logger.warn(msg.join(' ')),
     error: (...msg) => {
-        logger.error(msg.join(' '));
+        logger.error(JSON.stringify(msg));
         msg.forEach(logger.error);
     },
 };
