@@ -438,6 +438,7 @@ class MapRecord {
     }
     async downloadReplay() {
         const res = await fetch(this.url);
+        log.info(`[API CALL] GET -> ${this.url} : ${res.status} `);
 
         if (res.status !== 200) {
             throw new ResponseError(res);
