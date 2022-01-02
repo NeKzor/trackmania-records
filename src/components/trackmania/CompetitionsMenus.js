@@ -16,7 +16,7 @@ while (currentMonth.diff(now) < 0) {
         yearMenu.push(year);
     }
 
-    currentMonth.add(3, 'months');
+    currentMonth.add(1, 'months');
 }
 
 totdMenu.reverse();
@@ -36,7 +36,7 @@ const getCotdMenu = (year) => {
     const isFirstYear = year.toString() === firstCotdDate.year().toString();
 
     const month = isFirstYear ? firstCotdDate.clone() : moment(`${year}-01-01`);
-    const lastMonth = isFirstYear ? 11 : now.month();
+    const lastMonth = year.toString() === now.year().toString() ? now.month() : 11;
 
     for (let i = month.month(); i <= lastMonth; ++i) {
         const monthName = month.format('MMMM');

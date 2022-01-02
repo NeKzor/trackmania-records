@@ -64,7 +64,7 @@ const getTotdMenu = (year) => {
     const isFirstYear = year.toString() === releaseDate.year().toString();
 
     const month = isFirstYear ? releaseDate.clone() : moment(`${year}-01-01`);
-    const lastMonth = isFirstYear ? 11 : now.month();
+    const lastMonth = year.toString() === now.year().toString() ? now.month() : 11;
 
     for (let i = month.month(); i <= lastMonth; ++i) {
         const monthName = month.format('MMMM');
