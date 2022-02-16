@@ -60,7 +60,7 @@ class DiscordIntegration {
     buildBanEmbed({ user, score, track }) {
         return {
             title: 'Automatic Ban',
-            url: 'https://trackmania.io/#/leaderboard/' + track._id,
+            url: 'https://trackmania.io/#/leaderboard/' + track.id,
             color: 16663879,
             fields: [
                 {
