@@ -22,7 +22,7 @@ const main = async () => {
         }
     }
 
-    for (const game of ['nations']) {
+    for (const game of []) {
         try {
             log.info(`scraping ${game}...`);
             await tmx(game, output);
@@ -96,8 +96,8 @@ if (nowHistory) {
     historyOnly();
 }
 
-cron.schedule('0 19 * * *', main);
-cron.schedule('*/60 * * * * *', trackmaniaOnly);
+cron.schedule('12 0 * * *', main);
+cron.schedule('0 * * * * *', trackmaniaOnly);
 //cron.schedule('5,10,15,20,25,30,35,45,50,55 19 * * *', trackmaniaOnly);
 //cron.schedule('0,5,10,15,20,25,30,35,45,50,55 0-18,20-23 * * *', trackmaniaOnly);
 //cron.schedule('15,30,45 19 * * *', trackmaniaOnly);
