@@ -158,8 +158,8 @@ class TrackmaniaClient {
     async campaigns(campaign, offset, length) {
         return await Campaigns.default(this).update(campaign, offset, length);
     }
-    async leaderboard(groupOrSeasonid, mapId, start, end) {
-        return await Leaderboard.default(this).update(groupOrSeasonid, mapId, start, end);
+    async leaderboard(groupOrSeasonid, mapId, offset, length) {
+        return await Leaderboard.default(this).update(groupOrSeasonid, mapId, offset, length);
     }
     async mapRecords(accountIdList, mapIdList) {
         return await MapRecords.default(this).update(accountIdList, mapIdList);
@@ -391,19 +391,19 @@ class Campaigns extends Entity {
 }
 
 class Leaderboard extends Entity {
-    async update(groupOrSeasonId, mapId, start, end) {
+    async update(groupOrSeasonId, mapId, offset, length) {
         if (groupOrSeasonId !== undefined) this.groupId = groupOrSeasonId;
         if (mapId !== undefined) this.mapId = mapId;
-        if (start !== undefined) this.start = start;
-        if (end !== undefined) this.end = end;
+        if (offset !== undefined) this.offset = offset;
+        if (length !== undefined) this.length = length;
 
         if (!this.groupId) {
             throw new Error('group or season id required');
         }
 
         this.data = await this.client.get(
-            //`/leaderboard/group/${this.groupId}/map/${this.mapId}/surround/${this.start}/${this.end}`,
-            `/leaderboard/group/${this.groupId}` + (this.mapId ? `/map/${this.mapId}` : '') + '/top',
+            `/leaderboard/group/${this.groupId}${this.mapId ? `/map/${this.mapId}` : ''}/top` +
+            `?offset=${this.offset}&length=${this.length}&onlyWorld=1`,
             true,
         );
 
@@ -438,7 +438,6 @@ class MapRecord {
     }
     async downloadReplay() {
         const res = await fetch(this.url);
-        log.info(`[API CALL] GET -> ${this.url} : ${res.status} `);
 
         if (res.status !== 200) {
             throw new ResponseError(res);
