@@ -4,7 +4,7 @@ Inspired by the many many world records that people are setting every year.
 
 [![preview.png](preview.png)](https://trackmania.nekz.me)
 
-## Date Sources
+## Data Sources
 
 |Game|Scan Rate|History|Source|
 |---|:-:|:-:|---|
@@ -19,6 +19,7 @@ Inspired by the many many world records that people are setting every year.
 
 - ~~Trackmania/Maniaplanet Oauth Login~~
 - ~~Replay migration~~
+- News
 - History migration
 - Edit Users
 - Add media
