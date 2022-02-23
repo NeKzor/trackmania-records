@@ -76,7 +76,7 @@ class DiscordIntegration {
         return [
             `**${campaign.name} - World Records**\n${wrs.join('\n')}`,
             `**${campaign.name} - WR Rankings**\n${wrRankings.join('\n')}`,
-            `**${campaign.name} - Campaign Rankings\n${campaignRankings.join('\n')}`
+            `**${campaign.name} - Campaign Rankings**\n${campaignRankings.join('\n')}`
         ].join('\n');
     }
     sendRankingsMessage(message) {
