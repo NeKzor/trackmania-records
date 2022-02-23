@@ -19,4 +19,5 @@ if (now) {
 }
 
 //cron.schedule('0,15,30,45 * * * *', main);
-cron.schedule('0,5,10,15,20,25,30,35,40,45,50,55 * * * *', main);
+//cron.schedule('0,5,10,15,20,25,30,35,40,45,50,55 * * * *', main);
+cron.schedule('*/60 * * * * *', main);

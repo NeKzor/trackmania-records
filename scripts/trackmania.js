@@ -203,38 +203,16 @@ const main = async (outputDir) => {
 };
 
 const dumpOfficialCampaign = async (clubId, outputDir) => {
-    // TODO: Get campaign data with API
-    // In the meantime: Thanks trackmania.io :^)
-
-    //const campaigns = (await trackmania.campaigns(Campaigns.Official)).collect();
+    const activities = (await trackmania.clubActivity(clubId)).collect();
+    const latestCampaignActivity = activities.find((activity) => activity.activityType === 'campaign');
+    const clubCampaign = await trackmania.clubCampaign(clubId, latestCampaignActivity.campaignId);
+    const { campaign } = clubCampaign.data;
 
     const campaigns = [
         [
-            'NLS-SBxKMpIg0PUGCSTxtNvfPTejaKM3fihHZ6K',
-            'Summer 2021 Reverse',
-            [
-                'DmBYmhGcTmgCRHevGSpnCEH5xcb',
-                'BOVSy1CUkx5303luT0DG5UASMki',
-                'Yd_dFFdAMpO1c0rLoDchBerJFKm',
-                'dGlb9eUHy7g0SDvXyzLO9Dulgn7',
-                'ZtRTyCQAi2Ok91IRLUa4Oy5vbcj',
-                'N8ETYwaejqjwQwUUQ90PqwrmCy8',
-                'jzImpG5cO8PvprpmBav0yuwJ9yj',
-                'RncnmzxthFcUFWT5zIdfgI8d7pc',
-                'yaswKN0M8lQwjPT_H41_R5RGbMi',
-                'Luil4F0YgPOstJLhewJC9pQKhY7',
-                'CCKTuCWZFEGf80v0XxVHmVExlxl',
-                'HbguFHUMsbuZNBTtqI5t5v5QfD9',
-                'aP_3g8mxSCAni0UJJYGoPZ8xNV4',
-                'cioAOldH_8_TwkmWhqfUhT2OvAi',
-                'AKUAxwK0C0lPjwiFnZRXFiif6km',
-                'XnaUQgSypHMPmPwEsK51fyBLhJe',
-                'UkFsHn_mn_EXdiDsREJDdqBxXXi',
-                'tQ81B9mU2RgskF1i4ZHph3R9qaa',
-                'Er94ZBXL_qsF1AZQTlwas8kFjQb',
-                'sHQZQxP1p2ErgChOX138V2ZENuj',
-                'kiyw_c6TANhjTMT7EhSxz37GEK0',
-            ]
+            campaign.seasonUid,
+            campaign.name,
+            clubCampaign.collect().map((map) => map.mapUid),
         ],
     ];
 
@@ -277,6 +255,9 @@ const dumpOfficialCampaign = async (clubId, outputDir) => {
             .map((t) => t.wrs[0].score)
             .reduce((a, b) => a + b, 0);
 
+        const [worldRankings] = (await trackmania.leaderboard(seasonUid, null, 0, 5)).collect();
+        const accounts = (await trackmania.accounts(worldRankings.top.map((ranking) => ranking.accountId))).collect();
+
         game.push({
             isOfficial: true,
             name,
@@ -285,6 +266,17 @@ const dumpOfficialCampaign = async (clubId, outputDir) => {
             stats: {
                 totalTime,
             },
+            rankings: worldRankings.top.map((ranking) => {
+                const account = accounts.find((account) => account.accountId === ranking.accountId);
+                return {
+                    user: {
+                        id: ranking.accountId,
+                        zone: zones.search(ranking.zoneId),
+                        name: account ? account.displayName : '',
+                    },
+                    points: ranking.sp,
+                };
+            }),
         });
     }
 
@@ -306,7 +298,7 @@ const autoban = (accountId, score, isTraining = false) => {
 };
 
 const resolveRecords = async (clubId, seasonUid, mapUid, mapId, latestCampaign, isTraining, trackName, trackId) => {
-    const [worldLeaderboard] = (await trackmania.leaderboard(seasonUid, mapUid, clubId)).collect();
+    const [worldLeaderboard] = (await trackmania.leaderboard(seasonUid, mapUid, 0, 5)).collect();
 
     const wrs = [];
     const latestTrack = latestCampaign ? latestCampaign.tracks.find((track) => track.id === mapUid) : undefined;

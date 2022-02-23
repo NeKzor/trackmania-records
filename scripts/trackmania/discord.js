@@ -25,7 +25,7 @@ class DiscordIntegration {
         return {
             title: track.name.replace(/(\$[0-9a-fA-F]{3}|\$[WNOITSGZBEMwnoitsgzbem]{1})/g, ''),
             url: 'https://trackmania.io/#/leaderboard/' + track.id,
-            color: 44871,
+            color: 15772743,
             fields: [
                 {
                     name: 'WR',
@@ -34,7 +34,7 @@ class DiscordIntegration {
                 },
                 {
                     name: 'By',
-                    value: Discord.Util.escapeUnderline(wr.user.name) + (countryFlag ? ' ' + countryFlag.emoji : ''),
+                    value: Discord.Util.escapeMarkdown(wr.user.name) + (countryFlag ? ' ' + countryFlag.emoji : ''),
                     inline: true,
                 },
             ],
@@ -56,7 +56,7 @@ class DiscordIntegration {
                 track.wrs.length > 0
                     ? track.wrs.map(
                         (wr) =>
-                            `${track.name.split(' - ')[1]} | ${getScore(wr)} by ${Discord.Util.escapeUnderline(
+                            `${track.name.split(' - ')[1]} | ${getScore(wr)} by ${Discord.Util.escapeMarkdown(
                                 wr.user.name,
                             )}${getEmojiFlag(wr.user)}`,
                     )
@@ -65,12 +65,19 @@ class DiscordIntegration {
             .filter((x) => x)
             .flat();
 
-        const rankings = campaign.leaderboard.map(
-            ({ user, wrs }) => `${Discord.Util.escapeUnderline(user.name)}${getEmojiFlag(user)} (${wrs})`,
+        const wrRankings = campaign.leaderboard.map(
+            ({ user, wrs }) => `${Discord.Util.escapeMarkdown(user.name)}${getEmojiFlag(user)} (${wrs})`,
         );
 
-        return `**${campaign.name} - World Records**\n${wrs.join('\n')}\n**${campaign.name
-            } - WR Rankings**\n${rankings.join('\n')}`;
+        const campaignRankings = campaign.rankings.map(
+            ({ user, points }) => `${Discord.Util.escapeMarkdown(user.name)}${getEmojiFlag(user)} (${points})`,
+        );
+
+        return [
+            `**${campaign.name} - World Records**\n${wrs.join('\n')}`,
+            `**${campaign.name} - WR Rankings**\n${wrRankings.join('\n')}`,
+            `**${campaign.name} - Campaign Rankings\n${campaignRankings.join('\n')}`
+        ].join('\n');
     }
     sendRankingsMessage(message) {
         this.client.send(message)
