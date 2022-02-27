@@ -470,7 +470,7 @@ const resolveRecords = async (track, currentCampaign, latestCampaign, isTraining
     const eventEnd = track.isOfficial ? currentCampaign.event.endsAt : track.event.endsAt;
 
     const [leaderboard] = (
-        await trackmania.leaderboard(track.isOfficial ? 'Personal_Best' : track.season, track.id, 0, 5)
+        await trackmania.leaderboard(currentCampaign.isOfficial ? currentCampaign.id : track.season, track.id, 0, 5)
     ).collect();
 
     const wrs = [];
