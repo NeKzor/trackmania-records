@@ -14,6 +14,7 @@ import TableRow from '@material-ui/core/TableRow';
 import TableSortLabel from '@material-ui/core/TableSortLabel';
 import Tooltip from '@material-ui/core/Tooltip';
 import Typography from '@material-ui/core/Typography';
+import CheckCircleIcon from '@material-ui/icons/CheckCircle';
 import SaveAltIcon from '@material-ui/icons/SaveAlt';
 import HistoryIcon from '@material-ui/icons/History';
 import { stableSort } from '../utils/stableSort';
@@ -135,6 +136,20 @@ const RecordsHistoryRow = ({ game, wr, trackType }) => {
                         <SaveAltIcon fontSize="inherit" />
                     </IconButton>
                 </Tooltip>
+                {wr.validated && (
+                    <Tooltip title="Validated with TrackMania Competition Patch" placement="bottom" enterDelay={300}>
+                        <IconButton
+                            size="small"
+                            style={noWrap}
+                            color="inherit"
+                            href="https://donadigo.com/tmcp"
+                            rel="noreferrer"
+                            target="_blank"
+                        >
+                            <CheckCircleIcon fontSize="inherit" />
+                        </IconButton>
+                    </Tooltip>
+                )}
             </MinTableCell>
         </TableRow>
     );
@@ -212,6 +227,20 @@ const RecordsRow = ({ game, wr, orderBy, useLiveDuration, history, onClickHistor
                             <SaveAltIcon fontSize="inherit" />
                         </IconButton>
                     </Tooltip>
+                    {wr.validated && (
+                        <Tooltip title="Validated with TrackMania Competition Patch" placement="bottom" enterDelay={300}>
+                            <IconButton
+                                size="small"
+                                style={noWrap}
+                                color="inherit"
+                                href="https://donadigo.com/tmcp"
+                                rel="noreferrer"
+                                target="_blank"
+                            >
+                                <CheckCircleIcon fontSize="inherit" />
+                            </IconButton>
+                        </Tooltip>
+                    )}
                     {wr.track.isLast && wr.track.history && (
                         <IconButton
                             color="inherit"
