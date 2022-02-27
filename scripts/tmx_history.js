@@ -44,12 +44,13 @@ module.exports = async (gameName, output, maxFetch = undefined) => {
                     wrs.push({
                         id: record.ReplayId,
                         user: {
-                            id: record.UserId,
-                            name: record.LoginId,
+                            id: record.User.UserId,
+                            name: record.User.Name,
                         },
                         score: (wr = score),
                         date: moment(record.ReplayAt, 'YYYY-MM-DDTHH:mm:ss').toISOString(),
                         replay: record.ReplayId,
+                        validated: record.Validated,
                     });
                 }
             }
