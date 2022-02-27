@@ -92,6 +92,17 @@ const AboutView = () => {
                 <Typography variant="body1">We list, rank and compare players who set the fastest runs.</Typography>
                 <Padding />
                 <Typography variant="h5">News</Typography>
+                <SmallPadding />
+                <Typography variant="body1">Feb. 2022</Typography>
+                <div>
+                    <ul>
+                        <li>
+                            Added support for new tmx-exchange.com website! Updates for Nations ESWC are still paused
+                            at the moment.
+                        </li>
+                    </ul>
+                </div>
+                <Typography variant="body1">Nov. 2021</Typography>
                 <div>
                     <ul>
                         <li>
