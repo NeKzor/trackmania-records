@@ -478,15 +478,13 @@ const resolveRecords = async (track, currentCampaign, latestCampaign, isTraining
     const history = latestTrack && latestTrack.history ? latestTrack.history : [];
 
     let wrScore = undefined;
-    
+
     for (const { accountId, zoneId, score } of leaderboard.top) {
         if (autoban(accountId, score, track, isTraining)) {
             continue;
         }
 
         if (wrScore === undefined || wrScore === score) {
-            wrScore = score;
-
             const latestWr = latestTrack
                 ? latestTrack.wrs.find((wr) => wr.user.id === accountId && wr.score === score)
                 : undefined;
@@ -495,6 +493,8 @@ const resolveRecords = async (track, currentCampaign, latestCampaign, isTraining
                 const wr = { ...latestWr };
                 wr.duration = moment().diff(moment(wr.date), 'd');
                 wrs.push(wr);
+
+                wrScore = score;
                 continue;
             }
 
@@ -508,8 +508,11 @@ const resolveRecords = async (track, currentCampaign, latestCampaign, isTraining
                 }
             }
 
+            wrScore = score;
+
             const [record] = (await trackmania.mapRecords([accountId], [track._id])).collect();
             if (!record) {
+                log.error(`unable to get map record info from ${accountId} on ${track._id}`);
                 continue;
             }
 
@@ -561,8 +564,16 @@ const resolveRecords = async (track, currentCampaign, latestCampaign, isTraining
         }
     }
 
-    track.wrs = wrs;
-    track.history = history;
+    const latestWrs = latestTrack?.wrs ?? [];
+
+    if (latestWrs.length && !wrs.length) {
+        log.error(`unable to resolve records ${track.name}`);
+        track.wrs = latestWrs;
+        track.history = latestTrack.history;
+    } else {
+        track.wrs = wrs;
+        track.history = history;
+    }
 };
 
 const generateRankings = (campaigns) => {
