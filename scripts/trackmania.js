@@ -377,7 +377,7 @@ const autoban = (accountId, score, track, isTraining = false) => {
         return true;
     }
 
-    if (score !== undefined && score <= (isTraining ? 4000 : (track.isOfficial ? 5000 : 5000))) {
+    if (score !== undefined && score <= 3000) {
         ban(accountId, score, track);
         return true;
     }
