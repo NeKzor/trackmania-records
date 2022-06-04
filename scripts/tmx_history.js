@@ -13,7 +13,7 @@ module.exports = async (gameName, output, maxFetch = undefined) => {
         throw new Error('Invalid game name.');
     }
 
-    const apiRoute = (route, trackid) => `https://${gameName}.tm-exchange.com${route}?trackid=${trackid}&count=1000`;
+    const apiRoute = (route, trackid) => `https://${gameName}.tm-exchange.com${route}?trackid=${trackid}&count=1000&fields=ReplayId%2CUser.UserId%2CUser.Name%2CReplayTime%2CReplayScore%2CReplayRespawns%2CTrackAt%2CValidated%2CReplayAt%2CScore`;
 
     const game = [];
     const gameCampaign = importJson(__dirname + '/../games/' + gameName + '.json');
