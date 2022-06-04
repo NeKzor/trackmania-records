@@ -24,10 +24,10 @@ const main = async (trackmania, zones, isA08Forever) => {
             return isA08Forever
                 ? [
                     lastRound.id,
-                    firstRound.qualifier_challenge_id,
+                    firstRound.qualifierChallengeId,
                 ] : [
                     firstRound.id,
-                    firstRound.qualifier_challenge_id,
+                    firstRound.qualifierChallengeId,
                 ];
         })();
 
@@ -87,9 +87,9 @@ const main = async (trackmania, zones, isA08Forever) => {
         return {
             id: competition.id,
             name: competition.name,
-            nb_players: competition.nb_players,
-            start_date: competition.start_date,
-            end_date: competition.end_date,
+            nb_players: competition.nbPlayers,
+            start_date: competition.startDate,
+            end_date: competition.endDate,
             round: {
                 qualifier,
                 match,
@@ -115,6 +115,12 @@ const main = async (trackmania, zones, isA08Forever) => {
             tryMakeDir(compFolder);
 
             const start = moment.unix(comp.start_date);
+
+            if (!start.isValid()) {
+                log.warn(`Ignoring competition ${compCompetition.id} due to invalid start date: ${comp.start_date}`);
+                continue;
+            }
+
             comp.monthDay = parseInt(start.format('D'), 10);
 
             const filename = path.join(compFolder, '/' + start.format(isA08Forever ? 'YYYY' : 'MMMM-YYYY').toLowerCase() + '.json');
@@ -147,7 +153,7 @@ const getCompdRankings = (isA08Forever,  zones) => {
     for (const importFile of fs.readdirSync(compFolder)) {
         const compData = importJson(path.join(compFolder, '/' + importFile));
         comp.push(...compData);
-        
+
         if (isA08Forever) {
             continue;
         }
