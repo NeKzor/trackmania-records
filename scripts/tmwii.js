@@ -17,15 +17,13 @@ const resolveUser = async (id) => {
 
     const {
         names: { international },
-        location: {
-            country: { code },
-        },
+        location,
     } = (await res.json()).data;
 
     const user = {
         id,
         name: international,
-        country: code,
+        country: location?.country?.code ?? null,
     };
 
     userCache[id] = user;
