@@ -33,6 +33,7 @@
         "react-router-dom": "^5.1.2"
     },
     "devDependencies": {
+        "chokidar": "^3.5.3",
         "react-scripts": "^4.0.3"
     },
     "browserslist": {
