@@ -93,6 +93,14 @@ const AboutView = () => {
                 <Padding />
                 <Typography variant="h5">News</Typography>
                 <SmallPadding />
+                <Typography variant="body1">Jul. 2022</Typography>
+                <div>
+                    <ul>
+                        <li>
+                            Removed duration statistics from Trackmania player rankings.
+                        </li>
+                    </ul>
+                </div>
                 <Typography variant="body1">Feb. 2022</Typography>
                 <div>
                     <ul>

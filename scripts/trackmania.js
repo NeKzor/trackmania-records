@@ -586,51 +586,7 @@ const generateRankings = (campaigns) => {
         })
         .flat();
 
-    const mapWrs = tracks
-        .map((track) => {
-            const history = track.history.filter(validRecords);
-
-            return history.map((wr) => {
-                const beatenBy = history.find((item) => item.score < wr.score);
-                return {
-                    ...wr,
-                    nowOrEndOfEvent: track.nowOrEndOfEvent,
-                    beatenBy: beatenBy
-                        ? [
-                            {
-                                id: beatenBy.id,
-                                date: beatenBy.date,
-                                user: { ...beatenBy.user },
-                                score: beatenBy.score,
-                            },
-                        ]
-                        : [],
-                };
-            });
-        })
-        .flat();
-
-    const getNextWr = (wr) => {
-        if (
-            wr.beatenBy.length > 0 &&
-            !wr.beatenBy.some(({ id }) => id === wr.id) &&
-            wr.beatenBy.some(({ user }) => user.id === wr.user.id)
-        ) {
-            const ids = wr.beatenBy.map(({ id }) => id);
-            const newWrs = mapWrs.filter((wr) => ids.some((id) => wr.id === id));
-            const newWr = newWrs.find(({ user }) => user.id === wr.user.id);
-
-            if (newWr) {
-                return getNextWr(newWr);
-            }
-        }
-
-        return wr;
-    };
-
     const createLeaderboard = (key) => {
-        const calculateExactDuration = key === 'history';
-
         const users = tracks
             .map((t) =>
                 (t[key].length > 0 ? t[key] : t.wrs).filter(validRecords).map(({ user, date }) => ({ ...user, date })),
@@ -649,25 +605,10 @@ const generateRankings = (campaigns) => {
                     const [user] = users.filter((u) => u.id === key).sort((a, b) => b.date.localeCompare(a.date));
                     delete user.date;
 
-                    const durationExact = mapWrs
-                        .filter((r) => r.user.id === key && r.duration)
-                        .map((r) => {
-                            if (!calculateExactDuration) {
-                                return r.duration;
-                            }
-
-                            const reignWr = getNextWr(r);
-                            const [beatenBy] = reignWr.beatenBy;
-                            return moment(
-                                beatenBy && beatenBy.date ? beatenBy.date : moment.unix(r.nowOrEndOfEvent),
-                            ).diff(moment(r.date), 'd');
-                        })
-                        .reduce((a, b) => a + b, 0);
-
                     return {
                         user,
                         wrs: frequency[key],
-                        duration: durationExact,
+                        duration: 0,
                     };
                 }),
             [

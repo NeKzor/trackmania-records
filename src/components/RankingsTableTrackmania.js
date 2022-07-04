@@ -12,8 +12,7 @@ import { stableSort, stableSortSort } from '../utils/stableSort';
 
 const rowsOficial = [
     { id: 'user.name', sortable: false, label: 'Player', align: 'left' },
-    { id: 'wrs', id2: 'duration', sortable: true, label: 'World Records', align: 'left' },
-    { id: 'duration', id2: 'wrs', sortable: true, label: 'Total Duration', align: 'left' },
+    { id: 'wrs', id2: 'user.name', sortable: true, label: 'World Records', align: 'left' },
 ];
 
 const rowsTotd = [
@@ -40,12 +39,12 @@ const rowsCotd = [
     },
 ];
 
-const RankingsTableHead = ({ order, orderBy, onRequestSort, hasDuration, cotd, hattricks }) => {
+const RankingsTableHead = ({ order, orderBy, onRequestSort, isOfficial, cotd, hattricks }) => {
     const createSortHandler = (prop1, prop2) => (event) => {
         onRequestSort(event, prop1, prop2);
     };
 
-    const rows = hasDuration ? rowsOficial : cotd ? (hattricks ? rowsCotd : rowsCompetition) : rowsTotd;
+    const rows = isOfficial ? rowsOficial : cotd ? (hattricks ? rowsCotd : rowsCompetition) : rowsTotd;
 
     return (
         <TableHead>
@@ -89,7 +88,7 @@ const useStyles = makeStyles((_) => ({
 const defaultState = {
     order: 'desc',
     orderBy: 'wrs',
-    thenBy: 'duration',
+    thenBy: 'user.name',
     page: 0,
     rowsPerPage: 50,
 };
@@ -101,7 +100,7 @@ const linkToTrackmaniaIoProfile = (user) => {
     return `https://trackmania.io/#/player/${encodeURIComponent(user.id ?? user.accountId)}`;
 };
 
-const RecordsTable = ({ data, hasDuration, cotd, hattricks }) => {
+const RecordsTable = ({ data, isOfficial, cotd, hattricks }) => {
     const [{ order, orderBy, thenBy }, setState] = React.useState({
         ...defaultState,
         orderBy: cotd ? 'wins.matches' : 'wrs',
@@ -120,7 +119,7 @@ const RecordsTable = ({ data, hasDuration, cotd, hattricks }) => {
 
     React.useEffect(() => {
         setState((s) => ({ ...s, orderBy: cotd ? 'wins.matches' : 'wrs', thenBy: cotd ? 'wins.matches' : 'wrs' }));
-    }, [data, hasDuration]);
+    }, [data, isOfficial]);
 
     const classes = useStyles();
 
@@ -131,12 +130,12 @@ const RecordsTable = ({ data, hasDuration, cotd, hattricks }) => {
                     order={order}
                     orderBy={orderBy}
                     onRequestSort={handleRequestSort}
-                    hasDuration={hasDuration}
+                    isOfficial={isOfficial}
                     cotd={cotd}
                     hattricks={hattricks}
                 />
                 <TableBody>
-                    {(hasDuration ? stableSortSort : stableSort)(data, order, orderBy, thenBy).map((row) => (
+                    {(isOfficial ? stableSortSort : stableSort)(data, order, orderBy, thenBy).map((row) => (
                         <TableRow tabIndex={-1} key={row.user.id ?? row.user.accountId}>
                             {!cotd && (
                                 <MinTableCell align="left">
@@ -151,11 +150,6 @@ const RecordsTable = ({ data, hasDuration, cotd, hattricks }) => {
                                 </MinTableCell>
                             )}
                             {!cotd && <MinTableCell align="left">{row.wrs}</MinTableCell>}
-                            {hasDuration && (
-                                <MinTableCell align="left">
-                                    {row.duration} day{row.duration === 1 ? '' : 's'}
-                                </MinTableCell>
-                            )}
                             {cotd && (
                                 <MinTableCell align="left">
                                     <Link
