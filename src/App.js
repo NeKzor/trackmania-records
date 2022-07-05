@@ -68,9 +68,10 @@ const App = () => {
                             <Route exact path="/trackmania" component={TrackmaniaView} />
                             <Route exact path="/tmnforever" component={TrackmaniaHistoryView} />
                             <Route exact path="/united" component={TrackmaniaHistoryView} />
+                            <Route exact path="/nations" component={TrackmaniaHistoryView} />
                             <Route
                                 exact
-                                path="/(nations|original|sunrise|tm2|tmwii)/:date?"
+                                path="/(original|sunrise|tm2|tmwii)/:date?"
                                 component={GameView}
                             />
                             <Route exact path="/replay" component={ReplayView} />
