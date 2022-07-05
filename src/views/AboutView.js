@@ -99,6 +99,9 @@ const AboutView = () => {
                         <li>
                             Removed duration statistics from Trackmania player rankings.
                         </li>
+                        <li>
+                            Enabled Nations ESWC updates, history and statistics.
+                        </li>
                     </ul>
                 </div>
                 <Typography variant="body1">Feb. 2022</Typography>
