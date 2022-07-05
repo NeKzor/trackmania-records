@@ -4,6 +4,11 @@ const { importJson, log, tryExportJson, tryMakeDir } = require('./utils');
 
 const tmx = ['tmnforever', 'united', 'nations', 'sunrise', 'original'];
 
+const apis = {
+    tmnforever: 'tmnf.exchange',
+    united: 'tmuf.exchange',
+};
+
 const config = { headers: { 'User-Agent': 'trackmania-records-v1' } };
 
 const byDate = (a, b) => a.ReplayAt.localeCompare(b.ReplayAt);
@@ -13,7 +18,12 @@ module.exports = async (gameName, output, maxFetch = undefined) => {
         throw new Error('Invalid game name.');
     }
 
-    const apiRoute = (route, trackid) => `https://${gameName}.tm-exchange.com${route}?trackid=${trackid}&count=1000&fields=ReplayId%2CUser.UserId%2CUser.Name%2CReplayTime%2CReplayScore%2CReplayRespawns%2CTrackAt%2CValidated%2CReplayAt%2CScore`;
+    const apiRoute = (route, trackid) => {
+        const domain = apis[gameName] ?? `${gameName}.tm-exchange.com`;
+        const garbage = `&fields=ReplayId%2CUser.UserId%2CUser.Name%2CReplayTime%2CReplayScore%2CReplayRespawns%2C` +
+            `TrackAt%2CValidated%2CReplayAt%2CScore`;
+        return `https://${domain}${route}?trackid=${trackid}&count=1000${garbage}`;
+    };
 
     const game = [];
     const gameCampaign = importJson(__dirname + '/../games/' + gameName + '.json');
