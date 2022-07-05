@@ -1,6 +1,5 @@
 const ghPages = require('gh-pages');
 const cron = require('node-cron');
-const tmx = require('./tmx');
 const tmxHistory = require('./tmx_history');
 const tmx2 = require('./tmx2');
 const tmwii = require('./tmwii');
@@ -13,19 +12,10 @@ const nowTrackmania = process.argv.some((arg) => arg === '-ntm' || arg === '--no
 const nowHistory = process.argv.some((arg) => arg === '-htm' || arg === '--now-history');
 
 const main = async () => {
-    for (const game of ['tmnforever', 'united']) {
+    for (const game of ['tmnforever', 'united', 'nations']) {
         try {
             log.info(`scraping ${game} history...`);
             await tmxHistory(game, output);
-        } catch (err) {
-            log.error(err);
-        }
-    }
-
-    for (const game of []) {
-        try {
-            log.info(`scraping ${game}...`);
-            await tmx(game, output);
         } catch (err) {
             log.error(err);
         }
