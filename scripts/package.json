@@ -6,7 +6,7 @@
     "gh-pages": "^1.1.0",
     "jsdom": "^16.5.1",
     "moment": "^2.28.0",
-    "mongoose": "^6.0.12",
+    "mongoose": "^6.4.6",
     "node-cron": "^2.0.3",
     "node-fetch": "^2.6.1",
     "twitter-lite": "^0.14.0",
