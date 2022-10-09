@@ -3,7 +3,7 @@ const { formatScore, log } = require('../utils');
 
 require('dotenv').config();
 
-const locations = ['Limburg, Germany', 'A01', 'Training - 01'];
+const locations = ['A01', 'Training - 01'];
 
 const rng = (max) => Math.floor(Math.random() * Math.floor(max));
 
