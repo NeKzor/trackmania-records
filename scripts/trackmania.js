@@ -468,6 +468,7 @@ const getReplayFolder = (campaign, track, isTraining) => {
 const resolveRecords = async (track, currentCampaign, latestCampaign, isTraining) => {
     const eventStart = track.isOfficial ? currentCampaign.event.startsAt : track.event.startsAt;
     const eventEnd = track.isOfficial ? currentCampaign.event.endsAt : track.event.endsAt;
+    const oneWeekAfterOfficialCampaignStart = track.isOfficial ? moment.unix(eventStart).add(7, 'days').unix() : 0;
 
     const [leaderboard] = (
         await trackmania.leaderboard(currentCampaign.isOfficial ? currentCampaign.id : track.season, track.id, 0, 5)
@@ -548,8 +549,11 @@ const resolveRecords = async (track, currentCampaign, latestCampaign, isTraining
                 inspect(wr);
 
                 const data = { wr: { ...wr }, track: { ...track } };
-                for (const integration of track.isOfficial && !isTraining ? [twitter] : []) {
-                    integration.send(data);
+
+                if (track.isOfficial && !isTraining && timestamp.unix() >= oneWeekAfterOfficialCampaignStart) {
+                    for (const integration of [twitter]) {
+                        integration.send(data);
+                    }
                 }
 
                 try {
