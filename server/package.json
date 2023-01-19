@@ -17,6 +17,7 @@
     "koa-helmet": "^6.1.0",
     "koa-session": "^6.2.0",
     "koa-static": "^5.0.0",
+    "moment": "^2.29.4",
     "mongoose": "^5.13.3",
     "node-fetch": "^3.0.0",
     "winston": "^3.3.3"

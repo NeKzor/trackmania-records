@@ -26,7 +26,7 @@ const useStyles = makeStyles((theme) => ({
 
 const branches = [
     { repo: 'NeKzor/trackmania-records', branch: 'master' },
-    { repo: 'NeKzBot/tmx-records', branch: 'api' },
+    // TODO: Remove this once we switched to GitHub Actions
     { repo: 'NeKzor/trackmania-records', branch: 'gh-pages' },
 ];
 
@@ -93,6 +93,22 @@ const AboutView = () => {
                 <Padding />
                 <Typography variant="h5">News</Typography>
                 <SmallPadding />
+                <Typography variant="body1">Jan. 2023</Typography>
+                <div>
+                    <ul>
+                        <li>
+                            Migrated all Trackmania records to the database backend.
+                        </li>
+                        <li>
+                            The first 50 people, who logged in previously into this site without any reasons as
+                            there was nothing to benefit from, are now able to try out the new
+                            replay inspection button for every available Trackmania replay.
+                        </li>
+                        <li>
+                            Paused Trackmania competition updates.
+                        </li>
+                    </ul>
+                </div>
                 <Typography variant="body1">Jul. 2022</Typography>
                 <div>
                     <ul>
@@ -139,16 +155,16 @@ const AboutView = () => {
                         <Table size="small">
                             <TableHead>
                                 <TableRow>
-                                    <TableCell padding="default">
+                                    <TableCell padding="normal">
                                         <Typography variant="body1">Branch</Typography>
                                     </TableCell>
-                                    <TableCell padding="default">
+                                    <TableCell padding="normal">
                                         <Typography variant="body1">Date</Typography>
                                     </TableCell>
-                                    <TableCell padding="default">
+                                    <TableCell padding="normal">
                                         <Typography variant="body1">Author</Typography>
                                     </TableCell>
-                                    <TableCell padding="default">
+                                    <TableCell padding="normal">
                                         <Typography variant="body1">Commit</Typography>
                                     </TableCell>
                                 </TableRow>

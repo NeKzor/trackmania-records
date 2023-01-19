@@ -12,7 +12,7 @@ import SimpleTitle from '../SimpleTitle';
 import UniqueRecordsChart from '../UniqueRecordsChart';
 import { makeStyles } from '@material-ui/core/styles';
 import MenuItem from '@material-ui/core/MenuItem';
-import Api, { api2 } from '../../Api';
+import Api, { api2, trackmaniaApi } from '../../Api';
 import { useIsMounted } from '../../Hooks';
 import AppState from '../../AppState';
 import { Permissions } from '../../models/Permissions';
@@ -65,7 +65,8 @@ const CampaignTab = ({ campaign, onChangeCampaign, onChangeYear, isOfficial, yea
     React.useEffect(() => {
         setGame(undefined);
 
-        Api.request('trackmania', campaign)
+        trackmaniaApi
+            .getCampaign(campaign)
             .then((campaign) => {
                 const rows = [];
                 for (const track of campaign.tracks) {
@@ -87,7 +88,7 @@ const CampaignTab = ({ campaign, onChangeCampaign, onChangeYear, isOfficial, yea
 
                         const setAfter = !campaign.isOfficial ? calculateSetAfter(releasedAt, wrDate) : undefined;
 
-                        const isLast = wr === track.wrs[track.wrs.length - 1];
+                        const isLast = wr === track.wrs.at(track.wrs.length - 1);
                         const history = isLast && (track.history || []).length > 1 ? track.history : undefined;
 
                         if (history && !campaign.isOfficial) {
@@ -106,9 +107,10 @@ const CampaignTab = ({ campaign, onChangeCampaign, onChangeYear, isOfficial, yea
                         rows.push({
                             track: {
                                 id: track.id,
+                                uid: track.uid,
                                 name: track.name.replace(/(\$[0-9a-fA-F]{1,3}|\$[WNOITSGZBEMwnoitsgzbem]{1})/g, ''),
                                 monthDay: track.monthDay,
-                                isFirst: wr === track.wrs[0],
+                                isFirst: wr === track.wrs.at(0),
                                 isLast,
                                 records: track.wrs.length,
                                 history,
@@ -116,7 +118,7 @@ const CampaignTab = ({ campaign, onChangeCampaign, onChangeYear, isOfficial, yea
                             ...wr,
                             replayUrl: api2.replayUrl(wr.replay),
                             replayUrlPublic: `https://prod.trackmania.core.nadeo.online/storageObjects/${wr.replay}`,
-                            zone: (wr.user.zone[2] ? wr.user.zone[2] : wr.user.zone[0]).name,
+                            zone: (wr.user.zone.at(2) ? wr.user.zone.at(2) : wr.user.zone.at(0)).name,
                             setAfter,
                         });
                     }
@@ -137,7 +139,6 @@ const CampaignTab = ({ campaign, onChangeCampaign, onChangeYear, isOfficial, yea
             });
     }, [isMounted, campaign]);
 
-    
     const showDownloadButton = React.useMemo(() => {
         return user.isLoggedIn() && user.hasPermission(Permissions.trackmania_DOWNLOAD_FILES);
     }, [user.profile]);
@@ -175,11 +176,16 @@ const CampaignTab = ({ campaign, onChangeCampaign, onChangeYear, isOfficial, yea
             )}
             {game === null && <SimpleTitle data="No data." />}
             {game === undefined && <LinearProgress />}
-            <Grid container direction="column" justify="center">
+            <Grid container direction="column" justifyContent="center">
                 {game !== undefined && game !== null && (
                     <>
                         <Grid item xs={12}>
-                            <RecordsTable data={game.tracks} stats={game.stats} official={game.isOfficial} showDownloadButton={showDownloadButton} />
+                            <RecordsTable
+                                data={game.tracks}
+                                stats={game.stats}
+                                official={game.isOfficial}
+                                showDownloadButton={showDownloadButton}
+                            />
                         </Grid>
                         <Grid item xs={12} className={classes.padTop}>
                             <FormControl className={classes.formControl}>
@@ -190,7 +196,7 @@ const CampaignTab = ({ campaign, onChangeCampaign, onChangeYear, isOfficial, yea
                                     <MenuItem value={'historyLeaderboard'}>Total</MenuItem>
                                 </Select>
                             </FormControl>
-                            <Grid container direction="row" justify="center" alignContent="center">
+                            <Grid container direction="row" justifyContent="center" alignContent="center">
                                 <Grid item xs={12} md={6}>
                                     <RankingsTable
                                         data={game[rankingsType]}
@@ -198,7 +204,7 @@ const CampaignTab = ({ campaign, onChangeCampaign, onChangeYear, isOfficial, yea
                                     />
                                 </Grid>
                                 <Grid item xs={12} md={6} className={classes.padTop}>
-                                    <Grid container direction="column" justify="center">
+                                    <Grid container direction="column" justifyContent="center">
                                         <Grid item xs={12}>
                                             {rankingsType === 'uniqueLeaderboard' ? (
                                                 <UniqueRecordsChart
@@ -224,7 +230,10 @@ const CampaignTab = ({ campaign, onChangeCampaign, onChangeYear, isOfficial, yea
                                                 <UniqueRecordsChart
                                                     title="WRs"
                                                     labels={game[rankingsCountryType]
-                                                        .map((row) => (row.zone[2] ? row.zone[2] : row.zone[0]).name)
+                                                        .map(
+                                                            (row) =>
+                                                                (row.zone.at(2) ? row.zone.at(2) : row.zone.at(0)).name,
+                                                        )
                                                         .slice(0, 20)}
                                                     series={[
                                                         {
@@ -239,7 +248,8 @@ const CampaignTab = ({ campaign, onChangeCampaign, onChangeYear, isOfficial, yea
                                                 <RecordsChart
                                                     title="WRs by Zone"
                                                     labels={game[rankingsCountryType].map(
-                                                        (row) => (row.zone[2] ? row.zone[2] : row.zone[0]).name,
+                                                        (row) =>
+                                                            (row.zone.at(2) ? row.zone.at(2) : row.zone.at(0)).name,
                                                     )}
                                                     series={game[rankingsCountryType].map((row) => row.wrs)}
                                                 />

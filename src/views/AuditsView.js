@@ -4,24 +4,24 @@ import ViewContent from './ViewContent';
 import { api2 } from '../Api';
 import AppState from '../AppState';
 
-const UsersView = () => {
+const AuditsView = () => {
     const {
-        state: { users },
+        state: { audits },
         dispatch,
     } = React.useContext(AppState);
 
     React.useEffect(() => {
-        api2.getUsers()
-            .then(({ data }) => dispatch({ action: 'setUsers', data }))
+        api2.getAudits()
+            .then(({ data }) => dispatch({ action: 'setAudits', data }))
             .catch(console.error);
     }, []);
 
     return (
         <ViewContent>
             <Paper>
-                {users.map((user) => {
+                {audits.map((audit) => {
                     return (
-                        <div key={user._id}>{user.nickname} | {user.permissions} | {user.status} | {user.source} | {user.login_id}</div>
+                        <div key={audit._id}>{audit.auditType} | {audit.moderator} | {audit.moderatorNote} | {audit.serverNote} | {audit.affected.users.length} | {audit.affected.records.length}</div>
                     );
                 })}
             </Paper>
@@ -29,4 +29,4 @@ const UsersView = () => {
     );
 };
 
-export default UsersView;
+export default AuditsView;

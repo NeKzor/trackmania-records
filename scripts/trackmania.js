@@ -1,18 +1,26 @@
 require('dotenv').config();
-require('./db');
+const db = require('./db');
 
 const fs = require('fs');
 const path = require('path');
 const moment = require('moment');
 const { UbisoftClient, TrackmaniaClient, Audiences, Campaigns, Zones } = require('./trackmania/api');
 const { delay, log, tryExportJson, tryMakeDir, importJson } = require('./utils');
-const DiscordIntegration = require('./trackmania/discord');
-const TwitterIntegration = require('./trackmania/twitter');
 const dumpCompetitions = require('./trackmania_competitions');
-const { Replay } = require('./trackmania/models');
+const {
+    Replay,
+    Audit,
+    Tag,
+    Campaign,
+    Track,
+    Record,
+    Inspection,
+    Competition,
+    CompetitionResult,
+    IntegrationEvent,
+} = require('./trackmania/models');
 
 const sessionFile = path.join(__dirname, '/../.login');
-const gameFile = path.join(__dirname, '../games/trackmania.json');
 const replayFolder = process.env.TRACKMANIA_REPLAYS_FOLDER || path.join(__dirname, '../replays');
 
 const loadSession = (client) => {
@@ -35,345 +43,270 @@ const saveSession = (client) => {
 
 let trackmania = new TrackmaniaClient();
 let zones = null;
-let game = [];
-let gameInfo = { cheaters: [], whitelist: [], training: { groupId: null, maps: [] } };
-let discord = null;
-let imported = [];
 let isUpdating = false;
+let bannedUsers = [];
+let unbannedUsers = [];
 
 const cleanup = () => {
     trackmania = null;
     zones = null;
-    game = [];
-    gameInfo = { cheaters: [], whitelist: [], training: { groupId: null, maps: [] } };
-    discord = null;
-    imported = [];
     isUpdating = false;
-    if (discord && discord.client) {
-        discord.client.destroy();
-    }
+    bannedUsers = [];
+    unbannedUsers = [];
 };
 
-const fixHistory = (campaign) => {
-    const now = moment().unix();
-    const nowOrEndOfSeason = moment.unix(campaign.event && campaign.event.endsAt < now ? campaign.event.endsAt : now);
-    const nowOrStartOfSeason = campaign.event ? campaign.event.startsAt : null;
+// TODO: Could some of this be re-used?
+// const fixHistory = (campaign) => {
+//     const now = moment().unix();
+//     const nowOrEndOfSeason = moment.unix(campaign.event && campaign.event.endsAt < now ? campaign.event.endsAt : now);
+//     const nowOrStartOfSeason = campaign.event ? campaign.event.startsAt : null;
 
-    campaign.tracks.forEach((track) => {
-        const wrScore = (() => {
-            const [wr] = track.wrs;
-            return wr ? wr.score : null;
-        })();
+//     campaign.tracks.forEach((track) => {
+//         const wrScore = (() => {
+//             const [wr] = track.wrs;
+//             return wr ? wr.score : null;
+//         })();
 
-        const startOfEvent = track.isOfficial
-            ? nowOrStartOfSeason
-            : (track.event ? track.event.startsAt : null);
+//         const startOfEvent = track.isOfficial ? nowOrStartOfSeason : track.event ? track.event.startsAt : null;
 
-        const endOfEvent = track.isOfficial
-            ? nowOrEndOfSeason
-            : moment.unix(track.event && track.event.endsAt < now ? track.event.endsAt : now);
+//         const endOfEvent = track.isOfficial
+//             ? nowOrEndOfSeason
+//             : moment.unix(track.event && track.event.endsAt < now ? track.event.endsAt : now);
 
-        track.history = track.history.filter((historyWr) => {
-            if (gameInfo.cheaters.find((cheater) => cheater === historyWr.user.id)) {
-                return false;
-            }
+//         track.history = track.history.filter((historyWr) => {
+//             if (bannedUsers.find((user) => user.user === historyWr.user.id)) {
+//                 return false;
+//             }
 
-            if (historyWr.note) {
-                return true;
-            }
+//             if (historyWr.note) {
+//                 return true;
+//             }
 
-            const timestamp = moment(historyWr.date).unix();
+//             const timestamp = moment(historyWr.date).unix();
 
-            if (startOfEvent && timestamp < startOfEvent) {
-                log.warn(`started before event (${track.name} -> ${timestamp} < ${startOfEvent})`);
-                inspect(historyWr);
-                return false;
-            }
+//             if (startOfEvent && timestamp < startOfEvent) {
+//                 log.warn(`started before event (${track.name} -> ${timestamp} < ${startOfEvent})`);
+//                 inspect(historyWr);
+//                 return false;
+//             }
 
-            return (wrScore && historyWr.score >= wrScore) || historyWr.note;
-        });
+//             return (wrScore && historyWr.score >= wrScore) || historyWr.note;
+//         });
 
-        track.history.forEach((wr, idx, wrs) => {
-            const nextWr = wrs.slice(idx + 1).find((nextWR) => nextWR.score < wr.score);
+//         track.history.forEach((wr, idx, wrs) => {
+//             const nextWr = wrs.slice(idx + 1).find((nextWR) => nextWR.score < wr.score);
 
-            wr.duration = moment(nextWr ? nextWr.date : endOfEvent).diff(moment(wr.date), 'days');
+//             wr.duration = moment(nextWr ? nextWr.date : endOfEvent).diff(moment(wr.date), 'days');
 
-            if (wr.duration < 0) {
-                log.warn(`negative duration for ${wr.user.name} -> ${wr.score} -> ${wr.date} -> ${track.name}`);
-            }
-        });
+//             if (wr.duration < 0) {
+//                 log.warn(`negative duration for ${wr.user.name} -> ${wr.score} -> ${wr.date} -> ${track.name}`);
+//             }
+//         });
 
-        const [firstWr] = track.history;
-        if (firstWr) {
-            firstWr.delta = 0;
-        }
-    });
-};
+//         const [firstWr] = track.history;
+//         if (firstWr) {
+//             firstWr.delta = 0;
+//         }
+//     });
+// };
 
-const validRecords = (record) => record.note === undefined;
-
-const importLatest = (file) => {
-    imported.push(file);
-
-    const latest = (() => {
-        try {
-            return importJson(file);
-        } catch {
-            return null;
-        }
-    })();
-
-    if (latest) {
-        fixHistory(latest);
+const main = async () => {
+    if (isUpdating) {
+        log.warn('ignoring update');
+        return;
     }
 
-    return latest;
-};
+    isUpdating = true;
 
-const twitter = new TwitterIntegration(
-    process.env.TWITTER_API_KEY,
-    process.env.TWITTER_API_SECRET_KEY,
-    process.env.TWITTER_ACCESS_TOKEN,
-    process.env.TWITTER_ACCESS_TOKEN_SECRET,
-);
-twitter.enabled = process.argv.some((arg) => arg === '--twitter');
-
-const main = async (outputDir, snapshot = true) => {
-    tryMakeDir(outputDir);
-    tryMakeDir(path.join(outputDir, '/trackmania'));
-    tryMakeDir(path.join(outputDir, '/trackmania/campaign'));
-    tryMakeDir(path.join(outputDir, '/trackmania/totd'));
-    tryMakeDir(path.join(outputDir, '/trackmania/rankings'));
     tryMakeDir(path.join(replayFolder));
 
     const ubisoft = new UbisoftClient(process.env.UBI_EMAIL, process.env.UBI_PW);
 
-    /* save this session locally or we get rate limited */
-    if (!loadSession(ubisoft)) {
-        await ubisoft.login();
-        saveSession(ubisoft);
-    }
-
-    trackmania = new TrackmaniaClient(ubisoft.loginData.ticket);
-
-    await trackmania.login();
-
-    /* required for leaderboard only */
-    await trackmania.loginNadeo(Audiences.NadeoLiveServices);
-
-    zones = await trackmania.zones();
-    zones.data.forEach((zone) => {
-        Object.keys(zone).forEach((key) => {
-            if (!['name', 'parentId', 'zoneId'].includes(key)) {
-                delete zone[key];
-            }
-        });
-    });
-
-    gameInfo = importJson(gameFile);
-    discord = new DiscordIntegration(process.env.WEBHOOK_ID, process.env.WEBHOOK_TOKEN);
-    discord.enabled = process.argv.some((arg) => arg === '--discord');
-
     try {
-        if (isUpdating) {
-            log.warn('ignoring update');
-            return;
+        // Save this session locally or we get rate limited
+        if (!loadSession(ubisoft)) {
+            await ubisoft.login();
+            saveSession(ubisoft);
         }
-
-        const isTimeToDumpCupOfTheDay = moment().add(10, 'seconds').format('HH:mm') === '21:15';
-        const isTimeToDumpA08Forever = moment().add(10, 'seconds').format('DD HH:mm') === '08 22:00';
-
-        isUpdating = true;
-
-        await dumpOfficialCampaign(outputDir);
-        await dumpTrackOfTheDay(outputDir, snapshot);
-
-        const toImport = [];
-
-        for (const importFile of fs.readdirSync(`${outputDir}/trackmania/campaign`)) {
-            if (!imported.some((file) => file.endsWith(importFile))) {
-                toImport.push(`${outputDir}/trackmania/campaign/${importFile}`);
-            }
-        }
-
-        for (const importFile of fs.readdirSync(`${outputDir}/trackmania/totd`)) {
-            if (!imported.some((file) => file.endsWith(importFile))) {
-                toImport.push(`${outputDir}/trackmania/totd/${importFile}`);
-            }
-        }
-
-        toImport.forEach((importFile) => {
-            const campaign = importJson(importFile);
-            fixHistory(campaign);
-            game.push(campaign);
+    
+        trackmania = new TrackmaniaClient(ubisoft.loginData.ticket);
+    
+        await trackmania.login();
+    
+        // Required for leaderboard only
+        await trackmania.loginNadeo(Audiences.NadeoLiveServices);
+    
+        zones = await trackmania.zones();
+        zones.data.forEach((zone) => {
+            Object.keys(zone).forEach((key) => {
+                if (!['name', 'parentId', 'zoneId'].includes(key)) {
+                    delete zone[key];
+                }
+            });
         });
 
-        updateTwitterBot();
+        bannedUsers = (await Tag.find({ name: 'Banned', user_id: { $ne: null } })).map(({ user_id }) => user_id);
+        unbannedUsers = (await Tag.find({ name: 'Unbanned', user_id: { $ne: null } })).map(({ user_id }) => user_id);
 
-        const overallOfficial = game.filter((campaign) => campaign.isOfficial);
-        const overallTotd = game.filter((campaign) => !campaign.isOfficial);
+        // const isTimeToDumpCupOfTheDay = moment().add(10, 'seconds').format('HH:mm') === '21:15';
+        // const isTimeToDumpA08Forever = moment().add(10, 'seconds').format('DD HH:mm') === '08 22:00';
 
-        game.forEach((campaign) => Object.assign(campaign, generateRankings([campaign])));
+        await dumpOfficialCampaign();
+        await dumpTrackOfTheDay();
 
-        tryExportJson(`${outputDir}/trackmania/rankings/campaign.json`, generateRankings(overallOfficial), true, true);
-        tryExportJson(`${outputDir}/trackmania/rankings/totd.json`, generateRankings(overallTotd), true, true);
-        tryExportJson(
-            `${outputDir}/trackmania/rankings/combined.json`,
-            generateRankings(game),
-            true,
-            true,
-        );
-
-        game.forEach((campaign) => {
-            const path = campaign.isOfficial ? 'campaign' : 'totd';
-            tryExportJson(
-                `${outputDir}/trackmania/${path}/${campaign.name.replace(/ /, '-').toLowerCase()}.json`,
-                campaign,
-                true,
-                true,
-            );
-        });
-
-        tryExportJson(gameFile, gameInfo, true, true);
-
-        if (isTimeToDumpCupOfTheDay) await dumpCompetitions(trackmania, zones, false);
-        if (isTimeToDumpA08Forever) await dumpCompetitions(trackmania, zones, true);
+        // TODO: Re-write this too
+        // if (isTimeToDumpCupOfTheDay) await dumpCompetitions(trackmania, zones, false);
+        // if (isTimeToDumpA08Forever) await dumpCompetitions(trackmania, zones, true);
     } catch (error) {
-        log.error(error);
+        log.error(`${error.message}\n${error.stack}`);
     }
 
     cleanup();
 };
 
-const dumpOfficialCampaign = async (outputDir) => {
-    const campaigns = (await trackmania.campaigns(Campaigns.Official)).collect();
-    campaigns.push(gameInfo.training);
+const getTrainingCampaign = () => {
+    //const tracks = await Track.find({ name: 'Training' });
 
-    for (const { seasonUid, name, playlist, startTimestamp, endTimestamp } of campaigns) {
-        const currentCampaign = {
-            isOfficial: true,
-            name,
-            id: seasonUid,
-            event: {
-                startsAt: startTimestamp,
-                endsAt: endTimestamp,
-            },
-        };
-
-        const latestCampaign = importLatest(
-            `${outputDir}/trackmania/campaign/${name.replace(/ /, '-').toLowerCase()}.json`,
-        );
-
-        const isTraining = name === 'Training';
-        log.info(name, seasonUid);
-
-        const maps = await trackmania.maps(playlist.map((map) => map.mapUid));
-        const mapList = maps.collect();
-
-        const tracks = [];
-
-        for (const { mapUid } of playlist) {
-            const { name, mapId, thumbnailUrl } = mapList.find((map) => map.mapUid === mapUid);
-            log.info(name, mapUid);
-
-            const track = {
-                id: mapUid,
-                _id: mapId,
-                name,
-                isOfficial: true,
-                thumbnail: thumbnailUrl.slice(thumbnailUrl.lastIndexOf('/') + 1, -4),
-            };
-
-            await resolveRecords(track, currentCampaign, latestCampaign, isTraining);
-
-            tracks.push(track);
-        }
-
-        currentCampaign.tracks = tracks;
-
-        const totalTime = tracks
-            .filter((t) => t.wrs[0])
-            .map((t) => t.wrs[0].score)
-            .reduce((a, b) => a + b, 0);
-
-        currentCampaign.stats = { totalTime };
-
-        game.push(currentCampaign);
-    }
+    return {
+        name: 'Training',
+        seasonUid: 'NLS-QgdzyWx3sNU7IOGuJGKVBKkps6rMiNTGesM',
+        startTimestamp: 1593622800,
+        eventEnd: null,
+        //playlist: tracks.map(({ uid }) => ({ mapUid: uid })),
+        playlist: [
+            { mapUid: 'olsKnq_qAghcVAnEkoeUnVHFZei' },
+            { mapUid: 'btmbJWADQOS20ginP9DJ0i8sh3f' },
+            { mapUid: 'lNP8O0sqatiHqecUXrhH65rpQ8a' },
+            { mapUid: 'ga3zTKvSo7yJca60Ry_Z003L031' },
+            { mapUid: 'xSOA3Fs8k3bGNHFQhwskyAjN3Nh' },
+            { mapUid: 'LcBa4OZLeElnJksgbBEpQggitsh' },
+            { mapUid: 'vTqUpE1iiXupNABp5Mfx0YOf33j' },
+            { mapUid: 'OeJCW8sHENIcYscK8o5zVHAxADd' },
+            { mapUid: 'us4gaCDQSxmjVMtp5nYfReezTqh' },
+            { mapUid: 'DyNBxhQ6006991FwvVOaBX9Gcv1' },
+            { mapUid: 'PhJGvGjkCaw299rBhVsEhNJKX1' },
+            { mapUid: 'AJFJd6yABuSMfgJGc8UpWRwUVa0' },
+            { mapUid: 'Nw8BZ8CtZZcFO547WnqdPzp8ydi' },
+            { mapUid: 'eOA1X_xnvKbdDSuyymweOZzSrQ3' },
+            { mapUid: '0hI2P3y8sENgIkruI_X7s3efES' },
+            { mapUid: 'RlZ2HVhAwN5nD7I1lLciKhPsbb7' },
+            { mapUid: 'EnMnBg3D4Uvb5bz8VLod73z6n47' },
+            { mapUid: 'TVUF91YlnL78BFJwG5ADkNlymqe' },
+            { mapUid: 'SsCdL6nGC__n8UrYnsX8xaqnjCh' },
+            { mapUid: 'Yakz8xDlVWDfVCfXxW2_paCaHil' },
+            { mapUid: 'f1tlOzXvdELVhwrhPpoJDsg9xs8' },
+            { mapUid: 'OHRxJCE_cKxEGOGmhF9z6Hf0YZb' },
+            { mapUid: 'qQEgNKxDhXtTsxWYRW0V4pvpER7' },
+            { mapUid: '1rwAkLrbqhN47zCsVvJJFJimlcf' },
+            { mapUid: 'TkyKsOEG7gHqVqjjc3A1Qj5rPgi' },
+        ],
+    };
 };
 
-const dumpTrackOfTheDay = async (outputDir, snapshot) => {
-    const campaigns = await trackmania.campaigns(Campaigns.TrackOfTheDay);
+const dumpOfficialCampaign = async () => {
+    const campaigns = (await trackmania.campaigns(Campaigns.Official)).collect();
 
-    for (const { year, month, days } of campaigns) {
-        const name = `${moment()
-            .set('month', month - 1)
-            .format('MMMM')} ${year}`;
+    campaigns.push(getTrainingCampaign());
 
-        const currentCampaign = {
-            isOfficial: false,
-            year,
-            month,
-            name,
-        };
+    for (const { seasonUid, name, playlist, startTimestamp, endTimestamp } of campaigns) {
+        let campaign = await Campaign.findOne({ id: seasonUid });
+        const tracks = campaign ? await Track.find({ campaign_id: campaign.id }) : [];
 
-        const latestCampaign = importLatest(
-            `${outputDir}/trackmania/totd/${name.replace(/ /, '-').toLowerCase()}.json`,
-        );
-
-        const playable = days.filter((day) => day.mapUid !== '');
-
-        const trackDays = latestCampaign
-            ? playable.filter((day) => !latestCampaign.tracks.slice(0, -1).find((track) => track.id === day.mapUid))
-            : playable;
-
-        const tracks = latestCampaign ? latestCampaign.tracks.slice(0, -1) : [];
-
-        const maps = await trackmania.maps(trackDays.map((map) => map.mapUid));
-        const mapList = maps.collect();
-
-        for (const { mapUid, seasonUid, monthDay, startTimestamp, endTimestamp } of trackDays) {
-            const { name, mapId, thumbnailUrl } = mapList.find((map) => map.mapUid === mapUid);
-            log.info(name, seasonUid, mapUid);
-
-            const track = {
-                id: mapUid,
-                _id: mapId,
-                season: seasonUid,
+        if (!campaign) {
+            campaign = await Campaign.create({
+                isOfficial: true,
+                id: seasonUid,
                 name,
-                monthDay,
-                isOfficial: false,
-                thumbnail: thumbnailUrl.slice(thumbnailUrl.lastIndexOf('/') + 1, -4),
                 event: {
                     startsAt: startTimestamp,
                     endsAt: endTimestamp,
                 },
-            };
-
-            await resolveRecords(track, currentCampaign, latestCampaign, false);
-
-            tracks.push(track);
+            });
         }
 
-        currentCampaign.tracks = tracks;
+        const isTraining = name === 'Training';
+        log.info(name, seasonUid);
 
-        const totalTime = tracks
-            .filter((t) => t.wrs[0])
-            .map((t) => t.wrs[0].score)
-            .reduce((a, b) => a + b, 0);
+        const maps = (await trackmania.maps(playlist.map((map) => map.mapUid))).collect();
 
-        currentCampaign.stats = { totalTime };
+        for (const { mapUid } of playlist) {
+            const { name, mapId, thumbnailUrl } = maps.find((map) => map.mapUid === mapUid);
+            log.info(name, mapUid);
 
-        game.push(currentCampaign);
+            const track =
+                tracks.find((track) => track.uid === mapUid) ??
+                (await Track.create({
+                    id: mapId,
+                    uid: mapUid,
+                    campaign_id: campaign.id,
+                    name,
+                    isOfficial: true,
+                    thumbnail: thumbnailUrl.slice(thumbnailUrl.lastIndexOf('/') + 1, -4),
+                }));
+
+            await resolveRecords(campaign, track, isTraining);
+        }
+    }
+};
+
+const dumpTrackOfTheDay = async () => {
+    const campaigns = await trackmania.campaigns(Campaigns.TrackOfTheDay);
+
+    for (const { year, month, days } of campaigns) {
+        let campaign = await Campaign.findOne({ id: `${year}_${month}` });
+        let tracks = campaign ? await Track.find({ campaign_id: campaign.id }) : [];
+
+        if (!campaign) {
+            campaign = await Campaign.create({
+                id: `${year}_${month}`,
+                isOfficial: false,
+                name: `${moment()
+                    .set('month', month - 1)
+                    .format('MMMM')} ${year}`,
+                year,
+                month,
+            });
+            tracks = await Track.find({ campaign_id: campaign.id });
+        }
+
+        const trackDays = days
+            .filter((day) => day.mapUid !== '')
+            .filter((day) => !tracks.find((track) => track.id === day.mapUid));
+
+        const maps = (await trackmania.maps(trackDays.map((map) => map.mapUid))).collect();
+
+        for (const { mapUid, seasonUid, monthDay, startTimestamp, endTimestamp } of trackDays) {
+            const { name, mapId, thumbnailUrl } = maps.find((map) => map.mapUid === mapUid);
+            log.info(name, seasonUid, mapUid);
+
+            const track =
+                tracks.find((track) => track.uid === mapUid) ??
+                (await Track.create({
+                    id: mapId,
+                    uid: mapUid,
+                    campaign_id: campaign.id,
+                    name,
+                    monthDay,
+                    season: seasonUid,
+                    isOfficial: false,
+                    thumbnail: thumbnailUrl.slice(thumbnailUrl.lastIndexOf('/') + 1, -4),
+                    event: {
+                        startsAt: startTimestamp,
+                        endsAt: endTimestamp,
+                    },
+                }));
+
+            await resolveRecords(campaign, track, false);
+        }
     }
 };
 
 const autoban = (accountId, score, track, isTraining = false) => {
-    if (gameInfo.whitelist.find((whitelisted) => whitelisted === accountId)) {
+    if (unbannedUsers.find((user) => user.user_id === accountId)) {
         return false;
     }
 
-    if (gameInfo.cheaters.find((cheater) => cheater === accountId)) {
+    if (bannedUsers.find((user) => user.user_id === accountId)) {
         return true;
     }
 
@@ -385,39 +318,25 @@ const autoban = (accountId, score, track, isTraining = false) => {
     return false;
 };
 
-const ban = (account, score, track) => {
+const ban = (account, score, track, reason) => {
     const accountId = typeof account === 'string' ? account : account.accountId;
 
     log.warn('banned: ' + accountId);
-    gameInfo.cheaters.push(accountId);
 
     try {
-        const sendBanAlert = (accountInfo) => {
-            discord.send({
-                user: {
-                    id: accountInfo.accountId,
-                    name: accountInfo.displayName,
-                    firstLoginAt: accountInfo.timestamp,
-                },
-                score,
-                track,
-            }, true);
-        };
+        Tag.create({ name: 'Banned', user_id: accountId, reason: reason ?? 'Invalid score' }).exec();
+    } catch (oops) {
+        log.error(oops);
+    }
 
-        if (typeof account !== 'string') {
-            sendBanAlert(account);
-        } else {
-            trackmania.accounts([accountId])
-            .then((account) => {
-                const [accountInfo] = account.collect();
-
-                log.info('accountInfo', accountId, accountInfo);
-
-                if (accountInfo) {
-                    sendBanAlert(accountInfo);
-                }
-            });
-        }
+    try {
+        Audit.create({
+            //auditType: AuditType.PlayerBan,
+            serverNote: `Banned player ${accountId} with an invalid score ${score} on ${track.name}`,
+            affected: {
+                //records: [record.id],
+            },
+        }).exec();
     } catch (oops) {
         log.error(oops);
     }
@@ -430,14 +349,10 @@ const saveReplay = async (record, wr, campaign, track, isTraining) => {
     // TODO: Replace all invalid path characters for Windows
     const filename = path.join(subFolder, `${track.name.replace(/ /g, '_')}_${wr.score}_${wr.user.name}.replay.gbx`);
 
-    fs.writeFileSync(
-        path.join(replayFolder, filename),
-        await record.downloadReplay(),
-    );
+    fs.writeFileSync(path.join(replayFolder, filename), await record.downloadReplay());
 
-    await Replay
-        .findOneAndUpdate({ replay_id: wr.replay }, { filename }, { upsert: true })
-        .then((doc) => log.info('inserted', doc))
+    await Replay.findOneAndUpdate({ replay_id: wr.replay }, { filename }, { upsert: true })
+        .then((doc) => log.info('inserted replay', doc))
         .catch(log.error);
 };
 
@@ -457,7 +372,7 @@ const getReplayFolder = (campaign, track, isTraining) => {
         return path.join('campaign', yearFolder, seasonFolder, trackFolder);
     }
 
-    const [month, year] = campaign.name.split(' ');    
+    const [month, year] = campaign.name.split(' ');
     const yearFolder = year;
     const monthFolder = month.toLowerCase();
     const dayFolder = track.monthDay.toString();
@@ -465,251 +380,106 @@ const getReplayFolder = (campaign, track, isTraining) => {
     return path.join('totd', yearFolder, monthFolder, dayFolder);
 };
 
-const resolveRecords = async (track, currentCampaign, latestCampaign, isTraining) => {
-    const eventStart = track.isOfficial ? currentCampaign.event.startsAt : track.event.startsAt;
-    const eventEnd = track.isOfficial ? currentCampaign.event.endsAt : track.event.endsAt;
+const resolveRecords = async (campaign, track, isTraining) => {
+    if (isTraining) {
+        isTraining = true;
+    }
+    const eventStart = track.isOfficial ? campaign.event.startsAt : track.event.startsAt;
+    const eventEnd = track.isOfficial ? campaign.event.endsAt : track.event.endsAt;
     const oneWeekAfterOfficialCampaignStart = track.isOfficial ? moment.unix(eventStart).add(7, 'days').unix() : 0;
 
     const [leaderboard] = (
-        await trackmania.leaderboard(currentCampaign.isOfficial ? currentCampaign.id : track.season, track.id, 0, 5)
+        await trackmania.leaderboard(campaign.isOfficial ? campaign.id : track.season, track.uid, 0, 5)
     ).collect();
-
-    const wrs = [];
-    const latestTrack = latestCampaign ? latestCampaign.tracks.find(({ id }) => id === track.id) : undefined;
-    const history = latestTrack && latestTrack.history ? latestTrack.history : [];
 
     let wrScore = undefined;
 
     for (const { accountId, zoneId, score } of leaderboard.top) {
+        // TODO: Insert banned records as "isBanned" + server audit
         if (autoban(accountId, score, track, isTraining)) {
             continue;
         }
 
         if (wrScore === undefined || wrScore === score) {
-            const latestWr = latestTrack
-                ? latestTrack.wrs.find((wr) => wr.user.id === accountId && wr.score === score)
-                : undefined;
+            const savedRecord = await Record.findOne({ 'user.id': accountId, score });
 
-            if (latestWr) {
-                const wr = { ...latestWr };
-                wr.duration = moment().diff(moment(wr.date), 'd');
-                wrs.push(wr);
-
+            if (savedRecord) {
+                // TODO: Check if banned when we insert banned records
                 wrScore = score;
                 continue;
             }
 
             const [account] = (await trackmania.accounts([accountId])).collect();
 
-            /* ban if account is too young */
-            if (track.isOfficial && moment().diff(moment(account.timestamp), 'hours') <= (24 * 7)) {
-                if (!gameInfo.whitelist.find((whitelistId) => whitelistId === accountId)) {
-                    ban(accountId, score, track);
+            const isAccountTooYoung = account ? moment().diff(moment(account.timestamp), 'hours') <= 24 * 7 : false;
+            if (track.isOfficial && isAccountTooYoung) {
+                if (!unbannedUsers.find((user) => user.user_id === accountId)) {
+                    ban(
+                        accountId,
+                        score,
+                        track,
+                        `Account is too young (${moment(account.timestamp).format('YYYY-MM-DD')}`,
+                    );
                     continue;
                 }
             }
 
             wrScore = score;
 
-            const [record] = (await trackmania.mapRecords([accountId], [track._id])).collect();
+            const [record] = (await trackmania.mapRecords([accountId], [track.id])).collect();
             if (!record) {
-                log.error(`unable to get map record info from ${accountId} on ${track._id}`);
+                log.error(`unable to get map record info from ${accountId} on ${track.id}`);
                 continue;
             }
 
             const timestamp = moment(record.timestamp);
 
-            if (timestamp.unix() < eventStart || timestamp.unix() > eventEnd) {
-                log.warn(`ignored record: time was not driven during the event (${record.timestamp} -> ${eventStart} -> ${eventEnd})`);
+            if (timestamp.unix() < eventStart || (eventEnd && timestamp.unix() > eventEnd)) {
+                log.warn(
+                    `ignored record: time was not driven during the event (${eventStart} < ${record.timestamp} < ${eventEnd})`,
+                );
                 continue;
             }
 
-            const latestScore = latestTrack && latestTrack.wrs[0] ? latestTrack.wrs[0].score : undefined;
+            const latestWr = await Record.findOne({ track_id: track.id, score: { $gte: score } });
+            const replay_id = record ? record.url.slice(record.url.lastIndexOf('/') + 1) : '';
 
             const wr = {
+                id: replay_id,
+                track_id: track.id,
+                campaign_id: campaign.id,
                 user: {
                     id: accountId,
                     zone: zones.search(zoneId),
-                    name: account ? account.displayName : '',
+                    name: account?.displayName ?? '',
                 },
                 date: record ? record.timestamp : '',
-                replay: record ? record.url.slice(record.url.lastIndexOf('/') + 1) : '',
+                replay: replay_id,
                 duration: record ? moment().diff(timestamp, 'd') : 0,
                 score,
-                delta: Math.abs(latestWr ? latestWr.delta : latestScore ? score - latestScore : 0),
+                delta: Math.abs(latestWr?.score ? score - latestWr.score : 0),
             };
 
-            const inHistory = history
-                .filter(validRecords)
-                .find((formerWr) => formerWr.score === wr.score && formerWr.user.id === wr.user.id);
+            log.info('NEW RECORD', wr.user.name, wr.score);
+            inspect(wr);
 
-            if (!inHistory) {
-                history.push(wr);
-                log.info('NEW RECORD', wr.user.name, wr.score);
-                inspect(wr);
+            await Record.create(wr);
 
-                const data = { wr: { ...wr }, track: { ...track } };
-
-                if (track.isOfficial && !isTraining && timestamp.unix() >= oneWeekAfterOfficialCampaignStart) {
-                    for (const integration of [twitter]) {
-                        integration.send(data);
-                    }
-                }
-
-                try {
-                    await saveReplay(record, wr, currentCampaign, track, isTraining);
-                } catch (error) {
-                    log.error(error);
-                }
+            try {
+                await saveReplay(record, wr, campaign, track, isTraining);
+            } catch (error) {
+                log.error(error);
             }
 
-            wrs.push(wr);
-            continue;
+            try {
+                if (track.isOfficial && !isTraining && timestamp.unix() >= oneWeekAfterOfficialCampaignStart) {
+                    await IntegrationEvent.create({ record_id: wr.id, twitter: 'pending' });
+                }
+            } catch (error) {
+                log.error(error);
+            }
         }
     }
-
-    const latestWrs = latestTrack?.wrs ?? [];
-
-    if (latestWrs.length && !wrs.length) {
-        log.error(`unable to resolve records ${track.name}`);
-        track.wrs = latestWrs;
-        track.history = latestTrack.history;
-    } else {
-        track.wrs = wrs;
-        track.history = history;
-    }
-};
-
-const generateRankings = (campaigns) => {
-    const now = moment().unix();
-
-    const tracks = campaigns
-        .map((campaign) => {
-            const nowOrEndOfEvent = campaign.event && campaign.event.endsAt < now ? campaign.event.endsAt : now;
-            return campaign.tracks.map((track) => ({ ...track, nowOrEndOfEvent }));
-        })
-        .flat();
-
-    const createLeaderboard = (key) => {
-        const users = tracks
-            .map((t) =>
-                (t[key].length > 0 ? t[key] : t.wrs).filter(validRecords).map(({ user, date }) => ({ ...user, date })),
-            )
-            .flat();
-
-        const frequency = users.reduce((count, user) => {
-            count[user.id] = (count[user.id] || 0) + 1;
-            return count;
-        }, {});
-
-        return [
-            Object.keys(frequency)
-                .sort((a, b) => frequency[b] - frequency[a])
-                .map((key) => {
-                    const [user] = users.filter((u) => u.id === key).sort((a, b) => b.date.localeCompare(a.date));
-                    delete user.date;
-
-                    return {
-                        user,
-                        wrs: frequency[key],
-                        duration: 0,
-                    };
-                }),
-            [
-                ...new Set(
-                    users.map(
-                        (user) => (user.zone[Zones.Country] ? user.zone[Zones.Country] : user.zone[Zones.World]).zoneId,
-                    ),
-                ),
-            ]
-                .map((zoneId) => ({
-                    zone: zones.search(zoneId).slice(0, 3),
-                    wrs: users.filter(
-                        (user) =>
-                            (user.zone[Zones.Country] ? user.zone[Zones.Country] : user.zone[Zones.World]).zoneId ===
-                            zoneId,
-                    ).length,
-                }))
-                .sort((a, b) => {
-                    const v1 = a.wrs;
-                    const v2 = b.wrs;
-                    return v1 === v2 ? 0 : v1 < v2 ? 1 : -1;
-                }),
-        ];
-    };
-
-    const [leaderboard, countryLeaderboard] = createLeaderboard('wrs');
-    const [historyLeaderboard, historyCountryLeaderboard] = createLeaderboard('history');
-
-    const users = tracks
-        .map((t) => {
-            const all = (t.history.length > 0 ? t.history : t.wrs)
-                .filter(validRecords)
-                .map(({ user, date }) => ({ ...user, date }));
-            const ids = [...new Set(all.map((user) => user.id))];
-            return ids.map((id) => all.find((user) => user.id === id));
-        })
-        .flat();
-    const frequency = users.reduce((count, user) => {
-        count[user.id] = (count[user.id] || 0) + 1;
-        return count;
-    }, {});
-
-    const uniqueLeaderboard = Object.keys(frequency)
-        .sort((a, b) => frequency[b] - frequency[a])
-        .map((key) => {
-            const [user] = users.filter((u) => u.id === key).sort((a, b) => b.date.localeCompare(a.date));
-            delete user.date;
-            return {
-                user,
-                wrs: frequency[key],
-            };
-        });
-    const uniqueCountryLeaderboard = [
-        ...new Set(
-            users.map((user) => (user.zone[Zones.Country] ? user.zone[Zones.Country] : user.zone[Zones.World]).zoneId),
-        ),
-    ]
-        .map((zoneId) => ({
-            zone: zones.search(zoneId).slice(0, 3),
-            wrs: users.filter(
-                (user) =>
-                    (user.zone[Zones.Country] ? user.zone[Zones.Country] : user.zone[Zones.World]).zoneId === zoneId,
-            ).length,
-        }))
-        .sort((a, b) => {
-            const v1 = a.wrs;
-            const v2 = b.wrs;
-            return v1 === v2 ? 0 : v1 < v2 ? 1 : -1;
-        });
-
-    return {
-        leaderboard,
-        countryLeaderboard,
-        historyLeaderboard,
-        historyCountryLeaderboard,
-        uniqueLeaderboard,
-        uniqueCountryLeaderboard,
-    };
-};
-
-const updateTwitterBot = () => {
-    const monday = moment().startOf('isoWeek').format('YYYY-MM-DD');
-    const sunday = moment().endOf('isoWeek').format('YYYY-MM-DD');
-    log.info(`week start -> end: ${monday} -> ${sunday}`);
-
-    const wrsThisWeek = game
-        .map((c) => c.tracks)
-        .flat()
-        .filter((t) => t.isOfficial)
-        .map((t) => t.history.filter(validRecords))
-        .flat()
-        .reduce((sum, wr) => {
-            const date = wr.date.slice(0, 10);
-            return date >= monday && date <= sunday ? sum + 1 : sum;
-        }, 0);
-
-    twitter.updateBio({ wrsThisWeek });
 };
 
 const inspect = (obj) => {
@@ -718,7 +488,7 @@ const inspect = (obj) => {
 };
 
 if (process.argv.some((arg) => arg === '--test')) {
-    main(path.join(__dirname, '../api/'), false).catch(inspect);
+    db.on('open', () => main().catch(inspect));
 }
 
 module.exports = main;

@@ -60,7 +60,11 @@ const pageLinks = [
     /* { title: 'Sunrise', link: '/sunrise', inDrawer: true },
     { title: 'Original', link: '/original', inDrawer: true }, */
     { isDivider: true },
-    { title: 'Users', link: '/users', inDrawer: (user) => user.isLoggedIn() && (user.profile.permissions & Permissions.api_MANAGE_USERS) },
+    { title: 'Audits', link: '/manage/audits', inDrawer: (user) => user.isLoggedIn() && user.hasPermission(Permissions.api_MANAGE_DATA) },
+    { title: 'Tags', link: '/manage/tags', inDrawer: (user) => user.isLoggedIn() && user.hasPermission(Permissions.api_MANAGE_DATA) },
+    { title: 'Updates', link: '/manage/updates', inDrawer: (user) => user.isLoggedIn() && user.hasPermission(Permissions.api_MANAGE_DATA) },
+    { title: 'Users', link: '/manage/users', inDrawer: (user) => user.isLoggedIn() && user.hasPermission(Permissions.api_MANAGE_USERS) },
+    { isDivider: true },
     { title: 'Replay Inspection', link: '/replay', inDrawer: true },
     { title: 'About', link: '/about', inDrawer: true },
     { title: 'Login', link: '/login', inDrawer: false },

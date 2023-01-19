@@ -15,11 +15,13 @@ import TableSortLabel from '@material-ui/core/TableSortLabel';
 import Tooltip from '@material-ui/core/Tooltip';
 import Typography from '@material-ui/core/Typography';
 import SaveAltIcon from '@material-ui/icons/SaveAlt';
+import PolicyIcon from '@material-ui/icons/PolicyOutlined';
 import HistoryIcon from '@material-ui/icons/History';
 import WarningIcon from '@material-ui/icons/Warning';
 import { stableSort } from '../utils/stableSort';
 import { useLocalStorage } from '../Hooks';
 import { formatScore, getDateDifferenceColor, getDateTimeDifferenceColor } from '../utils/tools';
+import { useHistory } from 'react-router-dom';
 
 const rowsOfficial = [
     { id: 'track.name', sortable: true, label: 'Track', align: 'left' },
@@ -52,7 +54,7 @@ const RecordsTableHead = ({ order, orderBy, onRequestSort, official }) => {
                     <TableCell
                         key={idx}
                         align={row.align}
-                        padding="default"
+                        padding="normal"
                         sortDirection={orderBy === row.id ? order : false}
                         colSpan={idx === rows.length - 1 ? 2 : 1}
                     >
@@ -93,7 +95,7 @@ const minifiedStyle = { padding: '7px 0px 7px 16px' };
 const MinTableCell = (props) => <TableCell style={minifiedStyle} {...props} />;
 
 const linkToTrackmaniaIoLeaderboard = (track) => {
-    return `https://trackmania.io/#/leaderboard/${encodeURIComponent(track.id)}`;
+    return `https://trackmania.io/#/leaderboard/${encodeURIComponent(track.uid)}`;
 };
 
 const linkToTrackmaniaIoProfile = (user) => {
@@ -109,6 +111,8 @@ const useRowStyles = makeStyles({
 });
 
 const RecordsHistoryRow = ({ wr, official, showDownloadButton }) => {
+    const history = useHistory();
+
     const score = formatScore(wr.score, 'tm2');
     const delta = wr.delta !== 0 ? formatScore(wr.delta, 'tm2') : null;
 
@@ -155,7 +159,7 @@ const RecordsHistoryRow = ({ wr, official, showDownloadButton }) => {
                     <span>{(wr.user.zone[2] ? wr.user.zone[2] : wr.user.zone[0]).name}</span>
                 </Tooltip>
             </MinTableCell>
-            {showDownloadButton && (
+            {showDownloadButton || true && (
                 <MinTableCell align="left">
                     <Tooltip title="Download Ghost" placement="bottom" enterDelay={300}>
                         <IconButton
@@ -168,6 +172,19 @@ const RecordsHistoryRow = ({ wr, official, showDownloadButton }) => {
                             disabled={!wr.replay}
                         >
                             <SaveAltIcon fontSize="inherit" />
+                        </IconButton>
+                    </Tooltip>
+                    <Tooltip title="Inspect Ghost" placement="bottom" enterDelay={300}>
+                        <IconButton
+                            size="small"
+                            style={noWrap}
+                            color="inherit"
+                            rel="noreferrer"
+                            target="_blank"
+                            onClick={() => history.push(`/trackmania/inspect/${wr.id}`)}
+                            disabled={!wr.replay}
+                        >
+                            <PolicyIcon fontSize="inherit" />
                         </IconButton>
                     </Tooltip>
                     {/* {wr.internal_note && (
@@ -190,6 +207,8 @@ const RecordsHistoryRow = ({ wr, official, showDownloadButton }) => {
 };
 
 const RecordsRow = ({ wr, official, orderBy, useLiveDuration, history, onClickHistory, showDownloadButton }) => {
+    const historyRouter = useHistory();
+
     const score = formatScore(wr.score, 'tm2');
     const delta = wr.delta !== 0 ? formatScore(wr.delta, 'tm2') : null;
 
@@ -280,6 +299,19 @@ const RecordsRow = ({ wr, official, orderBy, useLiveDuration, history, onClickHi
                             target="_blank"
                         >
                             <SaveAltIcon fontSize="inherit" />
+                        </IconButton>
+                    </Tooltip>
+                    <Tooltip title="Inspect Ghost" placement="bottom" enterDelay={300}>
+                        <IconButton
+                            size="small"
+                            style={noWrap}
+                            color="inherit"
+                            rel="noreferrer"
+                            target="_blank"
+                            onClick={() => historyRouter.push(`/trackmania/inspect/${wr.id}`)}
+                            disabled={!wr.replay}
+                        >
+                            <PolicyIcon fontSize="inherit" />
                         </IconButton>
                     </Tooltip>
                     {wr.track.isLast && wr.track.history && (

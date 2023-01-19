@@ -1,0 +1,18 @@
+#!/bin/bash
+
+dbpath="/var/lib/mongodb"
+
+if [ "$1" = "db" ]; then
+    mongod --dbpath="$dbpath" --auth "${@:2}"
+elif [ "$1" = "db-no-auth" ]; then
+    mongod --dbpath="$dbpath" "${@:2}"
+elif [ "$1" = "app" ]; then
+    npm run start "${@:2}"
+elif [ "$1" = "--help" ]; then
+    echo "
+    run <command>
+        db               : starts database instance
+        db-no-auth       : starts database instance without authentication
+        app              : starts client app
+    "
+fi

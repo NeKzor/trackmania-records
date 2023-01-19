@@ -17,7 +17,7 @@ class User {
         return this;
     }
     hasPermission(permission) {
-        return (this.profile?.permissions & permission) > 0;
+        return ((this.profile?.permissions ?? 0) & permission) > 0;
     }
 }
 
@@ -36,6 +36,9 @@ const initialState = {
     user: new User(),
     darkMode: new DarkMode(),
     users: [],
+    updates: [],
+    audits: [],
+    tags: [],
 };
 
 export const AppReducer = [
@@ -50,6 +53,21 @@ export const AppReducer = [
                 return {
                     ...state,
                     users: data || [],
+                };
+            case 'setUpdates':
+                return {
+                    ...state,
+                    updates: data || [],
+                };
+            case 'setAudits':
+                return {
+                    ...state,
+                    audits: data || [],
+                };
+            case 'setTags':
+                return {
+                    ...state,
+                    tags: data || [],
                 };
             case 'toggleDarkMode':
                 return {

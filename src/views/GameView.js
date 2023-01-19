@@ -128,7 +128,7 @@ const GameView = ({ match }) => {
                         )}
                         <Typography component="div" role="tabpanel">
                             <Box p={3}>
-                                <Grid container direction="column" justify="center">
+                                <Grid container direction="column" justifyContent="center">
                                     <Grid item xs={12}>
                                         <Table
                                             data={game[tab].tracks}
@@ -139,7 +139,7 @@ const GameView = ({ match }) => {
                                         />
                                     </Grid>
                                     <Grid item xs={12} className={classes.padTop}>
-                                        <Grid container direction="row" justify="center" alignContent="center">
+                                        <Grid container direction="row" justifyContent="center" alignContent="center">
                                             <Grid item xs={12} md={6}>
                                                 <RankingsTable
                                                     data={game[tab].leaderboard}
@@ -148,7 +148,7 @@ const GameView = ({ match }) => {
                                                 />
                                             </Grid>
                                             <Grid item xs={12} md={6} className={classes.padTop}>
-                                                <Grid container direction="column" justify="center">
+                                                <Grid container direction="column" justifyContent="center">
                                                     <Grid item xs={12}>
                                                         <RecordsChart
                                                             title="WRs"

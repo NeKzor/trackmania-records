@@ -35,7 +35,7 @@ const LongestLastingHead = ({ order, orderBy, onRequestSort, scoreType }) => {
                     <TableCell
                         key={row.id}
                         align={row.align}
-                        padding="default"
+                        padding="normal"
                         sortDirection={orderBy === row.id ? order : false}
                     >
                         {row.sortable === true && (

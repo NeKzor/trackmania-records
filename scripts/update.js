@@ -34,6 +34,9 @@ const main = async () => {
     } catch (err) {
         log.error(err);
     }
+
+    // TODO: migrate rest to database
+    publish();
 };
 
 const publish = () => {
@@ -56,8 +59,7 @@ const publish = () => {
 const trackmaniaOnly = async () => {
     try {
         log.info('scraping trackmania');
-        await trackmania(output, false);
-        publish();
+        await trackmania();
     } catch (err) {
         log.error(err);
     }

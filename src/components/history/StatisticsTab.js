@@ -128,9 +128,9 @@ const StatisticsTab = ({ gameName }) => {
             {currentCampaign === null && <SimpleTitle data="No data." />}
             {currentCampaign === undefined && <LinearProgress />}
             {currentCampaign !== null && currentCampaign !== undefined && (
-                <Grid container direction="column" justify="center">
+                <Grid container direction="column" justifyContent="center">
                     <Grid item xs={12}>
-                        <Grid container direction="row" justify="center" alignContent="center">
+                        <Grid container direction="row" justifyContent="center" alignContent="center">
                             <Grid item xs={12}>
                                 {currentCampaign && currentCampaign[type] && (
                                     <StatsComponent

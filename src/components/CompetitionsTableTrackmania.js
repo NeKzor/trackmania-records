@@ -39,7 +39,7 @@ const CompetitionsTableHead = ({ order, orderBy, onRequestSort, official }) => {
                     <TableCell
                         key={idx}
                         align={row.align}
-                        padding="default"
+                        padding="normal"
                         sortDirection={orderBy === row.id ? order : false}
                         colSpan={idx === rows.length - 1 ? 2 : 1}
                     >

@@ -7,7 +7,7 @@ const { delay, log, importJson, tryMakeDir, tryExportJson } = require('./utils')
 const main = async (trackmania, zones, isA08Forever) => {
     log.info('dumping competitions', isA08Forever ? '(A08 Forever)' : '(COTD)');
 
-    /* required for competitions */
+    // required for competitions
     await trackmania.loginNadeo(Audiences.NadeoClubServices);
 
     const fetchCompetitionData = async (competition) => {

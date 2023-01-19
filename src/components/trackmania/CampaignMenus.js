@@ -32,7 +32,7 @@ while (currentMonth.diff(now) < 0) {
     }
 
     seasonMenu.push(
-        <MenuItem value={`campaign/${season}-${year}`.toLowerCase()} key={seasonMenu.length}>
+        <MenuItem value={`${season} ${year}`} key={seasonMenu.length}>
             {season} {year}
         </MenuItem>,
     );
@@ -45,7 +45,7 @@ totdMenu.reverse();
 yearMenu.reverse();
 
 seasonMenu.push(
-    <MenuItem value="campaign/training" key={seasonMenu.length}>
+    <MenuItem value="Training" key={seasonMenu.length}>
         Training
     </MenuItem>,
 );
@@ -70,7 +70,7 @@ const getTotdMenu = (year) => {
         const monthName = month.format('MMMM');
 
         menu.push(
-            <MenuItem value={`totd/${monthName}-${year}`.toLowerCase()} key={menu.length}>
+            <MenuItem value={`${year}/${month.format('MM')}`} key={menu.length}>
                 {monthName}
             </MenuItem>,
         );
@@ -85,10 +85,9 @@ const getInitialValue = (official, year = undefined) => {
     const isFirstYear = year && year.toString() === releaseDate.year().toString();
     const month = (isFirstYear ? releaseDate : now).clone();
 
-    return (official
-        ? `campaign/${seasons[Math.floor(now.month() / 3)]}-${now.year()}`
-        : `totd/${month.format('MMMM')}-${year ? year : now.year()}`
-    ).toLowerCase();
+    return official
+        ? `${seasons[Math.floor(now.month() / 3)]} ${now.year()}`
+        : `${year ? year : now.year()}/${month.format('MM')}`;
 };
 
 export { seasonMenu, yearMenu, getTotdMenu, getInitialValue };

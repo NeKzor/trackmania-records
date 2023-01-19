@@ -87,7 +87,7 @@ const RankingsTab = () => {
             {game === null && <SimpleTitle data="No data." />}
             {game === undefined && <LinearProgress />}
             {game !== null && game !== undefined && (
-                <Grid container direction="row" justify="center" alignContent="center">
+                <Grid container direction="row" justifyContent="center" alignContent="center">
                     <Grid item xs={12} md={6}>
                         <RankingsTable
                             data={game[rankingsType]}
@@ -95,7 +95,7 @@ const RankingsTab = () => {
                         />
                     </Grid>
                     <Grid item xs={12} md={6}>
-                        <Grid container direction="column" justify="center">
+                        <Grid container direction="column" justifyContent="center">
                             <Grid item xs={12} className={classes.padTop}>
                                 {rankingsType === 'uniqueLeaderboard' ? (
                                     <UniqueRecordsChart

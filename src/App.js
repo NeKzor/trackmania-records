@@ -4,7 +4,7 @@ import CssBaseline from '@material-ui/core/CssBaseline';
 import { makeStyles } from '@material-ui/core/styles';
 import { ThemeProvider } from '@material-ui/styles';
 import { red, orange } from '@material-ui/core/colors';
-import { createMuiTheme } from '@material-ui/core/styles';
+import { createTheme } from '@material-ui/core/styles';
 import AppBar from './components/AppBar';
 import AboutView from './views/AboutView';
 import GameView from './views/GameView';
@@ -16,6 +16,10 @@ import TrackmaniaHistoryView from './views/TrackmaniaHistoryView';
 import LoginView from './views/LoginView';
 import ProfileView from './views/ProfileView';
 import UsersView from './views/UsersView';
+import AuditsView from './views/AuditsView';
+import TagsView from './views/TagsView';
+import UpdatesView from './views/UpdatesView';
+import InspectionView from './views/InspectionView';
 
 const useStyles = makeStyles((theme) => ({
     views: {
@@ -27,7 +31,7 @@ const App = () => {
     const [state, dispatch] = React.useReducer(...AppReducer);
 
     const theme = React.useMemo(() => {
-        return createMuiTheme({
+        return createTheme({
             palette: {
                 primary: {
                     light: red[300],
@@ -78,7 +82,11 @@ const App = () => {
                             <Route exact path="/about" component={AboutView} />
                             <Route exact path="/login/:source(trackmania|maniaplanet)" component={LoginView} />
                             <Route exact path="/me" component={ProfileView} />
-                            <Route exact path="/users" component={UsersView} />
+                            <Route exact path="/manage/audits" component={AuditsView} />
+                            <Route exact path="/manage/tags" component={TagsView} />
+                            <Route exact path="/manage/updates" component={UpdatesView} />
+                            <Route exact path="/manage/users" component={UsersView} />
+                            <Route exact path="/trackmania/inspect/:record" component={InspectionView} />
                             <Route component={NotFoundView} />
                         </Switch>
                     </div>
