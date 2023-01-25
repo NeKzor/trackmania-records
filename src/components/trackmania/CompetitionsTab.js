@@ -10,9 +10,9 @@ import RecordsChart from '../RecordsChart';
 import SimpleTitle from '../SimpleTitle';
 import { makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
-import Api from '../../Api';
+import { trackmaniaApi } from '../../Api';
 import { useIsMounted } from '../../Hooks';
-import { yearMenu, competitionMenu, getCotdMenu } from './CompetitionsMenus';
+import { yearMenu, competitionMenu, getCotdMenu, getCotdTimeslotMenu } from './CompetitionsMenus';
 
 const useStyles = makeStyles((theme) => ({
     padTop: {
@@ -24,25 +24,32 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-const CompetitionsTab = ({ competition, onChangeCompetition, campaign, onChangeCampaign, onChangeYear, onChangeMonth, isOfficial, year, month }) => {
+const CompetitionsTab = ({
+    competition,
+    onChangeCompetition,
+    onChangeYear,
+    onChangeMonth,
+    onChangeTimeslot,
+    year,
+    month,
+    timeslot,
+}) => {
     const isMounted = useIsMounted();
-    const isCotd = competition === 'competitions/cotd';
+    const isCotd = competition === 'cotd';
+    const isA08Forever = competition === 'a08forever';
+    const isSuperRoyal = competition === 'superroyal';
 
     const [game, setGame] = React.useState(undefined);
     const [stats, setStats] = React.useState(undefined);
-    const [rankingsType, setRankingsType] = React.useState('leaderboard');
-
-    const onChangeRankingsType = React.useCallback(
-        (event) => {
-            setRankingsType(event.target.value);
-        },
-        [setRankingsType],
-    );
 
     React.useEffect(() => {
         setGame(undefined);
 
-        Api.request('trackmania', isCotd ? `${competition}/${month}-${year}` : `${competition}/${year}`)
+        trackmaniaApi
+            .getCompetition(
+                competition,
+                isCotd || isSuperRoyal ? `${year}/${month}${timeslot ? '/' + timeslot : ''}` : year,
+            )
             .then((rows) => {
                 if (isMounted.current) {
                     setGame(rows);
@@ -55,12 +62,13 @@ const CompetitionsTab = ({ competition, onChangeCompetition, campaign, onChangeC
                     setGame(null);
                 }
             });
-    }, [isMounted, competition, year, month]);
+    }, [isMounted, competition, year, month, timeslot]);
 
     React.useEffect(() => {
         setStats(undefined);
 
-        Api.request('trackmania', `rankings/${competition.slice('competition/'.length + 1)}`)
+        trackmaniaApi
+            .getCompetitionRankings(competition, isCotd || isSuperRoyal ? timeslot : undefined)
             .then((rows) => {
                 if (isMounted.current) {
                     setStats(rows);
@@ -73,11 +81,7 @@ const CompetitionsTab = ({ competition, onChangeCompetition, campaign, onChangeC
                     setStats(null);
                 }
             });
-    }, [isMounted, competition]);
-
-    const rankingsCountryType = rankingsType
-        .replace('Leaderboard', 'CountryLeaderboard')
-        .replace('leaderboard', 'countryLeaderboard');
+    }, [isMounted, competition, timeslot]);
 
     const classes = useStyles();
 
@@ -96,13 +100,21 @@ const CompetitionsTab = ({ competition, onChangeCompetition, campaign, onChangeC
                         {yearMenu}
                     </Select>
                 </FormControl>
-                {isCotd && (
-                    <FormControl className={classes.formControl}>
-                        <InputLabel>Month</InputLabel>
-                        <Select value={month} onChange={onChangeMonth}>
-                            {getCotdMenu(year)}
-                        </Select>
-                    </FormControl>
+                {(isCotd || isSuperRoyal) && (
+                    <>
+                        <FormControl className={classes.formControl}>
+                            <InputLabel>Month</InputLabel>
+                            <Select value={month} onChange={onChangeMonth}>
+                                {getCotdMenu(year)}
+                            </Select>
+                        </FormControl>
+                        <FormControl className={classes.formControl}>
+                            <InputLabel>Timeslot</InputLabel>
+                            <Select value={timeslot} onChange={onChangeTimeslot}>
+                                {getCotdTimeslotMenu()}
+                            </Select>
+                        </FormControl>
+                    </>
                 )}
             </>
             {game === null && <SimpleTitle data="No data." />}
@@ -114,48 +126,53 @@ const CompetitionsTab = ({ competition, onChangeCompetition, campaign, onChangeC
                             <CompetitionsTable
                                 data={game}
                                 stats={game.stats}
-                                official={game.isOfficial}
-                                cotd={isCotd}    
+                                isCotd={isCotd}
+                                isSuperRoyal={isSuperRoyal}
                             />
-                        </Grid>
-                        <Grid item xs={12} className={classes.padTop}>
-                            <Typography variant="h5">Overall Statistics</Typography>
-                            <br/>
-                            {stats === null && <SimpleTitle data="No data." />}
-                            {stats === undefined && <LinearProgress />}
-                            {stats !== undefined && stats !== null && (
-                                <Grid container direction="row" justifyContent="center" alignContent="center">
-                                    <Grid item xs={12} md={6}>
-                                        <RankingsTable
-                                            data={stats.leaderboard}
-                                            hasDuration={false}
-                                            cotd={true}
-                                            hattricks={isCotd}
-                                        />
-                                    </Grid>
-                                    <Grid item xs={12} md={6} className={classes.padTop}>
-                                        <Grid container direction="column" justifyContent="center">
-                                            <Grid item xs={12}>
-                                                <RecordsChart
-                                                    title="Wins"
-                                                    labels={stats.leaderboard.map((row) => row.user.displayName)}
-                                                    series={stats.leaderboard.map((row) => row.wins.matches)}
-                                                />
-                                            </Grid>
-                                            <Grid item xs={12} className={classes.padTop}>
-                                                <RecordsChart
-                                                    title="Wins by Zone"
-                                                    labels={stats.countryLeaderboard.map((row) => (row.zone[2] ? row.zone[2] : row.zone[0]).name)}
-                                                    series={stats.countryLeaderboard.map((row) => row.wins.matches)}
-                                                />
-                                            </Grid>
-                                        </Grid>
-                                    </Grid>
-                                </Grid>
-                            )}
                         </Grid>
                     </>
                 )}
+                <Grid item xs={12} className={classes.padTop}>
+                    <Typography variant="h5">Overall Statistics</Typography>
+                    <br />
+                    {stats === null && <SimpleTitle data="No data." />}
+                    {stats === undefined && <LinearProgress />}
+                    {stats !== undefined && stats !== null && (
+                        <Grid container direction="row" justifyContent="center" alignContent="center">
+                            <Grid item xs={12} md={6}>
+                                <RankingsTable
+                                    data={stats.leaderboard}
+                                    hasDuration={false}
+                                    isCompetition={true}
+                                    showQualifiers={isCotd || isA08Forever}
+                                    showHatTricks={isCotd}
+                                />
+                            </Grid>
+                            <Grid item xs={12} md={6} className={classes.padTop}>
+                                <Grid container direction="column" justifyContent="center">
+                                    <Grid item xs={12}>
+                                        <RecordsChart
+                                            title="Wins"
+                                            labels={stats.leaderboard.map((row) => row.user.displayName)}
+                                            series={stats.leaderboard.map((row) => row.wins.matches)}
+                                        />
+                                    </Grid>
+                                    {!isSuperRoyal && (
+                                        <Grid item xs={12} className={classes.padTop}>
+                                            <RecordsChart
+                                                title="Wins by Zone"
+                                                labels={stats.countryLeaderboard.map(
+                                                    (row) => (row.zone[2] ? row.zone[2] : row.zone[0]).name,
+                                                )}
+                                                series={stats.countryLeaderboard.map((row) => row.wins.matches)}
+                                            />
+                                        </Grid>
+                                    )}
+                                </Grid>
+                            </Grid>
+                        </Grid>
+                    )}
+                </Grid>
             </Grid>
         </>
     );

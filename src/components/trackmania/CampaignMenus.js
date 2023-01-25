@@ -67,11 +67,9 @@ const getTotdMenu = (year) => {
     const lastMonth = year.toString() === now.year().toString() ? now.month() : 11;
 
     for (let i = month.month(); i <= lastMonth; ++i) {
-        const monthName = month.format('MMMM');
-
         menu.push(
-            <MenuItem value={`${year}/${month.format('MM')}`} key={menu.length}>
-                {monthName}
+            <MenuItem value={`${year}/${month.month() + 1}`} key={menu.length}>
+                {month.format('MMMM')}
             </MenuItem>,
         );
 
@@ -87,7 +85,7 @@ const getInitialValue = (official, year = undefined) => {
 
     return official
         ? `${seasons[Math.floor(now.month() / 3)]} ${now.year()}`
-        : `${year ? year : now.year()}/${month.format('MM')}`;
+        : `${year ? year : now.year()}/${month.month() + 1}`;
 };
 
 export { seasonMenu, yearMenu, getTotdMenu, getInitialValue };

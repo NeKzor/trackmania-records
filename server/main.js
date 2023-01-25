@@ -2,6 +2,7 @@ require('dotenv').config();
 require('./db');
 const fs = require('fs');
 const path = require('path');
+const moment = require('moment');
 const fetch = (...args) => import('node-fetch').then(({ default: fetch }) => fetch(...args));
 const Koa = require('koa');
 const cors = require('@koa/cors');
@@ -9,9 +10,21 @@ const Router = require('@koa/router');
 const koaBody = require('koa-body');
 const session = require('koa-session');
 const helmet = require('koa-helmet');
-const { info, error } = require('./logger');
+const { info, error, push } = require('./logger');
 const { Status, Permissions } = require('./permissions');
-const { User, Campaign, Track, Record, Inspection, Update, Tag, Audit } = require('./models');
+const {
+    User,
+    Campaign,
+    Track,
+    Record,
+    Inspection,
+    Update,
+    Tag,
+    Audit,
+    Competition,
+    CompetitionResult,
+    Stat,
+} = require('./models');
 const { Replay } = require('./trackmania/models');
 
 const app = new Koa({ proxy: true });
@@ -28,7 +41,7 @@ const requiresAuth = (ctx, next) => {
         return next();
     }
 
-    ctx.throw(401, JSON.stringify({ message: 'Unauthorized.' }, null, 4));
+    ctx.throw(401, { message: 'Unauthorized.' });
 };
 
 const requiresPermission = (permissions) => async (ctx, next) => {
@@ -39,7 +52,7 @@ const requiresPermission = (permissions) => async (ctx, next) => {
         }
     }
 
-    ctx.throw(401, JSON.stringify({ message: 'Unauthorized.' }, null, 4));
+    ctx.throw(401, { message: 'Unauthorized.' });
 };
 
 authentication
@@ -118,9 +131,9 @@ authentication
             }
 
             ctx.session.user = user;
-            ctx.body = JSON.stringify(user, null, 4);
+            ctx.body = user;
         } else {
-            ctx.body = JSON.stringify(json, null, 4);
+            ctx.body = json;
         }
     })
     .get('/login/maniaplanet', async (ctx) => {
@@ -199,9 +212,9 @@ authentication
             }
 
             ctx.session.user = user;
-            ctx.body = JSON.stringify(user, null, 4);
+            ctx.body = user;
         } else {
-            ctx.body = JSON.stringify(json, null, 4);
+            ctx.body = json;
         }
     })
     .get('/logout', async (ctx) => {
@@ -210,9 +223,9 @@ authentication
     })
     .get('/@me', async (ctx) => {
         if (ctx.session.isNew) {
-            ctx.throw(401, JSON.stringify({ message: 'Unauthorized.' }, null, 4));
+            ctx.throw(401, { message: 'Unauthorized.' });
         } else {
-            ctx.body = JSON.stringify(ctx.session.user, null, 4);
+            ctx.body = ctx.session.user;
         }
     })
     .get('/', async (ctx) => {
@@ -237,15 +250,15 @@ authentication
 apiV1.get('/users', requiresPermission(Permissions.api_MANAGE_USERS), async (ctx) => {
     // TODO: pagination
     const users = await User.find();
-    ctx.body = JSON.stringify({ data: users }, null, 4);
+    ctx.body = { data: users };
 });
 apiV1.get('/users/edit', requiresPermission(Permissions.api_MANAGE_USERS), async (ctx) => {
     // TODO
 });
-apiV1.get('/updates', requiresPermission(Permissions.api_MANAGE_DATA), async (ctx) => {
+apiV1.get('/updates', async (ctx) => {
     // TODO: pagination
     const updates = await Update.find();
-    ctx.body = JSON.stringify({ data: updates }, null, 4);
+    ctx.body = { data: updates };
 });
 apiV1.get('/updates/edit', requiresPermission(Permissions.api_MANAGE_DATA), async (ctx) => {
     // TODO
@@ -253,7 +266,7 @@ apiV1.get('/updates/edit', requiresPermission(Permissions.api_MANAGE_DATA), asyn
 apiV1.get('/tags', requiresPermission(Permissions.api_MANAGE_DATA), async (ctx) => {
     // TODO: pagination
     const tags = await Tag.find();
-    ctx.body = JSON.stringify({ data: tags }, null, 4);
+    ctx.body = { data: tags };
 });
 apiV1.get('/tags/edit', requiresPermission(Permissions.api_MANAGE_DATA), async (ctx) => {
     // TODO
@@ -261,36 +274,34 @@ apiV1.get('/tags/edit', requiresPermission(Permissions.api_MANAGE_DATA), async (
 apiV1.get('/audits', requiresPermission(Permissions.api_MANAGE_DATA), async (ctx) => {
     // TODO: pagination
     const audits = await Audit.find();
-    ctx.body = JSON.stringify({ data: audits }, null, 4);
+    ctx.body = { data: audits };
 });
 
 apiV1Trackmania.get('/campaigns', async (ctx) => {
     const campaigns = await Campaign.find({ isOfficial: ctx.params.isOfficial ?? true });
-    ctx.body = JSON.stringify(campaigns, null, 4);
+    ctx.body = campaigns;
 });
 
-const generateRankings = (tracks) => {    
+class Zones {
+    static World = 0;
+    static Continent = 1;
+    static Country = 2;
+    static Region = 3;
+}
+
+const generateRankings = (wrs, history) => {
+    // TODO: Remove note with "isBanned" and "isDeleted" etc.
     const validRecords = (record) => record.note === undefined;
 
-    class Zones {
-        static World = 0;
-        static Continent = 1;
-        static Country = 2;
-        static Region = 3;
-    }
+    const validHistory = history.filter(validRecords);
+    const validWrs = wrs.filter(validRecords);
 
-    const users = tracks
-        .map((t) => {
-            const all = (t.history.length > 0 ? t.history : t.wrs)
-                .filter(validRecords)
-                .map(({ user, date }) => ({ ...user, date }));
-            const ids = [...new Set(all.map((user) => user.id))];
-            return ids.map((id) => all.find((user) => user.id === id));
-        })
-        .flat();
+    const allUsers = validHistory.map(({ user, date }) => ({ ...user, date }));
+    const uniqueUserIds = [...new Set(allUsers.map((user) => user.id))];
+    const users = uniqueUserIds.map((id) => allUsers.find((user) => user.id === id));
 
     const getZoneId = (user) => (user.zone[Zones.Country] ? user.zone[Zones.Country] : user.zone[Zones.World]).zoneId;
-    const zones = users.reduce((zones, user) => {
+    const zones = allUsers.reduce((zones, user) => {
         const zoneId = getZoneId(user);
         if (zones[zoneId] === undefined) {
             zones[zoneId] = user.zone.slice(0, 3);
@@ -298,12 +309,8 @@ const generateRankings = (tracks) => {
         return zones;
     }, {});
 
-    const createLeaderboard = (key) => {
-        const users = tracks
-            .map((t) =>
-                (t[key].length > 0 ? t[key] : t.wrs).filter(validRecords).map(({ user, date }) => ({ ...user, date })),
-            )
-            .flat();
+    const createLeaderboard = (records) => {
+        const users = records.map(({ user, date }) => ({ ...user, date }));
 
         const frequency = users.reduce((count, user) => {
             count[user.id] = (count[user.id] || 0) + 1;
@@ -336,8 +343,8 @@ const generateRankings = (tracks) => {
         ];
     };
 
-    const [leaderboard, countryLeaderboard] = createLeaderboard('wrs');
-    const [historyLeaderboard, historyCountryLeaderboard] = createLeaderboard('history');
+    const [leaderboard, countryLeaderboard] = createLeaderboard(validWrs);
+    const [historyLeaderboard, historyCountryLeaderboard] = createLeaderboard(validHistory);
 
     const frequency = users.reduce((count, user) => {
         count[user.id] = (count[user.id] || 0) + 1;
@@ -357,7 +364,7 @@ const generateRankings = (tracks) => {
     const uniqueCountryLeaderboard = [...new Set(users.map(getZoneId))]
         .map((zoneId) => ({
             zone: zones[zoneId],
-            wrs: users.filter((user) =>getZoneId(user) === zoneId).length,
+            wrs: users.filter((user) => getZoneId(user) === zoneId).length,
         }))
         .sort((a, b) => {
             const v1 = a.wrs;
@@ -365,13 +372,7 @@ const generateRankings = (tracks) => {
             return v1 === v2 ? 0 : v1 < v2 ? 1 : -1;
         });
 
-    const totalTime = tracks
-        .filter((t) => t.wrs.at(0))
-        .map((t) => t.wrs.at(0).score)
-        .reduce((a, b) => a + b, 0);
-
     return {
-        stats: { totalTime },
         leaderboard,
         countryLeaderboard,
         historyLeaderboard,
@@ -384,12 +385,12 @@ const generateRankings = (tracks) => {
 const getCampaign = async (ctx) => {
     const campaign = await Campaign.findOne(
         ctx.params.idOrName
-            ? { $or: [{ id: String(ctx.params.idOrName) }, { name: String(ctx.params.idOrName) }]  }
+            ? { $or: [{ id: String(ctx.params.idOrName) }, { name: String(ctx.params.idOrName) }] }
             : { year: Number(ctx.params.year), month: Number(ctx.params.month) },
     );
 
     if (campaign === null) {
-        ctx.throw(404, JSON.stringify({ message: 'Campaign not found.' }, null, 4));
+        ctx.throw(404, { message: 'Campaign not found.' });
         return;
     }
 
@@ -399,74 +400,77 @@ const getCampaign = async (ctx) => {
 
     const records = await Record.find({ campaign_id: campaign.id }).sort({ date: 1 });
 
+    const stats = {
+        totalTime: 0,
+    };
+
     const tracks = campaignTracks.map((doc) => {
         const track = doc.toObject();
         track.history = records.filter((record) => record.track_id === track.id);
 
         const wrScore = track.history.at(-1)?.score;
+        stats.totalTime += wrScore ?? 0;
         track.wrs = wrScore ? track.history.filter((record) => record.score === wrScore && !record.note) : [];
+
         return track;
     });
 
-    ctx.body = JSON.stringify({ ...campaign.toObject(), tracks, ...generateRankings(tracks) }, null, 4);
+    const rankings = generateRankings(tracks.map(({ wrs }) => wrs).flat(), tracks.map(({ wrs }) => wrs).flat());
+
+    ctx.body = { ...campaign.toObject(), tracks, stats, ...rankings };
 };
 
 const getHistory = async (ctx) => {
     const track = await Track.find({ id: String(ctx.params.id) });
     if (track === null) {
-        ctx.throw(404, JSON.stringify({ message: 'Track not found.' }, null, 4));
+        ctx.throw(404, { message: 'Track not found.' });
         return;
     }
 
     const records = await Record.find({ track_id: track.id }).sort({ date: 1 });
-    ctx.body = JSON.stringify({ track, records }, null, 4);
+    ctx.body = { track, records };
 };
 
 const getRecordInspection = async (ctx) => {
     const record = await Record.findOne({ id: String(ctx.params.id) });
     if (record === null) {
-        ctx.throw(404, JSON.stringify({ message: 'Record not found.' }, null, 4));
+        ctx.throw(404, { message: 'Record not found.' });
         return;
     }
 
     const track = await Track.findOne({ id: record.track_id });
     if (track === null) {
-        ctx.throw(404, JSON.stringify({ message: 'Track not found.' }, null, 4));
+        ctx.throw(404, { message: 'Track not found.' });
         return;
     }
 
     const records = [
-        ...await Record.find({ id: record.track_id, score: { $gte: record.score } }).sort({ date: 1 }).limit(5),
-        ...await Record.find({ id: record.track_id, score: { $lte: record.score } }).sort({ date: 1 }).limit(5),
+        ...(await Record.find({ id: record.track_id, score: { $gte: record.score } })
+            .sort({ date: 1 })
+            .limit(5)),
+        ...(await Record.find({ id: record.track_id, score: { $lte: record.score } })
+            .sort({ date: 1 })
+            .limit(5)),
     ];
 
     const inspections = await Inspection.find({ record_id: { $in: records.map((record) => record.id) } });
 
-    ctx.body = JSON.stringify({ track, records, inspections }, null, 4);
+    ctx.body = { track, records, inspections };
 };
 
 const getPlayerProfile = async (ctx) => {
-    const records = await Record.find({ user: { id: String(ctx.params.id) } })
-        .sort({ date: 1 });
+    const records = await Record.find({ user: { id: String(ctx.params.id) } }).sort({ date: 1 });
 
-    const tracks = await Track
-        .find({ track_id: { $in: records.map(({ track_id }) => track_id) } });
+    const tracks = await Track.find({ track_id: { $in: records.map(({ track_id }) => track_id) } });
 
-    const campaigns = await Campaign
-        .find({ campaign_id: { $in: tracks.map(({ campaign_id }) => campaign_id) } });
+    const campaigns = await Campaign.find({ campaign_id: { $in: tracks.map(({ campaign_id }) => campaign_id) } });
 
     // TODO: competitions, user
 
-    ctx.body = JSON.stringify({ records, tracks, campaigns }, null, 4);
+    ctx.body = { records, tracks, campaigns };
 };
 
-apiV1Trackmania.get('/campaign/:idOrName', getCampaign);
-apiV1Trackmania.get('/campaign/:year(\\d+)/:month(\\d+)', getCampaign);
-apiV1Trackmania.get('/track/:id/history', getHistory);
-apiV1Trackmania.get('/record/:id/inspect', getRecordInspection);
-apiV1Trackmania.get('/player/:id/profile', getPlayerProfile);
-
-apiV1Trackmania.get('/replays/:id', requiresPermission(Permissions.trackmania_DOWNLOAD_FILES), async (ctx) => {
+const getReplay = async (ctx) => {
     const replay = await Replay.findOne({ replay_id: String(ctx.params.id) });
     if (replay !== null) {
         const filename = path.join(process.env.TRACKMANIA_REPLAYS_FOLDER, replay.filename);
@@ -495,7 +499,236 @@ apiV1Trackmania.get('/replays/:id', requiresPermission(Permissions.trackmania_DO
         `;
 
     //ctx.throw(400, JSON.stringify({ message: 'Replay not available.' }, null, 4));
-});
+};
+
+const getRankings = async (ctx) => {
+    if (!['campaign', 'totd', 'combined'].includes(ctx.params.name)) {
+        ctx.throw(404, { message: 'Ranking name not found.' });
+        return;
+    }
+
+    const isOfficial = ctx.params.name === 'campaign';
+
+    const allTrackRecords = {
+        from: 'tracks',
+        localField: 'track_id',
+        foreignField: 'id',
+        as: 'track_records',
+    };
+
+    const officialTracks = {
+        'track_records.isOfficial': {
+            $eq: isOfficial,
+        },
+    };
+
+    const byTrackThenByScore = {
+        track_id: 1,
+        score: 1,
+    };
+
+    const byTrackToRoot = {
+        _id: '$track_id',
+        root: {
+            '$first': '$$ROOT',
+        },
+    };
+
+    const wrs = await Record.aggregate()
+        .lookup(allTrackRecords)
+        .match(officialTracks)
+        .sort(byTrackThenByScore)
+        .group(byTrackToRoot)
+        .replaceRoot('root');
+
+    const history = await Record.aggregate().lookup(allTrackRecords).match(officialTracks);
+
+    ctx.body = generateRankings(wrs, history);
+};
+
+const getCompetition = async (ctx) => {
+    if (!['cotd', 'a08forever', 'superroyal'].includes(ctx.params.type)) {
+        ctx.throw(404, { message: 'Competition not found.' });
+        return;
+    }
+
+    const isA08Forever = ctx.params.type === 'a08forever';
+    const timeslot = parseInt(ctx.params.timeslot ?? '0', 10);
+
+    const results = await CompetitionResult.find({
+        type: ctx.params.type,
+        year: Number(ctx.params.year),
+        ...(isA08Forever ? {} : { month: Number(ctx.params.month) }),
+        ...(timeslot >= 1 && timeslot <= 3 ? { timeslot } : {}),
+    });
+
+    ctx.body = results;
+};
+
+const getCompetitionRankings = async (ctx) => {
+    if (!['cotd', 'a08forever', 'superroyal'].includes(ctx.params.type)) {
+        ctx.throw(404, { message: 'Competition not found.' });
+        return;
+    }
+
+    const isCotd = ctx.params.type === 'cotd';
+    const isSuperRoyal = ctx.params.type === 'superroyal';
+    const timeslot = parseInt(ctx.params.timeslot ?? '0', 10);
+
+    const qualifierWinners = isCotd
+        ? await CompetitionResult.aggregate()
+              .match({
+                  'round.qualifier.winner.accountId': { $exists: 1 },
+                  type: ctx.params.type,
+                  ...(timeslot >= 1 && timeslot <= 3 ? { timeslot } : {}),
+              })
+              .group({
+                  _id: '$round.qualifier.winner.accountId',
+                  qualifiers: {
+                      $sum: 1,
+                  },
+                  player: {
+                      '$first': '$$ROOT.round.qualifier.winner',
+                  },
+              })
+              .project({ qualifiers: 1, 'player.accountId': 1, 'player.displayName': 1, 'player.zone': 1 })
+        : [];
+
+    const matchWinners = isSuperRoyal
+        ? await CompetitionResult.aggregate()
+              .match({
+                  'round.match.winners': { $exists: 1, $ne: [] },
+                  type: ctx.params.type,
+                  ...(timeslot >= 1 && timeslot <= 3 ? { timeslot } : {}),
+              })
+              .unwind('$round.match.winners')
+              .group({
+                  _id: '$round.match.winners.accountId',
+                  matches: {
+                      $sum: 1,
+                  },
+                  player: {
+                      $first: '$$ROOT.round.match.winners',
+                  },
+              })
+              .project({ matches: 1, 'player.accountId': 1, 'player.displayName': 1, 'player.zone': 1 })
+        : await CompetitionResult.aggregate()
+              .match({
+                  'round.match.winner.accountId': { $exists: 1 },
+                  type: ctx.params.type,
+                  ...(timeslot >= 1 && timeslot <= 3 ? { timeslot } : {}),
+              })
+              .group({
+                  _id: '$round.match.winner.accountId',
+                  matches: {
+                      $sum: 1,
+                  },
+                  player: {
+                      '$first': '$$ROOT.round.match.winner',
+                  },
+              })
+              .project({ matches: 1, 'player.accountId': 1, 'player.displayName': 1, 'player.zone': 1 });
+
+    const hatTricks = await Stat.aggregate()
+        .match({ type: 'hat-trick' })
+        .group({
+            _id: 'user.id',
+            hatTricks: {
+                $sum: 1,
+            },
+            root: {
+                '$first': '$$ROOT',
+            },
+        })
+        .replaceRoot('root');
+
+    const players = [
+        ...new Set([
+            ...qualifierWinners.map(({ player }) => player.accountId),
+            ...matchWinners.map(({ player }) => player.accountId),
+        ]),
+    ];
+
+    const getCountry = ({ player }) => {
+        const zones = player.zone.split('|');
+        return zones.at(2) ?? zones.at(0);
+    };
+
+    const toZone = (value) => value.split('|').map((name) => ({ name }));
+
+    const byWins = (a, b) => {
+        const ma = a.wins.matches;
+        const mb = b.wins.matches;
+
+        if (ma === mb) {
+            const qa = a.wins.qualifiers;
+            const qb = b.wins.qualifiers;
+
+            if (qa === qb) {
+                const ha = a.wins.hattricks;
+                const hb = b.wins.hattricks;
+
+                return ha === hb ? 0 : ha < hb ? 1 : -1;
+            }
+
+            return qa < qb ? 1 : -1;
+        }
+
+        return ma < mb ? 1 : -1;
+    };
+
+    const toLeaderboard = (leaderboards, id) => {
+        const [leaderboard, countryLeaderboard] = leaderboards;
+
+        const qualifierWinner = qualifierWinners.find(({ player }) => player.accountId === id);
+        const matchWinner = matchWinners.find(({ player }) => player.accountId === id);
+        const winner = qualifierWinner ?? matchWinner;
+        const qualifiers = qualifierWinner?.qualifiers ?? 0;
+        const matches = matchWinner?.matches ?? 0;
+        const hattricks = hatTricks.filter(({ player }) => player.id === id).length;
+        const country = getCountry(winner);
+        const countryItem = countryLeaderboard.get(country);
+
+        leaderboard.push({
+            user: winner.player,
+            wins: {
+                qualifiers,
+                matches,
+                hattricks,
+            },
+        });
+
+        countryLeaderboard.set(country, {
+            zone: toZone(winner.player.zone),
+            wins: {
+                qualifiers: (countryItem?.wins?.qualifiers ?? 0) + qualifiers,
+                matches: (countryItem?.wins?.matches ?? 0) + matches,
+                hattricks: (countryItem?.wins?.hattricks ?? 0) + hattricks,
+            },
+        });
+
+        return leaderboards;
+    };
+
+    const [leaderboard, countryLeaderboard] = players.reduce(toLeaderboard, [[], new Map()]);
+
+    const rankings = {
+        leaderboard: leaderboard.sort(byWins),
+        countryLeaderboard: [...countryLeaderboard.values()].sort(byWins),
+    };
+
+    ctx.body = rankings;
+};
+
+apiV1Trackmania.get('/campaign/:idOrName', getCampaign);
+apiV1Trackmania.get('/campaign/:year(\\d+)/:month(\\d+)', getCampaign);
+apiV1Trackmania.get('/track/:id/history', getHistory);
+apiV1Trackmania.get('/record/:id/inspect', requiresPermission(Permissions.trackmania_INSPECTION), getRecordInspection);
+apiV1Trackmania.get('/player/:id/profile', getPlayerProfile);
+apiV1Trackmania.get('/replays/:id', requiresPermission(Permissions.trackmania_DOWNLOAD_FILES), getReplay);
+apiV1Trackmania.get('/rankings/:name', getRankings);
+apiV1Trackmania.get('/competition/:type/:year(\\d+)/:month(\\d+)?/:timeslot(\\d+)?', getCompetition);
+apiV1Trackmania.get('/competition/:type/rankings/:timeslot(\\d+)?', getCompetitionRankings);
 
 publicRouter.use('', authentication.routes(), authentication.allowedMethods());
 privateRouter.use('/api/v1', apiV1.routes(), apiV1.allowedMethods());
@@ -503,21 +736,39 @@ privateRouter.use('/api/v1/trackmania', apiV1Trackmania.routes(), apiV1Trackmani
 
 app.keys = [process.env.RANDOM_SESSION_KEY];
 
-app.on('error', (err, ctx) => {
-    const message = err.message.replace(/[\n\r]/g, '');
-    const stack = err.stack;
-    const timestamp = new Date().toISOString().slice(0, 19).replace('T', ' ');
-    const ua = ctx.headers['user-agent'];
-    const userAgent = (ua ? ua : '').replace(/[\n\r]/g, '');
-    error(`[${timestamp}] ${message} ${stack} : ${ctx.originalUrl} : ${ctx.ip} : ${userAgent}`);
+app.use(async (ctx, next) => {
+    try {
+        await next();
+    } catch (err) {
+        const allowError = [401, 404].includes(err.statusCode);
+        if (allowError) {
+            ctx.status = err.statusCode ?? 500;
+            ctx.type = 'json';
+            ctx.body = { message: (typeof err === 'object' ? err.message : undefined) ?? 'Internal server error.' };
+        }
+        //ctx.app.emit('error', err, ctx);
+    }
 })
+    .on('error', (err, ctx) => {
+        const ignoreError = [401, 404].includes(err.statusCode);
+        if (ignoreError && typeof err === 'object' && err.message) {
+            return;
+        }
+
+        const message = err.message.replace(/[\n\r]/g, '');
+        const stack = err.stack;
+        const timestamp = new Date().toISOString().slice(0, 19).replace('T', ' ');
+        const userAgent = ctx.headers['user-agent']?.replace(/[\n\r]/g, '') ?? '';
+
+        error(`[${timestamp}] ${message} ${stack} : ${ctx.originalUrl} : ${ctx.ip} : ${userAgent}`, {
+            ignoreConsole: process.env.NODE_ENV === 'production',
+        });
+    })
     .use(
         cors({
             allowMethods: ['GET', 'POST', 'PATCH'],
             origin: () => {
-                return process.env.NODE_ENV !== 'production'
-                    ? 'http://localhost:3000'
-                    : 'https://trackmania.nekz.me';
+                return process.env.NODE_ENV !== 'production' ? 'http://localhost:3000' : 'https://trackmania.nekz.me';
             },
             credentials: true,
         }),

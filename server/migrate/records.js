@@ -5,10 +5,17 @@ const fs = require('fs');
 const path = require('path');
 const { Campaign, Track, Record } = require('../models');
 
-(async () => {
+const main = async () => {
     const rootDir = path.join(__dirname, '../../api');
     const options = { upsert: true };
     const toMigrate = [];
+
+    const info = (msg) => console.log(msg);
+    const errors = [];
+    const error = (err) => {
+        errors.push(err);
+        console.error(err);
+    };
 
     for (const importFile of fs.readdirSync(`${rootDir}/trackmania/campaign`)) {
         toMigrate.push(`${rootDir}/trackmania/campaign/${importFile}`);
@@ -36,8 +43,8 @@ const { Campaign, Track, Record } = require('../models');
             },
             options,
         )
-            .then(() => console.log('upserted campaign', campaign.id ?? campaign.name))
-            .catch((err) => console.error(`failed to insert campaign ${campaign._id}: ${err}`));
+            .then(() => info('upserted campaign', campaign.id ?? campaign.name))
+            .catch((err) => error(`failed to insert campaign ${campaign._id}: ${err}`));
 
         for (const track of campaign.tracks) {
             const track_id = track._id;
@@ -54,8 +61,8 @@ const { Campaign, Track, Record } = require('../models');
                 { ...track, id: track_id, uid: track_uid, campaign_id },
                 options,
             )
-                .then(() => console.log('upserted track', track_id))
-                .catch((err) => console.error(`failed to insert track ${track_id}: ${err}`));
+                .then(() => info('upserted track', track_id))
+                .catch((err) => error(`failed to insert track ${track_id}: ${err}`));
 
             for (const record of records) {
                 const record_id = record.replay;
@@ -66,10 +73,18 @@ const { Campaign, Track, Record } = require('../models');
                     { ...record, id: record_id, replay: record_id, track_id, campaign_id },
                     options,
                 )
-                    .then(() => console.log('upserted record', record_id))
-                    .catch((err) => console.error(`failed to insert record ${record_id}: ${err}`));
+                    .then(() => info('upserted record', record_id))
+                    .catch((err) => error(`failed to insert record ${record_id}: ${err}`));
             }
         }
-        break;
     }
-})();
+
+    if (errors.length) {
+        info(`[-] done. found ${errors.length} errors.`);
+        console.dir(errors);
+    } else {
+        info('[+] done. 0 errors.');
+    }
+};
+
+db.on('open', () => main().catch(console.error));

@@ -10,7 +10,7 @@ import RecordsChart from '../RecordsChart';
 import UniqueRecordsChart from '../UniqueRecordsChart';
 import RankingsTable from '../RankingsTableTrackmania';
 import SimpleTitle from '../SimpleTitle';
-import Api from '../../Api';
+import Api, { trackmaniaApi } from '../../Api';
 import { useIsMounted } from '../../Hooks';
 
 const useStyles = makeStyles((theme) => ({
@@ -23,11 +23,15 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
+const getZoneName = (row) => {
+    return (row.zone.at(2) ? row.zone.at(2) : row.zone.at(0)).name;
+};
+
 const RankingsTab = () => {
     const isMounted = useIsMounted();
 
     const [game, setGame] = React.useState(undefined);
-    const [campaign, setCampaign] = React.useState('rankings/campaign');
+    const [campaign, setCampaign] = React.useState('campaign');
     const [rankingsType, setRankingsType] = React.useState('leaderboard');
 
     const onChangeCampaign = React.useCallback(
@@ -46,7 +50,7 @@ const RankingsTab = () => {
     React.useEffect(() => {
         setGame(undefined);
 
-        Api.request('trackmania', campaign)
+        trackmaniaApi.getRankings(campaign)
             .then((game) => {
                 if (isMounted.current) {
                     setGame(game);
@@ -71,9 +75,9 @@ const RankingsTab = () => {
             <FormControl className={classes.formControl}>
                 <InputLabel>Campaign</InputLabel>
                 <Select value={campaign} onChange={onChangeCampaign}>
-                    <MenuItem value="rankings/campaign">Official</MenuItem>
-                    <MenuItem value="rankings/totd">TOTD</MenuItem>
-                    <MenuItem value="rankings/combined">Combined</MenuItem>
+                    <MenuItem value="campaign">Official</MenuItem>
+                    <MenuItem value="totd">TOTD</MenuItem>
+                    <MenuItem value="combined">Combined</MenuItem>
                 </Select>
             </FormControl>
             <FormControl className={classes.formControl}>
@@ -121,7 +125,7 @@ const RankingsTab = () => {
                                     <UniqueRecordsChart
                                         title="WRs"
                                         labels={game[rankingsCountryType]
-                                            .map((row) => (row.zone[2] ? row.zone[2] : row.zone[0]).name)
+                                            .map(getZoneName)
                                             .slice(0, 20)}
                                         series={[
                                             {
@@ -134,7 +138,7 @@ const RankingsTab = () => {
                                     <RecordsChart
                                         title="WRs by Zone"
                                         labels={game[rankingsCountryType].map(
-                                            (row) => (row.zone[2] ? row.zone[2] : row.zone[0]).name,
+                                            getZoneName,
                                         )}
                                         series={game[rankingsCountryType].map((row) => row.wrs)}
                                     />

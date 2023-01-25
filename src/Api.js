@@ -19,10 +19,8 @@ class Api {
 
 class ApiV2 {
     constructor() {
-        this.baseApi = process.env.NODE_ENV === 'development'
-            ? 'http://localhost:3003'
-            : 'https://api.nekz.me';
-        this.options =  { credentials: 'include' };
+        this.baseApi = process.env.NODE_ENV === 'development' ? 'http://localhost:3003' : 'https://api.nekz.me';
+        this.options = { credentials: 'include' };
     }
     loginStart(source) {
         window.open(`${this.baseApi}/login/${source}`, '_self');
@@ -102,10 +100,11 @@ class ApiV2 {
 
 class TrackmaniaApi {
     constructor() {
-        this.baseApi = process.env.NODE_ENV === 'development'
-            ? 'http://localhost:3003/api/v1/trackmania'
-            : 'https://api.nekz.me/api/v1/trackmania';
-        this.options =  { credentials: 'include' };
+        this.baseApi =
+            process.env.NODE_ENV === 'development'
+                ? 'http://localhost:3003/api/v1/trackmania'
+                : 'https://api.nekz.me/api/v1/trackmania';
+        this.options = { credentials: 'include' };
     }
     async getCampaigns() {
         const res = await fetch(`${this.baseApi}/campaigns`, this.options);
@@ -127,8 +126,8 @@ class TrackmaniaApi {
 
         return await res.json();
     }
-    async getRanking(name) {
-        const res = await fetch(`${this.baseApi}/ranking/${name}`, this.options);
+    async getRankings(name) {
+        const res = await fetch(`${this.baseApi}/rankings/${name}`, this.options);
         console.log(`[API] GET ${res.url} (${res.status})`);
 
         if (!res.ok) {
@@ -147,8 +146,21 @@ class TrackmaniaApi {
 
         return await res.json();
     }
-    async getCompetition(name) {
-        const res = await fetch(`${this.baseApi}/competition/${name}`, this.options);
+    async getCompetition(type, params) {
+        const res = await fetch(`${this.baseApi}/competition/${type}/${params}`, this.options);
+        console.log(`[API] GET ${res.url} (${res.status})`);
+
+        if (!res.ok) {
+            throw res;
+        }
+
+        return await res.json();
+    }
+    async getCompetitionRankings(type, timeslot) {
+        const res = await fetch(
+            `${this.baseApi}/competition/${type}/rankings${timeslot ? '/' + timeslot : ''}`,
+            this.options,
+        );
         console.log(`[API] GET ${res.url} (${res.status})`);
 
         if (!res.ok) {

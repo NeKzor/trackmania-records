@@ -11,6 +11,7 @@ export const Permissions = {
     trackmania_DOWNLOAD_FILES: 1 << 5,
     trackmania_MANAGE_MEDIA: 1 << 6,
     trackmania_MANAGE_DATA: 1 << 7,
+    trackmania_INSPECTION: 1 << 8,
 
     maniaplanet_DOWNLOAD_FILES: 1 << 10,
     maniaplanet_MANAGE_MEDIA: 1 << 11,

@@ -266,6 +266,12 @@ const Inspection = mongoose.model(
         challengeUid: {
             type: String,
         },
+        gameVersion: {
+            type: String,
+        },
+        exeChecksum: {
+            type: Number,
+        },
         checkpoints: [
             {
                 time: {
@@ -302,12 +308,39 @@ const Competition = mongoose.model(
     'Competition',
     new mongoose.Schema({
         id: {
-            type: String,
+            type: Number,
             required: true,
+            unique: true,
         },
         name: {
             type: String,
             required: true,
+        },
+        timeslot: {
+            type: Number,
+        },
+        type: {
+            type: String,
+            required: true,
+        },
+        creator: {
+            type: String,
+            required: true,
+        },
+        nb_players: {
+            type: Number,
+        },
+        startDate: {
+            type: Number,
+        },
+        endDate: {
+            type: Number,
+        },
+        year: {
+            type: Number,
+        },
+        month: {
+            type: Number,
         },
     }),
 );
@@ -315,13 +348,139 @@ const Competition = mongoose.model(
 const CompetitionResult = mongoose.model(
     'CompetitionResult',
     new mongoose.Schema({
-        id: {
-            type: String,
+        competition_id: {
+            type: Number,
+            unique: true,
             required: true,
         },
         name: {
             type: String,
             required: true,
+        },
+        timeslot: {
+            type: Number,
+        },
+        type: {
+            type: String,
+            required: true,
+        },
+        nb_players: {
+            type: Number,
+        },
+        start_date: {
+            type: Number,
+        },
+        end_date: {
+            type: Number,
+        },
+        year: {
+            type: Number,
+        },
+        month: {
+            type: Number,
+        },
+        monthDay: {
+            type: Number,
+        },
+        round: {
+            qualifier: {
+                id: {
+                    type: Number,
+                },
+                winner: {
+                    accountId: {
+                        type: String,
+                    },
+                    displayName: {
+                        type: String,
+                    },
+                    timestamp: {
+                        type: String,
+                    },
+                    score: {
+                        type: Number,
+                    },
+                    delta: {
+                        type: Number,
+                    },
+                    zone: {
+                        type: String,
+                    },
+                },
+            },
+            match: {
+                id: {
+                    type: Number,
+                },
+                name: {
+                    type: String,
+                },
+                winner: {
+                    accountId: {
+                        type: String,
+                    },
+                    displayName: {
+                        type: String,
+                    },
+                    timestamp: {
+                        type: String,
+                    },
+                    zone: {
+                        type: String,
+                    },
+                },
+                winners: [
+                    {
+                        accountId: {
+                            type: String,
+                        },
+                        displayName: {
+                            type: String,
+                        },
+                        timestamp: {
+                            type: String,
+                        },
+                        zone: {
+                            type: String,
+                        },
+                    },
+                ],
+            },
+        },
+    }),
+);
+
+const Stat = mongoose.model(
+    'Stat',
+    new mongoose.Schema({
+        type: {
+            type: String,
+            required: true,
+        },
+        competition_id: {
+            type: Number,
+        },
+        user: {
+            id: {
+                type: String,
+                required: true,
+            },
+            name: {
+                type: String,
+            },
+            zone: [
+                {
+                    name: {
+                        type: String,
+                    },
+                    parentId: {
+                        type: String,
+                    },
+                    zoneId: {
+                        type: String,
+                    },
+                },
+            ],
         },
     }),
 );
@@ -361,6 +520,7 @@ module.exports = {
     Inspection,
     Competition,
     CompetitionResult,
+    Stat,
     IntegrationEvent,
     Games,
 };

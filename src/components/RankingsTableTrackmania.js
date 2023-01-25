@@ -10,7 +10,7 @@ import TableSortLabel from '@material-ui/core/TableSortLabel';
 import Tooltip from '@material-ui/core/Tooltip';
 import { stableSort, stableSortSort } from '../utils/stableSort';
 
-const rowsOficial = [
+const rowsOfficial = [
     { id: 'user.name', sortable: false, label: 'Player', align: 'left' },
     { id: 'wrs', id2: 'user.name', sortable: true, label: 'World Records', align: 'left' },
 ];
@@ -21,6 +21,11 @@ const rowsTotd = [
 ];
 
 const rowsCompetition = [
+    { id: 'user.displayName', sortable: false, label: 'Player', align: 'left' },
+    { id: 'wins.matches', sortable: true, label: 'Wins', align: 'left', tooltip: 'Amount of match wins.' },
+];
+
+const rowsCompetitionWithQualifiers = [
     { id: 'user.displayName', sortable: false, label: 'Player', align: 'left' },
     { id: 'wins.matches', sortable: true, label: 'Wins', align: 'left', tooltip: 'Amount of match wins.' },
     { id: 'wins.qualifiers', sortable: true, label: 'Qualifiers', align: 'left', tooltip: 'Amount of qualifier wins.' },
@@ -39,12 +44,28 @@ const rowsCotd = [
     },
 ];
 
-const RankingsTableHead = ({ order, orderBy, onRequestSort, isOfficial, cotd, hattricks }) => {
+const RankingsTableHead = ({
+    order,
+    orderBy,
+    onRequestSort,
+    isOfficial,
+    isCompetition,
+    showQualifiers,
+    showHatTricks,
+}) => {
     const createSortHandler = (prop1, prop2) => (event) => {
         onRequestSort(event, prop1, prop2);
     };
 
-    const rows = isOfficial ? rowsOficial : cotd ? (hattricks ? rowsCotd : rowsCompetition) : rowsTotd;
+    const rows = isOfficial
+        ? rowsOfficial
+        : isCompetition
+        ? showHatTricks
+            ? rowsCotd
+            : showQualifiers
+            ? rowsCompetitionWithQualifiers
+            : rowsCompetition
+        : rowsTotd;
 
     return (
         <TableHead>
@@ -100,10 +121,10 @@ const linkToTrackmaniaIoProfile = (user) => {
     return `https://trackmania.io/#/player/${encodeURIComponent(user.id ?? user.accountId)}`;
 };
 
-const RecordsTable = ({ data, isOfficial, cotd, hattricks }) => {
+const RecordsTable = ({ data, isOfficial, isCompetition, showQualifiers, showHatTricks }) => {
     const [{ order, orderBy, thenBy }, setState] = React.useState({
         ...defaultState,
-        orderBy: cotd ? 'wins.matches' : 'wrs',
+        orderBy: isCompetition ? 'wins.matches' : 'wrs',
     });
 
     const handleRequestSort = (_, prop1, prop2) => {
@@ -118,7 +139,11 @@ const RecordsTable = ({ data, isOfficial, cotd, hattricks }) => {
     };
 
     React.useEffect(() => {
-        setState((s) => ({ ...s, orderBy: cotd ? 'wins.matches' : 'wrs', thenBy: cotd ? 'wins.matches' : 'wrs' }));
+        setState((s) => ({
+            ...s,
+            orderBy: isCompetition ? 'wins.matches' : 'wrs',
+            thenBy: isCompetition ? 'wins.matches' : 'wrs',
+        }));
     }, [data, isOfficial]);
 
     const classes = useStyles();
@@ -131,13 +156,14 @@ const RecordsTable = ({ data, isOfficial, cotd, hattricks }) => {
                     orderBy={orderBy}
                     onRequestSort={handleRequestSort}
                     isOfficial={isOfficial}
-                    cotd={cotd}
-                    hattricks={hattricks}
+                    isCompetition={isCompetition}
+                    showQualifiers={showQualifiers}
+                    showHatTricks={showHatTricks}
                 />
                 <TableBody>
                     {(isOfficial ? stableSortSort : stableSort)(data, order, orderBy, thenBy).map((row) => (
                         <TableRow tabIndex={-1} key={row.user.id ?? row.user.accountId}>
-                            {!cotd && (
+                            {!isCompetition && (
                                 <MinTableCell align="left">
                                     <Link
                                         color="inherit"
@@ -149,8 +175,8 @@ const RecordsTable = ({ data, isOfficial, cotd, hattricks }) => {
                                     </Link>
                                 </MinTableCell>
                             )}
-                            {!cotd && <MinTableCell align="left">{row.wrs}</MinTableCell>}
-                            {cotd && (
+                            {!isCompetition && <MinTableCell align="left">{row.wrs}</MinTableCell>}
+                            {isCompetition && (
                                 <MinTableCell align="left">
                                     <Link
                                         color="inherit"
@@ -162,11 +188,11 @@ const RecordsTable = ({ data, isOfficial, cotd, hattricks }) => {
                                     </Link>
                                 </MinTableCell>
                             )}
-                            {cotd && (
+                            {isCompetition && (
                                 <>
                                     <MinTableCell align="left">{row.wins.matches}</MinTableCell>
-                                    <MinTableCell align="left">{row.wins.qualifiers}</MinTableCell>
-                                    {hattricks && <MinTableCell align="left">{row.wins.hattricks}</MinTableCell>}
+                                    {showQualifiers && <MinTableCell align="left">{row.wins.qualifiers}</MinTableCell>}
+                                    {showHatTricks && <MinTableCell align="left">{row.wins.hattricks}</MinTableCell>}
                                 </>
                             )}
                         </TableRow>

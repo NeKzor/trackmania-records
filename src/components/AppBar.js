@@ -64,7 +64,7 @@ const pageLinks = [
     { title: 'Tags', link: '/manage/tags', inDrawer: (user) => user.isLoggedIn() && user.hasPermission(Permissions.api_MANAGE_DATA) },
     { title: 'Updates', link: '/manage/updates', inDrawer: (user) => user.isLoggedIn() && user.hasPermission(Permissions.api_MANAGE_DATA) },
     { title: 'Users', link: '/manage/users', inDrawer: (user) => user.isLoggedIn() && user.hasPermission(Permissions.api_MANAGE_USERS) },
-    { isDivider: true },
+    { isDivider: true, inDrawer: (user) => user.isLoggedIn() && (user.hasPermission(Permissions.api_MANAGE_DATA) || user.hasPermission(Permissions.api_MANAGE_USERS)) },
     { title: 'Replay Inspection', link: '/replay', inDrawer: true },
     { title: 'About', link: '/about', inDrawer: true },
     { title: 'Login', link: '/login', inDrawer: false },
@@ -137,9 +137,9 @@ const AppBar = ({ location }) => {
             <Divider />
             <List>
                 {pageLinks
-                    .filter((x) => typeof x.inDrawer === 'function' ? x.inDrawer(user) : x.inDrawer || x.isDivider)
+                    .filter((item) => typeof item.inDrawer === 'function' ? item.inDrawer(user) : item.inDrawer || item.isDivider)
                     .map((item, index) => {
-                        if (item.isDivider) {
+                        if (item.isDivider && (typeof item.inDrawer === 'function' ? item.inDrawer(user) : true)) {
                             return (
                                 <Divider key={index} />
                             );

@@ -12,25 +12,31 @@ import { stableSort } from '../utils/stableSort';
 import { useLocalStorage } from '../Hooks';
 import { formatScore } from '../utils/tools';
 
-const rowsOfficial = [
+const rowsA08Forever = [
     { id: 'name', sortable: true, label: 'Name', align: 'left' },
-    { id: 'nb_players', sortable: true, label: 'Players', align: 'left' },
     { id: 'round.match.winner.displayName', sortable: true, label: 'Winner', align: 'left' },
+    { id: 'nb_players', sortable: true, label: 'Total Players', align: 'left' },
 ];
 
 const rowsCotd = [
     { id: 'name', sortable: true, label: 'Name', align: 'left' },
-    { id: 'nb_players', sortable: true, label: 'Players', align: 'left' },
-    { id: 'round.qualifier.winner.displayName', sortable: true, label: 'Qualifier', align: 'left' },
     { id: 'round.match.winner.displayName', sortable: true, label: 'Winner', align: 'left' },
+    { id: 'round.qualifier.winner.displayName', sortable: true, label: 'Qualifier', align: 'left' },
+    { id: 'nb_players', sortable: true, label: 'Total Players', align: 'left' },
 ];
 
-const CompetitionsTableHead = ({ order, orderBy, onRequestSort, official }) => {
+const rowsSuperRoyal = [
+    { id: 'name', sortable: true, label: 'Name', align: 'left' },
+    { id: 'round.match.winners.0.displayName', sortable: false, label: 'Winners', align: 'left' },
+    { id: 'nb_players', sortable: true, label: 'Total Players', align: 'left' },
+];
+
+const CompetitionsTableHead = ({ order, orderBy, onRequestSort, isCotd, isSuperRoyal }) => {
     const createSortHandler = (property) => (event) => {
         onRequestSort(event, property);
     };
 
-    const rows = official ? rowsOfficial : rowsCotd;
+    const rows = isCotd ? rowsCotd : isSuperRoyal ? rowsSuperRoyal : rowsA08Forever;
 
     return (
         <TableHead>
@@ -80,30 +86,16 @@ const minifiedStyle = { padding: '7px 0px 7px 16px' };
 const MinTableCell = (props) => <TableCell style={minifiedStyle} {...props} />;
 
 const linkToTrackmaniaIoCompetition = (competition) => {
-    return `https://trackmania.io/#/competitions/comp/${encodeURIComponent(competition.id)}`;
+    return `https://trackmania.io/#/competitions/comp/${encodeURIComponent(competition.competition_id)}`;
 };
 
 const linkToTrackmaniaIoProfile = (user) => {
     return `https://trackmania.io/#/player/${encodeURIComponent(user.accountId)}`;
 };
 
-const useRowStyles = makeStyles({
-    root: {
-        '& > *': {
-            borderBottom: 'unset',
-        },
-    },
-});
-
-const RecordsRow = ({ wr, official, orderBy, useLiveDuration, history, onClickHistory }) => {
-    const score = formatScore(wr.score, 'tm2');
-    const delta = wr.delta !== 0 ? formatScore(wr.delta, 'tm2') : null;
-
-    const classes = useRowStyles();
-
-    const defaultSort = orderBy === 'name' || orderBy === 'name';
-
+const RecordsRow = ({ wr, isCotd, isSuperRoyal }) => {
     const doubleWin =
+        isCotd &&
         wr.round.qualifier?.winner?.accountId === wr.round.match?.winner?.accountId &&
         wr.round.qualifier?.winner?.accountId;
 
@@ -115,27 +107,28 @@ const RecordsRow = ({ wr, official, orderBy, useLiveDuration, history, onClickHi
                         {wr.name}
                     </Link>
                 </MinTableCell>
-                <MinTableCell align="left">{wr.nb_players}</MinTableCell>
-                <MinTableCell style={noWrap} align="left">
-                    {wr.round.qualifier && (
-                        <Tooltip
-                            title={<span>{wr.round.qualifier.winner.zone}</span>}
-                            placement="bottom"
-                            enterDelay={300}
-                        >
-                            <Link
-                                color={doubleWin ? 'secondary' : 'inherit'}
-                                href={linkToTrackmaniaIoProfile(wr.round.qualifier.winner)}
-                                rel="noreferrer"
-                                target="_blank"
+                {isCotd && (
+                    <MinTableCell style={noWrap} align="left">
+                        {isCotd && wr.round.qualifier && (
+                            <Tooltip
+                                title={<span>{wr.round.qualifier.winner.zone}</span>}
+                                placement="bottom"
+                                enterDelay={300}
                             >
-                                {wr.round.qualifier.winner.displayName}
-                            </Link>
-                        </Tooltip>
-                    )}
-                </MinTableCell>
+                                <Link
+                                    color={doubleWin ? 'secondary' : 'inherit'}
+                                    href={linkToTrackmaniaIoProfile(wr.round.qualifier.winner)}
+                                    rel="noreferrer"
+                                    target="_blank"
+                                >
+                                    {wr.round.qualifier.winner.displayName}
+                                </Link>
+                            </Tooltip>
+                        )}
+                    </MinTableCell>
+                )}
                 <MinTableCell style={noWrap} align="left">
-                    {wr.round.match && (
+                    {wr.round.match && wr.round.match.winner && (
                         <Tooltip title={<span>{wr.round.match.winner.zone}</span>} placement="bottom" enterDelay={300}>
                             <Link
                                 color={doubleWin ? 'secondary' : 'inherit'}
@@ -147,29 +140,51 @@ const RecordsRow = ({ wr, official, orderBy, useLiveDuration, history, onClickHi
                             </Link>
                         </Tooltip>
                     )}
+                    {wr.round.match && !!wr.round.match.winners && (
+                        <>
+                            {wr.round.match.winners.map((winner) => {
+                                return (
+                                    <Link
+                                        color={doubleWin ? 'secondary' : 'inherit'}
+                                        href={linkToTrackmaniaIoProfile(winner)}
+                                        rel="noreferrer"
+                                        target="_blank"
+                                    >
+                                        {winner.displayName}
+                                        <br />
+                                    </Link>
+                                );
+                            })}
+                        </>
+                    )}
                 </MinTableCell>
+                <MinTableCell align="left">{wr.nb_players}</MinTableCell>
             </TableRow>
         </>
     );
 };
 
-const CompetitionsTable = ({ data, stats, official, useLiveDuration }) => {
-    const [storage, setStorage] = useLocalStorage('tm2020-competitions', {
-        official: { order: 'asc', orderBy: 'name' },
-        totd: { order: 'asc', orderBy: 'name' },
+const CompetitionsTable = ({ data, isCotd, isSuperRoyal }) => {
+    const [storage, setStorage] = useLocalStorage('tm2020-competitions-2', {
+        a08forever: { order: 'asc', orderBy: 'name' },
+        cotd: { order: 'asc', orderBy: 'name' },
+        superRoyal: { order: 'asc', orderBy: 'name' },
     });
 
     const [{ order, rowsPerPage, page, ...state }, setState] = React.useState(defaultState);
 
     let { orderBy } = state;
-    orderBy = official ? storage.official.orderBy : storage.totd.orderBy;
-    orderBy = official && orderBy === 'name' ? 'name' : orderBy;
+    orderBy = isCotd ? storage.cotd.orderBy : storage.cotd.orderBy;
+    orderBy = isCotd && orderBy === 'name' ? 'name' : orderBy;
 
     const handleRequestSort = (_, property) => {
         const orderBy = property;
         setState((state) => {
             const order = state.orderBy === orderBy && state.order === 'desc' ? 'asc' : 'desc';
-            setStorage({ ...storage, [official ? 'official' : 'totd']: { order, orderBy } });
+            setStorage({
+                ...storage,
+                [isCotd ? 'cotd' : isSuperRoyal ? 'superRoyal' : 'a08forever']: { order, orderBy },
+            });
 
             return {
                 ...state,
@@ -180,7 +195,7 @@ const CompetitionsTable = ({ data, stats, official, useLiveDuration }) => {
     };
 
     React.useEffect(() => {
-        const savedState = storage[official ? 'official' : 'totd'];
+        const savedState = storage[isCotd ? 'cotd' : isSuperRoyal ? 'superRoyal' : 'a08forever'];
         setState((state) => ({ ...state, order: savedState.order, orderBy: savedState.orderBy }));
     }, [data]);
 
@@ -193,7 +208,8 @@ const CompetitionsTable = ({ data, stats, official, useLiveDuration }) => {
                     order={order}
                     orderBy={orderBy}
                     onRequestSort={handleRequestSort}
-                    official={official}
+                    isCotd={isCotd}
+                    isSuperRoyal={isSuperRoyal}
                 />
                 <TableBody>
                     {stableSort(data, order, orderBy)
@@ -202,9 +218,9 @@ const CompetitionsTable = ({ data, stats, official, useLiveDuration }) => {
                             return (
                                 <RecordsRow
                                     wr={wr}
-                                    official={official}
+                                    isCotd={isCotd}
+                                    isSuperRoyal={isSuperRoyal}
                                     orderBy={orderBy}
-                                    useLiveDuration={useLiveDuration}
                                     key={idx}
                                 />
                             );

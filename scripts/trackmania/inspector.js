@@ -12,23 +12,18 @@ const parserOptions = { parseGhost: true };
 const update = async () => {
     console.log('[inspector] checking for new replays...');
 
-    const replays = await Replay.aggregate([
-        {
-            $lookup: {
-                from: 'inspections',
-                localField: 'replay_id',
-                foreignField: 'record_id',
-                as: 'inspection',
+    const replays = await Replay.aggregate()
+        .lookup({
+            from: 'inspections',
+            localField: 'replay_id',
+            foreignField: 'record_id',
+            as: 'inspection',
+        })
+        .match({
+            inspection: {
+                $eq: [],
             },
-        },
-        {
-            $match: {
-                inspection: {
-                    $eq: [],
-                },
-            },
-        },
-    ]);
+        });
 
     console.log('[inspector] found', replays.length, 'replays');
 
@@ -45,6 +40,8 @@ const update = async () => {
                     record_id: replay.replay_id,
                     ghostLogin: ghost.ghostLogin,
                     challengeUid: ghost.challengeUid,
+                    gameVersion: ghost.gameVersion,
+                    exeChecksum: ghost.exeChecksum,
                     checkpoints: ghost.checkpoints,
                     inputs: ghost.inputs,
                 });

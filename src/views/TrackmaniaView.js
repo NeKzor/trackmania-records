@@ -18,9 +18,10 @@ const TrackmaniaView = ({ match }) => {
     const [tab, setTab] = React.useState(0);
     const [campaign, setCampaign] = React.useState(getInitialValue(tab === 0));
     const [year, setYear] = React.useState(moment().year());
-    const [competition, setCompetition] = React.useState('competitions/cotd');
+    const [competition, setCompetition] = React.useState('cotd');
     const [competitionYear, setCompetitionYear] = React.useState(moment().year());
-    const [competitionMonth, setCompetitionMonth] = React.useState(moment().format('MMMM').toLowerCase());
+    const [competitionMonth, setCompetitionMonth] = React.useState(moment().month() + 1);
+    const [competitionTimeslot, setCompetitionTimeslot] = React.useState(1);
 
     const page = match.path;
 
@@ -70,6 +71,13 @@ const TrackmaniaView = ({ match }) => {
         [setCompetitionMonth],
     );
 
+    const onChangeCompetitionTimeslot = React.useCallback(
+        (event) => {
+            setCompetitionTimeslot(event.target.value);
+        },
+        [setCompetitionTimeslot],
+    );
+
     return (
         <ViewContent>
             <Paper>
@@ -102,13 +110,12 @@ const TrackmaniaView = ({ match }) => {
                             <CompetitionsTab
                                 competition={competition}
                                 onChangeCompetition={onChangeCompetition}
-                                campaign={campaign}
-                                onChangeCampaign={onChangeCampaign}
                                 onChangeYear={onChangeCompetitionYear}
                                 onChangeMonth={onChangeCompetitionMonth}
-                                isOfficial={tab === 0}
+                                onChangeTimeslot={onChangeCompetitionTimeslot}
                                 year={competitionYear}
                                 month={competitionMonth}
+                                timeslot={competitionTimeslot}
                             />
                         )}
                     </Box>

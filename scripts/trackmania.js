@@ -1,28 +1,17 @@
 require('dotenv').config();
 const db = require('./db');
-
 const fs = require('fs');
 const path = require('path');
 const moment = require('moment');
-const { UbisoftClient, TrackmaniaClient, Audiences, Campaigns, Zones } = require('./trackmania/api');
-const { delay, log, tryExportJson, tryMakeDir, importJson } = require('./utils');
-const dumpCompetitions = require('./trackmania_competitions');
-const {
-    Replay,
-    Audit,
-    Tag,
-    Campaign,
-    Track,
-    Record,
-    Inspection,
-    Competition,
-    CompetitionResult,
-    IntegrationEvent,
-} = require('./trackmania/models');
+const { UbisoftClient, TrackmaniaClient, Audiences, Campaigns } = require('./trackmania/api');
+const { log, tryMakeDir } = require('./utils');
+const { updateCompetition, updateHatTrick, CompetitionTypes } = require('./trackmania_competitions');
+const { Replay, Audit, Tag, Campaign, Track, Record, IntegrationEvent } = require('./trackmania/models');
 
 const sessionFile = path.join(__dirname, '/../.login');
 const replayFolder = process.env.TRACKMANIA_REPLAYS_FOLDER || path.join(__dirname, '../replays');
 
+// Ubisoft login session
 const loadSession = (client) => {
     try {
         client.loginData = JSON.parse(fs.readFileSync(sessionFile, 'utf-8'));
@@ -36,7 +25,6 @@ const loadSession = (client) => {
         return false;
     }
 };
-
 const saveSession = (client) => {
     fs.writeFileSync(sessionFile, JSON.stringify(client.loginData));
 };
@@ -55,43 +43,15 @@ const cleanup = () => {
     unbannedUsers = [];
 };
 
-// TODO: Could some of this be re-used?
+// TODO: Re-use old code to figure out how to calculate duration
 // const fixHistory = (campaign) => {
 //     const now = moment().unix();
 //     const nowOrEndOfSeason = moment.unix(campaign.event && campaign.event.endsAt < now ? campaign.event.endsAt : now);
-//     const nowOrStartOfSeason = campaign.event ? campaign.event.startsAt : null;
 
 //     campaign.tracks.forEach((track) => {
-//         const wrScore = (() => {
-//             const [wr] = track.wrs;
-//             return wr ? wr.score : null;
-//         })();
-
-//         const startOfEvent = track.isOfficial ? nowOrStartOfSeason : track.event ? track.event.startsAt : null;
-
 //         const endOfEvent = track.isOfficial
 //             ? nowOrEndOfSeason
 //             : moment.unix(track.event && track.event.endsAt < now ? track.event.endsAt : now);
-
-//         track.history = track.history.filter((historyWr) => {
-//             if (bannedUsers.find((user) => user.user === historyWr.user.id)) {
-//                 return false;
-//             }
-
-//             if (historyWr.note) {
-//                 return true;
-//             }
-
-//             const timestamp = moment(historyWr.date).unix();
-
-//             if (startOfEvent && timestamp < startOfEvent) {
-//                 log.warn(`started before event (${track.name} -> ${timestamp} < ${startOfEvent})`);
-//                 inspect(historyWr);
-//                 return false;
-//             }
-
-//             return (wrScore && historyWr.score >= wrScore) || historyWr.note;
-//         });
 
 //         track.history.forEach((wr, idx, wrs) => {
 //             const nextWr = wrs.slice(idx + 1).find((nextWR) => nextWR.score < wr.score);
@@ -102,11 +62,6 @@ const cleanup = () => {
 //                 log.warn(`negative duration for ${wr.user.name} -> ${wr.score} -> ${wr.date} -> ${track.name}`);
 //             }
 //         });
-
-//         const [firstWr] = track.history;
-//         if (firstWr) {
-//             firstWr.delta = 0;
-//         }
 //     });
 // };
 
@@ -118,6 +73,12 @@ const main = async () => {
 
     isUpdating = true;
 
+    // TODO: Better scan rates: COTD/A08 match starts until winner could be found
+    //                          Hat-Trick starts when COTD match ends until TOTD ends
+    const shouldUpdateCupOfTheDay = moment().add(10, 'seconds').format('HH:mm') === '21:15';
+    const shouldUpdateA08Forever = moment().add(10, 'seconds').format('DD HH:mm') === '08 22:00';
+    const shouldUpdateHatTrick = moment().add(10, 'seconds').format('HH:mm') === '19:00';
+
     tryMakeDir(path.join(replayFolder));
 
     const ubisoft = new UbisoftClient(process.env.UBI_EMAIL, process.env.UBI_PW);
@@ -128,14 +89,14 @@ const main = async () => {
             await ubisoft.login();
             saveSession(ubisoft);
         }
-    
+
         trackmania = new TrackmaniaClient(ubisoft.loginData.ticket);
-    
+
         await trackmania.login();
-    
+
         // Required for leaderboard only
         await trackmania.loginNadeo(Audiences.NadeoLiveServices);
-    
+
         zones = await trackmania.zones();
         zones.data.forEach((zone) => {
             Object.keys(zone).forEach((key) => {
@@ -145,18 +106,15 @@ const main = async () => {
             });
         });
 
-        bannedUsers = (await Tag.find({ name: 'Banned', user_id: { $ne: null } })).map(({ user_id }) => user_id);
-        unbannedUsers = (await Tag.find({ name: 'Unbanned', user_id: { $ne: null } })).map(({ user_id }) => user_id);
+        // bannedUsers = (await Tag.find({ name: 'Banned', user_id: { $ne: null } })).map(({ user_id }) => user_id);
+        // unbannedUsers = (await Tag.find({ name: 'Unbanned', user_id: { $ne: null } })).map(({ user_id }) => user_id);
 
-        // const isTimeToDumpCupOfTheDay = moment().add(10, 'seconds').format('HH:mm') === '21:15';
-        // const isTimeToDumpA08Forever = moment().add(10, 'seconds').format('DD HH:mm') === '08 22:00';
+        // await updateOfficialCampaign();
+        // await updateTrackOfTheDay();
 
-        await dumpOfficialCampaign();
-        await dumpTrackOfTheDay();
-
-        // TODO: Re-write this too
-        // if (isTimeToDumpCupOfTheDay) await dumpCompetitions(trackmania, zones, false);
-        // if (isTimeToDumpA08Forever) await dumpCompetitions(trackmania, zones, true);
+        if (shouldUpdateCupOfTheDay) await updateCompetition(trackmania, CompetitionTypes.CupOfTheDay);
+        if (shouldUpdateA08Forever) await updateCompetition(trackmania, CompetitionTypes.A08Forever);
+        if (shouldUpdateHatTrick) await updateHatTrick(trackmania);
     } catch (error) {
         log.error(`${error.message}\n${error.stack}`);
     }
@@ -203,7 +161,7 @@ const getTrainingCampaign = () => {
     };
 };
 
-const dumpOfficialCampaign = async () => {
+const updateOfficialCampaign = async () => {
     const campaigns = (await trackmania.campaigns(Campaigns.Official)).collect();
 
     campaigns.push(getTrainingCampaign());
@@ -249,7 +207,7 @@ const dumpOfficialCampaign = async () => {
     }
 };
 
-const dumpTrackOfTheDay = async () => {
+const updateTrackOfTheDay = async () => {
     const campaigns = await trackmania.campaigns(Campaigns.TrackOfTheDay);
 
     for (const { year, month, days } of campaigns) {

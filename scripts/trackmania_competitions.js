@@ -1,335 +1,441 @@
+require('dotenv').config();
+const db = require('./db');
 const fs = require('fs');
 const path = require('path');
 const moment = require('moment');
-const { Audiences, Zones } = require('./trackmania/api');
-const { delay, log, importJson, tryMakeDir, tryExportJson } = require('./utils');
+const { UbisoftClient, TrackmaniaClient, Audiences } = require('./trackmania/api');
+const { delay, log } = require('./utils');
+const { Competition, CompetitionResult, Record, Stat } = require('./trackmania/models');
 
-const main = async (trackmania, zones, isA08Forever) => {
-    log.info('dumping competitions', isA08Forever ? '(A08 Forever)' : '(COTD)');
+const migrate = process.argv.some((arg) => arg === '--migrate');
 
-    // required for competitions
-    await trackmania.loginNadeo(Audiences.NadeoClubServices);
+const CompetitionTypes = {
+    A08Forever: 'a08forever',
+    CupOfTheDay: 'cotd',
+    SuperRoyal: 'superroyal',
+    Unknown: 'unknown',
+};
 
-    const fetchCompetitionData = async (competition) => {
-        const rounds = (await trackmania.competitionsRounds(competition.id)).collect();
-        if (!rounds.length) {
-            log.info('no rounds');
+const CompetitionTimeslot = {
+    Any: 0,
+    First: 1,
+    Second: 2,
+    Third: 3,
+};
+
+const CompetitionCreators = {
+    A08Forever: '54e4dda4-522d-496f-8a8b-fe0d0b5a2a8f',
+    CupOfTheDay: 'afe7e1c1-7086-48f7-bde9-a7e320647510',
+    SuperRoyal: 'afe7e1c1-7086-48f7-bde9-a7e320647510',
+};
+
+const fetchLatestCompetitions = async (trackmania) => {
+    const latestCompetition = await Competition.findOne().sort({ id: -1 }).select('id');
+    if (!latestCompetition) {
+        log.warn('Failed to find latest competition. Starting from index 1.');
+    }
+
+    let index = 1;
+    const competitionsToFetch = [
+        CompetitionTypes.A08Forever,
+        CompetitionTypes.CupOfTheDay,
+        CompetitionTypes.SuperRoyal,
+    ];
+
+    while (index <= 600) {
+        try {
+            const { data } = await trackmania.competitions((latestCompetition?.id ?? 0) + index);
+
+            log.info('new competition', data.name);
+
+            const type =
+                data.creator === CompetitionCreators.A08Forever && data.name.startsWith('A08 forever')
+                    ? CompetitionTypes.A08Forever
+                    : data.creator === CompetitionCreators.CupOfTheDay && data.name.startsWith('Cup of the Day')
+                    ? CompetitionTypes.CupOfTheDay
+                    : data.creator === CompetitionCreators.SuperRoyal && data.name.startsWith('Super royal')
+                    ? CompetitionTypes.SuperRoyal
+                    : CompetitionTypes.Unknown;
+
+            const startDate = moment.unix(data.startDate);
+
+            const timeslot =
+                type === CompetitionTypes.CupOfTheDay || type === CompetitionTypes.SuperRoyal
+                    ? parseInt(data.name.slice(-1), 10)
+                    : CompetitionTimeslot.Any;
+
+            const competition = {
+                id: data.id,
+                name: data.name,
+                timeslot,
+                type,
+                creator: data.creator,
+                nb_players: data.nbPlayers,
+                startDate: data.startDate,
+                endDate: data.endDate,
+                year: startDate.year(),
+                month: startDate.month() + 1,
+            };
+
+            await Competition.create(competition).then(() => log.info(`inserted competition ${competition.id}`));
+
+            if (!competitionsToFetch.includes(competition.type)) {
+                continue;
+            }
+
+            if (migrate) {
+                const result = await fetchCompetitionResult(trackmania, competition);
+                if (result) {
+                    const start = moment.unix(result.start_date);
+
+                    if (!start.isValid()) {
+                        log.warn(
+                            `ignoring competition result ${competition.id} due to invalid start date: ${result.start_date}`,
+                        );
+                        continue;
+                    }
+
+                    result.year = start.year();
+                    result.month = start.month() + 1;
+                    result.monthDay = start.date();
+
+                    await CompetitionResult.create(result).then(() =>
+                        log.info(`inserted competition result for ${competition.id}`),
+                    );
+                } else {
+                    log.error(`failed to get result for competition ${competition.id}`);
+                }
+            }
+
+            await delay(100);
+        } catch (error) {
+            if (typeof error === 'object' && error.constructor.name === 'Error') {
+                log.error(error.message, error.stack);
+            } else {
+                log.error(error);
+            }
+        } finally {
+            ++index;
+        }
+    }
+};
+
+const updateCompetition = async (trackmania, type) => {
+    const competition = await Competition.findOne({ type }).sort({ id: -1 }).select('id');
+    if (!competition) {
+        log.error('failed to find latest competition');
+        return;
+    }
+
+    log.info('updating competition', competition.name);
+
+    const { data } = await trackmania.competitions(competition.id);
+
+    await Competition.updateOne({ competition }, { $set: { nb_players: data.nb_players } }).then(() =>
+        log.info(`updated competition ${competition.id}`),
+    );
+
+    const result = await fetchCompetitionResult(trackmania, competition);
+    if (!result) {
+        log.error(`failed to get result for competition ${competition.id}`);
+        return;
+    }
+
+    const start = moment.unix(result.start_date);
+    if (!start.isValid()) {
+        log.warn(`ignoring competition result ${competition.id} due to invalid start date: ${result.start_date}`);
+        return;
+    }
+
+    result.year = start.year();
+    result.month = start.month() + 1;
+    result.monthDay = start.date();
+
+    await CompetitionResult.create(result).then(() => log.info(`inserted competition result for ${competition.id}`));
+};
+
+const fetchCompetitionResult = async (trackmania, competition) => {
+    const rounds = (await trackmania.competitionsRounds(competition.id)).collect();
+    if (!rounds.length) {
+        log.info('no rounds');
+        return null;
+    }
+
+    const isA08Forever = competition.type === CompetitionTypes.A08Forever;
+    const isCupOfTheDay = competition.type === CompetitionTypes.CupOfTheDay;
+    const isSuperRoyal = competition.type === CompetitionTypes.SuperRoyal;
+
+    const [roundId, qualifierId] = (() => {
+        const firstRound = rounds.at(0);
+        const lastRound = rounds.at(-1);
+
+        return isA08Forever
+            ? [lastRound.id, firstRound.qualifierChallengeId]
+            : [firstRound.id, firstRound.qualifierChallengeId];
+    })();
+
+    //const challenges = await trackmania.challenges(qualifierId);
+
+    const qualifier = await (async () => {
+        if (qualifierId) {
+            log.info('qualifier id', qualifierId);
+
+            const qualifier = await trackmania.challengesLeaderboard(qualifierId);
+
+            const [qualifierWinner, qualifierSecond] = qualifier.data.results;
+            if (!qualifierWinner) {
+                return null;
+            }
+
+            const [player] = await trackmania.accounts([qualifierWinner.player]);
+
+            player.score = qualifierWinner.score;
+            player.delta = qualifierSecond.score - qualifierWinner.score;
+            player.zone = qualifierWinner.zone;
+
+            return {
+                id: qualifierId,
+                winner: player,
+            };
+        }
+
+        if (isCupOfTheDay) {
+            log.warn('no qualifier');
+        }
+        return null;
+    })();
+
+    const match = await (async () => {
+        const [round] = (await trackmania.rounds(roundId)).collect();
+
+        if (!round) {
             return null;
         }
 
-        const [roundId, qualifierId] = (() => {
-            const firstRound = rounds[0];
-            const lastRound = rounds[rounds.length - 1];
+        const match = await trackmania.matches(round.id);
 
-            return isA08Forever
-                ? [
-                    lastRound.id,
-                    firstRound.qualifierChallengeId,
-                ] : [
-                    firstRound.id,
-                    firstRound.qualifierChallengeId,
-                ];
-        })();
-
-        //const challenges = await trackmania.challenges(qualifierId);
-
-        const qualifier = await (async () => {
-            if (qualifierId) {
-                log.info('qualifier id', qualifierId);
-
-                const qualifier = await trackmania.challengesLeaderboard(qualifierId);
-
-                const [qualifierWinner, qualifierSecond] = qualifier.data.results;
-                if (!qualifierWinner) {
-                    return null;
-                }
-
-                const [player] = await trackmania.accounts([qualifierWinner.player]);
-
-                player.score = qualifierWinner.score;
-                player.delta = qualifierSecond.score - qualifierWinner.score;
-                player.zone = qualifierWinner.zone;
-
-                return  {
-                    id: qualifierId,
-                    winner: player,
-                };
-            }
-
-            log.info('no qualifier');
-            return null;
-        })();
-
-        const match = await (async () => {
-            const [round] = (await trackmania.rounds(roundId)).collect();
-
-            if (!round) {
+        if (isSuperRoyal) {
+            const winningTeam = match.data.teams.find((team) => team.rank === 1)?.team;
+            if (!winningTeam) {
                 return null;
             }
 
-            const match = await trackmania.matches(round.id);
-            const [winner] = match.data.results;
-
-            if (!winner) {
+            const winners = match.data.results.filter(({ team }) => team === winningTeam);
+            if (!winners.length) {
                 return null;
             }
 
-            const [participant] = await trackmania.accounts([winner.participant]);
-            participant.zone = winner.zone;
+            const participants = (await trackmania.accounts(winners.map((winner) => winner.participant))).collect();
+            participants.forEach((participant) => {
+                const winner = winners.find((winner) => participant.accountId === winner.participant);
+                participant.zone = winner.zone; // BUG: Nadeo only provides "World" :(
+            });
 
             return {
                 id: round.id,
                 name: round.name,
-                winner: participant,
+                winners: participants,
             };
-        })();
+        }
+
+        const [winner] = match.data.results;
+        if (!winner) {
+            return null;
+        }
+
+        const [participant] = await trackmania.accounts([winner.participant]);
+        participant.zone = winner.zone;
 
         return {
-            id: competition.id,
-            name: competition.name,
-            nb_players: competition.nbPlayers,
-            start_date: competition.startDate,
-            end_date: competition.endDate,
-            round: {
-                qualifier,
-                match,
-            },
+            id: round.id,
+            name: round.name,
+            winner: participant,
         };
+    })();
+
+    return {
+        competition_id: competition.id,
+        name: competition.name,
+        timeslot: competition.timeslot,
+        type: competition.type,
+        nb_players: competition.nb_players,
+        start_date: competition.startDate,
+        end_date: competition.endDate,
+        round: {
+            qualifier,
+            match,
+        },
     };
+};
 
-    const competitions = await fetchCompetitions(trackmania);
+const updateSuperRoyal = async (trackmania) => {
+    const competitions = await Competition.find({ type: CompetitionTypes.SuperRoyal }).sort({ startDate: -1 }).limit(3);
 
-    const compName = isA08Forever ? 'a08forever' : 'cotd';
+    for (const competition of competitions) {
+        log.info(`fetching competition ${competition.id}`);
 
-    const latestComp = isA08Forever ? 'A08 forever' : `Cup of the Day ${moment().format('YYYY-MM-DD')} #1`;
-    const competitionsToDump = competitions.filter((comp) => comp.name.startsWith(latestComp)).slice(0, 1);
+        const { data } = await trackmania.competitions(competition.id);
 
-    for (const compCompetition of competitionsToDump) {
-        const updatedComp = await trackmania.competitions(compCompetition.id);
-        compCompetition.nb_players = updatedComp.data.nb_players;
+        competition.nb_players = data.nbPlayers;
 
-        const comp = await fetchCompetitionData(compCompetition, isA08Forever);
+        await Competition.updateOne({ id: competition.id }, { $set: { nb_players: competition.nb_players } });
 
-        if (comp) {
-            const compFolder = path.join(__dirname, '/../api/trackmania/competitions/' + compName);
-            tryMakeDir(compFolder);
-
-            const start = moment.unix(comp.start_date);
+        const result = await fetchCompetitionResult(trackmania, competition);
+        if (result) {
+            const start = moment.unix(result.start_date);
 
             if (!start.isValid()) {
-                log.warn(`Ignoring competition ${compCompetition.id} due to invalid start date: ${comp.start_date}`);
+                log.warn(
+                    `ignoring competition result ${competition.id} due to invalid start date: ${result.start_date}`,
+                );
                 continue;
             }
 
-            comp.monthDay = parseInt(start.format('D'), 10);
+            result.year = start.year();
+            result.month = start.month() + 1;
+            result.monthDay = start.date();
 
-            const filename = path.join(compFolder, '/' + start.format(isA08Forever ? 'YYYY' : 'MMMM-YYYY').toLowerCase() + '.json');
+            await CompetitionResult.findOneAndUpdate({ competition_id: result.competition_id }, result, {
+                upsert: true,
+            }).then(() => log.info(`upserted competition result for ${competition.id}`));
+        } else {
+            log.error(`failed to get result for competition ${competition.id}`);
+        }
 
+        await delay(100);
+    }
+};
+
+const updateHatTrick = async (year, month, monthDay) => {
+    //const result = await CompetitionResult.findOne({ type: CompetitionTypes.CupOfTheDay, year, month, monthDay });
+    // const allStatCompetitionResults = {
+    //     from: 'stats',
+    //     localField: 'competition_id',
+    //     foreignField: 'id',
+    //     as: 'stat_competition_results',
+    // };
+    // const playersWhoWonQualifierAndMatch = {
+    //     type: CompetitionTypes.CupOfTheDay,
+    //     $expr: {
+    //         $eq: ['$round.match.winner.accountId', '$round.qualifier.winner.accountId'],
+    //     },
+    // };
+    // const results = await CompetitionResult.aggregate()
+    //     .lookup(allStatCompetitionResults)
+    //     .match(playersWhoWonQualifierAndMatch);
+    // const allTrackRecords = {
+    //     from: 'tracks',
+    //     localField: 'track_id',
+    //     foreignField: 'id',
+    //     as: 'track_records',
+    // };
+    // const byTrack = {
+    //     'track_records.id': {
+    //         $eq: `${year}_${month}`,
+    //     },
+    //     'track_records.monthDay': {
+    //         $eq: monthDay,
+    //     },
+    // };
+    // const byTrackThenByScore = {
+    //     track_id: 1,
+    //     score: 1,
+    // };
+    // const byTrackToRoot = {
+    //     _id: '$track_id',
+    //     root: {
+    //         '$first': '$$ROOT',
+    //     },
+    // };
+    // const wrs = await Record.aggregate()
+    //     .lookup(allTrackRecords)
+    //     .match(byTrack)
+    //     .sort(byTrackThenByScore)
+    //     .group(byTrackToRoot)
+    //     .replaceRoot('root');
+    // const totdWr = wrs.find(({ user }) => winner === user.id);
+    // if (!totdWr) {
+    //     log.warn('no totd wr by match winner');
+    //     return;
+    // }
+    // const results = await CompetitionResult.aggregate()
+    //     .lookup(allStatCompetitionResults)
+    //     .match(playersWhoWonQualifierAndMatch);
+    // const hatTrick = {
+    //     type: 'hat-trick',
+    //     competition_id: result.competition_id,
+    //     user: totdWr.user,
+    // };
+    // await Stat.findOneAndUpdate(hatTrick, hatTrick, { upsert: true }).then(() =>
+    //     log.info(`upserted hat-trick stat for cotd ${result.competition_id} for winner ${winner}`),
+    // );
+};
+
+if (process.argv.some((arg) => arg === '--test')) {
+    db.on('open', async () => {
+        const sessionFile = path.join(__dirname, '/../.login');
+
+        const loadSession = (client) => {
             try {
-                const data = importJson(filename);
-                data.push(comp);
-                tryExportJson(filename, data, true);
+                client.loginData = JSON.parse(fs.readFileSync(sessionFile, 'utf-8'));
+
+                if (moment(client.loginData.expiration).diff(moment().utc(), 'seconds') <= 0) {
+                    return false;
+                }
+
+                return true;
             } catch {
-                tryExportJson(filename, [comp]);
-            }
-        }
-    }
-
-    const rankings = getCompdRankings(isA08Forever, zones);
-    const rankingsFile = path.join(__dirname, `/../api/trackmania/rankings/${compName}.json`);
-
-    tryExportJson(rankingsFile, rankings, true, true);
-};
-
-const getCompdRankings = (isA08Forever,  zones) => {
-    const compName = isA08Forever ? 'a08forever' : 'cotd';
-
-    const compFolder = path.join(__dirname, `/../api/trackmania/competitions/${compName}`);
-    const totdFolder = path.join(__dirname, '/../api/trackmania/totd');
-
-    const comp = [];
-    const hattricks = [];
-
-    for (const importFile of fs.readdirSync(compFolder)) {
-        const compData = importJson(path.join(compFolder, '/' + importFile));
-        comp.push(...compData);
-
-        if (isA08Forever) {
-            continue;
-        }
-
-        const totdData = importJson(path.join(totdFolder, '/' + importFile));
-
-        hattricks.push(...compData.filter((y) => {
-            if (!y.round.qualifier || !y.round.match) {
                 return false;
             }
+        };
+        const saveSession = (client) => {
+            fs.writeFileSync(sessionFile, JSON.stringify(client.loginData));
+        };
 
-            const track = totdData.tracks.find(x => x.monthDay === y.monthDay);
-            if (!track) {
-                return false;
-            }
+        const ubisoft = new UbisoftClient(process.env.UBI_EMAIL, process.env.UBI_PW);
 
-            const wrIds = track.wrs.map(x => x.user.id);
-
-            return y.round.qualifier.winner.accountId === y.round.match.winner.accountId
-                && wrIds.find(x => x === y.round.match.winner.accountId);
-        }));
-    }
-
-    const qualifierWinners = comp
-        .map((t) => t.round.qualifier ? { ...t.round.qualifier.winner, score: undefined, delta: undefined } : null)
-        .filter(x => !!x)
-        .map((x) => {
-            x.zone = zones.searchByNamePath(x.zone);
-            return x;
-        });
-
-    const winners = comp
-        .map((t) => t.round.match ? t.round.match.winner : null)
-        .filter(x => !!x)
-        .map((x) => {
-            x.zone = zones.searchByNamePath(x.zone);
-            return x;
-        });
-
-    const frequencyQualifiers = qualifierWinners.reduce((count, user) => {
-        count[user.accountId] = (count[user.accountId] || 0) + 1;
-        return count;
-    }, {});
-
-    const frequencyWinners = winners.reduce((count, user) => {
-        count[user.accountId] = (count[user.accountId] || 0) + 1;
-        return count;
-    }, {});
-
-    const [leaderboardQualifiers, leaderboard] = [
-        Object.keys(frequencyQualifiers)
-            .sort((a, b) => frequencyQualifiers[b] - frequencyQualifiers[a])
-            .map((key) => {
-                const user = qualifierWinners
-                    .find((u) => u.accountId === key);
-
-                return {
-                    user,
-                    wins: {
-                        qualifiers: frequencyQualifiers[key],
-                        matches: 0,
-                        hattricks: 0,
-                    },
-                };
-            }),
-        Object.keys(frequencyWinners)
-            .sort((a, b) => frequencyWinners[b] - frequencyWinners[a])
-            .map((key) => {
-                const user = winners
-                    .find((u) => u.accountId === key);
-
-                return {
-                    user,
-                    wins: {
-                        qualifiers: 0,
-                        matches: frequencyWinners[key],
-                        hattricks: 0,
-                    },
-                };
-            })
-    ];
-
-    for (const entry of leaderboard) {
-        const qualifierEntry = leaderboardQualifiers.find((qualEntry) => qualEntry.user.accountId === entry.user.accountId);
-        if (qualifierEntry) {
-            entry.wins.qualifiers = qualifierEntry.wins.qualifiers;
-            entry.wins.hattricks = hattricks.filter((comp) => comp.round.match.winner.accountId === entry.user.accountId).length;
-        }
-    }
-
-    for (const entry of leaderboardQualifiers) {
-        const matchEntry = leaderboard.find((matchEntry) => matchEntry.user.accountId === entry.user.accountId);
-        if (!matchEntry) {
-            leaderboard.push(entry);
-        }
-    }
-
-    const byWins = (a, b) => {
-        const v1 = a.wins.matches;
-        const v2 = b.wins.matches;
-
-        if (v1 === v2) {
-            const vv1 = a.wins.qualifiers;
-            const vv2 = b.wins.qualifiers;
-
-            if (vv1 === vv2) {
-                const vvv1 = a.wins.hattricks;
-                const vvv2 = b.wins.hattricks;
-
-                return vvv1 === vvv2 ? 0 : vvv1 < vvv2 ? 1 : -1;
-            }
-
-            return vv1 < vv2 ? 1 : -1;
+        if (!loadSession(ubisoft)) {
+            await ubisoft.login();
+            saveSession(ubisoft);
         }
 
-        return v1 < v2 ? 1 : -1;
-    };
+        const trackmania = new TrackmaniaClient(ubisoft.loginData.ticket);
 
-    const countryLeaderboard = [
-            ...new Set(
-                leaderboard.map(
-                    ({ user }) => (user.zone[Zones.Country] ? user.zone[Zones.Country] : user.zone[Zones.World]).zoneId,
-                ),
-            ),
-        ]
-            .map((zoneId) => ({
-                zone: zones.search(zoneId).slice(0, 3),
-                wins: leaderboard
-                    .filter(
-                        ({ user }) =>
-                            (user.zone[Zones.Country] ? user.zone[Zones.Country] : user.zone[Zones.World]).zoneId ===
-                            zoneId,
-                    )
-                    .reduce((a, b) => {
-                        a.qualifiers += b.wins.qualifiers;
-                        a.matches += b.wins.matches;
-                        a.hattricks += b.wins.hattricks;
-                        return a;
-                    }, { qualifiers: 0, matches: 0, hattricks: 0 }),
-            }));
+        await trackmania.login();
+        await trackmania.loginNadeo(Audiences.NadeoClubServices);
 
-    return {
-        leaderboard: leaderboard.sort(byWins),
-        countryLeaderboard: countryLeaderboard.sort(byWins),
-    };
+        // const zones = await trackmania.zones();
+        // zones.data.forEach((zone) => {
+        //     Object.keys(zone).forEach((key) => {
+        //         if (!['name', 'parentId', 'zoneId'].includes(key)) {
+        //             delete zone[key];
+        //         }
+        //     });
+        // });
+
+        //await updateCompetition(trackmania, CompetitionTypes.A08Forever).catch(log.error);
+        //await updateCompetition(trackmania, CompetitionTypes.CupOfTheDay).catch(log.error);
+
+        // const { data } = await trackmania.competitions(1926);
+        // console.dir(data);
+        // const rounds = (await trackmania.competitionsRounds(data.id)).collect();
+        // console.dir(rounds);
+        // const a = (await trackmania.rounds(rounds[0].id)).collect();
+        // console.dir(a);
+        //const match = await trackmania.matches(22045); //a[0].id);
+        //console.dir(match, { depth: 6 });
+
+        await updateSuperRoyal(trackmania);
+
+        //await fetchLatestCompetitions(trackmania).catch((error) => log.info(error.message, error.stack));
+
+        //await updateHatTrick(result.year, result.month, result.monthDay);
+    });
+}
+
+module.exports = {
+    fetchLatestCompetitions,
+    updateCompetition,
+    updateHatTrick,
+    CompetitionTypes,
 };
-
-const fetchCompetitions = async (trackmania) => {
-    const competitionsFile = path.join(__dirname, '/../competitions.json');
-
-    const competitions = importJson(competitionsFile);
-    const lastCompetition = competitions[competitions.length - 1];
-
-    if (lastCompetition) {
-        let index = 1;
-
-        while (index <= 50) {
-            try {
-                const competition = await trackmania.competitions(lastCompetition.id + index);
-                const data = competition.data;
-
-                log.info('new competition:', data.name);
-                competitions.push(data);
-
-                await delay(100);
-            } catch (error) {
-                log.info(error);
-                break;
-            }
-            ++index;
-        }
-    }
-
-    tryExportJson(competitionsFile, competitions, true);
-
-    return competitions.reverse();
-};
-
-module.exports = main;

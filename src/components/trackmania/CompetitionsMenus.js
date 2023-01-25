@@ -39,11 +39,9 @@ const getCotdMenu = (year) => {
     const lastMonth = year.toString() === now.year().toString() ? now.month() : 11;
 
     for (let i = month.month(); i <= lastMonth; ++i) {
-        const monthName = month.format('MMMM');
-
         menu.push(
-            <MenuItem value={monthName.toLowerCase()} key={menu.length}>
-                {monthName}
+            <MenuItem value={month.month() + 1} key={menu.length}>
+                {month.format('MMMM')}
             </MenuItem>,
         );
 
@@ -53,19 +51,40 @@ const getCotdMenu = (year) => {
     return menu;
 };
 
+const getCotdTimeslotMenu = () => {
+    const menu = [
+        <MenuItem value={1} key={0}>
+            First
+        </MenuItem>,
+        <MenuItem value={2} key={1}>
+            Second
+        </MenuItem>,
+        <MenuItem value={3} key={2}>
+            Third
+        </MenuItem>,
+        <MenuItem value={0} key={3}>
+            Any
+        </MenuItem>,
+    ];
+    return menu;
+};
+
 const getInitialCompetitionValue = (year) => {
     const isFirstYear = year && year.toString() === firstCotdDate.year().toString();
     const month = (isFirstYear ? firstCotdDate : now).clone();
-    return month.format('MMMM').toLowerCase();
+    return month.month() + 1;
 };
 
 const competitionMenu = [
-    <MenuItem value="competitions/cotd" key={0}>
+    <MenuItem value="cotd" key={0}>
         Cup of the Day
     </MenuItem>,
-    <MenuItem value="competitions/a08forever" key={1}>
+    <MenuItem value="a08forever" key={1}>
         A08 Forever
-    </MenuItem>
+    </MenuItem>,
+    <MenuItem value="superroyal" key={2}>
+        Super Royal
+    </MenuItem>,
 ];
 
-export { competitionMenu, yearMenu, getCotdMenu, getInitialCompetitionValue };
+export { competitionMenu, yearMenu, getCotdMenu, getCotdTimeslotMenu, getInitialCompetitionValue };
