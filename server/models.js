@@ -145,110 +145,133 @@ const Campaign = mongoose.model(
     }),
 );
 
+const TrackSchema = new mongoose.Schema({
+    id: {
+        type: String,
+        unique: true,
+        required: true,
+    },
+    campaign_id: {
+        type: String,
+        required: true,
+    },
+    uid: {
+        type: String,
+        unique: true,
+        required: true,
+    },
+    name: {
+        type: String,
+    },
+    year: {
+        type: Number,
+    },
+    month: {
+        type: Number,
+    },
+    monthDay: {
+        type: Number,
+    },
+    season: {
+        type: String,
+    },
+    isOfficial: {
+        type: Boolean,
+    },
+    thumbnail: {
+        type: String,
+    },
+    event: {
+        startsAt: {
+            type: Number,
+        },
+        endsAt: {
+            type: Number,
+        },
+    },
+});
+
 const Track = mongoose.model(
     'Track',
-    new mongoose.Schema({
+    TrackSchema,
+);
+
+const RecordSchema = new mongoose.Schema({
+    id: {
+        type: String,
+        unique: true,
+        required: true,
+    },
+    track_id: {
+        type: String,
+        required: true,
+    },
+    campaign_id: {
+        type: String,
+        required: true,
+    },
+    date: {
+        type: String,
+        required: true,
+    },
+    score: {
+        type: Number,
+        required: true,
+    },
+    delta: {
+        type: Number,
+    },
+    duration: {
+        type: Number,
+    },
+    replay: {
+        type: String,
+    },
+    user: {
         id: {
             type: String,
-            unique: true,
-            required: true,
-        },
-        campaign_id:  {
-            type: String,
-            required: true,
-        },
-        uid: {
-            type: String,
-            unique: true,
             required: true,
         },
         name: {
             type: String,
         },
-        year: {
-            type: Number,
-        },
-        month: {
-            type: Number,
-        },
-        monthDay: {
-            type: Number,
-        },
-        season: {
-            type: String,
-        },
-        isOfficial: {
-            type: Boolean,
-        },
-        thumbnail: {
-            type: String,
-        },
-        event: {
-            startsAt: {
-                type: Number,
+        zone: [
+            {
+                name: {
+                    type: String,
+                },
+                parentId: {
+                    type: String,
+                },
+                zoneId: {
+                    type: String,
+                },
             },
-            endsAt: {
-                type: Number,
-            },
+        ],
+    },
+});
+
+const Record = mongoose.model(
+    'Record', RecordSchema
+    ,
+);
+
+const VRecord = mongoose.model(
+    'V_Record',
+    new mongoose.Schema({
+        wrScore: {
+            type: Number,
         },
+        history: [RecordSchema],
+        wrs: [RecordSchema],
+        track: TrackSchema,
     }),
 );
 
-const Record = mongoose.model(
-    'Record',
+const VTrackRecord = Record.discriminator(
+    'V_TrackRecord',
     new mongoose.Schema({
-        id: {
-            type: String,
-            unique: true,
-            required: true,
-        },
-        track_id: {
-            type: String,
-            required: true,
-        },
-        campaign_id: {
-            type: String,
-            required: true,
-        },
-        date: {
-            type: String,
-            required: true,
-        },
-        score: {
-            type: Number,
-            required: true,
-        },
-        delta: {
-            type: Number,
-        },
-        duration: {
-            type: Number,
-        },
-        replay: {
-            type: String,
-        },
-        user: {
-            id: {
-                type: String,
-                required: true,
-            },
-            name: {
-                type: String,
-            },
-            zone: [
-                {
-                    name: {
-                        type: String,
-                    },
-                    parentId: {
-                        type: String,
-                    },
-                    zoneId: {
-                        type: String,
-                    },
-                },
-            ],
-        },
+        track: TrackSchema,
     }),
 );
 
@@ -280,9 +303,9 @@ const Inspection = mongoose.model(
                 stuntScore: {
                     type: Number,
                 },
-            }
+            },
         ],
-        inputs:  [
+        inputs: [
             {
                 dx: {
                     type: Number,
@@ -299,7 +322,7 @@ const Inspection = mongoose.model(
                 brake: {
                     type: Number,
                 },
-            }
+            },
         ],
     }),
 );
@@ -517,6 +540,8 @@ module.exports = {
     Campaign,
     Track,
     Record,
+    VRecord,
+    VTrackRecord,
     Inspection,
     Competition,
     CompetitionResult,

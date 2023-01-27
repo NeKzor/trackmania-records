@@ -8,7 +8,7 @@ elif [ "$1" = "db-no-auth" ]; then
     mongod --dbpath="$dbpath" "${@:2}"
 elif [ "$1" = "app" ]; then
     npm run start "${@:2}"
-elif [ "$1" = "--help" ]; then
+elif [ "$1" = "" ] || [ "$1" = "--help" ]; then
     echo "
     run <command>
         db               : starts database instance

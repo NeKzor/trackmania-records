@@ -10,20 +10,20 @@ const Router = require('@koa/router');
 const koaBody = require('koa-body');
 const session = require('koa-session');
 const helmet = require('koa-helmet');
-const { info, error, push } = require('./logger');
+const { info, error } = require('./logger');
 const { Status, Permissions } = require('./permissions');
 const {
     User,
     Campaign,
     Track,
     Record,
+    VRecord,
+    VTrackRecord,
     Inspection,
     Update,
     Tag,
     Audit,
-    Competition,
     CompetitionResult,
-    Stat,
 } = require('./models');
 const { Replay } = require('./trackmania/models');
 
@@ -289,89 +289,167 @@ class Zones {
     static Region = 3;
 }
 
-// TODO: optimize this!!
-const generateRankings = (wrs, history) => {
-    // TODO: Remove note with "isBanned" and "isDeleted" etc.
-    const validRecords = (record) => record.note === undefined;
-
-    const validHistory = history.filter(validRecords);
-    const validWrs = wrs.filter(validRecords);
-
-    const allUsers = validHistory.map(({ user, date, track_id }) => ({ ...user, date, track_id }));
-
-    const getZoneId = (user) => (user.zone[Zones.Country] ? user.zone[Zones.Country] : user.zone[Zones.World]).zoneId;
-    const zones = allUsers.reduce((zones, user) => {
-        const zoneId = getZoneId(user);
-        if (zones[zoneId] === undefined) {
-            zones[zoneId] = user.zone.slice(0, 3);
-        }
-        return zones;
-    }, {});
-
-    const createLeaderboard = (records) => {
-        const users = records.map(({ user, date }) => ({ ...user, date }));
-
-        const frequency = users.reduce((count, user) => {
-            count[user.id] = (count[user.id] || 0) + 1;
-            return count;
-        }, {});
-
-        return [
-            Object.keys(frequency)
-                .sort((a, b) => frequency[b] - frequency[a])
-                .map((key) => {
-                    const [user] = users.filter((u) => u.id === key).sort((a, b) => b.date.localeCompare(a.date));
-                    delete user.date;
-
-                    return {
-                        user,
-                        wrs: frequency[key],
-                        duration: 0,
-                    };
-                }),
-            [...new Set(users.map(getZoneId))]
-                .map((zoneId) => ({
-                    zone: zones[zoneId],
-                    wrs: users.filter((user) => getZoneId(user) === zoneId).length,
-                }))
-                .sort((a, b) => {
-                    const v1 = a.wrs;
-                    const v2 = b.wrs;
-                    return v1 === v2 ? 0 : v1 < v2 ? 1 : -1;
-                }),
-        ];
-    };
-
-    const [leaderboard, countryLeaderboard] = createLeaderboard(validWrs);
-    const [historyLeaderboard, historyCountryLeaderboard] = createLeaderboard(validHistory);
-
-    const uniqueUserIds = [...new Set(allUsers.map((user) => user.track_id + user.id))];
-    const users = uniqueUserIds.map((id) => allUsers.find((user) => user.track_id + user.id === id));
-
-    const frequency = users.reduce((count, user) => {
-        count[user.id] = (count[user.id] || 0) + 1;
-        return count;
-    }, {});
-
-    const uniqueLeaderboard = Object.keys(frequency)
-        .sort((a, b) => frequency[b] - frequency[a])
-        .map((key) => {
-            const [user] = users.filter((u) => u.id === key).sort((a, b) => b.date.localeCompare(a.date));
-            delete user.date;
-            return {
-                user,
-                wrs: frequency[key],
-            };
+const generateRankings = async (isOfficial, campaignId) => {
+    const leaderboard = await VRecord.aggregate()
+        .match({
+            ...(campaignId ? { 'track.campaign_id': campaignId } : { 'track.isOfficial': isOfficial }),
+        })
+        .unwind({
+            path: '$wrs',
+            preserveNullAndEmptyArrays: false,
+        })
+        .sort({
+            'wrs.date': -1,
+        })
+        .group({
+            _id: '$wrs.user.id',
+            user: {
+                $first: '$wrs.user',
+            },
+            wrs: {
+                $sum: 1,
+            },
+        })
+        .sort({
+            wrs: -1,
         });
-    const uniqueCountryLeaderboard = [...new Set(users.map(getZoneId))]
-        .map((zoneId) => ({
-            zone: zones[zoneId],
-            wrs: users.filter((user) => getZoneId(user) === zoneId).length,
-        }))
-        .sort((a, b) => {
-            const v1 = a.wrs;
-            const v2 = b.wrs;
-            return v1 === v2 ? 0 : v1 < v2 ? 1 : -1;
+
+    const countryLeaderboard = await VRecord.aggregate()
+        .match({
+            ...(campaignId ? { 'track.campaign_id': campaignId } : { 'track.isOfficial': isOfficial }),
+        })
+        .unwind({
+            path: '$wrs',
+            preserveNullAndEmptyArrays: false,
+        })
+        .sort({
+            'wrs.date': -1,
+        })
+        .group({
+            _id: {
+                $arrayElemAt: ['$wrs.user.zone.zoneId', 2],
+            },
+            zone: {
+                $first: {
+                    $slice: ['$wrs.user.zone', 3],
+                },
+            },
+            wrs: {
+                $sum: 1,
+            },
+        })
+        .sort({
+            wrs: -1,
+        });
+
+    const historyLeaderboard = await VTrackRecord.aggregate()
+        .match({
+            ...(campaignId ? { 'track.campaign_id': campaignId } : { 'track.isOfficial': isOfficial }),
+            note: {
+                $exists: false,
+            },
+        })
+        .group({
+            _id: '$user.id',
+            wrs: {
+                $sum: 1,
+            },
+            user: {
+                $first: '$user',
+            },
+        })
+        .sort({
+            wrs: -1,
+        });
+
+    const historyCountryLeaderboard = await VTrackRecord.aggregate()
+        .match({
+            ...(campaignId ? { 'track.campaign_id': campaignId } : { 'track.isOfficial': isOfficial }),
+            note: {
+                $exists: false,
+            },
+        })
+        .group({
+            _id: {
+                $arrayElemAt: ['$user.zone.zoneId', 2],
+            },
+            wrs: {
+                $sum: 1,
+            },
+            zone: {
+                $first: {
+                    $slice: ['$user.zone', 3],
+                },
+            },
+        })
+        .sort({
+            wrs: -1,
+        });
+
+    const uniqueLeaderboard = true
+        ? []
+        : await VTrackRecord.aggregate()
+              .match({
+                  ...(campaignId ? { 'track.campaign_id': campaignId } : { 'track.isOfficial': isOfficial }),
+                  note: {
+                      $exists: false,
+                  },
+              })
+              .group({
+                  _id: {
+                      user_id: '$user.id',
+                      track_id: '$track_id',
+                  },
+                  user: {
+                      $first: '$user',
+                  },
+              })
+              .group({
+                  _id: '$user.id',
+                  wrs: {
+                      $sum: 1,
+                  },
+                  user: {
+                      $first: '$user',
+                  },
+              })
+              .sort({
+                  wrs: -1,
+              });
+
+    const uniqueCountryLeaderboard = VTrackRecord.aggregate()
+        .match({
+            ...(campaignId ? { 'track.campaign_id': campaignId } : { 'track.isOfficial': isOfficial }),
+            note: {
+                $exists: false,
+            },
+        })
+        .group({
+            _id: {
+                zone_id: {
+                    $arrayElemAt: ['$user.zone.zoneId', 2],
+                },
+                track_id: '$track_id',
+            },
+            zone: {
+                $first: {
+                    $slice: ['$user.zone', 3],
+                },
+            },
+        })
+        .group({
+            _id: {
+                $arrayElemAt: ['$zone.zoneId', 2],
+            },
+            wrs: {
+                $sum: 1,
+            },
+            zone: {
+                $first: '$zone',
+            },
+        })
+        .sort({
+            wrs: -1,
         });
 
     return {
@@ -396,30 +474,31 @@ const getCampaign = async (ctx) => {
         return;
     }
 
-    const campaignTracks = await Track.find({ campaign_id: campaign.id }).sort({
-        [campaign.isOfficial ? 'name' : 'monthDay']: 1,
-    });
-
-    const records = await Record.find({ campaign_id: campaign.id }).sort({ date: 1 });
+    const records = await VRecord.aggregate()
+        .match({
+            'track.campaign_id': campaign.id,
+        })
+        .sort({
+            [campaign.isOfficial ? 'track.name' : 'track.monthDay']: 1,
+        });
 
     const stats = {
         totalTime: 0,
     };
 
-    const tracks = campaignTracks.map((doc) => {
-        const track = doc.toObject();
-        track.history = records.filter((record) => record.track_id === track.id);
+    const result = campaign.toObject();
 
-        const wrScore = track.history.at(-1)?.score;
-        stats.totalTime += wrScore ?? 0;
-        track.wrs = wrScore ? track.history.filter((record) => record.score === wrScore && !record.note) : [];
+    result.tracks = records.map((doc) => {
+        const track = doc.track;
+        track.wrs = doc.wrs;
+        track.history = doc.history;
+
+        stats.totalTime += doc.wrScore;
 
         return track;
     });
 
-    const rankings = generateRankings(tracks.map(({ wrs }) => wrs).flat(), tracks.map(({ wrs }) => wrs).flat());
-
-    ctx.body = { ...campaign.toObject(), tracks, stats, ...rankings };
+    ctx.body = { ...result, stats, ...(await generateRankings(campaign.isOfficial, campaign.id)) };
 };
 
 const getHistory = async (ctx) => {
@@ -511,41 +590,7 @@ const getRankings = async (ctx) => {
 
     const isOfficial = ctx.params.name === 'campaign';
 
-    const allTrackRecords = {
-        from: 'tracks',
-        localField: 'track_id',
-        foreignField: 'id',
-        as: 'track_records',
-    };
-
-    const officialTracks = {
-        'track_records.isOfficial': {
-            $eq: isOfficial,
-        },
-    };
-
-    const byTrackThenByScore = {
-        track_id: 1,
-        score: 1,
-    };
-
-    const byTrackToRoot = {
-        _id: '$track_id',
-        root: {
-            '$first': '$$ROOT',
-        },
-    };
-
-    const wrs = await Record.aggregate()
-        .lookup(allTrackRecords)
-        .match(officialTracks)
-        .sort(byTrackThenByScore)
-        .group(byTrackToRoot)
-        .replaceRoot('root');
-
-    const history = await Record.aggregate().lookup(allTrackRecords).match(officialTracks);
-
-    ctx.body = generateRankings(wrs, history);
+    ctx.body = await generateRankings(isOfficial);
 };
 
 const getCompetition = async (ctx) => {
@@ -759,7 +804,7 @@ app.use(async (ctx, next) => {
             ctx.type = 'json';
             ctx.body = { message: (typeof err === 'object' ? err.message : undefined) ?? 'Internal server error.' };
         }
-        //ctx.app.emit('error', err, ctx);
+        ctx.app.emit('error', err, ctx);
     }
 })
     .on('error', (err, ctx) => {
@@ -781,7 +826,9 @@ app.use(async (ctx, next) => {
         cors({
             allowMethods: ['GET', 'POST', 'PATCH'],
             origin: () => {
-                return process.env.NODE_ENV !== 'production' ? 'https://trackmania.dev.local:3000' : 'https://trackmania.nekz.me';
+                return process.env.NODE_ENV !== 'production'
+                    ? 'https://trackmania.dev.local:3000'
+                    : 'https://trackmania.nekz.me';
             },
             credentials: true,
         }),
