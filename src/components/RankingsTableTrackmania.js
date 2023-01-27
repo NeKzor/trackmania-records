@@ -36,11 +36,11 @@ const rowsCotd = [
     { id: 'wins.matches', sortable: true, label: 'Wins', align: 'left', tooltip: 'Amount of match wins.' },
     { id: 'wins.qualifiers', sortable: true, label: 'Qualifiers', align: 'left', tooltip: 'Amount of qualifier wins.' },
     {
-        id: 'wins.hattricks',
+        id: 'wins.qualifierAndMatch',
         sortable: true,
-        label: 'Hat-Tricks',
+        label: 'Qualifier+Match',
         align: 'left',
-        tooltip: 'A hat-trick can be achieved by winning the qualifier, the match and Track of the Day.',
+        tooltip: 'Amount of qualifier and match wins in the same COTD.',
     },
 ];
 
@@ -51,7 +51,7 @@ const RankingsTableHead = ({
     isOfficial,
     isCompetition,
     showQualifiers,
-    showHatTricks,
+    showQualifierAndMatchWin,
 }) => {
     const createSortHandler = (prop1, prop2) => (event) => {
         onRequestSort(event, prop1, prop2);
@@ -60,7 +60,7 @@ const RankingsTableHead = ({
     const rows = isOfficial
         ? rowsOfficial
         : isCompetition
-        ? showHatTricks
+        ? showQualifierAndMatchWin
             ? rowsCotd
             : showQualifiers
             ? rowsCompetitionWithQualifiers
@@ -121,7 +121,7 @@ const linkToTrackmaniaIoProfile = (user) => {
     return `https://trackmania.io/#/player/${encodeURIComponent(user.id ?? user.accountId)}`;
 };
 
-const RecordsTable = ({ data, isOfficial, isCompetition, showQualifiers, showHatTricks }) => {
+const RecordsTable = ({ data, isOfficial, isCompetition, showQualifiers, showQualifierAndMatchWin }) => {
     const [{ order, orderBy, thenBy }, setState] = React.useState({
         ...defaultState,
         orderBy: isCompetition ? 'wins.matches' : 'wrs',
@@ -158,7 +158,7 @@ const RecordsTable = ({ data, isOfficial, isCompetition, showQualifiers, showHat
                     isOfficial={isOfficial}
                     isCompetition={isCompetition}
                     showQualifiers={showQualifiers}
-                    showHatTricks={showHatTricks}
+                    showQualifierAndMatchWin={showQualifierAndMatchWin}
                 />
                 <TableBody>
                     {(isOfficial ? stableSortSort : stableSort)(data, order, orderBy, thenBy).map((row) => (
@@ -192,7 +192,9 @@ const RecordsTable = ({ data, isOfficial, isCompetition, showQualifiers, showHat
                                 <>
                                     <MinTableCell align="left">{row.wins.matches}</MinTableCell>
                                     {showQualifiers && <MinTableCell align="left">{row.wins.qualifiers}</MinTableCell>}
-                                    {showHatTricks && <MinTableCell align="left">{row.wins.hattricks}</MinTableCell>}
+                                    {showQualifierAndMatchWin && (
+                                        <MinTableCell align="left">{row.wins.qualifierAndMatch}</MinTableCell>
+                                    )}
                                 </>
                             )}
                         </TableRow>

@@ -19,7 +19,7 @@ class Api {
 
 class ApiV2 {
     constructor() {
-        this.baseApi = process.env.NODE_ENV === 'development' ? 'http://localhost:3003' : 'https://api.nekz.me';
+        this.baseApi = process.env.NODE_ENV === 'development' ? '' : 'https://api.nekz.me';
         this.options = { credentials: 'include' };
     }
     loginStart(source) {
@@ -102,7 +102,7 @@ class TrackmaniaApi {
     constructor() {
         this.baseApi =
             process.env.NODE_ENV === 'development'
-                ? 'http://localhost:3003/api/v1/trackmania'
+                ? '/api/v1/trackmania'
                 : 'https://api.nekz.me/api/v1/trackmania';
         this.options = { credentials: 'include' };
     }

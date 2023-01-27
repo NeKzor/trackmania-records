@@ -107,26 +107,6 @@ const RecordsRow = ({ wr, isCotd, isSuperRoyal }) => {
                         {wr.name}
                     </Link>
                 </MinTableCell>
-                {isCotd && (
-                    <MinTableCell style={noWrap} align="left">
-                        {isCotd && wr.round.qualifier && (
-                            <Tooltip
-                                title={<span>{wr.round.qualifier.winner.zone}</span>}
-                                placement="bottom"
-                                enterDelay={300}
-                            >
-                                <Link
-                                    color={doubleWin ? 'secondary' : 'inherit'}
-                                    href={linkToTrackmaniaIoProfile(wr.round.qualifier.winner)}
-                                    rel="noreferrer"
-                                    target="_blank"
-                                >
-                                    {wr.round.qualifier.winner.displayName}
-                                </Link>
-                            </Tooltip>
-                        )}
-                    </MinTableCell>
-                )}
                 <MinTableCell style={noWrap} align="left">
                     {wr.round.match && wr.round.match.winner && (
                         <Tooltip title={<span>{wr.round.match.winner.zone}</span>} placement="bottom" enterDelay={300}>
@@ -158,6 +138,26 @@ const RecordsRow = ({ wr, isCotd, isSuperRoyal }) => {
                         </>
                     )}
                 </MinTableCell>
+                {isCotd && (
+                    <MinTableCell style={noWrap} align="left">
+                        {isCotd && wr.round.qualifier && (
+                            <Tooltip
+                                title={<span>{wr.round.qualifier.winner.zone}</span>}
+                                placement="bottom"
+                                enterDelay={300}
+                            >
+                                <Link
+                                    color={doubleWin ? 'secondary' : 'inherit'}
+                                    href={linkToTrackmaniaIoProfile(wr.round.qualifier.winner)}
+                                    rel="noreferrer"
+                                    target="_blank"
+                                >
+                                    {wr.round.qualifier.winner.displayName}
+                                </Link>
+                            </Tooltip>
+                        )}
+                    </MinTableCell>
+                )}
                 <MinTableCell align="left">{wr.nb_players}</MinTableCell>
             </TableRow>
         </>

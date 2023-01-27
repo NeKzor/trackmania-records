@@ -29,6 +29,25 @@ const CompetitionCreators = {
     SuperRoyal: 'afe7e1c1-7086-48f7-bde9-a7e320647510',
 };
 
+const getTimeslotFromName = (name) => {
+    if (name.slice(-2) !== '#') {
+        // COTDs before 2021-07-21 did not have re-runs
+        return CompetitionTimeslot.First;
+    }
+
+    const timeslot = parseInt(name.slice(-1), 10);
+    if (
+        timeslot !== CompetitionTimeslot.First &&
+        timeslot !== CompetitionTimeslot.Second &&
+        timeslot !== CompetitionTimeslot.Third
+    ) {
+        log.warn(`Unknown timeslot value ${timeslot} for "${name}"`);
+        return CompetitionTimeslot.Any;
+    }
+
+    return timeslot;
+};
+
 const fetchLatestCompetitions = async (trackmania) => {
     const latestCompetition = await Competition.findOne().sort({ id: -1 }).select('id');
     if (!latestCompetition) {
@@ -61,7 +80,7 @@ const fetchLatestCompetitions = async (trackmania) => {
 
             const timeslot =
                 type === CompetitionTypes.CupOfTheDay || type === CompetitionTypes.SuperRoyal
-                    ? parseInt(data.name.slice(-1), 10)
+                    ? getTimeslotFromName(data.name)
                     : CompetitionTimeslot.Any;
 
             const competition = {
@@ -228,7 +247,8 @@ const fetchCompetitionResult = async (trackmania, competition) => {
             const participants = (await trackmania.accounts(winners.map((winner) => winner.participant))).collect();
             participants.forEach((participant) => {
                 const winner = winners.find((winner) => participant.accountId === winner.participant);
-                participant.zone = winner.zone; // BUG: Nadeo only provides "World" :(
+                // BUG: Nadeo only provides "World" :(
+                participant.zone = winner.zone;
             });
 
             return {
@@ -238,7 +258,7 @@ const fetchCompetitionResult = async (trackmania, competition) => {
             };
         }
 
-        const [winner] = match.data.results;
+        const winner = match.data.results.find(({ rank }) => rank === 1);
         if (!winner) {
             return null;
         }
@@ -306,71 +326,6 @@ const updateSuperRoyal = async (trackmania) => {
     }
 };
 
-const updateHatTrick = async (year, month, monthDay) => {
-    //const result = await CompetitionResult.findOne({ type: CompetitionTypes.CupOfTheDay, year, month, monthDay });
-    // const allStatCompetitionResults = {
-    //     from: 'stats',
-    //     localField: 'competition_id',
-    //     foreignField: 'id',
-    //     as: 'stat_competition_results',
-    // };
-    // const playersWhoWonQualifierAndMatch = {
-    //     type: CompetitionTypes.CupOfTheDay,
-    //     $expr: {
-    //         $eq: ['$round.match.winner.accountId', '$round.qualifier.winner.accountId'],
-    //     },
-    // };
-    // const results = await CompetitionResult.aggregate()
-    //     .lookup(allStatCompetitionResults)
-    //     .match(playersWhoWonQualifierAndMatch);
-    // const allTrackRecords = {
-    //     from: 'tracks',
-    //     localField: 'track_id',
-    //     foreignField: 'id',
-    //     as: 'track_records',
-    // };
-    // const byTrack = {
-    //     'track_records.id': {
-    //         $eq: `${year}_${month}`,
-    //     },
-    //     'track_records.monthDay': {
-    //         $eq: monthDay,
-    //     },
-    // };
-    // const byTrackThenByScore = {
-    //     track_id: 1,
-    //     score: 1,
-    // };
-    // const byTrackToRoot = {
-    //     _id: '$track_id',
-    //     root: {
-    //         '$first': '$$ROOT',
-    //     },
-    // };
-    // const wrs = await Record.aggregate()
-    //     .lookup(allTrackRecords)
-    //     .match(byTrack)
-    //     .sort(byTrackThenByScore)
-    //     .group(byTrackToRoot)
-    //     .replaceRoot('root');
-    // const totdWr = wrs.find(({ user }) => winner === user.id);
-    // if (!totdWr) {
-    //     log.warn('no totd wr by match winner');
-    //     return;
-    // }
-    // const results = await CompetitionResult.aggregate()
-    //     .lookup(allStatCompetitionResults)
-    //     .match(playersWhoWonQualifierAndMatch);
-    // const hatTrick = {
-    //     type: 'hat-trick',
-    //     competition_id: result.competition_id,
-    //     user: totdWr.user,
-    // };
-    // await Stat.findOneAndUpdate(hatTrick, hatTrick, { upsert: true }).then(() =>
-    //     log.info(`upserted hat-trick stat for cotd ${result.competition_id} for winner ${winner}`),
-    // );
-};
-
 if (process.argv.some((arg) => arg === '--test')) {
     db.on('open', async () => {
         const sessionFile = path.join(__dirname, '/../.login');
@@ -404,38 +359,17 @@ if (process.argv.some((arg) => arg === '--test')) {
         await trackmania.login();
         await trackmania.loginNadeo(Audiences.NadeoClubServices);
 
-        // const zones = await trackmania.zones();
-        // zones.data.forEach((zone) => {
-        //     Object.keys(zone).forEach((key) => {
-        //         if (!['name', 'parentId', 'zoneId'].includes(key)) {
-        //             delete zone[key];
-        //         }
-        //     });
-        // });
-
         //await updateCompetition(trackmania, CompetitionTypes.A08Forever).catch(log.error);
         //await updateCompetition(trackmania, CompetitionTypes.CupOfTheDay).catch(log.error);
 
-        // const { data } = await trackmania.competitions(1926);
-        // console.dir(data);
-        // const rounds = (await trackmania.competitionsRounds(data.id)).collect();
-        // console.dir(rounds);
-        // const a = (await trackmania.rounds(rounds[0].id)).collect();
-        // console.dir(a);
-        //const match = await trackmania.matches(22045); //a[0].id);
-        //console.dir(match, { depth: 6 });
-
-        await updateSuperRoyal(trackmania);
+        //await updateSuperRoyal(trackmania);
 
         //await fetchLatestCompetitions(trackmania).catch((error) => log.info(error.message, error.stack));
-
-        //await updateHatTrick(result.year, result.month, result.monthDay);
     });
 }
 
 module.exports = {
     fetchLatestCompetitions,
     updateCompetition,
-    updateHatTrick,
     CompetitionTypes,
 };

@@ -2,7 +2,10 @@ import React from 'react';
 import Chart from 'react-apexcharts';
 import { withTheme } from '@material-ui/styles';
 
-const randomColor = () => '#' + ((Math.random() * 0xffffff) << 0).toString(16).padStart(6, '0');
+const randomColor = () => {
+    const value = ((Math.random() * 0xffffff) << 0) & 0xaaaaaa;
+    return '#' + value.toString(16).padStart(6, '0');
+};
 
 const MAX_DATAPOINTS = 30;
 

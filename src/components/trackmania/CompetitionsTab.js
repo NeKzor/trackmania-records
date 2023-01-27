@@ -145,7 +145,7 @@ const CompetitionsTab = ({
                                     hasDuration={false}
                                     isCompetition={true}
                                     showQualifiers={isCotd || isA08Forever}
-                                    showHatTricks={isCotd}
+                                    showQualifierAndMatchWin={isCotd}
                                 />
                             </Grid>
                             <Grid item xs={12} md={6} className={classes.padTop}>

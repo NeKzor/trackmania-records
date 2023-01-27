@@ -5,7 +5,7 @@ const path = require('path');
 const moment = require('moment');
 const { UbisoftClient, TrackmaniaClient, Audiences, Campaigns } = require('./trackmania/api');
 const { log, tryMakeDir } = require('./utils');
-const { updateCompetition, updateHatTrick, CompetitionTypes } = require('./trackmania_competitions');
+const { updateCompetition, CompetitionTypes } = require('./trackmania_competitions');
 const { Replay, Audit, Tag, Campaign, Track, Record, IntegrationEvent } = require('./trackmania/models');
 
 const sessionFile = path.join(__dirname, '/../.login');
@@ -77,7 +77,6 @@ const main = async () => {
     //                          Hat-Trick starts when COTD match ends until TOTD ends
     const shouldUpdateCupOfTheDay = moment().add(10, 'seconds').format('HH:mm') === '21:15';
     const shouldUpdateA08Forever = moment().add(10, 'seconds').format('DD HH:mm') === '08 22:00';
-    const shouldUpdateHatTrick = moment().add(10, 'seconds').format('HH:mm') === '19:00';
 
     tryMakeDir(path.join(replayFolder));
 
@@ -114,7 +113,6 @@ const main = async () => {
 
         if (shouldUpdateCupOfTheDay) await updateCompetition(trackmania, CompetitionTypes.CupOfTheDay);
         if (shouldUpdateA08Forever) await updateCompetition(trackmania, CompetitionTypes.A08Forever);
-        if (shouldUpdateHatTrick) await updateHatTrick(trackmania);
     } catch (error) {
         log.error(`${error.message}\n${error.stack}`);
     }

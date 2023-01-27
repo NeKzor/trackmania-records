@@ -17,9 +17,18 @@ const InspectionView = () => {
             .catch(console.error);
     }, [params]);
 
+    const targetInspection = React.useMemo(() => {
+        return inspection.inspections.find(({ record_id }) => record_id === params.record);
+    }, [inspection, params.record]);
+
     return (
         <ViewContent>
             <Paper>
+                {targetInspection && (
+                    <>
+                        Target: {targetInspection._id}
+                    </>
+                )}
                 {inspection.inspections.map((inspection) => {
                     return (
                         <div key={inspection._id}>{inspection._id}</div>

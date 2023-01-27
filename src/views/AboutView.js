@@ -99,7 +99,7 @@ const AboutView = () => {
                 <SmallPadding />
                 <div>
                     <Link rel="noopener" href="https://github.com/NeKzor/trackmania-records">
-                        <GitHubIcon style={{ color: 'black' }} fontSize="large" />
+                        <GitHubIcon style={{ color: darkMode.enabled ? 'white' : 'black' }} fontSize="large" />
                     </Link>
                 </div>
                 <Padding />

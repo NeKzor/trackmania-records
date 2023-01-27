@@ -122,7 +122,7 @@ authentication
             const login_id = String(userData.account_id);
 
             let user = await User.findOne({ source, login_id });
-            if (user === null) {
+            if (!user) {
                 user = await User.create({
                     source,
                     login_id,
@@ -203,7 +203,7 @@ authentication
             const login_id = String(userData.login);
 
             let user = await User.findOne({ source, login_id });
-            if (user === null) {
+            if (!user) {
                 user = await User.create({
                     source,
                     login_id,
@@ -289,6 +289,7 @@ class Zones {
     static Region = 3;
 }
 
+// TODO: optimize this!!
 const generateRankings = (wrs, history) => {
     // TODO: Remove note with "isBanned" and "isDeleted" etc.
     const validRecords = (record) => record.note === undefined;
@@ -296,9 +297,7 @@ const generateRankings = (wrs, history) => {
     const validHistory = history.filter(validRecords);
     const validWrs = wrs.filter(validRecords);
 
-    const allUsers = validHistory.map(({ user, date }) => ({ ...user, date }));
-    const uniqueUserIds = [...new Set(allUsers.map((user) => user.id))];
-    const users = uniqueUserIds.map((id) => allUsers.find((user) => user.id === id));
+    const allUsers = validHistory.map(({ user, date, track_id }) => ({ ...user, date, track_id }));
 
     const getZoneId = (user) => (user.zone[Zones.Country] ? user.zone[Zones.Country] : user.zone[Zones.World]).zoneId;
     const zones = allUsers.reduce((zones, user) => {
@@ -346,6 +345,9 @@ const generateRankings = (wrs, history) => {
     const [leaderboard, countryLeaderboard] = createLeaderboard(validWrs);
     const [historyLeaderboard, historyCountryLeaderboard] = createLeaderboard(validHistory);
 
+    const uniqueUserIds = [...new Set(allUsers.map((user) => user.track_id + user.id))];
+    const users = uniqueUserIds.map((id) => allUsers.find((user) => user.track_id + user.id === id));
+
     const frequency = users.reduce((count, user) => {
         count[user.id] = (count[user.id] || 0) + 1;
         return count;
@@ -389,7 +391,7 @@ const getCampaign = async (ctx) => {
             : { year: Number(ctx.params.year), month: Number(ctx.params.month) },
     );
 
-    if (campaign === null) {
+    if (!campaign) {
         ctx.throw(404, { message: 'Campaign not found.' });
         return;
     }
@@ -422,7 +424,7 @@ const getCampaign = async (ctx) => {
 
 const getHistory = async (ctx) => {
     const track = await Track.find({ id: String(ctx.params.id) });
-    if (track === null) {
+    if (!track) {
         ctx.throw(404, { message: 'Track not found.' });
         return;
     }
@@ -433,22 +435,22 @@ const getHistory = async (ctx) => {
 
 const getRecordInspection = async (ctx) => {
     const record = await Record.findOne({ id: String(ctx.params.id) });
-    if (record === null) {
+    if (!record) {
         ctx.throw(404, { message: 'Record not found.' });
         return;
     }
 
     const track = await Track.findOne({ id: record.track_id });
-    if (track === null) {
+    if (!track) {
         ctx.throw(404, { message: 'Track not found.' });
         return;
     }
 
     const records = [
-        ...(await Record.find({ id: record.track_id, score: { $gte: record.score } })
+        ...(await Record.find({ track_id: record.track_id, score: { $gte: record.score }, id: { $ne: record.id } })
             .sort({ date: 1 })
             .limit(5)),
-        ...(await Record.find({ id: record.track_id, score: { $lte: record.score } })
+        ...(await Record.find({ track_id: record.track_id, score: { $lte: record.score } })
             .sort({ date: 1 })
             .limit(5)),
     ];
@@ -629,18 +631,23 @@ const getCompetitionRankings = async (ctx) => {
               })
               .project({ matches: 1, 'player.accountId': 1, 'player.displayName': 1, 'player.zone': 1 });
 
-    const hatTricks = await Stat.aggregate()
-        .match({ type: 'hat-trick' })
-        .group({
-            _id: 'user.id',
-            hatTricks: {
-                $sum: 1,
-            },
-            root: {
-                '$first': '$$ROOT',
+    const qualifierAndMatchWins = await CompetitionResult.aggregate()
+        .match({
+            type: 'cotd',
+            ...(timeslot >= 1 && timeslot <= 3 ? { timeslot } : {}),
+            $expr: {
+                $eq: ['$round.qualifier.winner.accountId', '$round.match.winner.accountId'],
             },
         })
-        .replaceRoot('root');
+        .group({
+            _id: {
+                ...(timeslot >= 1 && timeslot <= 3 ? { timeslot: '$timeslot' } : {}),
+                winner: '$round.match.winner.accountId',
+            },
+            qualifierAndMatch: {
+                $sum: 1,
+            },
+        });
 
     const players = [
         ...new Set([
@@ -656,6 +663,44 @@ const getCompetitionRankings = async (ctx) => {
 
     const toZone = (value) => value.split('|').map((name) => ({ name }));
 
+    const toLeaderboard = (leaderboards, id) => {
+        const [leaderboard, countryLeaderboard] = leaderboards;
+
+        const qualifierWinner = qualifierWinners.find(({ player }) => player.accountId === id);
+        const matchWinner = matchWinners.find(({ player }) => player.accountId === id);
+        const winner = qualifierWinner ?? matchWinner;
+        const qualifiers = qualifierWinner?.qualifiers ?? 0;
+        const matches = matchWinner?.matches ?? 0;
+        const qualifierAndMatch = qualifierAndMatchWins
+            .filter(({ _id }) => _id.winner === id)
+            .reduce((sum, { qualifierAndMatch }) => (sum += qualifierAndMatch), 0);
+
+        leaderboard.push({
+            user: winner.player,
+            wins: {
+                qualifiers,
+                matches,
+                qualifierAndMatch,
+            },
+        });
+
+        const country = getCountry(winner);
+        const countryItem = countryLeaderboard.get(country);
+
+        countryLeaderboard.set(country, {
+            zone: toZone(winner.player.zone),
+            wins: {
+                qualifiers: (countryItem?.wins?.qualifiers ?? 0) + qualifiers,
+                matches: (countryItem?.wins?.matches ?? 0) + matches,
+                qualifierAndMatch: (countryItem?.wins?.qualifierAndMatch ?? 0) + qualifierAndMatch,
+            },
+        });
+
+        return leaderboards;
+    };
+
+    const [leaderboard, countryLeaderboard] = players.reduce(toLeaderboard, [[], new Map()]);
+
     const byWins = (a, b) => {
         const ma = a.wins.matches;
         const mb = b.wins.matches;
@@ -665,8 +710,8 @@ const getCompetitionRankings = async (ctx) => {
             const qb = b.wins.qualifiers;
 
             if (qa === qb) {
-                const ha = a.wins.hattricks;
-                const hb = b.wins.hattricks;
+                const ha = a.wins.qualifierAndMatch;
+                const hb = b.wins.qualifierAndMatch;
 
                 return ha === hb ? 0 : ha < hb ? 1 : -1;
             }
@@ -676,41 +721,6 @@ const getCompetitionRankings = async (ctx) => {
 
         return ma < mb ? 1 : -1;
     };
-
-    const toLeaderboard = (leaderboards, id) => {
-        const [leaderboard, countryLeaderboard] = leaderboards;
-
-        const qualifierWinner = qualifierWinners.find(({ player }) => player.accountId === id);
-        const matchWinner = matchWinners.find(({ player }) => player.accountId === id);
-        const winner = qualifierWinner ?? matchWinner;
-        const qualifiers = qualifierWinner?.qualifiers ?? 0;
-        const matches = matchWinner?.matches ?? 0;
-        const hattricks = hatTricks.filter(({ player }) => player.id === id).length;
-        const country = getCountry(winner);
-        const countryItem = countryLeaderboard.get(country);
-
-        leaderboard.push({
-            user: winner.player,
-            wins: {
-                qualifiers,
-                matches,
-                hattricks,
-            },
-        });
-
-        countryLeaderboard.set(country, {
-            zone: toZone(winner.player.zone),
-            wins: {
-                qualifiers: (countryItem?.wins?.qualifiers ?? 0) + qualifiers,
-                matches: (countryItem?.wins?.matches ?? 0) + matches,
-                hattricks: (countryItem?.wins?.hattricks ?? 0) + hattricks,
-            },
-        });
-
-        return leaderboards;
-    };
-
-    const [leaderboard, countryLeaderboard] = players.reduce(toLeaderboard, [[], new Map()]);
 
     const rankings = {
         leaderboard: leaderboard.sort(byWins),
@@ -723,7 +733,10 @@ const getCompetitionRankings = async (ctx) => {
 apiV1Trackmania.get('/campaign/:idOrName', getCampaign);
 apiV1Trackmania.get('/campaign/:year(\\d+)/:month(\\d+)', getCampaign);
 apiV1Trackmania.get('/track/:id/history', getHistory);
-apiV1Trackmania.get('/record/:id/inspect', requiresPermission(Permissions.trackmania_INSPECTION), getRecordInspection);
+apiV1Trackmania.get(
+    '/record/:id/inspect',
+    /*requiresPermission(Permissions.trackmania_INSPECTION),*/ getRecordInspection,
+);
 apiV1Trackmania.get('/player/:id/profile', getPlayerProfile);
 apiV1Trackmania.get('/replays/:id', requiresPermission(Permissions.trackmania_DOWNLOAD_FILES), getReplay);
 apiV1Trackmania.get('/rankings/:name', getRankings);
@@ -768,7 +781,7 @@ app.use(async (ctx, next) => {
         cors({
             allowMethods: ['GET', 'POST', 'PATCH'],
             origin: () => {
-                return process.env.NODE_ENV !== 'production' ? 'http://localhost:3000' : 'https://trackmania.nekz.me';
+                return process.env.NODE_ENV !== 'production' ? 'https://trackmania.dev.local:3000' : 'https://trackmania.nekz.me';
             },
             credentials: true,
         }),
@@ -809,4 +822,4 @@ app.use(async (ctx, next) => {
     .use(privateRouter.allowedMethods())
     .listen(3003);
 
-console.log('started server at http://localhost:3003');
+console.log('started server at https://trackmania.dev.local:3003');

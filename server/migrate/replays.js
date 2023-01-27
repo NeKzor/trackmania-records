@@ -44,16 +44,16 @@ db.once('open', async () => {
                 const subFolder = getReplayFolder(campaign, track, isTraining);
                 const filename = path.join(subFolder, `${track.name.replace(/ /g, '_')}_${wr.score}_${wr.user.name}.replay.gbx`);
 
-                if (fs.existsSync(path.join(newReplayFolder, filename))) {
-                    console.info('file found:', filename);
+                // if (fs.existsSync(path.join(newReplayFolder, filename))) {
+                //     console.info('file found:', filename);
 
                     await Replay
                         .findOneAndUpdate({ replay_id: wr.replay }, { filename }, { upsert: true })
                         .then(() => console.log('inserted'))
                         .catch(console.error);
-                } else {
-                    console.error('file not found:', filename);
-                }
+                // } else {
+                //     console.error('file not found:', filename);
+                // }
             }
         }
     }
