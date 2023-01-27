@@ -386,38 +386,36 @@ const generateRankings = async (isOfficial, campaignId) => {
             wrs: -1,
         });
 
-    const uniqueLeaderboard = true
-        ? []
-        : await VTrackRecord.aggregate()
-              .match({
-                  ...(campaignId ? { 'track.campaign_id': campaignId } : { 'track.isOfficial': isOfficial }),
-                  note: {
-                      $exists: false,
-                  },
-              })
-              .group({
-                  _id: {
-                      user_id: '$user.id',
-                      track_id: '$track_id',
-                  },
-                  user: {
-                      $first: '$user',
-                  },
-              })
-              .group({
-                  _id: '$user.id',
-                  wrs: {
-                      $sum: 1,
-                  },
-                  user: {
-                      $first: '$user',
-                  },
-              })
-              .sort({
-                  wrs: -1,
-              });
+    const uniqueLeaderboard = await VTrackRecord.aggregate()
+        .match({
+            ...(campaignId ? { 'track.campaign_id': campaignId } : { 'track.isOfficial': isOfficial }),
+            note: {
+                $exists: false,
+            },
+        })
+        .group({
+            _id: {
+                user_id: '$user.id',
+                track_id: '$track_id',
+            },
+            user: {
+                $first: '$user',
+            },
+        })
+        .group({
+            _id: '$user.id',
+            wrs: {
+                $sum: 1,
+            },
+            user: {
+                $first: '$user',
+            },
+        })
+        .sort({
+            wrs: -1,
+        });
 
-    const uniqueCountryLeaderboard = VTrackRecord.aggregate()
+    const uniqueCountryLeaderboard = await VTrackRecord.aggregate()
         .match({
             ...(campaignId ? { 'track.campaign_id': campaignId } : { 'track.isOfficial': isOfficial }),
             note: {

@@ -121,6 +121,7 @@ const Campaign = mongoose.model(
         id: {
             type: String,
             required: true,
+            index: true,
         },
         name: {
             type: String,
@@ -150,10 +151,12 @@ const TrackSchema = new mongoose.Schema({
         type: String,
         unique: true,
         required: true,
+        index: true,
     },
     campaign_id: {
         type: String,
         required: true,
+        index: true,
     },
     uid: {
         type: String,
@@ -191,24 +194,24 @@ const TrackSchema = new mongoose.Schema({
     },
 });
 
-const Track = mongoose.model(
-    'Track',
-    TrackSchema,
-);
+const Track = mongoose.model('Track', TrackSchema);
 
 const RecordSchema = new mongoose.Schema({
     id: {
         type: String,
         unique: true,
         required: true,
+        index: true,
     },
     track_id: {
         type: String,
         required: true,
+        index: true,
     },
     campaign_id: {
         type: String,
         required: true,
+        index: true,
     },
     date: {
         type: String,
@@ -231,6 +234,7 @@ const RecordSchema = new mongoose.Schema({
         id: {
             type: String,
             required: true,
+            index: true,
         },
         name: {
             type: String,
@@ -245,16 +249,14 @@ const RecordSchema = new mongoose.Schema({
                 },
                 zoneId: {
                     type: String,
+                    index: true,
                 },
             },
         ],
     },
 });
 
-const Record = mongoose.model(
-    'Record', RecordSchema
-    ,
-);
+const Record = mongoose.model('Record', RecordSchema);
 
 const VRecord = mongoose.model(
     'V_Record',
@@ -268,12 +270,12 @@ const VRecord = mongoose.model(
     }),
 );
 
-const VTrackRecord = Record.discriminator(
-    'V_TrackRecord',
-    new mongoose.Schema({
-        track: TrackSchema,
-    }),
-);
+const VTrackRecordSchema = RecordSchema.clone();
+VTrackRecordSchema.add({
+    track: TrackSchema,
+});
+
+const VTrackRecord = mongoose.model('V_TrackRecord', VTrackRecordSchema);
 
 const Inspection = mongoose.model(
     'Inspection',
@@ -282,6 +284,7 @@ const Inspection = mongoose.model(
             type: String,
             unique: true,
             required: true,
+            index: true,
         },
         ghostLogin: {
             type: String,
@@ -334,6 +337,7 @@ const Competition = mongoose.model(
             type: Number,
             required: true,
             unique: true,
+            index: true,
         },
         name: {
             type: String,
@@ -375,6 +379,7 @@ const CompetitionResult = mongoose.model(
             type: Number,
             unique: true,
             required: true,
+            index: true,
         },
         name: {
             type: String,
@@ -413,6 +418,7 @@ const CompetitionResult = mongoose.model(
                 winner: {
                     accountId: {
                         type: String,
+                        index: true,
                     },
                     displayName: {
                         type: String,
@@ -441,6 +447,7 @@ const CompetitionResult = mongoose.model(
                 winner: {
                     accountId: {
                         type: String,
+                        index: true,
                     },
                     displayName: {
                         type: String,
@@ -456,6 +463,7 @@ const CompetitionResult = mongoose.model(
                     {
                         accountId: {
                             type: String,
+                            index: true,
                         },
                         displayName: {
                             type: String,
@@ -473,46 +481,47 @@ const CompetitionResult = mongoose.model(
     }),
 );
 
-const Stat = mongoose.model(
-    'Stat',
-    new mongoose.Schema({
-        type: {
-            type: String,
-            required: true,
-        },
-        competition_id: {
-            type: Number,
-        },
-        user: {
-            id: {
-                type: String,
-                required: true,
-            },
-            name: {
-                type: String,
-            },
-            zone: [
-                {
-                    name: {
-                        type: String,
-                    },
-                    parentId: {
-                        type: String,
-                    },
-                    zoneId: {
-                        type: String,
-                    },
-                },
-            ],
-        },
-    }),
-);
+// const Stat = mongoose.model(
+//     'Stat',
+//     new mongoose.Schema({
+//         type: {
+//             type: String,
+//             required: true,
+//         },
+//         competition_id: {
+//             type: Number,
+//         },
+//         user: {
+//             id: {
+//                 type: String,
+//                 required: true,
+//             },
+//             name: {
+//                 type: String,
+//             },
+//             zone: [
+//                 {
+//                     name: {
+//                         type: String,
+//                     },
+//                     parentId: {
+//                         type: String,
+//                     },
+//                     zoneId: {
+//                         type: String,
+//                     },
+//                 },
+//             ],
+//         },
+//     }),
+// );
 
 const IntegrationEvent = mongoose.model(
     'IntegrationEvent',
     new mongoose.Schema({
         record_id: {
             type: String,
+            index: true,
         },
         twitter: {
             type: String,
@@ -545,7 +554,6 @@ module.exports = {
     Inspection,
     Competition,
     CompetitionResult,
-    Stat,
     IntegrationEvent,
     Games,
 };
