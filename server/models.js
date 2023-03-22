@@ -277,6 +277,171 @@ VTrackRecordSchema.add({
 
 const VTrackRecord = mongoose.model('V_TrackRecord', VTrackRecordSchema);
 
+const Ranking = mongoose.model(
+    'Ranking',
+    new mongoose.Schema({
+        isOfficial: {
+            type: Boolean,
+            required: true,
+        },
+        campaign_id: {
+            type: String,
+            required: true,
+            index: true,
+        },
+        leaderboard: [
+            {
+                user: {
+                    id: {
+                        type: String,
+                    },
+                    name: {
+                        type: String,
+                    },
+                    zone: [
+                        {
+                            name: {
+                                type: String,
+                            },
+                            parentId: {
+                                type: String,
+                            },
+                            zoneId: {
+                                type: String,
+                                index: true,
+                            },
+                        },
+                    ],
+                },
+                wrs: {
+                    type: Number,
+                },
+            },
+        ],
+        countryLeaderboard: [
+            {
+                zone: [
+                    {
+                        name: {
+                            type: String,
+                        },
+                        parentId: {
+                            type: String,
+                        },
+                        zoneId: {
+                            type: String,
+                            index: true,
+                        },
+                    },
+                ],
+                wrs: {
+                    type: Number,
+                },
+            },
+        ],
+        historyLeaderboard: [
+            {
+                user: {
+                    id: {
+                        type: String,
+                    },
+                    name: {
+                        type: String,
+                    },
+                    zone: [
+                        {
+                            name: {
+                                type: String,
+                            },
+                            parentId: {
+                                type: String,
+                            },
+                            zoneId: {
+                                type: String,
+                                index: true,
+                            },
+                        },
+                    ],
+                },
+                wrs: {
+                    type: Number,
+                },
+            },
+        ],
+        historyCountryLeaderboard: [
+            {
+                zone: [
+                    {
+                        name: {
+                            type: String,
+                        },
+                        parentId: {
+                            type: String,
+                        },
+                        zoneId: {
+                            type: String,
+                            index: true,
+                        },
+                    },
+                ],
+                wrs: {
+                    type: Number,
+                },
+            },
+        ],
+        uniqueLeaderboard: [
+            {
+                user: {
+                    id: {
+                        type: String,
+                    },
+                    name: {
+                        type: String,
+                    },
+                    zone: [
+                        {
+                            name: {
+                                type: String,
+                            },
+                            parentId: {
+                                type: String,
+                            },
+                            zoneId: {
+                                type: String,
+                                index: true,
+                            },
+                        },
+                    ],
+                },
+                wrs: {
+                    type: Number,
+                },
+            },
+        ],
+        uniqueCountryLeaderboard: [
+            {
+                zone: [
+                    {
+                        name: {
+                            type: String,
+                        },
+                        parentId: {
+                            type: String,
+                        },
+                        zoneId: {
+                            type: String,
+                            index: true,
+                        },
+                    },
+                ],
+                wrs: {
+                    type: Number,
+                },
+            },
+        ],
+    })
+);
+
 const Inspection = mongoose.model(
     'Inspection',
     new mongoose.Schema({
@@ -551,6 +716,7 @@ module.exports = {
     Record,
     VRecord,
     VTrackRecord,
+    Ranking,
     Inspection,
     Competition,
     CompetitionResult,
