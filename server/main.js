@@ -326,7 +326,7 @@ const getCampaign = async (ctx) => {
         return track;
     });
 
-    ctx.body = { ...result, stats, ...(await Ranking.findOne({ isOfficial: campaign.isOfficial, campaign_id: campaign.id })) };
+    ctx.body = { ...result, stats, ...(await Ranking.findOne({ isOfficial: campaign.isOfficial, campaign_id: campaign.id })).toObject() };
 };
 
 const getHistory = async (ctx) => {
@@ -418,7 +418,7 @@ const getRankings = async (ctx) => {
 
     const isOfficial = ctx.params.name === 'campaign';
 
-    ctx.body = await Ranking.findOne({ isOfficial, campaign_id: null });
+    ctx.body = (await Ranking.findOne({ isOfficial, campaign_id: null })).toObject();
 };
 
 const getCompetition = async (ctx) => {
