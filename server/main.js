@@ -24,6 +24,7 @@ const {
     Tag,
     Audit,
     CompetitionResult,
+    Ranking,
 } = require('./models');
 const { Replay } = require('./trackmania/models');
 
@@ -289,177 +290,6 @@ class Zones {
     static Region = 3;
 }
 
-const generateRankings = async (isOfficial, campaignId) => {
-    const leaderboard = await VRecord.aggregate()
-        .match({
-            ...(campaignId ? { 'track.campaign_id': campaignId } : { 'track.isOfficial': isOfficial }),
-        })
-        .unwind({
-            path: '$wrs',
-            preserveNullAndEmptyArrays: false,
-        })
-        .sort({
-            'wrs.date': -1,
-        })
-        .group({
-            _id: '$wrs.user.id',
-            user: {
-                $first: '$wrs.user',
-            },
-            wrs: {
-                $sum: 1,
-            },
-        })
-        .sort({
-            wrs: -1,
-        });
-
-    const countryLeaderboard = await VRecord.aggregate()
-        .match({
-            ...(campaignId ? { 'track.campaign_id': campaignId } : { 'track.isOfficial': isOfficial }),
-        })
-        .unwind({
-            path: '$wrs',
-            preserveNullAndEmptyArrays: false,
-        })
-        .sort({
-            'wrs.date': -1,
-        })
-        .group({
-            _id: {
-                $arrayElemAt: ['$wrs.user.zone.zoneId', 2],
-            },
-            zone: {
-                $first: {
-                    $slice: ['$wrs.user.zone', 3],
-                },
-            },
-            wrs: {
-                $sum: 1,
-            },
-        })
-        .sort({
-            wrs: -1,
-        });
-
-    const historyLeaderboard = await VTrackRecord.aggregate()
-        .match({
-            ...(campaignId ? { 'track.campaign_id': campaignId } : { 'track.isOfficial': isOfficial }),
-            note: {
-                $exists: false,
-            },
-        })
-        .group({
-            _id: '$user.id',
-            wrs: {
-                $sum: 1,
-            },
-            user: {
-                $first: '$user',
-            },
-        })
-        .sort({
-            wrs: -1,
-        });
-
-    const historyCountryLeaderboard = await VTrackRecord.aggregate()
-        .match({
-            ...(campaignId ? { 'track.campaign_id': campaignId } : { 'track.isOfficial': isOfficial }),
-            note: {
-                $exists: false,
-            },
-        })
-        .group({
-            _id: {
-                $arrayElemAt: ['$user.zone.zoneId', 2],
-            },
-            wrs: {
-                $sum: 1,
-            },
-            zone: {
-                $first: {
-                    $slice: ['$user.zone', 3],
-                },
-            },
-        })
-        .sort({
-            wrs: -1,
-        });
-
-    const uniqueLeaderboard = await VTrackRecord.aggregate()
-        .match({
-            ...(campaignId ? { 'track.campaign_id': campaignId } : { 'track.isOfficial': isOfficial }),
-            note: {
-                $exists: false,
-            },
-        })
-        .group({
-            _id: {
-                user_id: '$user.id',
-                track_id: '$track_id',
-            },
-            user: {
-                $first: '$user',
-            },
-        })
-        .group({
-            _id: '$user.id',
-            wrs: {
-                $sum: 1,
-            },
-            user: {
-                $first: '$user',
-            },
-        })
-        .sort({
-            wrs: -1,
-        });
-
-    const uniqueCountryLeaderboard = await VTrackRecord.aggregate()
-        .match({
-            ...(campaignId ? { 'track.campaign_id': campaignId } : { 'track.isOfficial': isOfficial }),
-            note: {
-                $exists: false,
-            },
-        })
-        .group({
-            _id: {
-                zone_id: {
-                    $arrayElemAt: ['$user.zone.zoneId', 2],
-                },
-                track_id: '$track_id',
-            },
-            zone: {
-                $first: {
-                    $slice: ['$user.zone', 3],
-                },
-            },
-        })
-        .group({
-            _id: {
-                $arrayElemAt: ['$zone.zoneId', 2],
-            },
-            wrs: {
-                $sum: 1,
-            },
-            zone: {
-                $first: '$zone',
-            },
-        })
-        .sort({
-            wrs: -1,
-        });
-
-    return {
-        leaderboard,
-        countryLeaderboard,
-        historyLeaderboard,
-        historyCountryLeaderboard,
-        uniqueLeaderboard,
-        uniqueCountryLeaderboard,
-    };
-};
-
 const getCampaign = async (ctx) => {
     const campaign = await Campaign.findOne(
         ctx.params.idOrName
@@ -496,7 +326,7 @@ const getCampaign = async (ctx) => {
         return track;
     });
 
-    ctx.body = { ...result, stats, ...(await generateRankings(campaign.isOfficial, campaign.id)) };
+    ctx.body = { ...result, stats, ...(await Ranking.findOne({ isOfficial: campaign.isOfficial, campaign_id: campaign.id })) };
 };
 
 const getHistory = async (ctx) => {
@@ -588,7 +418,7 @@ const getRankings = async (ctx) => {
 
     const isOfficial = ctx.params.name === 'campaign';
 
-    ctx.body = await generateRankings(isOfficial);
+    ctx.body = await Ranking.findOne({ isOfficial, campaign_id: null });
 };
 
 const getCompetition = async (ctx) => {
