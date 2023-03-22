@@ -9,7 +9,7 @@ const {
 
 const updateRankings = async (isOfficial, campaignId, isCombined) => {
     const leaderboard = await VRecord.aggregate()
-        .match(isCombined ? undefined : {
+        .match(isCombined ? ({}) : {
             ...(campaignId ? { 'track.campaign_id': campaignId } : { 'track.isOfficial': isOfficial }),
         })
         .unwind({
@@ -34,7 +34,7 @@ const updateRankings = async (isOfficial, campaignId, isCombined) => {
         });
 
     const countryLeaderboard = await VRecord.aggregate()
-        .match(isCombined ? undefined : {
+        .match(isCombined ? ({}) : {
             ...(campaignId ? { 'track.campaign_id': campaignId } : { 'track.isOfficial': isOfficial }),
         })
         .unwind({
@@ -63,7 +63,7 @@ const updateRankings = async (isOfficial, campaignId, isCombined) => {
         });
 
     const historyLeaderboard = await VTrackRecord.aggregate()
-        .match(isCombined ? undefined : {
+        .match(isCombined ? ({}) : {
             ...(campaignId ? { 'track.campaign_id': campaignId } : { 'track.isOfficial': isOfficial }),
             note: {
                 $exists: false,
@@ -84,7 +84,7 @@ const updateRankings = async (isOfficial, campaignId, isCombined) => {
         });
 
     const historyCountryLeaderboard = await VTrackRecord.aggregate()
-        .match(isCombined ? undefined : {
+        .match(isCombined ? ({}) : {
             ...(campaignId ? { 'track.campaign_id': campaignId } : { 'track.isOfficial': isOfficial }),
             note: {
                 $exists: false,
@@ -109,7 +109,7 @@ const updateRankings = async (isOfficial, campaignId, isCombined) => {
         });
 
     const uniqueLeaderboard = await VTrackRecord.aggregate()
-        .match(isCombined ? undefined : {
+        .match(isCombined ? ({}) : {
             ...(campaignId ? { 'track.campaign_id': campaignId } : { 'track.isOfficial': isOfficial }),
             note: {
                 $exists: false,
@@ -139,7 +139,7 @@ const updateRankings = async (isOfficial, campaignId, isCombined) => {
         });
 
     const uniqueCountryLeaderboard = await VTrackRecord.aggregate()
-        .match(isCombined ? undefined : {
+        .match(isCombined ? ({}) : {
             ...(campaignId ? { 'track.campaign_id': campaignId } : { 'track.isOfficial': isOfficial }),
             note: {
                 $exists: false,
@@ -191,22 +191,22 @@ const updateRankings = async (isOfficial, campaignId, isCombined) => {
 const main = async () => {
     const campaigns = await Campaign.find({});
     for (const campaign of campaigns) {
-        console.log('updating ranking for ', campaign.id);
-        await updateRankings(campaign.isOfficial, campaign.id);
+            await updateRankings(campaign.isOfficial, campaign.id);
+            console.log('updated ranking for ', campaign.id);
     }
 
     const official = [true];
     const totd = [false];
     const combined = [,,true];
 
-    console.log('updating official ranking');
     await updateRankings(...official);
+    console.log('updated official ranking');
 
-    console.log('updating totd ranking');
     await updateRankings(...totd);
+    console.log('updated totd ranking');
 
-    console.log('updating combined ranking');
     await updateRankings(...combined);
+    console.log('updated combined ranking');
 };
 
 main();
