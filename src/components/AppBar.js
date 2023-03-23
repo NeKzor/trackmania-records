@@ -12,8 +12,11 @@ import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
 import SwipeableDrawer from '@material-ui/core/SwipeableDrawer';
 import Toolbar from '@material-ui/core/Toolbar';
+import Tooltip from '@material-ui/core/Tooltip';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
+import DarkModeIcon from '@material-ui/icons/Brightness4';
+import LightModeIcon from '@material-ui/icons/Brightness7';
 import MenuIcon from '@material-ui/icons/Menu';
 import ProfileButton from './ProfileButton';
 import { useTitle } from '../Hooks';
@@ -32,6 +35,9 @@ const useStyles = makeStyles((theme) => ({
     menuButton: {
         marginLeft: -12,
         marginRight: 20,
+    },
+    darkModeButton: {
+        marginRight: 10,
     },
     drawer: {
         width: 240,
@@ -73,9 +79,13 @@ const pageLinks = [
 
 const AppBar = ({ location }) => {
     const {
-        state: { user },
+        state: { user, darkMode },
         dispatch,
     } = React.useContext(AppState);
+
+    const toggleDarkMode = () => {
+        dispatch({ action: 'toggleDarkMode' });
+    };
 
     const history = useHistory();
 
@@ -176,6 +186,15 @@ const AppBar = ({ location }) => {
                         </Link>
                     </Typography>
                     <div className={classes.flex} />
+                    <IconButton
+                        className={classes.darkModeButton}
+                        title="Toggle light/dark theme"
+                        color="inherit"
+                        size="small"
+                        onClick={toggleDarkMode}
+                    >
+                        {darkMode.enabled ? <LightModeIcon /> : <DarkModeIcon />}
+                    </IconButton>
                     <Fade in={true} timeout={1000}>
                         <ProfileButton user={user} onClickLogin={login} onClickLogout={logout} />
                     </Fade>
