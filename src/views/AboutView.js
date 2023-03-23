@@ -1,23 +1,11 @@
 import React from 'react';
 import Moment from 'react-moment';
-import CircularProgress from '@material-ui/core/CircularProgress';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import FormGroup from '@material-ui/core/FormGroup';
 import Link from '@material-ui/core/Link';
 import Paper from '@material-ui/core/Paper';
-import Switch from '@material-ui/core/Switch';
-import Table from '@material-ui/core/Table';
-import TableBody from '@material-ui/core/TableBody';
-import TableCell from '@material-ui/core/TableCell';
-import TableHead from '@material-ui/core/TableHead';
-import TableRow from '@material-ui/core/TableRow';
-import Tooltip from '@material-ui/core/Tooltip';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import GitHubIcon from '@material-ui/icons/GitHub';
 import ViewContent from './ViewContent';
-import AppState from '../AppState';
-import { useIsMounted } from '../Hooks';
 import { api2 } from '../Api';
 
 const useStyles = makeStyles((theme) => ({
@@ -26,22 +14,11 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-const noWrap = { whiteSpace: 'nowrap' };
-const MinTableCell = (props) => <TableCell size="small" {...props} />;
 const Padding = () => <div style={{ paddingTop: '50px' }} />;
 const SmallPadding = () => <div style={{ paddingTop: '25px' }} />;
 
 const AboutView = () => {
-    const {
-        state: { darkMode },
-        dispatch,
-    } = React.useContext(AppState);
-
     const [updates, setUpdates] = React.useState([]);
-
-    const toggleDarkMode = () => {
-        dispatch({ action: 'toggleDarkMode' });
-    };
 
     React.useEffect(() => {
         api2.getUpdates()
@@ -85,15 +62,6 @@ const AboutView = () => {
                         </>
                     );
                 })}
-                <Padding />
-                <Typography variant="h5">Theme Settings</Typography>
-                <SmallPadding />
-                <FormGroup row>
-                    <FormControlLabel
-                        control={<Switch checked={darkMode.enabled} onChange={toggleDarkMode} color="primary" />}
-                        label="Dark Mode"
-                    />
-                </FormGroup>
                 <Padding />
                 <Typography variant="h5">Source Code</Typography>
                 <SmallPadding />
