@@ -13,7 +13,7 @@ const apis = {
     united: 'tmuf.exchange',
 };
 
-const config = { headers: { 'User-Agent': 'trackmania-records-v1' } };
+const config = { headers: { 'User-Agent': 'trackmania-records-v2' } };
 
 const byDate = (a, b) => a.ReplayAt.localeCompare(b.ReplayAt);
 

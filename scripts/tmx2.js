@@ -5,7 +5,7 @@ const fetch = require('node-fetch');
 const { importJson, log } = require('./utils');
 const { tm2: { Campaign, Track, Record } } = require('./models/tmx');
 
-const config = { headers: { 'User-Agent': 'trackmania-records-v1' } };
+const config = { headers: { 'User-Agent': 'trackmania-records-v2' } };
 
 const baseApi = 'https://api.mania-exchange.com';
 
