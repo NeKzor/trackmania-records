@@ -115,7 +115,7 @@ class TrackmaniaClient {
 
         return this;
     }
-    async get(route, nadeo, nadeoEndpont = ApiEndpoint.LiveServices) {
+    async get(route, nadeo, nadeoEndpoint = ApiEndpoint.LiveServices) {
         if (!nadeo && !this.loginData) {
             throw new Error('need to be logged in first');
         }
@@ -125,7 +125,7 @@ class TrackmaniaClient {
         }
 
         const accessToken = nadeo ? this.loginDataNadeo.accessToken : this.loginData.accessToken;
-        const baseUrl = nadeo ? nadeoEndpont : ApiEndpoint.Prod;
+        const baseUrl = nadeo ? nadeoEndpoint : ApiEndpoint.Prod;
 
         const res = await fetch(baseUrl + route, {
             method: 'GET',
