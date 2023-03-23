@@ -60,20 +60,20 @@ const update = async (gameName) => {
 
             let wr = undefined;
 
-            const isStunts = type === 'Stunts';
-            const isWorldRecord = isStunts ? (score, wr) => score >= wr : (score, wr) => score <= wr;
+            const isStuntsMode = type === 'Stunts';
+            const isWorldRecord = isStuntsMode ? (score, wr) => score >= wr : (score, wr) => score <= wr;
 
             for (const record of records) {
-                const score = isStunts ? record.ReplayScore : record.ReplayTime;
+                const score = isStuntsMode ? record.ReplayScore : record.ReplayTime;
 
-                if (wr !== undefined && !isWorldRecord(score, wr)) {
-                    break;
-                }
+                if (wr === undefined || isWorldRecord(score, wr)) {
+                    wr = score;
 
-                wr = score;
+                    const entry = await Record.findOne({ id: record.ReplayId });
+                    if (entry) {
+                        continue;
+                    }
 
-                const entry = await Record.findOne({ id: record.ReplayId });
-                if (!entry) {
                     await Record.create({
                         id: record.ReplayId,
                         campaign_name: campaign.name,
