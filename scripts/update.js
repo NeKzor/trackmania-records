@@ -1,5 +1,5 @@
 const cron = require('node-cron');
-const tmx = require('./tmx_history');
+const tmx = require('./tmx');
 const tmx2 = require('./tmx2');
 const tmwii = require('./tmwii');
 const trackmania = require('./trackmania');
