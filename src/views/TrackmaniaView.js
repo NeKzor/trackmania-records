@@ -59,9 +59,9 @@ const TrackmaniaView = ({ match }) => {
     const onChangeCompetitionYear = React.useCallback(
         (event) => {
             setCompetitionYear(event.target.value);
-            setCompetitionMonth(getInitialCompetitionValue(event.target.value));
+            setCompetitionMonth(getInitialCompetitionValue(event.target.value, competition));
         },
-        [setCompetitionYear],
+        [setCompetitionYear, competition],
     );
 
     const onChangeCompetitionMonth = React.useCallback(

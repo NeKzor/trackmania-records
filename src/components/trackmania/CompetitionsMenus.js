@@ -2,33 +2,37 @@ import React from 'react';
 import moment from 'moment';
 import MenuItem from '@material-ui/core/MenuItem';
 
-let yearMenu = [];
-const totdMenu = [];
-
 const now = moment();
 const firstCotdDate = moment('2020-11-02');
-const currentMonth = firstCotdDate.clone();
+const firstSuperRoyalDate = moment('2021-07-01');
 
-while (currentMonth.diff(now) < 0) {
-    const year = currentMonth.format('YYYY');
+const getYearMenu = (competition) => {
+    let menu = [];
 
-    if (yearMenu.indexOf(year) === -1) {
-        yearMenu.push(year);
+    const currentMonth = (competition === 'superroyal' ? firstSuperRoyalDate : firstCotdDate).clone();
+
+    while (currentMonth.diff(now) < 0) {
+        const year = currentMonth.format('YYYY');
+    
+        if (menu.indexOf(year) === -1) {
+            menu.push(year);
+        }
+    
+        currentMonth.add(1, 'months');
     }
+    
+    menu.reverse();
+    
+    menu = menu.map((year) => {
+        return (
+            <MenuItem value={year} key={year}>
+                {year}
+            </MenuItem>
+        );
+    });
 
-    currentMonth.add(1, 'months');
-}
-
-totdMenu.reverse();
-yearMenu.reverse();
-
-yearMenu = yearMenu.map((year) => {
-    return (
-        <MenuItem value={year} key={year}>
-            {year}
-        </MenuItem>
-    );
-});
+    return menu;
+};
 
 const getCotdMenu = (year) => {
     const menu = [];
@@ -69,9 +73,33 @@ const getCotdTimeslotMenu = () => {
     return menu;
 };
 
-const getInitialCompetitionValue = (year) => {
-    const isFirstYear = year && year.toString() === firstCotdDate.year().toString();
-    const month = (isFirstYear ? firstCotdDate : now).clone();
+const getSuperRoyalMenu = (year) => {
+    const menu = [];
+
+    const isFirstYear = year.toString() === firstSuperRoyalDate.year().toString();
+
+    const month = isFirstYear ? firstSuperRoyalDate.clone() : moment(`${year}-01-01`);
+    const lastMonth = year.toString() === now.year().toString() ? now.month() : 11;
+
+    for (let i = month.month(); i <= lastMonth; ++i) {
+        menu.push(
+            <MenuItem value={month.month() + 1} key={menu.length}>
+                {month.format('MMMM')}
+            </MenuItem>,
+        );
+
+        month.add(1, 'month');
+    }
+
+    return menu;
+};
+
+const getSuperRoyalTimeslotMenu = getCotdTimeslotMenu;
+
+const getInitialCompetitionValue = (year, competition) => {
+    const competitionDate = competition === 'superroyal' ? firstSuperRoyalDate : firstCotdDate;
+    const isFirstYear = year && year.toString() === competitionDate.year().toString();
+    const month = (isFirstYear ? competitionDate : now).clone();
     return month.month() + 1;
 };
 
@@ -87,4 +115,12 @@ const competitionMenu = [
     </MenuItem>,
 ];
 
-export { competitionMenu, yearMenu, getCotdMenu, getCotdTimeslotMenu, getInitialCompetitionValue };
+export {
+    competitionMenu,
+    getYearMenu,
+    getCotdMenu,
+    getCotdTimeslotMenu,
+    getSuperRoyalMenu,
+    getSuperRoyalTimeslotMenu,
+    getInitialCompetitionValue,
+};

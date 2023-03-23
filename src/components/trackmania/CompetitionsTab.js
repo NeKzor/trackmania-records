@@ -12,7 +12,14 @@ import { makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import { trackmaniaApi } from '../../Api';
 import { useIsMounted } from '../../Hooks';
-import { yearMenu, competitionMenu, getCotdMenu, getCotdTimeslotMenu } from './CompetitionsMenus';
+import {
+    getYearMenu,
+    competitionMenu,
+    getCotdMenu,
+    getCotdTimeslotMenu,
+    getSuperRoyalMenu,
+    getSuperRoyalTimeslotMenu,
+} from './CompetitionsMenus';
 
 const useStyles = makeStyles((theme) => ({
     padTop: {
@@ -97,10 +104,10 @@ const CompetitionsTab = ({
                 <FormControl className={classes.formControl}>
                     <InputLabel>Year</InputLabel>
                     <Select value={year} onChange={onChangeYear}>
-                        {yearMenu}
+                        {getYearMenu(competition)}
                     </Select>
                 </FormControl>
-                {(isCotd || isSuperRoyal) && (
+                {isCotd && (
                     <>
                         <FormControl className={classes.formControl}>
                             <InputLabel>Month</InputLabel>
@@ -112,6 +119,22 @@ const CompetitionsTab = ({
                             <InputLabel>Timeslot</InputLabel>
                             <Select value={timeslot} onChange={onChangeTimeslot}>
                                 {getCotdTimeslotMenu()}
+                            </Select>
+                        </FormControl>
+                    </>
+                )}
+                {isSuperRoyal && (
+                    <>
+                        <FormControl className={classes.formControl}>
+                            <InputLabel>Month</InputLabel>
+                            <Select value={month} onChange={onChangeMonth}>
+                                {getSuperRoyalMenu(year)}
+                            </Select>
+                        </FormControl>
+                        <FormControl className={classes.formControl}>
+                            <InputLabel>Timeslot</InputLabel>
+                            <Select value={timeslot} onChange={onChangeTimeslot}>
+                                {getSuperRoyalTimeslotMenu()}
                             </Select>
                         </FormControl>
                     </>
