@@ -30,7 +30,7 @@ const CompetitionCreators = {
 };
 
 const getTimeslotFromName = (name) => {
-    if (name.slice(-2) !== '#') {
+    if (name.at(-2) !== '#') {
         // COTDs before 2021-07-21 did not have re-runs
         return CompetitionTimeslot.First;
     }
@@ -61,7 +61,10 @@ const fetchLatestCompetitions = async (trackmania) => {
         CompetitionTypes.SuperRoyal,
     ];
 
-    while (index <= 600) {
+    const maxFetchCount = 600;
+    let retries = 5;
+
+    while (index <= maxFetchCount && retries >= 0) {
         try {
             const { data } = await trackmania.competitions((latestCompetition?.id ?? 0) + index);
 
@@ -70,9 +73,9 @@ const fetchLatestCompetitions = async (trackmania) => {
             const type =
                 data.creator === CompetitionCreators.A08Forever && data.name.startsWith('A08 forever')
                     ? CompetitionTypes.A08Forever
-                    : data.creator === CompetitionCreators.CupOfTheDay && data.name.startsWith('Cup of the Day')
+                    : data.creator === CompetitionCreators.CupOfTheDay && (data.name.startsWith('COTD') || data.name.startsWith('Cup of the Day'))
                     ? CompetitionTypes.CupOfTheDay
-                    : data.creator === CompetitionCreators.SuperRoyal && data.name.startsWith('Super royal')
+                    : data.creator === CompetitionCreators.SuperRoyal && (data.name.startsWith('SRoyal') || data.name.startsWith('Super royal'))
                     ? CompetitionTypes.SuperRoyal
                     : CompetitionTypes.Unknown;
 
@@ -96,7 +99,8 @@ const fetchLatestCompetitions = async (trackmania) => {
                 month: startDate.month() + 1,
             };
 
-            await Competition.create(competition).then(() => log.info(`inserted competition ${competition.id}`));
+            await Competition.create(competition);
+            log.info(`inserted competition ${competition.id}`);
 
             if (!competitionsToFetch.includes(competition.type)) {
                 continue;
@@ -118,9 +122,8 @@ const fetchLatestCompetitions = async (trackmania) => {
                     result.month = start.month() + 1;
                     result.monthDay = start.date();
 
-                    await CompetitionResult.create(result).then(() =>
-                        log.info(`inserted competition result for ${competition.id}`),
-                    );
+                    await CompetitionResult.create(result);
+                    log.info(`inserted competition result for ${competition.id}`);
                 } else {
                     log.error(`failed to get result for competition ${competition.id}`);
                 }
@@ -128,6 +131,8 @@ const fetchLatestCompetitions = async (trackmania) => {
 
             await delay(100);
         } catch (error) {
+            --retries;
+
             if (typeof error === 'object' && error.constructor.name === 'Error') {
                 log.error(error.message, error.stack);
             } else {
@@ -140,7 +145,7 @@ const fetchLatestCompetitions = async (trackmania) => {
 };
 
 const updateCompetition = async (trackmania, type) => {
-    const competition = await Competition.findOne({ type }).sort({ id: -1 }).select('id');
+    const competition = await Competition.findOne({ type }).sort({ id: -1 });
     if (!competition) {
         log.error('failed to find latest competition');
         return;
@@ -150,9 +155,8 @@ const updateCompetition = async (trackmania, type) => {
 
     const { data } = await trackmania.competitions(competition.id);
 
-    await Competition.updateOne({ competition }, { $set: { nb_players: data.nb_players } }).then(() =>
-        log.info(`updated competition ${competition.id}`),
-    );
+    await Competition.updateOne({ competition }, { $set: { nb_players: data.nb_players } });
+    log.info(`updated competition ${competition.id}`);
 
     const result = await fetchCompetitionResult(trackmania, competition);
     if (!result) {
@@ -170,7 +174,8 @@ const updateCompetition = async (trackmania, type) => {
     result.month = start.month() + 1;
     result.monthDay = start.date();
 
-    await CompetitionResult.create(result).then(() => log.info(`inserted competition result for ${competition.id}`));
+    await CompetitionResult.create(result);
+    log.info(`inserted competition result for ${competition.id}`);
 };
 
 const fetchCompetitionResult = async (trackmania, competition) => {
@@ -317,7 +322,8 @@ const updateSuperRoyal = async (trackmania) => {
 
             await CompetitionResult.findOneAndUpdate({ competition_id: result.competition_id }, result, {
                 upsert: true,
-            }).then(() => log.info(`upserted competition result for ${competition.id}`));
+            });
+            log.info(`upserted competition result for ${competition.id}`);
         } else {
             log.error(`failed to get result for competition ${competition.id}`);
         }
@@ -359,12 +365,12 @@ if (process.argv.some((arg) => arg === '--test')) {
         await trackmania.login();
         await trackmania.loginNadeo(Audiences.NadeoClubServices);
 
+        await fetchLatestCompetitions(trackmania).catch((error) => log.info(error.message, error.stack));
+
         //await updateCompetition(trackmania, CompetitionTypes.A08Forever).catch(log.error);
         //await updateCompetition(trackmania, CompetitionTypes.CupOfTheDay).catch(log.error);
 
         //await updateSuperRoyal(trackmania);
-
-        //await fetchLatestCompetitions(trackmania).catch((error) => log.info(error.message, error.stack));
     });
 }
 
