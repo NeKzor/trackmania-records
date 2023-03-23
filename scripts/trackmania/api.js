@@ -135,7 +135,7 @@ class TrackmaniaClient {
             },
         });
 
-        log.info(`[API CALL] GET -> ${baseUrl + route} : ${res.status} `);
+        log.info(`[GET] ${baseUrl + route} : ${res.status} `);
 
         if (res.status !== 200) {
             throw new ResponseError(res);

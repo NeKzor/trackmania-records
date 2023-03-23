@@ -1,5 +1,4 @@
 const fs = require('fs');
-const moment = require('moment');
 const logger = require('./logger');
 
 const delay = (ms) => new Promise((res) => setTimeout(res, ms));

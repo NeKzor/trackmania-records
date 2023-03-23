@@ -1,6 +1,10 @@
+require('dotenv').config();
+const db = require('./db');
+const path = require('path');
 const moment = require('moment');
 const fetch = require('node-fetch');
-const { importJson, log, tryExportJson, tryMakeDir } = require('./utils');
+const { importJson, log } = require('./utils');
+const models = require('./models/tmx');
 
 const tmx = ['tmnforever', 'united', 'nations', 'sunrise', 'original'];
 
@@ -13,10 +17,12 @@ const config = { headers: { 'User-Agent': 'trackmania-records-v1' } };
 
 const byDate = (a, b) => a.ReplayAt.localeCompare(b.ReplayAt);
 
-module.exports = async (gameName, output, maxFetch = undefined) => {
+const update = async (gameName) => {
     if (!tmx.find((x) => x === gameName)) {
         throw new Error('Invalid game name.');
     }
+
+    const { Campaign, Track, Record } = models[gameName];
 
     const apiRoute = (route, trackid) => {
         const domain = apis[gameName] ?? `${gameName}.tm-exchange.com`;
@@ -25,122 +31,79 @@ module.exports = async (gameName, output, maxFetch = undefined) => {
         return `https://${domain}${route}?trackid=${trackid}&count=1000${garbage}`;
     };
 
-    const game = [];
-    const gameCampaign = importJson(__dirname + '/../games/' + gameName + '.json');
+    const gameCampaign = importJson(path.join(__dirname, '/../games/', `${gameName}.json`));
 
-    for (const campaign of gameCampaign) {
-        const tracks = [];
+    for (const { name: campaignName, tracks } of gameCampaign) {
+        const campaign = {
+            name: campaignName,
+        };
 
-        let count = 0;
-        for (const { id, name, type } of campaign.tracks) {
+        await Campaign.findOneAndUpdate({ name: campaignName }, campaign, { upsert: true });
+
+        for (const { id, name, type } of tracks) {
+            const track = {
+                id,
+                campaign_name: campaign.name,
+                name,
+                type,
+            };
+
+            await Track.findOneAndUpdate({ id }, track, { upsert: true });
+
             const url = apiRoute('/api/replays', id);
             const res = await fetch(url, config);
 
-            log.info(`[API CALL] GET -> ${url} : ${res.status} (${name})`);
+            log.info(`[GET] ${url} : ${res.status} (${name})`);
 
             const json = await res.json();
             const records = json.Results.sort(byDate);
 
-            const wrs = [];
             let wr = undefined;
 
             const isStunts = type === 'Stunts';
-            const wrCheck = isStunts ? (score, wr) => score >= wr : (score, wr) => score <= wr;
+            const isWorldRecord = isStunts ? (score, wr) => score >= wr : (score, wr) => score <= wr;
 
             for (const record of records) {
                 const score = isStunts ? record.ReplayScore : record.ReplayTime;
 
-                if (wr === undefined || wrCheck(score, wr)) {
-                    wrs.push({
+                if (wr !== undefined && !isWorldRecord(score, wr)) {
+                    break;
+                }
+
+                wr = score;
+
+                const entry = await Record.findOne({ id: record.ReplayId });
+                if (!entry) {
+                    await Record.create({
                         id: record.ReplayId,
+                        campaign_name: campaign.name,
+                        track_id: track.id,
                         user: {
                             id: record.User.UserId,
                             name: record.User.Name,
                         },
-                        score: (wr = score),
+                        score,
                         date: moment(record.ReplayAt, 'YYYY-MM-DDTHH:mm:ss').toISOString(),
                         replay: record.ReplayId,
                         validated: record.Validated,
+                        duration: 0,
+                        delta: 0,
                     });
                 }
             }
 
-            wrs.forEach((wr, idx, items) => {
-                const prev = items[idx - 1];
-                const next = wrs.slice(idx + 1).find((nextWr) => nextWr.score < wr.score);
-                wr.duration = moment(next ? next.date : undefined).diff(moment(wr.date), 'd');
-                wr.delta = Math.abs(prev ? prev.score - wr.score : 0);
-            });
-
-            tracks.push({
-                id,
-                name,
-                type,
-                wrs: wrs.filter((x) => x.score === wr),
-                history: wrs,
-            });
-
-            if (maxFetch !== undefined && count === maxFetch) break;
+            // TODO: rewrite
+            // wrs.forEach((wr, idx, items) => {
+            //     const prev = items[idx - 1];
+            //     const next = wrs.slice(idx + 1).find((nextWr) => nextWr.score < wr.score);
+            //     wr.duration = moment(next ? next.date : undefined).diff(moment(wr.date), 'd');
+            //     wr.delta = Math.abs(prev ? prev.score - wr.score : 0);
+            // });
         }
-
-        const totalTime = tracks
-            .filter((t) => t.type !== 'Stunts')
-            .map((t) => (t.wrs[0] ? t.wrs[0].score : 0))
-            .reduce((a, b) => a + b, 0);
-        const totalPoints = tracks
-            .filter((t) => t.type === 'Stunts')
-            .map((t) => (t.wrs[0] ? t.wrs[0].score : 0))
-            .reduce((a, b) => a + b, 0);
-
-        const users = tracks.map((t) => t.wrs.map((r) => r.user)).reduce((acc, val) => acc.concat(val), []);
-        const wrs = tracks.map((t) => t.wrs).reduce((acc, val) => acc.concat(val), []);
-
-        const frequency = users.reduce((count, user) => {
-            count[user.id] = (count[user.id] || 0) + 1;
-            return count;
-        }, {});
-
-        const leaderboard = Object.keys(frequency)
-            .sort((a, b) => frequency[b] - frequency[a])
-            .map((key) => ({
-                user: users.find((u) => u.id.toString() === key),
-                wrs: frequency[key],
-                duration: wrs
-                    .filter((r) => r.user.id.toString() === key)
-                    .map((r) => r.duration)
-                    .reduce((a, b) => a + b, 0),
-            }));
-
-        game.push({
-            name: campaign.name,
-            tracks,
-            stats: {
-                totalTime,
-                totalPoints,
-            },
-            leaderboard,
-        });
     }
-
-    tryMakeDir(output);
-    tryMakeDir(`${output}/${gameName}`);
-
-    const ranks = ({ name, leaderboard, tracks }) => ({ name, leaderboard, ...generateRankings(tracks) });
-    const stats = ({ name, tracks }) => ({ name, ...generateStats(tracks) });
-
-    tryExportJson(`${output}/${gameName}/latest.json`, game, true, true);
-
-    if (game.length > 1) {
-        game.unshift({
-            name: 'Overall',
-            tracks: game.map((campaign) => campaign.tracks).flat(),
-        });
-    }
-
-    tryExportJson(`${output}/${gameName}/ranks.json`, game.map(ranks), true, true);
-    tryExportJson(`${output}/${gameName}/stats.json`, game.map(stats), true, true);
 };
 
+// TODO: rewrite
 const generateRankings = (tracks) => {
     const mapWrs = tracks
         .map((track) => {
@@ -270,6 +233,7 @@ const generateRankings = (tracks) => {
     };
 };
 
+// TODO: rewrite
 const generateStats = (tracks) => {
     const mapWrs = tracks
         .map((track) => {
@@ -381,3 +345,17 @@ const generateStats = (tracks) => {
         ],
     };
 };
+
+const main = async () => {
+    for (const game of tmx) {
+        await update(game).catch((error) => log.error(error.message, error.stack));
+    }
+};
+
+if (process.argv.some((arg) => arg === '--test')) {
+    db.on('open', async () => {
+        await main();
+    });
+}
+
+module.exports = main;
