@@ -17,12 +17,4 @@ Inspired by the many many world records that people are setting every year.
 
 ## TODO
 
-- ~~Trackmania/Maniaplanet Oauth Login~~
-- ~~Replay migration~~
-- News
-- History migration
-- Edit Users
-- Add media
-- Ratelimits
-- Public backup folder
-- Trackmania² History
+[Project link](https://github.com/users/NeKzor/projects/3)
