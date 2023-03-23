@@ -25,6 +25,9 @@ const useStyles = makeStyles((theme) => ({
     padTop: {
         paddingTop: '70px',
     },
+    timeslot: {
+        paddingTop: '8px',
+    },
     formControl: {
         margin: theme.spacing(1),
         minWidth: 120,
@@ -157,6 +160,11 @@ const CompetitionsTab = ({
                 )}
                 <Grid item xs={12} className={classes.padTop}>
                     <Typography variant="h5">Overall Statistics</Typography>
+                    {(isCotd || isSuperRoyal) && timeslot !== 0 && (
+                        <Typography className={classes.timeslot} variant="body2">
+                            Timeslot #{timeslot}
+                        </Typography>
+                    )}
                     <br />
                     {stats === null && <SimpleTitle data="No data." />}
                     {stats === undefined && <LinearProgress />}
