@@ -26,11 +26,13 @@ const {
     CompetitionResult,
     Ranking,
 } = require('./models');
+const tmxModels = require('./models/tmx');
+const tmwiiModels = require('./models/tmwii');
 const { Replay } = require('./trackmania/models');
 
 const app = new Koa({ proxy: true });
-const publicRouter = new Router();
-const privateRouter = new Router();
+const authRouter = new Router();
+const apiV1Router = new Router();
 const authentication = new Router();
 const apiV1 = new Router();
 const apiV1Trackmania = new Router();
@@ -326,7 +328,11 @@ const getCampaign = async (ctx) => {
         return track;
     });
 
-    ctx.body = { ...result, stats, ...(await Ranking.findOne({ isOfficial: campaign.isOfficial, campaign_id: campaign.id })).toObject() };
+    ctx.body = {
+        ...result,
+        stats,
+        ...(await Ranking.findOne({ isOfficial: campaign.isOfficial, campaign_id: campaign.id })).toObject(),
+    };
 };
 
 const getHistory = async (ctx) => {
@@ -391,42 +397,31 @@ const getReplay = async (ctx) => {
         }
     }
 
-    ctx.body = `
-            <span>Replay not found :(</span>
-            <br>
-            <br>
-            <div style="max-width: 700px">
-                Note that older world record replays prior to 2021 have not been saved automatically by this system. They
-                also do not exist on Nadeo servers anymore since the game only stores a player's personal best, which
-                means their latest record would overwrite their previous one.
-            </div>
-            <br>
-            <span>
-                If you think this replay should be available, feel free to report this issue at:
-                <a href="https://github.com/NeKzor/trackmania-records/issues">trackmania-records/issues</a>
-            </span>
-        `;
+    ctx.body = `<span>Replay not found :(</span>
+<br>
+<br>
+<div style="max-width: 700px">
+    Note that older world record replays prior to 2021 have not been saved automatically by this system. They
+    also do not exist on Nadeo servers anymore since the game only stores a player's personal best, which
+    means their latest record would overwrite their previous one.
+</div>
+<br>
+<span>
+    If you think this replay should be available, feel free to report this issue at:
+    <a href="https://github.com/NeKzor/trackmania-records/issues">trackmania-records/issues</a>
+</span>
+`;
 
     //ctx.throw(400, JSON.stringify({ message: 'Replay not available.' }, null, 4));
 };
 
 const getRankings = async (ctx) => {
-    if (!['campaign', 'totd', 'combined'].includes(ctx.params.name)) {
-        ctx.throw(404, { message: 'Ranking name not found.' });
-        return;
-    }
-
     const isOfficial = ctx.params.name === 'campaign';
 
     ctx.body = (await Ranking.findOne({ isOfficial, campaign_id: null })).toObject();
 };
 
 const getCompetition = async (ctx) => {
-    if (!['cotd', 'a08forever', 'superroyal'].includes(ctx.params.type)) {
-        ctx.throw(404, { message: 'Competition not found.' });
-        return;
-    }
-
     const isA08Forever = ctx.params.type === 'a08forever';
     const timeslot = parseInt(ctx.params.timeslot ?? '0', 10);
 
@@ -441,11 +436,6 @@ const getCompetition = async (ctx) => {
 };
 
 const getCompetitionRankings = async (ctx) => {
-    if (!['cotd', 'a08forever', 'superroyal'].includes(ctx.params.type)) {
-        ctx.throw(404, { message: 'Competition not found.' });
-        return;
-    }
-
     const isCotd = ctx.params.type === 'cotd';
     const isSuperRoyal = ctx.params.type === 'superroyal';
     const timeslot = parseInt(ctx.params.timeslot ?? '0', 10);
@@ -603,6 +593,62 @@ const getCompetitionRankings = async (ctx) => {
     ctx.body = rankings;
 };
 
+const getGameCampaigns = async (ctx) => {
+    const { Campaign } = tmxModels[ctx.params.game];
+    const campaigns = await Campaign.find({});
+    ctx.body = campaigns;
+};
+
+const getGameCampaign = async (ctx) => {
+    const { Campaign, VRecord } = tmxModels[ctx.params.game];
+
+    const campaign = await Campaign.findOne({ name: ctx.params.campaign });
+    if (!campaign) {
+        ctx.throw(404, { message: 'Campaign not found.' });
+        return;
+    }
+
+    const records = await VRecord.aggregate()
+        .match({
+            'track.campaign_name': campaign.name,
+        })
+        .sort({
+            [campaign.isOfficial ? 'track.name' : 'track.monthDay']: 1,
+        });
+
+    const stats = {
+        totalTime: 0,
+        totalPoints: 0,
+    };
+
+    const result = campaign.toObject();
+
+    result.tracks = records.map((doc) => {
+        const track = doc.track;
+        track.wrs = doc.wrs;
+        track.history = doc.history;
+
+        stats[track.type === 'Stunts' ? 'totalPoints' : 'totalTime'] += doc.wrScore;
+
+        return track;
+    });
+
+    ctx.body = {
+        ...result,
+        stats,
+    };
+};
+
+const getGameRanks = async (ctx) => {
+    const { Campaign, Track, Record } = tmxModels[ctx.params.game];
+    ctx.body = {};
+};
+
+const getGameStats = async (ctx) => {
+    const { Campaign, Track, Record } = tmxModels[ctx.params.game];
+    ctx.body = {};
+};
+
 apiV1Trackmania.get('/campaign/:idOrName', getCampaign);
 apiV1Trackmania.get('/campaign/:year(\\d+)/:month(\\d+)', getCampaign);
 apiV1Trackmania.get('/track/:id/history', getHistory);
@@ -612,13 +658,29 @@ apiV1Trackmania.get(
 );
 apiV1Trackmania.get('/player/:id/profile', getPlayerProfile);
 apiV1Trackmania.get('/replays/:id', requiresPermission(Permissions.trackmania_DOWNLOAD_FILES), getReplay);
-apiV1Trackmania.get('/rankings/:name', getRankings);
-apiV1Trackmania.get('/competition/:type/:year(\\d+)/:month(\\d+)?/:timeslot(\\d+)?', getCompetition);
-apiV1Trackmania.get('/competition/:type/rankings/:timeslot(\\d+)?', getCompetitionRankings);
+apiV1Trackmania.get('/rankings/:name(campaign|totd|combined)', getRankings);
+apiV1Trackmania.get(
+    '/competition/:type(cotd|a08forever|superroyal)/:year(\\d+)/:month(\\d+)?/:timeslot(\\d+)?',
+    getCompetition,
+);
+apiV1Trackmania.get('/competition/:type(cotd|a08forever|superroyal)/rankings/:timeslot(\\d+)?', getCompetitionRankings);
 
-publicRouter.use('', authentication.routes(), authentication.allowedMethods());
-privateRouter.use('/api/v1', apiV1.routes(), apiV1.allowedMethods());
-privateRouter.use('/api/v1/trackmania', apiV1Trackmania.routes(), apiV1Trackmania.allowedMethods());
+authRouter.use('', authentication.routes(), authentication.allowedMethods());
+apiV1Router.use('/api/v1', apiV1.routes(), apiV1.allowedMethods());
+apiV1Router.use('/api/v1/trackmania', apiV1Trackmania.routes(), apiV1Trackmania.allowedMethods());
+apiV1Router.get('/api/v1/:game(tm2|tmwii|tmnforever|united|nations|sunrise|original)/campaigns', getGameCampaigns);
+apiV1Router.get(
+    '/api/v1/:game(tm2|tmwii|tmnforever|united|nations|sunrise|original)/campaign/:campaign',
+    getGameCampaign,
+);
+apiV1Router.get(
+    '/api/v1/:game(tm2|tmwii|tmnforever|united|nations|sunrise|original)/campaign/:campaign/ranks',
+    getGameRanks,
+);
+apiV1Router.get(
+    '/api/v1/:game(tm2|tmwii|tmnforever|united|nations|sunrise|original)/campaign/:campaign/stats',
+    getGameStats,
+);
 
 app.keys = [process.env.RANDOM_SESSION_KEY];
 
@@ -691,10 +753,10 @@ app.use(async (ctx, next) => {
         info(`[${timestamp}] ${ctx.originalUrl} : ${ctx.ip} : ${(ua ? ua : '').replace(/[\n\r]/g, '')}`);
         await next();
     })
-    .use(publicRouter.routes())
-    .use(publicRouter.allowedMethods())
-    .use(privateRouter.routes())
-    .use(privateRouter.allowedMethods())
+    .use(authRouter.routes())
+    .use(authRouter.allowedMethods())
+    .use(apiV1Router.routes())
+    .use(apiV1Router.allowedMethods())
     .listen(3003);
 
 console.log('started server at https://trackmania.dev.local:3003');

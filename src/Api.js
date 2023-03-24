@@ -1,22 +1,3 @@
-class Api {
-    constructor() {
-        this.baseApi =
-            process.env.NODE_ENV === 'development'
-                ? 'http://localhost:8081'
-                : 'https://raw.githubusercontent.com/NeKzBot/tmx-records/api';
-    }
-    async request(game, file) {
-        const res = await fetch(`${this.baseApi}/${game}/${file || 'latest'}.json`);
-        console.log(`GET ${res.url} (${res.status})`);
-
-        if (!res.ok) {
-            throw res;
-        }
-
-        return await res.json();
-    }
-}
-
 class ApiV2 {
     constructor() {
         this.baseApi = process.env.NODE_ENV === 'development' ? '' : 'https://api.nekz.me';
@@ -89,6 +70,36 @@ class ApiV2 {
     async getTags() {
         const res = await fetch(`${this.baseApi}/api/v1/tags`, this.options);
         console.log(`[API] GET ${res.url} (${res.status})`);
+
+        if (!res.ok) {
+            throw res;
+        }
+
+        return await res.json();
+    }
+    async getGameCampaign(game, campaign) {
+        const res = await fetch(`${this.baseApi}/api/v1/${game}/campaign/${campaign}`);
+        console.log(`GET ${res.url} (${res.status})`);
+
+        if (!res.ok) {
+            throw res;
+        }
+
+        return await res.json();
+    }
+    async getGameRanks(game, campaign) {
+        const res = await fetch(`${this.baseApi}/api/v1/${game}/campaign/${campaign}/ranks`);
+        console.log(`GET ${res.url} (${res.status})`);
+
+        if (!res.ok) {
+            throw res;
+        }
+
+        return await res.json();
+    }
+    async getGameStats(game, campaign) {
+        const res = await fetch(`${this.baseApi}/api/v1/${game}/campaign/${campaign}/stats`);
+        console.log(`GET ${res.url} (${res.status})`);
 
         if (!res.ok) {
             throw res;
@@ -203,4 +214,3 @@ class TrackmaniaApi {
 
 export const api2 = new ApiV2();
 export const trackmaniaApi = new TrackmaniaApi();
-export default new Api();
