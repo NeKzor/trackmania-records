@@ -15,7 +15,7 @@ import SimpleTitle from '../components/SimpleTitle';
 import RecordsChart from '../components/RecordsChart';
 import { makeStyles } from '@material-ui/core';
 import FloatingActionButton from '../components/FloatingActionButton';
-import Api from '../Api';
+import { api2 } from '../Api';
 import { useIsMounted } from '../Hooks';
 import ViewContent from './ViewContent';
 
@@ -33,8 +33,7 @@ const GameView = ({ match }) => {
     const [tab, setTab] = React.useState(0);
 
     const page = match.params[0];
-    const date = match.params.date;
-    const useLiveDuration = date === undefined || date === 'latest';
+    const useLiveDuration = true;
 
     React.useEffect(() => {
         setTab(0);
@@ -42,7 +41,7 @@ const GameView = ({ match }) => {
     }, [page]);
 
     React.useEffect(() => {
-        Api.request(page, date)
+        api2.getGameCampaign(page)
             .then((game) => {
                 if (game[0] && game[0].tracks[0].wrs) {
                     for (const campaign of game) {
@@ -93,7 +92,7 @@ const GameView = ({ match }) => {
                 setGame(game);
             })
             .catch(console.error);
-    }, [isMounted, page, date, useLiveDuration]);
+    }, [isMounted, page, useLiveDuration]);
 
     const handleTab = (_, newValue) => {
         setTab(newValue);

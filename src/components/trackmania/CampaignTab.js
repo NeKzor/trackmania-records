@@ -12,7 +12,7 @@ import SimpleTitle from '../SimpleTitle';
 import UniqueRecordsChart from '../UniqueRecordsChart';
 import { makeStyles } from '@material-ui/core/styles';
 import MenuItem from '@material-ui/core/MenuItem';
-import Api, { api2, trackmaniaApi } from '../../Api';
+import { api2, trackmaniaApi } from '../../Api';
 import { useIsMounted } from '../../Hooks';
 import AppState from '../../AppState';
 import { Permissions } from '../../models/Permissions';

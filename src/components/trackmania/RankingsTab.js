@@ -10,7 +10,7 @@ import RecordsChart from '../RecordsChart';
 import UniqueRecordsChart from '../UniqueRecordsChart';
 import RankingsTable from '../RankingsTableTrackmania';
 import SimpleTitle from '../SimpleTitle';
-import Api, { trackmaniaApi } from '../../Api';
+import { trackmaniaApi } from '../../Api';
 import { useIsMounted } from '../../Hooks';
 
 const useStyles = makeStyles((theme) => ({

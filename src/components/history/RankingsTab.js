@@ -10,7 +10,7 @@ import RecordsChart from '../RecordsChart';
 import UniqueRecordsChart from '../UniqueRecordsChart';
 import RankingsTable from '../RankingsTable';
 import SimpleTitle from '../SimpleTitle';
-import Api from '../../Api';
+import { api2 } from '../../Api';
 import { useIsMounted } from '../../Hooks';
 
 const useStyles = makeStyles((theme) => ({
@@ -46,7 +46,7 @@ const RankingsTab = ({ gameName }) => {
     React.useEffect(() => {
         setGame(undefined);
 
-        Api.request(gameName, 'ranks')
+        api2.getGameRanks(gameName)
             .then((game) => {
                 if (isMounted.current) {
                     setGame(game);

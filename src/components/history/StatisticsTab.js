@@ -13,7 +13,7 @@ import LongestLasting from '../LongestLasting';
 import LargestImprovement from '../LargestImprovement';
 import RankingsTable from '../RankingsTableTrackmania';
 import SimpleTitle from '../SimpleTitle';
-import Api from '../../Api';
+import { api2 } from '../../Api';
 import { useIsMounted, useRenders } from '../../Hooks';
 
 const useStyles = makeStyles((theme) => ({
@@ -59,7 +59,7 @@ const StatisticsTab = ({ gameName }) => {
     React.useEffect(() => {
         setGame(undefined);
 
-        Api.request(gameName, 'stats')
+        api2.getGameStats(gameName)
             .then((game) => {
                 if (isMounted.current) {
                     setGame(game);

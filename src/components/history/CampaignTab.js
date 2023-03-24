@@ -12,8 +12,9 @@ import SimpleTitle from '../SimpleTitle';
 import UniqueRecordsChart from '../UniqueRecordsChart';
 import { makeStyles } from '@material-ui/core/styles';
 import MenuItem from '@material-ui/core/MenuItem';
-import Api from '../../Api';
+import { api2 } from '../../Api';
 import { useIsMounted } from '../../Hooks';
+import { campaignMenu, getInitialCampaignValue } from './CampaignMenu';
 
 const useStyles = makeStyles((theme) => ({
     padTop: {
@@ -29,7 +30,7 @@ const CampaignTab = ({ gameName }) => {
     const isMounted = useIsMounted();
 
     const [game, setGame] = React.useState(undefined);
-    const [campaignName, setCampaign] = React.useState(undefined);
+    const [campaignName, setCampaign] = React.useState(getInitialCampaignValue(gameName));
     const [rankingsType] = React.useState('leaderboard');
 
     const onChangeCampaign = React.useCallback(
@@ -42,38 +43,37 @@ const CampaignTab = ({ gameName }) => {
     React.useEffect(() => {
         setGame(undefined);
 
-        Api.request(gameName)
-            .then((campaigns) => {
+        api2.getGameCampaign(gameName, campaignName)
+            .then((campaign) => {
                 const game = [];
-                for (const campaign of campaigns) {
-                    const rows = [];
-                    for (const track of campaign.tracks) {
-                        for (const wr of track.wrs) {
-                            const isLast = wr === track.wrs[track.wrs.length - 1];
-                            const history = isLast && (track.history || []).length > 1 ? track.history : undefined;
+                const rows = [];
 
-                            rows.push({
-                                track: {
-                                    id: track.id,
-                                    name: track.name.replace(/(\$[0-9a-fA-F]{3}|\$[WNOITSGZBEMwnoitsgzbem]{1})/g, ''),
-                                    isFirst: wr === track.wrs[0],
-                                    isLast,
-                                    records: track.wrs.length,
-                                    history,
-                                    type: track.type,
-                                },
-                                ...wr,
-                            });
-                        }
+                for (const track of campaign.tracks) {
+                    for (const wr of track.wrs) {
+                        const isLast = wr === track.wrs[track.wrs.length - 1];
+                        const history = isLast && (track.history || []).length > 1 ? track.history : undefined;
+
+                        rows.push({
+                            track: {
+                                id: track.id,
+                                name: track.name.replace(/(\$[0-9a-fA-F]{3}|\$[WNOITSGZBEMwnoitsgzbem]{1})/g, ''),
+                                isFirst: wr === track.wrs.at(0),
+                                isLast,
+                                records: track.wrs.length,
+                                history,
+                                type: track.type,
+                            },
+                            ...wr,
+                        });
                     }
-    
-                    campaign.tracks = rows;
-                    game.push(campaign);
                 }
+
+                campaign.tracks = rows;
+                game.push(campaign);
 
                 if (isMounted.current) {
                     setGame(game);
-                    setCampaign(game[0].name);
+                    setCampaign(game.at(0)?.name);
                 }
             })
             .catch((error) => {
@@ -83,7 +83,7 @@ const CampaignTab = ({ gameName }) => {
                     setGame(null);
                 }
             });
-    }, [isMounted, gameName, setCampaign, setGame]);
+    }, [isMounted, gameName, campaignName, setCampaign, setGame]);
 
     const classes = useStyles();
 
@@ -91,11 +91,11 @@ const CampaignTab = ({ gameName }) => {
 
     return (
         <>
-            {(campaignName && game && game.length > 1) && (
+            {(campaignName && campaignMenu[campaignName] && campaignMenu[campaignName].length > 1) && (
                 <FormControl className={classes.formControl}>
                     <InputLabel>Campaign</InputLabel>
                     <Select value={campaignName} onChange={onChangeCampaign}>
-                        {game.map((campaign) => {
+                        {campaignMenu[campaignName].map((campaign) => {
                             return (
                                 <MenuItem value={campaign.name} key={campaign.name}>
                                     {campaign.name}
