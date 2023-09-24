@@ -26,7 +26,7 @@ const useStyles = makeStyles((theme) => ({
 
 const branches = [
     { repo: 'NeKzor/trackmania-records', branch: 'master' },
-    { repo: 'NeKzBot/tmx-records', branch: 'api' },
+    { repo: 'NeKzBot/trackmania-records', branch: 'api' },
     { repo: 'NeKzor/trackmania-records', branch: 'gh-pages' },
 ];
 

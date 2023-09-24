@@ -3,7 +3,7 @@ class Api {
         this.baseApi =
             process.env.NODE_ENV === 'development'
                 ? 'http://localhost:8081'
-                : 'https://raw.githubusercontent.com/NeKzBot/tmx-records/api';
+                : 'https://raw.githubusercontent.com/NeKzBot/trackmania-records/api';
     }
     async request(game, file) {
         const res = await fetch(`${this.baseApi}/${game}/${file || 'latest'}.json`);

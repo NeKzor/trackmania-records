@@ -40,7 +40,7 @@ const publish = () => {
     ghPages.publish(
         output,
         {
-            repo: `https://${process.env.GITHUB_TOKEN}@github.com/NeKzBot/tmx-records.git`,
+            repo: `https://${process.env.GITHUB_TOKEN}@github.com/NeKzBot/trackmania-records.git`,
             silent: true,
             branch: 'api',
             message: 'Update',
