@@ -5,8 +5,8 @@
     "scripts": {
         "predeploy": "npm run build",
         "deploy": "gh-pages -d build -m Update",
-        "start": "react-scripts start",
-        "build": "react-scripts build && cp build/index.html build/404.html",
+        "start": "NODE_OPTIONS=--openssl-legacy-provider react-scripts start",
+        "build": "NODE_OPTIONS=--openssl-legacy-provider react-scripts build && cp build/index.html build/404.html",
         "test": "react-scripts test --env=jsdom",
         "clone:api": "git clone --single-branch --branch api --depth 1 https://github.com/NeKzBot/trackmania-records api",
         "clone:build": "git clone --single-branch --branch gh-pages https://github.com/NeKzor/trackmania-records build",
