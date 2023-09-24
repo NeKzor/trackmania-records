@@ -10,6 +10,7 @@ const DiscordIntegration = require('./trackmania/discord');
 const TwitterIntegration = require('./trackmania/twitter');
 const dumpCompetitions = require('./trackmania_competitions');
 const { Replay } = require('./trackmania/models');
+const { TrackmaniaOAuthClient } = require('./trackmania/oauth');
 
 const sessionFile = path.join(__dirname, '/../.login');
 const gameFile = path.join(__dirname, '../games/trackmania.json');
@@ -32,6 +33,11 @@ const loadSession = (client) => {
 const saveSession = (client) => {
     fs.writeFileSync(sessionFile, JSON.stringify(client.loginData));
 };
+
+const oauthClient = new TrackmaniaOAuthClient({
+    id: process.env.TRACKMANIA_CLIENT_ID,
+    secret: process.env.TRACKMANIA_CLIENT_SECRET,
+});
 
 let trackmania = new TrackmaniaClient();
 let zones = null;
@@ -397,7 +403,6 @@ const ban = (account, score, track) => {
                 user: {
                     id: accountInfo.accountId,
                     name: accountInfo.displayName,
-                    firstLoginAt: accountInfo.timestamp,
                 },
                 score,
                 track,
@@ -407,17 +412,20 @@ const ban = (account, score, track) => {
         if (typeof account !== 'string') {
             sendBanAlert(account);
         } else {
-            trackmania.accounts([accountId])
-            .then((account) => {
-                const [accountInfo] = account.collect();
+            oauthClient.displayNames([accountId])
+                .then((displayNames) => {
 
-                log.info('accountInfo', accountId, accountInfo);
+                    log.info('ban(displayNames)', displayNames);
 
-                if (accountInfo) {
-                    sendBanAlert(accountInfo);
-                }
-            });
-        }
+                    const displayName = displayNames[accountId];
+                    if (displayName) {
+                        sendBanAlert({
+                            accountId,
+                            displayName,
+                        });
+                    }
+                });
+            }
     } catch (oops) {
         log.error(oops);
     }
@@ -499,15 +507,16 @@ const resolveRecords = async (track, currentCampaign, latestCampaign, isTraining
                 continue;
             }
 
-            const [account] = (await trackmania.accounts([accountId])).collect();
+            const displayNames = await oauthClient.displayNames([accountId]);
 
-            /* ban if account is too young */
-            if (track.isOfficial && moment().diff(moment(account.timestamp), 'hours') <= (24 * 7)) {
-                if (!gameInfo.whitelist.find((whitelistId) => whitelistId === accountId)) {
-                    ban(accountId, score, track);
-                    continue;
-                }
-            }
+            // Fck you Nando for removing the timestamp too!!
+            // /* ban if account is too young */
+            // if (track.isOfficial && moment().diff(moment(account.timestamp), 'hours') <= (24 * 7)) {
+            //     if (!gameInfo.whitelist.find((whitelistId) => whitelistId === accountId)) {
+            //         ban(accountId, score, track);
+            //         continue;
+            //     }
+            // }
 
             wrScore = score;
 
@@ -530,7 +539,7 @@ const resolveRecords = async (track, currentCampaign, latestCampaign, isTraining
                 user: {
                     id: accountId,
                     zone: zones.search(zoneId),
-                    name: account ? account.displayName : '',
+                    name: displayNames[accountId] ?? '',
                 },
                 date: record ? record.timestamp : '',
                 replay: record ? record.url.slice(record.url.lastIndexOf('/') + 1) : '',
