@@ -1,0 +1,45 @@
+name: GitHub Pages
+
+on:
+  push:
+    branches: ["master"]
+    paths:
+    - 'src/publc/public/**'
+    - 'src/**/*.ts'
+    - 'src/**/*.tsx'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    runs-on: ubuntu-latest
+    if: "!contains(github.event.head_commit.message, '[ci skip]')"
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+    - name: Install Dependencies
+      run: npm install
+      working-directory: ./src
+    - name: Build
+      run: npm run build
+      working-directory: ./src
+    - name: Upload artifact
+      uses: actions/upload-pages-artifact@v2
+      working-directory: ./src
+      with:
+        path: "build"
+    - name: Deploy to GitHub Pages
+      id: deployment
+      uses: actions/deploy-pages@v2

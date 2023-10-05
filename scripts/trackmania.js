@@ -7,6 +7,7 @@ const { UbisoftClient, TrackmaniaClient, Audiences, Campaigns } = require('./tra
 const { log, tryMakeDir } = require('./utils');
 const { updateCompetition, CompetitionTypes } = require('./trackmania_competitions');
 const { Replay, Audit, Tag, Campaign, Track, Record, IntegrationEvent } = require('./trackmania/models');
+const { TrackmaniaOAuthClient } = require('./trackmania/oauth');
 
 const sessionFile = path.join(__dirname, '/../.login');
 const replayFolder = process.env.TRACKMANIA_REPLAYS_FOLDER || path.join(__dirname, '../replays');
@@ -28,6 +29,11 @@ const loadSession = (client) => {
 const saveSession = (client) => {
     fs.writeFileSync(sessionFile, JSON.stringify(client.loginData));
 };
+
+const oauthClient = new TrackmaniaOAuthClient({
+    id: process.env.TRACKMANIA_CLIENT_ID,
+    secret: process.env.TRACKMANIA_CLIENT_SECRET,
+});
 
 let trackmania = new TrackmaniaClient();
 let zones = null;
@@ -365,20 +371,16 @@ const resolveRecords = async (campaign, track, isTraining) => {
                 continue;
             }
 
-            const [account] = (await trackmania.accounts([accountId])).collect();
+            const displayNames = await oauthClient.displayNames([accountId]);
 
-            const isAccountTooYoung = account ? moment().diff(moment(account.timestamp), 'hours') <= 24 * 7 : false;
-            if (track.isOfficial && isAccountTooYoung) {
-                if (!unbannedUsers.find((user) => user.user_id === accountId)) {
-                    ban(
-                        accountId,
-                        score,
-                        track,
-                        `Account is too young (${moment(account.timestamp).format('YYYY-MM-DD')}`,
-                    );
-                    continue;
-                }
-            }
+            // Fck you Nando for removing the timestamp too!!
+            // /* ban if account is too young */
+            // if (track.isOfficial && moment().diff(moment(account.timestamp), 'hours') <= (24 * 7)) {
+            //     if (!gameInfo.whitelist.find((whitelistId) => whitelistId === accountId)) {
+            //         ban(accountId, score, track);
+            //         continue;
+            //     }
+            // }
 
             wrScore = score;
 
@@ -407,7 +409,7 @@ const resolveRecords = async (campaign, track, isTraining) => {
                 user: {
                     id: accountId,
                     zone: zones.search(zoneId),
-                    name: account?.displayName ?? '',
+                    name: displayNames[accountId] ?? '',
                 },
                 date: record ? record.timestamp : '',
                 replay: replay_id,

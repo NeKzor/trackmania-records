@@ -1,0 +1,151 @@
+{
+    "cheaters": [
+        "d8fbbc5e-bf32-4a92-bc75-8f4a37c67408",
+        "74bd19c1-72d9-4187-8185-86e2a182bede",
+        "509f80c0-f8c3-4f57-acb8-bbbdc1346020",
+        "eb5347e1-7c69-42ea-b754-4963dea149a9",
+        "445621f8-7d34-455c-820a-7c688ec7a4ee",
+        "d8298b26-efe1-469a-8e61-bec45bef955f",
+        "23843607-5149-4e14-9fa7-5b961d08fa2a",
+        "387e0b4c-9d79-41d1-badd-d57c07638cf4",
+        "e241899d-c942-47c2-a2b0-2b381613e24c",
+        "97936bad-2e13-42e9-bca6-b42fb8d2d9c2",
+        "ff5edc6a-b5f4-47c1-b4cc-112636951717",
+        "e8fef014-a7b1-4ec3-81a5-bbf62f9904ad",
+        "dfc024d9-aed0-4793-8314-1678765525c0",
+        "2b326ace-d167-43ad-9307-8b60b23c2d58",
+        "86741af0-8490-48bd-8541-2b5c056a3a61",
+        "1acc00bf-5c43-4e5c-ba6b-1614ff2f6af4",
+        "9f03b536-4e1c-4799-a9c7-a393154f397a",
+        "84536ad4-e159-48f8-8fb8-09745f80d747",
+        "4c3f23df-ac6e-4c88-85c2-cfca3eb7aa32",
+        "a392c20e-19f3-41cc-8718-79d5e4fec110",
+        "91f9f565-fdd1-4ed1-b981-2861b9ea4002",
+        "9ef0e205-02d0-41a5-961d-4a43e07f602d",
+        "cdaf2960-1990-4df9-b71a-5dc5fef061a0",
+        "2f19a72d-51a9-4646-869b-4927b907b3ba",
+        "9d25d049-543b-433e-82a1-2df1f959b107",
+        "47fcc6e4-9224-4225-b81c-f67fff35f04e",
+        "7715c88a-6389-49f2-86be-ded574545a3d",
+        "2ce20243-aed0-4480-a41e-54ae80f4211a",
+        "4273e9ba-4e45-4f74-974a-7acdc6d5c52a",
+        "c8b9ecfc-459e-4070-89a5-6e5ed14e4e68",
+        "55d77be3-3dd0-4895-b963-39cb2bb6a967",
+        "30377a82-ef34-4bbf-a4e6-4b12200ed19b",
+        "8f405130-db6b-4a7f-b93b-be569aebfdf3",
+        "15c675a6-b6d9-494c-abf5-017d65e9bd00",
+        "5681e7b5-1cc9-43f9-a103-49954eab3ef4",
+        "c20a28bf-d4ca-4e7e-ad51-115a5ffbc42a",
+        "0f929f7a-5b81-4278-8192-b6e1b6ac8ee6",
+        "45ff4aea-d50a-4259-89a5-6e537b6a694d",
+        "4f33ade5-5b3a-4f13-ae51-a77b7ec7932d",
+        "e3c9d0a0-26b0-471e-b720-17a99855b187",
+        "fe2ad0a1-b04d-4128-8bc1-917a976f4311",
+        "5c15ec6e-c7f6-45a8-8353-218530f17ee4",
+        "4da2e1c9-b885-41ae-9381-2d36dc4ad38b",
+        "14ad0861-eb7f-413a-b9c2-533643a0ed50",
+        "37422aca-3a05-40ee-a872-88bf94eace84",
+        "4adce001-15d0-4587-bf47-5a1ea1d02b3d",
+        "c8a6ac6d-6847-4dbd-b052-6475da149518",
+        "ecdef51b-da2d-4be5-a43d-93ceb5f63106",
+        "fb07e7ab-9d4f-4a9a-baba-1202a2b981ce",
+        "d8c1b1f7-4c78-4633-933a-5d7ef7dcff5d",
+        "8e1b9ae2-b88c-49ba-8065-2f006fcd3400",
+        "1f00cc4a-7b2c-4daa-80d4-8877a7cefc7b",
+        "6fb21e34-5dd6-4b03-81cb-4c030b64e328",
+        "c7f9f69a-74ce-4490-b330-2e270b9608be",
+        "f6980a62-fa97-4954-8359-9299f06ab6c2",
+        "94568d5a-8a8e-4ec7-8802-44f4d78443c4",
+        "14c8433c-c6b0-4634-93a6-d469718ed24f",
+        "e3ca08bf-3b29-4bfd-8e30-e0063bb6c21c",
+        "ab574f67-52a9-4e07-b837-2e9ef1918554",
+        "e41124f9-ba68-42a7-97f4-daa47a6af4cb",
+        "914ac31d-a851-4980-acfc-fc5aae4d482f",
+        "8cf2540c-e3f0-4f51-bab9-a9f2b30adeb0"
+    ],
+    "whitelist": [
+        "9a097636-26b4-4752-98bc-e266345b2cc4"
+    ],
+    "training": {
+        "name": "Training",
+        "seasonUid": "NLS-QgdzyWx3sNU7IOGuJGKVBKkps6rMiNTGesM",
+        "startTimestamp": 1593622800,
+        "playlist": [
+            {
+                "mapUid": "olsKnq_qAghcVAnEkoeUnVHFZei"
+            },
+            {
+                "mapUid": "btmbJWADQOS20ginP9DJ0i8sh3f"
+            },
+            {
+                "mapUid": "lNP8O0sqatiHqecUXrhH65rpQ8a"
+            },
+            {
+                "mapUid": "ga3zTKvSo7yJca60Ry_Z003L031"
+            },
+            {
+                "mapUid": "xSOA3Fs8k3bGNHFQhwskyAjN3Nh"
+            },
+            {
+                "mapUid": "LcBa4OZLeElnJksgbBEpQggitsh"
+            },
+            {
+                "mapUid": "vTqUpE1iiXupNABp5Mfx0YOf33j"
+            },
+            {
+                "mapUid": "OeJCW8sHENIcYscK8o5zVHAxADd"
+            },
+            {
+                "mapUid": "us4gaCDQSxmjVMtp5nYfReezTqh"
+            },
+            {
+                "mapUid": "DyNBxhQ6006991FwvVOaBX9Gcv1"
+            },
+            {
+                "mapUid": "PhJGvGjkCaw299rBhVsEhNJKX1"
+            },
+            {
+                "mapUid": "AJFJd6yABuSMfgJGc8UpWRwUVa0"
+            },
+            {
+                "mapUid": "Nw8BZ8CtZZcFO547WnqdPzp8ydi"
+            },
+            {
+                "mapUid": "eOA1X_xnvKbdDSuyymweOZzSrQ3"
+            },
+            {
+                "mapUid": "0hI2P3y8sENgIkruI_X7s3efES"
+            },
+            {
+                "mapUid": "RlZ2HVhAwN5nD7I1lLciKhPsbb7"
+            },
+            {
+                "mapUid": "EnMnBg3D4Uvb5bz8VLod73z6n47"
+            },
+            {
+                "mapUid": "TVUF91YlnL78BFJwG5ADkNlymqe"
+            },
+            {
+                "mapUid": "SsCdL6nGC__n8UrYnsX8xaqnjCh"
+            },
+            {
+                "mapUid": "Yakz8xDlVWDfVCfXxW2_paCaHil"
+            },
+            {
+                "mapUid": "f1tlOzXvdELVhwrhPpoJDsg9xs8"
+            },
+            {
+                "mapUid": "OHRxJCE_cKxEGOGmhF9z6Hf0YZb"
+            },
+            {
+                "mapUid": "qQEgNKxDhXtTsxWYRW0V4pvpER7"
+            },
+            {
+                "mapUid": "1rwAkLrbqhN47zCsVvJJFJimlcf"
+            },
+            {
+                "mapUid": "TkyKsOEG7gHqVqjjc3A1Qj5rPgi"
+            }
+        ]
+    }
+}

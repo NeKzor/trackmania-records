@@ -149,9 +149,6 @@ class TrackmaniaClient {
     async season(id) {
         return await Season.default(this).update(id);
     }
-    async accounts(ids) {
-        return await Accounts.default(this).update(ids);
-    }
     async maps(ids) {
         return await Maps.default(this).update(ids);
     }
@@ -289,35 +286,6 @@ class Season extends Entity {
     *[Symbol.iterator]() {
         for (const season of this.data.seasonMapList) {
             yield season;
-        }
-    }
-}
-
-class Accounts extends Entity {
-    async update(ids) {
-        if (ids) this.ids = ids;
-
-        if (!this.ids) {
-            throw new Error('missing ids parameter');
-        }
-
-        this.ids = this.ids.filter((id) => id);
-
-        if (this.ids.length > 10) {
-            throw new Error('cannot fetch more than 10 accounts');
-        }
-
-        if (this.ids.length > 0) {
-            this.data = await this.client.get('/accounts/displayNames?accountIdList=' + this.ids.join(','));
-        } else {
-            this.data = [];
-        }
-
-        return this;
-    }
-    *[Symbol.iterator]() {
-        for (const account of this.data) {
-            yield account;
         }
     }
 }
@@ -636,7 +604,6 @@ module.exports = {
     Entity,
     Zones,
     Season,
-    Accounts,
     Maps,
     Campaigns,
     Leaderboard,

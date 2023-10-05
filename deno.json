@@ -1,0 +1,44 @@
+{
+  "tasks": {
+    "check": "deno fmt --check && deno lint",
+    "server:test": "docker exec -ti tmr-server deno task test",
+    "server:debug": "docker exec -ti tmr-server sh",
+    "server:restart": "docker container restart tmr-server",
+    "server:stop": "docker container stop tmr-server",
+    "proxy:debug": "docker exec -ti tmr-proxy sh",
+    "proxy:restart": "docker container restart tmr-proxy",
+    "proxy:stop": "docker container stop tmr-proxy",
+    "build": "docker compose build",
+    "up": "docker compose up",
+    "down": "docker compose down",
+    "db": "docker exec -ti tmr-db mongo",
+    "db:debug": "docker exec -ti tmr-db bash",
+    "db:restart": "docker container restart tmr-db",
+    "db:stop": "docker container stop tmr-db",
+    "db:dump": "docker exec tmr-db sh -c 'exec mongodump -d tmr --archive --gzip' > /backups/${MONGO_INITDB_DATABASE}_dump_$(date +%Y-%m-%d-%H.%M.%S).mongo.gz",
+    "dbo:debug": "docker exec -ti tmr-dbi bash",
+    "dbo:restart": "docker container restart tmr-dbi",
+    "dbo:stop": "docker container stop tmr-dbi",
+    "setup": "deno run --allow-read=. --allow-write=. --allow-run=mkcert setup.ts",
+    "prod:sync": "deno run --reload --allow-read=. --allow-write=. --allow-net=raw.githubusercontent.com https://raw.githubusercontent.com/NeKzor/trackmania-records/master/setup.ts --prod --sync",
+    "prod:update": "docker pull nekz/tmr-server && deno task prod:sync && deno task up -d --force-recreate"
+  },
+  "lint": {
+    "include": [
+        "server"
+    ]
+  },
+  "fmt": {
+    "useTabs": false,
+    "lineWidth": 120,
+    "indentWidth": 2,
+    "singleQuote": true,
+    "proseWrap": "preserve",
+    "include": [
+      "server"
+    ]
+  },
+  "compilerOptions": {
+    "noUncheckedIndexedAccess": true
+  }
+}
