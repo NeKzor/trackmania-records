@@ -3,6 +3,12 @@
 
 import RankingsChart from "@/components/rankings-chart";
 import RankingsTable from "@/components/rankings-table";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: 'Rankings',
+  description: 'World Record Rankings',
+};
 
 export default function ChangelogPage() {
   return (

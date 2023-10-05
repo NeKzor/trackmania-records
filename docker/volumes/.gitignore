@@ -1,0 +1,6 @@
+backups/
+mongo/
+logs/
+ssl/
+.env.server
+entrypoint.server.sh

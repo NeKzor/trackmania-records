@@ -1,0 +1,28 @@
+version: "3.8"
+services:
+  server:
+    image: "${PROJECT_NAME}-server"
+    build:
+      context: .
+      target: server
+    container_name: "${PROJECT_NAME}-server"
+    restart: always
+    links:
+      - database:tmr.database
+    volumes:
+      - ./logs/server:/logs/server:rw
+      - ./storage:/storage:rw
+      - ./.env.server:/app/.env:rw
+      - ./entrypoint.server.sh:/app/entrypoint.sh:rw
+  database:
+    image: mongo:7.0.2-jammy
+    container_name: "${PROJECT_NAME}-db"
+    restart: always
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: ${MONGO_ROOT_USERNAME}
+      MONGO_INITDB_ROOT_PASSWORD: ${MONGO_ROOT_PASSWORD}
+      MONGO_INITDB_DATABASE: ${MONGO_DATABASE}
+    volumes:
+      - ./initdb:/docker-entrypoint-initdb.d
+      - ./mongo:/data/db
+      - ./backups:/backups

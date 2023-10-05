@@ -13,7 +13,7 @@ import clsx from 'clsx';
 export const metadata: Metadata = {
   title: {
     default: siteConfig.name,
-    template: `%s - ${siteConfig.name}`,
+    template: `%s | ${siteConfig.name}`,
   },
   description: siteConfig.description,
   themeColor: [
@@ -37,14 +37,30 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             <Navbar />
             <main className="container mx-auto max-w-7xl pt-8 px-6 flex-grow">{children}</main>
             <footer className="w-full flex items-center justify-center py-3">
-              <Link
-                isExternal
-                className="flex items-center gap-1 text-current"
-                href="https://nekz.me"
-                title="nekz.me homepage"
-              >
-                <span className="text-default-600">© 2023 NeKz</span>
-              </Link>
+              <div className="w-full mx-auto max-w-screen-xl p-4 flex items-center justify-between">
+                <span className="text-sm text-center">
+                  <Link isExternal className="flex items-center gap-1 text-current" href="https://nekz.me">
+                    <span className="text-default-600">© 2023 NeKz</span>
+                  </Link>
+                </span>
+                <ul className="flex flex-wrap items-center mb-6 gap-6 text-sm">
+                  <li>
+                    <Link href="/privacy" className="text-current">
+                      Privacy Policy
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      isExternal
+                      href="https://github.com/NeKzor/trackmania-records/issues/new/choose"
+                      target="_blank"
+                      className="text-current"
+                    >
+                      Report Issue
+                    </Link>
+                  </li>
+                </ul>
+              </div>
             </footer>
           </div>
         </Providers>

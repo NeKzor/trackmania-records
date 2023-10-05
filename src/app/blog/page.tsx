@@ -3,6 +3,7 @@
 
 import BlogPostCard, { BlogPost } from "@/components/blog-post-card";
 import { title } from "@/components/primitives";
+import { Metadata } from "next";
 
 const posts: BlogPost[] = [
   {
@@ -30,6 +31,11 @@ const posts: BlogPost[] = [
     text: "User Authentication via Ubisoft/Maniaplanet!! Right now it's probably useless for everyone since nobody has access to any features. Download button to public replays has been removed for older records because they might not be available anymore. Instead we provide backups from our servers. This service requires permission!",
   },
 ];
+
+export const metadata: Metadata = {
+  title: 'Blog',
+  description: 'Latest Updates',
+};
 
 export default function BlogPage() {
   return (

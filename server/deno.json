@@ -1,0 +1,34 @@
+{
+  "tasks": {
+    "dev": "deno run --no-prompt --allow-sys --allow-env --allow-read=.env,.env.defaults,.env.example,/logs/server,/storage --allow-write=/logs/server,/storage --allow-net --watch main.ts",
+    "prod": "deno run --no-prompt --allow-sys --allow-env --allow-read=.env,.env.defaults,.env.example,/logs/server,/storage --allow-write=/logs/server,/storage --allow-net main.ts",
+    "test": "deno test --allow-sys --allow-net --allow-read --allow-env --unsafely-ignore-certificate-errors=tmr.api.local"
+  },
+  "fmt": {
+    "useTabs": false,
+    "lineWidth": 120,
+    "indentWidth": 2,
+    "singleQuote": true,
+    "proseWrap": "preserve"
+  },
+  "compilerOptions": {
+    "noUncheckedIndexedAccess": true
+  },
+  "imports": {
+    "async/": "https://deno.land/std@0.198.0/async/",
+    "dotenv/": "https://deno.land/std@0.198.0/dotenv/",
+    "fmt/": "https://deno.land/std@0.198.0/fmt/",
+    "io/": "https://deno.land/std@0.198.0/io/",
+    "path/": "https://deno.land/std@0.198.0/path/",
+    "streams/": "https://deno.land/std@0.198.0/streams/",
+    "testing/": "https://deno.land/std@0.198.0/testing/",
+    "uuid/": "https://deno.land/std@0.198.0/uuid/",
+    "cors/": "https://deno.land/x/cors@v1.2.2/",
+    "logger/": "https://deno.land/x/logger@v1.1.2/",
+    "oak_sessions/": "https://deno.land/x/oak_sessions@v4.1.4/",
+    "oak/": "https://deno.land/x/oak@v12.2.0/",
+    "@js-temporal/polyfill": "https://esm.sh/v131/*@js-temporal/polyfill@0.4.4",
+    "rate-limiter-flexible": "https://esm.sh/v131/rate-limiter-flexible@2.4.2",
+    "mongoose": "npm:/mongoose@7.5.4/"
+  }
+}
