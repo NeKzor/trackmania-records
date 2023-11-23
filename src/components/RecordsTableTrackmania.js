@@ -59,8 +59,8 @@ const RecordsTableHead = ({ order, orderBy, onRequestSort, official }) => {
                         {row.sortable === true && (
                             <Tooltip title={'Sort by ' + row.label} placement="bottom-start" enterDelay={300}>
                                 <TableSortLabel
-                                    active={orderBy === row.id}
-                                    direction={order}
+                                    active={orderBy === row.id && order !== 'default'}
+                                    direction={order !== 'default' ? order : 'desc'}
                                     onClick={createSortHandler(row.id)}
                                 >
                                     {row.label}
@@ -82,7 +82,7 @@ const useStyles = makeStyles((_) => ({
 }));
 
 const defaultState = {
-    order: 'asc',
+    order: 'default',
     orderBy: 'track.name',
     page: 0,
     rowsPerPage: 250,
@@ -329,7 +329,7 @@ const RecordsRow = ({ wr, official, orderBy, useLiveDuration, history, onClickHi
 
 const RecordsTable = ({ data, stats, official, useLiveDuration, showDownloadButton }) => {
     const [storage, setStorage] = useLocalStorage('tm2020', {
-        official: { order: 'asc', orderBy: 'track.name' },
+        official: { order: 'default', orderBy: 'track.name' },
         totd: { order: 'asc', orderBy: 'track.monthDay' },
     });
 
@@ -343,7 +343,15 @@ const RecordsTable = ({ data, stats, official, useLiveDuration, showDownloadButt
     const handleRequestSort = (_, property) => {
         const orderBy = property;
         setState((state) => {
-            const order = state.orderBy === orderBy && state.order === 'desc' ? 'asc' : 'desc';
+            const order = (() => {
+                if (state.orderBy !== orderBy) {
+                    return state.order === 'asc' ? 'asc' : 'desc';
+                }
+                if (state.order !== 'desc') {
+                    return state.order === 'asc' ? 'default' : 'desc';
+                }
+                return 'asc';
+            })();
             setStorage({ ...storage, [official ? 'official' : 'totd']: { order, orderBy } });
 
             return {

@@ -1,6 +1,10 @@
 const cmpOptions = { numeric: true };
 
 export const stableSort = (array, order, orderBy) => {
+    if (order === 'default') {
+        return array;
+    }
+
     const desc = (a, b) => {
         const aa = getPropFast(a, orderBy).toString();
         const bb = getPropFast(b, orderBy).toString();
@@ -21,6 +25,10 @@ export const stableSort = (array, order, orderBy) => {
         .map((el) => el[0]);
 };
 export const stableSortSort = (array, order, orderBy, thenBy) => {
+    if (order === 'default') {
+        return array;
+    }
+
     if (orderBy === thenBy || thenBy === undefined) {
         return stableSort(array, order, orderBy);
     }
