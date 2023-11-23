@@ -27,7 +27,6 @@ const useStyles = makeStyles((theme) => ({
 const branches = [
     { repo: 'NeKzor/trackmania-records', branch: 'master' },
     { repo: 'NeKzBot/trackmania-records', branch: 'api' },
-    { repo: 'NeKzor/trackmania-records', branch: 'gh-pages' },
 ];
 
 const noWrap = { whiteSpace: 'nowrap' };
