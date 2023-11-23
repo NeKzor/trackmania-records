@@ -49,6 +49,11 @@ seasonMenu.push(
         Training
     </MenuItem>,
 );
+seasonMenu.push(
+    <MenuItem value="campaign/snow-discovery" key={seasonMenu.length}>
+        SNOW DISCOVERY
+    </MenuItem>,
+);
 
 yearMenu = yearMenu.map((year) => {
     return (

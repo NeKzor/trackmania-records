@@ -42,7 +42,7 @@ const oauthClient = new TrackmaniaOAuthClient({
 let trackmania = new TrackmaniaClient();
 let zones = null;
 let game = [];
-let gameInfo = { cheaters: [], whitelist: [], training: { groupId: null, maps: [] } };
+let gameInfo = { cheaters: [], whitelist: [], training: { seasonUid: null, playlist: [] }, snow_discovery: { seasonUid: null, playlist: [] } };
 let discord = null;
 let imported = [];
 let isUpdating = false;
@@ -51,7 +51,7 @@ const cleanup = () => {
     trackmania = null;
     zones = null;
     game = [];
-    gameInfo = { cheaters: [], whitelist: [], training: { groupId: null, maps: [] } };
+    gameInfo = { cheaters: [], whitelist: [], training: { seasonUid: null, playlist: [] }, snow_discovery: { seasonUid: null, playlist: [] } };
     discord = null;
     imported = [];
     isUpdating = false;
@@ -254,6 +254,7 @@ const main = async (outputDir, snapshot = true) => {
 const dumpOfficialCampaign = async (outputDir) => {
     const campaigns = (await trackmania.campaigns(Campaigns.Official)).collect();
     campaigns.push(gameInfo.training);
+    campaigns.push(gameInfo.snow_discovery);
 
     for (const { seasonUid, name, playlist, startTimestamp, endTimestamp } of campaigns) {
         const currentCampaign = {
@@ -270,7 +271,6 @@ const dumpOfficialCampaign = async (outputDir) => {
             `${outputDir}/trackmania/campaign/${name.replace(/ /, '-').toLowerCase()}.json`,
         );
 
-        const isTraining = name === 'Training';
         log.info(name, seasonUid);
 
         const maps = await trackmania.maps(playlist.map((map) => map.mapUid));
@@ -290,7 +290,7 @@ const dumpOfficialCampaign = async (outputDir) => {
                 thumbnail: thumbnailUrl.slice(thumbnailUrl.lastIndexOf('/') + 1, -4),
             };
 
-            await resolveRecords(track, currentCampaign, latestCampaign, isTraining);
+            await resolveRecords(track, currentCampaign, latestCampaign);
 
             tracks.push(track);
         }
@@ -374,7 +374,7 @@ const dumpTrackOfTheDay = async (outputDir, snapshot) => {
     }
 };
 
-const autoban = (accountId, score, track, isTraining = false) => {
+const autoban = (accountId, score, track) => {
     if (gameInfo.whitelist.find((whitelisted) => whitelisted === accountId)) {
         return false;
     }
@@ -431,8 +431,8 @@ const ban = (account, score, track) => {
     }
 };
 
-const saveReplay = async (record, wr, campaign, track, isTraining) => {
-    const subFolder = getReplayFolder(campaign, track, isTraining);
+const saveReplay = async (record, wr, campaign, track) => {
+    const subFolder = getReplayFolder(campaign, track);
     tryMakeDir(path.join(replayFolder, subFolder));
 
     // TODO: Replace all invalid path characters for Windows
@@ -449,11 +449,16 @@ const saveReplay = async (record, wr, campaign, track, isTraining) => {
         .catch(log.error);
 };
 
-const getReplayFolder = (campaign, track, isTraining) => {
-    if (isTraining) {
+const getReplayFolder = (campaign, track) => {
+    if (campaign.name === 'Training') {
         const trackFolder = track.name.slice(track.name.indexOf(campaign.name) + campaign.name.length + 3);
-
         return path.join('training', trackFolder);
+    }
+
+    if (campaign.name === 'SNOW DISCOVERY') {
+        const trackId = gameInfo.snow_discovery.playlist.findIndex((map) => map.mapUid === track.id) + 1;
+        const trackFolder = trackId.toString().padStart(2, '0');
+        return path.join('snow_discovery', trackFolder);
     }
 
     if (campaign.isOfficial) {
@@ -473,7 +478,7 @@ const getReplayFolder = (campaign, track, isTraining) => {
     return path.join('totd', yearFolder, monthFolder, dayFolder);
 };
 
-const resolveRecords = async (track, currentCampaign, latestCampaign, isTraining) => {
+const resolveRecords = async (track, currentCampaign, latestCampaign) => {
     const eventStart = track.isOfficial ? currentCampaign.event.startsAt : track.event.startsAt;
     const eventEnd = track.isOfficial ? currentCampaign.event.endsAt : track.event.endsAt;
     const oneWeekAfterOfficialCampaignStart = track.isOfficial ? moment.unix(eventStart).add(7, 'days').unix() : 0;
@@ -489,7 +494,7 @@ const resolveRecords = async (track, currentCampaign, latestCampaign, isTraining
     let wrScore = undefined;
 
     for (const { accountId, zoneId, score } of leaderboard.top) {
-        if (autoban(accountId, score, track, isTraining)) {
+        if (autoban(accountId, score, track)) {
             continue;
         }
 
@@ -559,14 +564,14 @@ const resolveRecords = async (track, currentCampaign, latestCampaign, isTraining
 
                 const data = { wr: { ...wr }, track: { ...track } };
 
-                if (track.isOfficial && !isTraining && timestamp.unix() >= oneWeekAfterOfficialCampaignStart) {
+                if (track.isOfficial && currentCampaign !== 'Training' && timestamp.unix() >= oneWeekAfterOfficialCampaignStart) {
                     for (const integration of [twitter]) {
                         integration.send(data);
                     }
                 }
 
                 try {
-                    await saveReplay(record, wr, currentCampaign, track, isTraining);
+                    await saveReplay(record, wr, currentCampaign, track);
                 } catch (error) {
                     log.error(error);
                 }

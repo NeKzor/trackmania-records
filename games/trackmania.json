@@ -150,5 +150,57 @@
                 "mapUid": "TkyKsOEG7gHqVqjjc3A1Qj5rPgi"
             }
         ]
+    },
+    "snow_discovery": {
+        "name": "SNOW DISCOVERY",
+        "seasonUid": "NLS-cMIkwBwqaHO5VptBneeoo72EBHLZTd8IUE4",
+        "startTimestamp": 1700585401,
+        "playlist": [
+            {
+                "mapUid": "k45jQI6Y7XrPfe1T0hZhj4pKzY2"
+            },
+            {
+                "mapUid": "2tqbr2sszmxpZkVweUY5ybPH20b"
+            },
+            {
+                "mapUid": "EpaM6deJ3kkRZxD7WWQPrN286qf"
+            },
+            {
+                "mapUid": "Yttz45gxVMc6onGBAz5g_6AheCm"
+            },
+            {
+                "mapUid": "GXGM_CSzlbeNBNQwyWyxaPdDr4j"
+            },
+            {
+                "mapUid": "FIxt7IbWZMzv7IY0AATOiodmiCg"
+            },
+            {
+                "mapUid": "pOQOHcjOpsenUrFJeamePYpcP_k"
+            },
+            {
+                "mapUid": "x74fKWApIvUvsb5BGnXcb07jjQ2"
+            },
+            {
+                "mapUid": "GpZh6L4ZPDB7m9Vae8vV37ki7Rl"
+            },
+            {
+                "mapUid": "8lN2wVauP0XdPissI52l5wfvLP6"
+            },
+            {
+                "mapUid": "VIbsBvVrlzF0axbJ2cQpkWQQYBb"
+            },
+            {
+                "mapUid": "kacFH41kE5QyUFKzWAkcAB1b4L0"
+            },
+            {
+                "mapUid": "u5pSmmhKinv4Vh2SUrY5BtvFDK"
+            },
+            {
+                "mapUid": "F5iyN8ApuZf9U_Z1PMqLcJrExye"
+            },
+            {
+                "mapUid": "GXY3_DkrkGSceiut44HOz8LJP52"
+            }
+        ]
     }
 }
