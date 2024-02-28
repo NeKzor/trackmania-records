@@ -53,7 +53,7 @@ const RecordsTableHead = ({ order, orderBy, onRequestSort, official }) => {
                         key={idx}
                         align={row.align}
                         padding="normal"
-                        sortDirection={orderBy === row.id ? order : false}
+                        sortDirection={orderBy === row.id ? (order === 'default' ? false : order) : false}
                         colSpan={idx === rows.length - 1 ? 2 : 1}
                     >
                         {row.sortable === true && (
