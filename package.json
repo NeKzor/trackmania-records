@@ -16,9 +16,9 @@
         "prettier": "prettier --config prettier.config.js --write src/**/*.js scripts/**/*.js"
     },
     "dependencies": {
-        "@material-ui/core": "^4.9.2",
-        "@material-ui/icons": "^4.9.1",
-        "@material-ui/lab": "^4.0.0-alpha.46",
+        "@material-ui/core": "^4.12.4",
+        "@material-ui/icons": "^4.11.3",
+        "@material-ui/lab": "^4.0.0-alpha.61",
         "apexcharts": "^3.26.2",
         "d3-scale": "^3.2.1",
         "gh-pages": "^2.2.0",
