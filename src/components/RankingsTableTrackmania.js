@@ -53,7 +53,7 @@ const RankingsTableHead = ({ order, orderBy, onRequestSort, isOfficial, cotd, ha
                     <TableCell
                         key={row.id}
                         align={row.align}
-                        padding="default"
+                        padding="normal"
                         sortDirection={orderBy === row.id ? order : false}
                     >
                         {row.sortable === true && (

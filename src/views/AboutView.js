@@ -138,16 +138,16 @@ const AboutView = () => {
                         <Table size="small">
                             <TableHead>
                                 <TableRow>
-                                    <TableCell padding="default">
+                                    <TableCell padding="normal">
                                         <Typography variant="body1">Branch</Typography>
                                     </TableCell>
-                                    <TableCell padding="default">
+                                    <TableCell padding="normal">
                                         <Typography variant="body1">Date</Typography>
                                     </TableCell>
-                                    <TableCell padding="default">
+                                    <TableCell padding="normal">
                                         <Typography variant="body1">Author</Typography>
                                     </TableCell>
-                                    <TableCell padding="default">
+                                    <TableCell padding="normal">
                                         <Typography variant="body1">Commit</Typography>
                                     </TableCell>
                                 </TableRow>
