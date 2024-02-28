@@ -42,7 +42,22 @@ const oauthClient = new TrackmaniaOAuthClient({
 let trackmania = new TrackmaniaClient();
 let zones = null;
 let game = [];
-let gameInfo = { cheaters: [], whitelist: [], training: { seasonUid: null, playlist: [] }, snow_discovery: { seasonUid: null, playlist: [] } };
+let gameInfo = {
+    cheaters: [],
+    whitelist: [],
+    training: {
+        seasonUid: null,
+        playlist: [],
+    },
+    snow_discovery: {
+        seasonUid: null,
+        playlist: [],
+    },
+    rally_discovery: {
+        seasonUid: null,
+        playlist: [],
+    },
+};
 let discord = null;
 let imported = [];
 let isUpdating = false;
@@ -51,7 +66,22 @@ const cleanup = () => {
     trackmania = null;
     zones = null;
     game = [];
-    gameInfo = { cheaters: [], whitelist: [], training: { seasonUid: null, playlist: [] }, snow_discovery: { seasonUid: null, playlist: [] } };
+    gameInfo = {
+        cheaters: [],
+        whitelist: [],
+        training: {
+            seasonUid: null,
+            playlist: [],
+        },
+        snow_discovery: {
+            seasonUid: null,
+            playlist: [],
+        },
+        rally_discovery: {
+            seasonUid: null,
+            playlist: [],
+        },
+    };
     discord = null;
     imported = [];
     isUpdating = false;
@@ -255,6 +285,7 @@ const dumpOfficialCampaign = async (outputDir) => {
     const campaigns = (await trackmania.campaigns(Campaigns.Official)).collect();
     campaigns.push(gameInfo.training);
     campaigns.push(gameInfo.snow_discovery);
+    campaigns.push(gameInfo.rally_discovery);
 
     for (const { seasonUid, name, playlist, startTimestamp, endTimestamp } of campaigns) {
         const currentCampaign = {
@@ -456,6 +487,12 @@ const getReplayFolder = (campaign, track) => {
     }
 
     if (campaign.name === 'SNOW DISCOVERY') {
+        const trackId = gameInfo.snow_discovery.playlist.findIndex((map) => map.mapUid === track.id) + 1;
+        const trackFolder = trackId.toString().padStart(2, '0');
+        return path.join('snow_discovery', trackFolder);
+    }
+
+    if (campaign.name === 'Rally discovery') {
         const trackId = gameInfo.snow_discovery.playlist.findIndex((map) => map.mapUid === track.id) + 1;
         const trackFolder = trackId.toString().padStart(2, '0');
         return path.join('snow_discovery', trackFolder);

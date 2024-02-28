@@ -204,5 +204,87 @@
                 "mapUid": "GXY3_DkrkGSceiut44HOz8LJP52"
             }
         ]
+    },
+    "rally_discovery": {
+        "name": "Rally discovery",
+        "seasonUid": "NLS-GtQPKM1ovnFV4Q6tY3NKHDEOeikN4ooN2U8",
+        "startTimestamp": 1709045381,
+        "playlist": [
+            {
+                "mapUid": "HGSCrK2nwP2Eh832FcLchg2mlb1"
+            },
+            {
+                "mapUid": "xilvEhY102bUWPfViuA5L3R2Kkf"
+            },
+            {
+                "mapUid": "8GlfeTOKo8a6nR4Odck6hkR1QZj"
+            },
+            {
+                "mapUid": "Bm8fJqCkEQ5mcGpGGKrii14wUqk"
+            },
+            {
+                "mapUid": "IhErO1M1iVnixXq3NApG0RcDcnh"
+            },
+            {
+                "mapUid": "61Cb4gy3SfeyBKw_j7Se_dyTBQ5"
+            },
+            {
+                "mapUid": "XezcEHaLwsg_fnoLjEFNznnDpw4"
+            },
+            {
+                "mapUid": "7S_oNjIByPmiGntUVZMELyZ14P3"
+            },
+            {
+                "mapUid": "Q471TU01FyT9VV1FdjGXtfretZk"
+            },
+            {
+                "mapUid": "JaUjuuasJ8RL4gyrMhig4uEwBPa"
+            },
+            {
+                "mapUid": "VKOlGdlgC7OgToUFIao5co59EH1"
+            },
+            {
+                "mapUid": "o3D8x7IWMKVgTzhsiyjqmGgbzN3"
+            },
+            {
+                "mapUid": "ckjTde14KsIc2cHxGlXK75AgQOb"
+            },
+            {
+                "mapUid": "iZCoRIkKAc14rTJRCBjrV6vDBkf"
+            },
+            {
+                "mapUid": "Du_OOTkcbUalZmS7s79ZUkikVF6"
+            },
+            {
+                "mapUid": "bWVms5_bPiwl3H3bNYl07LvM4J6"
+            },
+            {
+                "mapUid": "3EkrdohP6AJCEzxHJU6uvCQBTec"
+            },
+            {
+                "mapUid": "QRd2bKEn4YKh1UxbOEnKMCuEGO6"
+            },
+            {
+                "mapUid": "IuCucvPFLp52uJZIRqflo3sbYvb"
+            },
+            {
+                "mapUid": "l7IW0BUowKNjYrlGXJyA_KpRPae"
+            },
+            {
+                "mapUid": "PBDgf2SRll910V3uVWNbLTdnPTh"
+            },
+            {
+                "mapUid": "nmMTbUlWA4W1Gu1VkUPBneYC6z2"
+            },
+            {
+                "mapUid": "22YV1ObuEvAlIEpJdc8fBun0lfl"
+            },
+            {
+                "mapUid": "9RGxBYGb8VHrIlFrqlxLUOdYRZ6"
+            },
+            {
+                "mapUid": "tnNJA5BXhWlAhEGjIciOp9DsHWd"
+            }
+        ]
     }
 }
