@@ -495,7 +495,7 @@ const getReplayFolder = (campaign, track) => {
     if (campaign.name === 'Rally discovery') {
         const trackId = gameInfo.snow_discovery.playlist.findIndex((map) => map.mapUid === track.id) + 1;
         const trackFolder = trackId.toString().padStart(2, '0');
-        return path.join('snow_discovery', trackFolder);
+        return path.join('rally_discovery', trackFolder);
     }
 
     if (campaign.isOfficial) {
