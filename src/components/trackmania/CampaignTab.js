@@ -5,6 +5,7 @@ import Grid from '@material-ui/core/Grid';
 import LinearProgress from '@material-ui/core/LinearProgress';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
+import TextField from '@material-ui/core/TextField';
 import RankingsTable from '../RankingsTableTrackmania';
 import RecordsTable from '../RecordsTableTrackmania';
 import RecordsChart from '../RecordsChart';
@@ -12,6 +13,7 @@ import SimpleTitle from '../SimpleTitle';
 import UniqueRecordsChart from '../UniqueRecordsChart';
 import { makeStyles } from '@material-ui/core/styles';
 import MenuItem from '@material-ui/core/MenuItem';
+import { Autocomplete } from '@material-ui/lab';
 import Api, { api2 } from '../../Api';
 import { useIsMounted } from '../../Hooks';
 import AppState from '../../AppState';
@@ -152,10 +154,15 @@ const CampaignTab = ({ campaign, onChangeCampaign, onChangeYear, isOfficial, yea
         <>
             {isOfficial ? (
                 <FormControl className={classes.formControl}>
-                    <InputLabel>Campaign</InputLabel>
-                    <Select value={campaign} onChange={onChangeCampaign}>
-                        {seasonMenu}
-                    </Select>
+                    <Autocomplete
+                        value={seasonMenu.find((season) => season.value === campaign)}
+                        options={seasonMenu}
+                        getOptionLabel={(option) => option.title}
+                        style={{ width: 170 }}
+                        disableClearable
+                        renderInput={(params) => <TextField {...params} label="Campaign" />}
+                        onChange={onChangeCampaign}
+                    />
                 </FormControl>
             ) : (
                 <>

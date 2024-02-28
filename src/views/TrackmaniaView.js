@@ -37,8 +37,8 @@ const TrackmaniaView = ({ match }) => {
     );
 
     const onChangeCampaign = React.useCallback(
-        (event) => {
-            setCampaign(event.target.value);
+        (_, option) => {
+            setCampaign(option.value);
         },
         [setCampaign],
     );

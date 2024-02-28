@@ -23,6 +23,24 @@ const seasons = {
     3: 'Fall',
 };
 
+const addOtherCampaigns = () => {
+    seasonMenu.push({
+        value: 'campaign/snow-discovery',
+        key: seasonMenu.length,
+        title: 'Snow discovery',
+    });
+    seasonMenu.push({
+        value: 'campaign/rally-discovery',
+        key: seasonMenu.length,
+        title: 'Rally discovery',
+    });
+    seasonMenu.push({
+        value: 'campaign/training',
+        key: seasonMenu.length,
+        title: 'Training',
+    });
+};
+
 while (currentMonth.diff(now) < 0) {
     const season = seasons[Math.floor(currentMonth.month() / 3)];
     const year = currentMonth.format('YYYY');
@@ -31,34 +49,22 @@ while (currentMonth.diff(now) < 0) {
         yearMenu.push(year);
     }
 
-    seasonMenu.push(
-        <MenuItem value={`campaign/${season}-${year}`.toLowerCase()} key={seasonMenu.length}>
-            {season} {year}
-        </MenuItem>,
-    );
-
     currentMonth.add(3, 'months');
+
+    if (currentMonth.diff(now) >= 0) {
+        addOtherCampaigns();
+    }
+
+    seasonMenu.push({
+        value: `campaign/${season}-${year}`.toLowerCase(),
+        key: seasonMenu.length,
+        title: `${season} ${year}`,
+    });
 }
 
 seasonMenu.reverse();
 totdMenu.reverse();
 yearMenu.reverse();
-
-seasonMenu.push(
-    <MenuItem value="campaign/training" key={seasonMenu.length}>
-        Training
-    </MenuItem>,
-);
-seasonMenu.push(
-    <MenuItem value="campaign/snow-discovery" key={seasonMenu.length}>
-        SNOW DISCOVERY
-    </MenuItem>,
-);
-seasonMenu.push(
-    <MenuItem value="campaign/rally-discovery" key={seasonMenu.length}>
-        Rally discovery
-    </MenuItem>,
-);
 
 yearMenu = yearMenu.map((year) => {
     return (
