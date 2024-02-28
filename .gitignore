@@ -15,6 +15,9 @@ research/
 competitions.json
 logs/
 *.pem
+docker/
+server/entrypoint.sh
+docker-compose.yml
 
 node_modules/
 coverage/
