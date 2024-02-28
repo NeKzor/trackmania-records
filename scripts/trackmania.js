@@ -216,8 +216,8 @@ const main = async (outputDir, snapshot = true) => {
             return;
         }
 
-        const isTimeToDumpCupOfTheDay = moment().add(10, 'seconds').format('HH:mm') === '21:15';
-        const isTimeToDumpA08Forever = moment().add(10, 'seconds').format('DD HH:mm') === '08 22:00';
+        const isTimeToDumpCupOfTheDay = false; //moment().add(10, 'seconds').format('HH:mm') === '21:15';
+        const isTimeToDumpA08Forever = false; //moment().add(10, 'seconds').format('DD HH:mm') === '08 22:00';
 
         isUpdating = true;
 

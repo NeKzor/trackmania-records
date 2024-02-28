@@ -9,18 +9,13 @@ import Typography from '@material-ui/core/Typography';
 import FloatingActionButton from '../components/FloatingActionButton';
 import ViewContent from './ViewContent';
 import CampaignTab from '../components/trackmania/CampaignTab';
-import CompetitionsTab from '../components/trackmania/CompetitionsTab';
 import RankingsTab from '../components/trackmania/RankingsTab';
 import { getInitialValue } from '../components/trackmania/CampaignMenus';
-import { getInitialCompetitionValue } from '../components/trackmania/CompetitionsMenus';
 
 const TrackmaniaView = ({ match }) => {
     const [tab, setTab] = React.useState(0);
     const [campaign, setCampaign] = React.useState(getInitialValue(tab === 0));
     const [year, setYear] = React.useState(moment().year());
-    const [competition, setCompetition] = React.useState('competitions/cotd');
-    const [competitionYear, setCompetitionYear] = React.useState(moment().year());
-    const [competitionMonth, setCompetitionMonth] = React.useState(moment().format('MMMM').toLowerCase());
 
     const page = match.path;
 
@@ -48,28 +43,6 @@ const TrackmaniaView = ({ match }) => {
         [setCampaign],
     );
 
-    const onChangeCompetition = React.useCallback(
-        (event) => {
-            setCompetition(event.target.value);
-        },
-        [setCompetition],
-    );
-
-    const onChangeCompetitionYear = React.useCallback(
-        (event) => {
-            setCompetitionYear(event.target.value);
-            setCompetitionMonth(getInitialCompetitionValue(event.target.value));
-        },
-        [setCompetitionYear],
-    );
-
-    const onChangeCompetitionMonth = React.useCallback(
-        (event) => {
-            setCompetitionMonth(event.target.value);
-        },
-        [setCompetitionMonth],
-    );
-
     return (
         <ViewContent>
             <Paper>
@@ -84,7 +57,6 @@ const TrackmaniaView = ({ match }) => {
                     <Tab label="Campaign" />
                     <Tab label="Track of the Day" />
                     <Tab label="Rankings" />
-                    <Tab label="Competitions" />
                 </Tabs>
                 <Typography component="div" role="tabpanel">
                     <Box p={3}>
@@ -98,19 +70,6 @@ const TrackmaniaView = ({ match }) => {
                             />
                         )}
                         {tab === 2 && <RankingsTab />}
-                        {tab === 3 && (
-                            <CompetitionsTab
-                                competition={competition}
-                                onChangeCompetition={onChangeCompetition}
-                                campaign={campaign}
-                                onChangeCampaign={onChangeCampaign}
-                                onChangeYear={onChangeCompetitionYear}
-                                onChangeMonth={onChangeCompetitionMonth}
-                                isOfficial={tab === 0}
-                                year={competitionYear}
-                                month={competitionMonth}
-                            />
-                        )}
                     </Box>
                 </Typography>
             </Paper>
