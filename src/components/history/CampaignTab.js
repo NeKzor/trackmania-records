@@ -107,7 +107,7 @@ const CampaignTab = ({ gameName }) => {
             )}
             {currentCampaign === null && <SimpleTitle data="No data." />}
             {currentCampaign === undefined && <LinearProgress />}
-            <Grid container direction="column" justify="center">
+            <Grid container direction="column" justifyContent="center">
                 {currentCampaign !== undefined && currentCampaign !== null && (
                     <>
                         <Grid item xs={12}>
@@ -118,7 +118,7 @@ const CampaignTab = ({ gameName }) => {
                             />
                         </Grid>
                         <Grid item xs={12} className={classes.padTop}>
-                            <Grid container direction="row" justify="center" alignContent="center">
+                            <Grid container direction="row" justifyContent="center" alignContent="center">
                                 <Grid item xs={12} md={6}>
                                     <RankingsTable
                                         game={gameName}
@@ -127,7 +127,7 @@ const CampaignTab = ({ gameName }) => {
                                     />
                                 </Grid>
                                 <Grid item xs={12} md={6} className={classes.padTop}>
-                                    <Grid container direction="column" justify="center">
+                                    <Grid container direction="column" justifyContent="center">
                                         <Grid item xs={12}>
                                             {rankingsType === 'uniqueLeaderboard' ? (
                                                 <UniqueRecordsChart

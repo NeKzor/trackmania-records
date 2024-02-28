@@ -107,7 +107,7 @@ const CompetitionsTab = ({ competition, onChangeCompetition, campaign, onChangeC
             </>
             {game === null && <SimpleTitle data="No data." />}
             {game === undefined && <LinearProgress />}
-            <Grid container direction="column" justify="center">
+            <Grid container direction="column" justifyContent="center">
                 {game !== undefined && game !== null && (
                     <>
                         <Grid item xs={12}>
@@ -124,7 +124,7 @@ const CompetitionsTab = ({ competition, onChangeCompetition, campaign, onChangeC
                             {stats === null && <SimpleTitle data="No data." />}
                             {stats === undefined && <LinearProgress />}
                             {stats !== undefined && stats !== null && (
-                                <Grid container direction="row" justify="center" alignContent="center">
+                                <Grid container direction="row" justifyContent="center" alignContent="center">
                                     <Grid item xs={12} md={6}>
                                         <RankingsTable
                                             data={stats.leaderboard}
@@ -134,7 +134,7 @@ const CompetitionsTab = ({ competition, onChangeCompetition, campaign, onChangeC
                                         />
                                     </Grid>
                                     <Grid item xs={12} md={6} className={classes.padTop}>
-                                        <Grid container direction="column" justify="center">
+                                        <Grid container direction="column" justifyContent="center">
                                             <Grid item xs={12}>
                                                 <RecordsChart
                                                     title="Wins"
