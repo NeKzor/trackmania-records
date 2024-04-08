@@ -115,7 +115,7 @@ class TrackmaniaClient {
 
         return this;
     }
-    async get(route, nadeo, nadeoEndpont = ApiEndpoint.LiveServices) {
+    async get(route, nadeo, nadeoEndpoint = ApiEndpoint.LiveServices) {
         if (!nadeo && !this.loginData) {
             throw new Error('need to be logged in first');
         }
@@ -125,7 +125,7 @@ class TrackmaniaClient {
         }
 
         const accessToken = nadeo ? this.loginDataNadeo.accessToken : this.loginData.accessToken;
-        const baseUrl = nadeo ? nadeoEndpont : ApiEndpoint.Prod;
+        const baseUrl = nadeo ? nadeoEndpoint : ApiEndpoint.Prod;
 
         const res = await fetch(baseUrl + route, {
             method: 'GET',
@@ -138,6 +138,7 @@ class TrackmaniaClient {
         log.info(`[API CALL] GET -> ${baseUrl + route} : ${res.status} `);
 
         if (res.status !== 200) {
+            log.error(await res.text());
             throw new ResponseError(res);
         }
 
@@ -181,6 +182,9 @@ class TrackmaniaClient {
     }
     async challengesLeaderboard(matchId) {
         return await ChallengesLeaderboard.default(this).update(matchId);
+    }
+    async webIdentities(accountIdList) {
+        return await WebIdentities.default(this).update(accountIdList);
     }
 }
 
@@ -592,6 +596,40 @@ class ChallengesLeaderboard extends Entity {
     *[Symbol.iterator]() {
         for (const leaderboard of this.data) {
             yield new LeaderboardChallenge(leaderboard);
+        }
+    }
+}
+
+class WebIdentity {
+    accountId = '';
+    provider = '';
+    uid = '';
+    timestamp = '';
+
+    constructor(data) {
+        Object.assign(this, data);
+    }
+}
+
+class WebIdentities extends Entity {
+    async update(accountIdList) {
+        this.accountIdList = accountIdList || this.accountIdList;
+
+        if (!this.accountIdList) {
+            throw new Error('account id list is required');
+        }
+
+        this.data = await this.client.get(`/webidentities/?accountIdList=${this.accountIdList.join(',')}`);
+
+        if (!Array.isArray(this.data)) {
+            this.data = [];
+        }
+
+        return this;
+    }
+    *[Symbol.iterator]() {
+        for (const webIdentity of this.data) {
+            yield new WebIdentity(webIdentity);
         }
     }
 }

@@ -549,16 +549,22 @@ const resolveRecords = async (track, currentCampaign, latestCampaign) => {
                 continue;
             }
 
-            const displayNames = await oauthClient.displayNames([accountId]);
+            const [displayNames, webIdentities] = await Promise.all([
+                oauthClient.displayNames([accountId]),
+                trackmania.webIdentities([accountId]),
+            ]);
 
-            // Fck you Nando for removing the timestamp too!!
-            // /* ban if account is too young */
-            // if (track.isOfficial && moment().diff(moment(account.timestamp), 'hours') <= (24 * 7)) {
-            //     if (!gameInfo.whitelist.find((whitelistId) => whitelistId === accountId)) {
-            //         ban(accountId, score, track);
-            //         continue;
-            //     }
-            // }
+            // I keep this for historical reasons:
+            //      Fck you Nando for removing the timestamp!!
+
+            /* ban if account is too young */
+            const [webIdentity] = webIdentities.collect();
+            if (webIdentity && track.isOfficial && moment().diff(moment(webIdentity.timestamp), 'hours') <= (24 * 7)) {
+                if (!gameInfo.whitelist.find((whitelistId) => whitelistId === accountId)) {
+                    ban(accountId, score, track);
+                    continue;
+                }
+            }
 
             wrScore = score;
 
