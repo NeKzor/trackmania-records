@@ -23,6 +23,7 @@ const seasons = {
     3: 'Fall',
 };
 
+// NOTE: The order will be reversed.
 const addOtherCampaigns = () => {
     seasonMenu.push({
         value: 'campaign/snow-discovery',
@@ -33,6 +34,11 @@ const addOtherCampaigns = () => {
         value: 'campaign/rally-discovery',
         key: seasonMenu.length,
         title: 'Rally discovery',
+    });
+    seasonMenu.push({
+        value: 'campaign/desert-discovery',
+        key: seasonMenu.length,
+        title: 'Desert discovery',
     });
     seasonMenu.push({
         value: 'campaign/training',
