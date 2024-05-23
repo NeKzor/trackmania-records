@@ -57,6 +57,10 @@ let gameInfo = {
         seasonUid: null,
         playlist: [],
     },
+    desert_discovery: {
+        seasonUid: null,
+        playlist: [],
+    },
 };
 let discord = null;
 let imported = [];
@@ -78,6 +82,10 @@ const cleanup = () => {
             playlist: [],
         },
         rally_discovery: {
+            seasonUid: null,
+            playlist: [],
+        },
+        desert_discovery: {
             seasonUid: null,
             playlist: [],
         },
@@ -286,6 +294,7 @@ const dumpOfficialCampaign = async (outputDir) => {
     campaigns.push(gameInfo.training);
     campaigns.push(gameInfo.snow_discovery);
     campaigns.push(gameInfo.rally_discovery);
+    campaigns.push(gameInfo.desert_discovery);
 
     for (const { seasonUid, name, playlist, startTimestamp, endTimestamp } of campaigns) {
         const currentCampaign = {
@@ -496,6 +505,12 @@ const getReplayFolder = (campaign, track) => {
         const trackId = gameInfo.rally_discovery.playlist.findIndex((map) => map.mapUid === track.id) + 1;
         const trackFolder = trackId.toString().padStart(2, '0');
         return path.join('rally_discovery', trackFolder);
+    }
+
+    if (campaign.name === 'Desert Discovery') {
+        const trackId = gameInfo.desert_discovery.playlist.findIndex((map) => map.mapUid === track.id) + 1;
+        const trackFolder = trackId.toString().padStart(2, '0');
+        return path.join('desert_discovery', trackFolder);
     }
 
     if (campaign.isOfficial) {

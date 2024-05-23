@@ -290,5 +290,87 @@
                 "mapUid": "tnNJA5BXhWlAhEGjIciOp9DsHWd"
             }
         ]
+    },
+    "desert_discovery": {
+        "name": "Desert Discovery",
+        "seasonUid": "NLS-5mqIKA606oMUIMus4nCTvGKFRBzGDfNWFoz",
+        "startTimestamp": 1716374618,
+        "playlist": [
+            {
+                "mapUid": "xzY9JKSrP9Wg3qGrunyllyu4fUf"
+            },
+            {
+                "mapUid": "O4aWriFTlMtENwKofv2f0BGuCCi"
+            },
+            {
+                "mapUid": "ZcracoVBcAu_ldBATdSLtZnwSJ8"
+            },
+            {
+                "mapUid": "HFbt01ySp2kPnmK5kDzEIoutYwe"
+            },
+            {
+                "mapUid": "P8grKUznYVAgi1U3lKo9m3t8OR2"
+            },
+            {
+                "mapUid": "kBeoGmgo1bqygFui5JGL6MQxlhl"
+            },
+            {
+                "mapUid": "dBvRKMP0Yg4rWiXYT0hRqRDBWP7"
+            },
+            {
+                "mapUid": "v1LuD_AGWG3xU8kMzFH6wIzSvd2"
+            },
+            {
+                "mapUid": "KxzNBXNEtZhW3UBow4oHoziA3Gf"
+            },
+            {
+                "mapUid": "wcBinsz_DydN8VB0Y41vcw3kRvc"
+            },
+            {
+                "mapUid": "Nh1TorW3Q4ZdaXDh_oi_YAEr6E0"
+            },
+            {
+                "mapUid": "MfBIJrSNereFEJD0B3VSsIXTnp2"
+            },
+            {
+                "mapUid": "aQPGV2uHsqSZSuSlXvwxeNCKU0e"
+            },
+            {
+                "mapUid": "ve5XEfkftLwJYjDwAhFCAYb7cgg"
+            },
+            {
+                "mapUid": "TgjzqTC6qjqcIsOGsHqFJbjhy43"
+            },
+            {
+                "mapUid": "QmNwqDRyYlggRMraH5kSET2_JA5"
+            },
+            {
+                "mapUid": "7d54WAjpiwZqs9bld1Q8tJvLsii"
+            },
+            {
+                "mapUid": "s5hzSABb5TADEqpeIxyzIEf_zmj"
+            },
+            {
+                "mapUid": "5mfPYLOvs1kGeVhbJMSBrtmITU1"
+            },
+            {
+                "mapUid": "bGM9cN_zL72SA471A6ucRYta0Q3"
+            },
+            {
+                "mapUid": "5uAJUkSane6DkjVOzIf8hLuPt_h"
+            },
+            {
+                "mapUid": "UVFFodi3yHv3SxpBT7Ylf31XhV"
+            },
+            {
+                "mapUid": "ZXGBx5tWeHdQNwGzT2HG79hte6m"
+            },
+            {
+                "mapUid": "ujHQhw95Lrct1A6oyFEqSU0QcYc"
+            },
+            {
+                "mapUid": "uV5dbR7b0mgk6JUGYM1wjzlkmw9"
+            }
+        ]
     }
 }
