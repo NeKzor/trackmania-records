@@ -75,7 +75,9 @@
         "a6f70b22-77fc-4ac6-b10c-b0d1468a3e02"
     ],
     "whitelist": [
-        "9a097636-26b4-4752-98bc-e266345b2cc4"
+        "9a097636-26b4-4752-98bc-e266345b2cc4",
+        "a02710be-ce24-46cb-9ade-a04439d6df2c",
+        "088b0e39-3b41-4ed8-a85e-b0ccec9859ef"
     ],
     "training": {
         "name": "Training",
