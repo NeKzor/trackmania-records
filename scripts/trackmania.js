@@ -598,6 +598,10 @@ const resolveRecords = async (track, currentCampaign, latestCampaign) => {
 
             const latestScore = latestTrack && latestTrack.wrs[0] ? latestTrack.wrs[0].score : undefined;
 
+            // NANDO BREAKING THINGS SINCE STUNT UPDATE >:(
+            // https://core.trackmania.nadeo.live/mapRecords/<UUID>/replay
+            const replay = record ? record.url.slice(-43, -7) : '';
+
             const wr = {
                 user: {
                     id: accountId,
@@ -605,7 +609,7 @@ const resolveRecords = async (track, currentCampaign, latestCampaign) => {
                     name: displayNames[accountId] ?? '',
                 },
                 date: record ? record.timestamp : '',
-                replay: record ? record.url.slice(record.url.lastIndexOf('/') + 1) : '',
+                replay,
                 duration: record ? moment().diff(timestamp, 'd') : 0,
                 score,
                 delta: Math.abs(latestWr ? latestWr.delta : latestScore ? score - latestScore : 0),
@@ -618,6 +622,7 @@ const resolveRecords = async (track, currentCampaign, latestCampaign) => {
             if (!inHistory) {
                 history.push(wr);
                 log.info('NEW RECORD', wr.user.name, wr.score);
+                inspect(record);
                 inspect(wr);
 
                 const data = { wr: { ...wr }, track: { ...track } };
